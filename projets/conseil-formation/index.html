@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Conseil & Formation | Accompagnement des PME alsaciennes</title>
+    <meta name="description" content="Cabinet de conseil et formation pour PME alsaciennes. Management, accompagnement commercial, sécurité au travail, gestion de crise. Experts dédiés aux entreprises de 10 à 500 salariés.">
+    <meta name="keywords" content="conseil PME Alsace, formation management Strasbourg, accompagnement commercial, sécurité au travail, gestion de crise, formation dirigeants">
+    <meta property="og:title" content="Horizon Conseil & Formation | PME Alsace">
+    <meta property="og:description" content="Conseil en management et formation sur-mesure pour les PME alsaciennes.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <span class="logo-mark">H</span>
+                <span class="logo-text">Horizon<span class="logo-light">Conseil</span></span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#entreprise">L'entreprise</a></li>
+                <li><a href="#offres">Nos offres</a></li>
+                <li><a href="#experts">Experts</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+                <li><a href="#contact" class="btn btn-nav">Nous contacter</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        Partenaire des PME alsaciennes depuis 2010
+                    </div>
+                    <h1 class="hero-title">
+                        Faites grandir vos équipes,<br>
+                        <span class="hero-highlight">développez votre entreprise</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Conseil en management, accompagnement des forces de vente et formations sur-mesure pour les PME de 10 à 500 salariés en Alsace.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            Demander un devis gratuit
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#offres" class="btn btn-outline btn-lg">Découvrir nos offres</a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="trust-item">
+                            <strong>150+</strong>
+                            <span>PME accompagnées</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <strong>98%</strong>
+                            <span>Satisfaction client</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <strong>15 ans</strong>
+                            <span>D'expertise terrain</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card hero-card-1">
+                        <div class="hc-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <div class="hc-label">Management</div>
+                        <div class="hc-value">+32% de performance</div>
+                    </div>
+                    <div class="hero-card hero-card-2">
+                        <div class="hc-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <div class="hc-label">Ventes</div>
+                        <div class="hc-value">+45% de CA moyen</div>
+                    </div>
+                    <div class="hero-card hero-card-3">
+                        <div class="hc-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="hc-label">Sécurité</div>
+                        <div class="hc-value">0 accident en 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ENTREPRISE ===== -->
+    <section class="section section-alt" id="entreprise">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Qui sommes-nous</span>
+                <h2 class="section-title">Un cabinet ancré dans le <span class="text-accent">tissu économique alsacien</span></h2>
+                <p class="section-desc">Depuis plus de 15 ans, nous accompagnons les dirigeants et leurs équipes dans leurs défis quotidiens. Notre force : une connaissance intime du terrain et un réseau d'experts complémentaires.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card" data-reveal data-delay="0">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Proximité</h3>
+                    <p>Implantés en Alsace, nous connaissons les spécificités de votre marché et de votre écosystème. Chaque intervention est pensée pour votre réalité locale.</p>
+                </div>
+                <div class="value-card" data-reveal data-delay="1">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Pragmatisme</h3>
+                    <p>Pas de théorie déconnectée : nos recommandations sont opérationnelles, concrètes et immédiatement applicables par vos équipes au quotidien.</p>
+                </div>
+                <div class="value-card" data-reveal data-delay="2">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3>Réseau d'experts</h3>
+                    <p>Nous mobilisons des spécialistes pointus (sécurité au travail, gestion de crise, droit social) pour répondre à l'ensemble de vos besoins.</p>
+                </div>
+                <div class="value-card" data-reveal data-delay="3">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Résultats mesurables</h3>
+                    <p>Chaque mission s'accompagne d'indicateurs de performance. Nous nous engageons sur des résultats concrets et quantifiables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OFFRES ===== -->
+    <section class="section" id="offres">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Nos offres</span>
+                <h2 class="section-title">Des solutions adaptées à <span class="text-accent">chaque enjeu</span></h2>
+                <p class="section-desc">Conseil stratégique, formation opérationnelle ou intervention d'experts : nous construisons avec vous le dispositif le plus pertinent.</p>
+            </div>
+
+            <div class="offres-grid">
+                <!-- Offre 1 : Management -->
+                <div class="offre-card offre-featured" data-reveal data-delay="0">
+                    <div class="offre-badge">Phare</div>
+                    <div class="offre-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="offre-title">Conseil en management</h3>
+                    <p class="offre-desc">Structurez votre organisation, développez le leadership de vos managers et fédérez vos équipes autour d'objectifs partagés.</p>
+                    <ul class="offre-list">
+                        <li>Diagnostic organisationnel</li>
+                        <li>Coaching de dirigeants et managers</li>
+                        <li>Conduite du changement</li>
+                        <li>Gestion des conflits et médiation</li>
+                        <li>Mise en place d'outils de pilotage</li>
+                    </ul>
+                    <div class="offre-footer">
+                        <a href="#devis" class="btn btn-primary" data-form-type="management">Demander un devis</a>
+                    </div>
+                </div>
+
+                <!-- Offre 2 : Force de vente -->
+                <div class="offre-card" data-reveal data-delay="1">
+                    <div class="offre-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="offre-title">Accompagnement commercial</h3>
+                    <p class="offre-desc">Boostez les performances de votre force de vente avec un accompagnement terrain et des formations ciblées.</p>
+                    <ul class="offre-list">
+                        <li>Audit de la performance commerciale</li>
+                        <li>Formation techniques de vente</li>
+                        <li>Construction d'argumentaires</li>
+                        <li>Accompagnement terrain (coaching)</li>
+                        <li>Stratégie de prospection</li>
+                    </ul>
+                    <div class="offre-footer">
+                        <a href="#devis" class="btn btn-primary" data-form-type="commercial">Demander un devis</a>
+                    </div>
+                </div>
+
+                <!-- Offre 3 : Formation -->
+                <div class="offre-card" data-reveal data-delay="2">
+                    <div class="offre-icon-wrap">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="offre-title">Formations sur-mesure</h3>
+                    <p class="offre-desc">Des programmes adaptés à votre secteur, vos métiers et vos enjeux. En présentiel, dans vos locaux ou les nôtres.</p>
+                    <ul class="offre-list">
+                        <li>Management d'équipe (niveaux 1 à 3)</li>
+                        <li>Communication et prise de parole</li>
+                        <li>Gestion du temps et des priorités</li>
+                        <li>Entretiens professionnels</li>
+                        <li>Catalogue de +30 formations</li>
+                    </ul>
+                    <div class="offre-footer">
+                        <a href="#devis" class="btn btn-primary" data-form-type="formation">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interventions experts -->
+            <div class="experts-section" data-reveal>
+                <h3 class="experts-title">Interventions ponctuelles avec nos experts partenaires</h3>
+                <div class="experts-grid">
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Sécurité au travail
+                    </div>
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Gestion de crise
+                    </div>
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        Droit social & RH
+                    </div>
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        Performance industrielle
+                    </div>
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        Développement à l'international
+                    </div>
+                    <div class="expert-chip">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                        RSE & Transition écologique
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEMOIGNAGES ===== -->
+    <section class="section section-dark" id="temoignages">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag section-tag-light">Témoignages</span>
+                <h2 class="section-title text-white">Ce que disent <span class="text-accent">nos clients</span></h2>
+            </div>
+            <div class="temoignages-grid">
+                <div class="temoignage-card" data-reveal data-delay="0">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"L'accompagnement d'Horizon Conseil a été déterminant dans la structuration de notre équipe commerciale. En 6 mois, nos ventes ont progressé de 35%."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">ML</div>
+                        <div>
+                            <div class="author-name">Marc Lehmann</div>
+                            <div class="author-role">Directeur Général — Alsatech Industries, Mulhouse</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="temoignage-card" data-reveal data-delay="1">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"La formation management a transformé la posture de nos chefs d'équipe. Le taux d'absentéisme a baissé de 20% et l'ambiance de travail s'est nettement améliorée."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">SW</div>
+                        <div>
+                            <div class="author-name">Sophie Weber</div>
+                            <div class="author-role">DRH — Groupe Rhin Logistique, Strasbourg</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="temoignage-card" data-reveal data-delay="2">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"Leur intervention en gestion de crise nous a permis de traverser une période difficile avec sérénité. Un professionnalisme et une réactivité remarquables."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">PK</div>
+                        <div>
+                            <div class="author-name">Pierre Keller</div>
+                            <div class="author-role">Gérant — Keller & Fils BTP, Colmar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESSOURCES / LIVRES BLANCS ===== -->
+    <section class="section" id="ressources">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Ressources gratuites</span>
+                <h2 class="section-title">Nos guides pratiques pour <span class="text-accent">les dirigeants</span></h2>
+                <p class="section-desc">Téléchargez nos livres blancs et bénéficiez de conseils concrets pour développer votre entreprise.</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card" data-reveal data-delay="0">
+                    <div class="resource-cover cover-management">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type">Livre blanc — 24 pages</span>
+                        <h4>Les 7 clés du management efficace en PME</h4>
+                        <p>Comment structurer votre management intermédiaire et développer l'autonomie de vos équipes.</p>
+                        <button class="btn btn-primary btn-sm btn-download" data-resource="management-pme">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            Télécharger gratuitement
+                        </button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-reveal data-delay="1">
+                    <div class="resource-cover cover-vente">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type">Guide pratique — 18 pages</span>
+                        <h4>Booster sa force de vente : le plan d'action en 90 jours</h4>
+                        <p>Méthodes éprouvées pour relancer la dynamique commerciale de votre PME.</p>
+                        <button class="btn btn-primary btn-sm btn-download" data-resource="force-de-vente">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            Télécharger gratuitement
+                        </button>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-reveal data-delay="2">
+                    <div class="resource-cover cover-securite">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type">Checklist — 12 pages</span>
+                        <h4>Sécurité au travail : les obligations incontournables</h4>
+                        <p>Le guide de conformité pour les PME de 10 à 500 salariés, actualisé 2026.</p>
+                        <button class="btn btn-primary btn-sm btn-download" data-resource="securite-travail">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            Télécharger gratuitement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODAL TELECHARGE ===== -->
+    <div class="modal-overlay" id="download-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <h3>Téléchargez votre guide</h3>
+                <p>Renseignez vos coordonnées pour recevoir le document par email.</p>
+            </div>
+            <form class="modal-form" id="download-form">
+                <input type="hidden" name="resource" id="download-resource">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dl-prenom">Prénom *</label>
+                        <input type="text" id="dl-prenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dl-nom">Nom *</label>
+                        <input type="text" id="dl-nom" name="nom" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dl-email">Email professionnel *</label>
+                    <input type="email" id="dl-email" name="email" required placeholder="prenom@entreprise.fr">
+                </div>
+                <div class="form-group">
+                    <label for="dl-entreprise">Entreprise</label>
+                    <input type="text" id="dl-entreprise" name="entreprise">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" id="dl-rgpd" name="rgpd" required>
+                    <label for="dl-rgpd">J'accepte que mes données soient utilisées pour recevoir ce document et des informations d'Horizon Conseil. <a href="#mentions">Politique de confidentialité</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    Recevoir le document
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT & DEVIS ===== -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Parlons de votre <span class="text-accent">projet</span></h2>
+                <p class="section-desc">Un besoin en conseil, une demande de formation ? Contactez-nous pour un premier échange sans engagement.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Infos de contact -->
+                <div class="contact-info" data-reveal>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <strong>Nos bureaux</strong>
+                            <p>[Adresse]<br>67000 Strasbourg, Alsace</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p>03 88 XX XX XX<br>Du lundi au vendredi, 8h30 - 18h</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <strong>Email</strong>
+                            <p>contact@horizon-conseil.fr</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-cta">
+                        <p><strong>Besoin urgent ?</strong></p>
+                        <p>Appelez-nous directement ou demandez un rappel via le formulaire.</p>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="contact-form-wrap" data-reveal id="devis">
+                    <div class="form-tabs">
+                        <button class="form-tab active" data-tab="contact">Contact simple</button>
+                        <button class="form-tab" data-tab="devis">Demande de devis</button>
+                    </div>
+
+                    <!-- Formulaire Contact -->
+                    <form class="contact-form" id="contact-form" data-active="true">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="c-prenom">Prénom *</label>
+                                <input type="text" id="c-prenom" name="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-nom">Nom *</label>
+                                <input type="text" id="c-nom" name="nom" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-email">Email *</label>
+                            <input type="email" id="c-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-tel">Téléphone</label>
+                            <input type="tel" id="c-tel" name="tel" placeholder="06 XX XX XX XX">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-message">Votre message *</label>
+                            <textarea id="c-message" name="message" rows="4" required placeholder="Décrivez brièvement votre besoin..."></textarea>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" id="c-rgpd" name="rgpd" required>
+                            <label for="c-rgpd">J'accepte que mes données soient traitées dans le cadre de ma demande. <a href="#mentions">Politique de confidentialité</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Envoyer le message
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                    </form>
+
+                    <!-- Formulaire Devis -->
+                    <form class="contact-form" id="devis-form" data-active="false">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="d-prenom">Prénom *</label>
+                                <input type="text" id="d-prenom" name="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="d-nom">Nom *</label>
+                                <input type="text" id="d-nom" name="nom" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="d-email">Email *</label>
+                                <input type="email" id="d-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="d-tel">Téléphone *</label>
+                                <input type="tel" id="d-tel" name="tel" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="d-entreprise">Entreprise *</label>
+                                <input type="text" id="d-entreprise" name="entreprise" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="d-effectif">Effectif</label>
+                                <select id="d-effectif" name="effectif">
+                                    <option value="">Sélectionner</option>
+                                    <option value="10-49">10 à 49 salariés</option>
+                                    <option value="50-99">50 à 99 salariés</option>
+                                    <option value="100-249">100 à 249 salariés</option>
+                                    <option value="250-500">250 à 500 salariés</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="d-prestation">Type de prestation souhaitée *</label>
+                            <select id="d-prestation" name="prestation" required>
+                                <option value="">Sélectionner</option>
+                                <option value="management">Conseil en management</option>
+                                <option value="commercial">Accompagnement commercial</option>
+                                <option value="formation">Formation sur-mesure</option>
+                                <option value="securite">Sécurité au travail</option>
+                                <option value="crise">Gestion de crise</option>
+                                <option value="autre">Autre (préciser ci-dessous)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="d-details">Détail de votre besoin *</label>
+                            <textarea id="d-details" name="details" rows="4" required placeholder="Décrivez votre contexte, vos objectifs, le nombre de personnes concernées, vos délais..."></textarea>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" id="d-rgpd" name="rgpd" required>
+                            <label for="d-rgpd">J'accepte que mes données soient traitées dans le cadre de ma demande de devis. <a href="#mentions">Politique de confidentialité</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Demander mon devis gratuit
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BANDEAU CTA ===== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à transformer votre entreprise ?</h2>
+                <p>Premier rendez-vous de diagnostic offert. Prenons 30 minutes pour comprendre vos enjeux.</p>
+                <a href="#contact" class="btn btn-white btn-lg">
+                    Planifier un rendez-vous
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo logo-footer">
+                        <span class="logo-mark">H</span>
+                        <span class="logo-text">Horizon<span class="logo-light">Conseil</span></span>
+                    </a>
+                    <p>Cabinet de conseil et formation dédié aux PME alsaciennes. Management, commercial, formations sur-mesure.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#entreprise">L'entreprise</a></li>
+                        <li><a href="#offres">Nos offres</a></li>
+                        <li><a href="#ressources">Ressources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos expertises</h4>
+                    <ul>
+                        <li><a href="#offres">Conseil en management</a></li>
+                        <li><a href="#offres">Accompagnement commercial</a></li>
+                        <li><a href="#offres">Formations sur-mesure</a></li>
+                        <li><a href="#offres">Interventions d'experts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>[Adresse], 67000 Strasbourg</li>
+                        <li>03 88 XX XX XX</li>
+                        <li>contact@horizon-conseil.fr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Horizon Conseil & Formation. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#mentions" id="mentions">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== Notification container ===== -->
+    <div id="notification-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
