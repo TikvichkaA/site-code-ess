@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémolia — Assistant IA pour psychologues | Maquette démo</title>
+    <meta name="description" content="Maquette fonctionnelle d'un assistant IA pour psychologues. Mémoire structurée, privacy-first, zéro décision automatique.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f6d7a;
+            --primary-light: #6b8f9e;
+            --primary-dark: #3a5260;
+            --accent: #d4956b;
+            --accent-light: #e8b08e;
+            --surface: #ffffff;
+            --surface-alt: #f8f9fb;
+            --surface-warm: #faf8f6;
+            --bg: #f0f2f5;
+            --text: #1a2332;
+            --text-secondary: #5a6578;
+            --text-muted: #8f96a3;
+            --border: #e3e7ed;
+            --border-light: #eef1f5;
+            --success: #4caf7d;
+            --warning: #e8a838;
+            --info: #5b8def;
+            --danger: #d45858;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+            --font: 'Inter', -apple-system, sans-serif;
+            --transition: all 0.2s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+        /* ---- Layout ---- */
+        .app { display: flex; height: 100vh; overflow: hidden; }
+
+        .sidebar {
+            width: 240px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; }
+
+        .logo-mark {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 1.1rem;
+        }
+
+        .logo-text { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+        .logo-text small { display: block; font-size: 0.65rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0.05em; }
+
+        .sidebar-nav { flex: 1; padding: 12px; overflow-y: auto; }
+
+        .nav-section { margin-bottom: 20px; }
+        .nav-section-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); padding: 0 12px; margin-bottom: 6px; }
+
+        .nav-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 12px; border-radius: 8px;
+            font-size: 0.88rem; font-weight: 500; color: var(--text-secondary);
+            cursor: pointer; transition: var(--transition); border: none; background: none; width: 100%; text-align: left;
+        }
+
+        .nav-item:hover { background: var(--surface-alt); color: var(--text); }
+        .nav-item.active { background: rgba(79, 109, 122, 0.08); color: var(--primary); font-weight: 600; }
+        .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .nav-item .badge { margin-left: auto; background: var(--warning); color: white; font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 50px; }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-light);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px; height: 32px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 0.75rem; font-weight: 700;
+        }
+
+        .user-name { font-size: 0.82rem; font-weight: 600; }
+        .user-role { font-size: 0.68rem; color: var(--text-muted); }
+
+        /* ---- Main ---- */
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        .topbar {
+            height: 60px; background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px; flex-shrink: 0;
+        }
+
+        .topbar h2 { font-size: 1.1rem; font-weight: 700; }
+
+        .topbar-actions { display: flex; align-items: center; gap: 12px; }
+
+        .privacy-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; background: rgba(76, 175, 125, 0.08);
+            border: 1px solid rgba(76, 175, 125, 0.2);
+            border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: var(--success);
+        }
+
+        .privacy-badge svg { width: 14px; height: 14px; }
+
+        .content { flex: 1; overflow-y: auto; padding: 24px; }
+
+        /* ---- Dashboard ---- */
+        .stats-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--surface); border-radius: var(--radius); padding: 20px;
+            border: 1px solid var(--border-light); transition: var(--transition);
+        }
+
+        .stat-card:hover { box-shadow: var(--shadow); }
+        .stat-label { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--text); line-height: 1; }
+        .stat-change { font-size: 0.7rem; font-weight: 600; margin-top: 6px; }
+        .stat-change.up { color: var(--success); }
+        .stat-change.neutral { color: var(--text-muted); }
+
+        .dashboard-grid {
+            display: grid; grid-template-columns: 1fr 380px; gap: 24px;
+        }
+
+        /* ---- Sessions list ---- */
+        .card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); overflow: hidden;
+        }
+
+        .card-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .card-header h3 { font-size: 0.95rem; font-weight: 700; }
+        .card-header .card-action { font-size: 0.78rem; font-weight: 600; color: var(--primary); cursor: pointer; background: none; border: none; }
+
+        .session-list { padding: 8px; }
+
+        .session-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 12px; border-radius: 8px;
+            cursor: pointer; transition: var(--transition);
+        }
+
+        .session-item:hover { background: var(--surface-alt); }
+
+        .session-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.82rem; font-weight: 700; color: white; flex-shrink: 0;
+        }
+
+        .av-1 { background: linear-gradient(135deg, #5b8def, #7ea8f8); }
+        .av-2 { background: linear-gradient(135deg, #d45858, #e87878); }
+        .av-3 { background: linear-gradient(135deg, #4caf7d, #6fcf9e); }
+        .av-4 { background: linear-gradient(135deg, #e8a838, #f0c060); }
+        .av-5 { background: linear-gradient(135deg, #9b6dd7, #b58ae8); }
+
+        .session-info { flex: 1; min-width: 0; }
+        .session-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; }
+        .session-meta { font-size: 0.75rem; color: var(--text-muted); }
+        .session-time { font-size: 0.72rem; color: var(--text-muted); text-align: right; white-space: nowrap; }
+        .session-tag { display: inline-block; padding: 2px 8px; border-radius: 50px; font-size: 0.6rem; font-weight: 600; margin-top: 2px; }
+        .tag-completed { background: rgba(76,175,125,0.1); color: var(--success); }
+        .tag-scheduled { background: rgba(91,141,239,0.1); color: var(--info); }
+        .tag-alert { background: rgba(232,168,56,0.1); color: var(--warning); }
+
+        /* ---- AI Insights panel ---- */
+        .insights-list { padding: 12px; }
+
+        .insight-item {
+            padding: 14px 16px; border-radius: var(--radius);
+            margin-bottom: 8px; border-left: 3px solid;
+            transition: var(--transition); cursor: pointer;
+        }
+
+        .insight-item:hover { box-shadow: var(--shadow-sm); }
+
+        .insight-pattern { background: var(--surface-alt); border-color: var(--info); }
+        .insight-alert { background: rgba(232,168,56,0.04); border-color: var(--warning); }
+        .insight-positive { background: rgba(76,175,125,0.04); border-color: var(--success); }
+
+        .insight-header {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 6px;
+        }
+
+        .insight-pattern .insight-header { color: var(--info); }
+        .insight-alert .insight-header { color: var(--warning); }
+        .insight-positive .insight-header { color: var(--success); }
+
+        .insight-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+        .insight-patient { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+
+        .insight-disclaimer {
+            padding: 12px 16px; margin: 8px 12px 12px;
+            background: var(--surface-alt); border-radius: var(--radius);
+            font-size: 0.7rem; color: var(--text-muted); line-height: 1.5;
+            display: flex; align-items: flex-start; gap: 8px;
+        }
+
+        .insight-disclaimer svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--text-muted); }
+
+        /* ---- Session detail view ---- */
+        .session-detail { display: none; }
+        .session-detail.visible { display: block; }
+        .dashboard-view.hidden { display: none; }
+
+        .session-detail-header {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px; background: var(--surface);
+            border-radius: var(--radius-lg); border: 1px solid var(--border-light);
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: var(--surface-alt); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition);
+        }
+
+        .back-btn:hover { background: var(--border-light); }
+        .back-btn svg { width: 18px; height: 18px; }
+
+        .session-detail-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+        .session-detail-meta { font-size: 0.82rem; color: var(--text-muted); }
+
+        .detail-grid { display: grid; grid-template-columns: 1fr 360px; gap: 20px; }
+
+        .notes-area {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); padding: 24px;
+        }
+
+        .notes-area h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+
+        .note-content {
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
+            min-height: 300px; border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 16px;
+            background: var(--surface-warm);
+        }
+
+        .note-content p { margin-bottom: 12px; }
+        .note-content .highlight { background: rgba(232,168,56,0.15); padding: 1px 4px; border-radius: 3px; }
+        .note-content .tag-inline { background: rgba(91,141,239,0.1); color: var(--info); padding: 1px 6px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; }
+
+        .ai-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+        .ai-card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); overflow: hidden;
+        }
+
+        .ai-card-header {
+            padding: 14px 16px; border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 700; color: var(--primary);
+        }
+
+        .ai-card-header svg { width: 16px; height: 16px; }
+
+        .ai-card-body { padding: 14px 16px; }
+
+        .theme-list { list-style: none; }
+        .theme-list li {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 0; font-size: 0.82rem; color: var(--text-secondary);
+        }
+        .theme-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+        .emotion-bar { margin-bottom: 10px; }
+        .emotion-label { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px; }
+        .emotion-label span:first-child { color: var(--text-secondary); font-weight: 500; }
+        .emotion-label span:last-child { color: var(--text-muted); }
+        .emotion-track { height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; }
+        .emotion-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+        .no-auto-badge {
+            display: flex; align-items: center; gap: 6px;
+            padding: 10px 14px; background: rgba(79,109,122,0.05);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius); margin-top: 8px;
+            font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;
+        }
+
+        .no-auto-badge svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--primary); }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 1024px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ---- Demo banner ---- */
+        .demo-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white; text-align: center; padding: 8px;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+        }
+
+        .demo-banner a { color: var(--accent-light); text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="demo-banner">
+        Maquette de démonstration — Données fictives — Réalisée par <a href="../../index.html">Emmanuel Pinglier</a>
+    </div>
+
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-mark">M</div>
+                    <div class="logo-text">
+                        Mémolia
+                        <small>Assistant psy — IA</small>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-label">Principal</div>
+                    <button class="nav-item active" data-view="dashboard">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Tableau de bord
+                    </button>
+                    <button class="nav-item" data-view="patients">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        Patients
+                    </button>
+                    <button class="nav-item" data-view="sessions">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Sessions
+                    </button>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">IA & Analyse</div>
+                    <button class="nav-item" data-view="insights">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                        Signaux faibles
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="nav-item" data-view="memory">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        Mémoire structurée
+                    </button>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-label">Système</div>
+                    <button class="nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Confidentialité
+                    </button>
+                    <button class="nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        Paramètres
+                    </button>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-avatar">DR</div>
+                <div>
+                    <div class="user-name">Dr. Renard</div>
+                    <div class="user-role">Psychologue clinicienne</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="main">
+            <div class="topbar">
+                <h2 id="page-title">Tableau de bord</h2>
+                <div class="topbar-actions">
+                    <div class="privacy-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Chiffré E2E — HDS
+                    </div>
+                    <div class="privacy-badge" style="background:rgba(79,109,122,0.06); border-color:rgba(79,109,122,0.15); color:var(--primary);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Zéro décision auto
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Dashboard view -->
+                <div class="dashboard-view" id="dashboard-view">
+                    <!-- Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-label">Patients actifs</div>
+                            <div class="stat-value">23</div>
+                            <div class="stat-change up">+2 ce mois</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Sessions ce mois</div>
+                            <div class="stat-value">47</div>
+                            <div class="stat-change neutral">12 cette semaine</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Signaux détectés</div>
+                            <div class="stat-value">3</div>
+                            <div class="stat-change" style="color:var(--warning);">À examiner</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Notes structurées</div>
+                            <div class="stat-value">189</div>
+                            <div class="stat-change neutral">Mémoire active</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Recent sessions -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Sessions récentes</h3>
+                                <button class="card-action">Voir tout</button>
+                            </div>
+                            <div class="session-list">
+                                <div class="session-item" onclick="showSession()">
+                                    <div class="session-avatar av-1">SL</div>
+                                    <div class="session-info">
+                                        <div class="session-name">Sophie L.</div>
+                                        <div class="session-meta">Séance 12 — Suivi anxiété</div>
+                                    </div>
+                                    <div class="session-time">
+                                        Aujourd'hui, 14h
+                                        <br><span class="session-tag tag-completed">Terminée</span>
+                                    </div>
+                                </div>
+                                <div class="session-item">
+                                    <div class="session-avatar av-2">MT</div>
+                                    <div class="session-info">
+                                        <div class="session-name">Marc T.</div>
+                                        <div class="session-meta">Séance 8 — Burn-out professionnel</div>
+                                    </div>
+                                    <div class="session-time">
+                                        Aujourd'hui, 16h
+                                        <br><span class="session-tag tag-scheduled">Planifiée</span>
+                                    </div>
+                                </div>
+                                <div class="session-item">
+                                    <div class="session-avatar av-3">AC</div>
+                                    <div class="session-info">
+                                        <div class="session-name">Alice C.</div>
+                                        <div class="session-meta">Séance 21 — Thérapie de couple</div>
+                                    </div>
+                                    <div class="session-time">
+                                        Hier, 10h
+                                        <br><span class="session-tag tag-completed">Terminée</span>
+                                    </div>
+                                </div>
+                                <div class="session-item">
+                                    <div class="session-avatar av-4">PD</div>
+                                    <div class="session-info">
+                                        <div class="session-name">Paul D.</div>
+                                        <div class="session-meta">Séance 5 — Deuil</div>
+                                    </div>
+                                    <div class="session-time">
+                                        Hier, 15h
+                                        <br><span class="session-tag tag-alert">Signal faible</span>
+                                    </div>
+                                </div>
+                                <div class="session-item">
+                                    <div class="session-avatar av-5">LM</div>
+                                    <div class="session-info">
+                                        <div class="session-name">Léa M.</div>
+                                        <div class="session-meta">Séance 15 — Anxiété sociale</div>
+                                    </div>
+                                    <div class="session-time">
+                                        Lundi, 11h
+                                        <br><span class="session-tag tag-completed">Terminée</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Insights -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Suggestions IA</h3>
+                                <button class="card-action">Historique</button>
+                            </div>
+                            <div class="insights-list">
+                                <div class="insight-item insight-alert">
+                                    <div class="insight-header">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        Signal faible
+                                    </div>
+                                    <div class="insight-text">Augmentation des références au sommeil dans les 3 dernières séances de Paul D. Possible corrélation avec le processus de deuil.</div>
+                                    <div class="insight-patient">Patient : Paul D. — Séances 3 à 5</div>
+                                </div>
+                                <div class="insight-item insight-pattern">
+                                    <div class="insight-header">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                        Récurrence détectée
+                                    </div>
+                                    <div class="insight-text">Sophie L. mentionne régulièrement des tensions familiales les lundis. Schéma récurrent sur 4 séances.</div>
+                                    <div class="insight-patient">Patiente : Sophie L. — Séances 9, 10, 11, 12</div>
+                                </div>
+                                <div class="insight-item insight-positive">
+                                    <div class="insight-header">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        Progression positive
+                                    </div>
+                                    <div class="insight-text">Le vocabulaire d'Alice C. a évolué vers des formulations plus affirmées depuis la séance 18 (+40% assertions positives).</div>
+                                    <div class="insight-patient">Patiente : Alice C. — Séances 18 à 21</div>
+                                </div>
+                            </div>
+                            <div class="insight-disclaimer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                <span>Ces suggestions sont des <strong>pistes d'exploration</strong>, pas des diagnostics. L'IA ne prend aucune décision clinique. Le praticien reste seul juge.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session detail view -->
+                <div class="session-detail" id="session-detail">
+                    <div class="session-detail-header">
+                        <button class="back-btn" onclick="hideSession()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                        </button>
+                        <div class="session-avatar av-1" style="width:48px;height:48px;font-size:1rem;">SL</div>
+                        <div class="session-detail-info">
+                            <h3>Sophie L. — Séance 12</h3>
+                            <div class="session-detail-meta">Aujourd'hui, 14h-14h50 &middot; Suivi anxiété généralisée &middot; Séance 12/indéfini</div>
+                        </div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="notes-area">
+                            <h4>Notes de séance</h4>
+                            <div class="note-content">
+                                <p>Arrivée à l'heure, semble <span class="highlight">plus fatiguée que d'habitude</span>. Mentionne des insomnies depuis dimanche.</p>
+                                <p>Revient spontanément sur le <span class="tag-inline">conflit familial</span> du week-end (dîner dominical). Décrit une dispute avec sa mère au sujet de son orientation professionnelle. Réaction émotionnelle forte (pleurs, voix tremblante).</p>
+                                <p>Associe cette situation à l'épisode de l'année dernière (séance 4). Commence à identifier elle-même le <span class="highlight">schéma répétitif</span>.</p>
+                                <p>Travail sur la différenciation entre l'émotion immédiate et la pensée automatique. Exercice de recadrage cognitif. Sophie formule : « Ce n'est pas ma valeur qui est en jeu, c'est son inquiétude à elle. »</p>
+                                <p>Bonne capacité de recul en fin de séance. Proposition d'un <span class="tag-inline">exercice inter-séance</span> : journal des pensées automatiques les lundis soir.</p>
+                            </div>
+                        </div>
+
+                        <div class="ai-sidebar">
+                            <!-- Themes -->
+                            <div class="ai-card">
+                                <div class="ai-card-header">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                                    Thèmes extraits
+                                </div>
+                                <div class="ai-card-body">
+                                    <ul class="theme-list">
+                                        <li><span class="theme-dot" style="background:var(--danger)"></span> Conflit familial <span style="margin-left:auto;font-size:0.7rem;color:var(--text-muted)">x4 séances</span></li>
+                                        <li><span class="theme-dot" style="background:var(--warning)"></span> Troubles du sommeil <span style="margin-left:auto;font-size:0.7rem;color:var(--text-muted)">Nouveau</span></li>
+                                        <li><span class="theme-dot" style="background:var(--info)"></span> Schéma cognitif identifié</li>
+                                        <li><span class="theme-dot" style="background:var(--success)"></span> Recadrage — autonomie</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Emotional tone -->
+                            <div class="ai-card">
+                                <div class="ai-card-header">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    Tonalité émotionnelle
+                                </div>
+                                <div class="ai-card-body">
+                                    <div class="emotion-bar">
+                                        <div class="emotion-label"><span>Anxiété</span><span>65%</span></div>
+                                        <div class="emotion-track"><div class="emotion-fill" style="width:65%;background:var(--warning)"></div></div>
+                                    </div>
+                                    <div class="emotion-bar">
+                                        <div class="emotion-label"><span>Tristesse</span><span>40%</span></div>
+                                        <div class="emotion-track"><div class="emotion-fill" style="width:40%;background:var(--info)"></div></div>
+                                    </div>
+                                    <div class="emotion-bar">
+                                        <div class="emotion-label"><span>Assertivité</span><span>55%</span></div>
+                                        <div class="emotion-track"><div class="emotion-fill" style="width:55%;background:var(--success)"></div></div>
+                                    </div>
+                                    <div class="emotion-bar">
+                                        <div class="emotion-label"><span>Colère</span><span>25%</span></div>
+                                        <div class="emotion-track"><div class="emotion-fill" style="width:25%;background:var(--danger)"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Memory links -->
+                            <div class="ai-card">
+                                <div class="ai-card-header">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    Liens mémoire
+                                </div>
+                                <div class="ai-card-body">
+                                    <ul class="theme-list">
+                                        <li style="cursor:pointer"><span class="theme-dot" style="background:var(--accent)"></span> Séance 4 — Premier conflit familial</li>
+                                        <li style="cursor:pointer"><span class="theme-dot" style="background:var(--accent)"></span> Séance 9 — Lundi post-dîner familial</li>
+                                        <li style="cursor:pointer"><span class="theme-dot" style="background:var(--accent)"></span> Séance 11 — Idem + insomnie</li>
+                                    </ul>
+                                    <div class="no-auto-badge">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        <span>Aucune corrélation automatique n'est envoyée au patient. Ces liens sont des aides à la réflexion clinique.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSession() {
+            document.getElementById('dashboard-view').classList.add('hidden');
+            document.getElementById('session-detail').classList.add('visible');
+            document.getElementById('page-title').textContent = 'Détail de séance';
+        }
+
+        function hideSession() {
+            document.getElementById('dashboard-view').classList.remove('hidden');
+            document.getElementById('session-detail').classList.remove('visible');
+            document.getElementById('page-title').textContent = 'Tableau de bord';
+        }
+
+        // Nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis N°2026-0211 — Automatisations Airtable & Gestion de salle | La Petite Soeur</title>
+    <style>
+        /* ============================================
+           Reset & Base
+        ============================================ */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+        :root {
+            --primary: #5b3a8c;
+            --primary-light: #7b52b5;
+            --accent: #e07850;
+            --accent-light: #e89a7a;
+            --text: #2c2c2c;
+            --text-light: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --bg: #ffffff;
+            --bg-alt: #f8f6fa;
+            --bg-warm: #fdf6f3;
+            --border: #e0d6e8;
+            --border-light: #ede6f2;
+            --success: #3d8b5e;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #ece6f2;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           Print Controls
+        ============================================ */
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(91, 58, 140, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(91, 58, 140, 0.4);
+        }
+
+        .print-btn svg { width: 18px; height: 18px; }
+
+        .print-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ============================================
+           Document
+        ============================================ */
+        .document {
+            max-width: 210mm;
+            margin: 30px auto;
+            background: var(--bg);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .page { padding: 45px 50px; position: relative; }
+
+        .page-break {
+            page-break-before: always;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ============================================
+           Header
+        ============================================ */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 35px;
+        }
+
+        .company-info { flex: 1; }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .company-tagline {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .company-details {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .doc-meta { text-align: right; flex-shrink: 0; }
+
+        .doc-type {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .doc-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .doc-dates {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .doc-dates strong { color: var(--text); }
+
+        /* ============================================
+           Parties
+        ============================================ */
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .party-block {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+        }
+
+        .party-block.client {
+            background: var(--bg-warm);
+            border-color: var(--accent-light);
+        }
+
+        .party-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .party-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .party-details {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           Section Titles
+        ============================================ */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+
+        .section-title:first-child { margin-top: 0; }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-left: 48px;
+        }
+
+        /* ============================================
+           Context
+        ============================================ */
+        .context-block {
+            background: linear-gradient(135deg, var(--bg-warm), #fff9f0);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 30px;
+        }
+
+        .context-block p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .context-block strong { color: var(--text); }
+
+        /* ============================================
+           Pricing Table
+        ============================================ */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .pricing-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+        .pricing-table thead th:last-child { border-radius: 0 var(--radius) 0 0; text-align: right; }
+        .pricing-table thead th.text-center { text-align: center; }
+
+        .pricing-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.2s ease;
+        }
+
+        .pricing-table tbody tr:hover { background: var(--bg-alt); }
+
+        .pricing-table tbody td {
+            padding: 14px 16px;
+            vertical-align: top;
+        }
+
+        .pricing-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-table tbody td.text-center { text-align: center; }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .item-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .category-row td {
+            background: var(--bg-alt);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 10px 16px !important;
+            border-bottom: 2px solid var(--primary) !important;
+        }
+
+        .subtotal-row td {
+            background: var(--bg-alt);
+            font-weight: 600;
+            border-top: 2px solid var(--border);
+            padding: 10px 16px !important;
+        }
+
+        /* Totals */
+        .totals {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .totals-box {
+            width: 320px;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .total-row:last-child { border-bottom: none; }
+
+        .total-row.grand-total {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+        }
+
+        .total-label { color: var(--text-light); }
+        .grand-total .total-label { color: rgba(255,255,255,0.85); }
+        .total-value { font-weight: 600; }
+
+        /* ============================================
+           Scope
+        ============================================ */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .scope-card {
+            padding: 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+
+        .scope-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scope-card ul { list-style: none; padding: 0; }
+
+        .scope-card li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .scope-card li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .scope-excluded li::before { content: '\2717'; color: #c0392b; }
+
+        /* ============================================
+           Conditions
+        ============================================ */
+        .conditions {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .conditions h4 {
+            font-size: 0.82rem;
+            color: var(--text);
+            margin-bottom: 6px;
+            margin-top: 12px;
+        }
+
+        .conditions h4:first-child { margin-top: 0; }
+        .conditions ul { padding-left: 18px; }
+        .conditions li { margin-bottom: 3px; }
+
+        /* ============================================
+           Highlight Box
+        ============================================ */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .highlight-box .price-highlight {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        /* ============================================
+           Signature
+        ============================================ */
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+
+        .signature-party { text-align: center; }
+
+        .signature-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .signature-name {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        .signature-line {
+            border-top: 1px solid var(--text-muted);
+            padding-top: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           Footer
+        ============================================ */
+        .doc-footer {
+            text-align: center;
+            padding: 20px 50px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           Print
+        ============================================ */
+        @media print {
+            html { font-size: 13px; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-controls { display: none !important; }
+            .document { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+            .page { padding: 30px 40px; }
+            .page-break { page-break-before: always; border-top: none; padding-top: 30px; }
+            .pricing-table tbody tr:hover { background: transparent; }
+            @page { size: A4; margin: 10mm; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .document { margin: 10px; }
+            .page { padding: 25px 20px; }
+            .doc-header { flex-direction: column; gap: 20px; }
+            .doc-meta { text-align: left; }
+            .parties { grid-template-columns: 1fr; }
+            .scope-grid { grid-template-columns: 1fr; }
+            .signature-block { grid-template-columns: 1fr; }
+            .print-controls { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Controls -->
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Exporter en PDF
+        </button>
+        <span class="print-hint">Ctrl+P puis "Enregistrer en PDF"</span>
+    </div>
+
+    <div class="document">
+        <!-- ==========================================
+             PAGE 1
+        ========================================== -->
+        <div class="page">
+            <!-- Header -->
+            <div class="doc-header">
+                <div class="company-info">
+                    <div class="company-name">PINGLIER EMMANUEL</div>
+                    <div class="company-tagline">Conseil en automatisation, gestion des données & développement informatique</div>
+                    <div class="company-details">
+                        39 rue Marceau, 94200 Ivry-sur-Seine<br>
+                        SIRET : 942 385 311 00017<br>
+                        Tél. : [Numéro de téléphone] — Email : [email]<br>
+                        TVA intracommunautaire : FR56942385311
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <div class="doc-type">DEVIS</div>
+                    <div class="doc-number">N° 2026-0211-003</div>
+                    <div class="doc-dates">
+                        <strong>Date d'émission :</strong> 11 février 2026<br>
+                        <strong>Validité :</strong> 30 jours<br>
+                        <strong>Échéance :</strong> 13 mars 2026
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parties -->
+            <div class="parties">
+                <div class="party-block">
+                    <div class="party-label">Prestataire</div>
+                    <div class="party-name">PINGLIER EMMANUEL</div>
+                    <div class="party-details">
+                        39 rue Marceau<br>
+                        94200 Ivry-sur-Seine<br>
+                        Contact : Emmanuel Pinglier<br>
+                        [email] — [téléphone]
+                    </div>
+                </div>
+                <div class="party-block client">
+                    <div class="party-label">Client</div>
+                    <div class="party-name">LA PETITE SOEUR</div>
+                    <div class="party-details">
+                        Association loi 1901 — ESS<br>
+                        22 Cours Barbey, 33800 Bordeaux<br>
+                        SIRET : 899 613 673 00032<br>
+                        RNA : W332 030 588
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contexte -->
+            <div class="context-block">
+                <p>
+                    <strong>Objet :</strong> Mise en place d'automatisations pour l'association <strong>La Petite Soeur</strong> : <strong>suivi des loyers des colocations</strong> via Airtable (base de données, génération et envoi automatique des avis d'échéance et quittances) et <strong>gestion des réservations de la salle en commun</strong> (workflow de validation par email et rappels automatiques).
+                </p>
+            </div>
+
+            <!-- Tableau de prix -->
+            <div class="section-title">
+                <div class="section-icon">1</div>
+                <h2>Détail des prestations & chiffrage</h2>
+            </div>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="width:55%">Désignation</th>
+                        <th class="text-center" style="width:15%">Forfait</th>
+                        <th style="width:15%">Montant HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Prestation 1 -->
+                    <tr class="category-row">
+                        <td colspan="3">Prestation 1 — Suivi des loyers sur Airtable</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Base de données des colocataires & suivi des loyers</div>
+                            <div class="item-desc">Structuration de la base Airtable : fiches colocataires (nom, coordonnées, chambre, montant du loyer, date d'entrée), suivi des paiements mensuels. Automatisations : génération automatique des avis d'échéance et des quittances de loyer (documents PDF), envoi automatique par email aux colocataires selon le calendrier défini</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>125,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Prestation 1</strong></td>
+                        <td><strong>125,00 €</strong></td>
+                    </tr>
+
+                    <!-- Prestation 2 -->
+                    <tr class="category-row">
+                        <td colspan="3">Prestation 2 — Réservations de la salle en commun</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Workflow de réservation & notifications automatiques</div>
+                            <div class="item-desc">Connexion au formulaire de réservation existant. Envoi automatique d'un email à Delphine (Delphine@lapetitesoeur.eu) pour validation de chaque demande. Une fois la demande validée : envoi d'un récapitulatif hebdomadaire à Mickaël (Mickaël@lapetitesoeur.eu) chaque jeudi pour les réservations de la semaine suivante, plus un rappel la veille de chaque réservation</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>41,67 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Prestation 2</strong></td>
+                        <td><strong>41,67 €</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Total -->
+            <div class="totals">
+                <div class="totals-box">
+                    <div class="total-row">
+                        <span class="total-label">Total HT</span>
+                        <span class="total-value">166,67 €</span>
+                    </div>
+                    <div class="total-row">
+                        <span class="total-label">TVA (20%)</span>
+                        <span class="total-value">33,33 €</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span class="total-label">Total TTC</span>
+                        <span class="total-value">200,00 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Périmètre -->
+            <div class="section-title">
+                <div class="section-icon">2</div>
+                <h2>Périmètre des prestations</h2>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card">
+                    <h4>&#9989; Suivi des loyers (Airtable)</h4>
+                    <ul>
+                        <li>Création / structuration de la base Airtable</li>
+                        <li>Fiches colocataires avec toutes les infos nécessaires</li>
+                        <li>Suivi mensuel des loyers</li>
+                        <li>Génération automatique des avis d'échéance (PDF)</li>
+                        <li>Génération automatique des quittances de loyer (PDF)</li>
+                        <li>Envoi automatique par email aux colocataires</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Réservation de la salle</h4>
+                    <ul>
+                        <li>Connexion au formulaire existant</li>
+                        <li>Email automatique à Delphine pour validation</li>
+                        <li>Récapitulatif hebdomadaire à Mickaël (jeudi)</li>
+                        <li>Rappel la veille de chaque réservation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card scope-excluded" style="grid-column: 1 / -1;">
+                    <h4>&#10060; Non inclus dans ce devis</h4>
+                    <ul style="columns: 2; column-gap: 30px;">
+                        <li>Abonnement Airtable (plan gratuit ou payant selon besoins)</li>
+                        <li>Création du formulaire de réservation (déjà existant)</li>
+                        <li>Réservation des chambres d'artistes (devis séparé)</li>
+                        <li>Formation approfondie à l'utilisation d'Airtable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="section-title">
+                <div class="section-icon">3</div>
+                <h2>Conditions</h2>
+            </div>
+
+            <div class="conditions">
+                <h4>Modalités de paiement</h4>
+                <ul>
+                    <li><strong>100%</strong> à la livraison des automatisations — soit <strong>166,67 € HT (200,00 € TTC)</strong></li>
+                </ul>
+
+                <h4>Délais</h4>
+                <ul>
+                    <li>Durée estimée : <strong>1 à 2 jours ouvrés</strong> à compter de la validation du devis et de la réception des accès nécessaires (Airtable, formulaire).</li>
+                    <li>Un point de validation sera réalisé avec l'équipe avant mise en production.</li>
+                </ul>
+
+                <h4>Garantie</h4>
+                <ul>
+                    <li>Garantie corrective de <strong>2 semaines</strong> après livraison.</li>
+                    <li>La garantie couvre les anomalies de paramétrage, non les modifications de périmètre.</li>
+                </ul>
+            </div>
+
+            <!-- Résumé prix -->
+            <div class="highlight-box">
+                <h3>Récapitulatif</h3>
+                <p>Automatisation du suivi des loyers (Airtable) + workflow de réservation de la salle en commun avec notifications et rappels automatiques.</p>
+                <div class="price-highlight">166,67 € HT &nbsp;/&nbsp; 200,00 € TTC</div>
+            </div>
+
+            <!-- Signatures -->
+            <div class="signature-block">
+                <div class="signature-party">
+                    <div class="signature-label">Le prestataire</div>
+                    <div class="signature-name">PINGLIER EMMANUEL</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+                <div class="signature-party">
+                    <div class="signature-label">Le client</div>
+                    <div class="signature-name">LA PETITE SOEUR</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            PINGLIER EMMANUEL — Entrepreneur individuel (micro-entreprise) — SIRET : 942 385 311 00017 — TVA : FR56942385311<br>
+            39 rue Marceau, 94200 Ivry-sur-Seine — [Email] — [Téléphone]
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const doc = document.querySelector('.document');
+            doc.style.opacity = '0';
+            doc.style.transform = 'translateY(20px)';
+            doc.style.transition = 'all 0.6s ease';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    doc.style.opacity = '1';
+                    doc.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
