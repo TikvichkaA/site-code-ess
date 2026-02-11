@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis N°2026-0211 — Site Web & Boutique en ligne | Du vent dans les pages</title>
+    <style>
+        /* ============================================
+           Reset & Base
+        ============================================ */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+        :root {
+            --primary: #2d4a3e;
+            --primary-light: #3d6b5a;
+            --accent: #c8956c;
+            --accent-light: #d4a880;
+            --text: #2c2c2c;
+            --text-light: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --bg: #ffffff;
+            --bg-alt: #f7f5f2;
+            --bg-warm: #faf6f1;
+            --border: #e0d6ca;
+            --border-light: #ece6dd;
+            --success: #3d8b5e;
+            --error: #c0392b;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #eae5df;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           Print Controls
+        ============================================ */
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(45, 74, 62, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 74, 62, 0.4);
+        }
+
+        .print-btn svg { width: 18px; height: 18px; }
+
+        .print-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ============================================
+           Document
+        ============================================ */
+        .document {
+            max-width: 210mm;
+            margin: 30px auto;
+            background: var(--bg);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .page { padding: 45px 50px; position: relative; }
+
+        .page-break {
+            page-break-before: always;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ============================================
+           Header
+        ============================================ */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 35px;
+        }
+
+        .company-info { flex: 1; }
+
+        .company-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .company-tagline {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .company-details {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .doc-meta { text-align: right; flex-shrink: 0; }
+
+        .doc-type {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .doc-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .doc-dates {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .doc-dates strong { color: var(--text); }
+
+        /* ============================================
+           Parties
+        ============================================ */
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .party-block {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+        }
+
+        .party-block.client {
+            background: var(--bg-warm);
+            border-color: var(--accent-light);
+        }
+
+        .party-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .party-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .party-details {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           Section Titles
+        ============================================ */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+
+        .section-title:first-child { margin-top: 0; }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-left: 48px;
+        }
+
+        /* ============================================
+           Context
+        ============================================ */
+        .context-block {
+            background: linear-gradient(135deg, var(--bg-warm), #fff9f0);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 30px;
+        }
+
+        .context-block p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .context-block strong { color: var(--text); }
+
+        /* ============================================
+           Trust block (for clients with bad past experiences)
+        ============================================ */
+        .trust-block {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 30px;
+        }
+
+        .trust-block h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .trust-item::before {
+            content: '\2713';
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.78rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ============================================
+           Pricing Table
+        ============================================ */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .pricing-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+        .pricing-table thead th:last-child { border-radius: 0 var(--radius) 0 0; text-align: right; }
+        .pricing-table thead th.text-center { text-align: center; }
+
+        .pricing-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.2s ease;
+        }
+
+        .pricing-table tbody tr:hover { background: var(--bg-alt); }
+
+        .pricing-table tbody td {
+            padding: 14px 16px;
+            vertical-align: top;
+        }
+
+        .pricing-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-table tbody td.text-center { text-align: center; }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .item-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .category-row td {
+            background: var(--bg-alt);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 10px 16px !important;
+            border-bottom: 2px solid var(--primary) !important;
+        }
+
+        .subtotal-row td {
+            background: var(--bg-alt);
+            font-weight: 600;
+            border-top: 2px solid var(--border);
+            padding: 10px 16px !important;
+        }
+
+        /* Totals */
+        .totals {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .totals-box {
+            width: 320px;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .total-row:last-child { border-bottom: none; }
+
+        .total-row.grand-total {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+        }
+
+        .total-label { color: var(--text-light); }
+        .grand-total .total-label { color: rgba(255,255,255,0.85); }
+        .total-value { font-weight: 600; }
+
+        /* ============================================
+           Scope
+        ============================================ */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .scope-card {
+            padding: 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+
+        .scope-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scope-card ul { list-style: none; padding: 0; }
+
+        .scope-card li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .scope-card li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .scope-excluded li::before { content: '\2717'; color: var(--error); }
+
+        /* ============================================
+           Tech badges
+        ============================================ */
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            padding: 4px 12px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           Timeline
+        ============================================ */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 22px;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-item:last-child .timeline-dot {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-phase {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .timeline-duration {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .timeline-milestone {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 2px 8px;
+            background: rgba(61, 139, 94, 0.1);
+            color: var(--success);
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 50px;
+        }
+
+        /* ============================================
+           Hosting block
+        ============================================ */
+        .hosting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .hosting-card {
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+        }
+
+        .hosting-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .hosting-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .hosting-card .tag {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 2px 8px;
+            background: var(--bg-warm);
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 50px;
+        }
+
+        /* ============================================
+           Options
+        ============================================ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option-card {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            transition: all 0.2s ease;
+        }
+
+        .option-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-warm);
+        }
+
+        .option-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 4px; }
+        .option-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
+        .option-price { font-weight: 700; color: var(--primary); font-size: 0.92rem; }
+
+        /* ============================================
+           Maintenance
+        ============================================ */
+        .maintenance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .maintenance-card {
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .maintenance-card.recommended {
+            border-color: var(--accent);
+            background: var(--bg-warm);
+            position: relative;
+        }
+
+        .maintenance-card.recommended::after {
+            content: 'Recommandé';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .maintenance-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .maintenance-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .maintenance-price span {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .maintenance-features { list-style: none; text-align: left; }
+
+        .maintenance-features li {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .maintenance-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           Conditions
+        ============================================ */
+        .conditions {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .conditions h4 {
+            font-size: 0.82rem;
+            color: var(--text);
+            margin-bottom: 6px;
+            margin-top: 12px;
+        }
+
+        .conditions h4:first-child { margin-top: 0; }
+        .conditions ul { padding-left: 18px; }
+        .conditions li { margin-bottom: 3px; }
+
+        /* ============================================
+           Highlight Box
+        ============================================ */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .highlight-box .price-highlight {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        /* ============================================
+           Signature
+        ============================================ */
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+
+        .signature-party { text-align: center; }
+
+        .signature-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .signature-name {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        .signature-line {
+            border-top: 1px solid var(--text-muted);
+            padding-top: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           Footer
+        ============================================ */
+        .doc-footer {
+            text-align: center;
+            padding: 20px 50px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           Print
+        ============================================ */
+        @media print {
+            html { font-size: 13px; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-controls { display: none !important; }
+            .document { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+            .page { padding: 30px 40px; }
+            .page-break { page-break-before: always; border-top: none; padding-top: 30px; }
+            .pricing-table tbody tr:hover { background: transparent; }
+            .option-card:hover { border-color: var(--border); background: var(--bg-alt); }
+            @page { size: A4; margin: 10mm; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .document { margin: 10px; }
+            .page { padding: 25px 20px; }
+            .doc-header { flex-direction: column; gap: 20px; }
+            .doc-meta { text-align: left; }
+            .parties { grid-template-columns: 1fr; }
+            .scope-grid { grid-template-columns: 1fr; }
+            .options-grid { grid-template-columns: 1fr; }
+            .maintenance-grid { grid-template-columns: 1fr; }
+            .signature-block { grid-template-columns: 1fr; }
+            .hosting-grid { grid-template-columns: 1fr; }
+            .trust-items { grid-template-columns: 1fr; }
+            .print-controls { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Controls -->
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Exporter en PDF
+        </button>
+        <span class="print-hint">Ctrl+P puis "Enregistrer en PDF"</span>
+    </div>
+
+    <div class="document">
+        <!-- ==========================================
+             PAGE 1 — En-tête + Contexte + Devis
+        ========================================== -->
+        <div class="page">
+            <!-- Header -->
+            <div class="doc-header">
+                <div class="company-info">
+                    <div class="company-name">PINGLIER EMMANUEL</div>
+                    <div class="company-tagline">Conseil en automatisation, gestion des données & développement informatique</div>
+                    <div class="company-details">
+                        39 rue Marceau, 94200 Ivry-sur-Seine<br>
+                        SIRET : 942 385 311 00017<br>
+                        Tél. : [Numéro de téléphone] — Email : [email]<br>
+                        TVA intracommunautaire : FR56942385311
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <div class="doc-type">DEVIS</div>
+                    <div class="doc-number">N° 2026-0211-002</div>
+                    <div class="doc-dates">
+                        <strong>Date d'émission :</strong> 11 février 2026<br>
+                        <strong>Validité :</strong> 30 jours<br>
+                        <strong>Échéance :</strong> 13 mars 2026
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parties -->
+            <div class="parties">
+                <div class="party-block">
+                    <div class="party-label">Prestataire</div>
+                    <div class="party-name">PINGLIER EMMANUEL</div>
+                    <div class="party-details">
+                        39 rue Marceau<br>
+                        94200 Ivry-sur-Seine<br>
+                        Contact : Emmanuel Pinglier<br>
+                        [email] — [téléphone]
+                    </div>
+                </div>
+                <div class="party-block client">
+                    <div class="party-label">Client</div>
+                    <div class="party-name">Du vent dans les pages</div>
+                    <div class="party-details">
+                        Association loi 1901<br>
+                        [Adresse], 67000 Strasbourg<br>
+                        Contact : [Nom du contact]<br>
+                        [Email de l'association]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contexte -->
+            <div class="context-block">
+                <p>
+                    <strong>Objet :</strong> Création du site web de l'association <strong>« Du vent dans les pages »</strong>, maison d'édition indépendante domiciliée à Strasbourg. Le site comprendra la présentation de l'association et de la maison d'édition, un catalogue en ligne avec <strong>vente sécurisée</strong> (paiement par carte bancaire via Stripe), la gestion des événements littéraires, ainsi que la mise en place de l'<strong>hébergement, du nom de domaine et des adresses email professionnelles</strong>.
+                </p>
+            </div>
+
+            <!-- Engagement de confiance -->
+            <div class="trust-block">
+                <h4>&#128274; Nos engagements contractuels</h4>
+                <div class="trust-items">
+                    <div class="trust-item">Jalons de validation à chaque étape — vous validez avant de poursuivre</div>
+                    <div class="trust-item">Planning contractualisé avec dates fermes</div>
+                    <div class="trust-item">Paiement échelonné lié aux livrables validés</div>
+                    <div class="trust-item">Hébergement à votre nom — vous restez propriétaire</div>
+                    <div class="trust-item">Code source livré et documenté</div>
+                    <div class="trust-item">Garantie corrective de 4 semaines après livraison</div>
+                </div>
+            </div>
+
+            <!-- Tableau de prix -->
+            <div class="section-title">
+                <div class="section-icon">1</div>
+                <h2>Détail des prestations & chiffrage</h2>
+            </div>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="width:55%">Désignation</th>
+                        <th class="text-center" style="width:15%">Forfait</th>
+                        <th style="width:15%">Montant HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Phase 1 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 1 — Cadrage & Conception</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Réunion de cadrage & arborescence</div>
+                            <div class="item-desc">Échange sur les besoins de l'association, définition des pages, parcours d'achat, choix graphiques, planning. Livrable : cahier des charges validé</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>400,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 1</strong></td>
+                        <td><strong>400,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 2 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 2 — Design & Identité visuelle</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Design & maquettage</div>
+                            <div class="item-desc">Création graphique sur-mesure : univers littéraire, charte couleurs, typographies, mise en page de l'accueil, pages intérieures et fiches produits. Design responsive (mobile/tablette). 1 aller-retour corrections inclus</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>700,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 2</strong></td>
+                        <td><strong>700,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 3 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 3 — Développement du site vitrine</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Création des pages du site (5-6 pages)</div>
+                            <div class="item-desc">Page d'accueil, présentation de l'association & la maison d'édition, page événements/agenda, page contact, mentions légales / CGV</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>450,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Formulaire de contact</div>
+                            <div class="item-desc">Formulaire multi-objet (question, manuscrit, partenariat). Notification email, conformité RGPD</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 3</strong></td>
+                        <td><strong>600,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 4 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 4 — Boutique en ligne & Paiement sécurisé</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Catalogue produits (livres)</div>
+                            <div class="item-desc">Système de gestion des ouvrages : fiche livre (couverture, auteur, résumé, prix, genre), filtres par catégorie, gestion des stocks. Interface d'administration pour ajouter/modifier les livres</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>600,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Panier & tunnel de commande</div>
+                            <div class="item-desc">Panier latéral, page récapitulatif, saisie adresse de livraison, calcul frais de port, confirmation de commande par email</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>450,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Paiement sécurisé (Stripe)</div>
+                            <div class="item-desc">Intégration Stripe Checkout : paiement CB sécurisé (3D Secure), conformité PCI-DSS, webhooks de confirmation, gestion des remboursements. Commission Stripe : 1,5% + 0,25€/transaction (à la charge de l'association)</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>350,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 4</strong></td>
+                        <td><strong>1 400,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 5 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 5 — Infrastructure & mise en ligne</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Hébergement, domaine & SSL (1 an)</div>
+                            <div class="item-desc">Hébergement performant (Netlify / Vercel), certificat SSL, nom de domaine .fr (duventdanslespages.fr) pour 12 mois, configuration DNS</div>
+                        </td>
+                        <td class="text-center">1 an inclus</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Adresses email professionnelles</div>
+                            <div class="item-desc">Configuration de 3 adresses @duventdanslespages.fr (contact@, editions@, presse@) via Google Workspace ou équivalent. Configuration et formation incluses (abonnement mensuel à la charge de l'association)</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>100,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">SEO de base & mise en ligne</div>
+                            <div class="item-desc">Optimisation balises, sitemap XML, Google Search Console & Analytics, conformité RGPD (bandeau cookies, mentions légales, CGV). Tests navigateurs et mobile. Mise en production</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>300,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Formation à l'administration</div>
+                            <div class="item-desc">Session de formation (1h30 en visio) : gestion du catalogue, suivi des commandes, modification des pages, ajout d'événements. Guide utilisateur PDF fourni</div>
+                        </td>
+                        <td class="text-center">Inclus</td>
+                        <td>Offert</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 5</strong></td>
+                        <td><strong>550,00 €</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Total -->
+            <div class="totals">
+                <div class="totals-box">
+                    <div class="total-row">
+                        <span class="total-label">Total HT</span>
+                        <span class="total-value">3 650,00 €</span>
+                    </div>
+                    <div class="total-row">
+                        <span class="total-label">TVA (20%)</span>
+                        <span class="total-value">730,00 €</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span class="total-label">Total TTC</span>
+                        <span class="total-value">4 380,00 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 2 — Périmètre, Hébergement, Planning
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Périmètre -->
+            <div class="section-title">
+                <div class="section-icon">2</div>
+                <h2>Périmètre des prestations</h2>
+            </div>
+            <p class="section-subtitle">Détail de ce qui est inclus et exclu du présent devis.</p>
+
+            <div class="scope-grid">
+                <div class="scope-card">
+                    <h4>&#9989; Site vitrine & identité</h4>
+                    <ul>
+                        <li>Design graphique sur-mesure (univers littéraire)</li>
+                        <li>5 à 6 pages (accueil, association, événements, contact, mentions)</li>
+                        <li>Design responsive mobile / tablette / desktop</li>
+                        <li>1 aller-retour de corrections design inclus</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Boutique en ligne</h4>
+                    <ul>
+                        <li>Catalogue de livres avec fiches produits</li>
+                        <li>Filtres par genre / catégorie</li>
+                        <li>Panier et tunnel de commande complet</li>
+                        <li>Paiement sécurisé CB (Stripe, 3D Secure)</li>
+                        <li>Confirmation et suivi de commande par email</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Infrastructure & services</h4>
+                    <ul>
+                        <li>Hébergement + nom de domaine .fr (1 an)</li>
+                        <li>Certificat SSL (HTTPS)</li>
+                        <li>3 adresses email @duventdanslespages.fr</li>
+                        <li>Google Analytics + Search Console</li>
+                        <li>Conformité RGPD (cookies, mentions légales, CGV)</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Accompagnement</h4>
+                    <ul>
+                        <li>Formation admin 1h30 (visio) + guide PDF</li>
+                        <li>Intégration des contenus fournis</li>
+                        <li>4 semaines de garantie corrective</li>
+                        <li>Support email pendant le projet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card scope-excluded" style="grid-column: 1 / -1;">
+                    <h4>&#10060; Non inclus dans ce devis</h4>
+                    <ul style="columns: 2; column-gap: 30px;">
+                        <li>Rédaction des contenus éditoriaux (textes, fiches livres)</li>
+                        <li>Création / refonte du logo de l'association</li>
+                        <li>Photographies des ouvrages (couvertures à fournir)</li>
+                        <li>Gestion logistique des expéditions</li>
+                        <li>Abonnement Google Workspace (emails, ~6€/mois/boîte)</li>
+                        <li>Commissions Stripe (1,5% + 0,25€ par transaction)</li>
+                        <li>Renouvellement hébergement / domaine après 12 mois</li>
+                        <li>Référencement payant (SEA / Google Ads)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hébergement & emails -->
+            <div class="section-title">
+                <div class="section-icon">3</div>
+                <h2>Solution d'hébergement & services</h2>
+            </div>
+            <p class="section-subtitle">Tout est configuré à votre nom. Vous restez maître de votre infrastructure.</p>
+
+            <div class="hosting-grid">
+                <div class="hosting-card">
+                    <h4>Hébergement & domaine</h4>
+                    <p>Site hébergé sur une plateforme performante (CDN mondial, SSL automatique, 99,9% de disponibilité). Nom de domaine <strong>duventdanslespages.fr</strong> enregistré à votre nom.</p>
+                    <span class="tag">Inclus 1 an</span>
+                </div>
+                <div class="hosting-card">
+                    <h4>Adresses email</h4>
+                    <p>3 boîtes mail professionnelles : <strong>contact@</strong>, <strong>editions@</strong>, <strong>presse@</strong>. Interface web + synchronisation mobile. 15 Go de stockage par boîte.</p>
+                    <span class="tag">Config incluse — abo. ~6€/mois/boîte</span>
+                </div>
+                <div class="hosting-card">
+                    <h4>Paiement en ligne (Stripe)</h4>
+                    <p>Compte Stripe ouvert au nom de l'association. Paiement CB sécurisé (3D Secure, PCI-DSS). Versement automatique sur votre compte bancaire.</p>
+                    <span class="tag">Commission 1,5% + 0,25€/transaction</span>
+                </div>
+                <div class="hosting-card">
+                    <h4>Administration</h4>
+                    <p>Interface simple pour gérer le catalogue (ajout/suppression de livres, gestion des prix et stocks), consulter les commandes et modifier les pages du site.</p>
+                    <span class="tag">Formation 1h30 incluse</span>
+                </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="section-title">
+                <div class="section-icon">4</div>
+                <h2>Solution technique</h2>
+            </div>
+            <div class="tech-badges">
+                <span class="tech-badge">HTML5 / CSS3</span>
+                <span class="tech-badge">JavaScript ES6+</span>
+                <span class="tech-badge">Stripe Checkout</span>
+                <span class="tech-badge">Netlify / Vercel</span>
+                <span class="tech-badge">Decap CMS</span>
+                <span class="tech-badge">Responsive Design</span>
+                <span class="tech-badge">SEO Optimisé</span>
+                <span class="tech-badge">RGPD Compliant</span>
+                <span class="tech-badge">PCI-DSS (via Stripe)</span>
+            </div>
+
+            <!-- Planning -->
+            <div class="section-title">
+                <div class="section-icon">5</div>
+                <h2>Planning prévisionnel contractualisé</h2>
+            </div>
+            <p class="section-subtitle">Durée totale : <strong>4 à 5 semaines</strong>. Chaque phase est validée avant de passer à la suivante.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 1 — Cadrage</div>
+                    <div class="timeline-duration">Jour 1-2</div>
+                    <div class="timeline-desc">Réunion de cadrage (visio), validation arborescence, cahier des charges.</div>
+                    <span class="timeline-milestone">Jalon : cahier des charges signé</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 2 — Design</div>
+                    <div class="timeline-duration">Semaine 1</div>
+                    <div class="timeline-desc">Maquettes graphiques, validation client, corrections. Aperçu sur environnement de test.</div>
+                    <span class="timeline-milestone">Jalon : maquettes validées</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 3 — Développement site vitrine</div>
+                    <div class="timeline-duration">Semaine 2</div>
+                    <div class="timeline-desc">Création des pages, formulaire de contact, intégration des contenus.</div>
+                    <span class="timeline-milestone">Jalon : site vitrine en ligne sur URL de test</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 4 — Boutique en ligne</div>
+                    <div class="timeline-duration">Semaines 3-4</div>
+                    <div class="timeline-desc">Catalogue, panier, tunnel de commande, intégration Stripe, tests de paiement.</div>
+                    <span class="timeline-milestone">Jalon : boutique fonctionnelle testée</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 5 — Mise en ligne & formation</div>
+                    <div class="timeline-duration">Semaine 5</div>
+                    <div class="timeline-desc">SEO, configuration hébergement & emails, tests finaux, formation admin (1h30), mise en production.</div>
+                    <span class="timeline-milestone">Jalon : site en ligne + formation réalisée</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Garantie corrective</div>
+                    <div class="timeline-duration">4 semaines après livraison</div>
+                    <div class="timeline-desc">Correction des éventuels bugs. Support email prioritaire.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 3 — Options, Maintenance, Conditions
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Options -->
+            <div class="section-title">
+                <div class="section-icon">6</div>
+                <h2>Prestations optionnelles</h2>
+            </div>
+            <p class="section-subtitle">Compléments pouvant être ajoutés au présent devis selon vos besoins.</p>
+
+            <div class="options-grid">
+                <div class="option-card">
+                    <div class="option-title">Module blog / actualités</div>
+                    <div class="option-desc">Section blog pour publier des articles, chroniques, interviews d'auteurs. Optimisation SEO des articles.</div>
+                    <div class="option-price">350,00 € HT</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Newsletter (Brevo / Mailchimp)</div>
+                    <div class="option-desc">Formulaire d'inscription sur le site, configuration du compte, modèle d'email, import des contacts existants.</div>
+                    <div class="option-price">250,00 € HT</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Rédaction des fiches livres</div>
+                    <div class="option-desc">Rédaction optimisée SEO des fiches produits (jusqu'à 20 ouvrages) : résumé, mots-clés, descriptions.</div>
+                    <div class="option-price">400,00 € HT</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Module "Proposer un manuscrit"</div>
+                    <div class="option-desc">Page dédiée avec formulaire d'envoi de manuscrit (upload PDF + informations auteur). Gestion interne des soumissions.</div>
+                    <div class="option-price">300,00 € HT</div>
+                </div>
+            </div>
+
+            <!-- Maintenance -->
+            <div class="section-title">
+                <div class="section-icon">7</div>
+                <h2>Maintenance (optionnelle)</h2>
+            </div>
+            <p class="section-subtitle">Gardez votre site et votre boutique à jour et sécurisés.</p>
+
+            <div class="maintenance-grid">
+                <div class="maintenance-card">
+                    <div class="maintenance-name">Essentielle</div>
+                    <div class="maintenance-price">60 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>Mises à jour techniques & sécurité</li>
+                        <li>Sauvegarde mensuelle</li>
+                        <li>Support par email (72h)</li>
+                        <li>Monitoring de disponibilité</li>
+                    </ul>
+                </div>
+                <div class="maintenance-card recommended">
+                    <div class="maintenance-name">Confort</div>
+                    <div class="maintenance-price">100 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>Tout de la formule Essentielle</li>
+                        <li>Sauvegarde hebdomadaire</li>
+                        <li>Support prioritaire (48h)</li>
+                        <li>3 modifications mineures / mois</li>
+                        <li>Suivi des commandes & Stripe</li>
+                    </ul>
+                </div>
+                <div class="maintenance-card">
+                    <div class="maintenance-name">Sérénité</div>
+                    <div class="maintenance-price">170 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>Tout de la formule Confort</li>
+                        <li>Sauvegarde quotidienne</li>
+                        <li>Support téléphonique (24h)</li>
+                        <li>Modifications illimitées</li>
+                        <li>Rapport analytics mensuel</li>
+                        <li>Renouvellement domaine inclus</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="section-title">
+                <div class="section-icon">8</div>
+                <h2>Conditions générales</h2>
+            </div>
+
+            <div class="conditions">
+                <h4>Modalités de paiement</h4>
+                <ul>
+                    <li><strong>30%</strong> à la signature du devis (acompte) — soit <strong>1 095,00 € HT</strong></li>
+                    <li><strong>30%</strong> à la validation du design (fin phase 2) — soit <strong>1 095,00 € HT</strong></li>
+                    <li><strong>40%</strong> à la livraison et mise en ligne — soit <strong>1 460,00 € HT</strong></li>
+                </ul>
+
+                <h4>Délais & jalons</h4>
+                <ul>
+                    <li>Le planning débute à réception de l'acompte et des contenus (textes, couvertures de livres).</li>
+                    <li>Chaque phase fait l'objet d'une validation écrite (email) avant passage à la suivante.</li>
+                    <li>Tout retard dans la transmission des éléments par le client entraîne un décalage équivalent du planning.</li>
+                    <li>En cas de retard imputable au prestataire, une pénalité de 2% par semaine de retard s'applique sur le montant restant dû.</li>
+                </ul>
+
+                <h4>Propriété intellectuelle</h4>
+                <ul>
+                    <li>Le transfert intégral de propriété du code source et des créations est effectif après paiement complet.</li>
+                    <li>L'association reste propriétaire de son nom de domaine, de son compte Stripe et de ses données.</li>
+                    <li>Les services tiers (hébergement, Stripe, Google Workspace) restent soumis à leurs conditions.</li>
+                </ul>
+
+                <h4>Garantie</h4>
+                <ul>
+                    <li>Garantie corrective de <strong>4 semaines</strong> à compter de la mise en ligne (étendue par rapport au standard).</li>
+                    <li>La garantie couvre les anomalies de développement, non les contenus modifiés par le client.</li>
+                    <li>Toute évolution au-delà du périmètre fera l'objet d'un avenant chiffré au préalable.</li>
+                </ul>
+            </div>
+
+            <!-- Résumé prix -->
+            <div class="highlight-box">
+                <h3>Récapitulatif de l'investissement</h3>
+                <p>Site vitrine + boutique en ligne sécurisée (Stripe) + hébergement 1 an + domaine + emails + SEO + formation — hors options et maintenance.</p>
+                <div class="price-highlight">3 650,00 € HT &nbsp;/&nbsp; 4 380,00 € TTC</div>
+            </div>
+
+            <!-- Signatures -->
+            <div class="signature-block">
+                <div class="signature-party">
+                    <div class="signature-label">Le prestataire</div>
+                    <div class="signature-name">PINGLIER EMMANUEL</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+                <div class="signature-party">
+                    <div class="signature-label">Le client</div>
+                    <div class="signature-name">Du vent dans les pages</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            PINGLIER EMMANUEL — Entrepreneur individuel (micro-entreprise) — SIRET : 942 385 311 00017 — TVA : FR56942385311<br>
+            39 rue Marceau, 94200 Ivry-sur-Seine — [Email] — [Téléphone]
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const doc = document.querySelector('.document');
+            doc.style.opacity = '0';
+            doc.style.transform = 'translateY(20px)';
+            doc.style.transition = 'all 0.6s ease';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    doc.style.opacity = '1';
+                    doc.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

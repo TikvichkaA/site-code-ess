@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du vent dans les pages — Association & Maison d'édition | Strasbourg</title>
+    <meta name="description" content="Du vent dans les pages, association et maison d'édition à Strasbourg. Découvrez notre catalogue et commandez en ligne.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">V</div>
+                <div class="logo-text">
+                    Du vent dans les pages
+                    <small>Association & Maison d'édition</small>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav" id="main-nav">
+                    <li><a href="#maison">La Maison</a></li>
+                    <li><a href="#catalogue">Catalogue</a></li>
+                    <li><a href="#evenements">Événements</a></li>
+                    <li><a href="#contact" class="btn-nav">Contact</a></li>
+                </ul>
+
+                <button class="cart-toggle" id="cart-toggle" aria-label="Panier">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    <span class="cart-count empty" id="cart-count">0</span>
+                </button>
+
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-decor">
+            <div class="floating-page"></div>
+            <div class="floating-page"></div>
+            <div class="floating-page"></div>
+            <div class="floating-page"></div>
+            <div class="floating-page"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content" data-reveal="up">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                    </svg>
+                    Maison d'édition strasbourgeoise
+                </div>
+
+                <h1>
+                    <em>Du vent</em><br>
+                    dans les pages
+                </h1>
+
+                <p class="hero-desc">
+                    Association et maison d'édition indépendante à Strasbourg. Nous publions des voix singulières, organisons des rencontres littéraires et cultivons le plaisir de lire.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#catalogue" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                        </svg>
+                        Découvrir le catalogue
+                    </a>
+                    <a href="#maison" class="btn btn-secondary">
+                        Notre histoire
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LA MAISON ===== -->
+    <section class="about" id="maison">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual" data-reveal="left">
+                    <blockquote>
+                        &laquo;&thinsp;Les livres sont des portes que l'on ouvre avec le vent de la curiosité.&thinsp;&raquo;
+                    </blockquote>
+                    <cite>— Devise de l'association</cite>
+
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="about-stat-number">24</div>
+                            <div class="about-stat-label">Ouvrages publiés</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number">12</div>
+                            <div class="about-stat-label">Auteurs édités</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number">6</div>
+                            <div class="about-stat-label">Années d'existence</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-text" data-reveal="right">
+                    <div class="section-tag">Notre histoire</div>
+                    <h3>Une maison d'édition associative, ancrée à Strasbourg</h3>
+                    <p>
+                        Fondée en 2020, <strong>Du vent dans les pages</strong> est née de la passion commune de lecteurs et d'auteurs strasbourgeois pour la littérature vivante. Notre association porte une maison d'édition indépendante qui publie poésie, récits, essais et littérature jeunesse.
+                    </p>
+                    <p>
+                        Nous croyons que chaque texte mérite un souffle, chaque voix un espace. Nos éditions sont soignées, nos tirages raisonnés, notre démarche engagée pour une édition à taille humaine.
+                    </p>
+
+                    <div class="about-values">
+                        <div class="value-card" data-reveal="up" data-delay="0">
+                            <div class="value-icon">&#9997;</div>
+                            <h4>Édition soignée</h4>
+                            <p>Chaque ouvrage est travaillé avec soin, du manuscrit à l'impression.</p>
+                        </div>
+                        <div class="value-card" data-reveal="up" data-delay="1">
+                            <div class="value-icon">&#127793;</div>
+                            <h4>Engagement local</h4>
+                            <p>Imprimé en Alsace, diffusé dans les librairies indépendantes.</p>
+                        </div>
+                        <div class="value-card" data-reveal="up" data-delay="2">
+                            <div class="value-icon">&#128218;</div>
+                            <h4>Diversité littéraire</h4>
+                            <p>Poésie, romans, essais, jeunesse : toutes les voix comptent.</p>
+                        </div>
+                        <div class="value-card" data-reveal="up" data-delay="3">
+                            <div class="value-icon">&#127912;</div>
+                            <h4>Rencontres</h4>
+                            <p>Lectures, ateliers, dédicaces : la littérature se vit ensemble.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATALOGUE / BOUTIQUE ===== -->
+    <section class="catalogue" id="catalogue">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <div class="section-tag">Boutique en ligne</div>
+                <h2 class="section-title">Notre <em>catalogue</em></h2>
+                <p class="section-desc">Commandez directement nos ouvrages. Paiement sécurisé, livraison soignée.</p>
+            </div>
+
+            <div class="catalogue-filters" data-reveal="up">
+                <button class="cat-filter active" data-filter="all">Tout</button>
+                <button class="cat-filter" data-filter="poesie">Poésie</button>
+                <button class="cat-filter" data-filter="roman">Roman</button>
+                <button class="cat-filter" data-filter="essai">Essai</button>
+                <button class="cat-filter" data-filter="jeunesse">Jeunesse</button>
+            </div>
+
+            <div class="books-grid">
+
+                <!-- Book 1 -->
+                <div class="book-card" data-genre="poesie" data-price="18" data-reveal="up" data-delay="0">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-1">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">Les murmures de l'aube</div>
+                                <div class="book-cover-author">Claire Wenger</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Poésie</div>
+                        <h3 class="book-title">Les murmures de l'aube</h3>
+                        <div class="book-author">Claire Wenger</div>
+                        <p class="book-excerpt">Un recueil lumineux où chaque poème capture l'instant fragile du lever du jour sur les rives du Rhin.</p>
+                        <div class="book-footer">
+                            <div class="book-price">18,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="book-card" data-genre="roman" data-price="22" data-reveal="up" data-delay="1">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-2">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">Strasbourg, rêves d'encre</div>
+                                <div class="book-cover-author">Julien Kessler</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                        <span class="book-badge">Nouveau</span>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Roman</div>
+                        <h3 class="book-title">Strasbourg, rêves d'encre</h3>
+                        <div class="book-author">Julien Kessler</div>
+                        <p class="book-excerpt">Un roman envoûtant entre les ruelles de la Petite France et les secrets d'une imprimerie centenaire.</p>
+                        <div class="book-footer">
+                            <div class="book-price">22,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="book-card" data-genre="roman" data-price="16" data-reveal="up" data-delay="2">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-3">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">Le jardin des mots perdus</div>
+                                <div class="book-cover-author">Anne-Marie Fuchs</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Roman</div>
+                        <h3 class="book-title">Le jardin des mots perdus</h3>
+                        <div class="book-author">Anne-Marie Fuchs</div>
+                        <p class="book-excerpt">Nouvelles délicates où les mots oubliés retrouvent leur chemin, entre Alsace et imaginaire.</p>
+                        <div class="book-footer">
+                            <div class="book-price">16,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="book-card" data-genre="essai" data-price="24" data-reveal="up" data-delay="0">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-4">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">Chroniques du Rhin</div>
+                                <div class="book-cover-author">Marc Heim</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Essai</div>
+                        <h3 class="book-title">Chroniques du Rhin</h3>
+                        <div class="book-author">Marc Heim</div>
+                        <p class="book-excerpt">Essais historiques et poétiques sur le fleuve qui unit et sépare, de Bâle à la mer du Nord.</p>
+                        <div class="book-footer">
+                            <div class="book-price">24,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="book-card" data-genre="jeunesse" data-price="14" data-reveal="up" data-delay="1">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-5">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">Petites feuilles au vent</div>
+                                <div class="book-cover-author">Sophie Muller</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                        <span class="book-badge">Jeunesse</span>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Jeunesse</div>
+                        <h3 class="book-title">Petites feuilles au vent</h3>
+                        <div class="book-author">Sophie Muller (ill. Léa Klein)</div>
+                        <p class="book-excerpt">Album illustré pour les petits : une feuille d'automne part à l'aventure dans les rues de Strasbourg.</p>
+                        <div class="book-footer">
+                            <div class="book-price">14,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 6 -->
+                <div class="book-card" data-genre="poesie" data-price="32" data-reveal="up" data-delay="2">
+                    <div class="book-cover">
+                        <div class="book-cover-art cover-6">
+                            <div class="book-cover-inner">
+                                <div class="book-cover-title">L'encre et la lumière</div>
+                                <div class="book-cover-author">Collectif</div>
+                            </div>
+                            <div class="book-cover-publisher">Du vent dans les pages</div>
+                        </div>
+                    </div>
+                    <div class="book-body">
+                        <div class="book-genre">Poésie</div>
+                        <h3 class="book-title">L'encre et la lumière</h3>
+                        <div class="book-author">Collectif (8 auteurs)</div>
+                        <p class="book-excerpt">Beau livre alliant photographies de Strasbourg et textes poétiques. Édition reliée, papier d'art.</p>
+                        <div class="book-footer">
+                            <div class="book-price">32,00 &euro; <small>TTC</small></div>
+                            <button class="btn-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ÉVÉNEMENTS ===== -->
+    <section class="events" id="evenements">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <div class="section-tag">Agenda</div>
+                <h2 class="section-title">Nos <em>événements</em></h2>
+                <p class="section-desc">Rencontres, lectures, dédicaces : retrouvez-nous en chair et en os.</p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card" data-reveal="up" data-delay="0">
+                    <div class="event-date">
+                        <div class="event-date-box">
+                            <span class="event-day">15</span>
+                            <span class="event-month">Mars</span>
+                        </div>
+                        <div class="event-date-info">
+                            <strong>Samedi, 15h-18h</strong><br>
+                            Librairie Kléber, Strasbourg
+                        </div>
+                    </div>
+                    <h3>Rencontre & dédicace — Julien Kessler</h3>
+                    <p>L'auteur de <em>Strasbourg, rêves d'encre</em> vous invite à une lecture suivie d'une séance de dédicaces.</p>
+                    <span class="event-tag free">Entrée libre</span>
+                </div>
+
+                <div class="event-card" data-reveal="up" data-delay="1">
+                    <div class="event-date">
+                        <div class="event-date-box">
+                            <span class="event-day">22</span>
+                            <span class="event-month">Mars</span>
+                        </div>
+                        <div class="event-date-info">
+                            <strong>Samedi, 10h-12h</strong><br>
+                            Médiathèque Malraux, Strasbourg
+                        </div>
+                    </div>
+                    <h3>Atelier d'écriture — « Écrire la ville »</h3>
+                    <p>Atelier animé par Claire Wenger. Venez poser vos mots sur Strasbourg, ses ponts et ses reflets. Places limitées.</p>
+                    <span class="event-tag">Sur inscription</span>
+                </div>
+
+                <div class="event-card" data-reveal="up" data-delay="2">
+                    <div class="event-date">
+                        <div class="event-date-box">
+                            <span class="event-day">05</span>
+                            <span class="event-month">Avr</span>
+                        </div>
+                        <div class="event-date-info">
+                            <strong>Samedi, 14h-18h</strong><br>
+                            Parc de l'Orangerie, Strasbourg
+                        </div>
+                    </div>
+                    <h3>Fête du livre en plein air</h3>
+                    <p>Stand de la maison d'édition avec tous nos ouvrages, lectures à voix haute et goûter littéraire pour les enfants.</p>
+                    <span class="event-tag free">Entrée libre</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <div class="section-tag">Nous écrire</div>
+                <h2 class="section-title">Restons en <em>contact</em></h2>
+                <p class="section-desc">Une question, un manuscrit à proposer, une collaboration ? Écrivez-nous.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info" data-reveal="left">
+                    <h3>Du vent dans les pages</h3>
+                    <p>Association loi 1901 & maison d'édition indépendante, installée au cœur de Strasbourg.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Adresse</strong>
+                                <span>[Adresse], 67000 Strasbourg</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Email</strong>
+                                <span>contact@duventdanslespages.fr</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Téléphone</strong>
+                                <span>[Numéro de téléphone]</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Horaires</strong>
+                                <span>Mardi au samedi, 10h - 18h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper" data-reveal="right">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="votre@email.fr" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full">
+                                <label for="subject">Objet</label>
+                                <select id="subject" name="subject">
+                                    <option value="general">Question générale</option>
+                                    <option value="commande">Question sur une commande</option>
+                                    <option value="manuscrit">Proposer un manuscrit</option>
+                                    <option value="evenement">Événement / partenariat</option>
+                                    <option value="presse">Presse / média</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Envoyer le message
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        Du vent dans les pages
+                        <small>Association & Maison d'édition</small>
+                    </div>
+                    <p>Maison d'édition indépendante et associative, installée à Strasbourg. Nous publions des textes qui font souffler un vent nouveau sur la littérature.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#maison">La Maison</a></li>
+                        <li><a href="#catalogue">Catalogue</a></li>
+                        <li><a href="#evenements">Événements</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Livraison & retours</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Nous suivre</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Du vent dans les pages — Association loi 1901 — Strasbourg<br>
+                <a href="#">Mentions légales</a> &middot; Site réalisé par <a href="../../index.html">Emmanuel Pinglier</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== CART DRAWER ===== -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Votre panier</h3>
+            <button class="cart-close" id="cart-close" aria-label="Fermer">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+                <p>Votre panier est vide</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display:none;">
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">0,00 &euro;</strong>
+            </div>
+            <button class="btn-checkout" id="btn-checkout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                    <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                Commander — Paiement sécurisé
+            </button>
+            <div class="cart-secure">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0110 0v4"/>
+                </svg>
+                Paiement sécurisé par Stripe
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
