@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire - Amicale des Anciens Fonctionnaires</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2a4f7f;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --accent-bg: #eff6ff;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --success: #059669;
+            --success-bg: #ecfdf5;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-xs: 6px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--gray-800);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0;
+        }
+
+        .progress-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+            min-width: 48px;
+            text-align: right;
+        }
+
+        .progress-bar-track {
+            flex: 1;
+            height: 10px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 999px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 48px 24px 40px;
+            margin-top: 44px;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-circle {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .header-org-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.3;
+        }
+
+        .header-org-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-xs);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .header-link:hover {
+            background: rgba(255,255,255,0.22);
+            border-color: rgba(255,255,255,0.35);
+        }
+
+        .header-link-arrow {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .header-link:hover .header-link-arrow {
+            transform: translateX(3px);
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .header-subtitle {
+            font-size: 1.05rem;
+            font-weight: 400;
+            opacity: 0.85;
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        .header-meta {
+            margin-top: 20px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .header-meta-item {
+            font-size: 0.82rem;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-meta-icon {
+            font-size: 1rem;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ===== SECTION CARD ===== */
+        .section-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 24px 32px;
+            color: var(--white);
+        }
+
+        .section-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        .section-body {
+            padding: 8px 0;
+        }
+
+        /* ===== QUESTION ===== */
+        .question {
+            padding: 28px 32px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .question-label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            vertical-align: middle;
+        }
+
+        /* ===== RADIO MCQ ===== */
+        .mcq-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mcq-option {
+            position: relative;
+        }
+
+        .mcq-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .mcq-option label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            min-height: 48px;
+        }
+
+        .mcq-option label:hover {
+            border-color: var(--accent-light);
+            background: var(--accent-bg);
+        }
+
+        .mcq-option input[type="radio"]:checked + label {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .mcq-radio-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2.5px solid var(--gray-300);
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .mcq-option input[type="radio"]:checked + label .mcq-radio-dot {
+            border-color: var(--accent);
+        }
+
+        .mcq-option input[type="radio"]:checked + label .mcq-radio-dot::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* Horizontal MCQ for short options */
+        .mcq-group.mcq-horizontal {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .mcq-group.mcq-horizontal .mcq-option label {
+            padding: 14px 18px;
+        }
+
+        /* ===== CHECKBOX GROUP ===== */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-group.checkbox-horizontal {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .check-option {
+            position: relative;
+        }
+
+        .check-option input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .check-option label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            min-height: 48px;
+        }
+
+        .check-option label:hover {
+            border-color: var(--accent-light);
+            background: var(--accent-bg);
+        }
+
+        .check-option input[type="checkbox"]:checked + label {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .check-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            border: 2.5px solid var(--gray-300);
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .check-option input[type="checkbox"]:checked + label .check-box {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .check-option input[type="checkbox"]:checked + label .check-box::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 5px;
+            height: 9px;
+            border: solid var(--white);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* ===== SCALE 1-10 ===== */
+        .scale-group {
+            display: flex;
+            gap: 0;
+            width: 100%;
+        }
+
+        .scale-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .scale-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .scale-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            margin-left: -2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--gray-500);
+        }
+
+        .scale-option:first-child label {
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+            margin-left: 0;
+        }
+
+        .scale-option:last-child label {
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .scale-option label:hover {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-color: var(--accent-light);
+            z-index: 1;
+        }
+
+        .scale-option input[type="radio"]:checked + label {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            z-index: 2;
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .scale-label-text {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* ===== DROPDOWN ===== */
+        .styled-select {
+            position: relative;
+            width: 100%;
+        }
+
+        .styled-select select {
+            width: 100%;
+            padding: 14px 44px 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 48px;
+        }
+
+        .styled-select select:hover,
+        .styled-select select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        .styled-select::after {
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid var(--gray-400);
+            pointer-events: none;
+        }
+
+        /* ===== TEXT INPUT ===== */
+        .text-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            min-height: 48px;
+        }
+
+        .text-input:hover,
+        .text-input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        /* ===== TEXTAREA ===== */
+        .styled-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 16px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            resize: vertical;
+            transition: all 0.2s;
+            line-height: 1.6;
+        }
+
+        .styled-textarea:hover,
+        .styled-textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        .styled-textarea::placeholder {
+            color: var(--gray-400);
+        }
+
+        /* ===== FOOTER / ACTIONS ===== */
+        .form-footer {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .form-footer-anon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .form-footer-anon-icon {
+            font-size: 1.1rem;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 56px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+            min-height: 56px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-print {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--gray-600);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 16px;
+            min-height: 48px;
+        }
+
+        .btn-print:hover {
+            border-color: var(--gray-400);
+            background: var(--gray-50);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-xl);
+            font-size: 0.95rem;
+            font-weight: 500;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .progress-wrapper,
+            .btn-print,
+            .btn-submit,
+            .header-links,
+            .form-footer-anon {
+                display: none !important;
+            }
+
+            .site-header {
+                margin-top: 0;
+                padding: 24px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .question {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            body {
+                background: white;
+            }
+
+            .main-content {
+                padding: 20px 0;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .site-header {
+                padding: 32px 16px 28px;
+            }
+
+            .header-title {
+                font-size: 1.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-content {
+                padding: 24px 16px 60px;
+            }
+
+            .section-header {
+                padding: 20px 20px;
+            }
+
+            .question {
+                padding: 20px 20px;
+            }
+
+            .scale-group {
+                flex-wrap: wrap;
+            }
+
+            .scale-option {
+                flex: 0 0 calc(20% - 0px);
+            }
+
+            .scale-option:nth-child(6) label {
+                border-radius: 0;
+            }
+
+            .scale-option:nth-child(5) label {
+                border-radius: 0 var(--radius-sm) 0 0;
+            }
+
+            .scale-option:nth-child(6) label {
+                border-radius: 0 0 0 var(--radius-sm);
+                margin-left: 0;
+            }
+
+            .scale-option:first-child label {
+                border-radius: var(--radius-sm) 0 0 0;
+            }
+
+            .scale-option:last-child label {
+                border-radius: 0 0 var(--radius-sm) 0;
+            }
+
+            .mcq-group.mcq-horizontal {
+                flex-direction: column;
+            }
+
+            .form-footer {
+                padding: 24px 20px;
+            }
+
+            .header-link {
+                font-size: 0.78rem;
+                padding: 7px 12px;
+            }
+
+            .progress-inner {
+                padding: 10px 16px;
+            }
+        }
+
+        /* ===== ANIMATION ===== */
+        .section-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .section-card:nth-child(1) { animation-delay: 0.05s; }
+        .section-card:nth-child(2) { animation-delay: 0.1s; }
+        .section-card:nth-child(3) { animation-delay: 0.15s; }
+        .section-card:nth-child(4) { animation-delay: 0.2s; }
+        .section-card:nth-child(5) { animation-delay: 0.25s; }
+        .section-card:nth-child(6) { animation-delay: 0.3s; }
+        .section-card:nth-child(7) { animation-delay: 0.35s; }
+        .form-footer {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== PROGRESS BAR ==================== -->
+<div class="progress-wrapper">
+    <div class="progress-inner">
+        <span class="progress-label" id="progressLabel">0 %</span>
+        <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header">
+    <div class="header-content">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="logo-circle">A</div>
+                <div>
+                    <div class="header-org-name">Amicale des Anciens Fonctionnaires</div>
+                    <div class="header-org-sub">Section de Tours &mdash; Association loi 1901</div>
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="dashboard.html" class="header-link">
+                    <span>Tableau de d&eacute;pouillement</span>
+                    <span class="header-link-arrow">&rarr;</span>
+                </a>
+                <button class="header-link" onclick="window.print()" style="font-family:inherit;">
+                    <span>Imprimer / PDF</span>
+                </button>
+            </div>
+        </div>
+        <h1 class="header-title">Questionnaire de satisfaction</h1>
+        <p class="header-subtitle">
+            Votre avis est essentiel pour am&eacute;liorer le fonctionnement et les activit&eacute;s de notre amicale. Ce questionnaire est strictement anonyme et confidentiel.
+        </p>
+        <div class="header-meta">
+            <span class="header-meta-item">
+                <span class="header-meta-icon">&#128203;</span>
+                50 questions &bull; ~12 min
+            </span>
+            <span class="header-meta-item">
+                <span class="header-meta-icon">&#128274;</span>
+                R&eacute;ponses anonymes
+            </span>
+            <span class="header-meta-item">
+                <span class="header-meta-icon">&#128197;</span>
+                Campagne 2026
+            </span>
+        </div>
+    </div>
+</header>
+
+<!-- ==================== FORM ==================== -->
+<main class="main-content">
+<form id="surveyForm" onsubmit="return false;">
+
+<!-- ========== SECTION 1 ========== -->
+<div class="section-card" id="section1">
+    <div class="section-header">
+        <div class="section-number">Section 1 sur 7</div>
+        <div class="section-title">Votre profil</div>
+        <div class="section-description">Quelques informations g&eacute;n&eacute;rales pour mieux conna&icirc;tre nos membres</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q1 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">1</span>
+                Depuis combien d&rsquo;ann&eacute;es &ecirc;tes-vous membre de l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q1" id="q1a" value="<1an">
+                    <label for="q1a"><span class="mcq-radio-dot"></span>Moins d&rsquo;1 an</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" id="q1b" value="1-3">
+                    <label for="q1b"><span class="mcq-radio-dot"></span>1 &agrave; 3 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" id="q1c" value="3-5">
+                    <label for="q1c"><span class="mcq-radio-dot"></span>3 &agrave; 5 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" id="q1d" value="5-10">
+                    <label for="q1d"><span class="mcq-radio-dot"></span>5 &agrave; 10 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" id="q1e" value="10+">
+                    <label for="q1e"><span class="mcq-radio-dot"></span>Plus de 10 ans</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">2</span>
+                Quel &eacute;tait votre minist&egrave;re ou administration d&rsquo;origine ?
+            </span>
+            <div class="styled-select">
+                <select name="q2">
+                    <option value="" disabled selected>S&eacute;lectionnez votre administration&hellip;</option>
+                    <option value="education">&Eacute;ducation nationale</option>
+                    <option value="finances">Finances</option>
+                    <option value="interieur">Int&eacute;rieur</option>
+                    <option value="justice">Justice</option>
+                    <option value="defense">D&eacute;fense</option>
+                    <option value="sante">Sant&eacute;</option>
+                    <option value="travail">Travail</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">3</span>
+                Quelle est votre tranche d&rsquo;&acirc;ge ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3a" value="55-60">
+                    <label for="q3a"><span class="mcq-radio-dot"></span>55-60 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3b" value="60-65">
+                    <label for="q3b"><span class="mcq-radio-dot"></span>60-65 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3c" value="65-70">
+                    <label for="q3c"><span class="mcq-radio-dot"></span>65-70 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3d" value="70-75">
+                    <label for="q3d"><span class="mcq-radio-dot"></span>70-75 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3e" value="75-80">
+                    <label for="q3e"><span class="mcq-radio-dot"></span>75-80 ans</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" id="q3f" value="80+">
+                    <label for="q3f"><span class="mcq-radio-dot"></span>80 ans et plus</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">4</span>
+                Quelle est votre commune de r&eacute;sidence ?
+            </span>
+            <input type="text" class="text-input" name="q4" placeholder="Ex : Tours, Saint-Avertin, Jou&eacute;-l&egrave;s-Tours&hellip;">
+        </div>
+
+        <!-- Q5 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">5</span>
+                Comment avez-vous connu l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q5" id="q5a" value="collegue">
+                    <label for="q5a"><span class="mcq-radio-dot"></span>Par un(e) coll&egrave;gue ou ancien(ne) coll&egrave;gue</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" id="q5b" value="courrier">
+                    <label for="q5b"><span class="mcq-radio-dot"></span>Par courrier</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" id="q5c" value="internet">
+                    <label for="q5c"><span class="mcq-radio-dot"></span>Par internet</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" id="q5d" value="evenement">
+                    <label for="q5d"><span class="mcq-radio-dot"></span>Lors d&rsquo;un &eacute;v&eacute;nement</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" id="q5e" value="autre">
+                    <label for="q5e"><span class="mcq-radio-dot"></span>Autre</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">6</span>
+                &Ecirc;tes-vous membre d&rsquo;une autre association de retrait&eacute;s ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q6" id="q6a" value="oui">
+                    <label for="q6a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q6" id="q6b" value="non">
+                    <label for="q6b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== SECTION 2 ========== -->
+<div class="section-card" id="section2">
+    <div class="section-header">
+        <div class="section-number">Section 2 sur 7</div>
+        <div class="section-title">Satisfaction g&eacute;n&eacute;rale</div>
+        <div class="section-description">&Eacute;valuez chaque aspect de 1 (tr&egrave;s insatisfait) &agrave; 10 (tr&egrave;s satisfait)</div>
+    </div>
+    <div class="section-body" id="scaleSection2">
+    </div>
+</div>
+
+<!-- ========== SECTION 3 ========== -->
+<div class="section-card" id="section3">
+    <div class="section-header">
+        <div class="section-number">Section 3 sur 7</div>
+        <div class="section-title">Activit&eacute;s et &eacute;v&eacute;nements</div>
+        <div class="section-description">Vos pratiques, pr&eacute;f&eacute;rences et id&eacute;es pour les activit&eacute;s</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q15 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">15</span>
+                Quelles activit&eacute;s avez-vous fr&eacute;quent&eacute;es ces deux derni&egrave;res ann&eacute;es ?
+            </span>
+            <div class="checkbox-group">
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15a" value="repas">
+                    <label for="q15a"><span class="check-box"></span>Repas annuel</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15b" value="sorties">
+                    <label for="q15b"><span class="check-box"></span>Sorties culturelles</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15c" value="voyages">
+                    <label for="q15c"><span class="check-box"></span>Voyages</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15d" value="conferences">
+                    <label for="q15d"><span class="check-box"></span>Conf&eacute;rences</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15e" value="sport">
+                    <label for="q15e"><span class="check-box"></span>Activit&eacute;s sportives</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15f" value="ateliers">
+                    <label for="q15f"><span class="check-box"></span>Ateliers</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q15" id="q15g" value="aucune">
+                    <label for="q15g"><span class="check-box"></span>Aucune activit&eacute;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question" id="q16-container"></div>
+        <!-- Q17 -->
+        <div class="question" id="q17-container"></div>
+        <!-- Q18 -->
+        <div class="question" id="q18-container"></div>
+
+        <!-- Q19 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">19</span>
+                &Agrave; quelle fr&eacute;quence souhaiteriez-vous participer aux activit&eacute;s ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q19" id="q19a" value="1x/mois">
+                    <label for="q19a"><span class="mcq-radio-dot"></span>1 fois par mois</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q19" id="q19b" value="1x/trimestre">
+                    <label for="q19b"><span class="mcq-radio-dot"></span>1 fois par trimestre</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q19" id="q19c" value="2x/an">
+                    <label for="q19c"><span class="mcq-radio-dot"></span>2 fois par an</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q19" id="q19d" value="1x/an">
+                    <label for="q19d"><span class="mcq-radio-dot"></span>1 fois par an</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">20</span>
+                Quel budget mensuel pourriez-vous consacrer aux activit&eacute;s de l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q20" id="q20a" value="<10">
+                    <label for="q20a"><span class="mcq-radio-dot"></span>Moins de 10 &euro;</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q20" id="q20b" value="10-20">
+                    <label for="q20b"><span class="mcq-radio-dot"></span>10 &agrave; 20 &euro;</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q20" id="q20c" value="20-50">
+                    <label for="q20c"><span class="mcq-radio-dot"></span>20 &agrave; 50 &euro;</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q20" id="q20d" value="50-100">
+                    <label for="q20d"><span class="mcq-radio-dot"></span>50 &agrave; 100 &euro;</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q20" id="q20e" value="100+">
+                    <label for="q20e"><span class="mcq-radio-dot"></span>Plus de 100 &euro;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q21 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">21</span>
+                Quels jours de la semaine pr&eacute;f&eacute;rez-vous pour les activit&eacute;s ?
+            </span>
+            <div class="checkbox-group checkbox-horizontal">
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21a" value="lundi">
+                    <label for="q21a"><span class="check-box"></span>Lundi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21b" value="mardi">
+                    <label for="q21b"><span class="check-box"></span>Mardi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21c" value="mercredi">
+                    <label for="q21c"><span class="check-box"></span>Mercredi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21d" value="jeudi">
+                    <label for="q21d"><span class="check-box"></span>Jeudi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21e" value="vendredi">
+                    <label for="q21e"><span class="check-box"></span>Vendredi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21f" value="samedi">
+                    <label for="q21f"><span class="check-box"></span>Samedi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q21" id="q21g" value="dimanche">
+                    <label for="q21g"><span class="check-box"></span>Dimanche</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q22 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">22</span>
+                Quels cr&eacute;neaux horaires vous conviennent le mieux ?
+            </span>
+            <div class="checkbox-group checkbox-horizontal">
+                <div class="check-option">
+                    <input type="checkbox" name="q22" id="q22a" value="matin">
+                    <label for="q22a"><span class="check-box"></span>Matin</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q22" id="q22b" value="apres-midi">
+                    <label for="q22b"><span class="check-box"></span>Apr&egrave;s-midi</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q22" id="q22c" value="soiree">
+                    <label for="q22c"><span class="check-box"></span>Soir&eacute;e</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q23 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">23</span>
+                Quelles nouvelles activit&eacute;s souhaiteriez-vous voir propos&eacute;es ?
+            </span>
+            <div class="checkbox-group">
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23a" value="randonnees">
+                    <label for="q23a"><span class="check-box"></span>Randonn&eacute;es</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23b" value="patrimoine">
+                    <label for="q23b"><span class="check-box"></span>Visites du patrimoine</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23c" value="numerique">
+                    <label for="q23c"><span class="check-box"></span>Ateliers num&eacute;riques</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23d" value="bien-etre">
+                    <label for="q23d"><span class="check-box"></span>Bien-&ecirc;tre (yoga, relaxation&hellip;)</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23e" value="jeux">
+                    <label for="q23e"><span class="check-box"></span>Jeux de soci&eacute;t&eacute;</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23f" value="benevolat">
+                    <label for="q23f"><span class="check-box"></span>Actions de b&eacute;n&eacute;volat</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q23" id="q23g" value="autre">
+                    <label for="q23g"><span class="check-box"></span>Autre</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q24 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">24</span>
+                Avez-vous des commentaires ou suggestions concernant les activit&eacute;s ?
+            </span>
+            <textarea class="styled-textarea" name="q24" placeholder="Vos suggestions sont les bienvenues&hellip;"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== SECTION 4 ========== -->
+<div class="section-card" id="section4">
+    <div class="section-header">
+        <div class="section-number">Section 4 sur 7</div>
+        <div class="section-title">Communication</div>
+        <div class="section-description">Comment nous pouvons mieux vous informer</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q25 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">25</span>
+                Comment recevez-vous actuellement les informations de l&rsquo;amicale ?
+            </span>
+            <div class="checkbox-group">
+                <div class="check-option">
+                    <input type="checkbox" name="q25" id="q25a" value="courrier">
+                    <label for="q25a"><span class="check-box"></span>Courrier postal</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q25" id="q25b" value="email">
+                    <label for="q25b"><span class="check-box"></span>Email</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q25" id="q25c" value="telephone">
+                    <label for="q25c"><span class="check-box"></span>T&eacute;l&eacute;phone</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q25" id="q25d" value="bouche-a-oreille">
+                    <label for="q25d"><span class="check-box"></span>Bouche &agrave; oreille</label>
+                </div>
+                <div class="check-option">
+                    <input type="checkbox" name="q25" id="q25e" value="site-web">
+                    <label for="q25e"><span class="check-box"></span>Site web</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q26 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">26</span>
+                Quel mode de communication pr&eacute;f&eacute;rez-vous ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q26" id="q26a" value="courrier">
+                    <label for="q26a"><span class="mcq-radio-dot"></span>Courrier postal</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q26" id="q26b" value="email">
+                    <label for="q26b"><span class="mcq-radio-dot"></span>Email</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q26" id="q26c" value="telephone">
+                    <label for="q26c"><span class="mcq-radio-dot"></span>T&eacute;l&eacute;phone</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q26" id="q26d" value="sms">
+                    <label for="q26d"><span class="mcq-radio-dot"></span>SMS</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q26" id="q26e" value="site-web">
+                    <label for="q26e"><span class="mcq-radio-dot"></span>Site web</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q27 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">27</span>
+                Disposez-vous d&rsquo;une adresse email ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q27" id="q27a" value="oui">
+                    <label for="q27a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q27" id="q27b" value="non">
+                    <label for="q27b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q28 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">28</span>
+                Utilisez-vous internet r&eacute;guli&egrave;rement ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q28" id="q28a" value="oui">
+                    <label for="q28a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q28" id="q28b" value="non">
+                    <label for="q28b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q29 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">29</span>
+                Lisez-vous le bulletin de l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q29" id="q29a" value="toujours">
+                    <label for="q29a"><span class="mcq-radio-dot"></span>Toujours</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q29" id="q29b" value="souvent">
+                    <label for="q29b"><span class="mcq-radio-dot"></span>Souvent</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q29" id="q29c" value="parfois">
+                    <label for="q29c"><span class="mcq-radio-dot"></span>Parfois</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q29" id="q29d" value="jamais">
+                    <label for="q29d"><span class="mcq-radio-dot"></span>Jamais</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q30 -->
+        <div class="question" id="q30-container"></div>
+
+        <!-- Q31 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">31</span>
+                Souhaiteriez-vous que l&rsquo;amicale dispose d&rsquo;un site web ou d&rsquo;un espace en ligne ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q31" id="q31a" value="oui">
+                    <label for="q31a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q31" id="q31b" value="non">
+                    <label for="q31b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q31" id="q31c" value="sans-avis">
+                    <label for="q31c"><span class="mcq-radio-dot"></span>Sans avis</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q32 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">32</span>
+                Avez-vous des commentaires sur la communication de l&rsquo;amicale ?
+            </span>
+            <textarea class="styled-textarea" name="q32" placeholder="Vos suggestions sont les bienvenues&hellip;"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== SECTION 5 ========== -->
+<div class="section-card" id="section5">
+    <div class="section-header">
+        <div class="section-number">Section 5 sur 7</div>
+        <div class="section-title">Vie associative et gouvernance</div>
+        <div class="section-description">Votre implication et vos attentes en mati&egrave;re de fonctionnement</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q33 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">33</span>
+                Participez-vous &agrave; l&rsquo;assembl&eacute;e g&eacute;n&eacute;rale ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q33" id="q33a" value="toujours">
+                    <label for="q33a"><span class="mcq-radio-dot"></span>Toujours</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q33" id="q33b" value="souvent">
+                    <label for="q33b"><span class="mcq-radio-dot"></span>Souvent</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q33" id="q33c" value="parfois">
+                    <label for="q33c"><span class="mcq-radio-dot"></span>Parfois</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q33" id="q33d" value="jamais">
+                    <label for="q33d"><span class="mcq-radio-dot"></span>Jamais</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q34 -->
+        <div class="question" id="q34-container"></div>
+
+        <!-- Q35 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">35</span>
+                Souhaitez-vous plus de transparence sur les finances de l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q35" id="q35a" value="oui">
+                    <label for="q35a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q35" id="q35b" value="non">
+                    <label for="q35b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q35" id="q35c" value="sans-avis">
+                    <label for="q35c"><span class="mcq-radio-dot"></span>Sans avis</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q36 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">36</span>
+                Seriez-vous pr&ecirc;t(e) &agrave; vous investir dans le bureau de l&rsquo;amicale ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q36" id="q36a" value="oui">
+                    <label for="q36a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q36" id="q36b" value="non">
+                    <label for="q36b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q36" id="q36c" value="peut-etre">
+                    <label for="q36c"><span class="mcq-radio-dot"></span>Peut-&ecirc;tre</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q37 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">37</span>
+                Seriez-vous pr&ecirc;t(e) &agrave; aider ponctuellement lors d&rsquo;&eacute;v&eacute;nements ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q37" id="q37a" value="oui">
+                    <label for="q37a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q37" id="q37b" value="non">
+                    <label for="q37b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q38 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">38</span>
+                Comment jugez-vous le montant actuel de la cotisation ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q38" id="q38a" value="trop-eleve">
+                    <label for="q38a"><span class="mcq-radio-dot"></span>Trop &eacute;lev&eacute;</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q38" id="q38b" value="correct">
+                    <label for="q38b"><span class="mcq-radio-dot"></span>Correct</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q38" id="q38c" value="pourrait-etre-plus">
+                    <label for="q38c"><span class="mcq-radio-dot"></span>Pourrait &ecirc;tre plus &eacute;lev&eacute;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q39 -->
+        <div class="question" id="q39-container"></div>
+
+        <!-- Q40 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">40</span>
+                Avez-vous des suggestions pour am&eacute;liorer la vie associative ?
+            </span>
+            <textarea class="styled-textarea" name="q40" placeholder="Vos id&eacute;es et suggestions&hellip;"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== SECTION 6 ========== -->
+<div class="section-card" id="section6">
+    <div class="section-header">
+        <div class="section-number">Section 6 sur 7</div>
+        <div class="section-title">Bien-&ecirc;tre et solidarit&eacute;</div>
+        <div class="section-description">Le r&ocirc;le de l&rsquo;amicale dans le lien social et l&rsquo;entraide</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q41 -->
+        <div class="question" id="q41-container"></div>
+
+        <!-- Q42 -->
+        <div class="question" id="q42-container"></div>
+
+        <!-- Q43 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">43</span>
+                Souhaiteriez-vous un service d&rsquo;aide ou d&rsquo;&eacute;coute entre membres ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q43" id="q43a" value="oui">
+                    <label for="q43a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q43" id="q43b" value="non">
+                    <label for="q43b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q43" id="q43c" value="sans-avis">
+                    <label for="q43c"><span class="mcq-radio-dot"></span>Sans avis</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q44 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">44</span>
+                Connaissez-vous des membres isol&eacute;s que l&rsquo;amicale devrait contacter ?
+            </span>
+            <div class="mcq-group mcq-horizontal">
+                <div class="mcq-option">
+                    <input type="radio" name="q44" id="q44a" value="oui">
+                    <label for="q44a"><span class="mcq-radio-dot"></span>Oui</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q44" id="q44b" value="non">
+                    <label for="q44b"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q45 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">45</span>
+                Avez-vous des commentaires sur la solidarit&eacute; au sein de l&rsquo;amicale ?
+            </span>
+            <textarea class="styled-textarea" name="q45" placeholder="Vos r&eacute;flexions sont les bienvenues&hellip;"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== SECTION 7 ========== -->
+<div class="section-card" id="section7">
+    <div class="section-header">
+        <div class="section-number">Section 7 sur 7</div>
+        <div class="section-title">Perspectives et remarques libres</div>
+        <div class="section-description">Votre vision d&rsquo;avenir pour l&rsquo;amicale</div>
+    </div>
+    <div class="section-body">
+
+        <!-- Q46 -->
+        <div class="question" id="q46-container"></div>
+
+        <!-- Q47 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">47</span>
+                Renouvellerez-vous votre adh&eacute;sion l&rsquo;ann&eacute;e prochaine ?
+            </span>
+            <div class="mcq-group">
+                <div class="mcq-option">
+                    <input type="radio" name="q47" id="q47a" value="oui-certainement">
+                    <label for="q47a"><span class="mcq-radio-dot"></span>Oui, certainement</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q47" id="q47b" value="probablement">
+                    <label for="q47b"><span class="mcq-radio-dot"></span>Probablement</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q47" id="q47c" value="ne-sais-pas">
+                    <label for="q47c"><span class="mcq-radio-dot"></span>Je ne sais pas</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q47" id="q47d" value="probablement-pas">
+                    <label for="q47d"><span class="mcq-radio-dot"></span>Probablement pas</label>
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q47" id="q47e" value="non">
+                    <label for="q47e"><span class="mcq-radio-dot"></span>Non</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q48 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">48</span>
+                Selon vous, quel est le principal atout de l&rsquo;amicale ?
+            </span>
+            <textarea class="styled-textarea" name="q48" placeholder="Ce qui fait la force de notre association&hellip;"></textarea>
+        </div>
+
+        <!-- Q49 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">49</span>
+                Quelle est la principale am&eacute;lioration &agrave; apporter ?
+            </span>
+            <textarea class="styled-textarea" name="q49" placeholder="Ce que nous pourrions faire mieux&hellip;"></textarea>
+        </div>
+
+        <!-- Q50 -->
+        <div class="question">
+            <span class="question-label">
+                <span class="question-number">50</span>
+                Espace libre : remarques, id&eacute;es, commentaires
+            </span>
+            <textarea class="styled-textarea" name="q50" placeholder="Tout ce que vous souhaitez nous partager&hellip;"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========== FORM FOOTER ========== -->
+<div class="form-footer">
+    <div class="form-footer-anon">
+        <span class="form-footer-anon-icon">&#128274;</span>
+        Vos r&eacute;ponses sont strictement anonymes et confidentielles.
+    </div>
+    <button type="button" class="btn-submit" id="btnSubmit">
+        Soumettre mes r&eacute;ponses
+    </button>
+    <br>
+    <button type="button" class="btn-print" onclick="window.print()">
+        Imprimer / Enregistrer en PDF
+    </button>
+</div>
+
+</form>
+</main>
+
+<!-- ==================== TOAST ==================== -->
+<div class="toast" id="toast">
+    <span class="toast-icon">&#10003;</span>
+    Merci ! Vos r&eacute;ponses ont bien &eacute;t&eacute; enregistr&eacute;es.
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+(function() {
+    'use strict';
+
+    // ===== DYNAMIC SCALE QUESTIONS =====
+    // Build scale 1-10 questions via JS to avoid repetition
+
+    const scaleQuestions = [
+        { num: 7, name: 'q7', label: "Qualit\u00e9 de l\u2019accueil au sein de l\u2019amicale", container: null, section: 2 },
+        { num: 8, name: 'q8', label: "Qualit\u00e9 de la communication (informations, invitations\u2026)", container: null, section: 2 },
+        { num: 9, name: 'q9', label: "Fr\u00e9quence des activit\u00e9s propos\u00e9es", container: null, section: 2 },
+        { num: 10, name: 'q10', label: "Qualit\u00e9 des activit\u00e9s propos\u00e9es", container: null, section: 2 },
+        { num: 11, name: 'q11', label: "Rapport qualit\u00e9/prix de la cotisation", container: null, section: 2 },
+        { num: 12, name: 'q12', label: "Convivialit\u00e9 et ambiance entre les membres", container: null, section: 2 },
+        { num: 13, name: 'q13', label: "Organisation g\u00e9n\u00e9rale de l\u2019amicale", container: null, section: 2 },
+        { num: 14, name: 'q14', label: "\u00c9coute et disponibilit\u00e9 du bureau", container: null, section: 2 },
+        { num: 16, name: 'q16', label: "Satisfaction concernant le repas annuel", container: 'q16-container', section: 3 },
+        { num: 17, name: 'q17', label: "Satisfaction concernant les sorties culturelles", container: 'q17-container', section: 3 },
+        { num: 18, name: 'q18', label: "Satisfaction concernant les voyages", container: 'q18-container', section: 3 },
+        { num: 30, name: 'q30', label: "Satisfaction concernant le bulletin de l\u2019amicale", container: 'q30-container', section: 4 },
+        { num: 34, name: 'q34', label: "Trouvez-vous l\u2019assembl\u00e9e g\u00e9n\u00e9rale utile ?", container: 'q34-container', section: 5 },
+        { num: 39, name: 'q39', label: "Que pensez-vous de l\u2019entraide entre les membres ?", container: 'q39-container', section: 5 },
+        { num: 41, name: 'q41', label: "Vous sentez-vous bien entour\u00e9(e) socialement ?", container: 'q41-container', section: 6 },
+        { num: 42, name: 'q42', label: "L\u2019amicale contribue-t-elle \u00e0 votre lien social ?", container: 'q42-container', section: 6 },
+        { num: 46, name: 'q46', label: "Recommanderiez-vous l\u2019amicale \u00e0 un(e) ancien(ne) coll\u00e8gue ?", container: 'q46-container', section: 7 }
+    ];
+
+    function buildScaleHTML(q) {
+        let html = '<span class="question-label">';
+        html += '<span class="question-number">' + q.num + '</span>';
+        html += q.label;
+        html += '</span>';
+        html += '<div class="scale-group">';
+        for (let i = 1; i <= 10; i++) {
+            html += '<div class="scale-option">';
+            html += '<input type="radio" name="' + q.name + '" id="' + q.name + '_' + i + '" value="' + i + '">';
+            html += '<label for="' + q.name + '_' + i + '">' + i + '</label>';
+            html += '</div>';
+        }
+        html += '</div>';
+        html += '<div class="scale-labels">';
+        html += '<span class="scale-label-text">Tr\u00e8s insatisfait</span>';
+        if (q.num === 46) {
+            html += '<span class="scale-label-text">Tr\u00e8s certainement</span>';
+        } else {
+            html += '<span class="scale-label-text">Tr\u00e8s satisfait</span>';
+        }
+        html += '</div>';
+        return html;
+    }
+
+    // Section 2: build all 8 scale questions
+    const section2Body = document.getElementById('scaleSection2');
+    scaleQuestions.forEach(function(q) {
+        if (q.section === 2) {
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = buildScaleHTML(q);
+            section2Body.appendChild(div);
+        }
+    });
+
+    // Other sections: fill containers
+    scaleQuestions.forEach(function(q) {
+        if (q.container) {
+            const el = document.getElementById(q.container);
+            if (el) {
+                el.innerHTML = buildScaleHTML(q);
+            }
+        }
+    });
+
+    // ===== PROGRESS BAR =====
+    const totalQuestions = 50;
+    const form = document.getElementById('surveyForm');
+    const progressFill = document.getElementById('progressFill');
+    const progressLabel = document.getElementById('progressLabel');
+
+    function countAnswered() {
+        let answered = 0;
+
+        // Count radio groups answered
+        const radioNames = new Set();
+        form.querySelectorAll('input[type="radio"]').forEach(function(r) {
+            radioNames.add(r.name);
+        });
+        radioNames.forEach(function(name) {
+            if (form.querySelector('input[name="' + name + '"]:checked')) {
+                answered++;
+            }
+        });
+
+        // Count checkbox groups answered (at least one checked)
+        const checkNames = new Set();
+        form.querySelectorAll('input[type="checkbox"]').forEach(function(c) {
+            checkNames.add(c.name);
+        });
+        checkNames.forEach(function(name) {
+            if (form.querySelector('input[name="' + name + '"]:checked')) {
+                answered++;
+            }
+        });
+
+        // Count selects answered
+        form.querySelectorAll('select').forEach(function(s) {
+            if (s.value) {
+                answered++;
+            }
+        });
+
+        // Count text inputs answered
+        form.querySelectorAll('input[type="text"]').forEach(function(t) {
+            if (t.value.trim()) {
+                answered++;
+            }
+        });
+
+        // Count textareas answered
+        form.querySelectorAll('textarea').forEach(function(ta) {
+            if (ta.value.trim()) {
+                answered++;
+            }
+        });
+
+        return Math.min(answered, totalQuestions);
+    }
+
+    function updateProgress() {
+        const answered = countAnswered();
+        const pct = Math.round((answered / totalQuestions) * 100);
+        progressFill.style.width = pct + '%';
+        progressLabel.textContent = pct + ' %';
+    }
+
+    // Listen for changes
+    form.addEventListener('change', updateProgress);
+    form.addEventListener('input', function(e) {
+        if (e.target.tagName === 'TEXTAREA' || e.target.type === 'text') {
+            updateProgress();
+        }
+    });
+
+    // ===== SUBMIT =====
+    document.getElementById('btnSubmit').addEventListener('click', function() {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(function() {
+            toast.classList.remove('show');
+        }, 4000);
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Initial progress
+    updateProgress();
+
+})();
+</script>
+
+</body>
+</html>
