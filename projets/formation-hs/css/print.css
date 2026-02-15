@@ -1,0 +1,168 @@
+/* ============================================
+   Print Styles — Export PDF A4
+============================================ */
+@media print {
+    /* Reset print */
+    *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: #000 !important;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    /* Cacher éléments interactifs */
+    .site-header,
+    .site-footer,
+    .print-controls,
+    .nav-toggle,
+    .support-nav,
+    .btn,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Document */
+    .support-document {
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    /* Page de garde */
+    .cover-page {
+        page-break-after: always;
+        min-height: auto;
+        padding: 5cm 3cm;
+        background: white !important;
+        color: #000 !important;
+        border: 3px solid #1a5276;
+    }
+
+    .cover-page::after {
+        display: none;
+    }
+
+    .cover-logo {
+        background: #1a5276 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .cover-title {
+        color: #1a5276 !important;
+    }
+
+    .cover-subtitle, .cover-meta {
+        color: #333 !important;
+        opacity: 1 !important;
+    }
+
+    /* Sommaire */
+    .toc {
+        page-break-after: always;
+    }
+
+    /* Unités */
+    .unite-header {
+        page-break-after: avoid;
+        background: #eaf2f8 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .unite-header .unite-number {
+        background: #1a5276 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Page breaks */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    table, figure, .encadre {
+        page-break-inside: avoid;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* Encadrés */
+    .encadre {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    .encadre-reglementaire {
+        border-left: 4px solid #1a5276 !important;
+        background: #f0f4f8 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .encadre-attention {
+        border-left: 4px solid #f39c12 !important;
+        background: #fef9e7 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .encadre-interdit {
+        border-left: 4px solid #e74c3c !important;
+        background: #fdf2f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Tableaux */
+    .table-styled th {
+        background: #1a5276 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Gap markers */
+    .gap-marker {
+        background: #27ae60 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Liens */
+    a {
+        color: #1a5276 !important;
+        text-decoration: underline;
+    }
+
+    /* En-tête/pied de page impression */
+    @page {
+        size: A4;
+        margin: 2cm 2.5cm;
+    }
+
+    @page :first {
+        margin: 0;
+    }
+
+    /* Numérotation des pages (si supporté) */
+    .support-content {
+        padding: 0 !important;
+    }
+
+    /* Badges */
+    .badge {
+        border: 1px solid #ccc;
+    }
+}

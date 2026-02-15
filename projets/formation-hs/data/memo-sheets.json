@@ -1,0 +1,237 @@
+{
+  "module-1": {
+    "title": "Réglementation applicable aux activités de tatouage et de perçage corporel",
+    "keyPoints": [
+      "La norme NF EN 17169 définit les exigences d'hygiène et de salubrité pour les pratiques de tatouage, perçage et maquillage permanent.",
+      "Le règlement REACH (CE 1907/2006) encadre l'utilisation des substances chimiques, y compris les encres et pigments de tatouage.",
+      "Les articles R.1311-1 à R.1311-12 du Code de la santé publique constituent le socle réglementaire national pour ces activités.",
+      "L'arrêté du 5 mars 2024 précise les conditions d'hygiène et de salubrité relatives aux pratiques de tatouage, perçage corporel et maquillage permanent.",
+      "Certaines pratiques sont strictement interdites : tatouage de la cornée, piercing de l'uvule, scarifications profondes non encadrées, etc.",
+      "Le consentement des mineurs est encadré par l'article R.1311-11 : autorisation écrite du représentant légal obligatoire, avec pièce d'identité du mineur et du représentant.",
+      "L'ANSES (Agence nationale de sécurité sanitaire) assure une mission de vigilance sur les effets indésirables liés aux pratiques de modification corporelle.",
+      "Tout professionnel doit suivre une formation obligatoire aux conditions d'hygiène et de salubrité avant d'exercer."
+    ],
+    "regulations": [
+      "NF EN 17169 – Tatouage, perçage et pratiques apparentées : exigences d'hygiène",
+      "Règlement REACH (CE) n° 1907/2006 – Enregistrement, évaluation, autorisation et restriction des substances chimiques",
+      "Articles R.1311-1 à R.1311-12 du Code de la santé publique",
+      "Arrêté du 5 mars 2024 relatif aux conditions d'hygiène et de salubrité",
+      "Article R.1311-11 du CSP – Consentement des mineurs",
+      "Règlement (UE) 2020/2081 (annexe XVII de REACH) – Restrictions sur les substances dans les encres de tatouage"
+    ],
+    "practicalTips": [
+      "Afficher dans le local les textes réglementaires en vigueur et les informations relatives aux droits des clients.",
+      "Tenir un registre de traçabilité pour chaque acte réalisé (date, identité du client, produits utilisés, numéros de lot).",
+      "Vérifier systématiquement la conformité réglementaire des produits et encres avant utilisation (étiquetage, fiches de données de sécurité).",
+      "Conserver les autorisations parentales signées pendant au moins 3 ans après l'acte sur un mineur.",
+      "Se tenir informé des évolutions réglementaires via les publications de l'ANSES et du ministère de la Santé."
+    ]
+  },
+  "module-2": {
+    "title": "Anatomie et physiologie de la peau, des muqueuses et cicatrisation",
+    "keyPoints": [
+      "La peau est composée de trois couches principales : l'épiderme (couche superficielle protectrice), le derme (tissu conjonctif riche en collagène) et l'hypoderme (tissu adipeux sous-cutané).",
+      "L'encre de tatouage est déposée dans le derme, entre 1 et 2 mm de profondeur, où elle est captée par les fibroblastes et les macrophages.",
+      "Les muqueuses (buccale, génitale, nasale) sont des tissus plus fragiles, plus vascularisés et plus sensibles aux infections que la peau.",
+      "Le cycle de cicatrisation comprend quatre phases : hémostase, inflammation, prolifération (granulation) et remodelage.",
+      "L'épaisseur et la sensibilité de la peau varient selon les zones du corps, ce qui influence la profondeur de travail et le risque de complications.",
+      "Le pH cutané (environ 5,5) contribue au maintien de la fonction barrière et à la défense contre les micro-organismes.",
+      "La vascularisation du derme joue un rôle clé dans la cicatrisation et dans la diffusion potentielle d'agents pathogènes.",
+      "Les annexes cutanées (glandes sébacées, glandes sudoripares, follicules pileux) peuvent constituer des portes d'entrée pour les micro-organismes."
+    ],
+    "regulations": [
+      "NF EN 17169 – Annexe relative à la connaissance anatomique requise pour les praticiens",
+      "Arrêté du 5 mars 2024 – Programme de formation incluant l'anatomie et la physiologie de la peau"
+    ],
+    "practicalTips": [
+      "Adapter la profondeur de pénétration de l'aiguille en fonction de la zone anatomique travaillée.",
+      "Évaluer l'état de la peau du client avant tout acte : présence de lésions, grains de beauté, cicatrices, pathologies cutanées.",
+      "Expliquer au client les phases de cicatrisation pour favoriser une bonne observance des soins post-acte.",
+      "Éviter de travailler sur une peau irritée, brûlée par le soleil ou présentant des signes d'infection.",
+      "Connaître les zones à risque accru (muqueuses, zones très vascularisées, cartilages) pour adapter le protocole."
+    ]
+  },
+  "module-3": {
+    "title": "Micro-organismes, flores résidentes et transitoires, flores des muqueuses",
+    "keyPoints": [
+      "Les micro-organismes comprennent les bactéries, virus, champignons, parasites et prions, chacun présentant des modes de transmission et des résistances spécifiques.",
+      "La flore résidente est composée de micro-organismes commensaux vivant en permanence sur la peau ; elle assure un rôle protecteur (effet barrière).",
+      "La flore transitoire est constituée de micro-organismes acquis par contact avec l'environnement ; elle est potentiellement pathogène et éliminable par le lavage des mains.",
+      "La flore buccale est un écosystème complexe (plus de 700 espèces) incluant streptocoques, anaérobies et Candida, avec un risque accru lors du perçage lingual ou labial.",
+      "La flore oculaire est normalement pauvre mais peut héberger des staphylocoques et des streptocoques ; les actes proches de l'œil (microblading, dermopigmentation) imposent une vigilance particulière.",
+      "La flore génitale et vaginale (dominée par les lactobacilles chez la femme) assure un équilibre fragile ; le perçage génital présente un risque infectieux élevé.",
+      "Les biofilms sont des communautés microbiennes adhérant aux surfaces (bijoux, matériel) et résistantes aux désinfectants classiques.",
+      "La compréhension des voies de transmission (contact direct, gouttelettes, aéroportée, percutanée) est essentielle pour mettre en place les mesures de prévention."
+    ],
+    "regulations": [
+      "NF EN 17169 – Exigences relatives à la maîtrise du risque microbiologique",
+      "Arrêté du 5 mars 2024 – Programme de formation incluant la microbiologie appliquée",
+      "Recommandations du Haut Conseil de la santé publique (HCSP) sur la prévention des infections"
+    ],
+    "practicalTips": [
+      "Pratiquer une hygiène des mains rigoureuse : lavage antiseptique avant et après chaque acte, friction hydro-alcoolique entre les gestes.",
+      "Utiliser des antiseptiques adaptés à la zone traitée (peau saine, muqueuse buccale, zone génitale).",
+      "Informer le client de l'importance de l'hygiène buccale avant un perçage oral (bain de bouche antiseptique).",
+      "Renouveler régulièrement les solutions désinfectantes et respecter les temps de contact prescrits."
+    ]
+  },
+  "module-4": {
+    "title": "Risques allergiques et infectieux, pigments et contamination",
+    "keyPoints": [
+      "Les risques infectieux majeurs sont les hépatites B et C (VHB, VHC) et le VIH, transmissibles par voie sanguine lors d'un acte de tatouage ou perçage.",
+      "Les réactions allergiques aux encres de tatouage peuvent survenir immédiatement ou de manière retardée (des mois, voire des années après l'acte).",
+      "Les pigments minéraux (oxydes de fer, dioxyde de titane) sont généralement plus stables mais peuvent contenir des métaux lourds.",
+      "Les pigments organiques (azoïques) offrent des couleurs vives mais certains peuvent libérer des amines aromatiques cancérigènes lors de la dégradation (exposition UV, laser).",
+      "Les pigments hybrides combinent des composants minéraux et organiques pour optimiser stabilité et rendu chromatique.",
+      "La contamination peut être endogène (flore du client) ou exogène (matériel, environnement, mains du praticien, encres contaminées).",
+      "Les encres doivent être conformes à la résolution ResAP(2008)1 du Conseil de l'Europe et au règlement REACH (restriction des substances dangereuses).",
+      "Le test allergique préalable n'est pas fiable à 100 % ; il convient d'informer le client des risques et de recueillir ses antécédents allergiques."
+    ],
+    "regulations": [
+      "Règlement REACH (CE) n° 1907/2006 – Annexe XVII, entrée 75 (restrictions encres de tatouage)",
+      "Résolution ResAP(2008)1 du Conseil de l'Europe sur les exigences relatives aux encres de tatouage",
+      "NF EN 17169 – Exigences de traçabilité des produits utilisés",
+      "Arrêté du 5 mars 2024 – Obligations relatives aux produits de tatouage et de maquillage permanent",
+      "Règlement (CE) n° 1223/2009 relatif aux produits cosmétiques (applicable au maquillage permanent)"
+    ],
+    "practicalTips": [
+      "Toujours utiliser des encres avec un étiquetage conforme (composition, numéro de lot, date de péremption, nom du fabricant).",
+      "Ne jamais remettre de l'encre excédentaire dans le flacon d'origine : utiliser des godets à usage unique.",
+      "Réaliser un entretien pré-acte systématique pour identifier les antécédents allergiques, les traitements en cours et les contre-indications.",
+      "Conserver les références (numéros de lot) des encres utilisées pour chaque client dans le registre de traçabilité.",
+      "En cas de réaction allergique ou d'effet indésirable, déclarer l'événement auprès de l'ANSES (dispositif de vigilance)."
+    ]
+  },
+  "module-5": {
+    "title": "Stérilisation et désinfection du matériel",
+    "keyPoints": [
+      "La stérilisation est l'élimination de tous les micro-organismes, y compris les spores ; la désinfection réduit le nombre de micro-organismes à un niveau non infectieux.",
+      "La norme ISO 11607-1 définit les exigences pour les emballages des dispositifs médicaux stérilisés au stade terminal (sachets de stérilisation, soudure, indicateurs).",
+      "La norme EN 13060 spécifie les exigences pour les petits stérilisateurs à vapeur d'eau (autoclaves de type B, S ou N) utilisés en cabinet.",
+      "La norme EN ISO 17665-1 définit les exigences pour le développement, la validation et le contrôle de routine des procédés de stérilisation à la vapeur d'eau.",
+      "Le protocole en 7 étapes pour le matériel thermosensible comprend : pré-désinfection, rinçage, nettoyage, rinçage, séchage, désinfection de haut niveau, stockage protégé.",
+      "L'autoclave de type B (avec vide fractionné) est le seul adapté à la stérilisation de charges creuses, poreuses et emballées.",
+      "Les contrôles de stérilisation incluent : indicateurs physiques (température, pression), indicateurs chimiques (intégrateurs) et indicateurs biologiques (spores de Geobacillus stearothermophilus).",
+      "Le matériel à usage unique (aiguilles, buses, godets) ne doit jamais être restérilisé ni réutilisé."
+    ],
+    "regulations": [
+      "ISO 11607-1 – Emballages des dispositifs médicaux stérilisés au stade terminal",
+      "EN 13060 – Petits stérilisateurs à vapeur d'eau",
+      "EN ISO 17665-1 – Stérilisation à la vapeur d'eau : développement, validation et contrôle de routine",
+      "NF EN 17169 – Exigences relatives au traitement du matériel réutilisable",
+      "Arrêté du 5 mars 2024 – Obligations de stérilisation et de désinfection"
+    ],
+    "practicalTips": [
+      "Tenir un carnet de suivi de l'autoclave avec les résultats des cycles (date, heure, programme, indicateurs, signature).",
+      "Faire réaliser une maintenance annuelle de l'autoclave par un prestataire qualifié et conserver les attestations.",
+      "Vérifier l'intégrité des sachets de stérilisation avant utilisation : soudure intacte, indicateur viré, date de péremption non dépassée.",
+      "Respecter scrupuleusement les temps de trempage en pré-désinfection (selon les recommandations du fabricant du produit).",
+      "Effectuer un test de Bowie-Dick quotidien (autoclave type B) pour vérifier la bonne pénétration de la vapeur."
+    ]
+  },
+  "module-6": {
+    "title": "Protection du travailleur, accidents d'exposition au sang (AES) et vaccination",
+    "keyPoints": [
+      "Un accident d'exposition au sang (AES) est tout contact avec du sang ou un liquide biologique contaminé par du sang, survenant par effraction cutanée ou projection sur muqueuse.",
+      "La conduite à tenir en cas d'AES : ne pas faire saigner, nettoyer immédiatement à l'eau et au savon, désinfecter (Dakin ou javel diluée 5 min), consulter les urgences dans les 4 heures.",
+      "La vaccination contre l'hépatite B est fortement recommandée pour tous les professionnels du tatouage et du perçage (contrôle du taux d'anticorps anti-HBs).",
+      "Les équipements de protection individuelle (EPI) comprennent : gants à usage unique, masque, lunettes de protection, tablier ou blouse à usage unique.",
+      "La technique d'enfilage des gants stériles doit être maîtrisée : ne toucher que l'intérieur du premier gant, puis utiliser le gant ganté pour enfiler le second.",
+      "Le port de gants ne dispense pas du lavage des mains : les gants peuvent présenter des micro-perforations invisibles.",
+      "Les objets piquants et coupants usagés doivent être immédiatement éliminés dans un collecteur DASRI à ouverture temporaire, sans recapuchonnage des aiguilles."
+    ],
+    "regulations": [
+      "Code du travail – Articles relatifs à la prévention des risques biologiques (R.4424-1 et suivants)",
+      "Arrêté du 5 mars 2024 – Protection du praticien et gestion des AES",
+      "NF EN 17169 – Exigences relatives à la protection du praticien",
+      "Recommandations du calendrier vaccinal en vigueur (ministère de la Santé)",
+      "Circulaire DGS/DH n° 98/249 du 20 avril 1998 relative à la prévention des AES"
+    ],
+    "practicalTips": [
+      "Afficher le protocole de conduite à tenir en cas d'AES dans le local de travail, visible et accessible.",
+      "Disposer d'une trousse AES à proximité immédiate du poste de travail (antiseptique, pansement, numéros d'urgence).",
+      "Changer de gants entre chaque client et à chaque interruption de l'acte (répondre au téléphone, manipuler du matériel non stérile).",
+      "S'entraîner régulièrement à la technique d'enfilage des gants stériles pour maintenir une gestuelle rigoureuse.",
+      "Vérifier annuellement son statut vaccinal et conserver les preuves de vaccination dans le dossier professionnel."
+    ]
+  },
+  "module-7": {
+    "title": "Gestion des achats, normes des bijoux de première pose et DASRI",
+    "keyPoints": [
+      "Les bijoux de première pose doivent être fabriqués dans des matériaux biocompatibles certifiés pour minimiser les risques allergiques et infectieux.",
+      "Le titane implantable de grade ASTM F-136 (Ti-6Al-4V ELI) est le matériau de référence pour les bijoux de première pose : biocompatible, léger et hypoallergénique.",
+      "L'acier chirurgical 316LVM (Low Vacuum Melted) est acceptable mais contient du nickel ; il est déconseillé pour les clients ayant des antécédents d'allergie au nickel.",
+      "Le niobium est un métal hypoallergénique, anodisable, adapté aux premières poses et aux personnes sensibles.",
+      "L'APP (Association of Professional Piercers) publie des recommandations sur les matériaux, dimensions et designs adaptés à chaque zone de perçage.",
+      "Les DASRI (Déchets d'Activités de Soins à Risques Infectieux) doivent être collectés dans des conteneurs normalisés, stockés dans un local dédié et éliminés par un prestataire agréé.",
+      "La traçabilité des achats (fournisseurs, certificats de conformité, numéros de lot des bijoux et des encres) doit être assurée et conservée."
+    ],
+    "regulations": [
+      "Norme ASTM F-136 – Titane implantable (Ti-6Al-4V ELI) pour applications chirurgicales",
+      "Règlement REACH – Restriction du nickel dans les objets en contact prolongé avec la peau (entrée 27, annexe XVII)",
+      "NF EN 17169 – Exigences relatives aux bijoux de première pose",
+      "Code de la santé publique – Articles R.1335-1 à R.1335-14 relatifs aux DASRI",
+      "Arrêté du 7 septembre 1999 relatif aux modalités d'entreposage et de collecte des DASRI",
+      "Recommandations de l'APP (Association of Professional Piercers) sur les matériaux de bijoux"
+    ],
+    "practicalTips": [
+      "Exiger systématiquement les certificats de conformité et les fiches techniques des bijoux auprès des fournisseurs.",
+      "Ne proposer que des bijoux en titane ASTM F-136, niobium ou or 14/18 carats pour les premières poses.",
+      "Signer une convention avec un prestataire agréé pour la collecte des DASRI et conserver les bordereaux de suivi (BSD).",
+      "Utiliser des collecteurs DASRI conformes (NF X 30-500) : jaunes pour les objets piquants/coupants, avec fermeture définitive.",
+      "Tenir un inventaire des stocks et vérifier les dates de péremption des produits consommables à réception et régulièrement."
+    ]
+  },
+  "module-8": {
+    "title": "Locaux et mobilier : exigences réglementaires",
+    "keyPoints": [
+      "Le local doit comporter au minimum : une salle d'attente (ou espace d'accueil), une salle de travail dédiée aux actes et une zone de stérilisation/désinfection séparée.",
+      "La salle de travail doit disposer de surfaces lisses, lessivables, imperméables et résistantes aux produits désinfectants (sols, murs, plans de travail).",
+      "Un point d'eau équipé d'un distributeur de savon antiseptique, d'essuie-mains à usage unique et d'une poubelle à pédale doit être présent dans la salle de travail.",
+      "Le mobilier (fauteuil, plan de travail, chariot) doit être en matériaux non poreux, facilement nettoyables et désinfectables entre chaque client.",
+      "La ventilation du local doit être suffisante pour assurer le renouvellement de l'air et limiter la contamination aéroportée.",
+      "L'éclairage doit être adapté à la précision des actes réalisés (lumière directe et homogène sur la zone de travail).",
+      "Les zones propres et les zones souillées doivent être clairement séparées selon le principe de la marche en avant (du plus propre au plus sale).",
+      "Les animaux sont interdits dans les locaux où sont réalisés les actes."
+    ],
+    "regulations": [
+      "Arrêté du 5 mars 2024 – Exigences relatives aux locaux et à l'aménagement",
+      "NF EN 17169 – Exigences relatives aux locaux, surfaces et équipements",
+      "Articles R.1311-1 à R.1311-12 du CSP – Conditions d'hygiène et de salubrité des locaux",
+      "Règlement sanitaire départemental – Dispositions relatives à l'hygiène des locaux recevant du public"
+    ],
+    "practicalTips": [
+      "Établir un plan de nettoyage et de désinfection des locaux avec fréquence, produits utilisés et responsable désigné.",
+      "Protéger les surfaces de travail avec des champs à usage unique (papier plastifié) remplacés entre chaque client.",
+      "Installer des poubelles à pédale avec sacs adaptés dans chaque zone (accueil, salle de travail, zone de stérilisation).",
+      "Afficher le protocole d'entretien des locaux et le plan de nettoyage dans la zone de stérilisation.",
+      "Réaliser un audit régulier de l'état des locaux et du mobilier pour identifier et corriger les non-conformités."
+    ]
+  },
+  "module-9": {
+    "title": "Procédures d'asepsie, soins post-acte et conservation des antiseptiques",
+    "keyPoints": [
+      "L'asepsie est l'ensemble des mesures visant à empêcher l'introduction de micro-organismes dans une zone stérile ou dans l'organisme du client.",
+      "La préparation cutanée avant l'acte comprend : nettoyage de la zone, application d'un antiseptique en deux temps (détersion puis antisepsie), respect du temps de séchage.",
+      "Le champ stérile doit être mis en place pour délimiter la zone de travail et y déposer le matériel stérile nécessaire à l'acte (technique de mise en place sans contamination).",
+      "Les soins post-acte pour un tatouage incluent : nettoyage doux au savon surgras, application d'une crème cicatrisante, protection par film respirant les premières heures, éviction solaire 4 semaines.",
+      "Les soins post-acte pour un piercing incluent : nettoyage biquotidien au sérum physiologique, ne pas toucher ni tourner le bijou, éviter l'immersion (piscine, bain) pendant la cicatrisation.",
+      "Les soins post-acte pour un maquillage permanent sont similaires au tatouage : nettoyage doux, crème cicatrisante, pas d'exposition solaire ni de maquillage sur la zone pendant la cicatrisation.",
+      "Les antiseptiques (chlorhexidine, povidone iodée, Dakin) ont une durée de conservation limitée après ouverture : noter la date d'ouverture sur le flacon et respecter le délai d'utilisation (généralement 1 mois).",
+      "Tout le matériel stérile doit être ouvert devant le client, juste avant l'acte, en vérifiant l'intégrité de l'emballage et la date de péremption."
+    ],
+    "regulations": [
+      "NF EN 17169 – Procédures d'hygiène avant, pendant et après l'acte",
+      "Arrêté du 5 mars 2024 – Protocoles d'asepsie et soins post-acte obligatoires",
+      "Pharmacopée européenne – Monographies des antiseptiques (chlorhexidine, povidone iodée)",
+      "Recommandations de la Société française d'hygiène hospitalière (SF2H) sur le bon usage des antiseptiques"
+    ],
+    "practicalTips": [
+      "Remettre au client une fiche de soins post-acte écrite, claire et détaillée, adaptée au type d'acte réalisé (tatouage, piercing ou maquillage permanent).",
+      "Inscrire la date d'ouverture sur chaque flacon d'antiseptique et éliminer tout produit dépassant le délai de conservation après ouverture.",
+      "Préparer le champ stérile en dernier, juste avant le début de l'acte, et ne jamais le quitter des yeux une fois ouvert.",
+      "Utiliser des compresses stériles à usage unique pour l'application des antiseptiques (jamais de coton ou de tissu réutilisable).",
+      "Proposer un rendez-vous de contrôle ou un suivi téléphonique quelques jours après l'acte pour vérifier la bonne cicatrisation."
+    ]
+  }
+}

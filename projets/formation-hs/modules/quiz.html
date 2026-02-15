@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#1a5276">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+    <title>Mode Quiz — Formation H&amp;S</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/formation.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-logo"><span class="site-logo-icon">H&S</span> Formation H&amp;S</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../support/index.html">Support ARS</a></li>
+                    <li><a href="index.html">Formation</a></li>
+                    <li><a href="quiz.html" class="active">Quiz</a></li>
+                    <li><a href="../index.html">Accueil</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>Mode Quiz</h1>
+            <p class="text-muted">Testez vos connaissances directement, sans parcourir les modules.</p>
+        </div>
+
+        <!-- Module selector -->
+        <div class="quiz-selector" id="quizSelector">
+            <h2 class="quiz-selector-title">Choisissez un module</h2>
+            <div class="modules-grid">
+                <button class="module-card quiz-module-btn" data-module="module-1">
+                    <div class="module-card-header">
+                        <div class="module-num">1</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-1">10 questions</span>
+                    </div>
+                    <h3>Réglementation tatouage &amp; perçage</h3>
+                    <p>Cadre légal, NF EN 17169, REACH, bijoux, pratiques interdites, vigilance.</p>
+                    <span class="module-score hidden" data-score="module-1"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-2">
+                    <div class="module-card-header">
+                        <div class="module-num">2</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-2">10 questions</span>
+                    </div>
+                    <h3>Anatomie &amp; physiologie</h3>
+                    <p>Structure de la peau, muqueuses, mécanismes de cicatrisation.</p>
+                    <span class="module-score hidden" data-score="module-2"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-3">
+                    <div class="module-card-header">
+                        <div class="module-num">3</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-3">10 questions</span>
+                    </div>
+                    <h3>Micro-organismes</h3>
+                    <p>Flores cutanée, buccale, oculaire, génitale. Biofilms. Résidents vs transitoires.</p>
+                    <span class="module-score hidden" data-score="module-3"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-4">
+                    <div class="module-card-header">
+                        <div class="module-num">4</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-4">10 questions</span>
+                    </div>
+                    <h3>Risques allergiques &amp; infectieux</h3>
+                    <p>Pigments, contamination, contre-indications, soins post-acte différenciés.</p>
+                    <span class="module-score hidden" data-score="module-4"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-5">
+                    <div class="module-card-header">
+                        <div class="module-num">5</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-5">10 questions</span>
+                    </div>
+                    <h3>Stérilisation &amp; désinfection</h3>
+                    <p>Normes EN 13060, ISO 17665-1, ISO 11607-1. Matériel thermosensible. Traçabilité.</p>
+                    <span class="module-score hidden" data-score="module-5"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-6">
+                    <div class="module-card-header">
+                        <div class="module-num">6</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-6">10 questions</span>
+                    </div>
+                    <h3>Protection du travailleur</h3>
+                    <p>EPI, gants stériles, AES, vaccination, hygiène des mains.</p>
+                    <span class="module-score hidden" data-score="module-6"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-7">
+                    <div class="module-card-header">
+                        <div class="module-num">7</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-7">10 questions</span>
+                    </div>
+                    <h3>Gestion achats &amp; déchets</h3>
+                    <p>Encres REACH, bijoux APP/ASTM, matériel annexe 6, DASRI.</p>
+                    <span class="module-score hidden" data-score="module-7"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-8">
+                    <div class="module-card-header">
+                        <div class="module-num">8</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-8">10 questions</span>
+                    </div>
+                    <h3>Locaux &amp; mobilier</h3>
+                    <p>Zones fonctionnelles, surfaces, ventilation, protocoles d'entretien.</p>
+                    <span class="module-score hidden" data-score="module-8"></span>
+                </button>
+
+                <button class="module-card quiz-module-btn" data-module="module-9">
+                    <div class="module-card-header">
+                        <div class="module-num">9</div>
+                        <span class="module-status badge badge-primary quiz-badge" data-badge="module-9">10 questions</span>
+                    </div>
+                    <h3>Procédures d'asepsie (Pratique)</h3>
+                    <p>Champ stérile, antisepsie, procédures tatouage/perçage/maquillage permanent.</p>
+                    <span class="module-score hidden" data-score="module-9"></span>
+                </button>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" id="startAllQuiz">Enchaîner tous les quiz (90 questions)</button>
+            </div>
+        </div>
+
+        <!-- Quiz container (hidden until module selected) -->
+        <div id="quizZone" class="hidden">
+            <div class="quiz-zone-header">
+                <button class="btn btn-outline btn-sm" id="backToSelector">← Retour aux modules</button>
+                <h2 id="quizZoneTitle"></h2>
+            </div>
+            <div id="quizContainer"></div>
+            <div id="quizAllContainer"></div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Formation Hygiène &amp; Salubrité — Conforme arrêté du 5 mars 2024</p>
+        </div>
+    </footer>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/pwa-register.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        const MODULE_NAMES = {
+            'module-1': 'Réglementation tatouage & perçage',
+            'module-2': 'Anatomie & physiologie',
+            'module-3': 'Micro-organismes',
+            'module-4': 'Risques allergiques & infectieux',
+            'module-5': 'Stérilisation & désinfection',
+            'module-6': 'Protection du travailleur',
+            'module-7': 'Gestion achats & déchets',
+            'module-8': 'Locaux & mobilier',
+            'module-9': 'Procédures d\'asepsie (Pratique)'
+        };
+
+        const selector = document.getElementById('quizSelector');
+        const quizZone = document.getElementById('quizZone');
+        const quizContainer = document.getElementById('quizContainer');
+        const quizAllContainer = document.getElementById('quizAllContainer');
+        const quizZoneTitle = document.getElementById('quizZoneTitle');
+        const backBtn = document.getElementById('backToSelector');
+
+        // Show previous scores on cards
+        function updateScoreBadges() {
+            if (!window.ProgressTracker) return;
+            for (let i = 1; i <= 9; i++) {
+                const moduleId = `module-${i}`;
+                const status = ProgressTracker.getModuleStatus(moduleId);
+                const badge = document.querySelector(`[data-badge="${moduleId}"]`);
+                const scoreEl = document.querySelector(`[data-score="${moduleId}"]`);
+                const card = document.querySelector(`[data-module="${moduleId}"]`);
+
+                if (status.quizScore !== null) {
+                    const pct = Math.round((status.quizScore / status.quizTotal) * 100);
+                    if (scoreEl) {
+                        scoreEl.textContent = `Dernier score : ${status.quizScore}/${status.quizTotal} (${pct}%)`;
+                        scoreEl.classList.remove('hidden');
+                    }
+                    if (pct >= 70) {
+                        if (badge) { badge.textContent = 'Validé ✓'; badge.className = 'module-status badge badge-accent quiz-badge'; }
+                        if (card) card.classList.add('completed');
+                    } else {
+                        if (badge) { badge.textContent = 'À revoir'; badge.className = 'module-status badge badge-warning quiz-badge'; }
+                    }
+                }
+            }
+        }
+
+        // Launch single module quiz
+        function launchQuiz(moduleId) {
+            selector.classList.add('hidden');
+            quizZone.classList.remove('hidden');
+            quizZoneTitle.textContent = MODULE_NAMES[moduleId] || moduleId;
+            quizContainer.innerHTML = '';
+            quizAllContainer.innerHTML = '';
+
+            const quiz = new QuizEngine('quizContainer', moduleId);
+            quiz.init();
+
+            quizZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Launch all quizzes sequentially
+        async function launchAllQuizzes() {
+            selector.classList.add('hidden');
+            quizZone.classList.remove('hidden');
+            quizZoneTitle.textContent = 'Tous les quiz — 90 questions';
+            quizContainer.innerHTML = '';
+            quizAllContainer.innerHTML = '';
+
+            try {
+                const response = await fetch('../data/quizzes.json');
+                const data = await response.json();
+
+                let totalScore = 0;
+                let totalQuestions = 0;
+                const allQuestions = [];
+
+                // Merge all questions with module info
+                for (let i = 1; i <= 9; i++) {
+                    const moduleId = `module-${i}`;
+                    const questions = data[moduleId] || [];
+                    questions.forEach(q => {
+                        allQuestions.push({ ...q, moduleId, moduleNum: i, moduleName: MODULE_NAMES[moduleId] });
+                    });
+                }
+
+                totalQuestions = allQuestions.length;
+
+                // Render all-in-one quiz
+                let html = `
+                    <div class="quiz-wrapper">
+                        <div class="quiz-header">
+                            <h3>Quiz complet — ${totalQuestions} questions</h3>
+                            <p class="text-muted">Tous les modules</p>
+                        </div>
+                        <div class="quiz-questions">
+                `;
+
+                let currentModule = '';
+                allQuestions.forEach((q, i) => {
+                    if (q.moduleId !== currentModule) {
+                        currentModule = q.moduleId;
+                        html += `<div class="quiz-module-divider"><span class="badge badge-primary">Module ${q.moduleNum}</span> ${q.moduleName}</div>`;
+                    }
+                    html += `
+                        <div class="quiz-question" data-index="${i}">
+                            <div class="quiz-q-header">
+                                <span class="quiz-q-num">${i + 1}</span>
+                                <p class="quiz-q-text">${q.question}</p>
+                            </div>
+                            <div class="quiz-options">
+                    `;
+                    q.options.forEach((opt, j) => {
+                        const id = `qa${i}_opt${j}`;
+                        html += `
+                            <label class="quiz-option" for="${id}">
+                                <input type="radio" name="qa${i}" id="${id}" value="${j}">
+                                <span class="quiz-option-text">${opt}</span>
+                                <span class="quiz-option-icon"></span>
+                            </label>
+                        `;
+                    });
+                    html += `
+                            </div>
+                            <div class="quiz-feedback hidden" data-feedback="${i}"></div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                        <div class="quiz-actions">
+                            <button class="btn btn-primary" id="quizAllSubmit">
+                                Valider mes ${totalQuestions} réponses
+                            </button>
+                        </div>
+                        <div class="quiz-result hidden" id="quizAllResult"></div>
+                    </div>
+                `;
+
+                quizAllContainer.innerHTML = html;
+
+                // Bind selection events
+                quizAllContainer.querySelectorAll('input[type="radio"]').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const question = e.target.closest('.quiz-question');
+                        question.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                        e.target.closest('.quiz-option').classList.add('selected');
+                    });
+                });
+
+                // Submit all
+                document.getElementById('quizAllSubmit').addEventListener('click', function() {
+                    const answers = {};
+                    quizAllContainer.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                        answers[input.name] = parseInt(input.value);
+                    });
+
+                    const answered = Object.keys(answers).length;
+                    if (answered < totalQuestions) {
+                        if (!confirm(`Il reste ${totalQuestions - answered} question(s) sans réponse. Valider quand même ?`)) return;
+                    }
+
+                    let score = 0;
+                    const moduleScores = {};
+
+                    allQuestions.forEach((q, i) => {
+                        const answer = answers[`qa${i}`];
+                        const correct = answer === q.correct;
+                        if (correct) score++;
+
+                        // Track per-module scores
+                        if (!moduleScores[q.moduleId]) moduleScores[q.moduleId] = { score: 0, total: 0 };
+                        moduleScores[q.moduleId].total++;
+                        if (correct) moduleScores[q.moduleId].score++;
+
+                        const questionEl = quizAllContainer.querySelector(`.quiz-question[data-index="${i}"]`);
+                        const feedbackEl = questionEl.querySelector(`[data-feedback="${i}"]`);
+
+                        questionEl.querySelectorAll('.quiz-option').forEach((opt, j) => {
+                            opt.querySelector('input').disabled = true;
+                            if (j === q.correct) opt.classList.add('correct');
+                            else if (j === answer && !correct) opt.classList.add('incorrect');
+                        });
+
+                        feedbackEl.classList.remove('hidden');
+                        feedbackEl.className = `quiz-feedback ${correct ? 'feedback-correct' : 'feedback-incorrect'}`;
+                        feedbackEl.innerHTML = `
+                            <span class="feedback-icon">${correct ? '✓' : '✗'}</span>
+                            <span class="feedback-text">${q.feedback || (correct ? 'Bonne réponse !' : 'Mauvaise réponse.')}</span>
+                        `;
+                    });
+
+                    // Save per-module scores
+                    if (window.ProgressTracker) {
+                        Object.keys(moduleScores).forEach(moduleId => {
+                            const ms = moduleScores[moduleId];
+                            ProgressTracker.saveQuizScore(moduleId, ms.score, ms.total);
+                        });
+                    }
+
+                    // Show global result
+                    const pct = Math.round((score / totalQuestions) * 100);
+                    const passed = pct >= 70;
+                    const resultEl = document.getElementById('quizAllResult');
+                    resultEl.classList.remove('hidden');
+
+                    let moduleBreakdown = '<div class="quiz-breakdown"><h4>Détail par module</h4>';
+                    Object.keys(moduleScores).sort().forEach(moduleId => {
+                        const ms = moduleScores[moduleId];
+                        const mPct = Math.round((ms.score / ms.total) * 100);
+                        const mPass = mPct >= 70;
+                        moduleBreakdown += `<div class="breakdown-row ${mPass ? 'pass' : 'fail'}"><span>${MODULE_NAMES[moduleId]}</span><strong>${ms.score}/${ms.total} (${mPct}%)</strong></div>`;
+                    });
+                    moduleBreakdown += '</div>';
+
+                    resultEl.innerHTML = `
+                        <div class="result-score">
+                            <div class="result-circle ${passed ? 'pass' : 'fail'}">
+                                <span class="result-pct">${pct}%</span>
+                            </div>
+                            <div class="result-details">
+                                <h4>${passed ? 'Félicitations !' : 'À revoir'}</h4>
+                                <p>${score}/${totalQuestions} réponses correctes</p>
+                                <p class="text-muted">${passed ? 'Vous maîtrisez l\'ensemble du programme.' : 'Continuez à réviser les modules en difficulté.'}</p>
+                            </div>
+                        </div>
+                        ${moduleBreakdown}
+                        <button class="btn btn-outline mt-4" onclick="location.reload()">Recommencer</button>
+                    `;
+
+                    this.disabled = true;
+                    this.textContent = 'Quiz terminé';
+                    resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+
+            } catch (err) {
+                quizAllContainer.innerHTML = '<p class="text-muted">Erreur lors du chargement des questions.</p>';
+                console.error(err);
+            }
+
+            quizZone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Events
+        document.querySelectorAll('.quiz-module-btn').forEach(btn => {
+            btn.addEventListener('click', () => launchQuiz(btn.dataset.module));
+        });
+
+        document.getElementById('startAllQuiz').addEventListener('click', launchAllQuizzes);
+
+        backBtn.addEventListener('click', () => {
+            quizZone.classList.add('hidden');
+            selector.classList.remove('hidden');
+            updateScoreBadges();
+            selector.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Init
+        updateScoreBadges();
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#1a5276">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+    <title>Formation interactive — Hygiène & Salubrité</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/formation.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-logo"><span class="site-logo-icon">H&S</span> Formation H&S</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../support/index.html">Support ARS</a></li>
+                    <li><a href="index.html" class="active">Formation</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="../index.html">Accueil</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>Formation Hygiène & Salubrité</h1>
+            <p class="text-muted">Parcourez les 9 modules, validez les quiz et suivez votre progression.</p>
+        </div>
+
+        <div class="global-progress">
+            <div class="global-progress-bar">
+                <div class="global-progress-fill"></div>
+            </div>
+            <div class="global-progress-text">0/2 modules disponibles complétés</div>
+        </div>
+
+        <div class="modules-grid">
+            <a href="module-1.html" class="module-card" data-module="module-1">
+                <div class="module-card-header">
+                    <div class="module-num">1</div>
+                    <span class="module-status badge badge-primary">Non commencé</span>
+                </div>
+                <h3>Réglementation tatouage & perçage</h3>
+                <p>Cadre légal, NF EN 17169, REACH, bijoux, pratiques interdites, vigilance.</p>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
+
+            <a href="module-2.html" class="module-card" data-module="module-2">
+                <div class="module-card-header">
+                    <div class="module-num">2</div>
+                    <span class="module-status badge badge-primary">Non commencé</span>
+                </div>
+                <h3>Anatomie & physiologie</h3>
+                <p>Structure de la peau, muqueuses, mécanismes de cicatrisation.</p>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">3</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Micro-organismes</h3>
+                <p>Flores cutanée, buccale, oculaire, génitale. Biofilms. Résidents vs transitoires.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">4</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Risques allergiques & infectieux</h3>
+                <p>Pigments, contamination, contre-indications, soins post-acte différenciés.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">5</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Stérilisation & désinfection</h3>
+                <p>Normes EN 13060, ISO 17665-1, ISO 11607-1. Matériel thermosensible. Traçabilité.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">6</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Protection du travailleur</h3>
+                <p>EPI, gants stériles, AES, vaccination, hygiène des mains.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">7</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Gestion achats & déchets</h3>
+                <p>Encres REACH, bijoux APP/ASTM, matériel annexe 6, DASRI.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">8</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Locaux & mobilier</h3>
+                <p>Zones fonctionnelles, surfaces, ventilation, protocoles d'entretien.</p>
+            </div>
+
+            <div class="module-card module-card--locked">
+                <div class="module-card-header">
+                    <div class="module-num">9</div>
+                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                </div>
+                <h3>Procédures d'asepsie (Pratique)</h3>
+                <p>Champ stérile, antisepsie, procédures tatouage/perçage/maquillage permanent.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+            <a href="quiz.html" class="btn btn-primary">Mode Quiz uniquement</a>
+            <button class="btn btn-sm btn-outline" onclick="if(confirm('Réinitialiser toute la progression ?')){ProgressTracker.reset();location.reload();}">
+                Réinitialiser la progression
+            </button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Formation Hygiène & Salubrité — Conforme arrêté du 5 mars 2024</p>
+        </div>
+    </footer>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

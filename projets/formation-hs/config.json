@@ -1,0 +1,39 @@
+{
+  "ars": {
+    "region": "Auvergne-Rhône-Alpes",
+    "code": "ARA",
+    "nom": "Agence Régionale de Santé Auvergne-Rhône-Alpes",
+    "adresse": "241 rue Garibaldi, CS 93383, 69418 Lyon Cedex 03",
+    "telephone": "04 72 34 74 00",
+    "email": "ars-ara-contact@ars.sante.fr",
+    "site": "https://www.auvergne-rhone-alpes.ars.sante.fr"
+  },
+  "organisme": {
+    "nom": "[Nom de l'organisme de formation]",
+    "siret": "[SIRET]",
+    "nda": "[Numéro de déclaration d'activité]",
+    "adresse": "[Adresse]",
+    "telephone": "[Téléphone]",
+    "email": "[Email]",
+    "responsable": "[Nom du responsable pédagogique]",
+    "formateur": "[Nom du formateur principal]",
+    "qualifications": "[Qualifications du formateur]"
+  },
+  "formation": {
+    "intitule": "Certification aux conditions d'hygiène et salubrité pour la réalisation des techniques de tatouage et du perçage corporel",
+    "reference_arrete": "Arrêté du 5 mars 2024",
+    "duree_heures": 21,
+    "duree_jours": 3,
+    "effectif_max": 12,
+    "prix_ht": 500,
+    "tva": 0,
+    "objectif_general": "Permettre aux professionnels du tatouage et du perçage corporel d'acquérir les compétences nécessaires en matière d'hygiène et de salubrité, conformément à la réglementation en vigueur."
+  },
+  "regions_disponibles": [
+    { "code": "ARA", "nom": "Auvergne-Rhône-Alpes" },
+    { "code": "PACA", "nom": "Provence-Alpes-Côte d'Azur" },
+    { "code": "IDF", "nom": "Île-de-France" },
+    { "code": "OCC", "nom": "Occitanie" },
+    { "code": "NAQ", "nom": "Nouvelle-Aquitaine" }
+  ]
+}

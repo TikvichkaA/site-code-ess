@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#1a5276">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+    <title>Achats &amp; Déchets | Formation H&amp;S</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/formation.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-logo"><span class="site-logo-icon">H&S</span> Formation H&amp;S</a>
+            <nav><ul class="nav-links"><li><a href="../support/index.html">Support ARS</a></li><li><a href="index.html" class="active">Formation</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="../index.html">Accueil</a></li></ul></nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        </div>
+    </header>
+
+    <button class="sidebar-toggle" aria-label="Menu modules">☰</button>
+
+    <div class="formation-layout">
+        <aside class="sidebar">
+            <div class="sidebar-title">Modules</div>
+            <ul class="sidebar-nav">
+                <li><a href="module-1.html"><span class="nav-num">1</span> Réglementation</a></li>
+                <li><a href="module-2.html"><span class="nav-num">2</span> Anatomie</a></li>
+                <li><a href="module-3.html"><span class="nav-num">3</span> Micro-organismes</a></li>
+                <li><a href="module-4.html"><span class="nav-num">4</span> Risques</a></li>
+                <li><a href="module-5.html"><span class="nav-num">5</span> Stérilisation</a></li>
+                <li><a href="module-6.html"><span class="nav-num">6</span> Protection</a></li>
+                <li><a href="module-7.html" class="active"><span class="nav-num">7</span> Achats &amp; Déchets</a></li>
+                <li><a href="module-8.html"><span class="nav-num">8</span> Locaux</a></li>
+                <li><a href="module-9.html"><span class="nav-num">9</span> Asepsie (Pratique)</a></li>
+            </ul>
+        </aside>
+
+        <main class="formation-content">
+            <!-- Module header -->
+            <div class="module-header">
+                <span class="badge badge-primary">Module 7</span>
+                <h1>Gestion des achats et du matériel, élimination des déchets</h1>
+                <div class="module-meta">
+                    <span>⏱ 2h</span>
+                    <span>📝 10 questions</span>
+                    <span>📖 <a href="../support/unite-7.html" style="color:rgba(255,255,255,0.9)">Voir le support complet</a></span>
+                </div>
+            </div>
+
+            <!-- Objectifs d'apprentissage -->
+            <div class="module-section">
+                <h2>Objectifs d'apprentissage</h2>
+                <ul class="list-check">
+                    <li>Savoir sélectionner des encres conformes au règlement REACH et vérifier leur étiquetage</li>
+                    <li>Connaître les matériaux biocompatibles pour les bijoux de première pose (ASTM F-136, F-138)</li>
+                    <li>Identifier les exigences pour les aiguilles et cathéters (usage unique, stérilité)</li>
+                    <li>Maîtriser le tri et l'élimination des DASRI selon la réglementation en vigueur</li>
+                    <li>Remplir correctement un bordereau de suivi des déchets (BSD CERFA)</li>
+                </ul>
+            </div>
+
+            <!-- Section 1 : Achat des encres -->
+            <div class="module-section">
+                <h2>1. Achat des encres de tatouage et pigments</h2>
+                <p>Les encres de tatouage et pigments de maquillage permanent sont des produits réglementés. Depuis janvier 2022, le <strong>règlement REACH</strong> (CE 1907/2006) restreint plus de 4 000 substances chimiques dans leur composition.</p>
+
+                <div class="encadre encadre-info">
+                    <strong>Vérifications obligatoires avant achat</strong>
+                    <ul>
+                        <li><strong>Conformité REACH</strong> : attestation de conformité fournie par le fabricant</li>
+                        <li><strong>Fiche de données de sécurité (FDS)</strong> : document détaillant la composition, les dangers et les mesures de sécurité</li>
+                        <li><strong>Étiquetage en français</strong> : liste INCI des ingrédients, nom du fabricant, numéro de lot, date de péremption</li>
+                        <li><strong>Résolution RAP(2008)1</strong> du Conseil de l'Europe : exigences complémentaires de pureté</li>
+                    </ul>
+                </div>
+
+                <div class="encadre encadre-alert">
+                    <strong>Traçabilité obligatoire</strong><br>
+                    Pour chaque encre utilisée, vous devez conserver pendant <strong>3 ans minimum</strong> : le nom commercial, le numéro de lot, le nom du fournisseur et la date d'utilisation. Ces informations doivent figurer sur la fiche client. En cas de signalement à l'ANSES, cette traçabilité permet d'identifier rapidement le produit en cause.
+                </div>
+            </div>
+
+            <!-- Section 2 : Achat des bijoux -->
+            <div class="module-section">
+                <h2>2. Achat des bijoux de perçage</h2>
+                <p>Les bijoux de première pose sont en contact prolongé avec une plaie ouverte. Le choix du matériau est déterminant pour éviter les réactions allergiques et favoriser la cicatrisation.</p>
+
+                <table class="table-styled">
+                    <thead>
+                        <tr>
+                            <th>Matériau</th>
+                            <th>Norme</th>
+                            <th>Avantages</th>
+                            <th>Limites</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Titane implant grade</strong></td>
+                            <td>ASTM F-136</td>
+                            <td>Biocompatible, sans nickel, léger</td>
+                            <td>Coût plus élevé</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acier chirurgical 316LVM</strong></td>
+                            <td>ASTM F-138</td>
+                            <td>Résistant, économique</td>
+                            <td>Contient du nickel (risque de sensibilisation)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Niobium</strong></td>
+                            <td>ASTM B-392</td>
+                            <td>Hypoallergénique, anodisable</td>
+                            <td>Moins répandu, plus cher</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Or massif 14k+</strong></td>
+                            <td>—</td>
+                            <td>Biocompatible si or massif</td>
+                            <td>Coût élevé, or plaqué interdit en première pose</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="encadre encadre-info">
+                    <strong>Exigences APP (Association of Professional Piercers)</strong>
+                    <ul>
+                        <li>Surface polie miroir (pas de rugosité propice aux bactéries)</li>
+                        <li>Filetage interne (pas d'arêtes en contact avec le canal de perçage)</li>
+                        <li>Certificat matière fourni par le fournisseur (mill certificate)</li>
+                        <li>Stérilisation avant insertion (autoclave ou emballage stérile)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 3 : Aiguilles et cathéters -->
+            <div class="module-section">
+                <h2>3. Aiguilles et cathéters</h2>
+                <p>Tout le matériel perforant en contact avec le client doit être <strong>à usage unique</strong> et <strong>stérile</strong>. Il est strictement interdit de réutiliser ou de restériliser des aiguilles ou des cathéters.</p>
+
+                <div class="encadre encadre-alert">
+                    <strong>Points de contrôle à la réception</strong>
+                    <ul>
+                        <li>Emballage individuel scellé et intact</li>
+                        <li>Marquage CE obligatoire</li>
+                        <li>Date de péremption non dépassée</li>
+                        <li>Indicateur de stérilité conforme (virage de couleur)</li>
+                        <li>Numéro de lot lisible (traçabilité)</li>
+                    </ul>
+                </div>
+
+                <p>Les cathéters de perçage (IV cathéters) doivent être de calibre adapté au bijou. L'aiguille est retirée après perforation et seul le tube souple guide l'insertion du bijou. Chaque cathéter ne sert qu'une seule fois et rejoint immédiatement le collecteur DASRI.</p>
+            </div>
+
+            <!-- Section 4 : Élimination des déchets (DASRI) -->
+            <div class="module-section">
+                <h2>4. Élimination des déchets : filière DASRI</h2>
+                <p>Les déchets produits lors d'un acte de tatouage ou de perçage sont potentiellement contaminants. Leur tri et leur élimination sont encadrés par le <strong>Code de la santé publique</strong> et le <strong>Code de l'environnement</strong>.</p>
+
+                <table class="table-styled">
+                    <thead>
+                        <tr>
+                            <th>Type de déchet</th>
+                            <th>Exemples</th>
+                            <th>Contenant</th>
+                            <th>Filière</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PCT (Piquants, Coupants, Tranchants)</strong></td>
+                            <td>Aiguilles, cathéters, lames</td>
+                            <td>Collecteur jaune rigide NF X 30-500</td>
+                            <td>DASRI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DASRI mous</strong></td>
+                            <td>Compresses, gants souillés, essuie-mains contaminés</td>
+                            <td>Sac jaune homologué</td>
+                            <td>DASRI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DAOM</strong></td>
+                            <td>Emballages, papier, plastiques non souillés</td>
+                            <td>Poubelle ordinaire</td>
+                            <td>Déchets ménagers</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="encadre encadre-info">
+                    <strong>Règles de gestion des DASRI</strong>
+                    <ul>
+                        <li><strong>Convention obligatoire</strong> avec un collecteur agréé (prestataire autorisé par la préfecture)</li>
+                        <li><strong>BSD (Bordereau de Suivi des Déchets)</strong> : formulaire CERFA à remplir à chaque enlèvement, conservé 3 ans</li>
+                        <li><strong>Fréquence de collecte</strong> : au minimum mensuelle pour les petits producteurs (&lt; 5 kg/mois), au plus tous les 3 mois</li>
+                        <li><strong>Stockage</strong> : dans un local ou contenant dédié, identifié, à l'abri de la chaleur et inaccessible au public</li>
+                        <li><strong>Collecteur PCT</strong> : ne jamais remplir au-delà de la limite de remplissage, fermer définitivement avant enlèvement</li>
+                    </ul>
+                </div>
+
+                <div class="encadre encadre-alert">
+                    <strong>Sanctions en cas de non-conformité</strong><br>
+                    Le mélange de DASRI avec les déchets ménagers est un délit passible de <strong>2 ans d'emprisonnement et 75 000 euros d'amende</strong> (article L.541-46 du Code de l'environnement). L'ARS vérifie systématiquement la convention DASRI et les BSD lors des inspections.
+                </div>
+            </div>
+
+            <!-- Étude de cas -->
+            <div class="module-section">
+                <h2>Étude de cas</h2>
+                <div id="caseStudy"></div>
+            </div>
+
+            <!-- Quiz -->
+            <div id="quiz"></div>
+
+            <!-- Navigation -->
+            <div class="module-nav">
+                <a href="module-6.html">&larr; Protection</a>
+                <a href="module-8.html">Locaux &rarr;</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer"><div class="container"><p>Formation H&amp;S — Conforme arrêté du 5 mars 2024</p></div></footer>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/case-studies.js"></script>
+    <script>
+        // Init quiz
+        const quiz = new QuizEngine('quiz', 'module-7');
+        quiz.init();
+
+        // Init case study
+        const caseData = {
+            title: 'Réception d\'un lot d\'encres non conformes',
+            steps: [{
+                scenario: 'Vous recevez un nouveau lot d\'encres de tatouage d\'un fournisseur que vous utilisez pour la première fois. En ouvrant le colis, vous constatez que les étiquettes sont intégralement en chinois, sans aucune traduction en français. Il n\'y a pas de liste INCI des ingrédients, pas de mention de conformité REACH, et aucune fiche de données de sécurité (FDS) n\'est jointe. Le prix était très compétitif et vous avez plusieurs rendez-vous cette semaine.',
+                question: 'Quelle est la conduite à tenir face à ces encres ?',
+                choices: [
+                    { text: 'Utiliser les encres en attendant de recevoir la documentation : les rendez-vous clients ne peuvent pas attendre', correct: false, feedback: 'Faux. Utiliser des encres sans étiquetage conforme et sans attestation REACH expose le client à des risques sanitaires graves (substances interdites, métaux lourds, amines aromatiques cancérigènes). Vous engagez votre responsabilité civile et pénale. L\'ARS peut ordonner la fermeture immédiate du studio.' },
+                    { text: 'Ne PAS utiliser les encres. Contacter le fournisseur pour exiger les documents de conformité (FDS, attestation REACH, étiquetage français). En l\'absence de réponse satisfaisante, retourner le produit et s\'approvisionner auprès d\'un fournisseur conforme.', correct: true, feedback: 'Correct ! L\'étiquetage en français est obligatoire (article R.1311-3 du CSP). L\'absence de liste INCI et de conformité REACH signifie que la composition est inconnue et potentiellement dangereuse. Vous devez exiger la documentation avant toute utilisation. Si le fournisseur ne peut pas la fournir, le produit n\'est pas légalement commercialisable en France. Approvisionnez-vous auprès de fournisseurs reconnus (ex : Eternal Ink, World Famous, Dynamic) qui fournissent systématiquement les documents requis.' },
+                    { text: 'Traduire l\'étiquette avec un outil en ligne et considérer que c\'est suffisant pour les utiliser', correct: false, feedback: 'Faux. Une traduction personnelle ne remplace pas l\'étiquetage réglementaire officiel en français fourni par le fabricant. De plus, la conformité REACH ne se limite pas à l\'étiquetage : elle nécessite des analyses de laboratoire attestant l\'absence de substances restreintes. Sans certificat REACH, les encres sont présumées non conformes.' }
+                ]
+            }]
+        };
+        const cs = new CaseStudy('caseStudy', caseData);
+        cs.render();
+    </script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

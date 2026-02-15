@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#1a5276">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../assets/icon-192.png">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+    <title>Stérilisation et désinfection | Formation H&amp;S</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/formation.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-logo"><span class="site-logo-icon">H&S</span> Formation H&amp;S</a>
+            <nav><ul class="nav-links"><li><a href="../support/index.html">Support ARS</a></li><li><a href="index.html" class="active">Formation</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="../index.html">Accueil</a></li></ul></nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        </div>
+    </header>
+
+    <button class="sidebar-toggle" aria-label="Menu modules">☰</button>
+
+    <div class="formation-layout">
+        <aside class="sidebar">
+            <div class="sidebar-title">Modules</div>
+            <ul class="sidebar-nav">
+                <li><a href="module-1.html"><span class="nav-num">1</span> Réglementation</a></li>
+                <li><a href="module-2.html"><span class="nav-num">2</span> Anatomie</a></li>
+                <li><a href="module-3.html"><span class="nav-num">3</span> Micro-organismes</a></li>
+                <li><a href="module-4.html"><span class="nav-num">4</span> Risques</a></li>
+                <li><a href="module-5.html" class="active"><span class="nav-num">5</span> Stérilisation</a></li>
+                <li><a href="module-6.html"><span class="nav-num">6</span> Protection</a></li>
+                <li><a href="module-7.html"><span class="nav-num">7</span> Achats &amp; Déchets</a></li>
+                <li><a href="module-8.html"><span class="nav-num">8</span> Locaux</a></li>
+                <li><a href="module-9.html"><span class="nav-num">9</span> Asepsie (Pratique)</a></li>
+            </ul>
+        </aside>
+
+        <main class="formation-content">
+            <!-- Module header -->
+            <div class="module-header">
+                <span class="badge badge-primary">Module 5</span>
+                <h1>Stérilisation et désinfection</h1>
+                <div class="module-meta">
+                    <span>⏱ 2h30</span>
+                    <span>📝 10 questions</span>
+                    <span>📖 <a href="../support/unite-5.html" style="color:rgba(255,255,255,0.9)">Voir le support complet</a></span>
+                </div>
+            </div>
+
+            <!-- Objectifs d'apprentissage -->
+            <div class="module-section">
+                <h2>Objectifs d'apprentissage</h2>
+                <ul class="list-check">
+                    <li>Connaître les normes applicables à la stérilisation (EN 13060, ISO 17665-1, ISO 11607-1)</li>
+                    <li>Maîtriser les étapes du protocole de stérilisation par autoclave</li>
+                    <li>Savoir traiter le matériel thermosensible en 7 étapes</li>
+                    <li>Comprendre les différents types de contrôles (physiques, chimiques, biologiques)</li>
+                    <li>Assurer la traçabilité complète du processus de stérilisation</li>
+                </ul>
+            </div>
+
+            <!-- Section 1 : Normes -->
+            <div class="module-section">
+                <h2>1. Normes de référence</h2>
+                <p>La stérilisation dans le cadre du tatouage et du perçage s'appuie sur des normes précises, issues du domaine médical. Leur respect est une obligation réglementaire.</p>
+
+                <table class="table-formation">
+                    <thead>
+                        <tr>
+                            <th>Norme</th>
+                            <th>Objet</th>
+                            <th>Points clés</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>EN 13060</strong></td>
+                            <td>Petits stérilisateurs à vapeur (autoclaves)</td>
+                            <td>Définit 3 types de cycles : B, S et N</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ISO 17665-1</strong></td>
+                            <td>Stérilisation à la chaleur humide</td>
+                            <td>Exigences de développement, validation et contrôle de routine</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ISO 11607-1</strong></td>
+                            <td>Emballages de stérilisation</td>
+                            <td>Exigences pour les sachets, gaines et conditionnements</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Cycles autoclave EN 13060</h3>
+                <div class="encadre encadre-info">
+                    <strong>Les 3 types de cycles</strong>
+                    <ul>
+                        <li><strong>Cycle B (Big)</strong> : le plus performant. Stérilise tous types de charges (solides, creux, emballés, textiles). <strong>C'est le cycle recommandé</strong> pour les professionnels du tatouage et du perçage.</li>
+                        <li><strong>Cycle S (Specific)</strong> : cycle paramétrable pour des charges spécifiques définies par le fabricant.</li>
+                        <li><strong>Cycle N (Naked)</strong> : uniquement pour les instruments pleins, non emballés, utilisés immédiatement après stérilisation. Inadapté au stockage.</li>
+                    </ul>
+                </div>
+
+                <div class="encadre encadre-alert">
+                    <strong>Paramètres de stérilisation</strong><br>
+                    134 °C pendant 18 minutes (prions) ou 121 °C pendant 20 minutes. Le cycle B à 134 °C / 18 min est le standard pour la destruction de tous les micro-organismes, y compris les agents transmissibles non conventionnels (ATNC / prions).
+                </div>
+            </div>
+
+            <!-- Section 2 : Protocoles -->
+            <div class="module-section">
+                <h2>2. Protocoles de traitement du matériel</h2>
+
+                <h3>Matériel thermorésistant (autoclavable)</h3>
+                <p>Le protocole suit une séquence stricte. Chaque étape est indispensable : en sauter une compromet l'ensemble du processus.</p>
+
+                <table class="table-formation">
+                    <thead>
+                        <tr>
+                            <th>Étape</th>
+                            <th>Action</th>
+                            <th>Détail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Pré-désinfection</strong></td>
+                            <td>Immersion immédiate dans un bain détergent-désinfectant (15 min minimum)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Rinçage</strong></td>
+                            <td>Eau courante pour éliminer le produit</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Nettoyage</strong></td>
+                            <td>Ultrasons (recommandé) ou brossage manuel</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Rinçage</strong></td>
+                            <td>Eau osmosée ou déminéralisée (évite les dépôts calcaires)</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Séchage</strong></td>
+                            <td>Séchage soigneux avant conditionnement</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Conditionnement</strong></td>
+                            <td>Sachets de stérilisation scellés (norme ISO 11607-1)</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Stérilisation</strong></td>
+                            <td>Autoclave cycle B, 134 °C, 18 min</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Matériel thermosensible : protocole en 7 étapes</h3>
+                <p>Pour le matériel ne supportant pas la chaleur de l'autoclave, une désinfection de haut niveau (DHN) remplace la stérilisation :</p>
+
+                <div class="encadre encadre-info">
+                    <strong>Les 7 étapes de la DHN</strong>
+                    <ol>
+                        <li><strong>Pré-désinfection</strong> : immersion en bain détergent-désinfectant</li>
+                        <li><strong>Rinçage</strong> : eau courante</li>
+                        <li><strong>Nettoyage</strong> : ultrasons ou brossage</li>
+                        <li><strong>Rinçage</strong> : eau courante</li>
+                        <li><strong>Désinfection de haut niveau</strong> : immersion dans un produit sporicide (acide peracétique, glutaraldéhyde 2 %) selon le temps de contact indiqué par le fabricant</li>
+                        <li><strong>Rinçage abondant</strong> : eau stérile ou osmosée</li>
+                        <li><strong>Séchage et stockage</strong> : séchage immédiat, stockage en milieu protégé</li>
+                    </ol>
+                </div>
+
+                <div class="encadre encadre-alert">
+                    <strong>Privilégiez le matériel à usage unique</strong><br>
+                    Chaque fois que possible, utilisez du matériel stérile à usage unique (aiguilles, buses, tubes d'encre). Cela supprime le risque lié au retraitement et simplifie la traçabilité. Le matériel réutilisable doit être réservé aux instruments de qualité supérieure qui le justifient.
+                </div>
+            </div>
+
+            <!-- Section 3 : Contrôles et traçabilité -->
+            <div class="module-section">
+                <h2>3. Contrôles et traçabilité</h2>
+                <p>La stérilisation n'est efficace que si elle est contrôlée. Trois niveaux de contrôle complémentaires garantissent la fiabilité du processus.</p>
+
+                <table class="table-formation">
+                    <thead>
+                        <tr>
+                            <th>Type de contrôle</th>
+                            <th>Quoi</th>
+                            <th>Quand</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Physique</strong></td>
+                            <td>Vérification des paramètres (température, pression, durée) sur le diagramme de cycle</td>
+                            <td>À chaque cycle</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chimique</strong></td>
+                            <td>Indicateurs de passage (vireurs de couleur sur les sachets) et test de Bowie-Dick (pénétration de vapeur)</td>
+                            <td>Indicateurs : chaque sachet. Bowie-Dick : chaque jour d'utilisation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Biologique</strong></td>
+                            <td>Ampoules de spores (Geobacillus stearothermophilus) : test de référence</td>
+                            <td>Hebdomadaire ou selon les recommandations du fabricant</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="encadre encadre-info">
+                    <strong>Test de Bowie-Dick : à quoi sert-il ?</strong><br>
+                    Le test de Bowie-Dick vérifie la bonne pénétration de la vapeur dans l'autoclave. Il est réalisé chaque jour <strong>avant le premier cycle de stérilisation</strong>, à vide (sans charge). Un test échoué signifie que l'autoclave ne peut pas garantir une stérilisation efficace.
+                </div>
+
+                <h3>Traçabilité</h3>
+                <p>Chaque cycle de stérilisation doit être enregistré dans un registre (papier ou numérique) comportant :</p>
+                <ul>
+                    <li>Date et heure du cycle</li>
+                    <li>Numéro de cycle / numéro de lot</li>
+                    <li>Contenu de la charge (instruments stérilisés)</li>
+                    <li>Résultat des contrôles (diagramme, indicateurs chimiques, test biologique)</li>
+                    <li>Nom de l'opérateur</li>
+                    <li>Date de péremption de la stérilisation (6 mois en double emballage, variable selon les conditions de stockage)</li>
+                </ul>
+
+                <div class="encadre encadre-alert">
+                    <strong>Conservation des documents</strong><br>
+                    Les registres de stérilisation et les résultats des contrôles doivent être conservés pendant au minimum <strong>3 ans</strong>. En cas de contrôle ARS, ils constituent la preuve de la conformité de vos pratiques.
+                </div>
+            </div>
+
+            <!-- Étude de cas -->
+            <div class="module-section">
+                <h2>Étude de cas</h2>
+                <div id="caseStudy"></div>
+            </div>
+
+            <!-- Quiz -->
+            <div id="quiz"></div>
+
+            <!-- Navigation -->
+            <div class="module-nav">
+                <a href="module-4.html">&larr; Risques</a>
+                <a href="module-6.html">Protection &rarr;</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer"><div class="container"><p>Formation H&amp;S — Conforme arrêté du 5 mars 2024</p></div></footer>
+
+    <script src="../js/config-loader.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/case-studies.js"></script>
+    <script>
+        // Init quiz
+        const quiz = new QuizEngine('quiz', 'module-5');
+        quiz.init();
+
+        // Init case study
+        const caseData = {
+            title: 'Échec du test de Bowie-Dick',
+            steps: [{
+                scenario: 'Vous arrivez au studio le matin et lancez le test de Bowie-Dick quotidien sur votre autoclave de classe B avant de commencer les stérilisations. Le test revient avec un virage de couleur incomplet et irrégulier, indiquant un défaut de pénétration de la vapeur. Vous avez 3 clients prévus dans la journée et du matériel réutilisable à stériliser pour leurs actes.',
+                question: 'Que devez-vous faire ?',
+                choices: [
+                    { text: 'Relancer un cycle de stérilisation normal en espérant que le test était un faux négatif, et utiliser les instruments si le cycle affiche des paramètres corrects', correct: false, feedback: 'Faux. Un test de Bowie-Dick échoué indique un dysfonctionnement de l\'autoclave (défaut de vide, fuite, problème de vapeur). Les paramètres affichés peuvent sembler corrects sans que la pénétration de vapeur soit réellement efficace. Vous ne pouvez pas garantir la stérilité des instruments.' },
+                    { text: 'Ne pas utiliser l\'autoclave, utiliser uniquement du matériel à usage unique pour la journée, et faire intervenir un technicien pour diagnostiquer la panne', correct: true, feedback: 'Correct ! Un test de Bowie-Dick échoué signifie que l\'autoclave ne garantit plus la stérilisation. Il faut : 1) Ne stériliser aucun instrument dans cet autoclave. 2) Basculer sur du matériel stérile à usage unique. 3) Faire diagnostiquer et réparer l\'autoclave par un technicien qualifié. 4) Ne reprendre la stérilisation qu\'après un nouveau test de Bowie-Dick réussi. 5) Documenter l\'incident dans le registre de stérilisation.' },
+                    { text: 'Désinfecter le matériel au produit chimique (glutaraldéhyde) à la place, c\'est aussi efficace que l\'autoclave', correct: false, feedback: 'Faux. La désinfection chimique de haut niveau (DHN) n\'est pas équivalente à la stérilisation. Elle est réservée au matériel thermosensible qui ne peut pas être autoclavé. Le matériel autoclavable doit être stérilisé, pas simplement désinfecté. En cas de panne de l\'autoclave, seul le matériel à usage unique garantit la sécurité.' },
+                    { text: 'Annuler tous les rendez-vous de la journée par précaution', correct: false, feedback: 'Ce n\'est pas nécessaire si vous disposez de matériel stérile à usage unique. L\'utilisation de matériel à usage unique (aiguilles, buses, tubes) permet de maintenir l\'activité en toute sécurité. Annuler n\'est requis que si vous ne pouvez pas vous procurer de matériel à usage unique.' }
+                ]
+            }]
+        };
+        const cs = new CaseStudy('caseStudy', caseData);
+        cs.render();
+    </script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>
