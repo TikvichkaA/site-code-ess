@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Diogène — Formations spécialisées Syndrome de Diogène & Nettoyage Extrême</title>
+    <meta name="description" content="Organisme de formation spécialisé dans le Syndrome de Diogène et le nettoyage extrême. Formations professionnelles certifiantes partout en France.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           Variables & Reset
+        ============================================ */
+        :root {
+            --primary: #1B2A4A;
+            --primary-light: #2D4A7A;
+            --primary-dark: #0F1B33;
+            --accent: #D4A03A;
+            --accent-light: #E8B84D;
+            --accent-dark: #B8891F;
+            --teal: #2A9D8F;
+            --teal-light: #3DB8A9;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7f9fc;
+            --bg-warm: #fdfaf6;
+            --border: #e2e8f0;
+            --border-light: #edf2f7;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow: 0 4px 16px rgba(27,42,74,0.08);
+            --shadow-lg: 0 12px 40px rgba(27,42,74,0.12);
+            --shadow-xl: 0 25px 60px rgba(27,42,74,0.16);
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; transition: var(--transition); }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ============================================
+           Header / Navigation
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226,232,240,0.6);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 2px 20px rgba(27,42,74,0.08);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-mark {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .logo-text small {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        .btn-cta {
+            padding: 10px 24px;
+            background: var(--primary);
+            color: white !important;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-cta:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(27,42,74,0.25);
+        }
+
+        .btn-cta::after { display: none !important; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           Hero Section
+        ============================================ */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(165deg, var(--primary-dark) 0%, var(--primary) 45%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,160,58,0.12) 0%, transparent 70%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(42,157,143,0.08) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent-light);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent-light);
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            padding: 14px 32px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-hero-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,160,58,0.35);
+        }
+
+        .btn-hero-secondary {
+            padding: 14px 32px;
+            background: transparent;
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .hero-stat-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .hero-stat-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-4px);
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           Trust Bar (Certifications)
+        ============================================ */
+        .trust-bar {
+            padding: 40px 0;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .trust-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .trust-icon {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            font-size: 1.3rem;
+        }
+
+        .trust-item strong {
+            display: block;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           Section Common
+        ============================================ */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: var(--bg-alt);
+        }
+
+        .section-dark {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: rgba(27,42,74,0.06);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-light);
+            margin-bottom: 14px;
+        }
+
+        .section-dark .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--accent-light);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ============================================
+           Formations Section
+        ============================================ */
+        .formations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .formation-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formation-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .formation-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formation-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(15,27,51,0.4));
+        }
+
+        .formation-image-icon {
+            position: relative;
+            z-index: 2;
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .formation-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 3;
+            padding: 4px 12px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .formation-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formation-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+
+        .formation-duration svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .formation-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .formation-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .formation-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .formation-public {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .formation-public strong {
+            color: var(--text-light);
+        }
+
+        .formation-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .formation-link:hover {
+            color: var(--accent);
+            gap: 8px;
+        }
+
+        .formation-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ============================================
+           Why Us Section
+        ============================================ */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 32px 20px;
+            border-radius: var(--radius-lg);
+            background: white;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, rgba(27,42,74,0.06), rgba(27,42,74,0.02));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .why-card:hover .why-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .why-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .why-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           Approach / Process Section
+        ============================================ */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--teal));
+            border-radius: 2px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 0 16px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .process-step:hover .step-number {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           Stats Section
+        ============================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 24px;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ============================================
+           Testimonials
+        ============================================ */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: rgba(27,42,74,0.06);
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--primary);
+        }
+
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           CTA Section
+        ============================================ */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,160,58,0.08) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 14px;
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           Contact Section
+        ============================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-info > p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--bg-alt);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            font-size: 0.88rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent);
+            background: var(--bg-warm);
+        }
+
+        .contact-method-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .contact-form-wrapper {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--text);
+            background: var(--bg-alt);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(27,42,74,0.08);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(27,42,74,0.25);
+        }
+
+        /* ============================================
+           Footer
+        ============================================ */
+        .footer {
+            background: var(--primary-dark);
+            padding: 50px 0 24px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand .logo-text small {
+            color: var(--accent-light);
+        }
+
+        .footer-desc {
+            font-size: 0.82rem;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .footer-heading {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ============================================
+           Responsive
+        ============================================ */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-stats-grid { max-width: 400px; }
+            .formations-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+            .process-steps::before { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .hero { padding: 120px 0 60px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-stats-grid { grid-template-columns: 1fr 1fr; }
+            .section { padding: 60px 0; }
+            .formations-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .trust-content { gap: 24px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+
+        /* ============================================
+           Animations
+        ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Nav overlay */
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            padding: 32px 24px;
+            gap: 24px;
+            z-index: 999;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <div class="logo-mark">FD</div>
+                <div class="logo-text">
+                    Formation Diogène
+                    <small>Organisme de formation spécialisé</small>
+                </div>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#pourquoi">Pourquoi nous</a></li>
+                <li><a href="#methode">Méthode</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#contact" class="btn-cta">Demander un devis</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Organisme de formation déclaré
+                    </div>
+                    <h1>
+                        La référence en formation<br>
+                        <span class="highlight">Syndrome de Diogène</span><br>
+                        & nettoyage extrême
+                    </h1>
+                    <p class="hero-subtitle">
+                        Formations professionnelles spécialisées pour les acteurs du nettoyage, de l'action sociale et de la gestion immobilière. Des programmes concrets, dispensés partout en France.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#formations" class="btn-hero-primary">
+                            Découvrir nos formations
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn-hero-secondary">
+                            Nous contacter
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-stats-grid">
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-number">10+</div>
+                            <div class="hero-stat-label">Années d'expertise terrain</div>
+                        </div>
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-number">500+</div>
+                            <div class="hero-stat-label">Professionnels formés</div>
+                        </div>
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-number">100%</div>
+                            <div class="hero-stat-label">Formations en présentiel</div>
+                        </div>
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-number">France</div>
+                            <div class="hero-stat-label">Interventions sur tout le territoire</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRUST BAR ===== -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <div class="trust-icon">&#9989;</div>
+                    <div>
+                        <strong>Déclaration d'activité</strong>
+                        Organisme enregistré
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#127891;</div>
+                    <div>
+                        <strong>Formateurs experts</strong>
+                        Praticiens de terrain
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#128200;</div>
+                    <div>
+                        <strong>Financement possible</strong>
+                        OPCO & prise en charge
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#128205;</div>
+                    <div>
+                        <strong>Partout en France</strong>
+                        Inter & intra-entreprise
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FORMATIONS ===== -->
+    <section class="section" id="formations">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Nos formations</div>
+                <h2 class="section-title">Des programmes pensés pour le terrain</h2>
+                <p class="section-subtitle">
+                    Formations exclusives centrées sur le Syndrome de Diogène et le nettoyage extrême, dispensées par des professionnels expérimentés.
+                </p>
+            </div>
+
+            <div class="formations-grid">
+                <!-- Formation 1 -->
+                <div class="formation-card reveal">
+                    <div class="formation-image" style="background: linear-gradient(135deg, #1B2A4A 0%, #2D4A7A 100%);">
+                        <div class="formation-image-icon">&#128218;</div>
+                        <div class="formation-badge">Essentielle</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            2 jours (14h)
+                        </div>
+                        <h3 class="formation-title">Comprendre le Syndrome de Diogène</h3>
+                        <p class="formation-desc">
+                            Formation de base : mécanismes psychologiques, repérage des situations, approche relationnelle et protocoles d'intervention adaptés.
+                        </p>
+                        <div class="formation-meta">
+                            <div class="formation-public">
+                                <strong>Public :</strong> Travailleurs sociaux, bailleurs
+                            </div>
+                            <a href="#contact" class="formation-link">
+                                En savoir plus
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formation 2 -->
+                <div class="formation-card reveal">
+                    <div class="formation-image" style="background: linear-gradient(135deg, #2A9D8F 0%, #1B2A4A 100%);">
+                        <div class="formation-image-icon">&#129534;</div>
+                        <div class="formation-badge">Technique</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            3 jours (21h)
+                        </div>
+                        <h3 class="formation-title">Nettoyage extrême : techniques & sécurité</h3>
+                        <p class="formation-desc">
+                            Protocoles de nettoyage en situation extrême, gestion des risques sanitaires, équipements de protection, décontamination et remise en état.
+                        </p>
+                        <div class="formation-meta">
+                            <div class="formation-public">
+                                <strong>Public :</strong> Entreprises de nettoyage
+                            </div>
+                            <a href="#contact" class="formation-link">
+                                En savoir plus
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formation 3 -->
+                <div class="formation-card reveal">
+                    <div class="formation-image" style="background: linear-gradient(135deg, #D4A03A 0%, #1B2A4A 100%);">
+                        <div class="formation-image-icon">&#127919;</div>
+                        <div class="formation-badge">Avancée</div>
+                    </div>
+                    <div class="formation-body">
+                        <div class="formation-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            3 jours (21h)
+                        </div>
+                        <h3 class="formation-title">Gestion de projet Diogène : de l'alerte à la résolution</h3>
+                        <p class="formation-desc">
+                            Pilotage complet d'une intervention : diagnostic, coordination multi-acteurs (bailleurs, services sociaux, familles), suivi post-intervention et prévention des récidives.
+                        </p>
+                        <div class="formation-meta">
+                            <div class="formation-public">
+                                <strong>Public :</strong> Coordinateurs, managers
+                            </div>
+                            <a href="#contact" class="formation-link">
+                                En savoir plus
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== POURQUOI NOUS ===== -->
+    <section class="section section-alt" id="pourquoi">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Pourquoi nous choisir</div>
+                <h2 class="section-title">L'expertise qui fait la différence</h2>
+                <p class="section-subtitle">
+                    Une approche unique combinant savoir-faire technique et compréhension humaine des situations de Diogène.
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128170;</div>
+                    <h4 class="why-title">Expertise terrain</h4>
+                    <p class="why-desc">
+                        Des formateurs issus du terrain, ayant géré des centaines de situations réelles de syndrome de Diogène.
+                    </p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128300;</div>
+                    <h4 class="why-title">Approche pluridisciplinaire</h4>
+                    <p class="why-desc">
+                        Formation croisant les dimensions psychologique, sanitaire, technique et sociale pour une prise en charge globale.
+                    </p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#127891;</div>
+                    <h4 class="why-title">Pédagogie active</h4>
+                    <p class="why-desc">
+                        Mises en situation, études de cas réels, échanges de pratiques. Des formations qui préparent à l'action.
+                    </p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">&#128188;</div>
+                    <h4 class="why-title">Sur-mesure</h4>
+                    <p class="why-desc">
+                        Programmes adaptables à vos besoins spécifiques : intra-entreprise, durée modulable, focus thématique personnalisé.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MÉTHODE ===== -->
+    <section class="section" id="methode">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Notre méthode</div>
+                <h2 class="section-title">Un accompagnement en 4 étapes</h2>
+                <p class="section-subtitle">
+                    De l'analyse de vos besoins au suivi post-formation, un parcours structuré pour maximiser l'impact.
+                </p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">Analyse des besoins</h4>
+                    <p class="step-desc">Échange approfondi pour comprendre votre contexte, vos équipes et vos objectifs spécifiques.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">Programme sur-mesure</h4>
+                    <p class="step-desc">Conception d'un programme adapté, avec contenus, cas pratiques et supports personnalisés.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">Formation présentielle</h4>
+                    <p class="step-desc">Sessions dynamiques animées par des experts, mêlant théorie, pratique et retours d'expérience.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">Suivi & évaluation</h4>
+                    <p class="step-desc">Évaluation des acquis, attestation de formation, et accompagnement post-formation si besoin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Professionnels formés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Taux de satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Années d'expérience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">France</div>
+                    <div class="stat-label">Couverture nationale</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TÉMOIGNAGES ===== -->
+    <section class="section section-alt" id="temoignages">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Témoignages</div>
+                <h2 class="section-title">Ils ont suivi nos formations</h2>
+                <p class="section-subtitle">
+                    Retours d'expérience de professionnels ayant bénéficié de nos programmes.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">
+                        "Formation indispensable pour nos équipes terrain. Les mises en situation nous ont vraiment préparés aux réalités du syndrome de Diogène. Très professionnel."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div>
+                            <div class="testimonial-name">Sophie L.</div>
+                            <div class="testimonial-role">Responsable d'agence — Bailleur social, Lyon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">
+                        "La formatrice maîtrise parfaitement son sujet. Approche à la fois humaine et très concrète. Nos agents de propreté ont changé leur regard sur ces interventions."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <div class="testimonial-name">Marc R.</div>
+                            <div class="testimonial-role">Directeur — Entreprise de nettoyage, Marseille</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">
+                        "Grâce à cette formation, nous avons pu structurer nos protocoles d'intervention et mieux coordonner les différents acteurs impliqués. Un vrai gain d'efficacité."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AB</div>
+                        <div>
+                            <div class="testimonial-name">Amélie B.</div>
+                            <div class="testimonial-role">Coordinatrice sociale — CCAS, Bordeaux</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Prêt à former vos équipes ?</h2>
+                <p class="cta-subtitle">
+                    Contactez-nous pour un programme adapté à vos besoins. Devis gratuit sous 48h.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-hero-primary">
+                        Demander un devis gratuit
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="tel:+33600000000" class="btn-hero-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        Nous appeler
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Contact</div>
+                <h2 class="section-title">Parlons de votre projet de formation</h2>
+                <p class="section-subtitle">
+                    Remplissez le formulaire ci-dessous ou contactez-nous directement. Nous répondons sous 48h.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Formation Diogène</h3>
+                    <p>
+                        Organisme de formation spécialisé dans le Syndrome de Diogène et le nettoyage extrême.
+                        Nous intervenons partout en France, en inter ou intra-entreprise.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="mailto:contact@formation-diogene.com" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            contact@formation-diogene.com
+                        </a>
+                        <a href="tel:+33600000000" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            06 XX XX XX XX
+                        </a>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            Interventions sur toute la France
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper reveal">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" id="prenom" name="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nom">Nom *</label>
+                                <input type="text" id="nom" name="nom" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="organisme">Organisme / Entreprise</label>
+                            <input type="text" id="organisme" name="organisme" placeholder="Nom de votre structure">
+                        </div>
+                        <div class="form-group">
+                            <label for="formation">Formation souhaitée</label>
+                            <select id="formation" name="formation">
+                                <option value="">-- Sélectionnez une formation --</option>
+                                <option value="diogene-base">Comprendre le Syndrome de Diogène (2j)</option>
+                                <option value="nettoyage-extreme">Nettoyage extrême : techniques & sécurité (3j)</option>
+                                <option value="gestion-projet">Gestion de projet Diogène (3j)</option>
+                                <option value="sur-mesure">Formation sur-mesure</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Votre message *</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre besoin de formation, le nombre de participants, les dates souhaitées..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            Envoyer ma demande
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        Formation Diogène
+                        <small>Organisme de formation spécialisé</small>
+                    </div>
+                    <p class="footer-desc">
+                        Organisme de formation spécialisé dans le Syndrome de Diogène et le nettoyage extrême.
+                        Formations professionnelles partout en France.
+                    </p>
+                </div>
+                <div>
+                    <div class="footer-heading">Formations</div>
+                    <div class="footer-links">
+                        <a href="#formations">Syndrome de Diogène</a>
+                        <a href="#formations">Nettoyage extrême</a>
+                        <a href="#formations">Gestion de projet</a>
+                        <a href="#formations">Sur-mesure</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-heading">Informations</div>
+                    <div class="footer-links">
+                        <a href="#">Qui sommes-nous</a>
+                        <a href="#temoignages">Témoignages</a>
+                        <a href="#">Financement</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-heading">Contact</div>
+                    <div class="footer-links">
+                        <a href="mailto:contact@formation-diogene.com">contact@formation-diogene.com</a>
+                        <a href="tel:+33600000000">06 XX XX XX XX</a>
+                        <a href="#">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Formation Diogène — Tous droits réservés</p>
+                <p><a href="#">Mentions légales</a> &middot; <a href="#">CGV</a> &middot; <a href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // Scroll reveal
+        // ============================================
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => revealObserver.observe(el));
+
+        // ============================================
+        // Header scroll effect
+        // ============================================
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // ============================================
+        // Mobile nav toggle
+        // ============================================
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // Form submission
+        // ============================================
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-submit');
+            btn.textContent = 'Message envoyé !';
+            btn.style.background = '#2A9D8F';
+            setTimeout(() => {
+                btn.innerHTML = 'Envoyer ma demande <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

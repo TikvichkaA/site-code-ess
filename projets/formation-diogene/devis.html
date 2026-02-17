@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis N°2026-0216 — Refonte Site Formation Diogène</title>
+    <style>
+        /* ============================================
+           Reset & Base
+        ============================================ */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+        :root {
+            --primary: #1B2A4A;
+            --primary-light: #2D4A7A;
+            --accent: #D4A03A;
+            --accent-light: #E8B84D;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --bg-warm: #fdfaf6;
+            --border: #e2e8f0;
+            --border-light: #edf2f7;
+            --success: #2A9D8F;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #edf2f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Print Controls */
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(27,42,74,0.3);
+            transition: all 0.3s ease;
+        }
+        .print-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27,42,74,0.4);
+        }
+        .print-btn svg { width: 18px; height: 18px; }
+        .print-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Document */
+        .document {
+            max-width: 210mm;
+            margin: 30px auto;
+            background: var(--bg);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .page { padding: 45px 50px; position: relative; }
+        .page-break { page-break-before: always; border-top: 1px solid var(--border-light); }
+
+        /* Header */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 35px;
+        }
+        .company-info { flex: 1; }
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+        .company-tagline {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .company-details {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .doc-meta { text-align: right; flex-shrink: 0; }
+        .doc-type {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .doc-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .doc-dates {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .doc-dates strong { color: var(--text); }
+
+        /* Parties */
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+        .party-block {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+        }
+        .party-block.client {
+            background: var(--bg-warm);
+            border-color: var(--accent-light);
+        }
+        .party-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .party-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+        .party-details { font-size: 0.82rem; color: var(--text-light); line-height: 1.7; }
+
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+        .section-title:first-child { margin-top: 0; }
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-left: 48px;
+        }
+
+        /* Context Block */
+        .context-block {
+            background: linear-gradient(135deg, var(--bg-warm), #fff9f0);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 30px;
+        }
+        .context-block p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .context-block strong { color: var(--text); }
+
+        /* Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+        .pricing-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pricing-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+        .pricing-table thead th:last-child { border-radius: 0 var(--radius) 0 0; text-align: right; }
+        .pricing-table thead th.text-center { text-align: center; }
+        .pricing-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.2s ease;
+        }
+        .pricing-table tbody tr:hover { background: var(--bg-alt); }
+        .pricing-table tbody td { padding: 14px 16px; vertical-align: top; }
+        .pricing-table tbody td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+        .pricing-table tbody td.text-center { text-align: center; }
+        .item-title { font-weight: 600; color: var(--text); margin-bottom: 3px; }
+        .item-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+        .category-row td {
+            background: var(--bg-alt);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 10px 16px !important;
+            border-bottom: 2px solid var(--primary) !important;
+        }
+        .subtotal-row td {
+            background: var(--bg-alt);
+            font-weight: 600;
+            border-top: 2px solid var(--border);
+            padding: 10px 16px !important;
+        }
+
+        /* Totals */
+        .totals { display: flex; justify-content: flex-end; margin-bottom: 30px; }
+        .totals-box { width: 320px; border: 2px solid var(--primary); border-radius: var(--radius); overflow: hidden; }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .total-row:last-child { border-bottom: none; }
+        .total-row.grand-total {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+        }
+        .total-label { color: var(--text-light); }
+        .grand-total .total-label { color: rgba(255,255,255,0.85); }
+        .total-value { font-weight: 600; }
+
+        /* Options */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .option-card {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            transition: all 0.2s ease;
+        }
+        .option-card:hover { border-color: var(--accent); background: var(--bg-warm); }
+        .option-card.highlight {
+            border: 2px solid var(--accent);
+            background: var(--bg-warm);
+            position: relative;
+        }
+        .option-card.highlight::after {
+            content: 'Phase 2 recommandée';
+            position: absolute;
+            top: -10px;
+            right: 12px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .option-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 4px; }
+        .option-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
+        .option-price { font-weight: 700; color: var(--primary); font-size: 0.92rem; }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 30px; margin-bottom: 30px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .timeline-item:last-child .timeline-dot {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        .timeline-phase { font-weight: 700; font-size: 0.92rem; color: var(--primary); margin-bottom: 2px; }
+        .timeline-duration { font-size: 0.78rem; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+        .timeline-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+        /* Scope */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .scope-card {
+            padding: 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+        .scope-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scope-card ul { list-style: none; padding: 0; }
+        .scope-card li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .scope-card li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+        .scope-excluded li::before { content: '\2717'; color: #e53e3e; }
+
+        /* Conditions */
+        .conditions { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; }
+        .conditions h4 { font-size: 0.82rem; color: var(--text); margin-bottom: 6px; margin-top: 12px; }
+        .conditions h4:first-child { margin-top: 0; }
+        .conditions ul { padding-left: 18px; }
+        .conditions li { margin-bottom: 3px; }
+
+        /* Signature */
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+        .signature-party { text-align: center; }
+        .signature-label { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+        .signature-name { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 50px; }
+        .signature-line {
+            border-top: 1px solid var(--text-muted);
+            padding-top: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .doc-footer {
+            text-align: center;
+            padding: 20px 50px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+        .highlight-box h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 8px; }
+        .highlight-box p { font-size: 0.85rem; opacity: 0.9; line-height: 1.6; }
+        .highlight-box .price-highlight { font-size: 1.8rem; font-weight: 800; margin-top: 10px; }
+
+        /* Tech badges */
+        .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tech-badge {
+            padding: 4px 12px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Maintenance */
+        .maintenance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .maintenance-card {
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .maintenance-card.recommended {
+            border-color: var(--accent);
+            background: var(--bg-warm);
+            position: relative;
+        }
+        .maintenance-card.recommended::after {
+            content: 'Recommandé';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .maintenance-name { font-weight: 700; font-size: 0.92rem; color: var(--primary); margin-bottom: 4px; }
+        .maintenance-price { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+        .maintenance-price span { font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
+        .maintenance-features { list-style: none; text-align: left; }
+        .maintenance-features li {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .maintenance-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Note box */
+        .note-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 25px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .note-box strong { color: var(--success); }
+
+        /* Print */
+        @media print {
+            html { font-size: 13px; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-controls { display: none !important; }
+            .document { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+            .page { padding: 30px 40px; }
+            .page-break { page-break-before: always; border-top: none; padding-top: 30px; }
+            .pricing-table tbody tr:hover { background: transparent; }
+            .option-card:hover { border-color: var(--border); background: var(--bg-alt); }
+            @page { size: A4; margin: 10mm; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .document { margin: 10px; }
+            .page { padding: 25px 20px; }
+            .doc-header { flex-direction: column; gap: 20px; }
+            .doc-meta { text-align: left; }
+            .parties { grid-template-columns: 1fr; }
+            .scope-grid { grid-template-columns: 1fr; }
+            .options-grid { grid-template-columns: 1fr; }
+            .maintenance-grid { grid-template-columns: 1fr; }
+            .signature-block { grid-template-columns: 1fr; }
+            .print-controls { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Controls -->
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Exporter en PDF
+        </button>
+        <span class="print-hint">Ctrl+P puis "Enregistrer en PDF"</span>
+    </div>
+
+    <div class="document">
+        <!-- ==========================================
+             PAGE 1 — En-tête + Contexte + Devis
+        ========================================== -->
+        <div class="page">
+            <!-- Header -->
+            <div class="doc-header">
+                <div class="company-info">
+                    <div class="company-name">PINGLIER EMMANUEL</div>
+                    <div class="company-tagline">Développement web, automatisation & conseil numérique</div>
+                    <div class="company-details">
+                        39 rue Marceau, 94200 Ivry-sur-Seine<br>
+                        SIRET : 942 385 311 00017<br>
+                        Tél. : [Numéro de téléphone] — Email : [email]<br>
+                        TVA intracommunautaire : FR56942385311
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <div class="doc-type">DEVIS</div>
+                    <div class="doc-number">N° 2026-0216-006</div>
+                    <div class="doc-dates">
+                        <strong>Date d'émission :</strong> 16 février 2026<br>
+                        <strong>Validité :</strong> 30 jours<br>
+                        <strong>Échéance :</strong> 18 mars 2026
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parties -->
+            <div class="parties">
+                <div class="party-block">
+                    <div class="party-label">Prestataire</div>
+                    <div class="party-name">PINGLIER EMMANUEL</div>
+                    <div class="party-details">
+                        39 rue Marceau<br>
+                        94200 Ivry-sur-Seine<br>
+                        Contact : Emmanuel Pinglier<br>
+                        [email] — [téléphone]
+                    </div>
+                </div>
+                <div class="party-block client">
+                    <div class="party-label">Client</div>
+                    <div class="party-name">FORMATION DIOGÈNE</div>
+                    <div class="party-details">
+                        [Adresse du client]<br>
+                        [Code postal] [Ville]<br>
+                        Contact : [Nom de la responsable]<br>
+                        [Email client]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contexte -->
+            <div class="context-block">
+                <p>
+                    <strong>Objet :</strong> Refonte complète du site internet <strong>formation-diogene.com</strong> pour un organisme de formation spécialisé dans le Syndrome de Diogène et le nettoyage extrême. Le nouveau site présentera l'organisme, son catalogue de formations, ses certifications, et intégrera un système de demande de devis / inscription en ligne. Le site sera réalisé en <strong>HTML5 / CSS3 / JavaScript</strong> (sans WordPress) et hébergé sur <strong>Hostinger</strong> (hébergement propriété du client). Le nom de domaine et l'hébergement restent sous la gestion exclusive du client.
+                </p>
+            </div>
+
+            <div class="note-box">
+                <strong>Note importante :</strong> Conformément à votre souhait, vous conservez la pleine propriété et gestion de votre nom de domaine <strong>formation-diogene.com</strong> et de votre hébergement Hostinger. Aucune location mensuelle de site n'est appliquée — vous êtes propriétaire à 100% de votre site web. Le site est livré en fichiers HTML/CSS/JS que vous pouvez héberger n'importe où, sans dépendance technique.
+            </div>
+
+            <!-- Tableau de prix -->
+            <div class="section-title">
+                <div class="section-icon">1</div>
+                <h2>Détail des prestations & chiffrage</h2>
+            </div>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="width:55%">Désignation</th>
+                        <th class="text-center" style="width:15%">Unité</th>
+                        <th style="width:15%">Montant HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Phase 1 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 1 — Cadrage & Design</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Cadrage, arborescence & direction graphique</div>
+                            <div class="item-desc">Échange sur les objectifs, étude des sites de référence (Agiris, Aligner Formation, SecureL), définition de l'arborescence. Charte couleurs (bleu marine / doré), typographies, maquettes responsive</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>200,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 1</strong></td>
+                        <td><strong>200,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 2 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 2 — Développement HTML5 / CSS3 / JS</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Pages du site (5 à 6 pages)</div>
+                            <div class="item-desc">Accueil (hero, stats, formations, témoignages, CTA), Qui sommes-nous / approche, Contact / demande de devis, Mentions légales</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>250,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Fiches formations (3 fiches détaillées)</div>
+                            <div class="item-desc">Objectifs pédagogiques, programme, prérequis, durée, public visé, modalités d'évaluation, tarif</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Formulaire de contact / demande de devis</div>
+                            <div class="item-desc">Formulaire avec choix de formation, coordonnées, message. Notifications email, anti-spam, conformité RGPD</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>100,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 2</strong></td>
+                        <td><strong>500,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 3 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 3 — SEO, Mise en ligne & Livraison</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">SEO de base & mise en ligne</div>
+                            <div class="item-desc">Optimisation des balises (title, meta, Hn, alt), sitemap XML, Google Search Console, mots-clés ciblés. Tests navigateurs/mobile. Déploiement sur Hostinger</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>200,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Livraison des fichiers sources & documentation</div>
+                            <div class="item-desc">Remise de l'intégralité des fichiers source (HTML, CSS, JS, images). Guide de modification simplifié. Support email 2 semaines</div>
+                        </td>
+                        <td class="text-center">Inclus</td>
+                        <td>Offert</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 3</strong></td>
+                        <td><strong>200,00 €</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Total -->
+            <div class="totals">
+                <div class="totals-box">
+                    <div class="total-row">
+                        <span class="total-label">Total HT</span>
+                        <span class="total-value">900,00 €</span>
+                    </div>
+                    <div class="total-row">
+                        <span class="total-label">TVA (20%)</span>
+                        <span class="total-value">180,00 €</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span class="total-label">Total TTC</span>
+                        <span class="total-value">1 080,00 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 2 — Périmètre, Planning, Tech
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Périmètre -->
+            <div class="section-title">
+                <div class="section-icon">2</div>
+                <h2>Périmètre des prestations</h2>
+            </div>
+            <p class="section-subtitle">Détail de ce qui est inclus et exclu du présent devis.</p>
+
+            <div class="scope-grid">
+                <div class="scope-card">
+                    <h4>&#9989; Design & Graphisme</h4>
+                    <ul>
+                        <li>Création graphique sur-mesure</li>
+                        <li>Palette inspirée des sites de référence</li>
+                        <li>Design responsive (mobile, tablette, desktop)</li>
+                        <li>1 aller-retour de corrections inclus</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Développement HTML5 / CSS3 / JS</h4>
+                    <ul>
+                        <li>Site statique sur Hostinger (5 à 6 pages)</li>
+                        <li>3 fiches formations détaillées</li>
+                        <li>Formulaire contact / demande de devis</li>
+                        <li>Fichiers sources livrés au client</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; SEO & Mise en ligne</h4>
+                    <ul>
+                        <li>Optimisation SEO on-page (balises, structure)</li>
+                        <li>Google Search Console + Analytics</li>
+                        <li>Déploiement sur Hostinger</li>
+                        <li>Tests navigateurs & mobile</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Accompagnement</h4>
+                    <ul>
+                        <li>Livraison fichiers sources + guide de modification</li>
+                        <li>Intégration des contenus fournis</li>
+                        <li>2 semaines de garantie corrective</li>
+                        <li>Support email pendant la garantie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card scope-excluded" style="grid-column: 1 / -1;">
+                    <h4>&#10060; Non inclus dans ce devis</h4>
+                    <ul style="columns: 2; column-gap: 30px;">
+                        <li>Rédaction des contenus éditoriaux (textes, articles)</li>
+                        <li>Création / refonte du logo</li>
+                        <li>Shooting photo ou vidéo</li>
+                        <li>Hébergement & nom de domaine (propriété du client)</li>
+                        <li>Plateforme de formations en ligne / e-learning (voir options)</li>
+                        <li>Référencement payant (SEA / Google Ads)</li>
+                        <li>Traduction du site en d'autres langues</li>
+                        <li>Système de gestion de contenu (CMS / back-office)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="section-title">
+                <div class="section-icon">3</div>
+                <h2>Solution technique</h2>
+            </div>
+            <div class="tech-badges">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript ES6+</span>
+                <span class="tech-badge">Hostinger</span>
+                <span class="tech-badge">SSL / HTTPS</span>
+                <span class="tech-badge">Responsive Design</span>
+                <span class="tech-badge">SEO Optimisé</span>
+                <span class="tech-badge">RGPD Compliant</span>
+            </div>
+
+            <div class="note-box">
+                <strong>Pourquoi un site statique HTML5 ?</strong> Un site statique offre des performances maximales (chargement ultra-rapide), une sécurité renforcée (pas de base de données ni de failles WordPress), et un coût d'hébergement minimal. Vous recevez l'intégralité des fichiers sources, sans dépendance à un CMS ou à des licences tierces. Les modifications de contenu sont possibles via le prestataire ou en éditant directement les fichiers HTML.
+            </div>
+
+            <!-- Planning -->
+            <div class="section-title">
+                <div class="section-icon">4</div>
+                <h2>Planning prévisionnel</h2>
+            </div>
+            <p class="section-subtitle">Durée totale estimée : <strong>2 à 3 semaines</strong> à compter de la validation du devis et de la réception des contenus.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 1 — Cadrage & Design</div>
+                    <div class="timeline-duration">Jours 1 – 3</div>
+                    <div class="timeline-desc">Réunion de cadrage (visio), arborescence, maquettes graphiques, validation client. Livrable : maquettes validées.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 2 — Développement HTML/CSS/JS</div>
+                    <div class="timeline-duration">Semaines 1 à 2</div>
+                    <div class="timeline-desc">Développement des pages, fiches formations, formulaire, intégration des contenus fournis. Tests responsive.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 3 — SEO, tests & mise en ligne</div>
+                    <div class="timeline-duration">Semaine 3</div>
+                    <div class="timeline-desc">Optimisation SEO, tests cross-browser, déploiement sur Hostinger. Livrable : site en ligne + fichiers sources + guide.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Garantie corrective</div>
+                    <div class="timeline-duration">2 semaines après livraison</div>
+                    <div class="timeline-desc">Correction des éventuels bugs, support email. Au-delà : contrat de maintenance optionnel.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 3 — Options, Maintenance, Conditions
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Options -->
+            <div class="section-title">
+                <div class="section-icon">5</div>
+                <h2>Prestations optionnelles</h2>
+            </div>
+            <p class="section-subtitle">Compléments pouvant être ajoutés au présent devis selon vos besoins et votre calendrier.</p>
+
+            <div class="options-grid">
+                <div class="option-card highlight">
+                    <div class="option-title">Plateforme e-learning (formations en ligne)</div>
+                    <div class="option-desc">Espace de formations en ligne : parcours, modules, quiz, progression, certificat. Solution sur-mesure ou intégration d'une plateforme tierce.</div>
+                    <div class="option-price">Sur devis</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Rédaction de contenus web (SEO)</div>
+                    <div class="option-desc">Rédaction optimisée SEO des textes du site (accueil, formations, à propos, etc.).</div>
+                    <div class="option-price">350,00 € HT</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Prise de rendez-vous en ligne</div>
+                    <div class="option-desc">Intégration Calendly ou Cal.com pour planifier les formations depuis le site.</div>
+                    <div class="option-price">100,00 € HT</div>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">Pages ou fiches supplémentaires</div>
+                    <div class="option-desc">Pages additionnelles ou fiches formation supplémentaires au-delà du périmètre inclus.</div>
+                    <div class="option-price">60,00 € HT / page</div>
+                </div>
+            </div>
+
+            <!-- Maintenance -->
+            <div class="section-title">
+                <div class="section-icon">6</div>
+                <h2>Maintenance & évolutions (optionnel)</h2>
+            </div>
+            <p class="section-subtitle">Bénéficiez d'un accompagnement continu pour les mises à jour de contenu et les évolutions de votre site.</p>
+
+            <div class="maintenance-grid">
+                <div class="maintenance-card">
+                    <div class="maintenance-name">Essentielle</div>
+                    <div class="maintenance-price">50 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>1 modification de contenu / mois</li>
+                        <li>Sauvegarde mensuelle</li>
+                        <li>Surveillance de disponibilité</li>
+                        <li>Support par email (72h)</li>
+                    </ul>
+                </div>
+                <div class="maintenance-card recommended">
+                    <div class="maintenance-name">Confort</div>
+                    <div class="maintenance-price">90 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>Tout de la formule Essentielle</li>
+                        <li>3 modifications de contenu / mois</li>
+                        <li>Support prioritaire (48h)</li>
+                        <li>Ajout de fiches formation</li>
+                        <li>Rapport analytics mensuel</li>
+                    </ul>
+                </div>
+                <div class="maintenance-card">
+                    <div class="maintenance-name">Sérénité</div>
+                    <div class="maintenance-price">150 € <span>HT / mois</span></div>
+                    <ul class="maintenance-features">
+                        <li>Tout de la formule Confort</li>
+                        <li>Modifications illimitées</li>
+                        <li>Support téléphonique (24h)</li>
+                        <li>Évolutions mineures incluses</li>
+                        <li>Sauvegarde hebdomadaire</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="section-title">
+                <div class="section-icon">7</div>
+                <h2>Conditions générales</h2>
+            </div>
+
+            <div class="conditions">
+                <h4>Modalités de paiement</h4>
+                <ul>
+                    <li><strong>40%</strong> à la signature du devis (acompte) — soit <strong>360,00 € HT</strong></li>
+                    <li><strong>60%</strong> à la livraison et mise en ligne — soit <strong>540,00 € HT</strong></li>
+                </ul>
+
+                <h4>Hébergement & nom de domaine</h4>
+                <ul>
+                    <li>Le client conserve la propriété et la gestion intégrale de son nom de domaine et de son hébergement Hostinger.</li>
+                    <li>Le prestataire interviendra sur l'hébergement Hostinger avec les accès fournis par le client pour le déploiement du site.</li>
+                    <li>Aucun frais récurrent n'est facturé par le prestataire pour l'hébergement ou le nom de domaine.</li>
+                </ul>
+
+                <h4>Délais</h4>
+                <ul>
+                    <li>Le planning débute à réception de l'acompte et des contenus nécessaires (textes, images, accès FTP/Hostinger).</li>
+                    <li>Tout retard dans la transmission des éléments par le client entraîne un décalage équivalent du planning.</li>
+                </ul>
+
+                <h4>Propriété intellectuelle</h4>
+                <ul>
+                    <li>Le transfert de propriété des créations est effectif après paiement intégral.</li>
+                    <li>Les polices de caractères et bibliothèques tierces utilisées restent soumises à leurs licences respectives (toutes open source / gratuites).</li>
+                    <li>Le client est propriétaire à 100% de son site web, sans aucune clause de rétention.</li>
+                </ul>
+
+                <h4>Garantie</h4>
+                <ul>
+                    <li>Garantie corrective de 2 semaines à compter de la mise en ligne.</li>
+                    <li>La garantie couvre les anomalies de développement, non les contenus modifiés par le client.</li>
+                    <li>Toute évolution au-delà du périmètre fera l'objet d'un avenant.</li>
+                </ul>
+            </div>
+
+            <!-- Résumé prix -->
+            <div class="highlight-box">
+                <h3>Récapitulatif de l'investissement</h3>
+                <p>Refonte complète du site formation-diogene.com en HTML5/CSS3/JS : design sur-mesure, 5-6 pages + 3 fiches formations, formulaire, SEO, mise en ligne sur Hostinger et livraison des fichiers sources — hors options et maintenance.</p>
+                <div class="price-highlight">900,00 € HT &nbsp;/&nbsp; 1 080,00 € TTC</div>
+            </div>
+
+            <!-- Signatures -->
+            <div class="signature-block">
+                <div class="signature-party">
+                    <div class="signature-label">Le prestataire</div>
+                    <div class="signature-name">PINGLIER EMMANUEL</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+                <div class="signature-party">
+                    <div class="signature-label">Le client</div>
+                    <div class="signature-name">FORMATION DIOGÈNE</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            PINGLIER EMMANUEL — Entrepreneur individuel (micro-entreprise) — SIRET : 942 385 311 00017 — TVA : FR56942385311<br>
+            39 rue Marceau, 94200 Ivry-sur-Seine — [Email] — [Téléphone]
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const doc = document.querySelector('.document');
+            doc.style.opacity = '0';
+            doc.style.transform = 'translateY(20px)';
+            doc.style.transition = 'all 0.6s ease';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    doc.style.opacity = '1';
+                    doc.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis N°2026-0217 — Système de gestion Les Paniers Marseillais</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+        :root {
+            --primary: #2d6a4f;
+            --primary-light: #40916c;
+            --accent: #e76f51;
+            --accent-light: #f4845f;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --bg-warm: #fefaf6;
+            --border: #e2e8f0;
+            --border-light: #edf2f7;
+            --success: #2d6a4f;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #edf2f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(45,106,79,0.3);
+            transition: all 0.3s ease;
+        }
+        .print-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45,106,79,0.4);
+        }
+        .print-btn svg { width: 18px; height: 18px; }
+        .print-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .document {
+            max-width: 210mm;
+            margin: 30px auto;
+            background: var(--bg);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .page { padding: 45px 50px; position: relative; }
+        .page-break { page-break-before: always; border-top: 1px solid var(--border-light); }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 35px;
+        }
+        .company-info { flex: 1; }
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+        .company-tagline {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .company-details {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .doc-meta { text-align: right; flex-shrink: 0; }
+        .doc-type {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .doc-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .doc-dates {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .doc-dates strong { color: var(--text); }
+
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+        .party-block {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+        }
+        .party-block.client {
+            background: var(--bg-warm);
+            border-color: var(--accent-light);
+        }
+        .party-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .party-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+        .party-details { font-size: 0.82rem; color: var(--text-light); line-height: 1.7; }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+        .section-title:first-child { margin-top: 0; }
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-left: 48px;
+        }
+
+        .context-block {
+            background: linear-gradient(135deg, #f0fdf4, #fefaf6);
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 30px;
+        }
+        .context-block p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .context-block strong { color: var(--text); }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+        .pricing-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pricing-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+        .pricing-table thead th:last-child { border-radius: 0 var(--radius) 0 0; text-align: right; }
+        .pricing-table thead th.text-center { text-align: center; }
+        .pricing-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.2s ease;
+        }
+        .pricing-table tbody tr:hover { background: var(--bg-alt); }
+        .pricing-table tbody td { padding: 14px 16px; vertical-align: top; }
+        .pricing-table tbody td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+        .pricing-table tbody td.text-center { text-align: center; }
+        .item-title { font-weight: 600; color: var(--text); margin-bottom: 3px; }
+        .item-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+        .category-row td {
+            background: var(--bg-alt);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 10px 16px !important;
+            border-bottom: 2px solid var(--primary) !important;
+        }
+        .subtotal-row td {
+            background: var(--bg-alt);
+            font-weight: 600;
+            border-top: 2px solid var(--border);
+            padding: 10px 16px !important;
+        }
+
+        .totals { display: flex; justify-content: flex-end; margin-bottom: 30px; }
+        .totals-box { width: 320px; border: 2px solid var(--primary); border-radius: var(--radius); overflow: hidden; }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .total-row:last-child { border-bottom: none; }
+        .total-row.grand-total {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+        }
+        .total-label { color: var(--text-light); }
+        .grand-total .total-label { color: rgba(255,255,255,0.85); }
+        .total-value { font-weight: 600; }
+
+        .timeline { position: relative; padding-left: 30px; margin-bottom: 30px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .timeline-item:last-child .timeline-dot {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        .timeline-phase { font-weight: 700; font-size: 0.92rem; color: var(--primary); margin-bottom: 2px; }
+        .timeline-duration { font-size: 0.78rem; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+        .timeline-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .scope-card {
+            padding: 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+        .scope-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scope-card ul { list-style: none; padding: 0; }
+        .scope-card li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .scope-card li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+        .scope-excluded li::before { content: '\2717'; color: #e53e3e; }
+
+        .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tech-badge {
+            padding: 4px 12px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .conditions { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; }
+        .conditions h4 { font-size: 0.82rem; color: var(--text); margin-bottom: 6px; margin-top: 12px; }
+        .conditions h4:first-child { margin-top: 0; }
+        .conditions ul { padding-left: 18px; }
+        .conditions li { margin-bottom: 3px; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+        .highlight-box h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 8px; }
+        .highlight-box p { font-size: 0.85rem; opacity: 0.9; line-height: 1.6; }
+        .highlight-box .price-highlight { font-size: 1.8rem; font-weight: 800; margin-top: 10px; }
+
+        .note-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 25px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .note-box strong { color: var(--success); }
+
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+        .signature-party { text-align: center; }
+        .signature-label { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+        .signature-name { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 50px; }
+        .signature-line {
+            border-top: 1px solid var(--text-muted);
+            padding-top: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .doc-footer {
+            text-align: center;
+            padding: 20px 50px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @media print {
+            html { font-size: 13px; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-controls { display: none !important; }
+            .document { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+            .page { padding: 30px 40px; }
+            .page-break { page-break-before: always; border-top: none; padding-top: 30px; }
+            .pricing-table tbody tr:hover { background: transparent; }
+            @page { size: A4; margin: 10mm; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .document { margin: 10px; }
+            .page { padding: 25px 20px; }
+            .doc-header { flex-direction: column; gap: 20px; }
+            .doc-meta { text-align: left; }
+            .parties { grid-template-columns: 1fr; }
+            .scope-grid { grid-template-columns: 1fr; }
+            .signature-block { grid-template-columns: 1fr; }
+            .print-controls { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Exporter en PDF
+        </button>
+        <span class="print-hint">Ctrl+P puis "Enregistrer en PDF"</span>
+    </div>
+
+    <div class="document">
+        <!-- ==========================================
+             PAGE 1 — En-tête + Contexte + Devis
+        ========================================== -->
+        <div class="page">
+            <div class="doc-header">
+                <div class="company-info">
+                    <div class="company-name">PINGLIER EMMANUEL</div>
+                    <div class="company-tagline">Développement web, automatisation & conseil numérique</div>
+                    <div class="company-details">
+                        39 rue Marceau, 94200 Ivry-sur-Seine<br>
+                        SIRET : 942 385 311 00017<br>
+                        Tél. : 06 28 13 48 36 — Email : contact@unjouruneapp.com<br>
+                        TVA non applicable — art. 293 B du CGI
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <div class="doc-type">DEVIS</div>
+                    <div class="doc-number">N° 2026-0217-007</div>
+                    <div class="doc-dates">
+                        <strong>Date d'émission :</strong> 17 février 2026<br>
+                        <strong>Validité :</strong> 30 jours<br>
+                        <strong>Échéance :</strong> 19 mars 2026
+                    </div>
+                </div>
+            </div>
+
+            <div class="parties">
+                <div class="party-block">
+                    <div class="party-label">Prestataire</div>
+                    <div class="party-name">PINGLIER EMMANUEL</div>
+                    <div class="party-details">
+                        39 rue Marceau<br>
+                        94200 Ivry-sur-Seine<br>
+                        Contact : Emmanuel Pinglier<br>
+                        contact@unjouruneapp.com — 06 28 13 48 36
+                    </div>
+                </div>
+                <div class="party-block client">
+                    <div class="party-label">Client</div>
+                    <div class="party-name">LES PANIERS MARSEILLAIS</div>
+                    <div class="party-details">
+                        28 Boulevard National<br>
+                        13001 Marseille<br>
+                        Contact : P. Cahn<br>
+                        p.cahn@lespaniersmarseillais.org — 06 51 60 10 64
+                    </div>
+                </div>
+            </div>
+
+            <div class="context-block">
+                <p>
+                    <strong>Objet :</strong> Conception et mise en place d'un <strong>système de gestion centralisé</strong> pour l'association Les Paniers Marseillais, réseau d'AMAP en partenariat solidaire avec des paysans locaux en agriculture biologique. Basé sur <strong>Airtable</strong> (base de données, interfaces, tableaux de bord) et <strong>n8n</strong> (automatisations), le système permettra de centraliser les flux financiers, le suivi des partenaires, producteurs et adhérents, et de produire des indicateurs de pilotage. La prestation inclut la <strong>formation de l'utilisatrice principale</strong> à l'ensemble des outils.
+                </p>
+            </div>
+
+            <div class="note-box">
+                <strong>Approche :</strong> Le système est conçu pour être <strong>simple d'utilisation</strong>, <strong>maintenable sans intervention technique</strong>, et <strong>évolutif</strong> dans le temps. L'association reste propriétaire de l'intégralité de ses données. Aucune dépendance technique n'est créée vis-à-vis du prestataire.
+            </div>
+
+            <div class="section-title">
+                <div class="section-icon">1</div>
+                <h2>Détail des prestations & chiffrage</h2>
+            </div>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="width:55%">Désignation</th>
+                        <th class="text-center" style="width:15%">Unité</th>
+                        <th style="width:15%">Montant HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Phase 1 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 1 — Cadrage & audit des données</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Réunion de cadrage & analyse de l'existant</div>
+                            <div class="item-desc">Échange approfondi sur le fonctionnement actuel, recensement des fichiers existants (Excel, papier, etc.), identification des flux financiers et administratifs, définition des besoins prioritaires</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 1</strong></td>
+                        <td><strong>150,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 2 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 2 — Construction de la base Airtable</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Modèle de données (6 tables liées)</div>
+                            <div class="item-desc">Transactions (table pivot), Partenaires, Producteurs, Projets/AMAP, Documents, Budgets. Champs calculés, rollups, formules d'écart budgétaire, vues filtrées</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>200,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Interfaces utilisateur (4 interfaces)</div>
+                            <div class="item-desc">Dashboard (KPI, graphiques), gestion financière (formulaire de saisie, filtres), suivi partenaires & producteurs, reporting par période/projet/type</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Import des données existantes</div>
+                            <div class="item-desc">Reprise des données depuis les fichiers fournis par l'association (Excel, CSV). Nettoyage, structuration et import dans la base Airtable</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>100,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 2</strong></td>
+                        <td><strong>450,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 3 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 3 — Automatisations (n8n)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Alertes & notifications automatiques</div>
+                            <div class="item-desc">Emails automatiques : échéances de conventions, paiements en retard, rappels. Configurable sans intervention technique</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>100,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Rapport mensuel automatique</div>
+                            <div class="item-desc">Envoi mensuel par email d'un résumé des chiffres clés : entrées, sorties, solde, indicateurs d'activité</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>50,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 3</strong></td>
+                        <td><strong>150,00 €</strong></td>
+                    </tr>
+
+                    <!-- Phase 4 -->
+                    <tr class="category-row">
+                        <td colspan="3">Phase 4 — Formation & accompagnement</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Formation utilisatrice principale (2 sessions)</div>
+                            <div class="item-desc">Session 1 : prise en main d'Airtable (navigation, saisie, vues, filtres, interfaces). Session 2 : tableaux de bord, reporting, gestion au quotidien. Visio ou présentiel, support de formation fourni</div>
+                        </td>
+                        <td class="text-center">2 × 1h30</td>
+                        <td>150,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-title">Guide d'utilisation & support post-livraison</div>
+                            <div class="item-desc">Document de référence illustré (PDF). Support email et ajustements pendant 3 semaines après livraison</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td>100,00 €</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="2"><strong>Sous-total Phase 4</strong></td>
+                        <td><strong>250,00 €</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="totals">
+                <div class="totals-box">
+                    <div class="total-row">
+                        <span class="total-label">Total HT</span>
+                        <span class="total-value">1 000,00 €</span>
+                    </div>
+                    <div class="total-row">
+                        <span class="total-label">TVA</span>
+                        <span class="total-value" style="font-size:0.78rem;font-weight:400;color:var(--text-muted)">Non applicable — art. 293 B du CGI</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span class="total-label">Total TTC</span>
+                        <span class="total-value">1 000,00 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 2 — Périmètre, Planning, Conditions
+        ========================================== -->
+        <div class="page page-break">
+
+            <div class="section-title">
+                <div class="section-icon">2</div>
+                <h2>Périmètre des prestations</h2>
+            </div>
+            <p class="section-subtitle">Détail de ce qui est inclus et exclu du présent devis.</p>
+
+            <div class="scope-grid">
+                <div class="scope-card">
+                    <h4>&#9989; Base de données Airtable</h4>
+                    <ul>
+                        <li>6 tables liées (Transactions, Partenaires, etc.)</li>
+                        <li>Champs calculés, rollups, formules</li>
+                        <li>Vues filtrées par type, période, projet</li>
+                        <li>Import initial des données existantes</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Interfaces & Dashboard</h4>
+                    <ul>
+                        <li>4 interfaces Airtable (dashboard, saisie, partenaires, reporting)</li>
+                        <li>Formulaire de saisie simplifié</li>
+                        <li>Tableaux de bord avec indicateurs clés</li>
+                        <li>Graphiques de suivi budgétaire</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Automatisations</h4>
+                    <ul>
+                        <li>Alertes par email (échéances, retards)</li>
+                        <li>Rapport mensuel automatique</li>
+                        <li>Hébergement n8n configuré</li>
+                        <li>Workflows documentés</li>
+                    </ul>
+                </div>
+                <div class="scope-card">
+                    <h4>&#9989; Formation & accompagnement</h4>
+                    <ul>
+                        <li>2 sessions de formation (2 × 1h30)</li>
+                        <li>Guide d'utilisation illustré (PDF)</li>
+                        <li>3 semaines de support post-livraison</li>
+                        <li>Ajustements inclus pendant le support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card scope-excluded" style="grid-column: 1 / -1;">
+                    <h4>&#10060; Non inclus dans ce devis</h4>
+                    <ul style="columns: 2; column-gap: 30px;">
+                        <li>Abonnement Airtable (gratuit ou 20 €/mois selon usage)</li>
+                        <li>Hébergement n8n au-delà de la période de mise en place</li>
+                        <li>Génération automatique de documents PDF (option future)</li>
+                        <li>Import automatique depuis des sources externes (Google Sheets, CSV récurrents)</li>
+                        <li>Développement d'un backend Python</li>
+                        <li>Formations complémentaires pour d'autres utilisateurs</li>
+                        <li>Connexion à un logiciel comptable externe</li>
+                        <li>Maintenance ou évolutions au-delà de la période de support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="section-title">
+                <div class="section-icon">3</div>
+                <h2>Outils & technologies</h2>
+            </div>
+            <div class="tech-badges">
+                <span class="tech-badge">Airtable</span>
+                <span class="tech-badge">Airtable Interface Designer</span>
+                <span class="tech-badge">n8n (automatisations)</span>
+                <span class="tech-badge">Email SMTP</span>
+                <span class="tech-badge">No-code / Low-code</span>
+            </div>
+
+            <div class="note-box">
+                <strong>Coût des outils pour l'association :</strong> Airtable est gratuit jusqu'à 1 200 enregistrements (suffisant pour démarrer). Si les volumes augmentent, le plan Team est à 20 €/mois. n8n peut être auto-hébergé gratuitement ou utilisé en cloud pour environ 20 €/mois. <strong>Budget outils estimé : 0 à 40 €/mois.</strong>
+            </div>
+
+            <!-- Planning -->
+            <div class="section-title">
+                <div class="section-icon">4</div>
+                <h2>Planning prévisionnel</h2>
+            </div>
+            <p class="section-subtitle">Durée totale estimée : <strong>2 à 3 semaines</strong> à compter de la validation du devis et de la réception des fichiers existants.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 1 — Cadrage & audit</div>
+                    <div class="timeline-duration">Jour 1 – 2</div>
+                    <div class="timeline-desc">Réunion de cadrage, récupération des fichiers existants, analyse des flux. Livrable : spécifications validées.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 2 — Construction Airtable</div>
+                    <div class="timeline-duration">Jours 3 – 8</div>
+                    <div class="timeline-desc">Création des tables, relations, formules, interfaces et dashboard. Import des données existantes. Livrable : base fonctionnelle.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 3 — Automatisations</div>
+                    <div class="timeline-duration">Jours 8 – 10</div>
+                    <div class="timeline-desc">Configuration des workflows n8n : alertes, rapport mensuel. Tests et validation. Livrable : automatisations actives.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 4 — Formation & livraison</div>
+                    <div class="timeline-duration">Semaines 2 – 3</div>
+                    <div class="timeline-desc">2 sessions de formation, remise du guide, 3 semaines de support et ajustements. Livrable : système en production + équipe formée.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 3 — Conditions, Signature
+        ========================================== -->
+        <div class="page page-break">
+
+            <div class="section-title">
+                <div class="section-icon">5</div>
+                <h2>Conditions générales</h2>
+            </div>
+
+            <div class="conditions">
+                <h4>Modalités de paiement</h4>
+                <ul>
+                    <li><strong>100%</strong> à la livraison du système et à l'issue de la première session de formation — soit <strong>1 000,00 €</strong></li>
+                    <li>Paiement par virement bancaire sous 30 jours.</li>
+                </ul>
+
+                <h4>Prérequis client</h4>
+                <ul>
+                    <li>Création d'un compte Airtable (gratuit) par l'association.</li>
+                    <li>Transmission des fichiers de données existants (Excel, CSV, documents) nécessaires à l'import initial.</li>
+                    <li>Disponibilité de la personne référente pour les réunions de cadrage et les sessions de formation.</li>
+                </ul>
+
+                <h4>Délais</h4>
+                <ul>
+                    <li>Le planning débute à la signature du devis et à réception des fichiers de données existants.</li>
+                    <li>Tout retard dans la transmission des éléments par le client entraîne un décalage équivalent du planning.</li>
+                </ul>
+
+                <h4>Propriété des données</h4>
+                <ul>
+                    <li>L'association reste propriétaire à 100% de l'ensemble de ses données hébergées sur Airtable.</li>
+                    <li>Les données sont exportables à tout moment depuis Airtable (CSV, Excel).</li>
+                    <li>Aucune clause de rétention des données n'est appliquée par le prestataire.</li>
+                </ul>
+
+                <h4>Propriété intellectuelle</h4>
+                <ul>
+                    <li>Le transfert de propriété de la structure Airtable et des workflows n8n est effectif après paiement intégral.</li>
+                    <li>Le guide d'utilisation est livré en PDF et appartient au client.</li>
+                </ul>
+
+                <h4>Garantie & support</h4>
+                <ul>
+                    <li>3 semaines de support post-livraison incluses (corrections, ajustements mineurs, questions).</li>
+                    <li>Au-delà de cette période, toute intervention fera l'objet d'un devis complémentaire.</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Récapitulatif de l'investissement</h3>
+                <p>Mise en place d'un système de gestion centralisé sur Airtable : base de données structurée (6 tables), 4 interfaces utilisateur, automatisations (alertes, rapport mensuel), import des données existantes, 2 sessions de formation et 3 semaines d'accompagnement.</p>
+                <div class="price-highlight">1 000,00 € TTC</div>
+            </div>
+
+            <div class="signature-block">
+                <div class="signature-party">
+                    <div class="signature-label">Le prestataire</div>
+                    <div class="signature-name">PINGLIER EMMANUEL</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+                <div class="signature-party">
+                    <div class="signature-label">Le client</div>
+                    <div class="signature-name">LES PANIERS MARSEILLAIS</div>
+                    <div class="signature-line">Date et signature, précédées de la mention "Bon pour accord"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-footer">
+            PINGLIER EMMANUEL — Entrepreneur individuel (micro-entreprise) — SIRET : 942 385 311 00017 — TVA non applicable, art. 293 B du CGI<br>
+            39 rue Marceau, 94200 Ivry-sur-Seine — contact@unjouruneapp.com — 06 28 13 48 36
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const doc = document.querySelector('.document');
+            doc.style.opacity = '0';
+            doc.style.transform = 'translateY(20px)';
+            doc.style.transition = 'all 0.6s ease';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    doc.style.opacity = '1';
+                    doc.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
