@@ -31,6 +31,29 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ============================================
+// Dark Mode Toggle
+// ============================================
+const darkToggle = document.getElementById('dark-toggle');
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+// Init from saved preference or system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    setTheme(savedTheme);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+}
+
+darkToggle?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// ============================================
 // Cursor Glow Effect (desktop only)
 // ============================================
 const cursorGlow = document.querySelector('.cursor-glow');
@@ -278,17 +301,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ============================================
 // Counter Animation (triggered on scroll)
 // ============================================
-function animateCounter(element, target, duration = 2000) {
+function animateCounter(element, target, suffix = '', duration = 1500) {
     let start = 0;
-    const increment = target / (duration / 16);
+    const startTime = performance.now();
 
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+
+        element.textContent = current + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
         }
-    }, 16);
+    }
+
+    requestAnimationFrame(update);
 }
+
+// Observe hero stats for counter animation
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.counter);
+            const suffix = el.dataset.suffix || '';
+            if (!isNaN(target)) {
+                animateCounter(el, target, suffix);
+            }
+            statsObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-counter]').forEach(el => {
+    statsObserver.observe(el);
+});
