@@ -193,6 +193,7 @@ contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(contactForm);
+    formData.append('form-name', 'contact');
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Envoi en cours...';
