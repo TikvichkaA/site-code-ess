@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui suis-je ? — Emmanuel Pinglier | Code'ess</title>
+    <meta name="description" content="Emmanuel Pinglier — Polytechnicien, ancien officier, développeur web indépendant. Open source et souveraineté numérique au service de l'ESS.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           About Page Specific Styles
+        ============================================ */
+        .about-hero {
+            position: relative;
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(13, 148, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(240, 253, 250, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-light);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-hero-content h1 {
+            margin-bottom: var(--space-md);
+        }
+
+        .about-hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+
+        .about-hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .about-visual {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-avatar {
+            width: 320px;
+            height: 320px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.3);
+            transform: rotate(2deg);
+            transition: var(--transition-slow);
+            overflow: hidden;
+        }
+
+        .about-avatar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.15) 45%,
+                rgba(255, 255, 255, 0.15) 55%,
+                transparent 60%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 6s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .about-avatar:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 35px 60px -15px rgba(13, 148, 136, 0.4);
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-initials {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-decorations {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .avatar-decorations .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .avatar-decorations .deco-circle:nth-child(1) {
+            width: 150px; height: 150px; top: -20px; right: -20px;
+        }
+        .avatar-decorations .deco-circle:nth-child(2) {
+            width: 100px; height: 100px; bottom: -10px; left: -10px;
+        }
+        .avatar-decorations .deco-circle:nth-child(3) {
+            width: 60px; height: 60px; top: 50%; left: 10px;
+        }
+
+        /* Quick facts */
+        .about-facts {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .about-fact {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.9375rem;
+            color: var(--text-light);
+        }
+
+        .about-fact svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           Story Section
+        ============================================ */
+        .story {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.06), transparent 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-content p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .story-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-highlight {
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-highlight::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 60%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        .story-highlight p {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0;
+        }
+
+        /* ============================================
+           Timeline Section
+        ============================================ */
+        .timeline {
+            padding: var(--space-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-list {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+            opacity: 0.2;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--space-lg);
+            padding-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            box-shadow: 0 4px 15px var(--glow-primary);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-marker {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .timeline-marker svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.9375rem;
+        }
+
+        .timeline-org {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ============================================
+           Skills Section
+        ============================================ */
+        .skills {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            pointer-events: none;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .skill-card {
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 0 20px rgba(13, 148, 136, 0.1);
+        }
+
+        [data-theme="dark"] .skill-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .skill-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 15px var(--glow-primary);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .skill-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .skill-card h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: var(--space-md);
+        }
+
+        .skill-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-radius: 50px;
+            border: 1px solid rgba(13, 148, 136, 0.15);
+        }
+
+        /* ============================================
+           Engagements Section
+        ============================================ */
+        .engagements-asso {
+            padding: var(--space-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .engagements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .engagement-card {
+            text-align: center;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: var(--transition-slow);
+        }
+
+        .engagement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="dark"] .engagement-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .engagement-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(79, 70, 229, 0.08));
+            border-radius: 50%;
+            margin: 0 auto var(--space-md);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .engagement-card:hover .engagement-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scale(1.1);
+        }
+
+        .engagement-card h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .engagement-card p {
+            font-size: 0.875rem;
+        }
+
+        /* ============================================
+           Languages bar
+        ============================================ */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+
+        .lang-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .lang-pill {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .lang-pill:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .lang-level {
+            padding: 0.15rem 0.5rem;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+        }
+
+        /* ============================================
+           CTA Section
+        ============================================ */
+        .about-cta {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-cta .section-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .about-cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           Responsive
+        ============================================ */
+        @media (max-width: 968px) {
+            .about-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-visual {
+                order: -1;
+            }
+
+            .about-avatar {
+                width: 240px;
+                height: 240px;
+                transform: none;
+            }
+
+            .avatar-initials {
+                font-size: 3.5rem;
+            }
+
+            .about-hero-cta {
+                justify-content: center;
+            }
+
+            .about-facts {
+                justify-content: center;
+            }
+
+            .timeline-list::before {
+                left: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl);
+            }
+
+            .about-avatar {
+                width: 200px;
+                height: 200px;
+            }
+
+            .avatar-initials {
+                font-size: 3rem;
+            }
+
+            .timeline-marker {
+                width: 40px;
+                height: 40px;
+            }
+
+            .timeline-marker svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <span class="logo-chevron">&lt;/&gt;</span>
+                <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#engagements">Engagements</a></li>
+                <li><a href="index.html#alternatives">Alternatives</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="index.html#contact" class="btn btn-nav">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-toggle" id="dark-toggle" aria-label="Basculer le mode sombre">
+                    <svg class="dark-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="dark-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+
+        <div class="container about-hero-grid">
+            <div class="about-hero-content" data-reveal="up">
+                <div class="about-badge">
+                    <span>&#128075;</span>
+                    <span>Qui suis-je ?</span>
+                </div>
+                <h1>Emmanuel <span class="highlight">Pinglier</span></h1>
+                <p class="about-intro">
+                    Polytechnicien, ancien officier, consultant secteur public, associé On Purpose. Engagé dans l'ESS et le monde associatif, je construis aujourd'hui des outils numériques libres et souverains pour les structures qui en ont besoin.
+                </p>
+                <div class="about-hero-cta">
+                    <a href="index.html#contact" class="btn btn-primary">Me contacter</a>
+                    <a href="book.html" class="btn btn-secondary">Voir mes réalisations</a>
+                </div>
+                <div class="about-facts">
+                    <div class="about-fact">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Ivry-sur-Seine, France
+                    </div>
+                    <div class="about-fact">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        Indépendant (EI)
+                    </div>
+                    <div class="about-fact">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+                        Polytechnique (cryptographie)
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-visual" data-reveal="scale">
+                <div class="about-avatar">
+                    <div class="avatar-decorations" aria-hidden="true">
+                        <div class="deco-circle"></div>
+                        <div class="deco-circle"></div>
+                        <div class="deco-circle"></div>
+                    </div>
+                    <img src="photo.jpg" alt="Emmanuel Pinglier en présentation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Mon parcours</span>
+                <h2 class="section-title">De l'armée au code libre</h2>
+            </div>
+            <div class="story-content">
+                <p data-reveal="up" data-delay="0">
+                    Diplômé de l'<strong>École Polytechnique</strong>, spécialisé en cryptographie, j'ai d'abord servi comme <strong>officier d'artillerie</strong> dans l'Armée de Terre, notamment en opération extérieure (Barkhane). Cette expérience m'a appris le leadership, la gestion de crise et l'importance de pouvoir compter sur des outils fiables et maîtrisés.
+                </p>
+                <p data-reveal="up" data-delay="1">
+                    Passé par le <strong>conseil en secteur public</strong> (BearingPoint, ministère de la Justice) et l'<strong>enseignement</strong> (professeur vacataire à Paris-Saclay, examinateur en CPGE), j'ai ensuite complété mon parcours par un <strong>Master en Adaptation au changement climatique</strong>.
+                </p>
+
+                <div class="story-highlight" data-reveal="scale">
+                    <p>
+                        "Le numérique doit être un levier d'émancipation, pas un outil de dépendance. C'est cette conviction qui guide chacun de mes projets."
+                    </p>
+                </div>
+
+                <p data-reveal="up" data-delay="2">
+                    En 2025, j'ai lancé <strong>Code'ess</strong> avec une mission claire : fournir aux acteurs de l'ESS des outils numériques libres, souverains, et adaptés à leurs budgets. Mon expérience chez <strong>Linkee</strong> (association d'aide alimentaire) et mes formations sur l'IA générative chez <strong>On Purpose</strong> m'ont confirmé que ces structures méritent un accompagnement technique de qualité.
+                </p>
+                <p data-reveal="up" data-delay="3">
+                    En janvier 2026, j'ai relevé le défi <a href="https://unjouruneapp.netlify.app/" target="_blank" style="color:var(--primary);font-weight:600;text-decoration:underline"><strong>Un Jour Une App</strong></a> : 31 applications web en 31 jours, en utilisant React, Vue, vanilla JS, Python et plus encore. Une preuve par l'acte que la polyvalence et la rapidité d'exécution ne sont pas incompatibles avec la qualité.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Expériences</span>
+                <h2 class="section-title">Les étapes clés</h2>
+            </div>
+
+            <div class="timeline-list">
+                <div class="timeline-item" data-reveal="up" data-delay="0">
+                    <div class="timeline-marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025 — aujourd'hui</span>
+                        <h4>Développeur web indépendant</h4>
+                        <p class="timeline-org">Code'ess (EI)</p>
+                        <p>Développement open source, conseil en souveraineté numérique et automatisation pour les structures de l'ESS.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal="up" data-delay="1">
+                    <div class="timeline-marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 — 2025</span>
+                        <h4>Développeur numérique</h4>
+                        <p class="timeline-org">Linkee (association d'aide alimentaire)</p>
+                        <p>Développement d'outils numériques pour une association solidaire de premier plan.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal="up" data-delay="2">
+                    <div class="timeline-marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023</span>
+                        <h4>Consultant secteur public</h4>
+                        <p class="timeline-org">BearingPoint — Ministère de la Justice</p>
+                        <p>Conseil en transformation numérique pour le secteur public.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal="up" data-delay="3">
+                    <div class="timeline-marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2019 — 2023</span>
+                        <h4>Officier d'artillerie</h4>
+                        <p class="timeline-org">Armée de Terre — Opération Barkhane</p>
+                        <p>Leadership, gestion de crise, commandement en opération extérieure.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal="up" data-delay="4">
+                    <div class="timeline-marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2016 — 2019</span>
+                        <h4>École Polytechnique</h4>
+                        <p class="timeline-org">Palaiseau</p>
+                        <p>Formation d'ingénieur, spécialisé en cryptographie (algorithme de Satoh). Examinateur en CPGE au Lycée Hoche.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Compétences</span>
+                <h2 class="section-title">Ce que je sais faire</h2>
+                <p class="section-subtitle">Un profil hybride : technique, stratégique et terrain</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card" data-reveal="up" data-delay="0">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p class="service-description">Sites, applications, automatisations. Du sur-mesure en logiciel libre.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML / CSS / JS</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">11ty</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-reveal="up" data-delay="1">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>IA & Automatisation</h3>
+                    <p class="service-description">Intégration IA, formations prompt engineering, workflows automatisés.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">IA générative</span>
+                        <span class="skill-tag">n8n</span>
+                        <span class="skill-tag">API REST</span>
+                        <span class="skill-tag">Supabase</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-reveal="up" data-delay="2">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3>Leadership & Gestion</h3>
+                    <p class="service-description">Gestion de projet, de crise, d'équipe. Formé à l'école du terrain et de l'exigence.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Gestion de projet</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Formation</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-reveal="up" data-delay="3">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+                    </div>
+                    <h3>Enseignement</h3>
+                    <p class="service-description">Professeur vacataire, examinateur CPGE, formateur IA. Pédagogie et transmission.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Paris-Saclay</span>
+                        <span class="skill-tag">CPGE</span>
+                        <span class="skill-tag">On Purpose</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="languages" data-reveal="up">
+                <div class="lang-pill">Anglais <span class="lang-level">C1</span></div>
+                <div class="lang-pill">Chinois <span class="lang-level">B1</span></div>
+                <div class="lang-pill">Russe <span class="lang-level">B1</span></div>
+                <div class="lang-pill">Bulgare <span class="lang-level">B2</span></div>
+                <div class="lang-pill">Géorgien <span class="lang-level">A2</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagements Section -->
+    <section class="engagements-asso">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Engagements</span>
+                <h2 class="section-title">Au-delà du code</h2>
+                <p class="section-subtitle">Des engagements associatifs et citoyens qui nourrissent ma pratique</p>
+            </div>
+
+            <div class="engagements-grid">
+                <div class="engagement-card" data-reveal="up" data-delay="0">
+                    <div class="engagement-icon">&#127758;</div>
+                    <h4>Fresque du Climat</h4>
+                    <p>Sensibilisation aux enjeux climatiques</p>
+                </div>
+                <div class="engagement-card" data-reveal="up" data-delay="1">
+                    <div class="engagement-icon">&#129309;</div>
+                    <h4>Le Rez'o</h4>
+                    <p>Réseau solidaire et entraide</p>
+                </div>
+                <div class="engagement-card" data-reveal="up" data-delay="2">
+                    <div class="engagement-icon">&#128218;</div>
+                    <h4>ZupDeCo</h4>
+                    <p>Tutorat et accompagnement scolaire</p>
+                </div>
+                <div class="engagement-card" data-reveal="up" data-delay="3">
+                    <div class="engagement-icon">&#127968;</div>
+                    <h4>TWIZA</h4>
+                    <p>Chantiers participatifs éco-construction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Travaillons ensemble</span>
+                <h2 class="section-title">Envie de reprendre le contrôle<br>de votre numérique ?</h2>
+                <p class="section-subtitle">Discutons de votre projet, sans engagement. Premier échange gratuit.</p>
+            </div>
+            <div class="about-cta-actions" data-reveal="up" data-delay="1">
+                <a href="index.html#contact" class="btn btn-primary">Discutons de votre projet</a>
+                <a href="book.html" class="btn btn-secondary">Voir le book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-chevron">&lt;/&gt;</span>
+                        <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+                    </a>
+                    <p class="footer-tagline">Numérique libre au service de l'intérêt général</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#engagements">Engagements</a>
+                    <a href="index.html#alternatives">Alternatives</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Code'ess — par Emmanuel Pinglier — EI — SIRET 942 385 311 00017</p>
+                <p><a href="#">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
