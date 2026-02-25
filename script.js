@@ -199,12 +199,19 @@ contactForm?.addEventListener('submit', async (e) => {
     submitBtn.disabled = true;
 
     try {
-        // Simulation d'envoi (a remplacer par votre backend)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        showNotification('Message envoye avec succes ! Je vous repondrai rapidement.', 'success');
-        contactForm.reset();
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        });
+        if (response.ok) {
+            showNotification('Message envoyé avec succès ! Je vous répondrai rapidement.', 'success');
+            contactForm.reset();
+        } else {
+            throw new Error('Erreur réseau');
+        }
     } catch (error) {
-        showNotification('Une erreur est survenue. Veuillez reessayer.', 'error');
+        showNotification('Une erreur est survenue. Veuillez réessayer.', 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;

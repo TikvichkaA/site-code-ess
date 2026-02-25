@@ -439,9 +439,9 @@
                         Un projet web en logiciel libre ? Prenons le temps d'en discuter ensemble, sans engagement.
                     </p>
                     <div class="contact-methods">
-                        <a href="mailto:[email]" class="contact-method">
+                        <a href="mailto:contact@unjouruneapp.com" class="contact-method">
                             <span class="method-icon">&#9993;&#65039;</span>
-                            <span class="method-text">[email]</span>
+                            <span class="method-text">contact@unjouruneapp.com</span>
                         </a>
                         <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/" target="_blank" class="contact-method">
                             <span class="method-icon">&#128279;</span>
@@ -453,7 +453,8 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contact-form" data-reveal="right">
+                <form class="contact-form" id="contact-form" data-reveal="right" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <p class="form-group" style="display:none"><label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label></p>
                     <div class="form-group">
                         <label for="name">Votre nom *</label>
                         <input type="text" id="name" name="name" required>
