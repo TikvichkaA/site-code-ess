@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire - Amicale des Anciens Fonctionnaires</title>
+    <title>Questionnaire 2026 — AAFU</title>
+    <meta name="description" content="Questionnaire de l'Association des Anciens Fonctionnaires de l'UNESCO (AAFU) — Plan d'action 2027-2030">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --primary: #1e3a5f;
@@ -35,20 +32,18 @@
             --gray-900: #111827;
             --success: #059669;
             --success-bg: #ecfdf5;
+            --warning: #d97706;
+            --warning-bg: #fffbeb;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
             --radius: 12px;
             --radius-sm: 8px;
             --radius-xs: 6px;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 18px;
-        }
+        html { scroll-behavior: smooth; font-size: 18px; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -62,13 +57,10 @@
         /* ===== PROGRESS BAR ===== */
         .progress-wrapper {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
-            padding: 0;
         }
 
         .progress-inner {
@@ -134,15 +126,14 @@
         }
 
         .logo-circle {
-            width: 56px;
-            height: 56px;
+            width: 56px; height: 56px;
             background: rgba(255,255,255,0.15);
             border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--white);
             flex-shrink: 0;
@@ -182,20 +173,12 @@
             font-size: 0.82rem;
             font-weight: 500;
             transition: all 0.2s;
+            cursor: pointer;
         }
 
         .header-link:hover {
             background: rgba(255,255,255,0.22);
             border-color: rgba(255,255,255,0.35);
-        }
-
-        .header-link-arrow {
-            font-size: 1rem;
-            transition: transform 0.2s;
-        }
-
-        .header-link:hover .header-link-arrow {
-            transform: translateX(3px);
         }
 
         .header-title {
@@ -227,10 +210,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .header-meta-icon {
-            font-size: 1rem;
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -271,13 +250,13 @@
         }
 
         .section-title {
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
 
         .section-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             opacity: 0.85;
             margin-top: 8px;
             font-weight: 400;
@@ -287,587 +266,548 @@
             padding: 8px 0;
         }
 
+        /* ===== INTRO BLOCK ===== */
+        .intro-block {
+            padding: 20px 32px;
+            background: var(--accent-bg);
+            border-left: 4px solid var(--accent);
+            margin: 0 0 4px 0;
+            font-size: 0.92rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .intro-block strong {
+            color: var(--primary);
+        }
+
         /* ===== QUESTION ===== */
         .question {
             padding: 28px 32px;
             border-bottom: 1px solid var(--gray-100);
         }
 
-        .question:last-child {
-            border-bottom: none;
-        }
+        .question:last-child { border-bottom: none; }
 
         .question-label {
-            display: block;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--gray-800);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
 
         .question-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            min-width: 32px;
+            height: 28px;
             background: var(--accent-bg);
             color: var(--accent);
-            font-size: 0.85rem;
+            border-radius: var(--radius-xs);
+            font-size: 0.82rem;
             font-weight: 700;
-            border-radius: 50%;
-            margin-right: 12px;
-            flex-shrink: 0;
-            vertical-align: middle;
+            margin-right: 10px;
+            padding: 0 8px;
         }
 
-        /* ===== RADIO MCQ ===== */
+        .question-hint {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* ===== SUB-QUESTION ===== */
+        .sub-question {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--gray-200);
+        }
+
+        .sub-question-label {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .sub-question-number {
+            font-weight: 700;
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        /* ===== RADIO / CHECKBOX GROUPS ===== */
         .mcq-group {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .mcq-option {
-            position: relative;
-        }
-
-        .mcq-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .mcq-option label {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 18px;
-            background: var(--gray-50);
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1.05rem;
-            color: var(--gray-700);
-            min-height: 48px;
-        }
-
-        .mcq-option label:hover {
-            border-color: var(--accent-light);
-            background: var(--accent-bg);
-        }
-
-        .mcq-option input[type="radio"]:checked + label {
-            border-color: var(--accent);
-            background: var(--accent-bg);
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .mcq-radio-dot {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2.5px solid var(--gray-300);
-            flex-shrink: 0;
-            position: relative;
-            transition: all 0.2s;
-        }
-
-        .mcq-option input[type="radio"]:checked + label .mcq-radio-dot {
-            border-color: var(--accent);
-        }
-
-        .mcq-option input[type="radio"]:checked + label .mcq-radio-dot::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-
-        /* Horizontal MCQ for short options */
-        .mcq-group.mcq-horizontal {
-            flex-direction: row;
-            flex-wrap: wrap;
+        .mcq-group.vertical {
+            flex-direction: column;
             gap: 8px;
         }
 
-        .mcq-group.mcq-horizontal .mcq-option label {
-            padding: 14px 18px;
-        }
-
-        /* ===== CHECKBOX GROUP ===== */
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .checkbox-group.checkbox-horizontal {
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-
-        .check-option {
-            position: relative;
-        }
-
-        .check-option input[type="checkbox"] {
+        .mcq-group input[type="radio"],
+        .mcq-group input[type="checkbox"] {
             position: absolute;
             opacity: 0;
-            width: 0;
-            height: 0;
+            width: 0; height: 0;
         }
 
-        .check-option label {
-            display: flex;
+        .mcq-group label {
+            display: inline-flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px 18px;
+            gap: 8px;
+            padding: 10px 18px;
             background: var(--gray-50);
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1.05rem;
+            font-size: 0.92rem;
+            font-weight: 500;
             color: var(--gray-700);
-            min-height: 48px;
+            cursor: pointer;
+            transition: all 0.15s;
+            user-select: none;
         }
 
-        .check-option label:hover {
+        .mcq-group label:hover {
             border-color: var(--accent-light);
             background: var(--accent-bg);
         }
 
-        .check-option input[type="checkbox"]:checked + label {
-            border-color: var(--accent);
+        .mcq-group input[type="radio"]:checked + label,
+        .mcq-group input[type="checkbox"]:checked + label {
             background: var(--accent-bg);
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .check-box {
-            width: 24px;
-            height: 24px;
-            border-radius: 5px;
-            border: 2.5px solid var(--gray-300);
-            flex-shrink: 0;
-            position: relative;
-            transition: all 0.2s;
-        }
-
-        .check-option input[type="checkbox"]:checked + label .check-box {
             border-color: var(--accent);
-            background: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
         }
 
-        .check-option input[type="checkbox"]:checked + label .check-box::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 5px;
-            width: 5px;
-            height: 9px;
-            border: solid var(--white);
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
+        .mcq-group input:focus-visible + label {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
 
-        /* ===== SCALE 1-10 ===== */
-        .scale-group {
-            display: flex;
-            gap: 0;
-            width: 100%;
-        }
-
-        .scale-option {
-            flex: 1;
-            position: relative;
-        }
-
-        .scale-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .scale-option label {
+        .mcq-indicator {
+            width: 18px; height: 18px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 52px;
+            flex-shrink: 0;
+            transition: all 0.15s;
+        }
+
+        .mcq-indicator.square { border-radius: 4px; }
+
+        .mcq-group input:checked + label .mcq-indicator {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .mcq-group input:checked + label .mcq-indicator::after {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .mcq-group input[type="checkbox"]:checked + label .mcq-indicator.square::after {
+            content: '\2713';
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            width: auto; height: auto;
+            background: none;
+            border-radius: 0;
+        }
+
+        /* ===== INLINE RADIO ROW ===== */
+        .inline-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .inline-row-label {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            min-width: 120px;
+        }
+
+        .inline-row .mcq-group {
+            flex: 1;
+        }
+
+        .inline-row .mcq-group label {
+            padding: 8px 14px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== SCALE GROUP ===== */
+        .scale-group {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+        }
+
+        .scale-group input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+        .scale-group label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
             background: var(--gray-50);
             border: 2px solid var(--gray-200);
-            margin-left: -2px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1.05rem;
+            border-radius: var(--radius-xs);
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--gray-500);
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.15s;
         }
 
-        .scale-option:first-child label {
-            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-            margin-left: 0;
-        }
-
-        .scale-option:last-child label {
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        }
-
-        .scale-option label:hover {
+        .scale-group label:hover {
+            border-color: var(--accent-light);
             background: var(--accent-bg);
             color: var(--accent);
-            border-color: var(--accent-light);
-            z-index: 1;
         }
 
-        .scale-option input[type="radio"]:checked + label {
+        .scale-group input:checked + label {
             background: var(--accent);
-            color: var(--white);
             border-color: var(--accent);
-            z-index: 2;
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+        }
+
+        .scale-group input:focus-visible + label {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
 
         .scale-labels {
             display: flex;
             justify-content: space-between;
             margin-top: 8px;
-        }
-
-        .scale-label-text {
-            font-size: 0.85rem;
-            color: var(--gray-500);
+            font-size: 0.78rem;
+            color: var(--gray-400);
             font-weight: 500;
         }
 
-        /* ===== DROPDOWN ===== */
-        .styled-select {
+        /* ===== SELECT ===== */
+        .styled-select-wrapper {
             position: relative;
-            width: 100%;
+            max-width: 400px;
         }
 
-        .styled-select select {
+        .styled-select {
             width: 100%;
-            padding: 14px 44px 14px 18px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: var(--gray-700);
-            background: var(--gray-50);
+            padding: 12px 40px 12px 16px;
+            font-size: 0.95rem;
+            font-family: inherit;
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--gray-800);
             appearance: none;
             cursor: pointer;
-            transition: all 0.2s;
-            min-height: 48px;
+            transition: border-color 0.2s;
         }
 
-        .styled-select select:hover,
-        .styled-select select:focus {
-            border-color: var(--accent);
+        .styled-select:focus {
             outline: none;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
 
-        .styled-select::after {
-            content: '';
+        .styled-select-wrapper::after {
+            content: '\25BC';
             position: absolute;
             right: 16px;
             top: 50%;
             transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 6px solid var(--gray-400);
+            font-size: 0.7rem;
+            color: var(--gray-400);
             pointer-events: none;
         }
 
         /* ===== TEXT INPUT ===== */
         .text-input {
             width: 100%;
-            padding: 14px 18px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: var(--gray-700);
-            background: var(--gray-50);
+            max-width: 400px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-family: inherit;
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-sm);
-            transition: all 0.2s;
-            min-height: 48px;
+            background: var(--white);
+            color: var(--gray-800);
+            transition: border-color 0.2s;
         }
 
-        .text-input:hover,
         .text-input:focus {
-            border-color: var(--accent);
             outline: none;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
+
+        .text-input.short { max-width: 200px; }
 
         /* ===== TEXTAREA ===== */
         .styled-textarea {
             width: 100%;
-            min-height: 120px;
-            padding: 16px 18px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: var(--gray-700);
-            background: var(--gray-50);
+            min-height: 100px;
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            font-family: inherit;
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--gray-800);
             resize: vertical;
-            transition: all 0.2s;
-            line-height: 1.6;
+            transition: border-color 0.2s;
+            line-height: 1.5;
         }
 
-        .styled-textarea:hover,
         .styled-textarea:focus {
-            border-color: var(--accent);
             outline: none;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
 
-        .styled-textarea::placeholder {
-            color: var(--gray-400);
+        /* ===== DESTINATION INPUTS ===== */
+        .destination-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 500px;
         }
 
-        /* ===== FOOTER / ACTIONS ===== */
+        .destination-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .destination-rank {
+            width: 28px; height: 28px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .destination-item .text-input { max-width: none; flex: 1; }
+
+        /* ===== CONDITIONAL GROUP ===== */
+        .conditional-group {
+            display: none;
+            margin-top: 16px;
+            padding: 16px 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+        }
+
+        .conditional-group.visible { display: block; }
+
+        .conditional-group .sub-question-label {
+            margin-bottom: 10px;
+        }
+
+        /* ===== FORM FOOTER ===== */
         .form-footer {
             background: var(--white);
             border-radius: var(--radius);
             border: 1px solid var(--gray-200);
             box-shadow: var(--shadow);
             padding: 32px;
+            margin-top: 16px;
             text-align: center;
         }
 
-        .form-footer-anon {
+        .privacy-notice {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 0.95rem;
-            color: var(--gray-500);
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--success-bg);
+            border-radius: var(--radius-sm);
             margin-bottom: 24px;
+            text-align: left;
         }
 
-        .form-footer-anon-icon {
-            font-size: 1.1rem;
+        .privacy-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .privacy-text {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.5;
         }
 
         .btn-submit {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 56px;
+            gap: 10px;
+            padding: 16px 48px;
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
             border: none;
             border-radius: var(--radius-sm);
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 14px rgba(37,99,235,0.35);
-            min-height: 56px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.4);
         }
 
-        .btn-submit:active {
-            transform: translateY(0);
+        .btn-submit:active { transform: translateY(0); }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .btn-print {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: var(--white);
-            color: var(--gray-600);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            border: 2px solid var(--gray-300);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s;
+            gap: 8px;
             margin-top: 16px;
-            min-height: 48px;
+            padding: 10px 24px;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
         }
 
         .btn-print:hover {
-            border-color: var(--gray-400);
+            border-color: var(--gray-300);
             background: var(--gray-50);
         }
 
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
-            bottom: 32px;
+            bottom: 24px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--primary);
+            transform: translateX(-50%) translateY(120px);
+            background: var(--gray-900);
             color: var(--white);
-            padding: 16px 32px;
+            padding: 16px 28px;
             border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-xl);
             font-size: 0.95rem;
             font-weight: 500;
-            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+            z-index: 2000;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 90vw;
+            text-align: center;
         }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
+        .toast.visible {
             opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
-        .toast-icon {
-            font-size: 1.2rem;
+        .toast.error {
+            background: #dc2626;
         }
 
-        /* ===== PRINT STYLES ===== */
-        @media print {
-            .progress-wrapper,
-            .btn-print,
-            .btn-submit,
-            .header-links,
-            .form-footer-anon {
-                display: none !important;
-            }
-
-            .site-header {
-                margin-top: 0;
-                padding: 24px;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .section-header {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .section-card {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            .question {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            body {
-                background: white;
-            }
-
-            .main-content {
-                padding: 20px 0;
-            }
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
         }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 640px) {
-            .site-header {
-                padding: 32px 16px 28px;
-            }
+            html { font-size: 16px; }
 
-            .header-title {
-                font-size: 1.5rem;
-            }
-
-            .header-subtitle {
-                font-size: 0.95rem;
-            }
-
-            .header-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .main-content {
-                padding: 24px 16px 60px;
-            }
-
-            .section-header {
-                padding: 20px 20px;
-            }
-
-            .question {
-                padding: 20px 20px;
-            }
+            .site-header { padding: 36px 16px 32px; margin-top: 40px; }
+            .header-title { font-size: 1.5rem; }
+            .main-content { padding: 24px 12px 60px; }
+            .question { padding: 20px 16px; }
+            .section-header { padding: 20px 16px; }
+            .intro-block { padding: 16px; }
 
             .scale-group {
-                flex-wrap: wrap;
+                grid-template-columns: repeat(5, 1fr);
             }
 
-            .scale-option {
-                flex: 0 0 calc(20% - 0px);
-            }
-
-            .scale-option:nth-child(6) label {
-                border-radius: 0;
-            }
-
-            .scale-option:nth-child(5) label {
-                border-radius: 0 var(--radius-sm) 0 0;
-            }
-
-            .scale-option:nth-child(6) label {
-                border-radius: 0 0 0 var(--radius-sm);
-                margin-left: 0;
-            }
-
-            .scale-option:first-child label {
-                border-radius: var(--radius-sm) 0 0 0;
-            }
-
-            .scale-option:last-child label {
-                border-radius: 0 0 var(--radius-sm) 0;
-            }
-
-            .mcq-group.mcq-horizontal {
+            .inline-row {
                 flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
             }
 
-            .form-footer {
-                padding: 24px 20px;
-            }
+            .inline-row .mcq-group { width: 100%; }
 
-            .header-link {
-                font-size: 0.78rem;
-                padding: 7px 12px;
-            }
-
-            .progress-inner {
-                padding: 10px 16px;
-            }
+            .form-footer { padding: 24px 16px; }
         }
 
-        /* ===== ANIMATION ===== */
+        /* ===== PRINT ===== */
+        @media print {
+            .progress-wrapper, .btn-submit, .btn-print, .header-links, .toast { display: none !important; }
+            .site-header { margin-top: 0; padding: 24px; }
+            .main-content { padding: 0; }
+            .section-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 16px; }
+            .question { padding: 16px 20px; }
+            .conditional-group { display: block !important; background: #f9f9f9; }
+            body { font-size: 11pt; }
+            .scale-group { gap: 2px; }
+            .scale-group label { height: 28px; font-size: 9pt; border-width: 1px; }
+            .mcq-group label { padding: 6px 12px; font-size: 9pt; border-width: 1px; }
+            .text-input, .styled-textarea, .styled-select {
+                border: 1px solid #999;
+                min-height: 30px;
+            }
+            .styled-textarea { min-height: 50px; }
+        }
+
+        /* ===== ANIMATIONS ===== */
         .section-card {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(16px);
             animation: fadeInUp 0.5s ease forwards;
         }
 
@@ -878,1089 +818,1429 @@
         .section-card:nth-child(5) { animation-delay: 0.25s; }
         .section-card:nth-child(6) { animation-delay: 0.3s; }
         .section-card:nth-child(7) { animation-delay: 0.35s; }
-        .form-footer {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-            animation-delay: 0.4s;
-        }
+        .section-card:nth-child(8) { animation-delay: 0.4s; }
+        .section-card:nth-child(9) { animation-delay: 0.45s; }
 
         @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<!-- ==================== PROGRESS BAR ==================== -->
+<!-- ===== PROGRESS BAR ===== -->
 <div class="progress-wrapper">
     <div class="progress-inner">
-        <span class="progress-label" id="progressLabel">0 %</span>
+        <div class="progress-label" id="progressLabel">0 %</div>
         <div class="progress-bar-track">
             <div class="progress-bar-fill" id="progressFill"></div>
         </div>
     </div>
 </div>
 
-<!-- ==================== HEADER ==================== -->
+<!-- ===== HEADER ===== -->
 <header class="site-header">
     <div class="header-content">
         <div class="header-top">
             <div class="header-brand">
-                <div class="logo-circle">A</div>
+                <div class="logo-circle">AAFU</div>
                 <div>
-                    <div class="header-org-name">Amicale des Anciens Fonctionnaires</div>
-                    <div class="header-org-sub">Section de Tours &mdash; Association loi 1901</div>
+                    <div class="header-org-name">Association des Anciens Fonctionnaires de l'UNESCO</div>
+                    <div class="header-org-sub">AAFU &mdash; UNESCO</div>
                 </div>
             </div>
             <div class="header-links">
-                <a href="dashboard.html" class="header-link">
-                    <span>Tableau de d&eacute;pouillement</span>
-                    <span class="header-link-arrow">&rarr;</span>
-                </a>
-                <button class="header-link" onclick="window.print()" style="font-family:inherit;">
-                    <span>Imprimer / PDF</span>
-                </button>
+                <a href="dashboard.html" class="header-link">Tableau de bord &rarr;</a>
+                <button class="header-link" onclick="window.print()">Imprimer</button>
             </div>
         </div>
-        <h1 class="header-title">Questionnaire de satisfaction</h1>
-        <p class="header-subtitle">
-            Votre avis est essentiel pour am&eacute;liorer le fonctionnement et les activit&eacute;s de notre amicale. Ce questionnaire est strictement anonyme et confidentiel.
-        </p>
+        <h1 class="header-title">Questionnaire 2026</h1>
+        <p class="header-subtitle">Aidez-nous &agrave; pr&eacute;parer le Plan d'action 2027-2030 de l'AAFU. Vos r&eacute;ponses sont pr&eacute;cieuses pour mieux vous repr&eacute;senter et vous servir.</p>
         <div class="header-meta">
-            <span class="header-meta-item">
-                <span class="header-meta-icon">&#128203;</span>
-                50 questions &bull; ~12 min
-            </span>
-            <span class="header-meta-item">
-                <span class="header-meta-icon">&#128274;</span>
-                R&eacute;ponses anonymes
-            </span>
-            <span class="header-meta-item">
-                <span class="header-meta-icon">&#128197;</span>
-                Campagne 2026
-            </span>
+            <span class="header-meta-item">&#128221; 37 questions</span>
+            <span class="header-meta-item">&#9202; ~15 min</span>
+            <span class="header-meta-item">&#128274; Donn&eacute;es confidentielles</span>
         </div>
     </div>
 </header>
 
-<!-- ==================== FORM ==================== -->
+<!-- ===== MAIN ===== -->
 <main class="main-content">
 <form id="surveyForm" onsubmit="return false;">
 
-<!-- ========== SECTION 1 ========== -->
-<div class="section-card" id="section1">
+<!-- ========================================
+     SECTION A : POUR MIEUX VOUS SITUER
+     ======================================== -->
+<div class="section-card">
     <div class="section-header">
-        <div class="section-number">Section 1 sur 7</div>
-        <div class="section-title">Votre profil</div>
-        <div class="section-description">Quelques informations g&eacute;n&eacute;rales pour mieux conna&icirc;tre nos membres</div>
+        <div class="section-number">Section A</div>
+        <div class="section-title">Pour mieux vous situer</div>
     </div>
     <div class="section-body">
 
         <!-- Q1 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">1</span>
-                Depuis combien d&rsquo;ann&eacute;es &ecirc;tes-vous membre de l&rsquo;amicale ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q1" id="q1a" value="<1an">
-                    <label for="q1a"><span class="mcq-radio-dot"></span>Moins d&rsquo;1 an</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q1" id="q1b" value="1-3">
-                    <label for="q1b"><span class="mcq-radio-dot"></span>1 &agrave; 3 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q1" id="q1c" value="3-5">
-                    <label for="q1c"><span class="mcq-radio-dot"></span>3 &agrave; 5 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q1" id="q1d" value="5-10">
-                    <label for="q1d"><span class="mcq-radio-dot"></span>5 &agrave; 10 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q1" id="q1e" value="10+">
-                    <label for="q1e"><span class="mcq-radio-dot"></span>Plus de 10 ans</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">1</span> Vous &ecirc;tes :
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q1" id="q1_h" value="Homme">
+                <label for="q1_h"><span class="mcq-indicator"></span> Homme</label>
+                <input type="radio" name="q1" id="q1_f" value="Femme">
+                <label for="q1_f"><span class="mcq-indicator"></span> Femme</label>
             </div>
         </div>
 
         <!-- Q2 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">2</span>
-                Quel &eacute;tait votre minist&egrave;re ou administration d&rsquo;origine ?
-            </span>
-            <div class="styled-select">
-                <select name="q2">
-                    <option value="" disabled selected>S&eacute;lectionnez votre administration&hellip;</option>
-                    <option value="education">&Eacute;ducation nationale</option>
-                    <option value="finances">Finances</option>
-                    <option value="interieur">Int&eacute;rieur</option>
-                    <option value="justice">Justice</option>
-                    <option value="defense">D&eacute;fense</option>
-                    <option value="sante">Sant&eacute;</option>
-                    <option value="travail">Travail</option>
-                    <option value="autre">Autre</option>
+            <div class="question-label">
+                <span class="question-number">2</span> Date de votre d&eacute;part &agrave; la retraite
+            </div>
+            <div class="styled-select-wrapper">
+                <select name="q2" class="styled-select" id="q2">
+                    <option value="">S&eacute;lectionnez une ann&eacute;e&hellip;</option>
                 </select>
             </div>
         </div>
 
         <!-- Q3 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">3</span>
-                Quelle est votre tranche d&rsquo;&acirc;ge ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3a" value="55-60">
-                    <label for="q3a"><span class="mcq-radio-dot"></span>55-60 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3b" value="60-65">
-                    <label for="q3b"><span class="mcq-radio-dot"></span>60-65 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3c" value="65-70">
-                    <label for="q3c"><span class="mcq-radio-dot"></span>65-70 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3d" value="70-75">
-                    <label for="q3d"><span class="mcq-radio-dot"></span>70-75 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3e" value="75-80">
-                    <label for="q3e"><span class="mcq-radio-dot"></span>75-80 ans</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q3" id="q3f" value="80+">
-                    <label for="q3f"><span class="mcq-radio-dot"></span>80 ans et plus</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">3</span> Statut :
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q3" id="q3_c" value="Célibataire">
+                <label for="q3_c"><span class="mcq-indicator"></span> C&eacute;libataire</label>
+                <input type="radio" name="q3" id="q3_e" value="En couple">
+                <label for="q3_e"><span class="mcq-indicator"></span> En couple</label>
             </div>
         </div>
 
         <!-- Q4 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">4</span>
-                Quelle est votre commune de r&eacute;sidence ?
-            </span>
-            <input type="text" class="text-input" name="q4" placeholder="Ex : Tours, Saint-Avertin, Jou&eacute;-l&egrave;s-Tours&hellip;">
+            <div class="question-label">
+                <span class="question-number">4</span> Nationalit&eacute;
+            </div>
+            <div class="styled-select-wrapper">
+                <select name="q4" class="styled-select" id="q4">
+                    <option value="">S&eacute;lectionnez&hellip;</option>
+                </select>
+            </div>
         </div>
 
         <!-- Q5 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">5</span>
-                Comment avez-vous connu l&rsquo;amicale ?
-            </span>
-            <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q5" id="q5a" value="collegue">
-                    <label for="q5a"><span class="mcq-radio-dot"></span>Par un(e) coll&egrave;gue ou ancien(ne) coll&egrave;gue</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q5" id="q5b" value="courrier">
-                    <label for="q5b"><span class="mcq-radio-dot"></span>Par courrier</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q5" id="q5c" value="internet">
-                    <label for="q5c"><span class="mcq-radio-dot"></span>Par internet</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q5" id="q5d" value="evenement">
-                    <label for="q5d"><span class="mcq-radio-dot"></span>Lors d&rsquo;un &eacute;v&eacute;nement</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q5" id="q5e" value="autre">
-                    <label for="q5e"><span class="mcq-radio-dot"></span>Autre</label>
+            <div class="question-label">
+                <span class="question-number">5</span> Pays de r&eacute;sidence
+            </div>
+            <div class="mcq-group" style="margin-bottom: 12px;">
+                <input type="radio" name="q5_type" id="q5_fr" value="France">
+                <label for="q5_fr"><span class="mcq-indicator"></span> France</label>
+                <input type="radio" name="q5_type" id="q5_autre" value="Autre">
+                <label for="q5_autre"><span class="mcq-indicator"></span> Autre pays</label>
+            </div>
+            <div class="conditional-group" id="cond_q5_fr">
+                <div class="sub-question-label">Code postal :</div>
+                <input type="text" name="q5_cp" class="text-input short" placeholder="75015" maxlength="5" pattern="[0-9]{5}">
+            </div>
+            <div class="conditional-group" id="cond_q5_autre">
+                <div class="sub-question-label">Pays :</div>
+                <div class="styled-select-wrapper">
+                    <select name="q5_pays" class="styled-select" id="q5_pays">
+                        <option value="">S&eacute;lectionnez&hellip;</option>
+                    </select>
                 </div>
             </div>
         </div>
 
         <!-- Q6 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">6</span>
-                &Ecirc;tes-vous membre d&rsquo;une autre association de retrait&eacute;s ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q6" id="q6a" value="oui">
-                    <label for="q6a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q6" id="q6b" value="non">
-                    <label for="q6b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">6</span> Comment estimez-vous votre relation avec l'UNESCO ?
+                <span class="question-hint">1 = lointaine &mdash; 10 = proche</span>
+            </div>
+            <div class="scale-group" id="scale_q6"></div>
+            <div class="scale-labels"><span>Lointaine</span><span>Proche</span></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">7</span> Vous consid&eacute;rez-vous comme une personne plut&ocirc;t :
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q7" id="q7_com" value="Communicative">
+                <label for="q7_com"><span class="mcq-indicator"></span> Communicative</label>
+                <input type="radio" name="q7" id="q7_gre" value="Grégaire">
+                <label for="q7_gre"><span class="mcq-indicator"></span> Gr&eacute;gaire</label>
+                <input type="radio" name="q7" id="q7_sol" value="Solitaire">
+                <label for="q7_sol"><span class="mcq-indicator"></span> Solitaire</label>
             </div>
         </div>
 
     </div>
 </div>
 
-<!-- ========== SECTION 2 ========== -->
-<div class="section-card" id="section2">
+<!-- ========================================
+     SECTION B : L'AAFU ET VOUS AUJOURD'HUI
+     ======================================== -->
+<div class="section-card">
     <div class="section-header">
-        <div class="section-number">Section 2 sur 7</div>
-        <div class="section-title">Satisfaction g&eacute;n&eacute;rale</div>
-        <div class="section-description">&Eacute;valuez chaque aspect de 1 (tr&egrave;s insatisfait) &agrave; 10 (tr&egrave;s satisfait)</div>
-    </div>
-    <div class="section-body" id="scaleSection2">
-    </div>
-</div>
-
-<!-- ========== SECTION 3 ========== -->
-<div class="section-card" id="section3">
-    <div class="section-header">
-        <div class="section-number">Section 3 sur 7</div>
-        <div class="section-title">Activit&eacute;s et &eacute;v&eacute;nements</div>
-        <div class="section-description">Vos pratiques, pr&eacute;f&eacute;rences et id&eacute;es pour les activit&eacute;s</div>
+        <div class="section-number">Section B</div>
+        <div class="section-title">L'AAFU et vous aujourd'hui</div>
     </div>
     <div class="section-body">
 
-        <!-- Q15 -->
+        <!-- Q8 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">15</span>
-                Quelles activit&eacute;s avez-vous fr&eacute;quent&eacute;es ces deux derni&egrave;res ann&eacute;es ?
-            </span>
-            <div class="checkbox-group">
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15a" value="repas">
-                    <label for="q15a"><span class="check-box"></span>Repas annuel</label>
+            <div class="question-label">
+                <span class="question-number">8</span> Vous rendez-vous sur les sites de l'AAFU ?
+            </div>
+            <div class="inline-row">
+                <span class="inline-row-label">Site web</span>
+                <div class="mcq-group">
+                    <input type="radio" name="q8_web" id="q8w_o" value="Oui">
+                    <label for="q8w_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q8_web" id="q8w_p" value="De temps en temps">
+                    <label for="q8w_p"><span class="mcq-indicator"></span> De temps en temps</label>
+                    <input type="radio" name="q8_web" id="q8w_j" value="Jamais">
+                    <label for="q8w_j"><span class="mcq-indicator"></span> Jamais</label>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15b" value="sorties">
-                    <label for="q15b"><span class="check-box"></span>Sorties culturelles</label>
+            </div>
+            <div class="inline-row">
+                <span class="inline-row-label">Facebook</span>
+                <div class="mcq-group">
+                    <input type="radio" name="q8_facebook" id="q8f_o" value="Oui">
+                    <label for="q8f_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q8_facebook" id="q8f_p" value="De temps en temps">
+                    <label for="q8f_p"><span class="mcq-indicator"></span> De temps en temps</label>
+                    <input type="radio" name="q8_facebook" id="q8f_j" value="Jamais">
+                    <label for="q8f_j"><span class="mcq-indicator"></span> Jamais</label>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15c" value="voyages">
-                    <label for="q15c"><span class="check-box"></span>Voyages</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15d" value="conferences">
-                    <label for="q15d"><span class="check-box"></span>Conf&eacute;rences</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15e" value="sport">
-                    <label for="q15e"><span class="check-box"></span>Activit&eacute;s sportives</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15f" value="ateliers">
-                    <label for="q15f"><span class="check-box"></span>Ateliers</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q15" id="q15g" value="aucune">
-                    <label for="q15g"><span class="check-box"></span>Aucune activit&eacute;</label>
+            </div>
+            <div class="inline-row">
+                <span class="inline-row-label">Instagram</span>
+                <div class="mcq-group">
+                    <input type="radio" name="q8_instagram" id="q8i_o" value="Oui">
+                    <label for="q8i_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q8_instagram" id="q8i_p" value="De temps en temps">
+                    <label for="q8i_p"><span class="mcq-indicator"></span> De temps en temps</label>
+                    <input type="radio" name="q8_instagram" id="q8i_j" value="Jamais">
+                    <label for="q8i_j"><span class="mcq-indicator"></span> Jamais</label>
                 </div>
             </div>
         </div>
 
+        <!-- Q9 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">9</span> Recevez-vous r&eacute;guli&egrave;rement LIEN/LINK, la publication semestrielle de l'AAFU ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q9" id="q9_o" value="Oui">
+                <label for="q9_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q9" id="q9_n" value="Non">
+                <label for="q9_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">10</span> Recevez-vous r&eacute;guli&egrave;rement les mails &laquo; L'AAFU vous informe &raquo; ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q10" id="q10_o" value="Oui">
+                <label for="q10_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q10" id="q10_n" value="Non">
+                <label for="q10_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">11</span> Quels sont vos contacts directs avec le secr&eacute;tariat de l'AAFU ?
+                <span class="question-hint">Plusieurs r&eacute;ponses possibles</span>
+            </div>
+            <div class="mcq-group vertical">
+                <input type="checkbox" name="q11" id="q11_v" value="Visite au bureau">
+                <label for="q11_v"><span class="mcq-indicator square"></span> Visite au bureau de l'AAFU</label>
+                <input type="checkbox" name="q11" id="q11_t" value="Appels téléphoniques">
+                <label for="q11_t"><span class="mcq-indicator square"></span> Appel(s) t&eacute;l&eacute;phoniques au secr&eacute;tariat</label>
+                <input type="checkbox" name="q11" id="q11_m" value="Mails">
+                <label for="q11_m"><span class="mcq-indicator square"></span> Mails envoy&eacute;s au secr&eacute;tariat</label>
+                <input type="checkbox" name="q11" id="q11_c" value="Courrier">
+                <label for="q11_c"><span class="mcq-indicator square"></span> Courrier</label>
+                <input type="checkbox" name="q11" id="q11_a" value="Aucun">
+                <label for="q11_a"><span class="mcq-indicator square"></span> Aucun</label>
+            </div>
+            <div class="conditional-group" id="cond_q11_raison">
+                <div class="sub-question-label">Raison(s) :</div>
+                <textarea name="q11_raison" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez la raison&hellip;"></textarea>
+            </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">12</span> Dans l'ensemble, &ecirc;tes-vous satisfait de ces contacts ?
+                <span class="question-hint">1 = pas satisfait &mdash; 10 = tr&egrave;s satisfait</span>
+            </div>
+            <div class="scale-group" id="scale_q12"></div>
+            <div class="scale-labels"><span>Pas satisfait</span><span>Tr&egrave;s satisfait</span></div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">13</span> Dans l'ensemble, vous consid&eacute;rez-vous aujourd'hui bien repr&eacute;sent&eacute;(e) ?
+                <span class="question-hint">1 = pas satisfait &mdash; 10 = tr&egrave;s satisfait</span>
+            </div>
+            <div class="scale-group" id="scale_q13"></div>
+            <div class="scale-labels"><span>Pas satisfait</span><span>Tr&egrave;s satisfait</span></div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">14</span> L'AAFU contribue-t-elle &agrave; maintenir vos liens avec vos coll&egrave;gues et avec l'UNESCO ?
+                <span class="question-hint">1 = pas du tout &mdash; 10 = beaucoup</span>
+            </div>
+            <div class="scale-group" id="scale_q14"></div>
+            <div class="scale-labels"><span>Pas du tout</span><span>Beaucoup</span></div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">15</span> Souhaitez-vous vous engager pour utiliser vos comp&eacute;tences au sein de l'AAFU ou au b&eacute;n&eacute;fice de causes dans les domaines de comp&eacute;tences de l'UNESCO avec l'aide de l'AAFU ?
+                <span class="question-hint">1 = pas du tout &mdash; 10 = beaucoup</span>
+            </div>
+            <div class="scale-group" id="scale_q15"></div>
+            <div class="scale-labels"><span>Pas du tout</span><span>Beaucoup</span></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================================
+     SECTION C : LES AMELIORATIONS RECENTES
+     ======================================== -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-number">Section C</div>
+        <div class="section-title">Les am&eacute;liorations r&eacute;centes de l'AAFU</div>
+        <div class="section-description">L'AAFU a maintenant une nouvelle &eacute;quipe et de nouvelles ambitions.</div>
+    </div>
+    <div class="section-body">
+
         <!-- Q16 -->
-        <div class="question" id="q16-container"></div>
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">16</span> Avez-vous d&eacute;j&agrave; senti les premiers effets de cette nouvelle dynamique depuis le d&eacute;but de l'ann&eacute;e 2025 ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q16" id="q16_tc" value="Très clairement">
+                <label for="q16_tc"><span class="mcq-indicator"></span> Tr&egrave;s clairement</label>
+                <input type="radio" name="q16" id="q16_o" value="Oui">
+                <label for="q16_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q16" id="q16_pv" value="Pas vraiment">
+                <label for="q16_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                <input type="radio" name="q16" id="q16_n" value="Non">
+                <label for="q16_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================================
+     OBJECTIF 1 : REPRESENTATION
+     ======================================== -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-number">Objectif n&deg;1</div>
+        <div class="section-title">Repr&eacute;sentation, information, &eacute;coute et conseils</div>
+    </div>
+    <div class="section-body">
+
+        <div class="intro-block">
+            <strong>Repr&eacute;sentation</strong> &mdash; Le COMEX repr&eacute;sente ses membres aupr&egrave;s des instances internationales (FAFICS) et de l'administration de l'UNESCO.
+        </div>
+
         <!-- Q17 -->
-        <div class="question" id="q17-container"></div>
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">17</span> Le COMEX a une activit&eacute; importante de repr&eacute;sentation aupr&egrave;s des instances internationales (FAFICS). Vous sentez-vous bien inform&eacute;(e) des r&eacute;sultats de ce travail ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q17" id="q17_o" value="Oui">
+                <label for="q17_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q17" id="q17_pv" value="Pas vraiment">
+                <label for="q17_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                <input type="radio" name="q17" id="q17_n" value="Non">
+                <label for="q17_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+        </div>
+
         <!-- Q18 -->
-        <div class="question" id="q18-container"></div>
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">18</span> Le COMEX vous repr&eacute;sente syst&eacute;matiquement aupr&egrave;s de l'administration de l'UNESCO. Vous sentez-vous bien inform&eacute;(e) des r&eacute;sultats de ce travail ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q18" id="q18_o" value="Oui">
+                <label for="q18_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q18" id="q18_pv" value="Pas vraiment">
+                <label for="q18_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                <input type="radio" name="q18" id="q18_n" value="Non">
+                <label for="q18_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+        </div>
+
+        <div class="intro-block">
+            L'AAFU est &agrave; votre disposition pour vous informer et vous conseiller sur vos probl&egrave;mes administratifs aupr&egrave;s de l'UNESCO.
+        </div>
 
         <!-- Q19 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">19</span>
-                &Agrave; quelle fr&eacute;quence souhaiteriez-vous participer aux activit&eacute;s ?
-            </span>
+            <div class="question-label">
+                <span class="question-number">19</span> Utilisez-vous ces services ?
+            </div>
             <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q19" id="q19a" value="1x/mois">
-                    <label for="q19a"><span class="mcq-radio-dot"></span>1 fois par mois</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q19" id="q19b" value="1x/trimestre">
-                    <label for="q19b"><span class="mcq-radio-dot"></span>1 fois par trimestre</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q19" id="q19c" value="2x/an">
-                    <label for="q19c"><span class="mcq-radio-dot"></span>2 fois par an</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q19" id="q19d" value="1x/an">
-                    <label for="q19d"><span class="mcq-radio-dot"></span>1 fois par an</label>
-                </div>
+                <input type="radio" name="q19" id="q19_o" value="Oui">
+                <label for="q19_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q19" id="q19_n" value="Non">
+                <label for="q19_n"><span class="mcq-indicator"></span> Non</label>
             </div>
         </div>
 
         <!-- Q20 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">20</span>
-                Quel budget mensuel pourriez-vous consacrer aux activit&eacute;s de l&rsquo;amicale ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q20" id="q20a" value="<10">
-                    <label for="q20a"><span class="mcq-radio-dot"></span>Moins de 10 &euro;</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q20" id="q20b" value="10-20">
-                    <label for="q20b"><span class="mcq-radio-dot"></span>10 &agrave; 20 &euro;</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q20" id="q20c" value="20-50">
-                    <label for="q20c"><span class="mcq-radio-dot"></span>20 &agrave; 50 &euro;</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q20" id="q20d" value="50-100">
-                    <label for="q20d"><span class="mcq-radio-dot"></span>50 &agrave; 100 &euro;</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q20" id="q20e" value="100+">
-                    <label for="q20e"><span class="mcq-radio-dot"></span>Plus de 100 &euro;</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">20</span> Globalement, en &ecirc;tes-vous satisfait(e) ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q20" id="q20_o" value="Oui">
+                <label for="q20_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q20" id="q20_n" value="Non">
+                <label for="q20_n"><span class="mcq-indicator"></span> Non</label>
+                <input type="radio" name="q20" id="q20_nc" value="Non concerné">
+                <label for="q20_nc"><span class="mcq-indicator"></span> Non concern&eacute;</label>
             </div>
         </div>
 
         <!-- Q21 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">21</span>
-                Quels jours de la semaine pr&eacute;f&eacute;rez-vous pour les activit&eacute;s ?
-            </span>
-            <div class="checkbox-group checkbox-horizontal">
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21a" value="lundi">
-                    <label for="q21a"><span class="check-box"></span>Lundi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21b" value="mardi">
-                    <label for="q21b"><span class="check-box"></span>Mardi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21c" value="mercredi">
-                    <label for="q21c"><span class="check-box"></span>Mercredi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21d" value="jeudi">
-                    <label for="q21d"><span class="check-box"></span>Jeudi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21e" value="vendredi">
-                    <label for="q21e"><span class="check-box"></span>Vendredi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21f" value="samedi">
-                    <label for="q21f"><span class="check-box"></span>Samedi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q21" id="q21g" value="dimanche">
-                    <label for="q21g"><span class="check-box"></span>Dimanche</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">21</span> Comment pourrions-nous mieux vous aider ?
             </div>
+            <textarea name="q21" class="styled-textarea" rows="3" placeholder="Vos suggestions&hellip;"></textarea>
+        </div>
+
+        <!-- ===== SITES WEB, INSTAGRAM, FACEBOOK ===== -->
+        <div class="intro-block">
+            <strong>Sites web, Instagram, Facebook</strong> &mdash; Les sites de l'AAFU offrent une grande vari&eacute;t&eacute; d'informations sur l'association, ses services et ses publications.
         </div>
 
         <!-- Q22 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">22</span>
-                Quels cr&eacute;neaux horaires vous conviennent le mieux ?
-            </span>
-            <div class="checkbox-group checkbox-horizontal">
-                <div class="check-option">
-                    <input type="checkbox" name="q22" id="q22a" value="matin">
-                    <label for="q22a"><span class="check-box"></span>Matin</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q22" id="q22b" value="apres-midi">
-                    <label for="q22b"><span class="check-box"></span>Apr&egrave;s-midi</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q22" id="q22c" value="soiree">
-                    <label for="q22c"><span class="check-box"></span>Soir&eacute;e</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">22</span> Vous rendez-vous sur ces sites ?
             </div>
+            <div class="mcq-group">
+                <input type="radio" name="q22" id="q22_o" value="Oui">
+                <label for="q22_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q22" id="q22_t" value="De temps en temps">
+                <label for="q22_t"><span class="mcq-indicator"></span> De temps en temps</label>
+                <input type="radio" name="q22" id="q22_n" value="Non">
+                <label for="q22_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+
+            <!-- Q22.1 -->
+            <div class="conditional-group" id="cond_q22_oui">
+                <div class="sub-question-label"><span class="sub-question-number">22.1)</span> Quelles rubriques consultez-vous ?</div>
+                <textarea name="q22_1" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez les rubriques&hellip;"></textarea>
+            </div>
+
+            <!-- Q22.2 -->
+            <div class="conditional-group" id="cond_q22_non">
+                <div class="sub-question-label"><span class="sub-question-number">22.2)</span> Pourquoi ne consultez-vous pas ces sites ?</div>
+                <textarea name="q22_2" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez&hellip;"></textarea>
+            </div>
+
+            <!-- Q22.3 -->
+            <div class="sub-question" style="margin-top: 20px;">
+                <div class="sub-question-label"><span class="sub-question-number">22.3)</span> Avez-vous des propositions pour am&eacute;liorer l'utilit&eacute; de ces sites ?</div>
+                <textarea name="q22_3" class="styled-textarea" rows="2" placeholder="Vos propositions&hellip;"></textarea>
+            </div>
+        </div>
+
+        <!-- ===== LIEN/LINK ===== -->
+        <div class="intro-block">
+            <strong>LIEN/LINK</strong> &mdash; Publication semestrielle de l'AAFU.
         </div>
 
         <!-- Q23 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">23</span>
-                Quelles nouvelles activit&eacute;s souhaiteriez-vous voir propos&eacute;es ?
-            </span>
-            <div class="checkbox-group">
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23a" value="randonnees">
-                    <label for="q23a"><span class="check-box"></span>Randonn&eacute;es</label>
+            <div class="question-label">
+                <span class="question-number">23</span> Si vous recevez cette publication, lisez-vous chaque num&eacute;ro ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q23" id="q23_ent" value="Entièrement">
+                <label for="q23_ent"><span class="mcq-indicator"></span> Enti&egrave;rement</label>
+                <input type="radio" name="q23" id="q23_qq" value="Quelques articles">
+                <label for="q23_qq"><span class="mcq-indicator"></span> Quelques articles</label>
+            </div>
+            <div class="conditional-group" id="cond_q23_articles">
+                <div class="sub-question-label">Lesquels ?</div>
+                <textarea name="q23_articles" class="styled-textarea" rows="2" placeholder="Quels articles lisez-vous ?"></textarea>
+            </div>
+
+            <!-- Q23.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">23.1)</span> Globalement, &ecirc;tes-vous satisfait de sa nouvelle pr&eacute;sentation ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q23_1" id="q23_1_o" value="Oui">
+                    <label for="q23_1_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q23_1" id="q23_1_pv" value="Pas vraiment">
+                    <label for="q23_1_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                    <input type="radio" name="q23_1" id="q23_1_n" value="Non">
+                    <label for="q23_1_n"><span class="mcq-indicator"></span> Non</label>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23b" value="patrimoine">
-                    <label for="q23b"><span class="check-box"></span>Visites du patrimoine</label>
+            </div>
+
+            <!-- Q23.2 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">23.2)</span> Plus en d&eacute;tails, merci d'&eacute;valuer les points suivants :</div>
+                <div class="inline-row">
+                    <span class="inline-row-label">Maquette</span>
+                    <div class="mcq-group">
+                        <input type="radio" name="q23_2_maquette" id="q232m_tc" value="Très claire">
+                        <label for="q232m_tc"><span class="mcq-indicator"></span> Tr&egrave;s claire</label>
+                        <input type="radio" name="q23_2_maquette" id="q232m_pv" value="Pas vraiment">
+                        <label for="q232m_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                        <input type="radio" name="q23_2_maquette" id="q232m_aa" value="A améliorer">
+                        <label for="q232m_aa"><span class="mcq-indicator"></span> &Agrave; am&eacute;liorer</label>
+                    </div>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23c" value="numerique">
-                    <label for="q23c"><span class="check-box"></span>Ateliers num&eacute;riques</label>
+                <div class="inline-row">
+                    <span class="inline-row-label">% photos</span>
+                    <div class="mcq-group">
+                        <input type="radio" name="q23_2_photos" id="q232p_eq" value="Bon équilibre">
+                        <label for="q232p_eq"><span class="mcq-indicator"></span> Bon &eacute;quilibre</label>
+                        <input type="radio" name="q23_2_photos" id="q232p_pp" value="Plus de photos">
+                        <label for="q232p_pp"><span class="mcq-indicator"></span> Plus de photos</label>
+                        <input type="radio" name="q23_2_photos" id="q232p_pt" value="Plus de textes">
+                        <label for="q232p_pt"><span class="mcq-indicator"></span> Plus de textes</label>
+                    </div>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23d" value="bien-etre">
-                    <label for="q23d"><span class="check-box"></span>Bien-&ecirc;tre (yoga, relaxation&hellip;)</label>
+                <div class="inline-row">
+                    <span class="inline-row-label">Rubriques</span>
+                    <div class="mcq-group">
+                        <input type="radio" name="q23_2_rubriques" id="q232r_u" value="Utiles">
+                        <label for="q232r_u"><span class="mcq-indicator"></span> Utiles</label>
+                        <input type="radio" name="q23_2_rubriques" id="q232r_t" value="Trop de rubriques">
+                        <label for="q232r_t"><span class="mcq-indicator"></span> Trop de rubriques</label>
+                    </div>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23e" value="jeux">
-                    <label for="q23e"><span class="check-box"></span>Jeux de soci&eacute;t&eacute;</label>
+                <div style="margin-top: 12px;">
+                    <div class="sub-question-label">Suggestions :</div>
+                    <textarea name="q23_2_suggestions" class="styled-textarea" rows="2" placeholder="Vos suggestions&hellip;"></textarea>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23f" value="benevolat">
-                    <label for="q23f"><span class="check-box"></span>Actions de b&eacute;n&eacute;volat</label>
+            </div>
+
+            <!-- Q23.3 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">23.3)</span> Choix des sujets &mdash; &ecirc;tes-vous satisfait(e) ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q23_3" id="q233_o" value="Oui">
+                    <label for="q233_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q23_3" id="q233_v" value="Plus de variétés">
+                    <label for="q233_v"><span class="mcq-indicator"></span> Plus de vari&eacute;t&eacute;s</label>
+                    <input type="radio" name="q23_3" id="q233_u" value="Plus UNESCO/SNU">
+                    <label for="q233_u"><span class="mcq-indicator"></span> Plus UNESCO/SNU</label>
                 </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q23" id="q23g" value="autre">
-                    <label for="q23g"><span class="check-box"></span>Autre</label>
+                <div style="margin-top: 12px;">
+                    <div class="sub-question-label">Autres :</div>
+                    <textarea name="q23_3_autres" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez&hellip;"></textarea>
+                </div>
+            </div>
+
+            <!-- Q23.4 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">23.4)</span> Grand angle : L'ouverture engag&eacute;e vers les secteurs de l'UNESCO est-elle bonne ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q23_4" id="q234_o" value="Oui">
+                    <label for="q234_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q23_4" id="q234_n" value="Non">
+                    <label for="q234_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+                <div style="margin-top: 12px;">
+                    <div class="sub-question-label">Quels sujets souhaiteriez-vous voir trait&eacute;s dans l'avenir ?</div>
+                    <textarea name="q23_4_sujets" class="styled-textarea" rows="2" placeholder="Vos id&eacute;es de sujets&hellip;"></textarea>
                 </div>
             </div>
         </div>
 
         <!-- Q24 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">24</span>
-                Avez-vous des commentaires ou suggestions concernant les activit&eacute;s ?
-            </span>
-            <textarea class="styled-textarea" name="q24" placeholder="Vos suggestions sont les bienvenues&hellip;"></textarea>
+            <div class="question-label">
+                <span class="question-number">24</span> Souhaitez-vous &eacute;crire un article pour LIEN/LINK dans l'avenir ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q24" id="q24_o" value="Oui">
+                <label for="q24_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q24" id="q24_n" value="Non">
+                <label for="q24_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+            <div class="conditional-group" id="cond_q24_contact">
+                <div class="sub-question-label">Merci d'indiquer votre nom et votre adresse mail pour &ecirc;tre contact&eacute;(e) :</div>
+                <textarea name="q24_contact" class="styled-textarea" rows="2" placeholder="Nom et adresse mail&hellip;"></textarea>
+            </div>
+        </div>
+
+        <!-- Q25 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">25</span> Quelles suggestions pourriez-vous faire pour am&eacute;liorer LIEN/LINK ?
+            </div>
+            <textarea name="q25" class="styled-textarea" rows="3" placeholder="Vos suggestions&hellip;"></textarea>
+        </div>
+
+        <!-- ===== L'AAFU VOUS INFORME ===== -->
+        <div class="intro-block">
+            <strong>&laquo; L'AAFU vous informe &raquo;</strong> &mdash; Si vous recevez ces mails d'information :
+        </div>
+
+        <!-- Q26 -->
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">26</span> Les lisez-vous ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q26" id="q26_r" value="Régulièrement">
+                <label for="q26_r"><span class="mcq-indicator"></span> R&eacute;guli&egrave;rement</label>
+                <input type="radio" name="q26" id="q26_t" value="De temps en temps">
+                <label for="q26_t"><span class="mcq-indicator"></span> De temps en temps</label>
+                <input type="radio" name="q26" id="q26_j" value="Jamais">
+                <label for="q26_j"><span class="mcq-indicator"></span> Jamais</label>
+            </div>
+
+            <!-- Q26.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">26.1)</span> Globalement, &ecirc;tes-vous satisfait des informations ainsi re&ccedil;ues ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q26_1" id="q261_o" value="Oui">
+                    <label for="q261_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q26_1" id="q261_n" value="Non">
+                    <label for="q261_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+            </div>
+
+            <!-- Q26.2 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">26.2)</span> Quelles am&eacute;liorations pourrions-nous apporter ?</div>
+                <textarea name="q26_2" class="styled-textarea" rows="2" placeholder="Vos suggestions&hellip;"></textarea>
+            </div>
         </div>
 
     </div>
 </div>
 
-<!-- ========== SECTION 4 ========== -->
-<div class="section-card" id="section4">
+<!-- ========================================
+     OBJECTIF 2 : LIENS D'AMITIE ET SOLIDARITE
+     ======================================== -->
+<div class="section-card">
     <div class="section-header">
-        <div class="section-number">Section 4 sur 7</div>
-        <div class="section-title">Communication</div>
-        <div class="section-description">Comment nous pouvons mieux vous informer</div>
+        <div class="section-number">Objectif n&deg;2</div>
+        <div class="section-title">Renforcer les liens d'amiti&eacute; et de solidarit&eacute;</div>
     </div>
     <div class="section-body">
 
-        <!-- Q25 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">25</span>
-                Comment recevez-vous actuellement les informations de l&rsquo;amicale ?
-            </span>
-            <div class="checkbox-group">
-                <div class="check-option">
-                    <input type="checkbox" name="q25" id="q25a" value="courrier">
-                    <label for="q25a"><span class="check-box"></span>Courrier postal</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q25" id="q25b" value="email">
-                    <label for="q25b"><span class="check-box"></span>Email</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q25" id="q25c" value="telephone">
-                    <label for="q25c"><span class="check-box"></span>T&eacute;l&eacute;phone</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q25" id="q25d" value="bouche-a-oreille">
-                    <label for="q25d"><span class="check-box"></span>Bouche &agrave; oreille</label>
-                </div>
-                <div class="check-option">
-                    <input type="checkbox" name="q25" id="q25e" value="site-web">
-                    <label for="q25e"><span class="check-box"></span>Site web</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Q26 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">26</span>
-                Quel mode de communication pr&eacute;f&eacute;rez-vous ?
-            </span>
-            <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q26" id="q26a" value="courrier">
-                    <label for="q26a"><span class="mcq-radio-dot"></span>Courrier postal</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q26" id="q26b" value="email">
-                    <label for="q26b"><span class="mcq-radio-dot"></span>Email</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q26" id="q26c" value="telephone">
-                    <label for="q26c"><span class="mcq-radio-dot"></span>T&eacute;l&eacute;phone</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q26" id="q26d" value="sms">
-                    <label for="q26d"><span class="mcq-radio-dot"></span>SMS</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q26" id="q26e" value="site-web">
-                    <label for="q26e"><span class="mcq-radio-dot"></span>Site web</label>
-                </div>
-            </div>
+        <!-- ===== SORTIES CULTURELLES ===== -->
+        <div class="intro-block">
+            <strong>Sorties culturelles</strong> &mdash; L'AAFU organise tout au long de l'ann&eacute;e des visites guid&eacute;es dans Paris ou dans ses environs.
         </div>
 
         <!-- Q27 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">27</span>
-                Disposez-vous d&rsquo;une adresse email ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q27" id="q27a" value="oui">
-                    <label for="q27a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q27" id="q27b" value="non">
-                    <label for="q27b"><span class="mcq-radio-dot"></span>Non</label>
+            <div class="question-label">
+                <span class="question-number">27</span> En &ecirc;tes-vous inform&eacute;(e) ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q27" id="q27_o" value="Oui">
+                <label for="q27_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q27" id="q27_n" value="Non">
+                <label for="q27_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+
+            <!-- Q27.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">27.1)</span> Participez-vous ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q27_1" id="q271_o" value="Oui">
+                    <label for="q271_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q27_1" id="q271_n" value="Non">
+                    <label for="q271_n"><span class="mcq-indicator"></span> Non</label>
                 </div>
             </div>
+
+            <!-- Q27.2 (si oui) -->
+            <div class="conditional-group" id="cond_q27_oui">
+                <div class="sub-question-label"><span class="sub-question-number">27.2)</span> Si oui, &ecirc;tes-vous satisfait(e) ?</div>
+                <div class="mcq-group" style="margin-bottom: 12px;">
+                    <input type="radio" name="q27_2" id="q272_oa" value="Oui absolument">
+                    <label for="q272_oa"><span class="mcq-indicator"></span> Oui absolument</label>
+                    <input type="radio" name="q27_2" id="q272_o" value="Oui">
+                    <label for="q272_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q27_2" id="q272_pv" value="Pas vraiment">
+                    <label for="q272_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                    <input type="radio" name="q27_2" id="q272_n" value="Non">
+                    <label for="q272_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+                <div class="sub-question-label">Suggestions :</div>
+                <textarea name="q27_2_suggestions" class="styled-textarea" rows="2" placeholder="Vos suggestions&hellip;"></textarea>
+            </div>
+
+            <!-- Q27.3 (si non) -->
+            <div class="conditional-group" id="cond_q27_non">
+                <div class="sub-question-label"><span class="sub-question-number">27.3)</span> Si non, pourquoi ?</div>
+                <div class="mcq-group" style="margin-bottom: 12px;">
+                    <input type="radio" name="q27_3" id="q273_hr" value="Hors région parisienne">
+                    <label for="q273_hr"><span class="mcq-indicator"></span> Hors r&eacute;gion parisienne</label>
+                    <input type="radio" name="q27_3" id="q273_ni" value="Ne m'intéresse pas">
+                    <label for="q273_ni"><span class="mcq-indicator"></span> Ne m'int&eacute;resse pas</label>
+                </div>
+                <div class="sub-question-label">Autres :</div>
+                <textarea name="q27_3_autres" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez&hellip;"></textarea>
+            </div>
+        </div>
+
+        <!-- ===== EXCURSIONS ===== -->
+        <div class="intro-block">
+            <strong>Journ&eacute;es d'excursions culturelles</strong> &mdash; L'AAFU organise des excursions d'une journ&eacute;e (en 2025 : Mus&eacute;e de la langue fran&ccedil;aise &agrave; Villers-Cotter&ecirc;ts et Ch&acirc;teau de Vaux-le-Vicomte).
         </div>
 
         <!-- Q28 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">28</span>
-                Utilisez-vous internet r&eacute;guli&egrave;rement ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q28" id="q28a" value="oui">
-                    <label for="q28a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q28" id="q28b" value="non">
-                    <label for="q28b"><span class="mcq-radio-dot"></span>Non</label>
+            <div class="question-label">
+                <span class="question-number">28</span> En &ecirc;tes-vous inform&eacute;(e) ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q28" id="q28_o" value="Oui">
+                <label for="q28_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q28" id="q28_n" value="Non">
+                <label for="q28_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+
+            <!-- Q28.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">28.1)</span> Y participez-vous ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q28_1" id="q281_o" value="Oui">
+                    <label for="q281_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q28_1" id="q281_n" value="Non">
+                    <label for="q281_n"><span class="mcq-indicator"></span> Non</label>
                 </div>
             </div>
+
+            <!-- Q28.2 (si oui) -->
+            <div class="conditional-group" id="cond_q28_oui">
+                <div class="sub-question-label"><span class="sub-question-number">28.2)</span> Si oui, &ecirc;tes-vous satisfait(e) ?</div>
+                <div class="mcq-group" style="margin-bottom: 12px;">
+                    <input type="radio" name="q28_2" id="q282_o" value="Oui">
+                    <label for="q282_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q28_2" id="q282_n" value="Non">
+                    <label for="q282_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+                <div class="sub-question-label">Suggestions :</div>
+                <textarea name="q28_2_suggestions" class="styled-textarea" rows="2" placeholder="Vos suggestions&hellip;"></textarea>
+            </div>
+
+            <!-- Q28.3 + Q28.4 (si non) -->
+            <div class="conditional-group" id="cond_q28_non">
+                <div class="sub-question-label"><span class="sub-question-number">28.3)</span> Si non, pensez-vous y participer dans l'avenir ?</div>
+                <div class="mcq-group" style="margin-bottom: 16px;">
+                    <input type="radio" name="q28_3" id="q283_o" value="Oui">
+                    <label for="q283_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q28_3" id="q283_n" value="Non">
+                    <label for="q283_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+                <div class="sub-question-label"><span class="sub-question-number">28.4)</span> Si non, pourquoi ?</div>
+                <div class="mcq-group vertical" style="margin-bottom: 12px;">
+                    <input type="radio" name="q28_4" id="q284_t" value="Pas le temps">
+                    <label for="q284_t"><span class="mcq-indicator"></span> Pas le temps</label>
+                    <input type="radio" name="q28_4" id="q284_ni" value="Ne m'intéresse pas">
+                    <label for="q284_ni"><span class="mcq-indicator"></span> Ne m'int&eacute;resse pas</label>
+                    <input type="radio" name="q28_4" id="q284_org" value="Je m'organise autrement">
+                    <label for="q284_org"><span class="mcq-indicator"></span> Je m'organise autrement</label>
+                    <input type="radio" name="q28_4" id="q284_prix" value="Le prix est trop élevé">
+                    <label for="q284_prix"><span class="mcq-indicator"></span> Le prix est trop &eacute;lev&eacute;</label>
+                </div>
+                <div class="sub-question-label">Suggestions :</div>
+                <textarea name="q28_4_suggestions" class="styled-textarea" rows="2" placeholder="Vos suggestions&hellip;"></textarea>
+            </div>
+        </div>
+
+        <!-- ===== VOYAGES CULTURELS ===== -->
+        <div class="intro-block">
+            <strong>Voyages culturels</strong> &mdash; L'AAFU propose des voyages culturels &agrave; la d&eacute;couverte du Patrimoine mondial. En mars 2026 : voyage en &Eacute;gypte. En septembre 2026 : Barcelone pour le centi&egrave;me anniversaire de la mort de Gaud&iacute; et la fin de la construction du dernier clocher de la Sagrada Familia.
         </div>
 
         <!-- Q29 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">29</span>
-                Lisez-vous le bulletin de l&rsquo;amicale ?
-            </span>
+            <div class="question-label">
+                <span class="question-number">29</span> Pensez-vous que cette activit&eacute; soit importante pour l'AAFU ?
+            </div>
             <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q29" id="q29a" value="toujours">
-                    <label for="q29a"><span class="mcq-radio-dot"></span>Toujours</label>
+                <input type="radio" name="q29" id="q29_o" value="Oui">
+                <label for="q29_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q29" id="q29_pv" value="Pas vraiment">
+                <label for="q29_pv"><span class="mcq-indicator"></span> Pas vraiment</label>
+                <input type="radio" name="q29" id="q29_n" value="Non">
+                <label for="q29_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+
+            <!-- Q29.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.1)</span> Souhaitez-vous que l'AAFU d&eacute;veloppe ses propositions de voyages ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q29_1" id="q291_o" value="Oui">
+                    <label for="q291_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q29_1" id="q291_n" value="Non">
+                    <label for="q291_n"><span class="mcq-indicator"></span> Non</label>
                 </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q29" id="q29b" value="souvent">
-                    <label for="q29b"><span class="mcq-radio-dot"></span>Souvent</label>
+            </div>
+
+            <!-- Q29.2 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.2)</span> Seriez-vous int&eacute;ress&eacute;(e) &agrave; y participer &agrave; l'avenir ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q29_2" id="q292_o" value="Oui">
+                    <label for="q292_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q29_2" id="q292_n" value="Non">
+                    <label for="q292_n"><span class="mcq-indicator"></span> Non</label>
                 </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q29" id="q29c" value="parfois">
-                    <label for="q29c"><span class="mcq-radio-dot"></span>Parfois</label>
+            </div>
+
+            <!-- Q29.3 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.3)</span> Quels facteurs d&eacute;terminent votre d&eacute;cision ?
+                    <span class="question-hint">S&eacute;lectionnez les facteurs importants pour vous</span>
                 </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q29" id="q29d" value="jamais">
-                    <label for="q29d"><span class="mcq-radio-dot"></span>Jamais</label>
+                <div class="mcq-group" style="margin-bottom: 12px;">
+                    <input type="checkbox" name="q29_3" id="q293_d" value="Durée">
+                    <label for="q293_d"><span class="mcq-indicator square"></span> Dur&eacute;e</label>
+                    <input type="checkbox" name="q29_3" id="q293_p" value="Prix">
+                    <label for="q293_p"><span class="mcq-indicator square"></span> Prix</label>
+                    <input type="checkbox" name="q29_3" id="q293_dest" value="Destination">
+                    <label for="q293_dest"><span class="mcq-indicator square"></span> Destination</label>
+                </div>
+                <div class="sub-question-label">Autres facteurs :</div>
+                <textarea name="q29_3_autres" class="styled-textarea" rows="2" placeholder="Pr&eacute;cisez&hellip;"></textarea>
+            </div>
+
+            <!-- Pour la période 2027-2030 -->
+            <div class="sub-question">
+                <div class="sub-question-label" style="font-weight: 600; color: var(--primary);">Pour la p&eacute;riode 2027&ndash;2030 :</div>
+            </div>
+
+            <!-- Q29.4 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.4)</span> Souhaitez-vous participer &agrave; de courts s&eacute;jours (Europe) ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q29_4" id="q294_o" value="Oui">
+                    <label for="q294_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q29_4" id="q294_n" value="Non">
+                    <label for="q294_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+            </div>
+
+            <!-- Q29.5 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.5)</span> Souhaitez-vous participer &agrave; des circuits plus longs (hors Europe) ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q29_5" id="q295_o" value="Oui">
+                    <label for="q295_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q29_5" id="q295_n" value="Non">
+                    <label for="q295_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+            </div>
+
+            <!-- Q29.6 (destinations) -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">29.6)</span> Indiquez les cinq destinations qui pourraient vous int&eacute;resser, en pr&eacute;cisant votre pr&eacute;f&eacute;rence de 1 &agrave; 5 (1 = la plus int&eacute;ressante) :</div>
+                <div class="destination-list">
+                    <div class="destination-item">
+                        <span class="destination-rank">1</span>
+                        <input type="text" name="q29_6_dest1" class="text-input" placeholder="Destination pr&eacute;f&eacute;r&eacute;e">
+                    </div>
+                    <div class="destination-item">
+                        <span class="destination-rank">2</span>
+                        <input type="text" name="q29_6_dest2" class="text-input" placeholder="2&egrave;me destination">
+                    </div>
+                    <div class="destination-item">
+                        <span class="destination-rank">3</span>
+                        <input type="text" name="q29_6_dest3" class="text-input" placeholder="3&egrave;me destination">
+                    </div>
+                    <div class="destination-item">
+                        <span class="destination-rank">4</span>
+                        <input type="text" name="q29_6_dest4" class="text-input" placeholder="4&egrave;me destination">
+                    </div>
+                    <div class="destination-item">
+                        <span class="destination-rank">5</span>
+                        <input type="text" name="q29_6_dest5" class="text-input" placeholder="5&egrave;me destination">
+                    </div>
                 </div>
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- ========================================
+     OBJECTIF 3 : ENGAGER L'EXPERIENCE UNESCO
+     ======================================== -->
+<div class="section-card">
+    <div class="section-header">
+        <div class="section-number">Objectif n&deg;3</div>
+        <div class="section-title">Engager votre exp&eacute;rience dans les domaines de l'UNESCO</div>
+        <div class="section-description">Proposer &agrave; ses membres d'engager une partie de leur exp&eacute;rience et de leur temps &agrave; des activit&eacute;s et projets dans les domaines de comp&eacute;tence de l'UNESCO.</div>
+    </div>
+    <div class="section-body">
+
+        <div class="intro-block">
+            <strong>Groupe de travail sur l'Histoire</strong> &mdash; L'AAFU anime depuis sa cr&eacute;ation un groupe de travail sur l'Histoire. L'ensemble de ses productions est sur le site web de l'association.
+        </div>
+
         <!-- Q30 -->
-        <div class="question" id="q30-container"></div>
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">30</span> &Ecirc;tes-vous au courant de cette activit&eacute; ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q30" id="q30_o" value="Oui">
+                <label for="q30_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q30" id="q30_n" value="Non">
+                <label for="q30_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
+
+            <!-- Q30.1 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">30.1)</span> Consultez-vous ces publications ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q30_1" id="q301_o" value="Oui">
+                    <label for="q301_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q30_1" id="q301_n" value="Non">
+                    <label for="q301_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+            </div>
+
+            <!-- Q30.2 -->
+            <div class="sub-question">
+                <div class="sub-question-label"><span class="sub-question-number">30.2)</span> Seriez-vous int&eacute;ress&eacute;(e) &agrave; participer &agrave; ses travaux ?</div>
+                <div class="mcq-group">
+                    <input type="radio" name="q30_2" id="q302_o" value="Oui">
+                    <label for="q302_o"><span class="mcq-indicator"></span> Oui</label>
+                    <input type="radio" name="q30_2" id="q302_n" value="Non">
+                    <label for="q302_n"><span class="mcq-indicator"></span> Non</label>
+                </div>
+            </div>
+
+            <!-- Q30.3 (si oui) -->
+            <div class="conditional-group" id="cond_q30_contact">
+                <div class="sub-question-label"><span class="sub-question-number">30.3)</span> Merci d'indiquer votre nom et adresse mail pour &ecirc;tre contact&eacute;(e) :</div>
+                <textarea name="q30_3" class="styled-textarea" rows="2" placeholder="Nom et adresse mail&hellip;"></textarea>
+            </div>
+        </div>
+
+        <div class="intro-block">
+            Les th&egrave;mes suivants ont &eacute;t&eacute; &eacute;voqu&eacute;s pour les prochains travaux du groupe de travail. Seriez-vous int&eacute;ress&eacute;(e) &agrave; y participer ?
+        </div>
 
         <!-- Q31 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">31</span>
-                Souhaiteriez-vous que l&rsquo;amicale dispose d&rsquo;un site web ou d&rsquo;un espace en ligne ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q31" id="q31a" value="oui">
-                    <label for="q31a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q31" id="q31b" value="non">
-                    <label for="q31b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q31" id="q31c" value="sans-avis">
-                    <label for="q31c"><span class="mcq-radio-dot"></span>Sans avis</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">31</span> Le recueil de souvenirs des anciens membres du personnel
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q31" id="q31_o" value="Oui">
+                <label for="q31_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q31" id="q31_n" value="Non">
+                <label for="q31_n"><span class="mcq-indicator"></span> Non</label>
             </div>
         </div>
 
         <!-- Q32 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">32</span>
-                Avez-vous des commentaires sur la communication de l&rsquo;amicale ?
-            </span>
-            <textarea class="styled-textarea" name="q32" placeholder="Vos suggestions sont les bienvenues&hellip;"></textarea>
+            <div class="question-label">
+                <span class="question-number">32</span> L'histoire des syndicats de l'UNESCO et leurs r&ocirc;les
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q32" id="q32_o" value="Oui">
+                <label for="q32_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q32" id="q32_n" value="Non">
+                <label for="q32_n"><span class="mcq-indicator"></span> Non</label>
+            </div>
         </div>
-
-    </div>
-</div>
-
-<!-- ========== SECTION 5 ========== -->
-<div class="section-card" id="section5">
-    <div class="section-header">
-        <div class="section-number">Section 5 sur 7</div>
-        <div class="section-title">Vie associative et gouvernance</div>
-        <div class="section-description">Votre implication et vos attentes en mati&egrave;re de fonctionnement</div>
-    </div>
-    <div class="section-body">
 
         <!-- Q33 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">33</span>
-                Participez-vous &agrave; l&rsquo;assembl&eacute;e g&eacute;n&eacute;rale ?
-            </span>
+            <div class="question-label">
+                <span class="question-number">33</span> Les r&eacute;fugi&eacute;s politiques et leurs contributions &agrave; l'UNESCO
+            </div>
             <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q33" id="q33a" value="toujours">
-                    <label for="q33a"><span class="mcq-radio-dot"></span>Toujours</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q33" id="q33b" value="souvent">
-                    <label for="q33b"><span class="mcq-radio-dot"></span>Souvent</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q33" id="q33c" value="parfois">
-                    <label for="q33c"><span class="mcq-radio-dot"></span>Parfois</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q33" id="q33d" value="jamais">
-                    <label for="q33d"><span class="mcq-radio-dot"></span>Jamais</label>
-                </div>
+                <input type="radio" name="q33" id="q33_o" value="Oui">
+                <label for="q33_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q33" id="q33_n" value="Non">
+                <label for="q33_n"><span class="mcq-indicator"></span> Non</label>
             </div>
         </div>
 
         <!-- Q34 -->
-        <div class="question" id="q34-container"></div>
+        <div class="question">
+            <div class="question-label">
+                <span class="question-number">34</span> Quels autres sujets pensez-vous int&eacute;ressants de prioriser dans le plan de travail de ce groupe ?
+            </div>
+            <textarea name="q34" class="styled-textarea" rows="3" placeholder="Vos propositions de sujets&hellip;"></textarea>
+        </div>
 
         <!-- Q35 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">35</span>
-                Souhaitez-vous plus de transparence sur les finances de l&rsquo;amicale ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q35" id="q35a" value="oui">
-                    <label for="q35a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q35" id="q35b" value="non">
-                    <label for="q35b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q35" id="q35c" value="sans-avis">
-                    <label for="q35c"><span class="mcq-radio-dot"></span>Sans avis</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">35</span> Pensez-vous que ces activit&eacute;s devraient &ecirc;tre plut&ocirc;t orient&eacute;es vers :
             </div>
+            <div class="mcq-group vertical">
+                <input type="radio" name="q35" id="q35_r" value="Recherche pure">
+                <label for="q35_r"><span class="mcq-indicator"></span> Des travaux de recherche pure (rapports, publications)</label>
+                <input type="radio" name="q35" id="q35_c" value="Résultats concrets">
+                <label for="q35_c"><span class="mcq-indicator"></span> La production de r&eacute;sultats concrets et directement utilisables (formations, s&eacute;minaires, cours, conf&eacute;rences, expositions)</label>
+            </div>
+        </div>
+
+        <div class="intro-block">
+            Parmi les activit&eacute;s vers lesquelles vous pourriez vous engager :
         </div>
 
         <!-- Q36 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">36</span>
-                Seriez-vous pr&ecirc;t(e) &agrave; vous investir dans le bureau de l&rsquo;amicale ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q36" id="q36a" value="oui">
-                    <label for="q36a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q36" id="q36b" value="non">
-                    <label for="q36b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q36" id="q36c" value="peut-etre">
-                    <label for="q36c"><span class="mcq-radio-dot"></span>Peut-&ecirc;tre</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">36</span> Vers l'UNESCO, en coop&eacute;ration avec les services centraux ou les secteurs concern&eacute;s, organiser et animer, seul ou en groupe, des ateliers, s&eacute;minaires, conf&eacute;rences ou expositions dans vos domaines de comp&eacute;tence ?
+            </div>
+            <div class="mcq-group">
+                <input type="radio" name="q36" id="q36_o" value="Oui">
+                <label for="q36_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q36" id="q36_n" value="Non">
+                <label for="q36_n"><span class="mcq-indicator"></span> Non</label>
             </div>
         </div>
 
         <!-- Q37 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">37</span>
-                Seriez-vous pr&ecirc;t(e) &agrave; aider ponctuellement lors d&rsquo;&eacute;v&eacute;nements ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q37" id="q37a" value="oui">
-                    <label for="q37a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q37" id="q37b" value="non">
-                    <label for="q37b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
+            <div class="question-label">
+                <span class="question-number">37</span> &Agrave; l'international, avec l'aide de l'AAFU, seriez-vous int&eacute;ress&eacute;(e) &agrave; participer &agrave; des activit&eacute;s de b&eacute;n&eacute;volat au sein des Volontaires des Nations unies (VNU) ou au sein d'ONGs internationales dans des conditions similaires ?
             </div>
-        </div>
-
-        <!-- Q38 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">38</span>
-                Comment jugez-vous le montant actuel de la cotisation ?
-            </span>
             <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q38" id="q38a" value="trop-eleve">
-                    <label for="q38a"><span class="mcq-radio-dot"></span>Trop &eacute;lev&eacute;</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q38" id="q38b" value="correct">
-                    <label for="q38b"><span class="mcq-radio-dot"></span>Correct</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q38" id="q38c" value="pourrait-etre-plus">
-                    <label for="q38c"><span class="mcq-radio-dot"></span>Pourrait &ecirc;tre plus &eacute;lev&eacute;</label>
-                </div>
+                <input type="radio" name="q37" id="q37_o" value="Oui">
+                <label for="q37_o"><span class="mcq-indicator"></span> Oui</label>
+                <input type="radio" name="q37" id="q37_n" value="Non">
+                <label for="q37_n"><span class="mcq-indicator"></span> Non</label>
             </div>
-        </div>
-
-        <!-- Q39 -->
-        <div class="question" id="q39-container"></div>
-
-        <!-- Q40 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">40</span>
-                Avez-vous des suggestions pour am&eacute;liorer la vie associative ?
-            </span>
-            <textarea class="styled-textarea" name="q40" placeholder="Vos id&eacute;es et suggestions&hellip;"></textarea>
         </div>
 
     </div>
 </div>
 
-<!-- ========== SECTION 6 ========== -->
-<div class="section-card" id="section6">
-    <div class="section-header">
-        <div class="section-number">Section 6 sur 7</div>
-        <div class="section-title">Bien-&ecirc;tre et solidarit&eacute;</div>
-        <div class="section-description">Le r&ocirc;le de l&rsquo;amicale dans le lien social et l&rsquo;entraide</div>
+<!-- ========================================
+     DONNEES PERSONNELLES
+     ======================================== -->
+<div class="section-card">
+    <div class="section-header" style="background: linear-gradient(135deg, #374151 0%, #4b5563 100%);">
+        <div class="section-title">Donn&eacute;es personnelles</div>
+        <div class="section-description">Les champs marqu&eacute;s &laquo; Facultatif &raquo; ne sont pas obligatoires.</div>
     </div>
     <div class="section-body">
 
-        <!-- Q41 -->
-        <div class="question" id="q41-container"></div>
-
-        <!-- Q42 -->
-        <div class="question" id="q42-container"></div>
-
-        <!-- Q43 -->
         <div class="question">
-            <span class="question-label">
-                <span class="question-number">43</span>
-                Souhaiteriez-vous un service d&rsquo;aide ou d&rsquo;&eacute;coute entre membres ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q43" id="q43a" value="oui">
-                    <label for="q43a"><span class="mcq-radio-dot"></span>Oui</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                    <div class="sub-question-label">Nom</div>
+                    <input type="text" name="nom" class="text-input" style="max-width:none" placeholder="Votre nom">
                 </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q43" id="q43b" value="non">
-                    <label for="q43b"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q43" id="q43c" value="sans-avis">
-                    <label for="q43c"><span class="mcq-radio-dot"></span>Sans avis</label>
+                <div>
+                    <div class="sub-question-label">Pr&eacute;nom</div>
+                    <input type="text" name="prenom" class="text-input" style="max-width:none" placeholder="Votre pr&eacute;nom">
                 </div>
             </div>
-        </div>
 
-        <!-- Q44 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">44</span>
-                Connaissez-vous des membres isol&eacute;s que l&rsquo;amicale devrait contacter ?
-            </span>
-            <div class="mcq-group mcq-horizontal">
-                <div class="mcq-option">
-                    <input type="radio" name="q44" id="q44a" value="oui">
-                    <label for="q44a"><span class="mcq-radio-dot"></span>Oui</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q44" id="q44b" value="non">
-                    <label for="q44b"><span class="mcq-radio-dot"></span>Non</label>
+            <div class="sub-question">
+                <div class="sub-question-label" style="color: var(--gray-400); font-style: italic;">Facultatif</div>
+            </div>
+
+            <div class="sub-question">
+                <div class="sub-question-label">Adresse</div>
+                <input type="text" name="adresse" class="text-input" style="max-width:none" placeholder="Votre adresse">
+            </div>
+
+            <div class="sub-question">
+                <div style="display: grid; grid-template-columns: 160px 1fr; gap: 16px;">
+                    <div>
+                        <div class="sub-question-label">Code postal</div>
+                        <input type="text" name="dp_code_postal" class="text-input" style="max-width:none" placeholder="75015">
+                    </div>
+                    <div>
+                        <div class="sub-question-label">Ville</div>
+                        <input type="text" name="ville" class="text-input" style="max-width:none" placeholder="Ville">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Q45 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">45</span>
-                Avez-vous des commentaires sur la solidarit&eacute; au sein de l&rsquo;amicale ?
-            </span>
-            <textarea class="styled-textarea" name="q45" placeholder="Vos r&eacute;flexions sont les bienvenues&hellip;"></textarea>
+            <div class="sub-question">
+                <div class="sub-question-label">Adresse mail</div>
+                <input type="email" name="email" class="text-input" style="max-width:none" placeholder="votre.email@exemple.com">
+            </div>
+
+            <div class="sub-question">
+                <div class="sub-question-label">T&eacute;l&eacute;phone</div>
+                <input type="tel" name="telephone" class="text-input" placeholder="+33 1 45 68 46 55">
+            </div>
         </div>
 
     </div>
 </div>
 
-<!-- ========== SECTION 7 ========== -->
-<div class="section-card" id="section7">
-    <div class="section-header">
-        <div class="section-number">Section 7 sur 7</div>
-        <div class="section-title">Perspectives et remarques libres</div>
-        <div class="section-description">Votre vision d&rsquo;avenir pour l&rsquo;amicale</div>
-    </div>
-    <div class="section-body">
-
-        <!-- Q46 -->
-        <div class="question" id="q46-container"></div>
-
-        <!-- Q47 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">47</span>
-                Renouvellerez-vous votre adh&eacute;sion l&rsquo;ann&eacute;e prochaine ?
-            </span>
-            <div class="mcq-group">
-                <div class="mcq-option">
-                    <input type="radio" name="q47" id="q47a" value="oui-certainement">
-                    <label for="q47a"><span class="mcq-radio-dot"></span>Oui, certainement</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q47" id="q47b" value="probablement">
-                    <label for="q47b"><span class="mcq-radio-dot"></span>Probablement</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q47" id="q47c" value="ne-sais-pas">
-                    <label for="q47c"><span class="mcq-radio-dot"></span>Je ne sais pas</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q47" id="q47d" value="probablement-pas">
-                    <label for="q47d"><span class="mcq-radio-dot"></span>Probablement pas</label>
-                </div>
-                <div class="mcq-option">
-                    <input type="radio" name="q47" id="q47e" value="non">
-                    <label for="q47e"><span class="mcq-radio-dot"></span>Non</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Q48 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">48</span>
-                Selon vous, quel est le principal atout de l&rsquo;amicale ?
-            </span>
-            <textarea class="styled-textarea" name="q48" placeholder="Ce qui fait la force de notre association&hellip;"></textarea>
-        </div>
-
-        <!-- Q49 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">49</span>
-                Quelle est la principale am&eacute;lioration &agrave; apporter ?
-            </span>
-            <textarea class="styled-textarea" name="q49" placeholder="Ce que nous pourrions faire mieux&hellip;"></textarea>
-        </div>
-
-        <!-- Q50 -->
-        <div class="question">
-            <span class="question-label">
-                <span class="question-number">50</span>
-                Espace libre : remarques, id&eacute;es, commentaires
-            </span>
-            <textarea class="styled-textarea" name="q50" placeholder="Tout ce que vous souhaitez nous partager&hellip;"></textarea>
-        </div>
-
-    </div>
-</div>
-
-<!-- ========== FORM FOOTER ========== -->
+<!-- ===== FORM FOOTER ===== -->
 <div class="form-footer">
-    <div class="form-footer-anon">
-        <span class="form-footer-anon-icon">&#128274;</span>
-        Vos r&eacute;ponses sont strictement anonymes et confidentielles.
+    <div class="privacy-notice" style="flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span class="privacy-icon">&#128274;</span>
+            <div class="privacy-text">
+                <strong style="color: var(--gray-800);">Protection de vos donn&eacute;es personnelles</strong>
+            </div>
+        </div>
+        <div class="privacy-text" style="font-size: 0.84rem; line-height: 1.6;">
+            <strong>Responsable du traitement :</strong> Association des Anciens Fonctionnaires de l'UNESCO (AAFU), 1 rue Miollis, 75732 Paris 15.<br>
+            <strong>Sous-traitant technique :</strong> UnJourUneApp (Emmanuel Pinglier).<br>
+            <strong>Finalit&eacute; :</strong> Enqu&ecirc;te aupr&egrave;s des membres en vue de la pr&eacute;paration du Plan d'action 2027-2030.<br>
+            <strong>Base l&eacute;gale :</strong> Votre consentement (case ci-dessous).<br>
+            <strong>Donn&eacute;es collect&eacute;es :</strong> R&eacute;ponses au questionnaire et, si vous les renseignez, vos coordonn&eacute;es (nom, adresse, mail, t&eacute;l&eacute;phone). Les coordonn&eacute;es sont facultatives.<br>
+            <strong>Destinataires :</strong> Seuls les membres du COMEX de l'AAFU et le sous-traitant technique ont acc&egrave;s aux donn&eacute;es individuelles. Les r&eacute;sultats publi&eacute;s seront exclusivement agr&eacute;g&eacute;s et anonymes.<br>
+            <strong>H&eacute;bergement :</strong> Les donn&eacute;es sont stock&eacute;es sur Google Sheets (serveurs Google, pouvant &ecirc;tre situ&eacute;s hors UE).<br>
+            <strong>Dur&eacute;e de conservation :</strong> Les donn&eacute;es individuelles seront supprim&eacute;es dans les 6 mois suivant la publication du rapport final.<br>
+            <strong>Vos droits :</strong> Vous pouvez &agrave; tout moment demander l'acc&egrave;s, la rectification ou la suppression de vos donn&eacute;es en &eacute;crivant &agrave; <a href="mailto:d.afus@afus.unesco.org" style="color: var(--accent);">d.afus@afus.unesco.org</a>. Vous disposez &eacute;galement d'un droit de r&eacute;clamation aupr&egrave;s de la CNIL (www.cnil.fr).
+        </div>
     </div>
-    <button type="button" class="btn-submit" id="btnSubmit">
-        Soumettre mes r&eacute;ponses
+
+    <!-- CASE CONSENTEMENT -->
+    <div style="margin: 20px 0; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-size: 0.92rem; color: var(--gray-700); line-height: 1.5;">
+            <input type="checkbox" id="consentRGPD" name="consentement_rgpd" value="Oui" style="margin-top: 4px; width: 20px; height: 20px; accent-color: var(--accent); flex-shrink: 0;">
+            J'ai lu les informations ci-dessus et j'accepte que mes r&eacute;ponses soient collect&eacute;es et trait&eacute;es dans le cadre de cette enqu&ecirc;te.
+        </label>
+    </div>
+
+    <button type="button" class="btn-submit" id="btnSubmit" disabled>
+        Envoyer mes r&eacute;ponses &rarr;
     </button>
     <br>
     <button type="button" class="btn-print" onclick="window.print()">
-        Imprimer / Enregistrer en PDF
+        &#128424; Version imprimable
     </button>
 </div>
 
 </form>
+
+<p style="text-align:center; margin-top: 32px; font-size: 0.82rem; color: var(--gray-400);">
+    Merci de votre coop&eacute;ration. Nous partagerons d&egrave;s que possible les r&eacute;sultats de cette enqu&ecirc;te.<br>
+    &mdash; Le COMEX de l'AAFU
+</p>
+
 </main>
 
-<!-- ==================== TOAST ==================== -->
-<div class="toast" id="toast">
-    <span class="toast-icon">&#10003;</span>
-    Merci ! Vos r&eacute;ponses ont bien &eacute;t&eacute; enregistr&eacute;es.
-</div>
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
 
-<!-- ==================== JAVASCRIPT ==================== -->
 <script>
 (function() {
     'use strict';
 
-    // ===== DYNAMIC SCALE QUESTIONS =====
-    // Build scale 1-10 questions via JS to avoid repetition
+    // ============================
+    // CONFIG
+    // ============================
+    // Remplacez par l'URL de votre Google Apps Script déployé en tant que web app
+    var APPS_SCRIPT_URL = '';
 
-    const scaleQuestions = [
-        { num: 7, name: 'q7', label: "Qualit\u00e9 de l\u2019accueil au sein de l\u2019amicale", container: null, section: 2 },
-        { num: 8, name: 'q8', label: "Qualit\u00e9 de la communication (informations, invitations\u2026)", container: null, section: 2 },
-        { num: 9, name: 'q9', label: "Fr\u00e9quence des activit\u00e9s propos\u00e9es", container: null, section: 2 },
-        { num: 10, name: 'q10', label: "Qualit\u00e9 des activit\u00e9s propos\u00e9es", container: null, section: 2 },
-        { num: 11, name: 'q11', label: "Rapport qualit\u00e9/prix de la cotisation", container: null, section: 2 },
-        { num: 12, name: 'q12', label: "Convivialit\u00e9 et ambiance entre les membres", container: null, section: 2 },
-        { num: 13, name: 'q13', label: "Organisation g\u00e9n\u00e9rale de l\u2019amicale", container: null, section: 2 },
-        { num: 14, name: 'q14', label: "\u00c9coute et disponibilit\u00e9 du bureau", container: null, section: 2 },
-        { num: 16, name: 'q16', label: "Satisfaction concernant le repas annuel", container: 'q16-container', section: 3 },
-        { num: 17, name: 'q17', label: "Satisfaction concernant les sorties culturelles", container: 'q17-container', section: 3 },
-        { num: 18, name: 'q18', label: "Satisfaction concernant les voyages", container: 'q18-container', section: 3 },
-        { num: 30, name: 'q30', label: "Satisfaction concernant le bulletin de l\u2019amicale", container: 'q30-container', section: 4 },
-        { num: 34, name: 'q34', label: "Trouvez-vous l\u2019assembl\u00e9e g\u00e9n\u00e9rale utile ?", container: 'q34-container', section: 5 },
-        { num: 39, name: 'q39', label: "Que pensez-vous de l\u2019entraide entre les membres ?", container: 'q39-container', section: 5 },
-        { num: 41, name: 'q41', label: "Vous sentez-vous bien entour\u00e9(e) socialement ?", container: 'q41-container', section: 6 },
-        { num: 42, name: 'q42', label: "L\u2019amicale contribue-t-elle \u00e0 votre lien social ?", container: 'q42-container', section: 6 },
-        { num: 46, name: 'q46', label: "Recommanderiez-vous l\u2019amicale \u00e0 un(e) ancien(ne) coll\u00e8gue ?", container: 'q46-container', section: 7 }
+    // ============================
+    // POPULATE DROPDOWNS
+    // ============================
+
+    // Q2: Années de départ à la retraite (2026 → 1956)
+    var q2Select = document.getElementById('q2');
+    for (var y = 2026; y >= 1956; y--) {
+        var opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        q2Select.appendChild(opt);
+    }
+
+    // Liste de pays (en français, triée)
+    var pays = [
+        'Afghanistan','Afrique du Sud','Albanie','Algérie','Allemagne','Andorre','Angola',
+        'Arabie saoudite','Argentine','Arménie','Australie','Autriche','Azerbaïdjan',
+        'Bahreïn','Bangladesh','Belgique','Bénin','Bhoutan','Biélorussie','Bolivie',
+        'Bosnie-Herzégovine','Botswana','Brésil','Brunei','Bulgarie','Burkina Faso','Burundi',
+        'Cambodge','Cameroun','Canada','Cap-Vert','Chili','Chine','Chypre','Colombie',
+        'Comores','Corée du Sud','Costa Rica','Côte d\'Ivoire','Croatie','Cuba',
+        'Danemark','Djibouti','Dominique','Égypte','Émirats arabes unis','Équateur',
+        'Érythrée','Espagne','Estonie','États-Unis','Éthiopie',
+        'Fidji','Finlande','France','Gabon','Gambie','Géorgie','Ghana','Grèce',
+        'Guatemala','Guinée','Guinée-Bissau','Guinée équatoriale','Guyana',
+        'Haïti','Honduras','Hongrie','Inde','Indonésie','Irak','Iran','Irlande',
+        'Islande','Israël','Italie','Jamaïque','Japon','Jordanie',
+        'Kazakhstan','Kenya','Kirghizistan','Koweït',
+        'Laos','Lesotho','Lettonie','Liban','Liberia','Libye','Liechtenstein',
+        'Lituanie','Luxembourg','Macédoine du Nord','Madagascar','Malaisie','Malawi',
+        'Maldives','Mali','Malte','Maroc','Maurice','Mauritanie','Mexique','Moldavie',
+        'Monaco','Mongolie','Monténégro','Mozambique','Myanmar',
+        'Namibie','Népal','Nicaragua','Niger','Nigeria','Norvège','Nouvelle-Zélande',
+        'Oman','Ouganda','Ouzbékistan','Pakistan','Palestine','Panama','Papouasie-Nouvelle-Guinée',
+        'Paraguay','Pays-Bas','Pérou','Philippines','Pologne','Portugal',
+        'Qatar','République centrafricaine','République démocratique du Congo',
+        'République dominicaine','République tchèque','Roumanie','Royaume-Uni','Russie','Rwanda',
+        'Sénégal','Serbie','Sierra Leone','Singapour','Slovaquie','Slovénie',
+        'Somalie','Soudan','Soudan du Sud','Sri Lanka','Suède','Suisse','Suriname','Syrie',
+        'Tadjikistan','Tanzanie','Tchad','Thaïlande','Timor oriental','Togo',
+        'Trinité-et-Tobago','Tunisie','Turkménistan','Turquie',
+        'Ukraine','Uruguay','Venezuela','Viêt Nam','Yémen','Zambie','Zimbabwe'
     ];
 
-    function buildScaleHTML(q) {
-        let html = '<span class="question-label">';
-        html += '<span class="question-number">' + q.num + '</span>';
-        html += q.label;
-        html += '</span>';
-        html += '<div class="scale-group">';
-        for (let i = 1; i <= 10; i++) {
-            html += '<div class="scale-option">';
-            html += '<input type="radio" name="' + q.name + '" id="' + q.name + '_' + i + '" value="' + i + '">';
-            html += '<label for="' + q.name + '_' + i + '">' + i + '</label>';
-            html += '</div>';
-        }
-        html += '</div>';
-        html += '<div class="scale-labels">';
-        html += '<span class="scale-label-text">Tr\u00e8s insatisfait</span>';
-        if (q.num === 46) {
-            html += '<span class="scale-label-text">Tr\u00e8s certainement</span>';
-        } else {
-            html += '<span class="scale-label-text">Tr\u00e8s satisfait</span>';
-        }
-        html += '</div>';
-        return html;
-    }
+    // Q4: Nationalité
+    var q4Select = document.getElementById('q4');
+    pays.forEach(function(p) {
+        var opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        q4Select.appendChild(opt);
+    });
 
-    // Section 2: build all 8 scale questions
-    const section2Body = document.getElementById('scaleSection2');
-    scaleQuestions.forEach(function(q) {
-        if (q.section === 2) {
-            const div = document.createElement('div');
-            div.className = 'question';
-            div.innerHTML = buildScaleHTML(q);
-            section2Body.appendChild(div);
+    // Q5: Pays de résidence (autre)
+    var q5Select = document.getElementById('q5_pays');
+    pays.forEach(function(p) {
+        if (p === 'France') return; // France est déjà un choix radio
+        var opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        q5Select.appendChild(opt);
+    });
+
+    // ============================
+    // BUILD SCALE QUESTIONS (1-10)
+    // ============================
+    var scaleIds = ['q6','q12','q13','q14','q15'];
+    scaleIds.forEach(function(name) {
+        var container = document.getElementById('scale_' + name);
+        if (!container) return;
+        for (var i = 1; i <= 10; i++) {
+            var inp = document.createElement('input');
+            inp.type = 'radio';
+            inp.name = name;
+            inp.id = name + '_' + i;
+            inp.value = i;
+            var lbl = document.createElement('label');
+            lbl.htmlFor = name + '_' + i;
+            lbl.textContent = i;
+            container.appendChild(inp);
+            container.appendChild(lbl);
         }
     });
 
-    // Other sections: fill containers
-    scaleQuestions.forEach(function(q) {
-        if (q.container) {
-            const el = document.getElementById(q.container);
-            if (el) {
-                el.innerHTML = buildScaleHTML(q);
-            }
-        }
+    // ============================
+    // CONDITIONAL DISPLAY LOGIC
+    // ============================
+    function setupConditional(triggerName, rules) {
+        var radios = document.querySelectorAll('input[name="' + triggerName + '"]');
+        radios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                rules.forEach(function(rule) {
+                    var el = document.getElementById(rule.id);
+                    if (!el) return;
+                    var show = rule.values.indexOf(radio.value) !== -1;
+                    el.classList.toggle('visible', show);
+                });
+            });
+        });
+    }
+
+    // Q5: France → code postal, Autre → pays dropdown
+    setupConditional('q5_type', [
+        { id: 'cond_q5_fr', values: ['France'] },
+        { id: 'cond_q5_autre', values: ['Autre'] }
+    ]);
+
+    // Q11: Aucun → raison
+    document.getElementById('q11_a').addEventListener('change', function() {
+        document.getElementById('cond_q11_raison').classList.toggle('visible', this.checked);
     });
 
-    // ===== PROGRESS BAR =====
-    const totalQuestions = 50;
-    const form = document.getElementById('surveyForm');
-    const progressFill = document.getElementById('progressFill');
-    const progressLabel = document.getElementById('progressLabel');
+    // Q22: Oui/De temps en temps → rubriques, Non → pourquoi
+    setupConditional('q22', [
+        { id: 'cond_q22_oui', values: ['Oui', 'De temps en temps'] },
+        { id: 'cond_q22_non', values: ['Non'] }
+    ]);
 
-    function countAnswered() {
-        let answered = 0;
+    // Q23: Quelques articles → lesquels
+    setupConditional('q23', [
+        { id: 'cond_q23_articles', values: ['Quelques articles'] }
+    ]);
 
-        // Count radio groups answered
-        const radioNames = new Set();
-        form.querySelectorAll('input[type="radio"]').forEach(function(r) {
-            radioNames.add(r.name);
-        });
-        radioNames.forEach(function(name) {
-            if (form.querySelector('input[name="' + name + '"]:checked')) {
-                answered++;
-            }
-        });
+    // Q24: Oui → contact
+    setupConditional('q24', [
+        { id: 'cond_q24_contact', values: ['Oui'] }
+    ]);
 
-        // Count checkbox groups answered (at least one checked)
-        const checkNames = new Set();
-        form.querySelectorAll('input[type="checkbox"]').forEach(function(c) {
-            checkNames.add(c.name);
-        });
-        checkNames.forEach(function(name) {
-            if (form.querySelector('input[name="' + name + '"]:checked')) {
-                answered++;
-            }
-        });
+    // Q27.1: Oui → satisfait, Non → pourquoi
+    setupConditional('q27_1', [
+        { id: 'cond_q27_oui', values: ['Oui'] },
+        { id: 'cond_q27_non', values: ['Non'] }
+    ]);
 
-        // Count selects answered
-        form.querySelectorAll('select').forEach(function(s) {
-            if (s.value) {
-                answered++;
-            }
-        });
+    // Q28.1: Oui → satisfait, Non → futur/pourquoi
+    setupConditional('q28_1', [
+        { id: 'cond_q28_oui', values: ['Oui'] },
+        { id: 'cond_q28_non', values: ['Non'] }
+    ]);
 
-        // Count text inputs answered
-        form.querySelectorAll('input[type="text"]').forEach(function(t) {
-            if (t.value.trim()) {
-                answered++;
-            }
-        });
+    // Q30.2: Oui → contact
+    setupConditional('q30_2', [
+        { id: 'cond_q30_contact', values: ['Oui'] }
+    ]);
 
-        // Count textareas answered
-        form.querySelectorAll('textarea').forEach(function(ta) {
-            if (ta.value.trim()) {
-                answered++;
-            }
-        });
+    // ============================
+    // PROGRESS BAR
+    // ============================
+    var progressFill = document.getElementById('progressFill');
+    var progressLabel = document.getElementById('progressLabel');
 
-        return Math.min(answered, totalQuestions);
-    }
+    // Questions principales à comptabiliser pour le progrès
+    var trackedRadios = [
+        'q1','q2','q3','q4','q5_type','q6','q7',
+        'q8_web','q8_facebook','q8_instagram','q9','q10',
+        'q12','q13','q14','q15','q16',
+        'q17','q18','q19','q20',
+        'q22','q23','q23_1','q23_2_maquette','q23_2_photos','q23_2_rubriques','q23_3','q23_4',
+        'q24','q26','q26_1',
+        'q27','q27_1',
+        'q28','q28_1',
+        'q29','q29_1','q29_2','q29_4','q29_5',
+        'q30','q30_1','q30_2',
+        'q31','q32','q33','q35','q36','q37'
+    ];
+
+    var TOTAL_QUESTIONS = trackedRadios.length;
 
     function updateProgress() {
-        const answered = countAnswered();
-        const pct = Math.round((answered / totalQuestions) * 100);
+        var answered = 0;
+        trackedRadios.forEach(function(name) {
+            var el = document.querySelector('input[name="' + name + '"]:checked');
+            if (!el) {
+                // Check select elements
+                el = document.querySelector('select[name="' + name + '"]');
+                if (el && el.value) answered++;
+            } else {
+                answered++;
+            }
+        });
+
+        var pct = Math.round((answered / TOTAL_QUESTIONS) * 100);
         progressFill.style.width = pct + '%';
         progressLabel.textContent = pct + ' %';
     }
 
-    // Listen for changes
-    form.addEventListener('change', updateProgress);
-    form.addEventListener('input', function(e) {
-        if (e.target.tagName === 'TEXTAREA' || e.target.type === 'text') {
-            updateProgress();
-        }
-    });
-
-    // ===== SUBMIT =====
-    document.getElementById('btnSubmit').addEventListener('click', function() {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(function() {
-            toast.classList.remove('show');
-        }, 4000);
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Initial progress
+    // Listen for changes on all form elements
+    document.getElementById('surveyForm').addEventListener('change', updateProgress);
+    document.getElementById('surveyForm').addEventListener('input', updateProgress);
     updateProgress();
+
+    // ============================
+    // TOAST
+    // ============================
+    var toastEl = document.getElementById('toast');
+    function showToast(message, isError) {
+        toastEl.textContent = message;
+        toastEl.classList.toggle('error', !!isError);
+        toastEl.classList.add('visible');
+        setTimeout(function() {
+            toastEl.classList.remove('visible');
+        }, 5000);
+    }
+
+    // ============================
+    // CONSENT CHECKBOX
+    // ============================
+    var consentBox = document.getElementById('consentRGPD');
+    var btnSubmit = document.getElementById('btnSubmit');
+
+    consentBox.addEventListener('change', function() {
+        btnSubmit.disabled = !this.checked;
+    });
+
+    // ============================
+    // FORM SUBMISSION
+    // ============================
+    btnSubmit.addEventListener('click', function() {
+        if (!consentBox.checked) {
+            showToast('Veuillez accepter les conditions de traitement des données avant d\'envoyer.', true);
+            return;
+        }
+        // Collect all form data
+        var form = document.getElementById('surveyForm');
+        var formData = new FormData(form);
+        var data = {};
+
+        // Handle standard fields
+        formData.forEach(function(value, key) {
+            if (data[key]) {
+                // Multiple values (checkboxes) → comma-separated
+                data[key] = data[key] + ', ' + value;
+            } else {
+                data[key] = value;
+            }
+        });
+
+        // Add timestamp
+        data.timestamp = new Date().toISOString();
+
+        // Check if Apps Script URL is configured
+        if (!APPS_SCRIPT_URL) {
+            showToast('Configuration requise : veuillez renseigner l\'URL du Google Apps Script.', true);
+            console.log('Données du formulaire :', JSON.stringify(data, null, 2));
+            return;
+        }
+
+        // Disable button during submission
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span class="spinner"></span> Envoi en cours\u2026';
+
+        fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(function() {
+            showToast('Merci ! Vos réponses ont bien été enregistrées.');
+            btnSubmit.innerHTML = '\u2713 Envoyé';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(function(err) {
+            showToast('Erreur lors de l\'envoi. Veuillez réessayer.', true);
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = 'Envoyer mes réponses \u2192';
+            console.error('Erreur:', err);
+        });
+    });
 
 })();
 </script>

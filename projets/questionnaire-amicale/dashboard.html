@@ -3,50 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de bord — Amicale des Anciens Fonctionnaires</title>
-    <meta name="description" content="Analyse des resultats du questionnaire de satisfaction — Amicale des Anciens Fonctionnaires de Tours">
+    <title>Tableau de bord — Questionnaire AAFU 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <style>
-        /* ========================================
-           CSS RESET & BASE
-           ======================================== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --primary: #1e3a5f;
             --primary-light: #2c5282;
-            --primary-lighter: #3b6fa0;
             --accent: #2563eb;
             --accent-light: #3b82f6;
             --success: #059669;
-            --success-light: #10b981;
             --success-bg: #ecfdf5;
             --warning: #d97706;
-            --warning-light: #f59e0b;
             --warning-bg: #fffbeb;
             --danger: #dc2626;
-            --danger-light: #ef4444;
-            --danger-bg: #fef2f2;
             --bg: #f1f5f9;
             --bg-card: #ffffff;
             --text: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
             --border: #e2e8f0;
-            --border-light: #f1f5f9;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             --radius: 8px;
             --radius-lg: 12px;
-            --radius-xl: 16px;
             --sidebar-width: 260px;
             --header-height: 64px;
-            --transition: 0.2s ease;
         }
 
         html { scroll-behavior: smooth; font-size: 16px; }
@@ -56,17 +42,12 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* ========================================
-           HEADER
-           ======================================== */
+        /* HEADER */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: var(--header-height);
             background: var(--primary);
             color: #fff;
@@ -82,1998 +63,962 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            min-width: 0;
         }
 
         .header-logo {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: rgba(255,255,255,0.15);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            flex-shrink: 0;
-            backdrop-filter: blur(4px);
         }
 
-        .header-title {
-            font-size: 1rem;
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .header h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
-        .header-title span {
-            font-weight: 400;
-            opacity: 0.8;
-            margin-left: 6px;
-        }
-
-        .header-right {
+        .header-actions {
             display: flex;
-            align-items: center;
             gap: 12px;
-            flex-shrink: 0;
         }
 
-        .header-date {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            white-space: nowrap;
-        }
-
-        .btn {
+        .header-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 16px;
-            border-radius: var(--radius);
-            font-size: 0.8rem;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            transition: all var(--transition);
-            text-decoration: none;
-            white-space: nowrap;
         }
 
-        .btn-outline {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.25);
-        }
+        .header-btn:hover { background: rgba(255,255,255,0.22); }
 
-        .btn-outline:hover { background: rgba(255,255,255,0.2); }
-
-        .btn-accent {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        .btn-accent:hover { background: #1d4ed8; }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        /* ========================================
-           SIDEBAR
-           ======================================== */
+        /* SIDEBAR */
         .sidebar {
             position: fixed;
             top: var(--header-height);
             left: 0;
             bottom: 0;
             width: var(--sidebar-width);
-            background: #fff;
+            background: var(--bg-card);
             border-right: 1px solid var(--border);
             overflow-y: auto;
-            z-index: 900;
-            transition: transform 0.3s ease;
             padding: 16px 0;
+            z-index: 100;
         }
 
-        .sidebar-section-label {
-            padding: 8px 20px 4px;
-            font-size: 0.65rem;
+        .sidebar-section {
+            padding: 8px 20px;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--text-muted);
+            margin-top: 8px;
         }
 
         .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: block;
             padding: 10px 20px;
+            font-size: 0.85rem;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all var(--transition);
+            transition: all 0.15s;
             border-left: 3px solid transparent;
         }
 
-        .sidebar-link:hover {
-            background: var(--bg);
-            color: var(--text);
-        }
+        .sidebar-link:hover { background: var(--bg); color: var(--text); }
+        .sidebar-link.active { color: var(--accent); border-left-color: var(--accent); background: #eff6ff; font-weight: 600; }
 
-        .sidebar-link.active {
-            background: #eff6ff;
-            color: var(--accent);
-            border-left-color: var(--accent);
-            font-weight: 600;
-        }
-
-        .sidebar-link .icon {
-            width: 20px;
-            text-align: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .sidebar-meta {
-            margin-top: auto;
-            padding: 20px;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* ========================================
-           MAIN CONTENT
-           ======================================== */
+        /* MAIN */
         .main {
             margin-left: var(--sidebar-width);
             margin-top: var(--header-height);
-            padding: 28px 32px 60px;
-            min-height: calc(100vh - var(--header-height));
-        }
-
-        .section {
-            margin-bottom: 48px;
-            scroll-margin-top: calc(var(--header-height) + 20px);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .section-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--accent);
-            color: #fff;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .section-subtitle {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-left: auto;
-        }
-
-        /* ========================================
-           GRID LAYOUTS
-           ======================================== */
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .grid-2-1 {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-
-        .grid-1-2 {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
-        }
-
-        /* ========================================
-           CARDS
-           ======================================== */
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
             padding: 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-light);
-            transition: box-shadow var(--transition), transform var(--transition);
         }
 
-        .card:hover {
-            box-shadow: var(--shadow-md);
+        /* KPI CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
-        .card-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .card-title-lg {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 16px;
-        }
-
-        /* ========================================
-           KPI CARDS
-           ======================================== */
         .kpi-card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
-            padding: 24px;
+            padding: 20px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
-            transition: all var(--transition);
-        }
-
-        .kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-        }
-
-        .kpi-card:nth-child(1)::before { background: var(--accent); }
-        .kpi-card:nth-child(2)::before { background: var(--success); }
-        .kpi-card:nth-child(3)::before { background: var(--warning); }
-        .kpi-card:nth-child(4)::before { background: #8b5cf6; }
-
-        .kpi-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
         }
 
         .kpi-label {
             font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
             margin-bottom: 8px;
         }
 
         .kpi-value {
             font-size: 2rem;
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+            color: var(--text);
+            line-height: 1;
         }
 
-        .kpi-value .kpi-unit {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-left: 2px;
-        }
-
-        .kpi-detail {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-        }
-
-        .kpi-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 2px 8px;
-            border-radius: 99px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        .kpi-badge.up {
-            background: var(--success-bg);
-            color: var(--success);
-        }
-
-        .kpi-badge.neutral {
-            background: var(--warning-bg);
-            color: var(--warning);
-        }
-
-        /* ========================================
-           CHART CONTAINERS
-           ======================================== */
-        .chart-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .chart-wrapper canvas {
-            max-width: 100%;
-        }
-
-        .chart-wrapper-doughnut {
-            max-width: 280px;
-            margin: 0 auto;
-        }
-
-        /* ========================================
-           HEATMAP
-           ======================================== */
-        .heatmap-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 4px;
-        }
-
-        .heatmap-table th {
-            font-size: 0.75rem;
-            font-weight: 600;
+        .kpi-sub {
+            font-size: 0.82rem;
             color: var(--text-secondary);
-            padding: 6px 8px;
-            text-align: center;
+            margin-top: 4px;
         }
 
-        .heatmap-table td {
-            text-align: center;
-            padding: 12px 8px;
-            border-radius: 6px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: #fff;
-            transition: transform var(--transition);
+        .kpi-value.accent { color: var(--accent); }
+        .kpi-value.success { color: var(--success); }
+        .kpi-value.warning { color: var(--warning); }
+
+        /* SECTION */
+        .dash-section {
+            margin-bottom: 32px;
         }
 
-        .heatmap-table td:hover {
-            transform: scale(1.05);
+        .dash-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
         }
 
-        .heatmap-table td.label-cell {
-            color: var(--text-secondary);
-            font-weight: 500;
-            text-align: right;
-            background: transparent;
-            padding-right: 12px;
+        /* CHART CARD */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 16px;
         }
 
-        .heat-1 { background: #dbeafe; color: var(--text-secondary); }
-        .heat-2 { background: #93c5fd; color: #1e3a5f; }
-        .heat-3 { background: #3b82f6; }
-        .heat-4 { background: #2563eb; }
-        .heat-5 { background: #1d4ed8; }
-
-        /* ========================================
-           WORD CLOUD
-           ======================================== */
-        .word-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 8px 16px;
+        .chart-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
             padding: 20px;
-            min-height: 180px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
 
-        .word-cloud span {
-            display: inline-block;
-            color: var(--primary);
+        .chart-card.full { grid-column: 1 / -1; }
+
+        .chart-title {
+            font-size: 0.92rem;
             font-weight: 600;
-            transition: all var(--transition);
-            cursor: default;
-            opacity: 0.85;
+            color: var(--text);
+            margin-bottom: 16px;
         }
 
-        .word-cloud span:hover {
-            opacity: 1;
-            transform: scale(1.1);
+        .chart-container {
+            position: relative;
+            height: 280px;
         }
 
-        /* ========================================
-           VERBATIM CARDS
-           ======================================== */
-        .verbatim-card {
-            background: var(--bg);
-            border-radius: var(--radius);
-            padding: 16px 20px;
-            border-left: 3px solid var(--accent);
-            font-style: italic;
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            transition: all var(--transition);
-        }
+        .chart-container.short { height: 200px; }
+        .chart-container.tall { height: 360px; }
 
-        .verbatim-card:hover {
-            background: #e8f0fe;
-            border-left-color: var(--primary);
-        }
-
-        .verbatim-card .verbatim-source {
-            font-style: normal;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* ========================================
-           LISTS
-           ======================================== */
-        .ranked-list {
+        /* VERBATIM */
+        .verbatim-list {
             list-style: none;
         }
 
-        .ranked-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-light);
+        .verbatim-item {
+            padding: 12px 16px;
+            border-left: 3px solid var(--accent-light);
+            background: #f8fafc;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 8px;
             font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
         }
 
-        .ranked-list li:last-child { border-bottom: none; }
-
-        .rank-number {
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
-            color: #fff;
-            border-radius: 50%;
+        /* LOADING */
+        .loading-overlay {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .rank-label { flex: 1; font-weight: 500; }
-
-        .rank-bar {
-            width: 80px;
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .rank-bar-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
-        .rank-count {
-            font-size: 0.78rem;
-            font-weight: 600;
+            padding: 40px;
             color: var(--text-muted);
-            min-width: 32px;
-            text-align: right;
+            font-size: 0.9rem;
         }
 
-        /* ========================================
-           STAT MINI CARDS
-           ======================================== */
-        .stat-mini {
-            text-align: center;
-            padding: 20px 12px;
-        }
-
-        .stat-mini-value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-        }
-
-        .stat-mini-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* ========================================
-           NPS GAUGE
-           ======================================== */
-        .nps-display {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .nps-score {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.04em;
-        }
-
-        .nps-score.positive { color: var(--success); }
-        .nps-score.negative { color: var(--danger); }
-
-        .nps-label {
+        .data-source-notice {
+            background: var(--warning-bg);
+            border: 1px solid #fde68a;
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            margin-bottom: 20px;
             font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            font-weight: 500;
+            color: #92400e;
         }
 
-        .nps-breakdown {
-            display: flex;
-            gap: 0;
-            margin-top: 20px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            height: 32px;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; }
+            .chart-grid { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        .nps-segment {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .nps-promoters { background: var(--success); }
-        .nps-passives { background: var(--warning); }
-        .nps-detractors { background: var(--danger); }
-
-        .nps-legend {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 12px;
-            font-size: 0.72rem;
-            color: var(--text-secondary);
-        }
-
-        .nps-legend span::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 4px;
-        }
-
-        .nps-legend .leg-prom::before { background: var(--success); }
-        .nps-legend .leg-pass::before { background: var(--warning); }
-        .nps-legend .leg-detr::before { background: var(--danger); }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .footer {
-            margin-left: var(--sidebar-width);
-            background: #fff;
-            border-top: 1px solid var(--border);
-            padding: 24px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .footer-text {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        .footer-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-footer {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: var(--radius);
-            font-size: 0.78rem;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            border: 1px solid var(--border);
-            background: #fff;
-            color: var(--text-secondary);
-            transition: all var(--transition);
-        }
-
-        .btn-footer:hover {
-            background: var(--bg);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* ========================================
-           ANIMATIONS (scroll reveal)
-           ======================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
-        @media (max-width: 1200px) {
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 900px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-                box-shadow: var(--shadow-lg);
-            }
-
-            .main, .footer {
-                margin-left: 0;
-            }
-
-            .hamburger { display: block; }
-
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
-            .grid-3 { grid-template-columns: 1fr; }
-            .grid-2, .grid-2-1, .grid-1-2 { grid-template-columns: 1fr; }
-
-            .main { padding: 20px 16px 60px; }
-
-            .header-date { display: none; }
-        }
-
-        @media (max-width: 600px) {
-            .grid-4 { grid-template-columns: 1fr; }
-            .kpi-value { font-size: 1.6rem; }
-            .header-title span { display: none; }
-        }
-
-        /* ========================================
-           PRINT STYLES
-           ======================================== */
+        /* PRINT */
         @media print {
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-
-            body { background: #fff; font-size: 11px; }
-
-            .header {
-                position: static;
-                background: var(--primary) !important;
-                -webkit-print-color-adjust: exact;
-            }
-
-            .sidebar, .hamburger, .btn, .btn-footer, .footer-actions { display: none !important; }
-
-            .main, .footer {
-                margin-left: 0;
-                margin-top: 0;
-            }
-
-            .main { padding: 16px; }
-
-            .card, .kpi-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-
-            .section { break-inside: avoid; page-break-inside: avoid; }
-
-            .grid-4, .grid-3, .grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .kpi-value { font-size: 1.4rem; }
-
-            .footer {
-                border-top: 1px solid #ccc;
-                padding: 12px 16px;
-            }
-
-            .reveal { opacity: 1 !important; transform: none !important; }
-        }
-
-        /* ========================================
-           SIDEBAR OVERLAY (mobile)
-           ======================================== */
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 899;
-        }
-
-        .sidebar-overlay.active {
-            display: block;
-        }
-
-        /* Big numbers */
-        .big-number {
-            text-align: center;
-            padding: 16px;
-        }
-        .big-number-value {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.03em;
-        }
-        .big-number-sub {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-muted);
-        }
-        .big-number-label {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* Score bar inline */
-        .score-bar-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-        .score-bar-label {
-            min-width: 200px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            text-align: right;
-            color: var(--text-secondary);
-        }
-        .score-bar-track {
-            flex: 1;
-            height: 24px;
-            background: var(--bg);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .score-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 8px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #fff;
-            transition: width 0.8s ease;
-        }
-        .score-bar-value {
-            font-size: 0.82rem;
-            font-weight: 700;
-            min-width: 40px;
-            text-align: center;
+            .sidebar, .header-actions { display: none; }
+            .header { position: static; }
+            .main { margin-left: 0; margin-top: 0; }
+            .chart-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
+<!-- HEADER -->
 <header class="header">
     <div class="header-left">
-        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
-        <div class="header-logo">A</div>
-        <div class="header-title">
-            Amicale des Anciens Fonctionnaires
-            <span>&#8212; Depouillement du questionnaire</span>
-        </div>
+        <div class="header-logo">AAFU</div>
+        <h1>Tableau de bord &mdash; Questionnaire 2026</h1>
     </div>
-    <div class="header-right">
-        <span class="header-date">Derniere mise a jour : 12 fevrier 2026</span>
-        <a href="questionnaire.html" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Voir le questionnaire
-        </a>
-        <button class="btn btn-accent" onclick="window.print()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            Imprimer / PDF
-        </button>
+    <div class="header-actions">
+        <a href="questionnaire.html" class="header-btn">&#128221; Questionnaire</a>
+        <button class="header-btn" onclick="window.print()">&#128424; Imprimer</button>
+        <button class="header-btn" id="btnExportCSV">&#128229; Export CSV</button>
     </div>
 </header>
 
-<!-- ============================================================
-     SIDEBAR OVERLAY
-     ============================================================ -->
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-<!-- ============================================================
-     SIDEBAR
-     ============================================================ -->
-<nav class="sidebar" id="sidebar">
-    <div class="sidebar-section-label">Tableau de bord</div>
-    <a href="#kpi" class="sidebar-link active" data-section="kpi">
-        <span class="icon">&#x1f4ca;</span> Vue d'ensemble
-    </a>
-    <a href="#profil" class="sidebar-link" data-section="profil">
-        <span class="icon">&#x1f464;</span> Profil des repondants
-    </a>
-    <a href="#satisfaction" class="sidebar-link" data-section="satisfaction">
-        <span class="icon">&#x2b50;</span> Satisfaction generale
-    </a>
-    <a href="#activites" class="sidebar-link" data-section="activites">
-        <span class="icon">&#x1f3ad;</span> Activites et evenements
-    </a>
-    <a href="#communication" class="sidebar-link" data-section="communication">
-        <span class="icon">&#x1f4e8;</span> Communication
-    </a>
-    <a href="#vie-asso" class="sidebar-link" data-section="vie-asso">
-        <span class="icon">&#x1f3e0;</span> Vie associative
-    </a>
-    <a href="#bienetre" class="sidebar-link" data-section="bienetre">
-        <span class="icon">&#x1f91d;</span> Bien-etre et solidarite
-    </a>
-    <a href="#synthese" class="sidebar-link" data-section="synthese">
-        <span class="icon">&#x1f4dd;</span> Synthese et verbatims
-    </a>
-
-    <div class="sidebar-meta">
-        <strong>187</strong> reponses analysees<br>
-        Questionnaire diffuse le 15 jan. 2026<br>
-        Cloture le 10 fev. 2026
-    </div>
+<!-- SIDEBAR -->
+<nav class="sidebar">
+    <div class="sidebar-section">Vue d'ensemble</div>
+    <a href="#kpi" class="sidebar-link active">Indicateurs cl&eacute;s</a>
+    <div class="sidebar-section">Section A</div>
+    <a href="#profil" class="sidebar-link">Profil des r&eacute;pondants</a>
+    <div class="sidebar-section">Section B</div>
+    <a href="#aafu-aujourdhui" class="sidebar-link">L'AAFU et vous</a>
+    <a href="#satisfaction" class="sidebar-link">Satisfaction g&eacute;n&eacute;rale</a>
+    <div class="sidebar-section">Section C</div>
+    <a href="#dynamique" class="sidebar-link">Nouvelle dynamique</a>
+    <div class="sidebar-section">Objectif 1</div>
+    <a href="#representation" class="sidebar-link">Repr&eacute;sentation</a>
+    <a href="#sites-web" class="sidebar-link">Sites &amp; LIEN/LINK</a>
+    <div class="sidebar-section">Objectif 2</div>
+    <a href="#sorties" class="sidebar-link">Sorties &amp; excursions</a>
+    <a href="#voyages" class="sidebar-link">Voyages culturels</a>
+    <div class="sidebar-section">Objectif 3</div>
+    <a href="#histoire" class="sidebar-link">Groupe Histoire</a>
+    <a href="#engagement" class="sidebar-link">Engagement</a>
 </nav>
 
-<!-- ============================================================
-     MAIN CONTENT
-     ============================================================ -->
+<!-- MAIN CONTENT -->
 <main class="main">
 
-    <!-- ===== KPI CARDS ===== -->
-    <section class="section" id="kpi">
-        <div class="grid-4 reveal">
-            <div class="kpi-card">
-                <div class="kpi-label">Reponses recues</div>
-                <div class="kpi-value" style="color: var(--accent);">
-                    187 <span class="kpi-unit">/ 342 membres</span>
-                </div>
-                <div class="kpi-detail">Taux de participation : 54,7 %</div>
-                <div class="kpi-badge up">&#x25B2; +12 pts vs 2025</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-label">Score de satisfaction moyen</div>
-                <div class="kpi-value" style="color: var(--success);">
-                    7,4 <span class="kpi-unit">/ 10</span>
-                </div>
-                <div class="kpi-detail">Median : 8,0 &middot; Ecart-type : 1,6</div>
-                <div class="kpi-badge up">&#x25B2; +0,3 vs 2025</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-label">Taux de renouvellement</div>
-                <div class="kpi-value" style="color: var(--warning);">
-                    89 <span class="kpi-unit">%</span>
-                </div>
-                <div class="kpi-detail">166 membres souhaitent readherer</div>
-                <div class="kpi-badge neutral">&#x25AC; stable</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-label">NPS (recommandation)</div>
-                <div class="kpi-value" style="color: #8b5cf6;">
-                    +42
-                </div>
-                <div class="kpi-detail">Promoteurs 58 % &middot; Detracteurs 16 %</div>
-                <div class="kpi-badge up">&#x25B2; +8 pts vs 2025</div>
-            </div>
-        </div>
-    </section>
+    <div class="data-source-notice" id="dataNotice">
+        &#9888; <strong>Donn&eacute;es de d&eacute;monstration.</strong> Connectez le Google Sheet pour afficher les r&eacute;sultats r&eacute;els.
+        Renseignez l'URL du Sheet publi&eacute; en CSV dans le code source (variable <code>SHEET_CSV_URL</code>).
+    </div>
 
-    <!-- ===== SECTION 1 : PROFIL ===== -->
-    <section class="section" id="profil">
-        <div class="section-header">
-            <div class="section-icon">1</div>
-            <h2 class="section-title">Profil des repondants</h2>
-            <span class="section-subtitle">187 reponses</span>
+    <!-- KPI -->
+    <div id="kpi" class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-label">R&eacute;ponses re&ccedil;ues</div>
+            <div class="kpi-value accent" id="kpiResponses">0</div>
+            <div class="kpi-sub" id="kpiResponsesSub">en attente</div>
         </div>
-        <div class="grid-2 reveal">
-            <div class="card">
-                <div class="card-title">Anciennete dans l'association</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartAnciennete"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Administration d'origine</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartAdminOrigine"></canvas>
-                </div>
-            </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Relation UNESCO (moy.)</div>
+            <div class="kpi-value" id="kpiRelation">—</div>
+            <div class="kpi-sub">/ 10</div>
         </div>
-        <div class="grid-2 reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title">Tranche d'age</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartAge"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Comment avez-vous connu l'amicale ?</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartConnuAmicale"></canvas>
-                </div>
-            </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Satisfaction contacts (moy.)</div>
+            <div class="kpi-value success" id="kpiSatisfaction">—</div>
+            <div class="kpi-sub">/ 10</div>
         </div>
-    </section>
+        <div class="kpi-card">
+            <div class="kpi-label">Souhait d'engagement (moy.)</div>
+            <div class="kpi-value warning" id="kpiEngagement">—</div>
+            <div class="kpi-sub">/ 10</div>
+        </div>
+    </div>
 
-    <!-- ===== SECTION 2 : SATISFACTION ===== -->
-    <section class="section" id="satisfaction">
-        <div class="section-header">
-            <div class="section-icon">2</div>
-            <h2 class="section-title">Satisfaction generale</h2>
-            <span class="section-subtitle">Note moyenne par critere (sur 10)</span>
-        </div>
-        <div class="grid-2-1 reveal">
-            <div class="card">
-                <div class="card-title">Scores par critere</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartSatisfaction"></canvas>
-                </div>
+    <!-- SECTION A: PROFIL -->
+    <div id="profil" class="dash-section">
+        <div class="dash-section-title">A &mdash; Profil des r&eacute;pondants</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q1 &mdash; R&eacute;partition Homme / Femme</div>
+                <div class="chart-container short"><canvas id="chartQ1"></canvas></div>
             </div>
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <div class="card-title" style="text-align: center;">Satisfaction globale</div>
-                <div class="big-number">
-                    <div class="big-number-value" style="color: var(--success);">7,4<span class="big-number-sub"> / 10</span></div>
-                    <div class="big-number-label">Moyenne toutes questions confondues</div>
-                </div>
-                <div style="margin-top: 16px; width: 100%;">
-                    <div class="score-bar-container">
-                        <span class="score-bar-label">Notes 9-10</span>
-                        <div class="score-bar-track"><div class="score-bar-fill" style="width:34%;background:var(--success);">34 %</div></div>
-                    </div>
-                    <div class="score-bar-container">
-                        <span class="score-bar-label">Notes 7-8</span>
-                        <div class="score-bar-track"><div class="score-bar-fill" style="width:41%;background:var(--accent);">41 %</div></div>
-                    </div>
-                    <div class="score-bar-container">
-                        <span class="score-bar-label">Notes 5-6</span>
-                        <div class="score-bar-track"><div class="score-bar-fill" style="width:17%;background:var(--warning);">17 %</div></div>
-                    </div>
-                    <div class="score-bar-container">
-                        <span class="score-bar-label">Notes 1-4</span>
-                        <div class="score-bar-track"><div class="score-bar-fill" style="width:8%;background:var(--danger);">8 %</div></div>
-                    </div>
-                </div>
+            <div class="chart-card">
+                <div class="chart-title">Q2 &mdash; Ann&eacute;e de d&eacute;part &agrave; la retraite</div>
+                <div class="chart-container short"><canvas id="chartQ2"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q3 &mdash; Statut</div>
+                <div class="chart-container short"><canvas id="chartQ3"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q5 &mdash; Pays de r&eacute;sidence</div>
+                <div class="chart-container short"><canvas id="chartQ5"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q6 &mdash; Relation avec l'UNESCO (1-10)</div>
+                <div class="chart-container"><canvas id="chartQ6"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q7 &mdash; Type de personnalit&eacute;</div>
+                <div class="chart-container short"><canvas id="chartQ7"></canvas></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ===== SECTION 3 : ACTIVITES ===== -->
-    <section class="section" id="activites">
-        <div class="section-header">
-            <div class="section-icon">3</div>
-            <h2 class="section-title">Activites et evenements</h2>
-            <span class="section-subtitle">Participation, satisfaction, souhaits</span>
-        </div>
-        <div class="grid-2 reveal">
-            <div class="card">
-                <div class="card-title">Taux de participation par activite</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartParticipation"></canvas>
-                </div>
+    <!-- SECTION B: AAFU AUJOURD'HUI -->
+    <div id="aafu-aujourdhui" class="dash-section">
+        <div class="dash-section-title">B &mdash; L'AAFU et vous aujourd'hui</div>
+        <div class="chart-grid">
+            <div class="chart-card full">
+                <div class="chart-title">Q8 &mdash; Fr&eacute;quentation des sites AAFU</div>
+                <div class="chart-container"><canvas id="chartQ8"></canvas></div>
             </div>
-            <div class="card">
-                <div class="card-title">Satisfaction par type d'activite</div>
-                <div class="chart-wrapper" style="max-width: 350px; margin: 0 auto;">
-                    <canvas id="chartRadarActivites"></canvas>
-                </div>
+            <div class="chart-card">
+                <div class="chart-title">Q9 &mdash; Re&ccedil;oit LIEN/LINK</div>
+                <div class="chart-container short"><canvas id="chartQ9"></canvas></div>
             </div>
-        </div>
-        <div class="grid-3 reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title">Frequence souhaitee</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartFrequence"></canvas>
-                </div>
+            <div class="chart-card">
+                <div class="chart-title">Q10 &mdash; Re&ccedil;oit les mails d'info</div>
+                <div class="chart-container short"><canvas id="chartQ10"></canvas></div>
             </div>
-            <div class="card">
-                <div class="card-title">Budget mensuel activites</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartBudget"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Nouvelles activites souhaitees</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartNouvellesActivites"></canvas>
-                </div>
+            <div class="chart-card full">
+                <div class="chart-title">Q11 &mdash; Contacts avec le secr&eacute;tariat</div>
+                <div class="chart-container"><canvas id="chartQ11"></canvas></div>
             </div>
         </div>
-        <div class="reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title">Creneaux preferes (jours x horaires)</div>
-                <table class="heatmap-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Matin<br><small>9h-12h</small></th>
-                            <th>Debut apres-midi<br><small>14h-16h</small></th>
-                            <th>Fin apres-midi<br><small>16h-18h</small></th>
-                            <th>Soiree<br><small>18h-20h</small></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="label-cell">Lundi</td>
-                            <td class="heat-2">18 %</td>
-                            <td class="heat-3">32 %</td>
-                            <td class="heat-2">22 %</td>
-                            <td class="heat-1">8 %</td>
-                        </tr>
-                        <tr>
-                            <td class="label-cell">Mardi</td>
-                            <td class="heat-3">28 %</td>
-                            <td class="heat-4">41 %</td>
-                            <td class="heat-3">35 %</td>
-                            <td class="heat-1">12 %</td>
-                        </tr>
-                        <tr>
-                            <td class="label-cell">Mercredi</td>
-                            <td class="heat-2">22 %</td>
-                            <td class="heat-3">30 %</td>
-                            <td class="heat-2">24 %</td>
-                            <td class="heat-1">10 %</td>
-                        </tr>
-                        <tr>
-                            <td class="label-cell">Jeudi</td>
-                            <td class="heat-4">38 %</td>
-                            <td class="heat-5">52 %</td>
-                            <td class="heat-4">44 %</td>
-                            <td class="heat-2">15 %</td>
-                        </tr>
-                        <tr>
-                            <td class="label-cell">Vendredi</td>
-                            <td class="heat-3">30 %</td>
-                            <td class="heat-4">45 %</td>
-                            <td class="heat-3">33 %</td>
-                            <td class="heat-2">18 %</td>
-                        </tr>
-                        <tr>
-                            <td class="label-cell">Samedi</td>
-                            <td class="heat-4">42 %</td>
-                            <td class="heat-3">28 %</td>
-                            <td class="heat-1">12 %</td>
-                            <td class="heat-1">5 %</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- ===== SECTION 4 : COMMUNICATION ===== -->
-    <section class="section" id="communication">
-        <div class="section-header">
-            <div class="section-icon">4</div>
-            <h2 class="section-title">Communication</h2>
-            <span class="section-subtitle">Canaux, preferences, numerique</span>
-        </div>
-        <div class="grid-3 reveal">
-            <div class="card">
-                <div class="card-title">Mode de reception actuel</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartModeActuel"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Mode de reception prefere</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartModePrefere"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Equipement numerique</div>
-                <div class="stat-mini">
-                    <div class="stat-mini-value">78 %</div>
-                    <div class="stat-mini-label">disposent d'une adresse e-mail</div>
-                </div>
-                <div class="stat-mini">
-                    <div class="stat-mini-value">64 %</div>
-                    <div class="stat-mini-label">utilisent Internet regulierement</div>
-                </div>
-                <div class="stat-mini">
-                    <div class="stat-mini-value">92 %</div>
-                    <div class="stat-mini-label">lisent le bulletin trimestriel</div>
-                </div>
+    <!-- SATISFACTION -->
+    <div id="satisfaction" class="dash-section">
+        <div class="dash-section-title">B &mdash; Indicateurs de satisfaction (Q12-Q15)</div>
+        <div class="chart-grid">
+            <div class="chart-card full">
+                <div class="chart-title">Scores moyens de satisfaction</div>
+                <div class="chart-container"><canvas id="chartSatisfaction"></canvas></div>
             </div>
         </div>
-        <div class="grid-2 reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title">Satisfaction du bulletin d'information</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartSatisfBulletin"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Souhaiteriez-vous un site internet ?</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartSiteWeb"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- ===== SECTION 5 : VIE ASSOCIATIVE ===== -->
-    <section class="section" id="vie-asso">
-        <div class="section-header">
-            <div class="section-icon">5</div>
-            <h2 class="section-title">Vie associative</h2>
-            <span class="section-subtitle">Gouvernance, finances, engagement</span>
-        </div>
-        <div class="grid-3 reveal">
-            <div class="card">
-                <div class="card-title">Participation aux AG</div>
-                <div class="chart-wrapper">
-                    <canvas id="chartParticipationAG"></canvas>
-                </div>
-            </div>
-            <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                <div class="card-title" style="text-align:center;">Utilite de l'AG</div>
-                <div class="big-number">
-                    <div class="big-number-value" style="color: var(--success);">7,8<span class="big-number-sub"> / 10</span></div>
-                    <div class="big-number-label">Score d'utilite percue</div>
-                </div>
-                <div style="margin-top:12px;font-size:0.78rem;color:var(--text-muted);text-align:center;">
-                    82 % jugent l'AG utile ou tres utile
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Transparence des finances</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartTransparence"></canvas>
-                </div>
+    <!-- SECTION C: DYNAMIQUE -->
+    <div id="dynamique" class="dash-section">
+        <div class="dash-section-title">C &mdash; Nouvelle dynamique</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q16 &mdash; Effets ressentis de la nouvelle dynamique</div>
+                <div class="chart-container"><canvas id="chartQ16"></canvas></div>
             </div>
         </div>
-        <div class="grid-3 reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title">Investissement du bureau</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartInvestBureau"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Pret a aider ponctuellement ?</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartAide"></canvas>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">Perception de la cotisation</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartCotisation"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- ===== SECTION 6 : BIEN-ETRE ===== -->
-    <section class="section" id="bienetre">
-        <div class="section-header">
-            <div class="section-icon">6</div>
-            <h2 class="section-title">Bien-etre et solidarite</h2>
-            <span class="section-subtitle">Lien social, entraide, isolement</span>
-        </div>
-        <div class="grid-4 reveal">
-            <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                <div class="card-title" style="text-align:center;">Entourage social</div>
-                <div class="big-number">
-                    <div class="big-number-value" style="color:var(--accent);">7,2<span class="big-number-sub"> / 10</span></div>
-                    <div class="big-number-label">Score moyen de l'entourage social</div>
-                </div>
+    <!-- OBJECTIF 1: REPRESENTATION -->
+    <div id="representation" class="dash-section">
+        <div class="dash-section-title">Objectif 1 &mdash; Repr&eacute;sentation et services</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q17 &mdash; Information FAFICS</div>
+                <div class="chart-container short"><canvas id="chartQ17"></canvas></div>
             </div>
-            <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                <div class="card-title" style="text-align:center;">Contribution lien social</div>
-                <div class="big-number">
-                    <div class="big-number-value" style="color:var(--success);">8,1<span class="big-number-sub"> / 10</span></div>
-                    <div class="big-number-label">L'amicale contribue au lien social</div>
-                </div>
+            <div class="chart-card">
+                <div class="chart-title">Q18 &mdash; Information UNESCO</div>
+                <div class="chart-container short"><canvas id="chartQ18"></canvas></div>
             </div>
-            <div class="card">
-                <div class="card-title">Service aide / ecoute</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartServiceAide"></canvas>
-                </div>
-            </div>
-            <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                <div class="card-title" style="text-align:center;">Membres isoles</div>
-                <div class="big-number">
-                    <div class="big-number-value" style="color:var(--warning);">23 %</div>
-                    <div class="big-number-label">connaissent un membre isole ou en difficulte</div>
-                </div>
-                <div style="margin-top:12px;font-size:0.78rem;color:var(--text-muted);text-align:center;">
-                    43 repondants ont signale cette situation
-                </div>
+            <div class="chart-card">
+                <div class="chart-title">Q19-Q20 &mdash; Utilisation et satisfaction des services</div>
+                <div class="chart-container short"><canvas id="chartQ19_20"></canvas></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ===== SECTION 7 : SYNTHESE ===== -->
-    <section class="section" id="synthese">
-        <div class="section-header">
-            <div class="section-icon">7</div>
-            <h2 class="section-title">Synthese et verbatims</h2>
-            <span class="section-subtitle">Vision globale, mots-cles, temoignages</span>
+    <!-- SITES & LIEN/LINK -->
+    <div id="sites-web" class="dash-section">
+        <div class="dash-section-title">Objectif 1 &mdash; Sites web et LIEN/LINK</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q22 &mdash; Visite des sites</div>
+                <div class="chart-container short"><canvas id="chartQ22"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q23 &mdash; Lecture de LIEN/LINK</div>
+                <div class="chart-container short"><canvas id="chartQ23"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q23.1 &mdash; Satisfaction pr&eacute;sentation</div>
+                <div class="chart-container short"><canvas id="chartQ23_1"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q26 &mdash; Lecture des mails d'info</div>
+                <div class="chart-container short"><canvas id="chartQ26"></canvas></div>
+            </div>
         </div>
+    </div>
 
-        <div class="grid-3 reveal">
-            <!-- NPS -->
-            <div class="card">
-                <div class="card-title">Net Promoter Score (NPS)</div>
-                <div class="nps-display">
-                    <div class="nps-score positive">+42</div>
-                    <div class="nps-label">Score NPS global</div>
-                    <div class="nps-breakdown">
-                        <div class="nps-segment nps-promoters" style="width:58%;">58 %</div>
-                        <div class="nps-segment nps-passives" style="width:26%;">26 %</div>
-                        <div class="nps-segment nps-detractors" style="width:16%;">16 %</div>
-                    </div>
-                    <div class="nps-legend">
-                        <span class="leg-prom">Promoteurs</span>
-                        <span class="leg-pass">Passifs</span>
-                        <span class="leg-detr">Detracteurs</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Renouvellement -->
-            <div class="card">
-                <div class="card-title">Renouvellement adhesion</div>
-                <div class="chart-wrapper chart-wrapper-doughnut">
-                    <canvas id="chartRenouvellement"></canvas>
-                </div>
-            </div>
-            <!-- Word Cloud -->
-            <div class="card">
-                <div class="card-title">Nuage de mots — Themes recurrents</div>
-                <div class="word-cloud">
-                    <span style="font-size:2.2rem;">convivialite</span>
-                    <span style="font-size:1.6rem;">sorties</span>
-                    <span style="font-size:1.9rem;">amitie</span>
-                    <span style="font-size:1.1rem;">culture</span>
-                    <span style="font-size:1.4rem;">repas</span>
-                    <span style="font-size:0.9rem;">gymnastique</span>
-                    <span style="font-size:1.7rem;">rencontres</span>
-                    <span style="font-size:1rem;">voyages</span>
-                    <span style="font-size:1.3rem;">entraide</span>
-                    <span style="font-size:0.85rem;">conferences</span>
-                    <span style="font-size:1.5rem;">lien social</span>
-                    <span style="font-size:0.95rem;">bulletin</span>
-                    <span style="font-size:1.2rem;">activites</span>
-                    <span style="font-size:0.8rem;">marche</span>
-                    <span style="font-size:1.8rem;">solidarite</span>
-                    <span style="font-size:0.9rem;">benevoles</span>
-                    <span style="font-size:1.1rem;">partage</span>
-                    <span style="font-size:1.4rem;">detente</span>
-                    <span style="font-size:0.85rem;">jeux</span>
-                    <span style="font-size:1rem;">numerique</span>
-                    <span style="font-size:1.3rem;">ecoute</span>
-                    <span style="font-size:0.9rem;">jardinage</span>
-                    <span style="font-size:1.6rem;">bonne humeur</span>
-                    <span style="font-size:0.8rem;">patrimoine</span>
-                </div>
+    <!-- OBJECTIF 2: SORTIES -->
+    <div id="sorties" class="dash-section">
+        <div class="dash-section-title">Objectif 2 &mdash; Sorties et excursions</div>
+        <div class="chart-grid">
+            <div class="chart-card full">
+                <div class="chart-title">Q27-Q28 &mdash; Information et participation</div>
+                <div class="chart-container"><canvas id="chartQ27_28"></canvas></div>
             </div>
         </div>
+    </div>
 
-        <div class="grid-2 reveal" style="margin-top: 20px;">
-            <!-- Top 5 atouts -->
-            <div class="card">
-                <div class="card-title-lg">Top 5 des atouts mentionnes</div>
-                <ol class="ranked-list">
-                    <li>
-                        <span class="rank-number">1</span>
-                        <span class="rank-label">Convivialite et ambiance chaleureuse</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:92%;"></div></div>
-                        <span class="rank-count">134</span>
-                    </li>
-                    <li>
-                        <span class="rank-number">2</span>
-                        <span class="rank-label">Diversite des activites proposees</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:78%;"></div></div>
-                        <span class="rank-count">112</span>
-                    </li>
-                    <li>
-                        <span class="rank-number">3</span>
-                        <span class="rank-label">Solidarite entre membres</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:65%;"></div></div>
-                        <span class="rank-count">96</span>
-                    </li>
-                    <li>
-                        <span class="rank-number">4</span>
-                        <span class="rank-label">Qualite de l'organisation</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:54%;"></div></div>
-                        <span class="rank-count">81</span>
-                    </li>
-                    <li>
-                        <span class="rank-number">5</span>
-                        <span class="rank-label">Tarifs avantageux des sorties</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:41%;"></div></div>
-                        <span class="rank-count">63</span>
-                    </li>
-                </ol>
+    <!-- VOYAGES -->
+    <div id="voyages" class="dash-section">
+        <div class="dash-section-title">Objectif 2 &mdash; Voyages culturels</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q29 &mdash; Importance des voyages pour l'AAFU</div>
+                <div class="chart-container short"><canvas id="chartQ29"></canvas></div>
             </div>
-            <!-- Top 5 ameliorations -->
-            <div class="card">
-                <div class="card-title-lg">Top 5 des ameliorations suggerees</div>
-                <ol class="ranked-list">
-                    <li>
-                        <span class="rank-number" style="background:var(--warning);">1</span>
-                        <span class="rank-label">Plus de communication par e-mail</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:85%;background:var(--warning);"></div></div>
-                        <span class="rank-count">98</span>
-                    </li>
-                    <li>
-                        <span class="rank-number" style="background:var(--warning);">2</span>
-                        <span class="rank-label">Creer un site internet / page Facebook</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:68%;background:var(--warning);"></div></div>
-                        <span class="rank-count">82</span>
-                    </li>
-                    <li>
-                        <span class="rank-number" style="background:var(--warning);">3</span>
-                        <span class="rank-label">Varier les horaires (soiree, week-end)</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:52%;background:var(--warning);"></div></div>
-                        <span class="rank-count">67</span>
-                    </li>
-                    <li>
-                        <span class="rank-number" style="background:var(--warning);">4</span>
-                        <span class="rank-label">Proposer plus d'activites sportives</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:43%;background:var(--warning);"></div></div>
-                        <span class="rank-count">54</span>
-                    </li>
-                    <li>
-                        <span class="rank-number" style="background:var(--warning);">5</span>
-                        <span class="rank-label">Mieux accueillir les nouveaux adherents</span>
-                        <div class="rank-bar"><div class="rank-bar-fill" style="width:35%;background:var(--warning);"></div></div>
-                        <span class="rank-count">41</span>
-                    </li>
-                </ol>
+            <div class="chart-card">
+                <div class="chart-title">Q29.3 &mdash; Facteurs de d&eacute;cision</div>
+                <div class="chart-container short"><canvas id="chartQ29_3"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q29.4-Q29.5 &mdash; Int&eacute;r&ecirc;t s&eacute;jours / circuits</div>
+                <div class="chart-container short"><canvas id="chartQ29_45"></canvas></div>
             </div>
         </div>
+    </div>
 
-        <!-- Verbatims -->
-        <div class="reveal" style="margin-top: 20px;">
-            <div class="card">
-                <div class="card-title-lg">Temoignages recents (extraits anonymises)</div>
-                <div class="grid-2" style="gap: 12px; margin-top: 12px;">
-                    <div class="verbatim-card">
-                        &laquo; L'amicale est un veritable lieu de vie pour moi depuis ma retraite. Je m'y suis fait de vrais amis et je ne raterais les dejeuners mensuels pour rien au monde. &raquo;
-                        <div class="verbatim-source">Repondant #47 &middot; Adherent depuis 8 ans &middot; Tresor public</div>
-                    </div>
-                    <div class="verbatim-card">
-                        &laquo; Il faudrait moderniser un peu la communication. A l'heure d'Internet, recevoir uniquement un courrier papier est dommage. Un petit site avec les dates des activites serait parfait. &raquo;
-                        <div class="verbatim-source">Repondant #112 &middot; Adherent depuis 3 ans &middot; Education nationale</div>
-                    </div>
-                    <div class="verbatim-card">
-                        &laquo; Les sorties culturelles sont toujours tres bien organisees. J'apprecie particulierement les visites de chateaux de la Loire et les spectacles au Grand Theatre. &raquo;
-                        <div class="verbatim-source">Repondant #23 &middot; Adherent depuis 12 ans &middot; Prefectures</div>
-                    </div>
-                    <div class="verbatim-card">
-                        &laquo; Je vis seule et l'amicale est mon principal lien social. Quand j'ai ete hospitalisee, plusieurs membres sont venus me voir. C'est cela la vraie solidarite. &raquo;
-                        <div class="verbatim-source">Repondant #156 &middot; Adherent depuis 6 ans &middot; Securite sociale</div>
-                    </div>
-                    <div class="verbatim-card">
-                        &laquo; La cotisation est tres raisonnable par rapport a tout ce qui est propose. Peut-etre proposer un tarif couple pour les menages ? &raquo;
-                        <div class="verbatim-source">Repondant #89 &middot; Adherent depuis 2 ans &middot; Impots</div>
-                    </div>
-                    <div class="verbatim-card">
-                        &laquo; J'aimerais plus d'activites le samedi matin pour ceux qui ont encore des obligations en semaine. La randonnee et la gym sont les activites que j'attends le plus. &raquo;
-                        <div class="verbatim-source">Repondant #134 &middot; Adherent depuis 1 an &middot; Douanes</div>
-                    </div>
-                </div>
+    <!-- OBJECTIF 3: HISTOIRE -->
+    <div id="histoire" class="dash-section">
+        <div class="dash-section-title">Objectif 3 &mdash; Groupe de travail Histoire</div>
+        <div class="chart-grid">
+            <div class="chart-card full">
+                <div class="chart-title">Q30-Q33 &mdash; Connaissance et int&eacute;r&ecirc;t</div>
+                <div class="chart-container"><canvas id="chartQ30_33"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q35 &mdash; Orientation des activit&eacute;s</div>
+                <div class="chart-container short"><canvas id="chartQ35"></canvas></div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- ENGAGEMENT -->
+    <div id="engagement" class="dash-section">
+        <div class="dash-section-title">Objectif 3 &mdash; Engagement</div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-title">Q36 &mdash; Ateliers UNESCO</div>
+                <div class="chart-container short"><canvas id="chartQ36"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Q37 &mdash; B&eacute;n&eacute;volat VNU/ONG</div>
+                <div class="chart-container short"><canvas id="chartQ37"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VERBATIMS -->
+    <div id="verbatims" class="dash-section">
+        <div class="dash-section-title">R&eacute;ponses libres &mdash; Verbatims</div>
+        <div class="chart-card full">
+            <div class="chart-title">Derni&egrave;res r&eacute;ponses textuelles (Q21, Q25, Q34)</div>
+            <ul class="verbatim-list" id="verbatimList">
+                <li class="verbatim-item">Les verbatims appara&icirc;tront ici une fois les donn&eacute;es connect&eacute;es.</li>
+            </ul>
+        </div>
+    </div>
 
 </main>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer class="footer">
-    <div class="footer-text">
-        Donnees anonymisees &mdash; Genere automatiquement le 12 fevrier 2026 &mdash; Questionnaire &laquo; Satisfaction 2026 &raquo; &mdash; 187 reponses
-    </div>
-    <div class="footer-actions">
-        <button class="btn-footer" onclick="alert('Export CSV en cours de developpement')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Exporter CSV
-        </button>
-        <button class="btn-footer" onclick="window.print()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Exporter PDF
-        </button>
-        <button class="btn-footer" onclick="alert('Lien de partage copie !')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Partager le lien
-        </button>
-    </div>
-</footer>
-
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
 <script>
-// ===== SIDEBAR TOGGLE (mobile) =====
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('sidebarOverlay').classList.toggle('active');
-}
+(function() {
+    'use strict';
 
-// ===== SCROLL SPY (Intersection Observer) =====
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    // ============================
+    // CONFIG — Remplacez par l'URL de votre Google Sheet publié en CSV
+    // Format : https://docs.google.com/spreadsheets/d/XXXXX/export?format=csv
+    // ============================
+    var SHEET_CSV_URL = '';
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.id;
-                sidebarLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('data-section') === id);
-                });
+    // ============================
+    // CHART.JS DEFAULTS
+    // ============================
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = '#64748b';
+
+    var BLUE = ['#1e3a5f','#2c5282','#2563eb','#3b82f6','#60a5fa','#93c5fd','#bfdbfe'];
+    var MULTI = ['#2563eb','#059669','#d97706','#dc2626','#8b5cf6','#ec4899','#14b8a6','#f59e0b'];
+    var SOFT = ['rgba(37,99,235,0.7)','rgba(5,150,105,0.7)','rgba(217,119,6,0.7)','rgba(220,38,38,0.7)'];
+
+    // ============================
+    // DEMO DATA (remplacé par les vraies données quand Sheet connecté)
+    // ============================
+    var DEMO = true;
+
+    function renderDemoCharts() {
+        // Q1: Sexe
+        new Chart(document.getElementById('chartQ1'), {
+            type: 'doughnut',
+            data: { labels: ['Homme','Femme'], datasets: [{ data: [12,8], backgroundColor: [BLUE[2], MULTI[5]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q2: Année retraite (par décennie)
+        new Chart(document.getElementById('chartQ2'), {
+            type: 'bar',
+            data: {
+                labels: ['1970-79','1980-89','1990-99','2000-09','2010-19','2020-26'],
+                datasets: [{ label: 'Répondants', data: [1,2,4,5,5,3], backgroundColor: BLUE[2] }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+        });
+
+        // Q3: Statut
+        new Chart(document.getElementById('chartQ3'), {
+            type: 'doughnut',
+            data: { labels: ['Célibataire','En couple'], datasets: [{ data: [6,14], backgroundColor: [SOFT[2], BLUE[2]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q5: Pays
+        new Chart(document.getElementById('chartQ5'), {
+            type: 'bar',
+            data: {
+                labels: ['France','Suisse','Belgique','États-Unis','Sénégal','Autres'],
+                datasets: [{ label: 'Répondants', data: [10,2,2,1,1,4], backgroundColor: BLUE[2] }]
+            },
+            options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { stepSize: 2 } } } }
+        });
+
+        // Q6: Relation UNESCO
+        new Chart(document.getElementById('chartQ6'), {
+            type: 'bar',
+            data: {
+                labels: ['1','2','3','4','5','6','7','8','9','10'],
+                datasets: [{ label: 'Répondants', data: [0,0,1,1,2,3,4,4,3,2], backgroundColor: BLUE.slice(0,10).concat(BLUE) }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+        });
+
+        // Q7: Personnalité
+        new Chart(document.getElementById('chartQ7'), {
+            type: 'doughnut',
+            data: { labels: ['Communicative','Grégaire','Solitaire'], datasets: [{ data: [10,6,4], backgroundColor: [MULTI[0], MULTI[1], MULTI[2]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q8: Sites AAFU (grouped bar)
+        new Chart(document.getElementById('chartQ8'), {
+            type: 'bar',
+            data: {
+                labels: ['Site web','Facebook','Instagram'],
+                datasets: [
+                    { label: 'Oui', data: [8,4,2], backgroundColor: MULTI[0] },
+                    { label: 'De temps en temps', data: [5,3,1], backgroundColor: MULTI[2] },
+                    { label: 'Jamais', data: [7,13,17], backgroundColor: MULTI[3] }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } } }
+        });
+
+        // Q9: LIEN/LINK
+        new Chart(document.getElementById('chartQ9'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Non'], datasets: [{ data: [16,4], backgroundColor: [MULTI[1], MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q10: Mails info
+        new Chart(document.getElementById('chartQ10'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Non'], datasets: [{ data: [14,6], backgroundColor: [MULTI[1], MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q11: Contacts secrétariat
+        new Chart(document.getElementById('chartQ11'), {
+            type: 'bar',
+            data: {
+                labels: ['Visite bureau','Appels tél.','Mails','Courrier','Aucun'],
+                datasets: [{ label: 'Répondants', data: [4,6,10,2,5], backgroundColor: BLUE[2] }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        // Satisfaction scales (Q12-Q15) — horizontal bar with averages
+        new Chart(document.getElementById('chartSatisfaction'), {
+            type: 'bar',
+            data: {
+                labels: ['Q12 Satisfaction contacts','Q13 Bien représenté(e)','Q14 Maintien des liens','Q15 Souhait engagement'],
+                datasets: [{ label: 'Moyenne / 10', data: [7.2, 6.8, 7.5, 5.3], backgroundColor: [MULTI[0], MULTI[1], MULTI[4], MULTI[2]] }]
+            },
+            options: {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: { x: { min: 0, max: 10 } }
             }
         });
-    }, { rootMargin: '-20% 0px -60% 0px' });
 
-    sections.forEach(s => observer.observe(s));
-
-    // Close sidebar on link click (mobile)
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 900) {
-                document.getElementById('sidebar').classList.remove('open');
-                document.getElementById('sidebarOverlay').classList.remove('active');
-            }
+        // Q16: Dynamique
+        new Chart(document.getElementById('chartQ16'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Très clairement','Oui','Pas vraiment','Non'],
+                datasets: [{ data: [3,8,6,3], backgroundColor: [MULTI[1],'#34d399',MULTI[2],MULTI[3]] }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } } }
         });
-    });
-});
 
-// ===== SCROLL REVEAL =====
-document.addEventListener('DOMContentLoaded', function() {
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+        // Q17: Info FAFICS
+        new Chart(document.getElementById('chartQ17'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Pas vraiment','Non'], datasets: [{ data: [6,8,6], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
         });
-    }, { threshold: 0.1 });
 
-    reveals.forEach(el => revealObserver.observe(el));
-});
+        // Q18: Info UNESCO
+        new Chart(document.getElementById('chartQ18'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Pas vraiment','Non'], datasets: [{ data: [7,7,6], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
 
-// ===== CHART.JS DEFAULTS =====
-Chart.defaults.font.family = "'Inter', sans-serif";
-Chart.defaults.font.size = 12;
-Chart.defaults.color = '#64748b';
-Chart.defaults.plugins.legend.labels.usePointStyle = true;
-Chart.defaults.plugins.legend.labels.pointStyleWidth = 8;
-Chart.defaults.plugins.legend.labels.padding = 16;
-Chart.defaults.plugins.legend.labels.font = { size: 11, family: "'Inter', sans-serif" };
-Chart.defaults.plugins.tooltip.backgroundColor = '#1e293b';
-Chart.defaults.plugins.tooltip.titleFont = { size: 12, weight: '600' };
-Chart.defaults.plugins.tooltip.bodyFont = { size: 11 };
-Chart.defaults.plugins.tooltip.cornerRadius = 8;
-Chart.defaults.plugins.tooltip.padding = 10;
+        // Q19-Q20: Services
+        new Chart(document.getElementById('chartQ19_20'), {
+            type: 'bar',
+            data: {
+                labels: ['Utilise (Q19)','Satisfait (Q20)'],
+                datasets: [
+                    { label: 'Oui', data: [8,7], backgroundColor: MULTI[1] },
+                    { label: 'Non', data: [12,3], backgroundColor: MULTI[3] },
+                    { label: 'Non concerné', data: [0,10], backgroundColor: MULTI[2] }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
 
-// Palette
-const palette = {
-    blue: ['#1e3a5f','#2563eb','#3b82f6','#60a5fa','#93c5fd','#bfdbfe','#dbeafe'],
-    multi: ['#2563eb','#059669','#d97706','#dc2626','#8b5cf6','#ec4899','#14b8a6','#f97316'],
-    soft: ['#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#f97316'],
-};
+        // Q22: Sites web
+        new Chart(document.getElementById('chartQ22'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','De temps en temps','Non'], datasets: [{ data: [5,7,8], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
 
-// ===== SECTION 1 : PROFIL =====
+        // Q23: LIEN/LINK lecture
+        new Chart(document.getElementById('chartQ23'), {
+            type: 'doughnut',
+            data: { labels: ['Entièrement','Quelques articles'], datasets: [{ data: [9,7], backgroundColor: [BLUE[2],BLUE[4]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
 
-// Anciennete
-new Chart(document.getElementById('chartAnciennete'), {
-    type: 'doughnut',
-    data: {
-        labels: ['< 2 ans', '2-5 ans', '5-10 ans', '10-20 ans', '> 20 ans'],
-        datasets: [{
-            data: [24, 38, 52, 48, 25],
-            backgroundColor: palette.blue,
-            borderWidth: 2,
-            borderColor: '#fff',
-        }]
-    },
-    options: {
-        responsive: true,
-        cutout: '55%',
-        plugins: {
-            legend: { position: 'bottom' },
-        }
+        // Q23.1: Satisfaction présentation
+        new Chart(document.getElementById('chartQ23_1'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Pas vraiment','Non'], datasets: [{ data: [11,4,1], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q26: Mails info lecture
+        new Chart(document.getElementById('chartQ26'), {
+            type: 'doughnut',
+            data: { labels: ['Régulièrement','De temps en temps','Jamais'], datasets: [{ data: [8,4,2], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q27-28: Sorties & excursions
+        new Chart(document.getElementById('chartQ27_28'), {
+            type: 'bar',
+            data: {
+                labels: ['Informé sorties (Q27)','Participe sorties (Q27.1)','Informé excursions (Q28)','Participe excursions (Q28.1)'],
+                datasets: [
+                    { label: 'Oui', data: [16,6,14,4], backgroundColor: MULTI[1] },
+                    { label: 'Non', data: [4,14,6,16], backgroundColor: MULTI[3] }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+
+        // Q29: Importance voyages
+        new Chart(document.getElementById('chartQ29'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Pas vraiment','Non'], datasets: [{ data: [13,5,2], backgroundColor: [MULTI[1],MULTI[2],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q29.3: Facteurs
+        new Chart(document.getElementById('chartQ29_3'), {
+            type: 'bar',
+            data: {
+                labels: ['Durée','Prix','Destination'],
+                datasets: [{ label: 'Mentions', data: [8,14,16], backgroundColor: [MULTI[0],MULTI[1],MULTI[2]] }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        // Q29.4-29.5: Séjours
+        new Chart(document.getElementById('chartQ29_45'), {
+            type: 'bar',
+            data: {
+                labels: ['Courts séjours Europe','Circuits hors Europe'],
+                datasets: [
+                    { label: 'Oui', data: [12,8], backgroundColor: MULTI[1] },
+                    { label: 'Non', data: [8,12], backgroundColor: MULTI[3] }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+
+        // Q30-33: Histoire
+        new Chart(document.getElementById('chartQ30_33'), {
+            type: 'bar',
+            data: {
+                labels: ['Connaît activité (Q30)','Consulte publications (Q30.1)','Recueil souvenirs (Q31)','Syndicats UNESCO (Q32)','Réfugiés politiques (Q33)'],
+                datasets: [
+                    { label: 'Oui', data: [10,6,8,5,7], backgroundColor: MULTI[1] },
+                    { label: 'Non', data: [10,14,12,15,13], backgroundColor: MULTI[3] }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+
+        // Q35: Orientation
+        new Chart(document.getElementById('chartQ35'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Recherche pure','Résultats concrets'],
+                datasets: [{ data: [7,13], backgroundColor: [BLUE[2],MULTI[1]] }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q36: Ateliers UNESCO
+        new Chart(document.getElementById('chartQ36'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Non'], datasets: [{ data: [6,14], backgroundColor: [MULTI[1],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Q37: Bénévolat
+        new Chart(document.getElementById('chartQ37'), {
+            type: 'doughnut',
+            data: { labels: ['Oui','Non'], datasets: [{ data: [5,15], backgroundColor: [MULTI[1],MULTI[3]] }] },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // KPI
+        document.getElementById('kpiResponses').textContent = '20';
+        document.getElementById('kpiResponsesSub').textContent = 'test à blanc (20 questionnaires)';
+        document.getElementById('kpiRelation').textContent = '7.2';
+        document.getElementById('kpiSatisfaction').textContent = '7.2';
+        document.getElementById('kpiEngagement').textContent = '5.3';
     }
-});
 
-// Administration d'origine
-new Chart(document.getElementById('chartAdminOrigine'), {
-    type: 'bar',
-    data: {
-        labels: ['Impots / Tresor', 'Education nat.', 'Prefecture', 'Securite sociale', 'Douanes', 'Justice', 'Sante (ARS)', 'Autre'],
-        datasets: [{
-            label: 'Repondants',
-            data: [42, 35, 28, 22, 18, 15, 12, 15],
-            backgroundColor: '#2563eb',
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { grid: { display: false }, ticks: { callback: v => v } },
-            y: { grid: { display: false } },
+    // ============================
+    // DATA LOADING FROM GOOGLE SHEET
+    // ============================
+    function loadFromSheet() {
+        if (!SHEET_CSV_URL) {
+            renderDemoCharts();
+            return;
         }
+
+        document.getElementById('dataNotice').style.display = 'none';
+
+        fetch(SHEET_CSV_URL)
+            .then(function(r) { return r.text(); })
+            .then(function(csv) {
+                var rows = parseCSV(csv);
+                if (rows.length < 2) {
+                    renderDemoCharts();
+                    return;
+                }
+                var headers = rows[0];
+                var data = rows.slice(1);
+                processData(headers, data);
+            })
+            .catch(function(err) {
+                console.error('Erreur chargement Sheet:', err);
+                renderDemoCharts();
+            });
     }
-});
 
-// Tranche d'age
-new Chart(document.getElementById('chartAge'), {
-    type: 'doughnut',
-    data: {
-        labels: ['60-64 ans', '65-69 ans', '70-74 ans', '75-79 ans', '80 ans et +'],
-        datasets: [{
-            data: [18, 42, 56, 46, 25],
-            backgroundColor: ['#2563eb','#059669','#d97706','#8b5cf6','#ec4899'],
-            borderWidth: 2,
-            borderColor: '#fff',
-        }]
-    },
-    options: {
-        responsive: true,
-        cutout: '55%',
-        plugins: {
-            legend: { position: 'bottom' },
-        }
-    }
-});
+    function parseCSV(text) {
+        var rows = [];
+        var row = [];
+        var field = '';
+        var inQuotes = false;
 
-// Comment connu
-new Chart(document.getElementById('chartConnuAmicale'), {
-    type: 'bar',
-    data: {
-        labels: ['Bouche a oreille', 'Ancien collegue', 'Courrier a la retraite', 'Site de la prefecture', 'Presse locale', 'Autre'],
-        datasets: [{
-            label: 'Repondants',
-            data: [68, 52, 34, 12, 11, 10],
-            backgroundColor: '#059669',
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { grid: { display: false } },
-            y: { grid: { display: false } },
-        }
-    }
-});
-
-// ===== SECTION 2 : SATISFACTION =====
-
-const satisLabels = [
-    'Qualite de l\'accueil',
-    'Diversite des activites',
-    'Organisation des sorties',
-    'Rapport qualite/prix',
-    'Communication interne',
-    'Ecoute du bureau',
-    'Ambiance generale',
-    'Sentiment d\'appartenance',
-];
-const satisValues = [8.2, 7.6, 8.0, 7.8, 5.9, 7.1, 8.5, 7.3];
-const satisColors = satisValues.map(v => v >= 7 ? '#059669' : v >= 5 ? '#d97706' : '#dc2626');
-
-new Chart(document.getElementById('chartSatisfaction'), {
-    type: 'bar',
-    data: {
-        labels: satisLabels,
-        datasets: [{
-            label: 'Score moyen',
-            data: satisValues,
-            backgroundColor: satisColors,
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                callbacks: {
-                    label: ctx => ctx.parsed.x.toFixed(1) + ' / 10'
+        for (var i = 0; i < text.length; i++) {
+            var c = text[i];
+            if (inQuotes) {
+                if (c === '"' && text[i+1] === '"') {
+                    field += '"';
+                    i++;
+                } else if (c === '"') {
+                    inQuotes = false;
+                } else {
+                    field += c;
+                }
+            } else {
+                if (c === '"') {
+                    inQuotes = true;
+                } else if (c === ',') {
+                    row.push(field.trim());
+                    field = '';
+                } else if (c === '\n' || (c === '\r' && text[i+1] === '\n')) {
+                    if (c === '\r') i++;
+                    row.push(field.trim());
+                    rows.push(row);
+                    row = [];
+                    field = '';
+                } else {
+                    field += c;
                 }
             }
-        },
-        scales: {
-            x: { min: 0, max: 10, grid: { display: false } },
-            y: { grid: { display: false } },
+        }
+        if (field || row.length) {
+            row.push(field.trim());
+            rows.push(row);
+        }
+        return rows;
+    }
+
+    function processData(headers, data) {
+        // Helper: count values for a column
+        function countValues(colName) {
+            var idx = headers.indexOf(colName);
+            if (idx === -1) return {};
+            var counts = {};
+            data.forEach(function(row) {
+                var val = (row[idx] || '').trim();
+                if (val) counts[val] = (counts[val] || 0) + 1;
+            });
+            return counts;
+        }
+
+        // Helper: average for a numeric column
+        function average(colName) {
+            var idx = headers.indexOf(colName);
+            if (idx === -1) return 0;
+            var sum = 0, count = 0;
+            data.forEach(function(row) {
+                var val = parseFloat(row[idx]);
+                if (!isNaN(val)) { sum += val; count++; }
+            });
+            return count ? (sum / count).toFixed(1) : '—';
+        }
+
+        // Helper: create chart from value counts
+        function makeDonut(canvasId, counts, colors) {
+            var labels = Object.keys(counts);
+            var values = labels.map(function(l) { return counts[l]; });
+            new Chart(document.getElementById(canvasId), {
+                type: 'doughnut',
+                data: { labels: labels, datasets: [{ data: values, backgroundColor: colors || MULTI }] },
+                options: { plugins: { legend: { position: 'bottom' } } }
+            });
+        }
+
+        // Build all charts from real data
+        // (simplified — extend as needed for each question)
+        makeDonut('chartQ1', countValues('q1'), [BLUE[2], MULTI[5]]);
+        makeDonut('chartQ3', countValues('q3'), [SOFT[2], BLUE[2]]);
+        makeDonut('chartQ7', countValues('q7'), [MULTI[0], MULTI[1], MULTI[2]]);
+        makeDonut('chartQ9', countValues('q9'), [MULTI[1], MULTI[3]]);
+        makeDonut('chartQ10', countValues('q10'), [MULTI[1], MULTI[3]]);
+        makeDonut('chartQ16', countValues('q16'));
+        makeDonut('chartQ17', countValues('q17'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ18', countValues('q18'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ22', countValues('q22'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ23', countValues('q23'), [BLUE[2], BLUE[4]]);
+        makeDonut('chartQ23_1', countValues('q23_1'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ26', countValues('q26'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ29', countValues('q29'), [MULTI[1], MULTI[2], MULTI[3]]);
+        makeDonut('chartQ35', countValues('q35'), [BLUE[2], MULTI[1]]);
+        makeDonut('chartQ36', countValues('q36'), [MULTI[1], MULTI[3]]);
+        makeDonut('chartQ37', countValues('q37'), [MULTI[1], MULTI[3]]);
+
+        // KPI
+        document.getElementById('kpiResponses').textContent = data.length;
+        document.getElementById('kpiResponsesSub').textContent = 'réponses collectées';
+        document.getElementById('kpiRelation').textContent = average('q6');
+        document.getElementById('kpiSatisfaction').textContent = average('q12');
+        document.getElementById('kpiEngagement').textContent = average('q15');
+
+        // Verbatims (Q21)
+        var q21idx = headers.indexOf('q21');
+        if (q21idx !== -1) {
+            var list = document.getElementById('verbatimList');
+            list.innerHTML = '';
+            data.forEach(function(row) {
+                var txt = (row[q21idx] || '').trim();
+                if (txt) {
+                    var li = document.createElement('li');
+                    li.className = 'verbatim-item';
+                    li.textContent = txt;
+                    list.appendChild(li);
+                }
+            });
         }
     }
-});
 
-// ===== SECTION 3 : ACTIVITES =====
+    // ============================
+    // SIDEBAR SCROLL SPY
+    // ============================
+    var sections = document.querySelectorAll('.dash-section');
+    var links = document.querySelectorAll('.sidebar-link');
 
-// Participation
-new Chart(document.getElementById('chartParticipation'), {
-    type: 'bar',
-    data: {
-        labels: ['Dejeuner mensuel', 'Sorties culturelles', 'Voyages', 'Randonnee', 'Gymnastique douce', 'Conferences', 'Jeux de societe', 'Chorale'],
-        datasets: [{
-            label: 'Taux de participation',
-            data: [78, 65, 52, 44, 38, 35, 28, 15],
-            backgroundColor: palette.soft,
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' %' } }
-        },
-        scales: {
-            y: { beginAtZero: true, max: 100, ticks: { callback: v => v + ' %' }, grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } },
-        }
-    }
-});
-
-// Radar activites
-new Chart(document.getElementById('chartRadarActivites'), {
-    type: 'radar',
-    data: {
-        labels: ['Dejeuners', 'Culture', 'Voyages', 'Sport', 'Conferences', 'Jeux', 'Chorale'],
-        datasets: [{
-            label: 'Satisfaction (/10)',
-            data: [8.5, 8.2, 7.9, 7.1, 7.4, 7.8, 6.8],
-            backgroundColor: 'rgba(37, 99, 235, 0.15)',
-            borderColor: '#2563eb',
-            borderWidth: 2,
-            pointBackgroundColor: '#2563eb',
-            pointRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-            r: {
-                beginAtZero: true,
-                max: 10,
-                ticks: { stepSize: 2, display: false },
-                grid: { color: '#e2e8f0' },
-                angleLines: { color: '#e2e8f0' },
-                pointLabels: { font: { size: 11 } },
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                links.forEach(function(l) { l.classList.remove('active'); });
+                var link = document.querySelector('.sidebar-link[href="#' + entry.target.id + '"]');
+                if (link) link.classList.add('active');
             }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(function(s) { observer.observe(s); });
+
+    // ============================
+    // CSV EXPORT
+    // ============================
+    document.getElementById('btnExportCSV').addEventListener('click', function() {
+        if (SHEET_CSV_URL) {
+            window.open(SHEET_CSV_URL, '_blank');
+        } else {
+            alert('Connectez d\'abord le Google Sheet pour exporter les données.');
         }
-    }
-});
+    });
 
-// Frequence
-new Chart(document.getElementById('chartFrequence'), {
-    type: 'bar',
-    data: {
-        labels: ['Hebdomadaire', 'Bi-mensuelle', 'Mensuelle', 'Trimestrielle'],
-        datasets: [{
-            label: 'Repondants',
-            data: [32, 54, 72, 29],
-            backgroundColor: ['#3b82f6','#2563eb','#1e3a5f','#93c5fd'],
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } },
-        }
-    }
-});
+    // ============================
+    // INIT
+    // ============================
+    loadFromSheet();
 
-// Budget
-new Chart(document.getElementById('chartBudget'), {
-    type: 'bar',
-    data: {
-        labels: ['< 10 EUR', '10-20 EUR', '20-30 EUR', '30-50 EUR', '> 50 EUR'],
-        datasets: [{
-            label: 'Repondants',
-            data: [22, 58, 62, 33, 12],
-            backgroundColor: '#059669',
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { grid: { display: false } },
-            y: { grid: { display: false } },
-        }
-    }
-});
-
-// Nouvelles activites
-new Chart(document.getElementById('chartNouvellesActivites'), {
-    type: 'bar',
-    data: {
-        labels: ['Initiation numerique', 'Atelier cuisine', 'Yoga / tai-chi', 'Club lecture', 'Jardinage', 'Theatre'],
-        datasets: [{
-            label: 'Votes',
-            data: [72, 58, 54, 48, 41, 35],
-            backgroundColor: '#8b5cf6',
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { grid: { display: false } },
-            y: { grid: { display: false } },
-        }
-    }
-});
-
-// ===== SECTION 4 : COMMUNICATION =====
-
-// Mode actuel
-new Chart(document.getElementById('chartModeActuel'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Courrier postal', 'E-mail', 'Telephone', 'Bouche a oreille'],
-        datasets: [{
-            data: [58, 22, 12, 8],
-            backgroundColor: ['#1e3a5f','#2563eb','#d97706','#059669'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// Mode prefere
-new Chart(document.getElementById('chartModePrefere'), {
-    type: 'doughnut',
-    data: {
-        labels: ['E-mail', 'Courrier postal', 'SMS', 'Application mobile', 'Reseau social'],
-        datasets: [{
-            data: [45, 28, 14, 8, 5],
-            backgroundColor: ['#2563eb','#1e3a5f','#059669','#8b5cf6','#ec4899'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// Satisfaction bulletin
-new Chart(document.getElementById('chartSatisfBulletin'), {
-    type: 'bar',
-    data: {
-        labels: ['Tres satisfait', 'Satisfait', 'Moyennement', 'Peu satisfait', 'Pas du tout'],
-        datasets: [{
-            label: 'Repondants',
-            data: [42, 78, 38, 18, 11],
-            backgroundColor: ['#059669','#10b981','#f59e0b','#f97316','#ef4444'],
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } },
-        }
-    }
-});
-
-// Site web
-new Chart(document.getElementById('chartSiteWeb'), {
-    type: 'pie',
-    data: {
-        labels: ['Oui, indispensable', 'Oui, utile', 'Indifferent', 'Non, pas necessaire'],
-        datasets: [{
-            data: [38, 52, 28, 18],
-            backgroundColor: ['#059669','#2563eb','#d97706','#94a3b8'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
-});
-
-// ===== SECTION 5 : VIE ASSOCIATIVE =====
-
-// Participation AG
-new Chart(document.getElementById('chartParticipationAG'), {
-    type: 'bar',
-    data: {
-        labels: ['Toujours', 'Souvent', 'Parfois', 'Rarement', 'Jamais'],
-        datasets: [{
-            label: 'Repondants',
-            data: [52, 48, 38, 30, 19],
-            backgroundColor: ['#1e3a5f','#2563eb','#3b82f6','#93c5fd','#dbeafe'],
-            borderRadius: 4,
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } },
-        }
-    }
-});
-
-// Transparence
-new Chart(document.getElementById('chartTransparence'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Tres satisfait', 'Satisfait', 'Moyennement', 'Insatisfait'],
-        datasets: [{
-            data: [48, 82, 38, 19],
-            backgroundColor: ['#059669','#2563eb','#d97706','#ef4444'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// Investissement bureau
-new Chart(document.getElementById('chartInvestBureau'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Tres implique', 'Implique', 'Moyennement', 'Pas assez'],
-        datasets: [{
-            data: [62, 74, 35, 16],
-            backgroundColor: ['#059669','#2563eb','#d97706','#ef4444'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// Aide ponctuelle
-new Chart(document.getElementById('chartAide'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Oui, volontiers', 'Peut-etre', 'Non, pas disponible'],
-        datasets: [{
-            data: [68, 72, 47],
-            backgroundColor: ['#059669','#d97706','#94a3b8'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// Cotisation
-new Chart(document.getElementById('chartCotisation'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Tres raisonnable', 'Correcte', 'Un peu elevee', 'Trop elevee'],
-        datasets: [{
-            data: [52, 98, 28, 9],
-            backgroundColor: ['#059669','#2563eb','#d97706','#ef4444'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// ===== SECTION 6 : BIEN-ETRE =====
-
-// Service aide
-new Chart(document.getElementById('chartServiceAide'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Oui, tres utile', 'Oui, bonne idee', 'Indifferent', 'Non, pas necessaire'],
-        datasets: [{
-            data: [52, 68, 42, 25],
-            backgroundColor: ['#059669','#2563eb','#d97706','#94a3b8'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: { responsive: true, cutout: '55%', plugins: { legend: { position: 'bottom' } } }
-});
-
-// ===== SECTION 7 : SYNTHESE =====
-
-// Renouvellement
-new Chart(document.getElementById('chartRenouvellement'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Oui, certainement', 'Oui, probablement', 'Hesitant', 'Peu probable', 'Non'],
-        datasets: [{
-            data: [112, 54, 14, 5, 2],
-            backgroundColor: ['#059669','#10b981','#d97706','#f97316','#ef4444'],
-            borderWidth: 2, borderColor: '#fff',
-        }]
-    },
-    options: {
-        responsive: true,
-        cutout: '55%',
-        plugins: { legend: { position: 'bottom' } }
-    }
-});
-
+})();
 </script>
+
 </body>
 </html>

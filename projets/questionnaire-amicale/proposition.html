@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposition — Questionnaire AAFU 2026 — UnJourUneApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        @page {
+            size: A4;
+            margin: 20mm 18mm;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            background: #f1f5f9;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 48px 56px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        /* HEADER */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 3px solid #1e3a5f;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 48px; height: 48px;
+            background: #1e3a5f;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .brand-sub {
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        .doc-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .doc-ref {
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 4px;
+        }
+
+        /* DESTINATAIRE */
+        .destinataire {
+            margin-bottom: 32px;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .destinataire strong { color: #1e293b; }
+
+        /* TITRE */
+        .doc-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .doc-subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 32px;
+        }
+
+        /* SECTIONS */
+        h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin: 32px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #334155;
+            margin: 20px 0 8px;
+        }
+
+        p, li {
+            font-size: 0.92rem;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 4px; }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 0.88rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        td { color: #475569; }
+
+        .amount {
+            text-align: right;
+            font-weight: 600;
+            color: #1e293b;
+            white-space: nowrap;
+        }
+
+        .total-row td {
+            border-top: 2px solid #1e3a5f;
+            border-bottom: 2px solid #1e3a5f;
+            font-weight: 700;
+            color: #1e3a5f;
+            font-size: 1rem;
+            padding: 14px 16px;
+        }
+
+        /* POSTE DETAIL */
+        .poste-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+        }
+
+        .poste-card h3 {
+            margin: 0 0 8px;
+            color: #1e3a5f;
+        }
+
+        .poste-card p { margin-bottom: 4px; }
+
+        .poste-price {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 12px;
+            background: #1e3a5f;
+            color: #fff;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            display: flex;
+            gap: 0;
+            margin: 16px 0 24px;
+        }
+
+        .timeline-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 14px; height: 14px;
+            background: #2563eb;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-step:not(:last-child) .timeline-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: calc(100% + 40px);
+            height: 2px;
+            background: #cbd5e1;
+            transform: translateY(-50%);
+        }
+
+        .timeline-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+
+        .timeline-date {
+            font-size: 0.7rem;
+            color: #94a3b8;
+        }
+
+        /* FOOTER */
+        .doc-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .signature strong { color: #1e293b; }
+
+        /* PRINT */
+        @media print {
+            body { background: #fff; }
+            .page { box-shadow: none; padding: 0; }
+            .no-print { display: none; }
+        }
+
+        /* PRINT BUTTON */
+        .print-bar {
+            max-width: 780px;
+            margin: 16px auto;
+            text-align: right;
+        }
+
+        .print-btn {
+            padding: 10px 24px;
+            background: #1e3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .print-btn:hover { background: #2a4f7f; }
+    </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+    <button class="print-btn" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+</div>
+
+<div class="page">
+
+    <!-- EN-TETE -->
+    <div class="doc-header">
+        <div class="brand">
+            <div class="brand-logo">UJ<br>UA</div>
+            <div>
+                <div class="brand-name">UnJourUneApp</div>
+                <div class="brand-sub">Emmanuel Pinglier &mdash; D&eacute;veloppement web &amp; outils num&eacute;riques</div>
+            </div>
+        </div>
+        <div class="doc-date">
+            Paris, le 5 mars 2026<br>
+            <div class="doc-ref">R&eacute;f. AAFU-2026-QUEST</div>
+        </div>
+    </div>
+
+    <!-- DESTINATAIRE -->
+    <div class="destinataire">
+        <strong>Monsieur Patrick Gallaud</strong>, Pr&eacute;sident<br>
+        Association des Anciens Fonctionnaires de l'UNESCO (AAFU)<br>
+        1, rue Miollis &mdash; 75732 Paris 15<br><br>
+        Copie : M. Bruno Lef&egrave;vre, Membre du Comit&eacute; ex&eacute;cutif
+    </div>
+
+    <!-- TITRE -->
+    <div class="doc-title">Proposition technique et financi&egrave;re</div>
+    <div class="doc-subtitle">Questionnaire AAFU 2026 &mdash; Pr&eacute;paration du Plan d'action 2027-2030</div>
+
+    <!-- OBJET -->
+    <h2>1. Objet</h2>
+    <p>
+        Suite &agrave; notre &eacute;change et &agrave; la transmission du questionnaire quasi-finalis&eacute;, nous avons l'honneur de vous soumettre notre proposition pour la r&eacute;alisation compl&egrave;te de l'enqu&ecirc;te AAFU 2026, de la mise en forme du questionnaire web jusqu'&agrave; la diffusion en ligne des r&eacute;sultats.
+    </p>
+
+    <!-- METHODOLOGIE -->
+    <h2>2. M&eacute;thodologie retenue</h2>
+    <p>Conform&eacute;ment &agrave; vos orientations :</p>
+    <ul>
+        <li><strong>Traitement n&deg;1 (test &agrave; blanc)</strong> &mdash; Traitement complet de 20 questionnaires pour tester l'ensemble des parties de l'enqu&ecirc;te et affiner les param&egrave;tres.</li>
+        <li><strong>Enqu&ecirc;te en ligne</strong> &mdash; Collecte principale pr&eacute;c&eacute;d&eacute;e de messages d'incitation &agrave; la participation.</li>
+        <li><strong>Collecte papier (si n&eacute;cessaire)</strong> &mdash; Int&eacute;gration des r&eacute;ponses issues du magazine (mai 2026) et/ou de l'assembl&eacute;e g&eacute;n&eacute;rale, selon une proc&eacute;dure de saisie d&eacute;finie conjointement.</li>
+        <li><strong>Traitement n&deg;2</strong> &mdash; Traitement complet des donn&eacute;es et mise en forme des r&eacute;sultats.</li>
+    </ul>
+    <p>L'architecture technique est con&ccedil;ue pour garder ouverte la possibilit&eacute; d'approfondir l'exploitation des donn&eacute;es dans le cadre d'un contrat compl&eacute;mentaire.</p>
+
+    <!-- BUDGET -->
+    <h2>3. Budget d&eacute;taill&eacute;</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Poste</th>
+                <th>Description</th>
+                <th class="amount">Montant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1</strong></td>
+                <td>Mise en forme du questionnaire web + traitement automatique des r&eacute;ponses</td>
+                <td class="amount">150 &euro;</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td>Analyses crois&eacute;es (40 &agrave; 60 croisements)</td>
+                <td class="amount">100 &euro;</td>
+            </tr>
+            <tr>
+                <td><strong>3</strong></td>
+                <td>Traitement des r&eacute;ponses : statistiques, verbatims et synth&egrave;se IA</td>
+                <td class="amount">100 &euro;</td>
+            </tr>
+            <tr>
+                <td><strong>4</strong></td>
+                <td>Pr&eacute;paration du projet de rapport</td>
+                <td class="amount">80 &euro;</td>
+            </tr>
+            <tr>
+                <td><strong>5</strong></td>
+                <td>Diffusion en ligne des r&eacute;sultats (tableau de bord interactif)</td>
+                <td class="amount">70 &euro;</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="2"><strong>Total</strong></td>
+                <td class="amount">500 &euro;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- DETAIL PAR POSTE -->
+    <h2>4. D&eacute;tail des prestations</h2>
+
+    <div class="poste-card">
+        <h3>Poste 1 &mdash; Questionnaire web + collecte automatique</h3>
+        <p>Mise en forme compl&egrave;te du questionnaire Word (37 questions + sous-questions) en formulaire web interactif : logique conditionnelle, barre de progression, design responsive adapt&eacute; au public senior, version imprimable.</p>
+        <p>Backend de collecte via Google Sheets (r&eacute;ception automatique, horodatage, 80 colonnes de donn&eacute;es).</p>
+        <p>Inclut le test &agrave; blanc (Traitement n&deg;1) avec 20 questionnaires et les ajustements r&eacute;sultants.</p>
+        <p>Inclut la proc&eacute;dure d'int&eacute;gration des questionnaires papier.</p>
+        <span class="poste-price">150 &euro;</span>
+    </div>
+
+    <div class="poste-card">
+        <h3>Poste 2 &mdash; Analyses crois&eacute;es</h3>
+        <p>Param&eacute;trage et r&eacute;alisation de 40 &agrave; 60 analyses crois&eacute;es selon la liste fournie par le COMEX (ex. : satisfaction par pays de r&eacute;sidence, engagement par ann&eacute;e de d&eacute;part, participation par sexe, etc.).</p>
+        <p>Scripts automatis&eacute;s r&eacute;utilisables pour des croisements suppl&eacute;mentaires.</p>
+        <span class="poste-price">100 &euro;</span>
+    </div>
+
+    <div class="poste-card">
+        <h3>Poste 3 &mdash; Traitement des r&eacute;ponses</h3>
+        <p>Pour chaque question : effectifs, pourcentages, moyennes et &eacute;carts-types (questions num&eacute;riques).</p>
+        <p>Restitution int&eacute;grale des r&eacute;ponses textuelles (verbatims), organis&eacute;es par question.</p>
+        <p>Synth&egrave;se IA de chaque question ouverte : classification th&eacute;matique, analyse de sentiment, mots-cl&eacute;s principaux.</p>
+        <span class="poste-price">100 &euro;</span>
+    </div>
+
+    <div class="poste-card">
+        <h3>Poste 4 &mdash; Projet de rapport</h3>
+        <p>Rapport structur&eacute; par objectif (1, 2, 3) avec synth&egrave;se ex&eacute;cutive, graphiques, tableaux et recommandations.</p>
+        <p>Document PDF pr&ecirc;t pour diffusion au COMEX et aux membres.</p>
+        <span class="poste-price">80 &euro;</span>
+    </div>
+
+    <div class="poste-card">
+        <h3>Poste 5 &mdash; Diffusion en ligne des r&eacute;sultats</h3>
+        <p>Tableau de bord interactif : graphiques dynamiques (Chart.js), navigation par section, indicateurs cl&eacute;s, verbatims.</p>
+        <p>Connexion automatique au Google Sheet pour mise &agrave; jour en temps r&eacute;el. Export CSV et impression PDF.</p>
+        <p>Page HTML autonome h&eacute;bergeable sur le site de l'AAFU.</p>
+        <span class="poste-price">70 &euro;</span>
+    </div>
+
+    <!-- CALENDRIER -->
+    <h2>5. Calendrier</h2>
+
+    <p>Le calendrier de r&eacute;alisation sera d&eacute;fini conjointement avec le COMEX, en fonction des &eacute;tapes suivantes :</p>
+    <ul>
+        <li><strong>Poste 1</strong> &mdash; Livraison du questionnaire web sous 2 semaines apr&egrave;s validation de la commande. Test &agrave; blanc (20 questionnaires) dans la foul&eacute;e.</li>
+        <li><strong>Poste 2</strong> &mdash; Param&eacute;trage des analyses crois&eacute;es d&egrave;s r&eacute;ception de la liste d&eacute;finitive du COMEX.</li>
+        <li><strong>Postes 3 et 4</strong> &mdash; Traitement des r&eacute;ponses et rapport dans les 3 semaines suivant la cl&ocirc;ture de la collecte (internet et, le cas &eacute;ch&eacute;ant, papier).</li>
+        <li><strong>Poste 5</strong> &mdash; Mise en ligne du tableau de bord dans la semaine suivant la livraison du rapport.</li>
+    </ul>
+    <p>Nous nous adaptons au rythme du COMEX et aux &eacute;ventuelles collectes compl&eacute;mentaires (magazine de mai 2026, assembl&eacute;e g&eacute;n&eacute;rale).</p>
+
+    <!-- CONDITIONS -->
+    <h2>6. Conditions</h2>
+    <ul>
+        <li><strong>Validit&eacute;</strong> &mdash; La pr&eacute;sente proposition est valable 60 jours.</li>
+        <li><strong>Paiement</strong> &mdash; 50 % &agrave; la commande (250 &euro;), 50 % &agrave; la livraison du rapport final (250 &euro;).</li>
+        <li><strong>Propri&eacute;t&eacute;</strong> &mdash; L'ensemble des livrables (code source, donn&eacute;es, rapport) sont la propri&eacute;t&eacute; pleine et enti&egrave;re de l'AAFU.</li>
+        <li><strong>Protection des donn&eacute;es (RGPD)</strong> &mdash; UnJourUneApp intervient en qualit&eacute; de sous-traitant technique au sens de l'article 28 du RGPD. L'AAFU reste responsable du traitement. Le questionnaire int&egrave;gre une notice d'information compl&egrave;te (responsable, finalit&eacute;, base l&eacute;gale, destinataires, dur&eacute;e de conservation, droits des personnes) et un recueil de consentement explicite. Les donn&eacute;es individuelles seront supprim&eacute;es dans les 6 mois suivant la publication du rapport final. L'acc&egrave;s au fichier de r&eacute;ponses est restreint aux seuls membres du COMEX et au sous-traitant.</li>
+    </ul>
+
+    <!-- SIGNATURE -->
+    <div class="signature">
+        <p>Nous restons &agrave; votre enti&egrave;re disposition pour tout compl&eacute;ment d'information.</p>
+        <p>Dans l'attente de votre retour, nous vous prions d'agr&eacute;er, Monsieur le Pr&eacute;sident, l'expression de nos salutations distingu&eacute;es.</p>
+        <br><br>
+        <strong>Emmanuel Pinglier</strong><br>
+        UnJourUneApp<br>
+        em.pinglier@gmail.com<br>
+        06 28 13 48 36
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+        UnJourUneApp &mdash; Emmanuel Pinglier &mdash; em.pinglier@gmail.com &mdash; 06 28 13 48 36
+    </div>
+
+</div>
+
+</body>
+</html>
