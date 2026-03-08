@@ -251,17 +251,6 @@
     padding: 8px 16px;
 }
 
-/* Locked module cards */
-.module-card--locked {
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: default;
-    filter: grayscale(0.4);
-}
-.module-card--locked .module-num {
-    background: #95a5a6 !important;
-}
-
 /* Module content page */
 .module-header {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));

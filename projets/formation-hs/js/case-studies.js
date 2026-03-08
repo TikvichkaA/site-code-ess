@@ -94,6 +94,20 @@
                     <span class="feedback-text">${choice.feedback || (isCorrect ? 'Bonne réponse !' : 'Ce n\'est pas la meilleure réponse.')}</span>
                 `;
 
+                // Envoyer tracking si dernier step
+                if (this.currentStep >= this.data.steps.length - 1) {
+                    if (window.Tracking) {
+                        var correct = this.choices.filter(function(c) { return c.correct; }).length;
+                        var total = this.choices.length;
+                        window.Tracking.send({
+                            type: 'case_study',
+                            module: window.location.pathname.match(/module-(\d+)/)?.[0] || 'unknown',
+                            score: correct,
+                            total: total
+                        });
+                    }
+                }
+
                 // Show next button if more steps
                 if (this.currentStep < this.data.steps.length - 1) {
                     feedbackEl.innerHTML += `

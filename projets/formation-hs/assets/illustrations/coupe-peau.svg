@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450" width="700" height="450" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="epiderme" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5cba7"/>
+      <stop offset="100%" stop-color="#e8b98a"/>
+    </linearGradient>
+    <linearGradient id="derme" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1948a"/>
+      <stop offset="100%" stop-color="#d98880"/>
+    </linearGradient>
+    <linearGradient id="hypoderme" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f9e79f"/>
+      <stop offset="100%" stop-color="#f4d03f"/>
+    </linearGradient>
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="1.5" fill="#1a5276" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a5276">Coupe transversale de la peau</text>
+
+  <!-- Skin layers -->
+  <!-- Epidermis -->
+  <path d="M50,70 Q100,60 175,72 Q250,80 350,65 Q450,55 525,70 Q575,78 620,68 L620,120 Q575,128 525,120 Q450,105 350,115 Q250,130 175,122 Q100,110 50,120 Z" fill="url(#epiderme)" stroke="#c0392b" stroke-width="0.5"/>
+
+  <!-- Dermis -->
+  <path d="M50,120 Q100,110 175,122 Q250,130 350,115 Q450,105 525,120 Q575,128 620,118 L620,270 L50,270 Z" fill="url(#derme)" stroke="#c0392b" stroke-width="0.5"/>
+
+  <!-- Hypodermis -->
+  <rect x="50" y="270" width="570" height="130" fill="url(#hypoderme)" stroke="#c0392b" stroke-width="0.5"/>
+
+  <!-- Fat cells in hypodermis -->
+  <circle cx="100" cy="310" r="18" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="140" cy="325" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="175" cy="305" r="17" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="220" cy="320" r="15" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="260" cy="308" r="18" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="300" cy="330" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="340" cy="310" r="17" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="380" cy="325" r="15" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="420" cy="305" r="18" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="460" cy="320" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="500" cy="312" r="17" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="540" cy="328" r="15" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="575" cy="308" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="120" cy="360" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="160" cy="370" r="14" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="200" cy="355" r="17" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="250" cy="365" r="15" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="300" cy="370" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="350" cy="358" r="14" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="400" cy="368" r="17" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="450" cy="360" r="15" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="500" cy="365" r="16" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+  <circle cx="550" cy="370" r="14" fill="#fdebd0" stroke="#f0b27a" stroke-width="1"/>
+
+  <!-- Hair follicle -->
+  <ellipse cx="200" cy="250" rx="18" ry="50" fill="#d4a574" stroke="#8b6914" stroke-width="1.5" transform="rotate(-5,200,250)"/>
+  <rect x="196" y="60" width="8" height="150" rx="3" fill="#5d4037" transform="rotate(-5,200,135)"/>
+  <!-- Arrector pili muscle -->
+  <line x1="215" y1="200" x2="240" y2="130" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,2"/>
+
+  <!-- Sebaceous gland -->
+  <ellipse cx="245" cy="165" rx="22" ry="14" fill="#aed6f1" stroke="#1a5276" stroke-width="1.5"/>
+  <path d="M230,158 Q237,145 245,155" fill="none" stroke="#1a5276" stroke-width="1"/>
+
+  <!-- Sweat gland -->
+  <path d="M420,260 Q430,280 420,290 Q410,300 420,310 Q430,320 420,330" fill="none" stroke="#3498db" stroke-width="2.5"/>
+  <circle cx="420" cy="340" r="12" fill="#aed6f1" stroke="#3498db" stroke-width="1.5"/>
+  <!-- Sweat duct to surface -->
+  <path d="M420,260 L420,115" fill="none" stroke="#3498db" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Blood vessels -->
+  <path d="M80,250 Q150,240 250,255 Q350,265 450,250 Q550,240 600,255" fill="none" stroke="#e74c3c" stroke-width="2"/>
+  <path d="M80,260 Q150,250 250,265 Q350,275 450,260 Q550,250 600,265" fill="none" stroke="#3498db" stroke-width="2"/>
+
+  <!-- Nerve endings -->
+  <path d="M320,130 L320,250 M310,230 L320,250 L330,230" fill="none" stroke="#8e44ad" stroke-width="1.5"/>
+  <circle cx="320" cy="130" r="5" fill="#8e44ad" opacity="0.6"/>
+
+  <!-- Tattoo ink deposit zone -->
+  <rect x="470" y="135" width="80" height="60" rx="5" fill="#1a5276" opacity="0.15" stroke="#1a5276" stroke-width="2" stroke-dasharray="6,3"/>
+  <circle cx="490" cy="155" r="3" fill="#1a5276" opacity="0.6"/>
+  <circle cx="505" cy="162" r="2.5" fill="#1a5276" opacity="0.6"/>
+  <circle cx="520" cy="150" r="3" fill="#1a5276" opacity="0.6"/>
+  <circle cx="535" cy="165" r="2.5" fill="#1a5276" opacity="0.6"/>
+  <circle cx="498" cy="175" r="3" fill="#1a5276" opacity="0.6"/>
+  <circle cx="515" cy="180" r="2.5" fill="#1a5276" opacity="0.6"/>
+  <circle cx="530" cy="172" r="3" fill="#1a5276" opacity="0.6"/>
+
+  <!-- Needle illustration -->
+  <line x1="510" y1="50" x2="510" y2="155" stroke="#555" stroke-width="2"/>
+  <polygon points="508,155 512,155 510,170" fill="#555"/>
+  <rect x="503" y="48" width="14" height="25" rx="2" fill="#888" stroke="#555" stroke-width="1"/>
+
+  <!-- Layer labels (right side) -->
+  <line x1="620" y1="95" x2="660" y2="95" stroke="#2c3e50" stroke-width="1"/>
+  <text x="665" y="92" font-size="13" font-weight="bold" fill="#2c3e50">Epiderme</text>
+  <text x="665" y="106" font-size="10" fill="#7f8c8d">~0.1 mm</text>
+
+  <line x1="620" y1="190" x2="660" y2="190" stroke="#2c3e50" stroke-width="1"/>
+  <text x="665" y="187" font-size="13" font-weight="bold" fill="#2c3e50">Derme</text>
+  <text x="665" y="201" font-size="10" fill="#7f8c8d">~1-4 mm</text>
+
+  <line x1="620" y1="335" x2="660" y2="335" stroke="#2c3e50" stroke-width="1"/>
+  <text x="665" y="332" font-size="13" font-weight="bold" fill="#2c3e50">Hypoderme</text>
+  <text x="665" y="346" font-size="10" fill="#7f8c8d">variable</text>
+
+  <!-- Annotation labels -->
+  <!-- Hair follicle label -->
+  <line x1="200" y1="290" x2="120" y2="420" stroke="#2c3e50" stroke-width="1"/>
+  <text x="30" y="425" font-size="11" fill="#2c3e50">Follicule pileux</text>
+
+  <!-- Sebaceous gland label -->
+  <line x1="245" y1="152" x2="245" y2="425" stroke="#2c3e50" stroke-width="1" stroke-dasharray="2,3"/>
+  <text x="200" y="442" font-size="11" fill="#2c3e50">Glande sébacée</text>
+
+  <!-- Sweat gland label -->
+  <line x1="420" y1="352" x2="420" y2="420" stroke="#2c3e50" stroke-width="1"/>
+  <text x="370" y="440" font-size="11" fill="#2c3e50">Glande sudoripare</text>
+
+  <!-- Ink deposit label -->
+  <rect x="455" y="55" width="110" height="32" rx="4" fill="#1a5276"/>
+  <text x="510" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">Zone de dépot</text>
+  <text x="510" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">de l'encre</text>
+
+  <!-- Nerve label -->
+  <text x="330" y="128" font-size="10" fill="#8e44ad">Nerf</text>
+
+  <!-- Blood vessel labels -->
+  <text x="82" y="247" font-size="9" fill="#e74c3c">artère</text>
+  <text x="82" y="275" font-size="9" fill="#3498db">veine</text>
+</svg>

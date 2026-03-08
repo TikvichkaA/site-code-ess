@@ -132,14 +132,6 @@
         print-color-adjust: exact;
     }
 
-    /* Gap markers */
-    .gap-marker {
-        background: #27ae60 !important;
-        color: white !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-
     /* Liens */
     a {
         color: #1a5276 !important;

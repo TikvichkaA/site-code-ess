@@ -29,6 +29,10 @@
     "tva": 0,
     "objectif_general": "Permettre aux professionnels du tatouage et du perçage corporel d'acquérir les compétences nécessaires en matière d'hygiène et de salubrité, conformément à la réglementation en vigueur."
   },
+  "tracking": {
+    "enabled": true,
+    "endpoint": "https://script.google.com/macros/s/AKfycbypKGUetVSIAgCjWl2u2e2swpLSZALKmooyt1Vw9A1P9uHBwQHicYCMDRRC3XGQtvSC/exec"
+  },
   "regions_disponibles": [
     { "code": "ARA", "nom": "Auvergne-Rhône-Alpes" },
     { "code": "PACA", "nom": "Provence-Alpes-Côte d'Azur" },

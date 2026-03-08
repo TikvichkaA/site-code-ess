@@ -33,6 +33,10 @@
                 progress[moduleId].started = true;
             }
             saveProgress(progress);
+
+            if (window.Tracking) {
+                window.Tracking.send({ type: 'module_start', module: moduleId });
+            }
         },
 
         // Marquer un module comme terminé
@@ -61,6 +65,18 @@
                 progress[moduleId].completedAt = Date.now();
             }
             saveProgress(progress);
+
+            if (window.Tracking) {
+                window.Tracking.send({
+                    type: 'quiz',
+                    module: moduleId,
+                    score: score,
+                    total: total,
+                    percentage: Math.round((score / total) * 100),
+                    passed: score / total >= 0.7,
+                    attempt: window.Tracking.getAttempt(moduleId)
+                });
+            }
         },
 
         // Obtenir le statut d'un module
@@ -95,6 +111,7 @@
         // Réinitialiser
         reset() {
             localStorage.removeItem(STORAGE_KEY);
+            if (window.Tracking) window.Tracking.reset();
         },
 
         // Obtenir toutes les données

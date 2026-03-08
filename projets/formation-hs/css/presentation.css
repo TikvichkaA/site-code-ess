@@ -2,32 +2,6 @@
    Presentation — Slide deck styles (16:9)
 ============================================ */
 
-/* Watermark — remove after delivery */
-.slide::after {
-    content: "DRAFT — NE PAS DIFFUSER";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-35deg);
-    font-size: 5rem;
-    font-weight: 900;
-    color: rgba(0, 0, 0, 0.06);
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 50;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-.slide--cover::after,
-.slide--section::after {
-    color: rgba(255, 255, 255, 0.08);
-}
-@media print {
-    .slide::after { color: rgba(0, 0, 0, 0.04); }
-    .slide--cover::after,
-    .slide--section::after { color: rgba(255, 255, 255, 0.06); }
-}
-
 /* Reset for presentation mode */
 .pres-body {
     margin: 0;

@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrowSmall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#27ae60"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a5276">Technique de lavage des mains (OMS)</text>
+  <text x="350" y="46" text-anchor="middle" font-size="12" fill="#7f8c8d">Duree minimale : 30 secondes avec un savon antiseptique</text>
+
+  <!-- Row 1: Steps 1-4 -->
+  <!-- Step 1 -->
+  <g transform="translate(30,65)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">1</text>
+    <!-- Hand icon: palm to palm -->
+    <g transform="translate(72,55)">
+      <ellipse cx="-10" cy="15" rx="22" ry="30" fill="#fdebd0" stroke="#d4a574" stroke-width="1.5"/>
+      <ellipse cx="10" cy="15" rx="22" ry="30" fill="#fdebd0" stroke="#d4a574" stroke-width="1.5"/>
+      <!-- Friction arrows -->
+      <line x1="-5" y1="-5" x2="5" y2="-5" stroke="#27ae60" stroke-width="1.5"/>
+      <line x1="5" y1="0" x2="-5" y2="0" stroke="#27ae60" stroke-width="1.5"/>
+      <line x1="-5" y1="5" x2="5" y2="5" stroke="#27ae60" stroke-width="1.5"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Paume contre</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">paume</text>
+  </g>
+
+  <!-- Arrow 1→2 -->
+  <line x1="178" y1="137" x2="192" y2="137" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowSmall)"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(195,65)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">2</text>
+    <!-- Hand icon: back of hands -->
+    <g transform="translate(72,55)">
+      <ellipse cx="-8" cy="15" rx="22" ry="30" fill="#fdebd0" stroke="#d4a574" stroke-width="1.5"/>
+      <ellipse cx="8" cy="15" rx="22" ry="30" fill="#e8d5b7" stroke="#d4a574" stroke-width="1.5"/>
+      <!-- Cross pattern showing back -->
+      <line x1="2" y1="0" x2="14" y2="0" stroke="#d4a574" stroke-width="1"/>
+      <line x1="2" y1="6" x2="14" y2="6" stroke="#d4a574" stroke-width="1"/>
+      <line x1="2" y1="12" x2="14" y2="12" stroke="#d4a574" stroke-width="1"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Dos des</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">mains</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <line x1="343" y1="137" x2="357" y2="137" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowSmall)"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(360,65)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">3</text>
+    <!-- Hand icon: between fingers -->
+    <g transform="translate(72,50)">
+      <!-- Interlocked fingers -->
+      <rect x="-25" y="5" width="10" height="30" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <rect x="-12" y="0" width="10" height="35" rx="4" fill="#e8d5b7" stroke="#d4a574" stroke-width="1"/>
+      <rect x="1" y="5" width="10" height="30" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <rect x="14" y="0" width="10" height="35" rx="4" fill="#e8d5b7" stroke="#d4a574" stroke-width="1"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Entre les</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">doigts</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <line x1="508" y1="137" x2="522" y2="137" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowSmall)"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(525,65)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">4</text>
+    <!-- Hand icon: back of fingers -->
+    <g transform="translate(72,48)">
+      <!-- Curled fingers -->
+      <rect x="-22" y="10" width="10" height="22" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <rect x="-10" y="5" width="10" height="27" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <rect x="2" y="10" width="10" height="22" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <rect x="14" y="5" width="10" height="27" rx="4" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <!-- Palm behind -->
+      <ellipse cx="0" cy="25" rx="28" ry="15" fill="#e8d5b7" stroke="#d4a574" stroke-width="1"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Dos des</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">doigts</text>
+  </g>
+
+  <!-- Row 2: Steps 5-7 -->
+  <!-- Step 5 -->
+  <g transform="translate(110,225)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">5</text>
+    <!-- Thumb rotation -->
+    <g transform="translate(72,50)">
+      <ellipse cx="0" cy="10" rx="12" ry="25" fill="#fdebd0" stroke="#d4a574" stroke-width="1.5"/>
+      <!-- Wrapping hand -->
+      <ellipse cx="0" cy="10" rx="20" ry="18" fill="none" stroke="#e8d5b7" stroke-width="8" opacity="0.6"/>
+      <!-- Rotation arrow -->
+      <path d="M 20,0 A 20,20 0 0 1 0,-20" fill="none" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowSmall)"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Pouces</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">(rotation)</text>
+  </g>
+
+  <!-- Arrow 5→6 -->
+  <line x1="258" y1="297" x2="272" y2="297" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowSmall)"/>
+
+  <!-- Step 6 -->
+  <g transform="translate(275,225)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">6</text>
+    <!-- Fingertips in palm -->
+    <g transform="translate(72,50)">
+      <ellipse cx="0" cy="15" rx="25" ry="20" fill="#e8d5b7" stroke="#d4a574" stroke-width="1.5"/>
+      <!-- Fingertips -->
+      <circle cx="-12" cy="5" r="5" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <circle cx="-4" cy="2" r="5" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <circle cx="4" cy="2" r="5" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <circle cx="12" cy="5" r="5" fill="#fdebd0" stroke="#d4a574" stroke-width="1"/>
+      <!-- Rotation -->
+      <path d="M 22,-5 A 20,20 0 0 1 5,-22" fill="none" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowSmall)"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Bout des</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">doigts</text>
+  </g>
+
+  <!-- Arrow 6→7 -->
+  <line x1="423" y1="297" x2="437" y2="297" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowSmall)"/>
+
+  <!-- Step 7 -->
+  <g transform="translate(440,225)">
+    <rect width="145" height="145" rx="10" fill="#f8f9fa" stroke="#27ae60" stroke-width="2"/>
+    <circle cx="22" cy="22" r="16" fill="#27ae60"/>
+    <text x="22" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">7</text>
+    <!-- Wrists -->
+    <g transform="translate(72,48)">
+      <!-- Forearm -->
+      <rect x="-8" y="-5" width="16" height="45" rx="6" fill="#fdebd0" stroke="#d4a574" stroke-width="1.5"/>
+      <!-- Wrapping hand -->
+      <ellipse cx="0" cy="12" rx="18" ry="12" fill="none" stroke="#e8d5b7" stroke-width="7" opacity="0.6"/>
+      <!-- Rotation arrow -->
+      <path d="M 20,5 A 18,18 0 0 1 2,-15" fill="none" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowSmall)"/>
+    </g>
+    <text x="72" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">Poignets</text>
+    <text x="72" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">(rotation)</text>
+  </g>
+
+  <!-- Curved arrow from row 1 to row 2 -->
+  <path d="M 597,213 Q 610,220 597,227" fill="none" stroke="#27ae60" stroke-width="2"/>
+  <path d="M 597,227 L 185,227" fill="none" stroke="#27ae60" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="185,224 175,227 185,230" fill="#27ae60"/>
+</svg>

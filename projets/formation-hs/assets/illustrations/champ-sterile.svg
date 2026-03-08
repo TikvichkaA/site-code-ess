@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="Arial, sans-serif">
+  <defs>
+    <pattern id="sterilePattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#d5f5e3"/>
+      <circle cx="10" cy="10" r="1" fill="#27ae60" opacity="0.2"/>
+    </pattern>
+    <marker id="dimArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a5276">Preparation du champ sterile</text>
+  <text x="350" y="43" text-anchor="middle" font-size="11" fill="#7f8c8d" font-style="italic">Organisation du plan de travail pour un acte de tatouage/percage</text>
+
+  <!-- Work surface (table) -->
+  <rect x="60" y="70" width="480" height="290" rx="6" fill="#d5dbdb" stroke="#95a5a6" stroke-width="2"/>
+
+  <!-- Non-sterile border zone -->
+  <rect x="60" y="70" width="480" height="290" rx="6" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- Sterile drape (inner zone) -->
+  <rect x="90" y="95" width="420" height="240" rx="4" fill="url(#sterilePattern)" stroke="#27ae60" stroke-width="2.5"/>
+
+  <!-- Label: sterile zone -->
+  <rect x="220" y="95" width="170" height="22" rx="4" fill="#27ae60"/>
+  <text x="305" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">ZONE STERILE</text>
+
+  <!-- Label: non-sterile border -->
+  <!-- Top border dimension -->
+  <line x1="65" y1="82" x2="85" y2="82" stroke="#e74c3c" stroke-width="1"/>
+  <line x1="65" y1="78" x2="65" y2="86" stroke="#e74c3c" stroke-width="1"/>
+  <line x1="85" y1="78" x2="85" y2="86" stroke="#e74c3c" stroke-width="1"/>
+  <text x="75" y="76" text-anchor="middle" font-size="8" fill="#e74c3c">2-3 cm</text>
+  <!-- Right border label -->
+  <text x="548" y="215" font-size="9" fill="#e74c3c" transform="rotate(90,548,215)">Bordure non sterile</text>
+
+  <!-- Instruments layout on sterile field -->
+
+  <!-- Ink caps row -->
+  <g transform="translate(120,140)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Godets d'encre</text>
+    <circle cx="15" cy="20" r="10" fill="#2c3e50" stroke="#1a5276" stroke-width="1"/>
+    <circle cx="15" cy="20" r="6" fill="#1a1a2e"/>
+    <circle cx="42" cy="20" r="10" fill="#c0392b" stroke="#922b21" stroke-width="1"/>
+    <circle cx="42" cy="20" r="6" fill="#e74c3c"/>
+    <circle cx="69" cy="20" r="10" fill="#1a5276" stroke="#154360" stroke-width="1"/>
+    <circle cx="69" cy="20" r="6" fill="#2980b9"/>
+    <circle cx="96" cy="20" r="10" fill="#27ae60" stroke="#1e8449" stroke-width="1"/>
+    <circle cx="96" cy="20" r="6" fill="#2ecc71"/>
+    <circle cx="123" cy="20" r="10" fill="#f5f5f5" stroke="#bdc3c7" stroke-width="1"/>
+    <circle cx="123" cy="20" r="6" fill="#fff"/>
+  </g>
+
+  <!-- Needles / cartridges -->
+  <g transform="translate(120,200)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Aiguilles / cartouches (emballage ouvert)</text>
+    <!-- Cartridge 1 -->
+    <rect x="10" y="5" width="50" height="12" rx="3" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1.5"/>
+    <polygon points="60,8 70,11 60,14" fill="#7f8c8d"/>
+    <!-- Cartridge 2 -->
+    <rect x="90" y="5" width="50" height="12" rx="3" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1.5"/>
+    <polygon points="140,8 150,11 140,14" fill="#7f8c8d"/>
+  </g>
+
+  <!-- Gauze / compresses -->
+  <g transform="translate(120,250)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Compresses steriles</text>
+    <rect x="10" y="5" width="35" height="35" rx="2" fill="#fff" stroke="#bdc3c7" stroke-width="1"/>
+    <line x1="10" y1="22" x2="45" y2="22" stroke="#ecf0f1" stroke-width="1"/>
+    <line x1="27" y1="5" x2="27" y2="40" stroke="#ecf0f1" stroke-width="1"/>
+    <rect x="55" y="5" width="35" height="35" rx="2" fill="#fff" stroke="#bdc3c7" stroke-width="1"/>
+    <line x1="55" y1="22" x2="90" y2="22" stroke="#ecf0f1" stroke-width="1"/>
+    <line x1="72" y1="5" x2="72" y2="40" stroke="#ecf0f1" stroke-width="1"/>
+    <rect x="100" y="5" width="35" height="35" rx="2" fill="#fff" stroke="#bdc3c7" stroke-width="1"/>
+    <line x1="100" y1="22" x2="135" y2="22" stroke="#ecf0f1" stroke-width="1"/>
+    <line x1="117" y1="5" x2="117" y2="40" stroke="#ecf0f1" stroke-width="1"/>
+  </g>
+
+  <!-- Protective film / Vaseline -->
+  <g transform="translate(320,140)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Vaseline / Film protecteur</text>
+    <!-- Vaseline tube -->
+    <rect x="10" y="5" width="60" height="25" rx="10" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+    <text x="40" y="21" text-anchor="middle" font-size="7" fill="#f39c12">Vaseline</text>
+    <!-- Film roll -->
+    <rect x="85" y="5" width="45" height="25" rx="4" fill="#d4efdf" stroke="#27ae60" stroke-width="1"/>
+    <text x="108" y="21" text-anchor="middle" font-size="7" fill="#27ae60">Film</text>
+  </g>
+
+  <!-- Gloves -->
+  <g transform="translate(320,200)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Gants steriles (paires)</text>
+    <!-- Glove shape 1 -->
+    <path d="M20,8 L15,35 L18,38 L22,25 L24,38 L27,25 L29,38 L32,25 L34,38 L37,35 L32,8 Z" fill="#aed6f1" stroke="#3498db" stroke-width="1"/>
+    <!-- Glove shape 2 -->
+    <path d="M55,8 L50,35 L53,38 L57,25 L59,38 L62,25 L64,38 L67,25 L69,38 L72,35 L67,8 Z" fill="#aed6f1" stroke="#3498db" stroke-width="1"/>
+  </g>
+
+  <!-- Antiseptic -->
+  <g transform="translate(320,250)">
+    <text x="0" y="-5" font-size="9" font-weight="bold" fill="#2c3e50">Antiseptique cutane</text>
+    <!-- Bottle -->
+    <rect x="15" y="5" width="30" height="35" rx="4" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+    <rect x="20" y="0" width="20" height="8" rx="3" fill="#f39c12"/>
+    <text x="30" y="28" text-anchor="middle" font-size="6" fill="#f39c12">Antisept.</text>
+  </g>
+
+  <!-- Waste container (outside sterile zone) -->
+  <g transform="translate(575,120)">
+    <text x="40" y="-5" text-anchor="middle" font-size="10" font-weight="bold" fill="#e74c3c">Dechets</text>
+    <!-- DASRI bin -->
+    <rect x="10" y="10" width="60" height="80" rx="6" fill="#f7dc6f" stroke="#d4ac0d" stroke-width="2"/>
+    <rect x="5" y="5" width="70" height="15" rx="5" fill="#d4ac0d" stroke="#b7950b" stroke-width="1"/>
+    <!-- Biohazard mini -->
+    <circle cx="40" cy="55" r="12" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+    <circle cx="40" cy="52" r="4" fill="none" stroke="#2c3e50" stroke-width="1"/>
+    <circle cx="36" cy="58" r="4" fill="none" stroke="#2c3e50" stroke-width="1"/>
+    <circle cx="44" cy="58" r="4" fill="none" stroke="#2c3e50" stroke-width="1"/>
+    <text x="40" y="82" text-anchor="middle" font-size="7" fill="#2c3e50">Collecteur</text>
+    <!-- PCT -->
+    <rect x="10" y="105" width="60" height="50" rx="6" fill="#f7dc6f" stroke="#d4ac0d" stroke-width="2"/>
+    <rect x="25" y="108" width="30" height="5" rx="2" fill="#7d6608"/>
+    <text x="40" y="140" text-anchor="middle" font-size="7" fill="#2c3e50">PCT</text>
+    <text x="40" y="150" text-anchor="middle" font-size="6" fill="#7f8c8d">aiguilles</text>
+
+    <text x="40" y="175" text-anchor="middle" font-size="8" fill="#e74c3c" font-style="italic">A proximite</text>
+    <text x="40" y="185" text-anchor="middle" font-size="8" fill="#e74c3c" font-style="italic">immediate</text>
+  </g>
+
+  <!-- Dimension annotations for sterile zone -->
+  <!-- Left side dimension (non-sterile border) -->
+  <line x1="55" y1="95" x2="55" y2="335" stroke="#7f8c8d" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="90" y1="58" x2="90" y2="68" stroke="#27ae60" stroke-width="1"/>
+  <line x1="510" y1="58" x2="510" y2="68" stroke="#27ae60" stroke-width="1"/>
+  <line x1="90" y1="63" x2="510" y2="63" stroke="#27ae60" stroke-width="1" marker-end="url(#dimArrow)"/>
+
+  <!-- Notes at bottom -->
+  <rect x="60" y="370" width="580" height="24" rx="5" fill="#1a5276" opacity="0.08" stroke="#1a5276" stroke-width="1"/>
+  <circle cx="80" cy="382" r="8" fill="#27ae60"/>
+  <text x="80" y="386" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">i</text>
+  <text x="95" y="386" font-size="10" fill="#2c3e50">Ne jamais passer les mains au-dessus du champ sterile — Ouvrir les emballages a distance du champ</text>
+</svg>

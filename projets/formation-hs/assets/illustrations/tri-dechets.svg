@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="Arial, sans-serif">
+
+  <!-- Title -->
+  <text x="350" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a5276">Tri des dechets en etablissement de tatouage/percage</text>
+
+  <!-- Container 1: Yellow rigid container (PCT) -->
+  <g transform="translate(60,55)">
+    <!-- Container body -->
+    <rect x="0" y="40" width="140" height="170" rx="8" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2.5"/>
+    <!-- Lid -->
+    <rect x="-5" y="25" width="150" height="20" rx="6" fill="#d4ac0d" stroke="#b7950b" stroke-width="2"/>
+    <!-- Opening slit -->
+    <rect x="35" y="28" width="70" height="6" rx="3" fill="#7d6608"/>
+    <!-- Biohazard symbol -->
+    <circle cx="70" cy="115" r="30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+    <g transform="translate(70,115)">
+      <!-- Simplified biohazard -->
+      <circle cx="0" cy="-12" r="8" fill="none" stroke="#2c3e50" stroke-width="2.5"/>
+      <circle cx="-10" cy="8" r="8" fill="none" stroke="#2c3e50" stroke-width="2.5"/>
+      <circle cx="10" cy="8" r="8" fill="none" stroke="#2c3e50" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="4" fill="#2c3e50"/>
+    </g>
+    <!-- Label -->
+    <rect x="5" y="155" width="130" height="45" rx="4" fill="#fff" opacity="0.9"/>
+    <text x="70" y="172" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">COLLECTEUR PCT</text>
+    <text x="70" y="185" text-anchor="middle" font-size="9" fill="#2c3e50">Aiguilles, lames</text>
+    <text x="70" y="196" text-anchor="middle" font-size="9" fill="#2c3e50">objets piquants</text>
+
+    <!-- Header -->
+    <rect x="-10" y="-5" width="160" height="26" rx="6" fill="#f39c12"/>
+    <text x="70" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">DASRI PIQUANTS</text>
+  </g>
+
+  <!-- Container 2: Yellow bag (DASRI mous) -->
+  <g transform="translate(280,55)">
+    <!-- Bag body -->
+    <path d="M10,60 Q0,100 5,180 Q10,210 70,210 Q130,210 135,180 Q140,100 130,60 Z" fill="#f7dc6f" stroke="#d4ac0d" stroke-width="2.5"/>
+    <!-- Bag top (gathered) -->
+    <path d="M10,60 Q30,45 70,42 Q110,45 130,60" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2"/>
+    <!-- Tie -->
+    <ellipse cx="70" cy="50" rx="25" ry="8" fill="none" stroke="#e74c3c" stroke-width="3"/>
+    <!-- Biohazard marking -->
+    <circle cx="70" cy="120" r="25" fill="none" stroke="#2c3e50" stroke-width="2"/>
+    <g transform="translate(70,120)">
+      <circle cx="0" cy="-10" r="7" fill="none" stroke="#2c3e50" stroke-width="2"/>
+      <circle cx="-8" cy="6" r="7" fill="none" stroke="#2c3e50" stroke-width="2"/>
+      <circle cx="8" cy="6" r="7" fill="none" stroke="#2c3e50" stroke-width="2"/>
+      <circle cx="0" cy="0" r="3.5" fill="#2c3e50"/>
+    </g>
+    <!-- Label -->
+    <rect x="5" y="155" width="130" height="48" rx="4" fill="#fff" opacity="0.9"/>
+    <text x="70" y="170" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">DASRI MOUS</text>
+    <text x="70" y="183" text-anchor="middle" font-size="9" fill="#2c3e50">Compresses, gants</text>
+    <text x="70" y="196" text-anchor="middle" font-size="9" fill="#2c3e50">materiels souilles</text>
+
+    <!-- Header -->
+    <rect x="-10" y="-5" width="160" height="26" rx="6" fill="#f39c12"/>
+    <text x="70" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">DASRI MOUS</text>
+  </g>
+
+  <!-- Container 3: Gray bin (DAOM) -->
+  <g transform="translate(500,55)">
+    <!-- Bin body -->
+    <path d="M10,50 L5,210 L135,210 L130,50 Z" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2.5"/>
+    <!-- Lid -->
+    <rect x="0" y="30" width="140" height="25" rx="8" fill="#7f8c8d" stroke="#616a6b" stroke-width="2"/>
+    <!-- Lid handle -->
+    <rect x="55" y="23" width="30" height="10" rx="5" fill="#616a6b"/>
+    <!-- Recycling symbol simplified -->
+    <g transform="translate(70,120)">
+      <path d="M-15,-18 L0,-8 L15,-18" fill="none" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M15,-18 L18,2 L8,12" fill="none" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M8,12 L-8,12 L-15,-18" fill="none" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Arrows -->
+      <polygon points="-2,-11 4,-11 0,-6" fill="#2c3e50"/>
+      <polygon points="15,-2 12,5 9,-1" fill="#2c3e50"/>
+      <polygon points="-12,6 -5,8 -9,12" fill="#2c3e50"/>
+    </g>
+    <!-- Label -->
+    <rect x="5" y="155" width="130" height="48" rx="4" fill="#fff" opacity="0.9"/>
+    <text x="70" y="170" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">DAOM</text>
+    <text x="70" y="183" text-anchor="middle" font-size="9" fill="#2c3e50">Emballages non</text>
+    <text x="70" y="196" text-anchor="middle" font-size="9" fill="#2c3e50">souilles, papiers</text>
+
+    <!-- Header -->
+    <rect x="-10" y="-5" width="160" height="26" rx="6" fill="#7f8c8d"/>
+    <text x="70" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">ORDURES MENAGERES</text>
+  </g>
+
+  <!-- Warning notes at bottom -->
+  <rect x="30" y="295" width="640" height="90" rx="8" fill="#f8f9fa" stroke="#d5dbdb" stroke-width="1.5"/>
+
+  <!-- DASRI note -->
+  <g transform="translate(50,310)">
+    <circle cx="8" cy="8" r="8" fill="#e74c3c"/>
+    <text x="8" y="12" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">!</text>
+    <text x="25" y="12" font-size="10" font-weight="bold" fill="#e74c3c">DASRI</text>
+    <text x="75" y="12" font-size="10" fill="#2c3e50">= Dechets d'Activites de Soins a Risque Infectieux</text>
+  </g>
+
+  <g transform="translate(50,335)">
+    <circle cx="8" cy="8" r="8" fill="#f39c12"/>
+    <text x="8" y="12" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">i</text>
+    <text x="25" y="12" font-size="10" fill="#2c3e50">Collecte par un prestataire agree — Bordereau CERFA de suivi obligatoire</text>
+  </g>
+
+  <g transform="translate(50,360)">
+    <circle cx="8" cy="8" r="8" fill="#1a5276"/>
+    <text x="8" y="12" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">i</text>
+    <text x="25" y="12" font-size="10" fill="#2c3e50">Convention obligatoire avec un collecteur agree (art. R1335-2 CSP)</text>
+  </g>
+</svg>

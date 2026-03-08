@@ -121,6 +121,10 @@
             this.submitted = true;
             this.score = 0;
 
+            if (window.Tracking) {
+                window.Tracking.incrementAttempt(this.moduleId);
+            }
+
             this.questions.forEach((q, i) => {
                 const answer = this.answers[`q${i}`];
                 const correct = answer === q.correct;

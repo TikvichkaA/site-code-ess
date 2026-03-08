@@ -37,11 +37,13 @@
             <p class="text-muted">Parcourez les 9 modules, validez les quiz et suivez votre progression.</p>
         </div>
 
+        <div class="learner-info" id="learnerInfo"></div>
+
         <div class="global-progress">
             <div class="global-progress-bar">
                 <div class="global-progress-fill"></div>
             </div>
-            <div class="global-progress-text">0/2 modules disponibles complétés</div>
+            <div class="global-progress-text">0/9 modules complétés</div>
         </div>
 
         <div class="modules-grid">
@@ -67,68 +69,82 @@
                 <span class="btn btn-sm btn-outline">Commencer</span>
             </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-3.html" class="module-card" data-module="module-3">
                 <div class="module-card-header">
                     <div class="module-num">3</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Micro-organismes</h3>
                 <p>Flores cutanée, buccale, oculaire, génitale. Biofilms. Résidents vs transitoires.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-4.html" class="module-card" data-module="module-4">
                 <div class="module-card-header">
                     <div class="module-num">4</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Risques allergiques & infectieux</h3>
                 <p>Pigments, contamination, contre-indications, soins post-acte différenciés.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-5.html" class="module-card" data-module="module-5">
                 <div class="module-card-header">
                     <div class="module-num">5</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Stérilisation & désinfection</h3>
                 <p>Normes EN 13060, ISO 17665-1, ISO 11607-1. Matériel thermosensible. Traçabilité.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-6.html" class="module-card" data-module="module-6">
                 <div class="module-card-header">
                     <div class="module-num">6</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Protection du travailleur</h3>
                 <p>EPI, gants stériles, AES, vaccination, hygiène des mains.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-7.html" class="module-card" data-module="module-7">
                 <div class="module-card-header">
                     <div class="module-num">7</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Gestion achats & déchets</h3>
                 <p>Encres REACH, bijoux APP/ASTM, matériel annexe 6, DASRI.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-8.html" class="module-card" data-module="module-8">
                 <div class="module-card-header">
                     <div class="module-num">8</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Locaux & mobilier</h3>
                 <p>Zones fonctionnelles, surfaces, ventilation, protocoles d'entretien.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
 
-            <div class="module-card module-card--locked">
+            <a href="module-9.html" class="module-card" data-module="module-9">
                 <div class="module-card-header">
                     <div class="module-num">9</div>
-                    <span class="module-status badge" style="background:#95a5a6;color:#fff;">Bientôt disponible</span>
+                    <span class="module-status badge badge-primary">Non commencé</span>
                 </div>
                 <h3>Procédures d'asepsie (Pratique)</h3>
                 <p>Champ stérile, antisepsie, procédures tatouage/perçage/maquillage permanent.</p>
-            </div>
+                <span class="module-score hidden"></span>
+                <span class="btn btn-sm btn-outline">Commencer</span>
+            </a>
         </div>
 
         <div class="text-center mt-4" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
@@ -148,6 +164,7 @@
     <script src="../js/config-loader.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/progress-tracker.js"></script>
+    <script src="../js/tracking.js"></script>
     <script src="../js/pwa-register.js"></script>
 </body>
 </html>

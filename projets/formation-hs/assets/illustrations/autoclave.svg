@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="metalGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#bdc3c7"/>
+      <stop offset="30%" stop-color="#ecf0f1"/>
+      <stop offset="60%" stop-color="#d5dbdb"/>
+      <stop offset="100%" stop-color="#aeb6bf"/>
+    </linearGradient>
+    <linearGradient id="chamberGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5d6d7e"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+    <linearGradient id="steamGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#aed6f1" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#d4efdf" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a5276">Autoclave de table (sterilisateur a vapeur)</text>
+
+  <!-- Main body -->
+  <rect x="100" y="80" width="420" height="220" rx="15" fill="url(#metalGrad)" stroke="#7f8c8d" stroke-width="2"/>
+
+  <!-- Chamber (interior) -->
+  <rect x="175" y="100" width="280" height="165" rx="8" fill="url(#chamberGrad)" stroke="#566573" stroke-width="2"/>
+
+  <!-- Steam inside chamber -->
+  <rect x="180" y="105" width="270" height="155" rx="6" fill="url(#steamGrad)"/>
+
+  <!-- Steam particles -->
+  <circle cx="220" cy="150" r="8" fill="#aed6f1" opacity="0.4"/>
+  <circle cx="260" cy="180" r="6" fill="#aed6f1" opacity="0.3"/>
+  <circle cx="310" cy="140" r="10" fill="#aed6f1" opacity="0.35"/>
+  <circle cx="360" cy="170" r="7" fill="#aed6f1" opacity="0.4"/>
+  <circle cx="400" cy="145" r="9" fill="#aed6f1" opacity="0.3"/>
+  <circle cx="340" cy="210" r="8" fill="#aed6f1" opacity="0.35"/>
+  <circle cx="250" cy="220" r="6" fill="#aed6f1" opacity="0.3"/>
+  <circle cx="400" cy="220" r="7" fill="#aed6f1" opacity="0.35"/>
+
+  <!-- Tray inside chamber -->
+  <rect x="195" y="230" width="240" height="4" rx="1" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1"/>
+  <!-- Tray legs -->
+  <rect x="210" y="234" width="3" height="20" fill="#95a5a6"/>
+  <rect x="420" y="234" width="3" height="20" fill="#95a5a6"/>
+
+  <!-- Instruments on tray -->
+  <rect x="215" y="222" width="40" height="8" rx="2" fill="#bdc3c7" stroke="#95a5a6" stroke-width="0.5"/>
+  <rect x="265" y="220" width="8" height="10" rx="1" fill="#bdc3c7" stroke="#95a5a6" stroke-width="0.5"/>
+  <rect x="285" y="222" width="35" height="8" rx="2" fill="#bdc3c7" stroke="#95a5a6" stroke-width="0.5"/>
+  <circle cx="340" cy="226" r="5" fill="#bdc3c7" stroke="#95a5a6" stroke-width="0.5"/>
+  <rect x="360" y="222" width="50" height="8" rx="2" fill="#bdc3c7" stroke="#95a5a6" stroke-width="0.5"/>
+
+  <!-- Door (left side) -->
+  <rect x="105" y="85" width="65" height="210" rx="5" fill="#aeb6bf" stroke="#7f8c8d" stroke-width="2"/>
+  <!-- Door handle -->
+  <rect x="115" y="170" width="40" height="20" rx="8" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1.5"/>
+  <circle cx="145" cy="180" r="5" fill="#7f8c8d"/>
+  <!-- Door seal -->
+  <rect x="168" y="90" width="5" height="200" rx="2" fill="#2c3e50"/>
+
+  <!-- Control panel (right side) -->
+  <rect x="465" y="85" width="50" height="210" rx="5" fill="#d5dbdb" stroke="#7f8c8d" stroke-width="1.5"/>
+
+  <!-- Pressure gauge -->
+  <circle cx="490" cy="130" r="28" fill="#fff" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="490" cy="130" r="24" fill="#f8f9fa" stroke="#7f8c8d" stroke-width="1"/>
+  <!-- Gauge markings -->
+  <text x="490" y="115" text-anchor="middle" font-size="6" fill="#2c3e50">bar</text>
+  <text x="472" y="140" font-size="6" fill="#7f8c8d">0</text>
+  <text x="484" y="152" font-size="6" fill="#7f8c8d">1</text>
+  <text x="496" y="152" font-size="6" fill="#e74c3c" font-weight="bold">2</text>
+  <text x="506" y="140" font-size="6" fill="#7f8c8d">3</text>
+  <!-- Needle -->
+  <line x1="490" y1="130" x2="500" y2="145" stroke="#e74c3c" stroke-width="1.5"/>
+  <circle cx="490" cy="130" r="3" fill="#2c3e50"/>
+
+  <!-- Display screen -->
+  <rect x="472" y="170" width="36" height="22" rx="3" fill="#1a5276" stroke="#2c3e50" stroke-width="1"/>
+  <text x="490" y="183" text-anchor="middle" font-size="9" fill="#27ae60" font-weight="bold">134°C</text>
+
+  <!-- Buttons -->
+  <circle cx="480" cy="210" r="7" fill="#27ae60" stroke="#1e8449" stroke-width="1.5"/>
+  <circle cx="500" cy="210" r="7" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5"/>
+  <!-- Button labels -->
+  <text x="480" y="213" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">M</text>
+  <text x="500" y="213" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">A</text>
+
+  <!-- LED indicator -->
+  <circle cx="490" cy="240" r="5" fill="#27ae60" opacity="0.9"/>
+  <circle cx="490" cy="240" r="3" fill="#2ecc71"/>
+  <circle cx="490" cy="255" r="5" fill="#f39c12" opacity="0.3"/>
+  <circle cx="490" cy="270" r="5" fill="#e74c3c" opacity="0.3"/>
+
+  <!-- Base/Feet -->
+  <rect x="120" y="300" width="380" height="12" rx="3" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1"/>
+  <rect x="140" y="312" width="40" height="8" rx="4" fill="#7f8c8d"/>
+  <rect x="440" y="312" width="40" height="8" rx="4" fill="#7f8c8d"/>
+
+  <!-- Steam circuit arrows -->
+  <path d="M 460,100 Q 540,100 540,180 Q 540,260 460,260" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="460,257 465,263 455,263" fill="#3498db"/>
+  <text x="558" y="180" font-size="9" fill="#3498db" font-weight="bold">Circuit</text>
+  <text x="558" y="192" font-size="9" fill="#3498db" font-weight="bold">vapeur</text>
+
+  <!-- Labels with lines -->
+  <!-- Chamber label -->
+  <line x1="315" y1="270" x2="315" y2="340" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="315" y="355" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">Cuve (chambre)</text>
+
+  <!-- Door label -->
+  <line x1="135" y1="80" x2="135" y2="55" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="135" y="50" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">Porte</text>
+
+  <!-- Pressure gauge label -->
+  <line x1="490" y1="100" x2="490" y2="58" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="555" y="55" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">Manometre</text>
+  <line x1="490" y1="55" x2="525" y2="55" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Control panel label -->
+  <line x1="490" y1="195" x2="610" y2="195" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="610" y="195" font-size="11" fill="#2c3e50" font-weight="bold"> Panneau</text>
+  <text x="610" y="210" font-size="11" fill="#2c3e50" font-weight="bold"> de controle</text>
+
+  <!-- Cycle specification box -->
+  <rect x="130" y="345" width="440" height="40" rx="8" fill="#1a5276" opacity="0.1" stroke="#1a5276" stroke-width="2"/>
+  <text x="350" y="370" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a5276">Cycle B : 134 °C — 18 min — 2,1 bar</text>
+</svg>
