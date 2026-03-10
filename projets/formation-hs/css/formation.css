@@ -295,6 +295,14 @@
     margin-bottom: 0.75em;
 }
 
+/* Illustration images (prevent cropping) */
+.module-section figure img,
+.encadre img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 /* Quiz styles */
 .quiz-wrapper {
     background: var(--bg);

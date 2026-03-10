@@ -317,6 +317,13 @@
     .slide:last-child { page-break-after: avoid; }
 }
 
+/* ---- Illustration images (prevent cropping in two-cols) ---- */
+.slide img[src*="illustrations"] {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 /* ---- Responsive (projector/laptop) ---- */
 @media (max-width: 1200px) {
     .slide { padding: 40px 50px; }

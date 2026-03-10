@@ -24,7 +24,7 @@
       "icons": [{ "src": "assets/icon.svg", "sizes": "any" }]
     },
     {
-      "name": "Support ARS",
+      "name": "Support théorique",
       "short_name": "Support",
       "url": "./support/index.html",
       "icons": [{ "src": "assets/icon.svg", "sizes": "any" }]
