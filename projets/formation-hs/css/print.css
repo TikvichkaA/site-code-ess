@@ -157,4 +157,20 @@
     .badge {
         border: 1px solid #ccc;
     }
+
+    /* Watermark filigrane */
+    .support-document::before {
+        content: "DOCUMENT DE TRAVAIL";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 80pt;
+        font-weight: 900;
+        color: rgba(200, 200, 200, 0.25);
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 9999;
+    }
 }
