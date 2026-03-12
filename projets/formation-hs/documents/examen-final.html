@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Final - Formation Hygiene et Salubrite - INITIALE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #1a5276;
+            --primary-light: #2980b9;
+            --primary-dark: #0e3d5c;
+            --primary-bg: #eaf2f8;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--text);
+            background: #edf2f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- Screen nav ---- */
+        .no-print-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .no-print-nav a,
+        .no-print-nav button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        .no-print-nav .btn-back {
+            background: rgba(26, 82, 118, 0.1);
+            color: var(--primary);
+        }
+        .no-print-nav .btn-back:hover {
+            background: rgba(26, 82, 118, 0.2);
+        }
+        .no-print-nav .btn-print {
+            background: var(--primary);
+            color: #fff;
+        }
+        .no-print-nav .btn-print:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ---- Document ---- */
+        .document {
+            max-width: 210mm;
+            margin: 2rem auto;
+            background: var(--bg);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        /* ---- Header / En-tete ---- */
+        .exam-header {
+            background: var(--primary);
+            color: #fff;
+            padding: 2rem 2.5rem 1.5rem;
+        }
+        .exam-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+        }
+        .brand-sub {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.8;
+            display: block;
+            margin-top: 2px;
+        }
+        .exam-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .exam-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+        .exam-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* ---- Identification ---- */
+        .identification {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--primary-bg);
+            border-bottom: 2px solid var(--border);
+        }
+        .identification label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .identification .field {
+            border-bottom: 1px solid var(--primary);
+            min-height: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* ---- Instructions ---- */
+        .instructions {
+            padding: 1rem 2.5rem;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+        .instructions h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+        }
+        .instructions ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem 2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .instructions ul li::before {
+            content: "\2022";
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        /* ---- Bareme ---- */
+        .bareme {
+            padding: 0.8rem 2.5rem;
+            background: #fffbe6;
+            border-bottom: 2px solid var(--border);
+            font-size: 0.82rem;
+            color: var(--text-light);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .bareme strong {
+            color: var(--text);
+        }
+
+        /* ---- Content ---- */
+        .exam-content {
+            padding: 1.5rem 2.5rem 2rem;
+        }
+
+        /* ---- Unite section ---- */
+        .unite-section {
+            margin-bottom: 2rem;
+        }
+        .unite-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        .unite-number {
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .unite-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ---- Questions ---- */
+        .question {
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+        }
+        .question-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .question-num {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .question-type {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 8px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+        .type-qcm {
+            background: #d6eaf8;
+            color: #1a5276;
+        }
+        .type-vf {
+            background: #d5f5e3;
+            color: #1e8449;
+        }
+        .type-open {
+            background: #fdebd0;
+            color: #935116;
+        }
+        .question-text {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .question-points {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* QCM options */
+        .qcm-options {
+            list-style: none;
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+        .qcm-options li {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .checkbox {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid #888;
+            border-radius: 2px;
+            flex-shrink: 0;
+            position: relative;
+            top: 1px;
+        }
+
+        /* Vrai/Faux */
+        .vf-options {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+        .vf-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Open answer area */
+        .answer-lines {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+        .answer-line {
+            border-bottom: 1px solid #ccc;
+            height: 1.5rem;
+            margin-bottom: 0.1rem;
+        }
+
+        /* ---- Footer ---- */
+        .exam-footer {
+            padding: 1rem 2.5rem;
+            background: var(--bg-alt);
+            border-top: 2px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           PRINT STYLES
+        ============================================ */
+        @media print {
+            *, *::before, *::after {
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: #000 !important;
+                font-size: 10pt;
+                line-height: 1.45;
+            }
+
+            .no-print-nav {
+                display: none !important;
+            }
+
+            .document {
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .exam-header {
+                background: #1a5276 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 1.5rem 2cm;
+            }
+
+            .identification {
+                padding: 0.8rem 2cm;
+                background: #eaf2f8 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .instructions {
+                padding: 0.8rem 2cm;
+            }
+
+            .bareme {
+                padding: 0.6rem 2cm;
+                background: #fffbe6 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .exam-content {
+                padding: 1rem 2cm 1.5cm;
+            }
+
+            .unite-heading {
+                page-break-after: avoid;
+            }
+
+            .unite-number {
+                background: #1a5276 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .question {
+                page-break-inside: avoid;
+            }
+
+            .question-type {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .exam-footer {
+                padding: 0.8rem 2cm;
+                background: #f7fafc !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            h2, h3 {
+                page-break-after: avoid;
+            }
+
+            @page {
+                size: A4;
+                margin: 1.5cm 1cm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation ecran -->
+    <div class="no-print-nav">
+        <a href="../index.html" class="btn-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Retour accueil
+        </a>
+        <button class="btn-print" onclick="window.print()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Imprimer / PDF
+        </button>
+    </div>
+
+    <div class="document">
+
+        <!-- ====== EN-TETE ====== -->
+        <div class="exam-header">
+            <div class="exam-header-top">
+                <div>
+                    <div class="brand">Bybloss<span class="brand-sub">Organisme de formation</span></div>
+                </div>
+                <div class="exam-badge">Certification initiale</div>
+            </div>
+            <div class="exam-title">Examen Final - Formation Hygi&egrave;ne &amp; Salubrit&eacute; - INITIALE</div>
+            <div class="exam-subtitle">Tatouage &amp; Per&ccedil;age corporel &mdash; Arr&ecirc;t&eacute; du 5 mars 2024</div>
+        </div>
+
+        <!-- ====== IDENTIFICATION ====== -->
+        <div class="identification">
+            <div>
+                <label>Nom</label>
+                <div class="field"></div>
+            </div>
+            <div>
+                <label>Pr&eacute;nom</label>
+                <div class="field"></div>
+            </div>
+            <div>
+                <label>Date</label>
+                <div class="field"></div>
+            </div>
+        </div>
+
+        <!-- ====== INSTRUCTIONS ====== -->
+        <div class="instructions">
+            <h3>Consignes</h3>
+            <ul>
+                <li>28 questions &mdash; Dur&eacute;e : 1 heure</li>
+                <li>Seuil de r&eacute;ussite : 24/40 (60 %)</li>
+                <li>Documents et t&eacute;l&eacute;phone interdits</li>
+                <li>Lisez chaque question attentivement</li>
+                <li>QCM : une seule r&eacute;ponse correcte</li>
+                <li>Questions ouvertes : r&eacute;pondez de mani&egrave;re concise</li>
+            </ul>
+        </div>
+
+        <!-- ====== BAREME ====== -->
+        <div class="bareme">
+            <span><strong>QCM / Vrai-Faux :</strong> 1 point</span>
+            <span><strong>Questions ouvertes :</strong> 2 points</span>
+            <span><strong>Total :</strong> 40 points</span>
+        </div>
+
+        <!-- ====== CONTENU ====== -->
+        <div class="exam-content">
+
+            <!-- ======================== UNITE 1 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 1</span>
+                    <span class="unite-title">R&eacute;glementation</span>
+                </div>
+
+                <!-- Q1 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q1.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Quelle est la norme europ&eacute;enne concernant les encres de tatouage et de maquillage permanent ? Expliquez bri&egrave;vement son importance.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q2.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quelles formalit&eacute;s d&eacute;claratives sont obligatoires pour un tatoueur ou un perceur ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) D&eacute;claration en mairie</li>
+                        <li><span class="checkbox"></span> b) D&eacute;claration aupr&egrave;s de l'ARS</li>
+                        <li><span class="checkbox"></span> c) D&eacute;claration aux imp&ocirc;ts</li>
+                        <li><span class="checkbox"></span> d) D&eacute;claration &agrave; la chambre de commerce</li>
+                    </ul>
+                </div>
+
+                <!-- Q3 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q3.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Les bijoux de per&ccedil;age corporel initiaux peuvent &ecirc;tre en or.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q4.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quel texte de loi encadre actuellement les conditions d'hygi&egrave;ne et de salubrit&eacute; relatives au tatouage et au per&ccedil;age corporel ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) D&eacute;cret du 19 f&eacute;vrier 2008</li>
+                        <li><span class="checkbox"></span> b) Arr&ecirc;t&eacute; du 5 mars 2024</li>
+                        <li><span class="checkbox"></span> c) Directive UE 2004/27/CE</li>
+                        <li><span class="checkbox"></span> d) Code du travail L.4121-1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 2 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 2</span>
+                    <span class="unite-title">Anatomie de la peau</span>
+                </div>
+
+                <!-- Q5 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q5.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Citez les trois couches qui constituent la peau, de la plus superficielle &agrave; la plus profonde.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q6.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Le m&eacute;canisme de cicatrisation comprend toutes les phases suivantes, <strong>sauf</strong> :</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Phase inflammatoire</li>
+                        <li><span class="checkbox"></span> b) Phase de maturation</li>
+                        <li><span class="checkbox"></span> c) Phase de contraction</li>
+                        <li><span class="checkbox"></span> d) Phase de migration</li>
+                    </ul>
+                </div>
+
+                <!-- Q7 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q7.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Il est recommand&eacute; de nettoyer la zone tatou&eacute;e avec un produit d&eacute;tergent-d&eacute;sinfectant (DD) pour pr&eacute;venir les infections.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 3 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 3</span>
+                    <span class="unite-title">R&egrave;gles d'hygi&egrave;ne</span>
+                </div>
+
+                <!-- Q8 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q8.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Expliquez bri&egrave;vement la diff&eacute;rence entre la flore r&eacute;sidente et la flore transitoire.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q9.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quel est le principal risque de contamination crois&eacute;e ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Utilisation de gants non st&eacute;riles</li>
+                        <li><span class="checkbox"></span> b) Partage d'aiguille entre clients</li>
+                        <li><span class="checkbox"></span> c) D&eacute;sinfectants non adapt&eacute;s</li>
+                        <li><span class="checkbox"></span> d) Mauvaise technique de tatouage</li>
+                    </ul>
+                </div>
+
+                <!-- Q10 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q10.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Les infections crois&eacute;es ne concernent que les clients et non le professionnel.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 4 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 4</span>
+                    <span class="unite-title">Risques allergiques et infectieux</span>
+                </div>
+
+                <!-- Q11 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q11.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Citez au moins trois contre-indications au tatouage ou au per&ccedil;age corporel.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q12 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q12.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quelle r&eacute;glementation, entr&eacute;e en vigueur en janvier 2022, limite le risque allergique li&eacute; aux encres de tatouage ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) APP (Alliance of Professional Piercers)</li>
+                        <li><span class="checkbox"></span> b) NF EN 17169</li>
+                        <li><span class="checkbox"></span> c) ARS</li>
+                        <li><span class="checkbox"></span> d) R&egrave;glement REACH</li>
+                    </ul>
+                </div>
+
+                <!-- Q13 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q13.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Un professionnel doit informer chaque client des risques et des soins post-traitement avant de r&eacute;aliser l'acte.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+
+                <!-- Q14 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q14.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quel virus transmissible par le sang pr&eacute;sente le risque le plus &eacute;lev&eacute; de contamination lors d'un accident d'exposition au sang (AES) ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) VIH</li>
+                        <li><span class="checkbox"></span> b) VHC (h&eacute;patite C)</li>
+                        <li><span class="checkbox"></span> c) VHB (h&eacute;patite B)</li>
+                        <li><span class="checkbox"></span> d) VHA (h&eacute;patite A)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 5 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 5</span>
+                    <span class="unite-title">St&eacute;rilisation et d&eacute;sinfection</span>
+                </div>
+
+                <!-- Q15 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q15.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Citez et expliquez bri&egrave;vement les 5 &eacute;tapes de st&eacute;rilisation des instruments r&eacute;utilisables.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q16 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q16.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quelle norme europ&eacute;enne s'applique aux autoclaves utilis&eacute;s pour la st&eacute;rilisation ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) EN 13060</li>
+                        <li><span class="checkbox"></span> b) EN 14065</li>
+                        <li><span class="checkbox"></span> c) ISO 9001</li>
+                        <li><span class="checkbox"></span> d) EN 60601</li>
+                    </ul>
+                </div>
+
+                <!-- Q17 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q17.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Tout mat&eacute;riel p&eacute;n&eacute;trant la barri&egrave;re cutan&eacute;e doit &ecirc;tre st&eacute;rilis&eacute; apr&egrave;s chaque utilisation.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 6 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 6</span>
+                    <span class="unite-title">Protection du travailleur</span>
+                </div>
+
+                <!-- Q18 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q18.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">D&eacute;crivez la conduite &agrave; tenir en cas d'accident d'exposition au sang (AES). Citez les &eacute;tapes dans l'ordre.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q19 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q19.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Le lavage par friction hydro-alcoolique (SHA) se pratique :</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Sur des mains non souill&eacute;es</li>
+                        <li><span class="checkbox"></span> b) Pour &eacute;liminer la flore transitoire</li>
+                        <li><span class="checkbox"></span> c) Apr&egrave;s retrait des gants</li>
+                        <li><span class="checkbox"></span> d) Toutes ces r&eacute;ponses</li>
+                    </ul>
+                </div>
+
+                <!-- Q20 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q20.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Le vaccin contre l'h&eacute;patite B (VHB) est obligatoire pour les professionnels du tatouage et du per&ccedil;age.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+
+                <!-- Q21 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q21.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Que signifie l'abr&eacute;viation SHA ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Solution Hyper Antiseptique</li>
+                        <li><span class="checkbox"></span> b) S&eacute;rum Hydro-Aseptisant</li>
+                        <li><span class="checkbox"></span> c) Solution Hydro-Alcoolique</li>
+                        <li><span class="checkbox"></span> d) S&eacute;rum Hydro-Alcoolique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 7 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 7</span>
+                    <span class="unite-title">&Eacute;limination des d&eacute;chets</span>
+                </div>
+
+                <!-- Q22 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q22.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Quelles sont les 4 &eacute;tapes de gestion des DASRI (D&eacute;chets d'Activit&eacute;s de Soins &agrave; Risques Infectieux) ?</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q23 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q23.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quels documents devez-vous conserver pendant 3 ans pour assurer la tra&ccedil;abilit&eacute; des DASRI ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Attestation de destruction + feuillet n&deg;4 du bordereau CERFA</li>
+                        <li><span class="checkbox"></span> b) Feuillet n&deg;4 + contrat de maintenance</li>
+                        <li><span class="checkbox"></span> c) Attestation de destruction + contrat de maintenance</li>
+                        <li><span class="checkbox"></span> d) Aucun document n'est requis</li>
+                    </ul>
+                </div>
+
+                <!-- Q24 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q24.</span>
+                        <span class="question-type type-vf">Vrai / Faux</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Les aiguilles usag&eacute;es vont directement dans la poubelle jaune DASRI.</p>
+                    <div class="vf-options">
+                        <label><span class="checkbox"></span> Vrai</label>
+                        <label><span class="checkbox"></span> Faux</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 8 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 8</span>
+                    <span class="unite-title">Espaces de travail</span>
+                </div>
+
+                <!-- Q25 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q25.</span>
+                        <span class="question-type type-qcm">QCM</span>
+                        <span class="question-points">/ 1 pt</span>
+                    </div>
+                    <p class="question-text">Quelles zones minimales doit comporter un local de tatouage ou de per&ccedil;age ?</p>
+                    <ul class="qcm-options">
+                        <li><span class="checkbox"></span> a) Une seule pi&egrave;ce polyvalente</li>
+                        <li><span class="checkbox"></span> b) Accueil + salle de travail + zone de st&eacute;rilisation</li>
+                        <li><span class="checkbox"></span> c) Salle de travail + toilettes</li>
+                        <li><span class="checkbox"></span> d) Entr&eacute;e + bureau administratif</li>
+                    </ul>
+                </div>
+
+                <!-- Q26 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q26.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Quelles caract&eacute;ristiques doivent pr&eacute;senter les surfaces (sols, murs, plans de travail) de la salle de travail ?</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== UNITE 9 ======================== -->
+            <div class="unite-section">
+                <div class="unite-heading">
+                    <span class="unite-number">UNIT&Eacute; 9</span>
+                    <span class="unite-title">Proc&eacute;dures d'asepsie</span>
+                </div>
+
+                <!-- Q27 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q27.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">D&eacute;crivez l'ordre correct de la pr&eacute;paration cutan&eacute;e aseptique avant un acte de tatouage ou de per&ccedil;age.</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+
+                <!-- Q28 -->
+                <div class="question">
+                    <div class="question-header">
+                        <span class="question-num">Q28.</span>
+                        <span class="question-type type-open">Question ouverte</span>
+                        <span class="question-points">/ 2 pts</span>
+                    </div>
+                    <p class="question-text">Qu'est-ce qu'un champ st&eacute;rile et quel est son r&ocirc;le lors d'un acte de tatouage ou de per&ccedil;age ?</p>
+                    <div class="answer-lines">
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                        <div class="answer-line"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /exam-content -->
+
+        <!-- ====== PIED DE PAGE ====== -->
+        <div class="exam-footer">
+            <p><strong>Bybloss</strong> &mdash; Formation Hygi&egrave;ne &amp; Salubrit&eacute; &mdash; Certification initiale</p>
+            <p>Conforme &agrave; l'arr&ecirc;t&eacute; du 5 mars 2024 modifi&eacute; &mdash; Article R.1311-3 du code de la sant&eacute; publique</p>
+        </div>
+
+    </div><!-- /document -->
+
+</body>
+</html>

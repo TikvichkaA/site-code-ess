@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille d'évaluation finale — Formation Hygiène &amp; Salubrité — Bybloss</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --primary-light: #2980b9;
+            --primary-bg: #eaf2f8;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --border: #d5dde5;
+            --border-light: #e2e8f0;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --acquis-green: #27ae60;
+            --non-acquis-red: #c0392b;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #edf2f7;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* No-print navigation */
+        .no-print-nav {
+            background: var(--primary);
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .no-print-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        .no-print-nav a:hover { opacity: 1; }
+        .no-print-nav .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .no-print-nav .print-btn:hover { background: rgba(255,255,255,0.25); }
+        .no-print-nav .print-btn svg { width: 16px; height: 16px; }
+
+        /* Document container */
+        .document {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .page { padding: 50px 55px; }
+
+        /* Document Header */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+        }
+        .brand { display: flex; flex-direction: column; }
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .brand-tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .doc-header-right { text-align: right; }
+        .doc-header-right .doc-ref {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .ars-badge {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.7rem;
+            color: var(--primary);
+            background: var(--primary-bg);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        /* Title block */
+        .title-block { text-align: center; margin-bottom: 30px; }
+        .title-block h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .title-block .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .title-block .ref-arrete {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Candidate info fields */
+        .candidate-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 18px 22px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+        }
+        .field { display: flex; flex-direction: column; }
+        .field-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .field-value {
+            border-bottom: 1px solid var(--border);
+            min-height: 1.8em;
+            font-size: 0.9rem;
+        }
+
+        /* Instructions */
+        .instructions {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            background: var(--primary-bg);
+            border-left: 4px solid var(--primary);
+            padding: 12px 18px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            line-height: 1.6;
+        }
+        .instructions strong { color: var(--primary); }
+
+        /* Evaluation Table */
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 0.82rem;
+        }
+        .eval-table thead th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .eval-table thead th:nth-child(2),
+        .eval-table thead th:nth-child(3) {
+            text-align: center;
+            width: 85px;
+        }
+        .eval-table tbody td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .eval-table tbody td:nth-child(2),
+        .eval-table tbody td:nth-child(3) {
+            text-align: center;
+            vertical-align: middle;
+            width: 85px;
+        }
+
+        /* Unit header rows */
+        .unit-header td {
+            background: var(--primary-bg);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.82rem;
+            padding: 10px 12px !important;
+            border-top: 2px solid var(--primary) !important;
+        }
+        .unit-header td:first-child {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .unit-score {
+            font-size: 0.72rem;
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Competency rows */
+        .competency-row td:first-child { padding-left: 20px; }
+        .competency-row td:first-child::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Checkbox cells */
+        .checkbox-cell { position: relative; }
+        .checkbox-cell::before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+
+        /* Total row */
+        .total-row td {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 12px 14px !important;
+            border: none !important;
+        }
+        .total-row td:first-child {
+            text-align: right;
+            letter-spacing: 1px;
+        }
+        .total-row td:nth-child(2) {
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        /* Result block */
+        .result-block {
+            margin-top: 25px;
+            margin-bottom: 30px;
+            padding: 20px 25px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+        }
+        .result-block h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .result-options { display: flex; gap: 40px; }
+        .result-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .result-option .check-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .result-option.success { color: var(--acquis-green); }
+        .result-option.success .check-box { border-color: var(--acquis-green); }
+        .result-option.fail { color: var(--non-acquis-red); }
+        .result-option.fail .check-box { border-color: var(--non-acquis-red); }
+        .result-threshold {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Observations */
+        .observations { margin-bottom: 30px; }
+        .observations h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .observations-box {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            min-height: 100px;
+            padding: 12px;
+        }
+        .observations-lines {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            padding-top: 8px;
+        }
+        .observations-lines .line { border-bottom: 1px solid var(--border-light); }
+
+        /* Signatures */
+        .signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 35px;
+        }
+        .signature-block {
+            padding: 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            background: var(--bg-alt);
+        }
+        .signature-block h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .signature-block .sig-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .signature-block .sig-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .signature-area {
+            border-bottom: 1px solid var(--border);
+            min-height: 60px;
+        }
+        .signature-block .sig-date {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Print styles */
+        @media print {
+            *, *::before, *::after {
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            .no-print-nav { display: none !important; }
+            .document {
+                max-width: 100% !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .page { padding: 0 !important; }
+            @page {
+                size: A4;
+                margin: 15mm 18mm;
+            }
+            .eval-table thead th,
+            .unit-header td,
+            .total-row td,
+            .ars-badge,
+            .unit-score,
+            .instructions,
+            .candidate-info,
+            .signature-block,
+            .checkbox-cell::before,
+            .competency-row td:first-child::before {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .eval-table { page-break-inside: auto; }
+            .eval-table tr { page-break-inside: avoid; }
+            .unit-header { page-break-after: avoid; }
+            .result-block, .signatures { page-break-inside: avoid; }
+            a {
+                color: var(--primary) !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="no-print-nav">
+    <a href="../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        Retour Formation H&amp;S
+    </a>
+    <button class="print-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Imprimer / PDF
+    </button>
+</nav>
+
+<div class="document">
+    <div class="page">
+
+        <div class="doc-header">
+            <div class="brand">
+                <div class="brand-name">Bybloss</div>
+                <div class="brand-tagline">Organisme de formation</div>
+            </div>
+            <div class="doc-header-right">
+                <div class="doc-ref">R&#233;f. document : GE-HS-INIT</div>
+                <div class="ars-badge">Formation d&#233;clar&#233;e ARS</div>
+            </div>
+        </div>
+
+        <div class="title-block">
+            <h1>&#201;valuation finale</h1>
+            <div class="subtitle">Formation Hygi&#232;ne &amp; Salubrit&#233; &#8212; <strong>INITIALE</strong></div>
+            <div class="ref-arrete">Arr&#234;t&#233; du 5 mars 2024 relatif &#224; la formation aux conditions d&#8217;hygi&#232;ne et de salubrit&#233; pour la r&#233;alisation des techniques de tatouage par effraction cutan&#233;e et de per&#231;age corporel</div>
+        </div>
+
+        <div class="candidate-info">
+            <div class="field">
+                <span class="field-label">Nom</span>
+                <span class="field-value">&nbsp;</span>
+            </div>
+            <div class="field">
+                <span class="field-label">Pr&#233;nom</span>
+                <span class="field-value">&nbsp;</span>
+            </div>
+            <div class="field">
+                <span class="field-label">Date de l&#8217;&#233;valuation</span>
+                <span class="field-value">&nbsp;</span>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <strong>Consigne :</strong> Pour chaque comp&#233;tence, cocher la case <strong>Acquis</strong> ou <strong>Non acquis</strong>.
+            Le seuil de r&#233;ussite est fix&#233; &#224; <strong>24/36</strong> (soit 2/3 du total).
+        </div>
+
+        <table class="eval-table">
+            <thead>
+                <tr>
+                    <th>Comp&#233;tences</th>
+                    <th>Acquis</th>
+                    <th>Non acquis</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 1 &#8212; Rappel des r&#233;glementations et normes relatives au tatouage et per&#231;age corporel
+                        <span class="unit-score">/4</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre et mettre en &#339;uvre la r&#233;glementation relative au tatouage par effraction cutan&#233;e et au per&#231;age corporel, notamment ex&#233;cuter les formalit&#233;s d&#233;claratives obligatoires</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre et mettre en &#339;uvre les normes concernant les bijoux de per&#231;age corporel et la r&#233;glementation europ&#233;enne relative aux substances contenues dans les encres (REACH)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre et mettre en &#339;uvre les grands principes de la r&#233;glementation (dont NF EN 17169) concernant les &#233;quipements et consommables, en particulier les dispositifs m&#233;dicaux et la tra&#231;abilit&#233;</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre et mettre en &#339;uvre les recommandations et normes existantes dans le champ du tatouage et du per&#231;age corporel</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 2 &#8212; G&#233;n&#233;ralit&#233;s d&#8217;anatomie et de physiologie de la peau et des muqueuses et notamment la cicatrisation
+                        <span class="unit-score">/2</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Comprendre et mettre en &#339;uvre les connaissances th&#233;oriques et pratiques de l&#8217;anatomie et la physiologie de la peau et des muqueuses avant, pendant et apr&#232;s l&#8217;acte</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Suivre le m&#233;canisme de cicatrisation dans ses diff&#233;rentes phases et dispenser des conseils d&#8217;hygi&#232;ne et d&#8217;antisepsie adapt&#233;s</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 3 &#8212; R&#232;gles d&#8217;hygi&#232;ne en lien avec le contenu de l&#8217;arr&#234;t&#233; pr&#233;vu par l&#8217;article R. 1311-4 du code de la sant&#233; publique
+                        <span class="unit-score">/2</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Comprendre le risque infectieux au regard de la flore microbienne cutan&#233;e et des muqueuses</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Comprendre le risque infectieux au regard du risque de contamination crois&#233;e</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 4 &#8212; Contre-indications et interdiction, risques allergiques et infectieux
+                        <span class="unit-score">/6</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre les interdictions et contre-indications</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Appliquer les proc&#233;dures de pr&#233;vention des risques infectieux et allergiques</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Ma&#238;triser les risques li&#233;s &#224; la r&#233;alisation de l&#8217;acte et dispenser l&#8217;information au client</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Ma&#238;triser le risque infectieux (modes de transmission)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>D&#233;tecter les complications allergiques ou infectieuses et orienter le client</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>D&#233;clarer un effet ind&#233;sirable (vigilance)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 5 &#8212; St&#233;rilisation, d&#233;sinfection du mat&#233;riel
+                        <span class="unit-score">/5</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Garantir mat&#233;riel p&#233;n&#233;trant la barri&#232;re cutan&#233;e st&#233;rile et &#224; usage unique</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Traiter les mat&#233;riels avec m&#233;thodes adapt&#233;es (pr&#233;-d&#233;sinfection, nettoyage, d&#233;sinfection, st&#233;rilisation)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Nettoyer et d&#233;sinfecter du mat&#233;riel r&#233;utilisable thermosensible</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Ma&#238;triser le processus de st&#233;rilisation (norme EN 13060, EN ISO 17655-1)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Assurer la tra&#231;abilit&#233; des proc&#233;dures et dispositifs</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 6 &#8212; R&#232;gles de protection du travailleur, AES et vaccinations
+                        <span class="unit-score">/5</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Appliquer les principes et proc&#233;dures de pr&#233;vention des infections (pr&#233;cautions standard)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Appliquer les proc&#233;dures d&#8217;hygi&#232;ne des mains</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Utiliser les EPI et protections respiratoires</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre les risques AES et conduite &#224; tenir</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre les recommandations vaccinales (h&#233;patites)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 7 &#8212; Achat et gestion du mat&#233;riel, &#233;limination des d&#233;chets
+                        <span class="unit-score">/3</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Conna&#238;tre et appliquer l&#8217;&#233;tat de l&#8217;art en mati&#232;re d&#8217;achat, conservation, tra&#231;abilit&#233; du mat&#233;riel</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Choisir les contenants DASRI, d&#233;finir emplacements, utiliser en s&#233;curit&#233;</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Effectuer un tri des d&#233;chets (DASRI vs d&#233;chets m&#233;nagers)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 8 &#8212; Exigences relatives aux espaces de travail et mobilier
+                        <span class="unit-score">/3</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Respecter les r&#232;gles sanitaires pour les locaux et &#233;quipements</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Local, mat&#233;riel et mobilier adapt&#233;s pour faciliter nettoyage et d&#233;sinfection</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Appliquer les proc&#233;dures de nettoyage/d&#233;sinfection des locaux</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="unit-header">
+                    <td>
+                        Unit&#233; 9 &#8212; Proc&#233;dures d&#8217;asepsie
+                        <span class="unit-score">/6</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Proc&#233;der &#224; la d&#233;sinfection des surfaces et contr&#244;les de st&#233;rilisation</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Pr&#233;parer le poste de travail</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Pr&#233;parer le mat&#233;riel adapt&#233;, notamment st&#233;rile</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Pr&#233;parer et utiliser le mat&#233;riel &#224; usage unique et le champ st&#233;rile</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+                <tr class="competency-row">
+                    <td>Effectuer la pr&#233;paration antiseptique de la peau et muqueuses (conna&#238;tre les familles d&#8217;antiseptiques et savoir pr&#233;parer la peau)</td>
+                    <td class="checkbox-cell"></td>
+                    <td class="checkbox-cell"></td>
+                </tr>
+
+                <tr class="total-row">
+                    <td>TOTAL</td>
+                    <td colspan="2">&#8230; / 36</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="result-block">
+            <h3>R&#233;sultat</h3>
+            <div class="result-options">
+                <div class="result-option success">
+                    <span class="check-box"></span>
+                    ADMIS(E)
+                </div>
+                <div class="result-option fail">
+                    <span class="check-box"></span>
+                    NON ADMIS(E)
+                </div>
+            </div>
+            <div class="result-threshold">Seuil de r&#233;ussite : 24/36 (2/3 du total des points)</div>
+        </div>
+
+        <div class="observations">
+            <h3>Observations</h3>
+            <div class="observations-box">
+                <div class="observations-lines">
+                    <div class="line">&nbsp;</div>
+                    <div class="line">&nbsp;</div>
+                    <div class="line">&nbsp;</div>
+                    <div class="line">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signatures">
+            <div class="signature-block">
+                <h4>Le/La formateur(trice)</h4>
+                <div class="sig-name">&nbsp;</div>
+                <div class="sig-role">Organisme Bybloss</div>
+                <div class="signature-area"></div>
+                <div class="sig-date">Date : ____/____/________</div>
+            </div>
+            <div class="signature-block">
+                <h4>Le/La stagiaire</h4>
+                <div class="sig-name">&nbsp;</div>
+                <div class="sig-role">Lu et approuv&#233;</div>
+                <div class="signature-area"></div>
+                <div class="sig-date">Date : ____/____/________</div>
+            </div>
+        </div>
+
+        <div class="doc-footer">
+            Bybloss &#8212; Organisme de formation<br>
+            Formation aux conditions d&#8217;hygi&#232;ne et de salubrit&#233; &#8212; Arr&#234;t&#233; du 5 mars 2024<br>
+            Document destin&#233; &#224; l&#8217;ARS &#8212; &#192; conserver par l&#8217;organisme et le stagiaire
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

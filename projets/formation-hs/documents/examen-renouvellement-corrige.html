@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Final Renouvellement - Corrige - Bybloss</title>
+<style>
+body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.6;color:#1a202c;background:#f7fafc;margin:0}
+.no-print{background:#1a5276;padding:1rem;text-align:center}
+.no-print a{color:#fff;text-decoration:none;font-weight:600}
+.doc{max-width:210mm;margin:0 auto;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.inner{padding:20mm}
+.hdr{border-bottom:3px solid #1a5276;padding-bottom:1.2rem;margin-bottom:1.5rem}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{background:#1a5276;color:#fff;font-weight:700;font-size:.85rem;padding:5px 10px;border-radius:4px}
+.brand-name{font-size:1.1rem;font-weight:700;color:#1a5276}
+.dur{color:#4a5568;font-size:.85rem;text-align:right}
+.title{color:#1a5276;font-size:1.3rem;font-weight:700;margin-bottom:.2rem}
+.subtitle{color:#4a5568;font-size:.95rem}
+.corrige-badge{display:inline-block;background:#e74c3c;color:#fff;font-weight:700;font-size:.8rem;padding:4px 12px;border-radius:4px;margin-left:10px;vertical-align:middle;letter-spacing:.05em}
+.id-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:2rem;padding:1rem;background:#f7fafc;border:1px solid #e2e8f0;border-radius:4px}
+.id-field{display:flex;flex-direction:column;gap:4px}
+.id-field label{font-size:.8rem;font-weight:600;color:#4a5568;text-transform:uppercase;letter-spacing:.05em}
+.id-field .line{border-bottom:1px solid #1a5276;min-height:1.5rem}
+.instr{background:#eaf2f8;border-left:4px solid #1a5276;padding:.8rem 1rem;margin-bottom:2rem;font-size:.9rem}
+.instr strong{color:#1a5276}
+.unite-hdr{background:#1a5276;color:#fff;padding:.7rem 1rem;margin:2rem 0 1.2rem;border-radius:4px;font-weight:700;font-size:1rem;page-break-after:avoid}
+.unite-hdr span{opacity:.7;font-weight:400;font-size:.85rem;margin-left:.5rem}
+.qb{margin-bottom:2rem;page-break-inside:avoid}
+.qn{display:inline-block;background:#1a5276;color:#fff;font-weight:700;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;font-size:.85rem;margin-right:8px;vertical-align:middle}
+.qt{font-weight:600;color:#1a202c;font-size:.95rem;display:inline;vertical-align:middle}
+.q-type{display:inline-block;background:#eaf2f8;color:#1a5276;font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;text-transform:uppercase}
+.ol{list-style:none;margin-top:.6rem;padding-left:2.5rem}
+.ol li{padding:.3rem 0;font-size:.92rem}
+.cb{display:inline-block;width:14px;height:14px;border:1.5px solid #1a5276;border-radius:2px;margin-right:8px;vertical-align:middle}
+.cb-checked{display:inline-block;width:14px;height:14px;background:#27ae60;border:1.5px solid #1e8449;border-radius:2px;margin-right:8px;vertical-align:middle;position:relative}
+.cb-checked::after{content:'';position:absolute;left:3px;top:0;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.correct{background:#fff176;padding:2px 6px;border-radius:3px;font-weight:600}
+.answer-box{margin-top:.6rem;padding:.8rem 1rem;background:#fff176;border-left:4px solid #f39c12;border-radius:0 4px 4px 0;margin-left:2.5rem;font-size:.92rem}
+.answer-box strong{color:#1a5276}
+.explanation{margin-top:.5rem;padding:.5rem .8rem;background:#fef9e7;border-left:3px solid #f39c12;font-style:italic;font-size:.85rem;color:#4a5568;margin-left:2.5rem}
+.table-exercise{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.88rem}
+.table-exercise th{background:#1a5276;color:#fff;padding:.5rem .8rem;text-align:left;font-weight:600;font-size:.82rem}
+.table-exercise td{border:1px solid #e2e8f0;padding:.5rem .8rem;vertical-align:top}
+.table-exercise .correct-cell{background:#fff176}
+.tri-table{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.88rem}
+.tri-table th{background:#1a5276;color:#fff;padding:.5rem .8rem;text-align:center;font-weight:600}
+.tri-table td{border:1px solid #e2e8f0;padding:.4rem .8rem;text-align:center}
+.tri-table .item-col{text-align:left}
+.tri-table .correct-cell{background:#fff176}
+.score{margin-top:2rem;padding:1rem;border:2px solid #1a5276;border-radius:4px;text-align:center}
+.score .sl{font-size:1.2rem;font-weight:700;color:#1a5276;margin-top:.5rem}
+.ft{margin-top:2rem;padding-top:.8rem;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;font-size:.75rem;color:#718096}
+.page-break{page-break-before:always}
+@media print{
+body{background:#fff;font-size:10.5pt}
+.no-print{display:none!important}
+.doc{box-shadow:none;max-width:100%}
+.inner{padding:0}
+.id-fields{background:#f7fafc!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.instr{background:#eaf2f8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.qn{background:#1a5276!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.brand-icon{background:#1a5276!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.unite-hdr{background:#1a5276!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.q-type{background:#eaf2f8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.correct,.answer-box,.table-exercise .correct-cell,.tri-table .correct-cell{background:#fff176!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cb-checked{background:#27ae60!important;border-color:#1e8449!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cb-checked::after{border-color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.corrige-badge{background:#e74c3c!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.explanation{background:#fef9e7!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.table-exercise th,.tri-table th{background:#1a5276!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:18mm 20mm 22mm}
+}
+</style>
+</head>
+<body>
+<nav class="no-print"><a href="../index.html">&larr; Retour à l'accueil de la formation</a></nav>
+<div class="doc"><div class="inner">
+
+<!-- EN-TÊTE -->
+<div class="hdr">
+<div class="hdr-top">
+<div class="brand"><span class="brand-icon">H&amp;S</span><span class="brand-name">Bybloss</span></div>
+<div class="dur">Durée : 1 heure<br>28 questions — 7 unités</div>
+</div>
+<div class="title">EXAMEN FINAL <span class="corrige-badge">CORRIGÉ</span></div>
+<div class="subtitle">Formation Hygiène &amp; Salubrité / Renouvellement</div>
+</div>
+
+<div class="id-fields">
+<div class="id-field"><label>Nom</label><div class="line"></div></div>
+<div class="id-field"><label>Prénom</label><div class="line"></div></div>
+<div class="id-field"><label>Date</label><div class="line"></div></div>
+</div>
+
+<div class="instr"><strong>Version corrigée :</strong> Les bonnes réponses sont surlignées en <span class="correct">jaune</span>. Pour les QCM, les bonnes réponses sont cochées en vert. Les explications complémentaires sont indiquées en italique.</div>
+
+<!-- ========== UNITÉ 1 ========== -->
+<div class="unite-hdr">Unité 1 — Réglementation <span>(4 questions)</span></div>
+
+<!-- Q1 -->
+<div class="qb">
+<span class="qn">1</span><p class="qt">Quelle est la norme européenne concernant les encres de tatouage et de maquillage permanent ? Expliquez son importance.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong> Le règlement <strong>REACH</strong> (Registration, Evaluation, Authorisation and restriction of Chemicals). Ce règlement assure la sécurité des encres et des pigments utilisés en tatouage et maquillage permanent, en limitant ou interdisant certaines substances chimiques dangereuses. Il minimise les risques pour la santé des clients.</div>
+</div>
+
+<!-- Q2 -->
+<div class="qb">
+<span class="qn">2</span><p class="qt">Quelles formalités déclaratives sont obligatoires pour exercer une activité de tatouage/perçage ?</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb"></span> a) Déclaration en mairie</li>
+<li><span class="cb-checked"></span> <span class="correct">b) Déclaration auprès de l'ARS</span></li>
+<li><span class="cb"></span> c) Déclaration aux impôts</li>
+<li><span class="cb"></span> d) Inscription à la chambre de commerce</li>
+</ul>
+<div class="explanation">La déclaration auprès de l'ARS est obligatoire avant l'ouverture de l'activité (art. R.1311-1 du CSP). Elle doit être renouvelée en cas de changement de local ou d'activité.</div>
+</div>
+
+<!-- Q3 -->
+<div class="qb">
+<span class="qn">3</span><p class="qt">Les bijoux de perçage initiaux peuvent être en or.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb-checked"></span> <span class="correct">Vrai</span></li>
+<li><span class="cb"></span> Faux</li>
+</ul>
+<div class="explanation">Les bijoux de première pose peuvent être en or, mais aussi en acier chirurgical (316L), titane (ASTM F136), niobium, platine, polymère biocompatible (PTFE, bioplast) ou verre borosilicaté. Ces matériaux sont choisis pour leur biocompatibilité.</div>
+</div>
+
+<!-- Q4 -->
+<div class="qb">
+<span class="qn">4</span><p class="qt">Identifiez les éléments à conserver sur le poste de travail pour assurer la traçabilité des produits et matériels utilisés.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>- Étiquettes des pigments/encres (nom, lot, date de péremption, fabricant)
+<br>- Étiquettes des aiguilles à usage unique (référence, lot)
+<br>- Étiquettes des lames à usage unique (référence, lot)
+<br>- Étiquettes des cathéters de piercing (référence, lot)
+<br>Ces éléments doivent être conservés dans le dossier client pour assurer la traçabilité complète en cas d'événement indésirable.</div>
+</div>
+
+<!-- ========== UNITÉ 2 ========== -->
+<div class="unite-hdr page-break">Unité 2 — Anatomie <span>(4 questions)</span></div>
+
+<!-- Q5 -->
+<div class="qb">
+<span class="qn">5</span><p class="qt">Citez les 3 couches de la peau.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>1. <strong>Épiderme</strong> (couche superficielle, barrière protectrice)
+<br>2. <strong>Derme</strong> (couche intermédiaire, tissu conjonctif riche en collagène)
+<br>3. <strong>Hypoderme</strong> (couche profonde, tissu adipeux)</div>
+</div>
+
+<!-- Q6 -->
+<div class="qb">
+<span class="qn">6</span><p class="qt">Le mécanisme de cicatrisation comprend toutes les phases suivantes, sauf :</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb"></span> a) Phase inflammatoire</li>
+<li><span class="cb"></span> b) Phase de maturation</li>
+<li><span class="cb-checked"></span> <span class="correct">c) Phase de contraction</span></li>
+<li><span class="cb"></span> d) Phase de migration</li>
+</ul>
+<div class="explanation">Les phases de cicatrisation sont : phase vasculaire (hémostase), phase inflammatoire, phase de migration/prolifération et phase de maturation/remodelage. La « phase de contraction » n'est pas une phase distincte du processus de cicatrisation standard.</div>
+</div>
+
+<!-- Q7 -->
+<div class="qb">
+<span class="qn">7</span><p class="qt">Il faut nettoyer la zone tatouée avec un désinfectant-détergent (DD) pour prévenir les infections.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb"></span> Vrai</li>
+<li><span class="cb-checked"></span> <span class="correct">Faux</span></li>
+</ul>
+<div class="explanation">Le désinfectant-détergent (DD) est réservé aux surfaces inertes. Pour la peau, on utilise un antiseptique adapté (Bétadine dermique, Chlorhexidine, etc.). L'utilisation d'un DD sur la peau serait inadaptée et potentiellement irritante.</div>
+</div>
+
+<!-- Q8 -->
+<div class="qb">
+<span class="qn">8</span><p class="qt">Nommez la couche de la peau où le tatouage doit être réalisé pour une meilleure tenue dans le temps.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong> Le <strong>derme</strong>. L'encre doit être déposée dans le derme (couche intermédiaire) pour garantir la pérennité du tatouage. L'épiderme se renouvelle en permanence (les cellules sont éliminées), tandis que le derme est une structure stable où les pigments restent piégés.</div>
+</div>
+
+<!-- ========== UNITÉ 3 ========== -->
+<div class="unite-hdr page-break">Unité 3 — Règles d'hygiène <span>(4 questions)</span></div>
+
+<!-- Q9 -->
+<div class="qb">
+<span class="qn">9</span><p class="qt">Quelle est la différence entre la flore résidente et la flore transitoire ?</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>- <strong>Flore résidente :</strong> micro-organismes implantés durablement sur la peau, dans les couches profondes de l'épiderme. Elle constitue un écosystème stable et joue un rôle protecteur. Elle est difficile à éliminer.
+<br>- <strong>Flore transitoire :</strong> micro-organismes en transit à la surface de la peau, acquis par contact avec l'environnement ou d'autres personnes. Elle est facilement éliminable par un lavage des mains ou une friction SHA.</div>
+</div>
+
+<!-- Q10 -->
+<div class="qb">
+<span class="qn">10</span><p class="qt">Quel est le principal risque de contamination croisée ?</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb"></span> a) L'utilisation de gants non stériles</li>
+<li><span class="cb-checked"></span> <span class="correct">b) Le partage d'aiguilles entre clients</span></li>
+<li><span class="cb"></span> c) L'utilisation de désinfectants périmés</li>
+<li><span class="cb"></span> d) Une mauvaise technique de tatouage</li>
+</ul>
+<div class="explanation">Le partage d'aiguilles constitue le risque majeur de contamination croisée car il permet la transmission directe d'agents pathogènes (VHB, VHC, VIH, bactéries) d'un client à l'autre par voie sanguine.</div>
+</div>
+
+<!-- Q11 -->
+<div class="qb">
+<span class="qn">11</span><p class="qt">Les infections croisées ne concernent que les clients.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb"></span> Vrai</li>
+<li><span class="cb-checked"></span> <span class="correct">Faux</span></li>
+</ul>
+<div class="explanation">Les infections croisées concernent aussi bien les clients que les professionnels. Le tatoueur/perceur est lui-même exposé aux risques de contamination (AES, contact avec du sang). La protection est bidirectionnelle.</div>
+</div>
+
+<!-- Q12 -->
+<div class="qb">
+<span class="qn">12</span><p class="qt">Complétez le tableau des antiseptiques pour la préparation cutanée :</p><span class="q-type">Exercice pratique</span>
+<table class="table-exercise">
+<thead>
+<tr><th style="width:33%">Savon antiseptique</th><th style="width:33%">Antiseptique dermique</th><th style="width:33%">Gamme</th></tr>
+</thead>
+<tbody>
+<tr><td class="correct-cell"><strong>Bétadine SCRUB</strong></td><td class="correct-cell"><strong>Bétadine dermique / alcoolique 5%</strong></td><td>Gamme iodée</td></tr>
+<tr><td class="correct-cell"><strong>HIBISCRUB</strong></td><td class="correct-cell"><strong>Chlorhexidine alcoolique 2%</strong></td><td>Gamme chlorhexidine</td></tr>
+<tr><td class="correct-cell"><strong>Savon stérile</strong></td><td class="correct-cell"><strong>Amukine / Dakin</strong></td><td>Gamme chlorée</td></tr>
+</tbody>
+</table>
+<div class="explanation">Il est essentiel de ne jamais mélanger les gammes (iodée et chlorhexidine sont incompatibles). La gamme chlorée (Dakin) est utilisée comme alternative en cas d'allergie aux deux autres.</div>
+</div>
+
+<!-- ========== UNITÉ 4 ========== -->
+<div class="unite-hdr page-break">Unité 4 — Risques allergiques et infectieux <span>(4 questions)</span></div>
+
+<!-- Q13 -->
+<div class="qb">
+<span class="qn">13</span><p class="qt">Citez 3 contre-indications au tatouage ou au perçage.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue (3 parmi les suivantes) :</strong>
+<br>- Allergies connues aux pigments, encres ou métaux
+<br>- Maladies de peau actives sur la zone à tatouer/percer (eczéma, psoriasis, etc.)
+<br>- Infections actives (locales ou générales)
+<br>- Maladies auto-immunes
+<br>- Troubles de la coagulation / traitement anticoagulant
+<br>- Grossesse
+<br>- Diabète non équilibré
+<br>- Immunodépression</div>
+</div>
+
+<!-- Q14 -->
+<div class="qb">
+<span class="qn">14</span><p class="qt">Quelle réglementation européenne encadre les substances contenues dans les encres de tatouage depuis janvier 2022 ?</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb"></span> a) APP (Approche de Précaution des Pigments)</li>
+<li><span class="cb"></span> b) NF EN 17169</li>
+<li><span class="cb"></span> c) Déclaration ARS</li>
+<li><span class="cb-checked"></span> <span class="correct">d) Règlement REACH</span></li>
+</ul>
+<div class="explanation">Le règlement REACH (annexe XVII, entrée 75) restreint depuis janvier 2022 plus de 4 000 substances chimiques dangereuses dans les encres de tatouage et de maquillage permanent, renforçant la sécurité des consommateurs.</div>
+</div>
+
+<!-- Q15 -->
+<div class="qb">
+<span class="qn">15</span><p class="qt">Le professionnel du tatouage/perçage a un devoir d'information envers son client concernant les risques liés à l'acte.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb-checked"></span> <span class="correct">Vrai</span></li>
+<li><span class="cb"></span> Faux</li>
+</ul>
+<div class="explanation">Le devoir d'information est une obligation légale. Le professionnel doit informer le client des risques (infections, allergies, cicatrisation), des contre-indications, des soins post-acte et recueillir son consentement éclairé.</div>
+</div>
+
+<!-- Q16 -->
+<div class="qb">
+<span class="qn">16</span><p class="qt">Identifiez les signes d'une complication infectieuse suite à un tatouage ou un perçage.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>- Rougeur persistante ou qui s'étend au-delà de la zone tatouée/percée
+<br>- Gonflement important
+<br>- Écoulement de pus (liquide jaunâtre/verdâtre)
+<br>- Douleur intense ou croissante
+<br>- Fièvre
+<br>- Chaleur locale anormale
+<br>- Symptômes persistant au-delà de 5 jours
+<br>Le client doit consulter un médecin rapidement si ces signes apparaissent.</div>
+</div>
+
+<!-- ========== UNITÉ 5 ========== -->
+<div class="unite-hdr page-break">Unité 5 — Stérilisation <span>(4 questions)</span></div>
+
+<!-- Q17 -->
+<div class="qb">
+<span class="qn">17</span><p class="qt">Citez les 5 étapes du processus de stérilisation dans l'ordre.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>1. <strong>Pré-désinfection</strong> (trempage dans une solution DD)
+<br>2. <strong>Nettoyage</strong> (lavage manuel ou ultrasonique, rinçage, séchage)
+<br>3. <strong>Conditionnement</strong> (mise en sachets ou gaines thermos-soudées)
+<br>4. <strong>Stérilisation</strong> (passage à l'autoclave)
+<br>5. <strong>Stockage</strong> (rangement en zone propre, étiquetage avec date de stérilisation et date de péremption)</div>
+</div>
+
+<!-- Q18 -->
+<div class="qb">
+<span class="qn">18</span><p class="qt">Quelle est la norme qui régit les autoclaves de stérilisation ?</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb-checked"></span> <span class="correct">a) EN 13060</span></li>
+<li><span class="cb"></span> b) EN 14065</li>
+<li><span class="cb"></span> c) ISO 9001</li>
+<li><span class="cb"></span> d) EN 60601</li>
+</ul>
+<div class="explanation">La norme EN 13060 concerne les petits stérilisateurs à vapeur d'eau (autoclaves de type B, S ou N). Les autoclaves de type B sont recommandés car ils permettent la stérilisation de charges creuses, poreuses et emballées.</div>
+</div>
+
+<!-- Q19 -->
+<div class="qb">
+<span class="qn">19</span><p class="qt">Tout matériel pénétrant la barrière cutanée doit être stérilisé.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb-checked"></span> <span class="correct">Vrai</span></li>
+<li><span class="cb"></span> Faux</li>
+</ul>
+<div class="explanation">Tout matériel qui pénètre la barrière cutanée doit être soit stérilisé (matériel réutilisable passé à l'autoclave), soit à usage unique (UU) stérile. Le matériel UU est éliminé après chaque client dans les filières DASRI appropriées.</div>
+</div>
+
+<!-- Q20 -->
+<div class="qb">
+<span class="qn">20</span><p class="qt">Indiquez les paramètres du bon programme de stérilisation (cycle, température, durée).</p><span class="q-type">Exercice pratique</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>- <strong>Cycle :</strong> Cycle PRION (cycle le plus exigeant)
+<br>- <strong>Température :</strong> 134°C
+<br>- <strong>Durée :</strong> 18 minutes de plateau de stérilisation
+<br>Le cycle PRION à 134°C pendant 18 minutes est le cycle de référence pour les professionnels du tatouage et du perçage. Il garantit l'inactivation de tous les micro-organismes, y compris les agents transmissibles non conventionnels (prions).</div>
+</div>
+
+<!-- ========== UNITÉ 6 ========== -->
+<div class="unite-hdr page-break">Unité 6 — Protection du travailleur <span>(4 questions)</span></div>
+
+<!-- Q21 -->
+<div class="qb">
+<span class="qn">21</span><p class="qt">Décrivez la conduite à tenir en cas d'AES (Accident d'Exposition au Sang).</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>1. <strong>Ne pas faire saigner</strong> la plaie (ne pas presser, ne pas aspirer)
+<br>2. <strong>Nettoyer</strong> immédiatement la plaie à l'eau courante et au savon pendant <strong>5 minutes</strong>
+<br>3. <strong>Rincer</strong> abondamment
+<br>4. <strong>Désinfecter</strong> pendant <strong>5 minutes</strong> avec un antiseptique adapté :
+<br>&nbsp;&nbsp;&nbsp;- Dakin (solution de chlore)
+<br>&nbsp;&nbsp;&nbsp;- Bétadine dermique
+<br>&nbsp;&nbsp;&nbsp;- Alcool à 70°
+<br>5. <strong>Consulter un médecin</strong> dans les <strong>4 heures</strong> (au maximum 48 heures) pour évaluation du risque et éventuel traitement post-exposition</div>
+</div>
+
+<!-- Q22 -->
+<div class="qb">
+<span class="qn">22</span><p class="qt">La friction avec une SHA (Solution Hydro-Alcoolique) se pratique :</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb"></span> a) Sur des mains visuellement non souillées</li>
+<li><span class="cb"></span> b) Pour éliminer la flore transitoire</li>
+<li><span class="cb"></span> c) Après le retrait des gants</li>
+<li><span class="cb-checked"></span> <span class="correct">d) Toutes les réponses ci-dessus</span></li>
+</ul>
+<div class="explanation">La friction SHA s'applique sur des mains visuellement propres et non souillées (sinon, lavage eau + savon d'abord). Elle élimine la flore transitoire et se pratique notamment après le retrait des gants, entre deux clients, et à chaque changement de gants.</div>
+</div>
+
+<!-- Q23 -->
+<div class="qb">
+<span class="qn">23</span><p class="qt">La vaccination contre le VHB (Hépatite B) est obligatoire pour les professionnels du tatouage et du perçage.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb"></span> Vrai</li>
+<li><span class="cb-checked"></span> <span class="correct">Faux</span></li>
+</ul>
+<div class="explanation">La vaccination contre le VHB n'est pas obligatoire pour les professionnels du tatouage et du perçage, mais elle est très fortement recommandée. Le VHB est extrêmement contagieux et résistant dans l'environnement. La vaccination est le moyen de protection le plus efficace.</div>
+</div>
+
+<!-- Q24 -->
+<div class="qb">
+<span class="qn">24</span><p class="qt">Pour chaque EPI (Équipement de Protection Individuelle), donnez l'intérêt de son utilisation :</p><span class="q-type">Exercice pratique</span>
+<table class="table-exercise">
+<thead>
+<tr><th style="width:30%">EPI</th><th style="width:70%">Intérêt / Rôle</th></tr>
+</thead>
+<tbody>
+<tr><td>Surblouse</td><td class="correct-cell"><strong>Protège la tenue de travail des projections de sang et liquides biologiques. Limite la transmission croisée entre les clients et le professionnel.</strong></td></tr>
+<tr><td>Gants</td><td class="correct-cell"><strong>Barrière physique contre le contact avec le sang et les liquides biologiques. Réduisent l'inoculum en cas de piqûre de 46% à 86% selon les études.</strong></td></tr>
+<tr><td>Masque</td><td class="correct-cell"><strong>Hygiène respiratoire : protège contre les projections et limite la dissémination de micro-organismes par voie respiratoire (gouttelettes).</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ========== UNITÉ 7 ========== -->
+<div class="unite-hdr page-break">Unité 7 — Élimination des déchets <span>(4 questions)</span></div>
+
+<!-- Q25 -->
+<div class="qb">
+<span class="qn">25</span><p class="qt">Citez les 4 étapes de la gestion des DASRI.</p><span class="q-type">Question ouverte</span>
+<div class="answer-box"><strong>Réponse attendue :</strong>
+<br>1. <strong>Collecte</strong> dans des contenants jaunes normalisés (sacs jaunes pour déchets mous, conteneurs OPCT pour objets piquants/coupants/tranchants)
+<br>2. <strong>Stockage sécurisé</strong> dans un local dédié, à l'abri, identifié, avec accès restreint
+<br>3. <strong>Élimination</strong> par une entreprise spécialisée agréée (collecte régulière)
+<br>4. <strong>Traçabilité</strong> via les bordereaux CERFA de suivi des DASRI (conservation 3 ans)</div>
+</div>
+
+<!-- Q26 -->
+<div class="qb">
+<span class="qn">26</span><p class="qt">Quels documents relatifs aux DASRI devez-vous conserver pendant 3 ans ?</p><span class="q-type">QCM</span>
+<ul class="ol">
+<li><span class="cb-checked"></span> <span class="correct">a) L'attestation de destruction + le feuillet n°4 du bordereau CERFA</span></li>
+<li><span class="cb"></span> b) Le feuillet n°4 du bordereau CERFA + le contrat du prestataire</li>
+<li><span class="cb"></span> c) L'attestation de destruction + le contrat du prestataire</li>
+<li><span class="cb"></span> d) Aucun document n'est à conserver</li>
+</ul>
+<div class="explanation">Le producteur de DASRI doit conserver pendant 3 ans l'attestation de destruction délivrée par l'installation de traitement et le feuillet n°4 du bordereau CERFA de suivi (preuve de la bonne élimination).</div>
+</div>
+
+<!-- Q27 -->
+<div class="qb">
+<span class="qn">27</span><p class="qt">Les aiguilles usagées doivent être jetées dans une poubelle jaune DASRI classique.</p><span class="q-type">Vrai / Faux</span>
+<ul class="ol">
+<li><span class="cb"></span> Vrai</li>
+<li><span class="cb-checked"></span> <span class="correct">Faux</span></li>
+</ul>
+<div class="explanation">Les aiguilles usagées sont des OPCT (Objets Piquants, Coupants, Tranchants). Elles doivent être éliminées dans des conteneurs OPCT rigides et résistants à la perforation (et non dans un simple sac jaune DASRI). Le conteneur OPCT est lui-même jaune mais il est spécifiquement conçu pour éviter les AES.</div>
+</div>
+
+<!-- Q28 -->
+<div class="qb">
+<span class="qn">28</span><p class="qt">Classez chaque déchet dans la bonne catégorie (DAOM ou DASRI) :</p><span class="q-type">Exercice pratique</span>
+<table class="tri-table">
+<thead>
+<tr><th class="item-col" style="width:60%">Déchet</th><th style="width:20%">DAOM</th><th style="width:20%">DASRI</th></tr>
+</thead>
+<tbody>
+<tr><td class="item-col">Cupules à usage unique souillées</td><td></td><td class="correct-cell"><strong>X</strong></td></tr>
+<tr><td class="item-col">Compresses souillées de sang</td><td></td><td class="correct-cell"><strong>X</strong></td></tr>
+<tr><td class="item-col">Gants à usage unique non souillés</td><td class="correct-cell"><strong>X</strong></td><td></td></tr>
+<tr><td class="item-col">Emballages d'aiguilles (papier/carton)</td><td class="correct-cell"><strong>X</strong></td><td></td></tr>
+<tr><td class="item-col">Champ stérile souillé</td><td></td><td class="correct-cell"><strong>X</strong></td></tr>
+<tr><td class="item-col">Pipette unidose vide (non souillée)</td><td class="correct-cell"><strong>X</strong></td><td></td></tr>
+<tr><td class="item-col">Bouteille de Bétadine ouverte depuis plus d'1 mois</td><td class="correct-cell"><strong>X</strong></td><td></td></tr>
+<tr><td class="item-col">Masque utilisé</td><td></td><td class="correct-cell"><strong>X</strong></td></tr>
+</tbody>
+</table>
+<div class="explanation">Règle de tri : tout déchet souillé de sang ou de liquide biologique, ainsi que tout matériel ayant été en contact avec une zone de soins contaminée, est un DASRI. Les emballages propres, le matériel non souillé et les produits périmés non contaminés sont des DAOM (Déchets Assimilés aux Ordures Ménagères).</div>
+</div>
+
+<!-- SCORE -->
+<div class="score"><p>Résultat</p><div class="sl">_______ / 28</div></div>
+<div class="ft"><span>Bybloss — Formation Hygiène &amp; Salubrité — Renouvellement</span><span>Examen final — Corrigé</span></div>
+
+</div></div>
+</body>
+</html>
