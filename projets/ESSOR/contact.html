@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ESSOR</title>
+    <meta name="description" content="Contactez ESSOR : adresse, téléphone, email et horaires des permanences.">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="site-logo">
+                <span class="site-logo-icon">E</span>
+                ESSOR
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                    <li><a href="nos-actions.html">Nos actions</a></li>
+                    <li><a href="parcours-asile.html">Parcours d'asile</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="nav-cta">
+                        <a href="inscription.html" class="btn btn-vermillon btn-sm">Etre accompagn&eacute;</a>
+                        <a href="benevole.html" class="btn btn-or btn-sm">Devenir b&eacute;n&eacute;vole</a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero hero-sm">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80&auto=format&fit=crop" alt="">
+        </div>
+        <div class="container">
+            <h1>Nous contacter</h1>
+            <p class="lead">Une question, un besoin d'orientation ? N'h&eacute;sitez pas &agrave; nous joindre par t&eacute;l&eacute;phone, email ou en venant &agrave; nos permanences.</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+
+                    <!-- Infos contact -->
+                    <div>
+                        <div class="contact-info-card reveal">
+                            <h3 class="mb-3">Informations de contact</h3>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Adresse</h4>
+                                    <p data-config="association.adresse">12 rue de l'Esp&eacute;rance, 75013 Paris</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>T&eacute;l&eacute;phone</h4>
+                                    <p><a href="#" data-config="association.telephone">01 45 67 89 10</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p><a href="#" data-config="association.email">contact@association-essor.org</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Horaires permanences -->
+                        <div class="contact-info-card mt-3 reveal">
+                            <h3 class="mb-3">Horaires des permanences</h3>
+                            <ul class="horaires-list">
+                                <li>
+                                    <span class="jour">Permanence juridique</span>
+                                    <span data-config="permanences.juridique">Mardi et jeudi, 14h-17h</span>
+                                </li>
+                                <li>
+                                    <span class="jour">Aide administrative</span>
+                                    <span data-config="permanences.administrative">Lundi et mercredi, 10h-12h30</span>
+                                </li>
+                                <li>
+                                    <span class="jour">Cours de fran&ccedil;ais</span>
+                                    <span data-config="permanences.francais">Lundi, mercredi et vendredi, 9h30-12h</span>
+                                </li>
+                            </ul>
+                            <div class="alert alert-info mt-3">
+                                <span class="alert-icon">&#9432;</span>
+                                <div>Il est fortement recommand&eacute; de <a href="inscription.html">s'inscrire en amont</a> pour les permanences juridiques.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire contact -->
+                    <div class="reveal">
+                        <div class="form-card">
+                            <h3 class="mb-3">Envoyez-nous un message</h3>
+                            <form id="contact-form">
+                                <div class="form-group">
+                                    <label for="contact-nom" class="form-label">Nom complet <span class="required">*</span></label>
+                                    <input type="text" id="contact-nom" name="nom" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email" class="form-label">Email <span class="required">*</span></label>
+                                    <input type="email" id="contact-email" name="email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-telephone" class="form-label">T&eacute;l&eacute;phone</label>
+                                    <input type="tel" id="contact-telephone" name="telephone" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-sujet" class="form-label">Sujet <span class="required">*</span></label>
+                                    <select id="contact-sujet" name="sujet" class="form-input" required>
+                                        <option value="">-- Choisir --</option>
+                                        <option value="juridique">Accompagnement juridique</option>
+                                        <option value="administratif">Aide administrative</option>
+                                        <option value="francais">Cours de fran&ccedil;ais</option>
+                                        <option value="benevole">Devenir b&eacute;n&eacute;vole</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message" class="form-label">Message <span class="required">*</span></label>
+                                    <textarea id="contact-message" name="message" class="form-input" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-vermillon btn-lg" style="width: 100%; justify-content: center;">Envoyer le message</button>
+                            </form>
+                            <div id="contact-confirmation" class="form-confirmation hidden">
+                                <div class="confirmation-icon">&#10003;</div>
+                                <h3>Message envoy&eacute;</h3>
+                                <p>Merci pour votre message. Nous vous r&eacute;pondrons dans les meilleurs d&eacute;lais.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">ESSOR</div>
+                    <p class="footer-desc">Association loi 1901 accompagnant les demandeurs d'asile en Ile-de-France depuis 2012.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                        <li><a href="nos-actions.html">Nos actions</a></li>
+                        <li><a href="parcours-asile.html">Parcours d'asile</a></li>
+                        <li><a href="inscription.html">Inscription permanence</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Agir</h4>
+                    <ul class="footer-links">
+                        <li><a href="benevole.html">Devenir b&eacute;n&eacute;vole</a></li>
+                        <li><a href="contact.html">Nous contacter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span data-config="association.adresse">12 rue de l'Esp&eacute;rance, 75013 Paris</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <a href="#" data-config="association.telephone">01 45 67 89 10</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="#" data-config="association.email">contact@association-essor.org</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 ESSOR. Tous droits r&eacute;serv&eacute;s.</span>
+                <span>Association loi 1901</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config-loader.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/inscription.js"></script>
+</body>
+</html>

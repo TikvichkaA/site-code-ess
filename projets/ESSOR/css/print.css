@@ -1,0 +1,172 @@
+/* ============================================
+   ESSOR — Print styles
+   Parcours d'asile imprimable pour les RDV
+============================================ */
+
+@media print {
+    /* Cacher navigation et éléments interactifs */
+    .site-header,
+    .site-footer,
+    .nav-toggle,
+    .nav-cta,
+    .btn,
+    .btn-group,
+    .cta-benevole,
+    .urgency-banner,
+    .hero::before {
+        display: none !important;
+    }
+
+    /* Reset fond et couleurs */
+    body {
+        background: #fff;
+        color: #000;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    /* Hero simplifié */
+    .hero {
+        background: none !important;
+        color: #000 !important;
+        padding: 1rem 0;
+        border-bottom: 2px solid #000;
+    }
+
+    .hero h1 {
+        color: #000 !important;
+        font-size: 18pt;
+    }
+
+    .hero .lead {
+        color: #333 !important;
+        font-size: 10pt;
+    }
+
+    /* Sections */
+    .section {
+        padding: 1rem 0;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Parcours timeline — tout ouvert en impression */
+    .etape-content {
+        display: block !important;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    .etape-toggle {
+        display: none;
+    }
+
+    .etape-header {
+        cursor: default;
+        border: 1px solid #ccc;
+        background: #f5f5f5 !important;
+    }
+
+    .etape-badge {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .parcours-timeline::before {
+        background: #999;
+    }
+
+    .parcours-etape::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Sous-sections */
+    .etape-subsection.conseil,
+    .etape-subsection.documents,
+    .etape-subsection.adresses {
+        border-left: 3px solid #999;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Glossaire */
+    .glossaire-def {
+        display: block !important;
+    }
+
+    .glossaire-term .toggle-icon {
+        display: none;
+    }
+
+    /* Tooltips — afficher comme notes */
+    dfn .tooltip {
+        display: none !important;
+    }
+
+    dfn::after {
+        content: " (" attr(data-definition) ")";
+        font-style: italic;
+        font-weight: normal;
+        font-size: 9pt;
+        color: #555;
+    }
+
+    /* Droits sociaux */
+    .droits-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .droit-card {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    /* Liens */
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #555;
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript"]::after {
+        content: "";
+    }
+
+    /* Alertes */
+    .alert {
+        border: 1px solid #999;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Page breaks */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    .parcours-etape {
+        page-break-inside: avoid;
+    }
+
+    /* Footer impression */
+    body::after {
+        content: "ESSOR — association-essor.org — Document imprimé le " attr(data-print-date);
+        display: block;
+        text-align: center;
+        font-size: 8pt;
+        color: #999;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #ccc;
+    }
+}

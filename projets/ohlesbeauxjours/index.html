@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oh les beaux jours ! — Outil de production | Demo interactive</title>
+    <meta name="description" content="Demonstrateur interactif : gestion invites, contrats, notes de droits et feuilles de route pour le festival Oh les beaux jours !">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #1a3a5c;
+            --primary-light: #2a5580;
+            --primary-dark: #0f2640;
+            --accent: #d4663e;
+            --accent-light: #e8845e;
+            --gold: #c8963e;
+            --gold-light: #e0b86a;
+            --teal: #1a8a7a;
+            --teal-light: #2ab8a4;
+            --text: #1a2332;
+            --text-secondary: #5a6578;
+            --text-muted: #8f96a3;
+            --surface: #ffffff;
+            --surface-alt: #f6f8fb;
+            --bg: #eef1f5;
+            --border: #dde2ea;
+            --border-light: #edf0f4;
+            --success: #2d8a5e;
+            --success-light: #e6f4ed;
+            --warning: #d4963e;
+            --warning-light: #fdf3e3;
+            --danger: #c94444;
+            --danger-light: #fde8e8;
+            --info: #3a7bd5;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
+            --font: 'DM Sans', -apple-system, sans-serif;
+            --font-display: 'Outfit', 'DM Sans', sans-serif;
+            --transition: all 0.2s ease;
+            --sidebar-w: 250px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== LAYOUT ===== */
+        .app { display: flex; height: 100vh; overflow: hidden; }
+
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { display: flex; align-items: center; gap: 12px; }
+
+        .logo-mark {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
+        .logo-text small { display: block; font-family: var(--font); font-size: 0.65rem; font-weight: 400; opacity: 0.6; }
+
+        .sidebar-nav { flex: 1; padding: 12px; overflow-y: auto; }
+        .nav-section { margin-bottom: 20px; }
+        .nav-section-label {
+            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; opacity: 0.5; padding: 0 12px; margin-bottom: 6px;
+        }
+
+        .nav-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 12px; border-radius: 8px;
+            font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.7);
+            cursor: pointer; transition: var(--transition);
+            border: none; background: none; width: 100%; text-align: left;
+        }
+
+        .nav-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .nav-item.active { background: rgba(255,255,255,0.15); color: white; font-weight: 600; }
+        .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .nav-item .badge {
+            margin-left: auto; background: var(--accent);
+            font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 50px;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-footer .reset-btn {
+            width: 100%; padding: 8px 14px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; color: white; font-family: var(--font);
+            font-size: 0.78rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition); display: flex; align-items: center; gap: 8px; justify-content: center;
+        }
+
+        .sidebar-footer .reset-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .sidebar-credit {
+            margin-top: 10px; font-size: 0.65rem; opacity: 0.4; text-align: center;
+        }
+
+        .sidebar-credit a { color: white; }
+
+        /* ===== MAIN ===== */
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+
+        .topbar {
+            height: 56px; background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px; flex-shrink: 0;
+        }
+
+        .topbar-left { display: flex; align-items: center; gap: 12px; }
+
+        .hamburger {
+            display: none; width: 36px; height: 36px; border: none;
+            background: none; cursor: pointer; color: var(--text);
+        }
+
+        .hamburger svg { width: 24px; height: 24px; }
+
+        .topbar h2 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
+
+        .topbar-actions { display: flex; align-items: center; gap: 10px; }
+
+        .demo-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 12px; background: rgba(212,102,62,0.08);
+            border: 1px solid rgba(212,102,62,0.2);
+            border-radius: 50px; font-size: 0.68rem; font-weight: 600; color: var(--accent);
+        }
+
+        .content { flex: 1; overflow-y: auto; padding: 24px; }
+
+        /* ===== VIEW TOGGLE ===== */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* ===== DASHBOARD ===== */
+        .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+
+        .kpi-card {
+            background: var(--surface); border-radius: var(--radius); padding: 20px;
+            border: 1px solid var(--border-light); transition: var(--transition);
+        }
+
+        .kpi-card:hover { box-shadow: var(--shadow); }
+        .kpi-icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .kpi-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; line-height: 1; }
+        .kpi-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+
+        .pipeline-bar {
+            background: var(--surface); border-radius: var(--radius); padding: 20px;
+            border: 1px solid var(--border-light); margin-bottom: 24px;
+        }
+
+        .pipeline-bar h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; }
+
+        .pipeline-track {
+            display: flex; height: 28px; border-radius: 6px; overflow: hidden;
+            background: var(--border-light);
+        }
+
+        .pipeline-segment { transition: width 0.5s ease; position: relative; }
+        .pipeline-segment:hover { filter: brightness(1.1); }
+
+        .pipeline-legend {
+            display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;
+        }
+
+        .legend-item {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.75rem; color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0;
+        }
+
+        .invite-table-card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); overflow: hidden;
+        }
+
+        .invite-table-header {
+            padding: 16px 20px; border-bottom: 1px solid var(--border-light);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .invite-table-header h3 { font-size: 0.92rem; font-weight: 700; }
+
+        .invite-table { width: 100%; border-collapse: collapse; }
+        .invite-table th {
+            text-align: left; padding: 10px 16px; font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+            border-bottom: 1px solid var(--border-light); background: var(--surface-alt);
+        }
+
+        .invite-table td {
+            padding: 12px 16px; font-size: 0.85rem; border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
+        }
+
+        .invite-table tr { cursor: pointer; transition: var(--transition); }
+        .invite-table tbody tr:hover { background: var(--surface-alt); }
+
+        .invite-name { font-weight: 600; }
+        .invite-type { font-size: 0.78rem; color: var(--text-secondary); }
+
+        .status-dot {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.75rem; font-weight: 600;
+        }
+
+        .status-dot::before {
+            content: ''; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+
+        .status-dot.complete::before { background: var(--success); }
+        .status-dot.pending::before { background: var(--warning); }
+        .status-dot.empty::before { background: var(--border); }
+        .status-dot.signed::before { background: var(--teal); }
+
+        /* ===== FORMULAIRE ===== */
+        .form-card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); padding: 32px; max-width: 900px;
+        }
+
+        .form-card h3 {
+            font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-card .form-subtitle {
+            font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;
+        }
+
+        .form-section-title {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--accent); margin-bottom: 14px;
+            padding-bottom: 8px; border-bottom: 2px solid rgba(212,102,62,0.15);
+            margin-top: 28px;
+        }
+
+        .form-section-title:first-of-type { margin-top: 0; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .form-group { display: flex; flex-direction: column; gap: 4px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-group label {
+            font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+        }
+
+        .form-group label .req { color: var(--accent); }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 10px 14px; border: 1px solid var(--border);
+            border-radius: 8px; font-family: var(--font); font-size: 0.88rem;
+            color: var(--text); background: var(--surface);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26,58,92,0.08);
+        }
+
+        .form-textarea { resize: vertical; min-height: 80px; }
+        .form-select { cursor: pointer; }
+
+        .form-actions {
+            display: flex; gap: 12px; margin-top: 28px; padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .cond-field { display: none; }
+        .cond-field.visible { display: flex; }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 22px; border-radius: 8px; font-family: var(--font);
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-light); }
+
+        .btn-accent { background: var(--accent); color: white; }
+        .btn-accent:hover { background: var(--accent-light); }
+
+        .btn-teal { background: var(--teal); color: white; }
+        .btn-teal:hover { background: var(--teal-light); }
+
+        .btn-outline {
+            background: none; border: 1px solid var(--border); color: var(--text-secondary);
+        }
+
+        .btn-outline:hover { background: var(--surface-alt); border-color: var(--text-muted); }
+
+        .btn-ghost { background: none; border: none; color: var(--text-secondary); }
+        .btn-ghost:hover { color: var(--text); }
+
+        .btn-sm { padding: 7px 14px; font-size: 0.78rem; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ===== CONTRAT ===== */
+        .document-wrapper { max-width: 900px; }
+
+        .invite-selector {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+            padding: 16px 20px; background: var(--surface); border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+
+        .invite-selector label { font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+
+        .invite-selector select {
+            flex: 1; padding: 8px 12px; border: 1px solid var(--border);
+            border-radius: 6px; font-family: var(--font); font-size: 0.85rem;
+        }
+
+        .contract-doc {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); padding: 48px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.95rem; line-height: 1.8; position: relative;
+        }
+
+        .contract-doc h2 {
+            font-family: var(--font-display); text-align: center;
+            font-size: 1.3rem; margin-bottom: 8px; letter-spacing: 0.05em;
+        }
+
+        .contract-doc .contract-subtitle {
+            text-align: center; font-size: 0.85rem; color: var(--text-secondary);
+            margin-bottom: 32px; padding-bottom: 24px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .contract-doc p { margin-bottom: 14px; }
+        .contract-doc .article { font-weight: 700; margin-top: 24px; margin-bottom: 6px; }
+
+        .editable-field {
+            background: rgba(200,150,62,0.12); padding: 1px 6px; border-radius: 4px;
+            border-bottom: 2px dashed var(--gold); cursor: text;
+            transition: background 0.2s ease;
+        }
+
+        .editable-field:focus { background: rgba(200,150,62,0.25); outline: none; }
+
+        .contract-actions {
+            display: flex; gap: 12px; margin-top: 28px; padding-top: 20px;
+            border-top: 1px solid var(--border-light); flex-wrap: wrap;
+        }
+
+        .sign-zone {
+            display: flex; align-items: center; gap: 16px; margin-top: 32px;
+            padding: 20px; background: var(--surface-alt); border-radius: var(--radius);
+            border: 2px dashed var(--border);
+        }
+
+        .sign-zone.signed {
+            border-color: var(--teal); border-style: solid;
+            background: rgba(26,138,122,0.04);
+        }
+
+        .sign-placeholder {
+            width: 180px; height: 60px; border: 2px dashed var(--teal);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font); font-size: 0.78rem; font-weight: 600;
+            color: var(--teal); cursor: pointer; transition: var(--transition);
+        }
+
+        .sign-placeholder:hover { background: rgba(26,138,122,0.08); }
+
+        .sign-placeholder.done {
+            border-style: solid; background: rgba(26,138,122,0.06);
+            font-family: 'Brush Script MT', 'Segoe Script', cursive;
+            font-size: 1.3rem; font-weight: 400; color: var(--primary-dark);
+            cursor: default;
+        }
+
+        .locked-notice {
+            padding: 20px; text-align: center; color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .locked-notice svg { width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.3; }
+
+        /* ===== NOTE DE DROITS ===== */
+        .note-doc {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); padding: 40px; max-width: 700px;
+        }
+
+        .note-doc h2 {
+            font-family: var(--font-display); font-size: 1.2rem; text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .note-doc .note-subtitle {
+            text-align: center; font-size: 0.82rem; color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .note-info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .note-info-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 14px; background: var(--surface-alt); border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .note-info-label { color: var(--text-muted); font-weight: 500; }
+        .note-info-value { font-weight: 600; }
+
+        .note-calc-table {
+            width: 100%; border-collapse: collapse; margin-bottom: 20px;
+        }
+
+        .note-calc-table th {
+            text-align: left; padding: 8px 14px; font-size: 0.72rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+            color: var(--text-muted); border-bottom: 2px solid var(--border);
+        }
+
+        .note-calc-table td {
+            padding: 10px 14px; font-size: 0.88rem; border-bottom: 1px solid var(--border-light);
+        }
+
+        .note-calc-table .editable-amount {
+            background: rgba(200,150,62,0.1); padding: 4px 10px; border-radius: 4px;
+            border: 1px solid transparent; font-family: var(--font); font-size: 0.88rem;
+            text-align: right; width: 110px; transition: border-color 0.2s;
+        }
+
+        .note-calc-table .editable-amount:focus {
+            outline: none; border-color: var(--gold);
+        }
+
+        .note-total-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: rgba(26,138,122,0.06);
+            border: 1px solid rgba(26,138,122,0.15); border-radius: var(--radius);
+            margin-top: 16px;
+        }
+
+        .note-total-label { font-weight: 700; color: var(--teal); }
+        .note-total-value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--teal); }
+
+        /* ===== FEUILLE DE ROUTE ===== */
+        .route-doc {
+            background: var(--surface); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light); padding: 40px; max-width: 800px;
+        }
+
+        .route-doc h2 {
+            font-family: var(--font-display); font-size: 1.2rem; text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .route-doc .route-subtitle {
+            text-align: center; font-size: 0.82rem; color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .timeline { position: relative; padding-left: 36px; }
+
+        .timeline::before {
+            content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+            width: 3px; background: var(--border-light); border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative; margin-bottom: 24px;
+            padding: 16px 20px; background: var(--surface-alt);
+            border-radius: var(--radius); border: 1px solid var(--border-light);
+        }
+
+        .timeline-item::before {
+            content: ''; position: absolute; left: -29px; top: 20px;
+            width: 13px; height: 13px; border-radius: 50%;
+            border: 3px solid var(--primary); background: white;
+        }
+
+        .timeline-item.transport::before { border-color: var(--primary); }
+        .timeline-item.hotel::before { border-color: var(--gold); }
+        .timeline-item.intervention::before { border-color: var(--accent); }
+
+        .timeline-category {
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 4px;
+        }
+
+        .timeline-item.transport .timeline-category { color: var(--primary); }
+        .timeline-item.hotel .timeline-category { color: var(--gold); }
+        .timeline-item.intervention .timeline-category { color: var(--accent); }
+
+        .timeline-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 2px; }
+        .timeline-detail { font-size: 0.82rem; color: var(--text-secondary); }
+
+        .timeline-editable {
+            background: rgba(200,150,62,0.08); padding: 2px 6px; border-radius: 3px;
+            border-bottom: 1px dashed var(--gold); cursor: text;
+        }
+
+        .timeline-editable:focus { outline: none; background: rgba(200,150,62,0.18); }
+
+        .route-contacts {
+            margin-top: 28px; padding: 20px; background: var(--surface-alt);
+            border-radius: var(--radius); border: 1px solid var(--border-light);
+        }
+
+        .route-contacts h4 {
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px;
+        }
+
+        .contact-row {
+            display: flex; gap: 24px; font-size: 0.85rem; margin-bottom: 6px;
+        }
+
+        .contact-role { font-weight: 600; min-width: 160px; }
+        .contact-info { color: var(--text-secondary); }
+
+        .route-actions {
+            display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;
+        }
+
+        .add-step-btn {
+            display: flex; align-items: center; gap: 6px; margin-top: 16px;
+            padding: 10px 16px; background: none; border: 2px dashed var(--border);
+            border-radius: var(--radius); cursor: pointer; font-family: var(--font);
+            font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+            width: 100%; justify-content: center; transition: var(--transition);
+        }
+
+        .add-step-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+        .remove-step-btn {
+            position: absolute; top: 8px; right: 8px; width: 24px; height: 24px;
+            border-radius: 50%; background: var(--danger-light); border: none;
+            cursor: pointer; font-size: 0.85rem; color: var(--danger);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.2s;
+        }
+
+        .timeline-item:hover .remove-step-btn { opacity: 1; }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+            padding: 12px 24px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+            color: white; z-index: 9999; opacity: 0; transition: all 0.3s ease;
+            pointer-events: none; white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--danger); }
+        .toast.info { background: var(--primary); }
+
+        /* ===== MOBILE ===== */
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+
+        .sidebar-overlay.visible { display: block; }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed; top: 0; left: 0; bottom: 0;
+                transform: translateX(-100%); z-index: 100;
+            }
+
+            .sidebar.open { transform: translateX(0); }
+            .hamburger { display: flex; align-items: center; justify-content: center; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+            .form-grid { grid-template-columns: 1fr; }
+            .note-info-grid { grid-template-columns: 1fr; }
+            .contract-doc { padding: 24px; }
+            .note-doc { padding: 24px; }
+            .route-doc { padding: 24px; }
+            .content { padding: 16px; }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .sidebar, .topbar, .toast, .hamburger, .sidebar-overlay,
+            .invite-selector, .contract-actions, .route-actions,
+            .form-actions, .add-step-btn, .remove-step-btn,
+            .btn, .demo-badge { display: none !important; }
+
+            .app { display: block; height: auto; }
+            .main { overflow: visible; }
+            .content { padding: 0; overflow: visible; }
+            .view { display: none !important; }
+            .view.print-target { display: block !important; }
+
+            .contract-doc, .note-doc, .route-doc {
+                border: none; box-shadow: none; padding: 20px 0;
+                max-width: 100%;
+            }
+
+            .sign-zone { border: 1px solid #ccc; }
+            body { background: white; }
+        }
+
+        /* ===== PRESENTATION VIEW ===== */
+        .pres-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white; border-radius: var(--radius-lg); padding: 48px 40px;
+            margin-bottom: 24px; position: relative; overflow: hidden;
+        }
+
+        .pres-hero::after {
+            content: ''; position: absolute; right: -40px; bottom: -40px;
+            width: 200px; height: 200px; border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .pres-hero-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.12); padding: 6px 16px;
+            border-radius: 50px; font-size: 0.78rem; font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .pres-hero h1 {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800; line-height: 1.15; margin-bottom: 14px;
+        }
+
+        .pres-hero h1 span { color: var(--gold-light); }
+
+        .pres-hero p { font-size: 1rem; opacity: 0.85; max-width: 560px; line-height: 1.7; }
+
+        .pres-hero .pres-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 24px; padding: 12px 28px; border-radius: 50px;
+            background: white; color: var(--primary); font-weight: 700;
+            font-size: 0.9rem; border: none; cursor: pointer;
+            transition: var(--transition); font-family: var(--font);
+        }
+
+        .pres-hero .pres-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+        .pres-section { margin-bottom: 32px; }
+
+        .pres-section-label {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px;
+        }
+
+        .pres-section-title {
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+            color: var(--primary); margin-bottom: 8px;
+        }
+
+        .pres-section-desc {
+            color: var(--text-secondary); max-width: 580px; margin-bottom: 28px;
+            font-size: 0.92rem;
+        }
+
+        .pres-grid-2 {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+
+        .pres-card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            padding: 28px; box-shadow: var(--shadow);
+        }
+
+        .pres-card.problem { border-left: 4px solid var(--accent); }
+        .pres-card.solution { border-left: 4px solid var(--teal); }
+
+        .pres-card-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 14px;
+        }
+
+        .pres-card.problem .pres-card-icon { background: rgba(212,102,62,0.1); }
+        .pres-card.solution .pres-card-icon { background: rgba(26,138,122,0.1); }
+
+        .pres-card h3 {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pres-card ul {
+            list-style: none; display: flex; flex-direction: column; gap: 8px;
+        }
+
+        .pres-card ul li {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;
+        }
+
+        .pres-card ul li::before {
+            content: ''; flex-shrink: 0; width: 6px; height: 6px;
+            border-radius: 50%; margin-top: 8px;
+        }
+
+        .pres-card.problem ul li::before { background: var(--accent); }
+        .pres-card.solution ul li::before { background: var(--teal); }
+
+        .pres-pipeline {
+            background: var(--surface); border-radius: var(--radius-lg);
+            padding: 40px; box-shadow: var(--shadow-lg);
+        }
+
+        .pres-steps { display: flex; flex-direction: column; }
+
+        .pres-step {
+            display: grid; grid-template-columns: 52px 1fr; gap: 18px;
+            position: relative;
+        }
+
+        .pres-step:not(:last-child) { padding-bottom: 36px; }
+
+        .pres-step-marker { display: flex; flex-direction: column; align-items: center; }
+
+        .pres-step-num {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-weight: 800; font-size: 1rem;
+            color: white; flex-shrink: 0; z-index: 1;
+        }
+
+        .pres-step-line { flex: 1; width: 3px; background: var(--border-light); margin-top: 6px; }
+        .pres-step:last-child .pres-step-line { display: none; }
+
+        .pres-s1 .pres-step-num { background: var(--primary); }
+        .pres-s2 .pres-step-num { background: var(--accent); }
+        .pres-s3 .pres-step-num { background: var(--teal); }
+        .pres-s4 .pres-step-num { background: var(--gold); }
+
+        .pres-step-title {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pres-step-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+
+        .pres-step-visual {
+            background: var(--surface-alt); border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 16px; position: relative;
+        }
+
+        .pres-step-visual-label {
+            position: absolute; top: -10px; left: 14px;
+            background: var(--surface); padding: 0 8px;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-muted);
+        }
+
+        .pres-mock-field {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+        }
+
+        .pres-mock-label {
+            font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+            min-width: 85px; text-align: right;
+        }
+
+        .pres-mock-val {
+            flex: 1; height: 30px; background: white; border: 1px solid var(--border);
+            border-radius: 6px; padding: 0 10px; font-size: 0.8rem;
+            color: var(--text-secondary); display: flex; align-items: center;
+        }
+
+        .pres-mock-contract {
+            font-family: Georgia, serif; font-size: 0.8rem; line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .pres-mock-contract .hl {
+            background: rgba(200,150,62,0.15); color: var(--gold);
+            font-weight: 600; padding: 1px 4px; border-radius: 3px;
+        }
+
+        .pres-mock-contract .sig-row {
+            margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .pres-mock-contract .sig-box {
+            width: 110px; height: 36px; border: 2px dashed var(--teal);
+            border-radius: 6px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.68rem; color: var(--teal); font-weight: 600; font-family: var(--font);
+        }
+
+        .pres-mock-note {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.78rem;
+        }
+
+        .pres-mock-note-row {
+            display: flex; justify-content: space-between;
+            padding: 5px 10px; background: white; border-radius: 6px;
+            border: 1px solid var(--border-light);
+        }
+
+        .pres-mock-note-row.total {
+            grid-column: 1 / -1;
+            background: rgba(26,138,122,0.06); border-color: rgba(26,138,122,0.2);
+        }
+
+        .pres-mock-note-row.total .mn-val { color: var(--teal); }
+        .mn-lbl { color: var(--text-muted); font-weight: 500; }
+        .mn-val { font-weight: 600; }
+
+        .pres-mock-route-step {
+            display: flex; align-items: center; gap: 10px;
+            padding: 7px 12px; background: white; border-radius: 8px;
+            border: 1px solid var(--border-light); font-size: 0.8rem; margin-bottom: 6px;
+        }
+
+        .pres-mock-route-icon {
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; flex-shrink: 0;
+        }
+
+        .pres-route-train { background: rgba(26,58,92,0.1); }
+        .pres-route-hotel { background: rgba(200,150,62,0.1); }
+        .pres-route-venue { background: rgba(212,102,62,0.1); }
+
+        .pres-mock-route-time { font-weight: 600; }
+        .pres-mock-route-detail { font-size: 0.75rem; color: var(--text-muted); }
+
+        .pres-features-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        }
+
+        .pres-feature {
+            background: var(--surface); border-radius: var(--radius); padding: 24px;
+            box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pres-feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+        .pres-feature-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; margin-bottom: 12px;
+        }
+
+        .pres-fi-blue { background: rgba(26,58,92,0.08); }
+        .pres-fi-coral { background: rgba(212,102,62,0.08); }
+        .pres-fi-teal { background: rgba(26,138,122,0.08); }
+        .pres-fi-gold { background: rgba(200,150,62,0.08); }
+        .pres-fi-green { background: rgba(45,138,94,0.08); }
+        .pres-fi-purple { background: rgba(107,78,168,0.08); }
+
+        .pres-feature h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+        .pres-feature p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+        .pres-stack {
+            background: var(--surface); border-radius: var(--radius-lg);
+            padding: 32px; box-shadow: var(--shadow);
+        }
+
+        .pres-stack-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
+        }
+
+        .pres-stack-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px; background: var(--surface-alt); border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+
+        .pres-stack-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(26,58,92,0.08);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+
+        .pres-stack-name { font-weight: 600; font-size: 0.85rem; }
+        .pres-stack-role { font-size: 0.75rem; color: var(--text-muted); }
+
+        .pres-cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius-lg); padding: 40px; color: white; text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pres-cta-section h2 {
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pres-cta-section p { opacity: 0.85; margin-bottom: 24px; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+        .pres-cta-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+        .pres-btn-w {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: 50px; font-family: var(--font);
+            font-size: 0.88rem; font-weight: 600; text-decoration: none;
+            cursor: pointer; border: none; transition: var(--transition);
+        }
+
+        .pres-btn-w.primary { background: white; color: var(--primary); }
+        .pres-btn-w.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+        .pres-btn-w.secondary {
+            background: rgba(255,255,255,0.15); color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .pres-btn-w.secondary:hover { background: rgba(255,255,255,0.25); }
+
+        .pres-footer {
+            text-align: center; padding: 24px 0 8px; color: var(--text-muted); font-size: 0.78rem;
+        }
+
+        .pres-footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .pres-grid-2 { grid-template-columns: 1fr; }
+            .pres-features-grid { grid-template-columns: 1fr; }
+            .pres-pipeline { padding: 24px; }
+            .pres-step { grid-template-columns: 40px 1fr; gap: 12px; }
+            .pres-step-num { width: 36px; height: 36px; font-size: 0.85rem; }
+            .pres-mock-note { grid-template-columns: 1fr; }
+            .pres-mock-field { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .pres-mock-label { text-align: left; min-width: auto; }
+        }
+
+        /* ===== SIGNATURE ANIMATION ===== */
+        @keyframes signDraw {
+            from { width: 0; opacity: 0; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        .sign-anim {
+            animation: signDraw 0.8s ease forwards;
+            overflow: hidden; white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-mark">&#128214;</div>
+                <div class="logo-text">
+                    Oh les beaux jours !
+                    <small>Production — 10e edition</small>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-label">Presentation</div>
+                <button class="nav-item active" data-view="presentation" onclick="switchView('presentation')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                    Proposition
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-label">Production</div>
+                <button class="nav-item" data-view="dashboard" onclick="switchView('dashboard')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    Tableau de bord
+                </button>
+                <button class="nav-item" data-view="formulaire" onclick="switchView('formulaire')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Formulaire invite
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-label">Documents</div>
+                <button class="nav-item" data-view="contrats" onclick="switchView('contrats')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+                    Contrats
+                    <span class="badge" id="badge-contrats">1</span>
+                </button>
+                <button class="nav-item" data-view="notes" onclick="switchView('notes')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    Notes de droits
+                </button>
+                <button class="nav-item" data-view="routes" onclick="switchView('routes')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 10-16 0c0 3 2.7 7 8 11.7z"/></svg>
+                    Feuilles de route
+                </button>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="reset-btn" onclick="resetDemo()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                Reinitialiser la demo
+            </button>
+            <div class="sidebar-credit">
+                Maquette par <a href="../../index.html">Code'ess</a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- MAIN -->
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger" onclick="toggleSidebar()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <h2 id="pageTitle">Proposition</h2>
+            </div>
+            <div class="topbar-actions">
+                <div class="demo-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    Donnees de demonstration
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- ==================== VUE 0 : PRESENTATION ==================== -->
+            <div class="view active" id="view-presentation">
+
+                <!-- Hero -->
+                <div class="pres-hero">
+                    <div class="pres-hero-label">&#9881;&#65039; Automatisation de la production</div>
+                    <h1>Du formulaire invite a la <span>feuille de route</span>, en un clic</h1>
+                    <p>Un outil sur mesure pour automatiser vos contrats, notes de droits d'auteurs et feuilles de route &mdash; tout en gardant la main sur chaque detail.</p>
+                    <button class="pres-cta" onclick="switchView('dashboard')">&#128640; Voir la demo interactive</button>
+                </div>
+
+                <!-- Diagnostic -->
+                <div class="pres-section">
+                    <div class="pres-section-label">&#128269; Diagnostic</div>
+                    <h2 class="pres-section-title">Aujourd'hui vs. demain</h2>
+                    <p class="pres-section-desc">Votre equipe gere des dizaines d'invites par edition. Chaque etape manuelle est un risque d'erreur et du temps en moins pour la programmation.</p>
+
+                    <div class="pres-grid-2">
+                        <div class="pres-card problem">
+                            <div class="pres-card-icon">&#128531;</div>
+                            <h3>Aujourd'hui</h3>
+                            <ul>
+                                <li>Formulaire Google isole, copier-coller vers les contrats</li>
+                                <li>Contrats Word rediges manuellement pour chaque invite</li>
+                                <li>Notes de droits d'auteurs calculees a la main</li>
+                                <li>Feuilles de route envoyees une par une par mail</li>
+                                <li>Risques d'erreurs sur les montants, dates, trajets</li>
+                            </ul>
+                        </div>
+                        <div class="pres-card solution">
+                            <div class="pres-card-icon">&#10024;</div>
+                            <h3>Demain</h3>
+                            <ul>
+                                <li>Un formulaire en ligne alimente tout le reste</li>
+                                <li>Contrats generes et envoyables en signature electronique</li>
+                                <li>Notes de droits calcules automatiquement</li>
+                                <li>Feuilles de route editees depuis le recap voyages</li>
+                                <li>Modifications manuelles possibles a chaque etape</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline -->
+                <div class="pres-section">
+                    <div class="pres-section-label">&#128736;&#65039; Comment ca marche</div>
+                    <h2 class="pres-section-title">Le parcours, etape par etape</h2>
+                    <p class="pres-section-desc">Chaque etape est automatisee mais reste modifiable manuellement. Vous gardez le controle total.</p>
+
+                    <div class="pres-pipeline">
+                        <div class="pres-steps">
+
+                            <!-- Step 1 -->
+                            <div class="pres-step pres-s1">
+                                <div class="pres-step-marker">
+                                    <div class="pres-step-num">1</div>
+                                    <div class="pres-step-line"></div>
+                                </div>
+                                <div>
+                                    <h3 class="pres-step-title">Formulaire invite</h3>
+                                    <p class="pres-step-desc">L'invite remplit un formulaire en ligne avec ses infos administratives et logistiques. Les donnees alimentent un tableau recapitulatif.</p>
+                                    <div class="pres-step-visual">
+                                        <div class="pres-step-visual-label">Apercu formulaire</div>
+                                        <div class="pres-mock-field"><span class="pres-mock-label">Nom</span><div class="pres-mock-val">Despentes, Virginie</div></div>
+                                        <div class="pres-mock-field"><span class="pres-mock-label">SIRET / Agessa</span><div class="pres-mock-val">123 456 789 00012</div></div>
+                                        <div class="pres-mock-field"><span class="pres-mock-label">Transport</span><div class="pres-mock-val">Train &mdash; Paris &rarr; Marseille</div></div>
+                                        <div class="pres-mock-field"><span class="pres-mock-label">Hebergement</span><div class="pres-mock-val">Hotel 27-29 mai</div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="pres-step pres-s2">
+                                <div class="pres-step-marker">
+                                    <div class="pres-step-num">2</div>
+                                    <div class="pres-step-line"></div>
+                                </div>
+                                <div>
+                                    <h3 class="pres-step-title">Contrat auto-genere</h3>
+                                    <p class="pres-step-desc">Un contrat est pre-rempli a partir des donnees du formulaire. Vous pouvez le relire, le modifier, puis l'envoyer en signature electronique.</p>
+                                    <div class="pres-step-visual">
+                                        <div class="pres-step-visual-label">Apercu contrat</div>
+                                        <div class="pres-mock-contract">
+                                            <p><strong>CONTRAT DE CESSION DE DROITS</strong></p>
+                                            <p style="margin-top:6px">Entre l'association Oh les beaux jours ! et <span class="hl">Virginie Despentes</span>, autrice, domiciliee a <span class="hl">Paris</span>, n&deg; SIRET <span class="hl">123 456 789 00012</span>.</p>
+                                            <p style="margin-top:6px">Pour une intervention le <span class="hl">28 mai 2026</span> dans le cadre du festival, moyennant un droit d'auteur de <span class="hl">800,00 &euro;</span> brut.</p>
+                                            <div class="sig-row">
+                                                <span style="font-size:0.78rem;color:var(--text-muted)">Signature :</span>
+                                                <div class="sig-box">&#9997;&#65039; e-signature</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="pres-step pres-s3">
+                                <div class="pres-step-marker">
+                                    <div class="pres-step-num">3</div>
+                                    <div class="pres-step-line"></div>
+                                </div>
+                                <div>
+                                    <h3 class="pres-step-title">Note de droits d'auteurs</h3>
+                                    <p class="pres-step-desc">Une fois le contrat signe, la note de droits est editee automatiquement avec les bons montants, precomptes et references.</p>
+                                    <div class="pres-step-visual">
+                                        <div class="pres-step-visual-label">Apercu note de droits</div>
+                                        <div class="pres-mock-note">
+                                            <div class="pres-mock-note-row"><span class="mn-lbl">Auteur</span><span class="mn-val">V. Despentes</span></div>
+                                            <div class="pres-mock-note-row"><span class="mn-lbl">Date</span><span class="mn-val">28/05/2026</span></div>
+                                            <div class="pres-mock-note-row"><span class="mn-lbl">Brut</span><span class="mn-val">800,00 &euro;</span></div>
+                                            <div class="pres-mock-note-row"><span class="mn-lbl">Precompte</span><span class="mn-val">- 8,37 %</span></div>
+                                            <div class="pres-mock-note-row total"><span class="mn-lbl">Net a payer</span><span class="mn-val">733,04 &euro;</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="pres-step pres-s4">
+                                <div class="pres-step-marker">
+                                    <div class="pres-step-num">4</div>
+                                </div>
+                                <div>
+                                    <h3 class="pres-step-title">Feuille de route voyage</h3>
+                                    <p class="pres-step-desc">A partir du recap voyages, chaque invite recoit une feuille de route personnalisee avec ses horaires, lieux et contacts.</p>
+                                    <div class="pres-step-visual">
+                                        <div class="pres-step-visual-label">Apercu feuille de route</div>
+                                        <div class="pres-mock-route-step"><div class="pres-mock-route-icon pres-route-train">&#128646;</div><div><div class="pres-mock-route-time">27 mai &mdash; 14h32</div><div class="pres-mock-route-detail">TGV 6172 Paris Gare de Lyon &rarr; Marseille Saint-Charles</div></div></div>
+                                        <div class="pres-mock-route-step"><div class="pres-mock-route-icon pres-route-hotel">&#127976;</div><div><div class="pres-mock-route-time">27-29 mai</div><div class="pres-mock-route-detail">Hotel Le Petit Nice &mdash; Corniche J.F. Kennedy</div></div></div>
+                                        <div class="pres-mock-route-step"><div class="pres-mock-route-icon pres-route-venue">&#127916;</div><div><div class="pres-mock-route-time">28 mai &mdash; 16h00</div><div class="pres-mock-route-detail">Grande rencontre &mdash; La Criee, Theatre National</div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="pres-section">
+                    <div class="pres-section-label">&#128161; Avantages</div>
+                    <h2 class="pres-section-title">Ce que ca change au quotidien</h2>
+                    <p class="pres-section-desc">Un outil pense pour votre equipe production, pas un logiciel de plus a apprendre.</p>
+
+                    <div class="pres-features-grid">
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-blue">&#9997;&#65039;</div><h4>Modifiable a tout moment</h4><p>Chaque document genere reste editable. Ajoutez, corrigez, adaptez sans contrainte.</p></div>
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-coral">&#128274;</div><h4>Signature electronique</h4><p>Les contrats partent en signature en un clic. Rappels automatiques, statut en temps reel.</p></div>
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-teal">&#128200;</div><h4>Tableau de bord</h4><p>Vue d'ensemble de tous vos invites : formulaire rempli, contrat signe, voyage organise.</p></div>
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-gold">&#128230;</div><h4>Export PDF</h4><p>Contrats, notes de droits et feuilles de route exportables en PDF propres, prets a envoyer.</p></div>
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-green">&#128101;</div><h4>Multi-utilisateurs</h4><p>Toute l'equipe production accede a l'outil. Droits personnalisables par role.</p></div>
+                        <div class="pres-feature"><div class="pres-feature-icon pres-fi-purple">&#128737;&#65039;</div><h4>Donnees souveraines</h4><p>Vos donnees restent les votres. Pas de dependance aux GAFAM, hebergement en France.</p></div>
+                    </div>
+                </div>
+
+                <!-- Stack -->
+                <div class="pres-section">
+                    <div class="pres-section-label">&#128295; Sous le capot</div>
+                    <h2 class="pres-section-title">Outils envisages</h2>
+                    <p class="pres-section-desc">Des outils libres et souverains quand c'est possible, pragmatiques avant tout.</p>
+
+                    <div class="pres-stack">
+                        <div class="pres-stack-grid">
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#128203;</div><div><div class="pres-stack-name">Fillout ou Tally</div><div class="pres-stack-role">Formulaire invites</div></div></div>
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#128194;</div><div><div class="pres-stack-name">Airtable ou NocoDB</div><div class="pres-stack-role">Base de donnees centrale</div></div></div>
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#9997;&#65039;</div><div><div class="pres-stack-name">Yousign ou DocuSeal</div><div class="pres-stack-role">Signature electronique</div></div></div>
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#9889;</div><div><div class="pres-stack-name">n8n ou Make</div><div class="pres-stack-role">Automatisation workflow</div></div></div>
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#128196;</div><div><div class="pres-stack-name">Carbone.io</div><div class="pres-stack-role">Generation documents</div></div></div>
+                            <div class="pres-stack-item"><div class="pres-stack-icon">&#128187;</div><div><div class="pres-stack-name">App web legere</div><div class="pres-stack-role">Tableau de bord equipe</div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="pres-section">
+                    <div class="pres-cta-section">
+                        <h2>On en discute ?</h2>
+                        <p>Un premier echange de 30 min pour preciser vos besoins et definir le perimetre. Sans engagement.</p>
+                        <div class="pres-cta-buttons">
+                            <a href="mailto:emmanuel@code-ess.fr" class="pres-btn-w primary">&#128231; Me contacter</a>
+                            <a href="https://code-ess.unjouruneapp.com" class="pres-btn-w secondary" target="_blank">&#127760; Voir mon portfolio</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pres-footer">
+                    <p>Maquette preparee par <a href="https://code-ess.unjouruneapp.com" target="_blank">Code'ess</a> &mdash; Emmanuel Pinglier &mdash; Juin 2026</p>
+                    <p style="margin-top:4px">Technologie libre &amp; souveraine pour l'ESS</p>
+                </div>
+            </div>
+
+            <!-- ==================== VUE 1 : DASHBOARD ==================== -->
+            <div class="view" id="view-dashboard">
+                <div class="kpi-row" id="kpiRow"></div>
+                <div class="pipeline-bar" id="pipelineBar"></div>
+                <div class="invite-table-card">
+                    <div class="invite-table-header">
+                        <h3>Invites — Edition 2026</h3>
+                        <button class="btn btn-sm btn-primary" onclick="switchView('formulaire')">+ Nouvel invite</button>
+                    </div>
+                    <table class="invite-table">
+                        <thead>
+                            <tr>
+                                <th>Invite</th>
+                                <th>Intervention</th>
+                                <th>Formulaire</th>
+                                <th>Contrat</th>
+                                <th>Note</th>
+                                <th>Feuille</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inviteTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================== VUE 2 : FORMULAIRE ==================== -->
+            <div class="view" id="view-formulaire">
+                <div class="form-card">
+                    <h3>Formulaire invite</h3>
+                    <p class="form-subtitle">Renseignez les informations de l'invite pour generer ses documents.</p>
+
+                    <form id="inviteForm" onsubmit="return saveInvite(event)">
+                        <div class="form-section-title">Identite</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Prenom <span class="req">*</span></label>
+                                <input type="text" class="form-input" name="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nom <span class="req">*</span></label>
+                                <input type="text" class="form-input" name="nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-input" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Telephone</label>
+                                <input type="tel" class="form-input" name="telephone">
+                            </div>
+                            <div class="form-group full">
+                                <label>Adresse</label>
+                                <input type="text" class="form-input" name="adresse">
+                            </div>
+                        </div>
+
+                        <div class="form-section-title">Informations administratives</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Statut</label>
+                                <select class="form-select" name="statut" onchange="toggleCondFields(this)">
+                                    <option value="auteur">Auteur / Autrice</option>
+                                    <option value="intermittent">Intermittent</option>
+                                    <option value="salarie">Salarie</option>
+                                    <option value="association">Association</option>
+                                </select>
+                            </div>
+                            <div class="form-group cond-field" id="field-siret">
+                                <label>N° SIRET</label>
+                                <input type="text" class="form-input" name="siret">
+                            </div>
+                            <div class="form-group cond-field" id="field-agessa">
+                                <label>N° Agessa / MDA</label>
+                                <input type="text" class="form-input" name="agessa">
+                            </div>
+                            <div class="form-group">
+                                <label>N° Securite sociale</label>
+                                <input type="text" class="form-input" name="secu">
+                            </div>
+                        </div>
+
+                        <div class="form-section-title">Intervention</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Type d'intervention <span class="req">*</span></label>
+                                <select class="form-select" name="typeIntervention" required>
+                                    <option value="">— Choisir —</option>
+                                    <option value="lecture">Lecture</option>
+                                    <option value="rencontre">Grande rencontre</option>
+                                    <option value="table-ronde">Table ronde</option>
+                                    <option value="atelier">Atelier</option>
+                                    <option value="performance">Performance</option>
+                                    <option value="concert">Concert litteraire</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date <span class="req">*</span></label>
+                                <input type="date" class="form-input" name="dateIntervention" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Horaire</label>
+                                <input type="time" class="form-input" name="heureIntervention">
+                            </div>
+                            <div class="form-group">
+                                <label>Lieu</label>
+                                <select class="form-select" name="lieu">
+                                    <option value="La Criee">La Criee, Theatre National</option>
+                                    <option value="BMVR Alcazar">BMVR Alcazar</option>
+                                    <option value="Friche Belle de Mai">Friche Belle de Mai</option>
+                                    <option value="Mucem">Mucem</option>
+                                    <option value="Theatre du Gymnase">Theatre du Gymnase</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Montant brut (EUR) <span class="req">*</span></label>
+                                <input type="number" class="form-input" name="montantBrut" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group full">
+                                <label>Description / Notes</label>
+                                <textarea class="form-textarea" name="description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section-title">Transport</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Mode de transport</label>
+                                <select class="form-select" name="transport">
+                                    <option value="train">Train</option>
+                                    <option value="avion">Avion</option>
+                                    <option value="voiture">Voiture</option>
+                                    <option value="aucun">Pas de transport</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Ville de depart</label>
+                                <input type="text" class="form-input" name="villeDepart">
+                            </div>
+                            <div class="form-group">
+                                <label>Date aller</label>
+                                <input type="date" class="form-input" name="dateAller">
+                            </div>
+                            <div class="form-group">
+                                <label>Date retour</label>
+                                <input type="date" class="form-input" name="dateRetour">
+                            </div>
+                        </div>
+
+                        <div class="form-section-title">Hebergement</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Hotel</label>
+                                <select class="form-select" name="hotel">
+                                    <option value="Hotel Le Petit Nice">Hotel Le Petit Nice</option>
+                                    <option value="Hotel Hermes">Hotel Hermes</option>
+                                    <option value="NH Hotel">NH Hotel Marseille</option>
+                                    <option value="Aucun">Pas d'hebergement</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Nuits</label>
+                                <input type="text" class="form-input" name="nuits" placeholder="ex: 27-29 mai">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Enregistrer l'invite</button>
+                            <button type="reset" class="btn btn-outline">Effacer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ==================== VUE 3 : CONTRATS ==================== -->
+            <div class="view" id="view-contrats">
+                <div class="document-wrapper">
+                    <div class="invite-selector">
+                        <label>Invite :</label>
+                        <select id="contratSelect" onchange="renderContrat()"></select>
+                    </div>
+                    <div id="contratContent"></div>
+                </div>
+            </div>
+
+            <!-- ==================== VUE 4 : NOTES DE DROITS ==================== -->
+            <div class="view" id="view-notes">
+                <div class="document-wrapper">
+                    <div class="invite-selector">
+                        <label>Invite :</label>
+                        <select id="noteSelect" onchange="renderNote()"></select>
+                    </div>
+                    <div id="noteContent"></div>
+                </div>
+            </div>
+
+            <!-- ==================== VUE 5 : FEUILLES DE ROUTE ==================== -->
+            <div class="view" id="view-routes">
+                <div class="document-wrapper">
+                    <div class="invite-selector">
+                        <label>Invite :</label>
+                        <select id="routeSelect" onchange="renderRoute()"></select>
+                    </div>
+                    <div id="routeContent"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function() {
+    'use strict';
+
+    // ============================================================
+    // DATA
+    // ============================================================
+    var STORAGE_KEY = 'olbj_demo_data';
+
+    var DEFAULT_DATA = [
+        {
+            id: 1,
+            prenom: 'Virginie',
+            nom: 'Despentes',
+            email: 'v.despentes@editeur.fr',
+            telephone: '06 12 34 56 78',
+            adresse: 'Paris',
+            statut: 'auteur',
+            siret: '123 456 789 00012',
+            agessa: 'AG-2024-1234',
+            secu: '2 69 05 75 108 042 33',
+            typeIntervention: 'rencontre',
+            dateIntervention: '2026-05-28',
+            heureIntervention: '16:00',
+            lieu: 'La Criee',
+            montantBrut: 800,
+            description: 'Grande rencontre autour de son dernier roman',
+            transport: 'train',
+            villeDepart: 'Paris',
+            dateAller: '2026-05-27',
+            dateRetour: '2026-05-29',
+            hotel: 'Hotel Le Petit Nice',
+            nuits: '27-29 mai',
+            formulaireOk: true,
+            contratSigne: true,
+            noteGeneree: true,
+            feuilleEnvoyee: true
+        },
+        {
+            id: 2,
+            prenom: 'Mohamed',
+            nom: 'Mbougar Sarr',
+            email: 'm.mbougar@editeur.fr',
+            telephone: '06 98 76 54 32',
+            adresse: 'Paris',
+            statut: 'auteur',
+            siret: '987 654 321 00034',
+            agessa: 'AG-2025-5678',
+            secu: '1 90 06 75 056 012 45',
+            typeIntervention: 'lecture',
+            dateIntervention: '2026-05-29',
+            heureIntervention: '18:30',
+            lieu: 'BMVR Alcazar',
+            montantBrut: 650,
+            description: 'Lecture inedite et echange avec le public',
+            transport: 'train',
+            villeDepart: 'Paris',
+            dateAller: '2026-05-28',
+            dateRetour: '2026-05-30',
+            hotel: 'Hotel Hermes',
+            nuits: '28-30 mai',
+            formulaireOk: true,
+            contratSigne: false,
+            noteGeneree: false,
+            feuilleEnvoyee: false
+        },
+        {
+            id: 3,
+            prenom: 'Annie',
+            nom: 'Ernaux',
+            email: 'a.ernaux@editeur.fr',
+            telephone: '06 55 44 33 22',
+            adresse: 'Cergy',
+            statut: 'auteur',
+            siret: '',
+            agessa: 'AG-2020-9012',
+            secu: '2 40 09 95 018 023 12',
+            typeIntervention: 'table-ronde',
+            dateIntervention: '2026-05-28',
+            heureIntervention: '14:00',
+            lieu: 'Mucem',
+            montantBrut: 1200,
+            description: 'Table ronde : ecriture et memoire',
+            transport: 'train',
+            villeDepart: 'Paris',
+            dateAller: '2026-05-27',
+            dateRetour: '2026-05-29',
+            hotel: 'NH Hotel',
+            nuits: '27-29 mai',
+            formulaireOk: true,
+            contratSigne: false,
+            noteGeneree: false,
+            feuilleEnvoyee: false
+        },
+        {
+            id: 4,
+            prenom: '',
+            nom: '',
+            email: '',
+            telephone: '',
+            adresse: '',
+            statut: 'auteur',
+            siret: '',
+            agessa: '',
+            secu: '',
+            typeIntervention: '',
+            dateIntervention: '',
+            heureIntervention: '',
+            lieu: 'La Criee',
+            montantBrut: 0,
+            description: '',
+            transport: 'train',
+            villeDepart: '',
+            dateAller: '',
+            dateRetour: '',
+            hotel: 'Hotel Le Petit Nice',
+            nuits: '',
+            formulaireOk: false,
+            contratSigne: false,
+            noteGeneree: false,
+            feuilleEnvoyee: false
+        }
+    ];
+
+    // ============================================================
+    // STATE
+    // ============================================================
+    var invites = [];
+
+    function loadData() {
+        try {
+            var stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                invites = JSON.parse(stored);
+            } else {
+                invites = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            }
+        } catch(e) {
+            invites = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+    }
+
+    function saveData() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(invites));
+    }
+
+    // ============================================================
+    // TOAST
+    // ============================================================
+    var toastEl = document.getElementById('toast');
+    var toastTimeout;
+
+    function showToast(message, type) {
+        clearTimeout(toastTimeout);
+        toastEl.textContent = message;
+        toastEl.className = 'toast ' + (type || 'success');
+        // trigger reflow
+        void toastEl.offsetWidth;
+        toastEl.classList.add('visible');
+        toastTimeout = setTimeout(function() {
+            toastEl.classList.remove('visible');
+        }, 3500);
+    }
+
+    window.showToast = showToast;
+
+    // ============================================================
+    // NAVIGATION
+    // ============================================================
+    var viewTitles = {
+        presentation: 'Proposition',
+        dashboard: 'Tableau de bord',
+        formulaire: 'Formulaire invite',
+        contrats: 'Contrats',
+        notes: 'Notes de droits d\'auteurs',
+        routes: 'Feuilles de route'
+    };
+
+    function switchView(name) {
+        // Hide all views
+        document.querySelectorAll('.view').forEach(function(v) {
+            v.classList.remove('active');
+        });
+        // Show target
+        var target = document.getElementById('view-' + name);
+        if (target) target.classList.add('active');
+        // Update nav
+        document.querySelectorAll('.nav-item').forEach(function(n) {
+            n.classList.toggle('active', n.getAttribute('data-view') === name);
+        });
+        // Update title
+        document.getElementById('pageTitle').textContent = viewTitles[name] || name;
+        // Render view content
+        if (name === 'dashboard') renderDashboard();
+        if (name === 'contrats') { populateSelect('contratSelect'); renderContrat(); }
+        if (name === 'notes') { populateSelect('noteSelect'); renderNote(); }
+        if (name === 'routes') { populateSelect('routeSelect'); renderRoute(); }
+        // Close mobile sidebar
+        closeSidebar();
+    }
+
+    window.switchView = switchView;
+
+    // ============================================================
+    // SIDEBAR MOBILE
+    // ============================================================
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('visible');
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('visible');
+    }
+
+    window.toggleSidebar = toggleSidebar;
+    window.closeSidebar = closeSidebar;
+
+    // ============================================================
+    // DASHBOARD
+    // ============================================================
+    function renderDashboard() {
+        var total = invites.length;
+        var formulaires = invites.filter(function(i) { return i.formulaireOk; }).length;
+        var signes = invites.filter(function(i) { return i.contratSigne; }).length;
+        var feuilles = invites.filter(function(i) { return i.feuilleEnvoyee; }).length;
+        var contratsPending = invites.filter(function(i) { return i.formulaireOk && !i.contratSigne; }).length;
+
+        // KPIs
+        document.getElementById('kpiRow').innerHTML =
+            kpiCard('&#128101;', total, 'Invites') +
+            kpiCard('&#128203;', formulaires, 'Formulaires remplis') +
+            kpiCard('&#9997;&#65039;', signes, 'Contrats signes') +
+            kpiCard('&#128230;', feuilles, 'Feuilles envoyees');
+
+        // Badge contrats pending
+        var badgeEl = document.getElementById('badge-contrats');
+        if (badgeEl) {
+            badgeEl.textContent = contratsPending;
+            badgeEl.style.display = contratsPending > 0 ? '' : 'none';
+        }
+
+        // Pipeline bar
+        var vide = invites.filter(function(i) { return !i.formulaireOk; }).length;
+        var formOnly = invites.filter(function(i) { return i.formulaireOk && !i.contratSigne; }).length;
+        var signedOnly = invites.filter(function(i) { return i.contratSigne && !i.noteGeneree; }).length;
+        var noteOnly = invites.filter(function(i) { return i.noteGeneree && !i.feuilleEnvoyee; }).length;
+        var done = invites.filter(function(i) { return i.feuilleEnvoyee; }).length;
+
+        function pct(n) { return total ? (n / total * 100) : 0; }
+
+        document.getElementById('pipelineBar').innerHTML =
+            '<h3>Pipeline de production</h3>' +
+            '<div class="pipeline-track">' +
+                seg(pct(vide), '#dde2ea') +
+                seg(pct(formOnly), 'var(--gold)') +
+                seg(pct(signedOnly), 'var(--accent)') +
+                seg(pct(noteOnly), 'var(--teal)') +
+                seg(pct(done), 'var(--success)') +
+            '</div>' +
+            '<div class="pipeline-legend">' +
+                legendItem('#dde2ea', 'En attente (' + vide + ')') +
+                legendItem('var(--gold)', 'Formulaire OK (' + formOnly + ')') +
+                legendItem('var(--accent)', 'Contrat signe (' + signedOnly + ')') +
+                legendItem('var(--teal)', 'Note generee (' + noteOnly + ')') +
+                legendItem('var(--success)', 'Termine (' + done + ')') +
+            '</div>';
+
+        // Table
+        var tbody = document.getElementById('inviteTableBody');
+        tbody.innerHTML = '';
+
+        invites.forEach(function(inv) {
+            var name = (inv.prenom + ' ' + inv.nom).trim() || 'Nouvel invite';
+            var typeMap = {
+                'lecture': 'Lecture', 'rencontre': 'Grande rencontre',
+                'table-ronde': 'Table ronde', 'atelier': 'Atelier',
+                'performance': 'Performance', 'concert': 'Concert litteraire'
+            };
+            var type = typeMap[inv.typeIntervention] || '—';
+            var dateStr = inv.dateIntervention ? formatDate(inv.dateIntervention) : '—';
+
+            var tr = document.createElement('tr');
+            tr.onclick = function() { navigateToInvite(inv.id); };
+            tr.innerHTML =
+                '<td><span class="invite-name">' + esc(name) + '</span></td>' +
+                '<td><span class="invite-type">' + type + '<br>' + dateStr + '</span></td>' +
+                '<td>' + statusBadge(inv.formulaireOk, 'Oui', 'Non') + '</td>' +
+                '<td>' + statusBadge(inv.contratSigne, 'Signe', inv.formulaireOk ? 'En attente' : 'Non') + '</td>' +
+                '<td>' + statusBadge(inv.noteGeneree, 'Oui', 'Non') + '</td>' +
+                '<td>' + statusBadge(inv.feuilleEnvoyee, 'Envoyee', 'Non') + '</td>';
+            tbody.appendChild(tr);
+        });
+    }
+
+    function kpiCard(icon, value, label) {
+        return '<div class="kpi-card"><div class="kpi-icon">' + icon + '</div>' +
+               '<div class="kpi-value">' + value + '</div>' +
+               '<div class="kpi-label">' + label + '</div></div>';
+    }
+
+    function seg(pct, color) {
+        if (pct <= 0) return '';
+        return '<div class="pipeline-segment" style="width:' + pct + '%;background:' + color + '" title="' + Math.round(pct) + '%"></div>';
+    }
+
+    function legendItem(color, label) {
+        return '<div class="legend-item"><div class="legend-dot" style="background:' + color + '"></div>' + label + '</div>';
+    }
+
+    function statusBadge(ok, yesText, noText) {
+        if (ok) return '<span class="status-dot complete">' + yesText + '</span>';
+        return '<span class="status-dot ' + (noText === 'En attente' ? 'pending' : 'empty') + '">' + noText + '</span>';
+    }
+
+    function navigateToInvite(id) {
+        var inv = invites.find(function(i) { return i.id === id; });
+        if (!inv) return;
+        if (inv.formulaireOk) {
+            switchView('contrats');
+            setTimeout(function() {
+                document.getElementById('contratSelect').value = id;
+                renderContrat();
+            }, 50);
+        } else {
+            switchView('formulaire');
+            loadInviteInForm(inv);
+        }
+    }
+
+    window.navigateToInvite = navigateToInvite;
+
+    // ============================================================
+    // FORMULAIRE
+    // ============================================================
+    function toggleCondFields(select) {
+        var val = select.value;
+        var siretField = document.getElementById('field-siret');
+        var agessaField = document.getElementById('field-agessa');
+
+        siretField.classList.toggle('visible', val === 'intermittent' || val === 'association');
+        agessaField.classList.toggle('visible', val === 'auteur');
+    }
+
+    window.toggleCondFields = toggleCondFields;
+
+    function loadInviteInForm(inv) {
+        var form = document.getElementById('inviteForm');
+        var fields = ['prenom', 'nom', 'email', 'telephone', 'adresse', 'statut',
+                       'siret', 'agessa', 'secu', 'typeIntervention', 'dateIntervention',
+                       'heureIntervention', 'lieu', 'montantBrut', 'description',
+                       'transport', 'villeDepart', 'dateAller', 'dateRetour', 'hotel', 'nuits'];
+        fields.forEach(function(f) {
+            var el = form.elements[f];
+            if (el) el.value = inv[f] || '';
+        });
+        form.dataset.editId = inv.id;
+        toggleCondFields(form.elements.statut);
+    }
+
+    function saveInvite(e) {
+        e.preventDefault();
+        var form = document.getElementById('inviteForm');
+        var editId = parseInt(form.dataset.editId) || 0;
+        var data = {};
+        var fields = ['prenom', 'nom', 'email', 'telephone', 'adresse', 'statut',
+                       'siret', 'agessa', 'secu', 'typeIntervention', 'dateIntervention',
+                       'heureIntervention', 'lieu', 'montantBrut', 'description',
+                       'transport', 'villeDepart', 'dateAller', 'dateRetour', 'hotel', 'nuits'];
+        fields.forEach(function(f) {
+            var el = form.elements[f];
+            data[f] = el ? el.value : '';
+        });
+        data.montantBrut = parseFloat(data.montantBrut) || 0;
+
+        var inv;
+        if (editId) {
+            inv = invites.find(function(i) { return i.id === editId; });
+            if (inv) {
+                Object.assign(inv, data);
+                inv.formulaireOk = true;
+            }
+        } else {
+            data.id = Date.now();
+            data.formulaireOk = true;
+            data.contratSigne = false;
+            data.noteGeneree = false;
+            data.feuilleEnvoyee = false;
+            invites.push(data);
+            inv = data;
+        }
+
+        saveData();
+        form.reset();
+        form.dataset.editId = '';
+        showToast('Invite enregistre avec succes !', 'success');
+        setTimeout(function() { switchView('dashboard'); }, 600);
+        return false;
+    }
+
+    window.saveInvite = saveInvite;
+
+    // Initial conditional fields
+    setTimeout(function() {
+        var statusSelect = document.querySelector('[name="statut"]');
+        if (statusSelect) toggleCondFields(statusSelect);
+    }, 100);
+
+    // ============================================================
+    // CONTRATS
+    // ============================================================
+    function populateSelect(selectId) {
+        var sel = document.getElementById(selectId);
+        if (!sel) return;
+        var current = sel.value;
+        sel.innerHTML = '';
+
+        invites.forEach(function(inv) {
+            if (!inv.formulaireOk) return;
+            var opt = document.createElement('option');
+            opt.value = inv.id;
+            opt.textContent = inv.prenom + ' ' + inv.nom;
+            sel.appendChild(opt);
+        });
+
+        if (current && sel.querySelector('option[value="' + current + '"]')) {
+            sel.value = current;
+        }
+    }
+
+    function renderContrat() {
+        var sel = document.getElementById('contratSelect');
+        var container = document.getElementById('contratContent');
+        if (!sel || !sel.value) {
+            container.innerHTML = '<div class="locked-notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><p>Aucun invite avec formulaire rempli.<br>Commencez par remplir un formulaire.</p></div>';
+            return;
+        }
+
+        var inv = invites.find(function(i) { return i.id === parseInt(sel.value); });
+        if (!inv) return;
+
+        var fullName = inv.prenom + ' ' + inv.nom;
+        var dateStr = formatDateLong(inv.dateIntervention);
+        var montant = formatMoney(inv.montantBrut);
+        var typeMap = {
+            'lecture': 'une lecture', 'rencontre': 'une grande rencontre',
+            'table-ronde': 'une table ronde', 'atelier': 'un atelier',
+            'performance': 'une performance', 'concert': 'un concert litteraire'
+        };
+        var typeText = typeMap[inv.typeIntervention] || 'une intervention';
+
+        var signedHTML = '';
+        if (inv.contratSigne) {
+            signedHTML = '<div class="sign-zone signed">' +
+                '<div><strong>Signature</strong><br><span style="font-size:0.82rem;color:var(--text-secondary)">Contrat signe le ' + formatDate(inv.dateIntervention) + '</span></div>' +
+                '<div class="sign-placeholder done"><span class="sign-anim">' + fullName + '</span></div>' +
+            '</div>';
+        } else {
+            signedHTML = '<div class="sign-zone">' +
+                '<div><strong>Signature electronique</strong><br><span style="font-size:0.82rem;color:var(--text-secondary)">Cliquez pour simuler la signature</span></div>' +
+                '<div class="sign-placeholder" onclick="signContract(' + inv.id + ')">Signer ici</div>' +
+            '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="contract-doc">' +
+                '<h2>CONTRAT DE CESSION DE DROITS D\'AUTEUR</h2>' +
+                '<div class="contract-subtitle">Festival Oh les beaux jours ! — 10e edition — Mai 2026</div>' +
+
+                '<p><span class="article">ENTRE LES SOUSSIGNES :</span></p>' +
+                '<p>L\'association <strong>Oh les beaux jours !</strong>, dont le siege social est situe a Marseille, ' +
+                'representee par sa directrice artistique, ci-apres designee "le Festival",</p>' +
+                '<p style="text-align:center;font-weight:700;margin:16px 0">ET</p>' +
+                '<p><span contenteditable="true" class="editable-field">' + esc(fullName) + '</span>, ' +
+                'demeurant a <span contenteditable="true" class="editable-field">' + esc(inv.adresse || 'adresse') + '</span>, ' +
+                (inv.siret ? 'n° SIRET <span contenteditable="true" class="editable-field">' + esc(inv.siret) + '</span>, ' : '') +
+                (inv.agessa ? 'inscrit(e) a l\'Agessa sous le n° <span contenteditable="true" class="editable-field">' + esc(inv.agessa) + '</span>, ' : '') +
+                'ci-apres designe(e) "l\'Auteur".</p>' +
+
+                '<p><span class="article">ARTICLE 1 — OBJET</span></p>' +
+                '<p>L\'Auteur cede au Festival, a titre non exclusif, le droit de reproduire et de representer son intervention dans le cadre de ' +
+                '<span contenteditable="true" class="editable-field">' + typeText + '</span> ' +
+                'qui se tiendra le <span contenteditable="true" class="editable-field">' + dateStr + '</span> ' +
+                'a <span contenteditable="true" class="editable-field">' + esc(inv.lieu) + '</span>.</p>' +
+
+                '<p><span class="article">ARTICLE 2 — REMUNERATION</span></p>' +
+                '<p>En contrepartie de cette cession, le Festival versera a l\'Auteur la somme de ' +
+                '<span contenteditable="true" class="editable-field">' + montant + '</span> brut, ' +
+                'soumise aux precomptes et cotisations prevus par le code de la securite sociale.</p>' +
+
+                '<p><span class="article">ARTICLE 3 — DUREE</span></p>' +
+                '<p>La presente cession est consentie pour une duree de <span contenteditable="true" class="editable-field">trois (3) ans</span> ' +
+                'a compter de la date de l\'intervention.</p>' +
+
+                '<p><span class="article">ARTICLE 4 — TERRITOIRE</span></p>' +
+                '<p>Les droits cedes s\'exercent sur le territoire <span contenteditable="true" class="editable-field">francais et dans le cadre de diffusions en ligne du festival</span>.</p>' +
+
+                '<p><span class="article">ARTICLE 5 — DROIT MORAL</span></p>' +
+                '<p>Le Festival s\'engage a respecter le droit moral de l\'Auteur, notamment son droit a la paternite et au respect de l\'integrite de son oeuvre.</p>' +
+
+                '<p style="margin-top:32px;font-size:0.85rem;color:var(--text-secondary)">Fait en deux exemplaires, a Marseille.</p>' +
+
+                signedHTML +
+
+                '<div class="contract-actions">' +
+                    '<button class="btn btn-outline" onclick="printView(\'contrats\')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Imprimer / PDF</button>' +
+                '</div>' +
+            '</div>';
+    }
+
+    window.renderContrat = renderContrat;
+
+    function signContract(id) {
+        var inv = invites.find(function(i) { return i.id === id; });
+        if (!inv) return;
+        inv.contratSigne = true;
+        inv.noteGeneree = true;
+        saveData();
+        renderContrat();
+        showToast('Contrat signe ! Note de droits deverrouillee.', 'success');
+    }
+
+    window.signContract = signContract;
+
+    // ============================================================
+    // NOTE DE DROITS
+    // ============================================================
+    function renderNote() {
+        var sel = document.getElementById('noteSelect');
+        var container = document.getElementById('noteContent');
+        if (!sel || !sel.value) {
+            container.innerHTML = '<div class="locked-notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p>Aucun invite avec formulaire rempli.</p></div>';
+            return;
+        }
+
+        var inv = invites.find(function(i) { return i.id === parseInt(sel.value); });
+        if (!inv) return;
+
+        if (!inv.contratSigne) {
+            container.innerHTML = '<div class="locked-notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p>Le contrat de <strong>' + esc(inv.prenom + ' ' + inv.nom) + '</strong> doit etre signe avant de generer la note de droits.</p><br><button class="btn btn-accent btn-sm" onclick="switchView(\'contrats\');setTimeout(function(){document.getElementById(\'contratSelect\').value=' + inv.id + ';renderContrat();},50)">Voir le contrat</button></div>';
+            return;
+        }
+
+        var brut = inv.montantBrut || 0;
+        var assietteMajoree = brut * 1.15;
+        var vieillesse = assietteMajoree * 0.0655;
+        var csg = assietteMajoree * 0.098;
+        var crds = assietteMajoree * 0.005;
+        var formation = assietteMajoree * 0.0035;
+        var totalPrecomptes = vieillesse + csg + crds + formation;
+        var net = brut - totalPrecomptes;
+
+        container.innerHTML =
+            '<div class="note-doc">' +
+                '<h2>NOTE DE DROITS D\'AUTEUR</h2>' +
+                '<div class="note-subtitle">Festival Oh les beaux jours ! — Mai 2026</div>' +
+
+                '<div class="note-info-grid">' +
+                    noteInfoRow('Auteur', inv.prenom + ' ' + inv.nom) +
+                    noteInfoRow('Date intervention', formatDate(inv.dateIntervention)) +
+                    noteInfoRow('Lieu', inv.lieu) +
+                    noteInfoRow('Statut', inv.statut === 'auteur' ? 'Auteur / Autrice' : inv.statut) +
+                    (inv.agessa ? noteInfoRow('N° Agessa/MDA', inv.agessa) : '') +
+                    (inv.secu ? noteInfoRow('N° Secu', inv.secu) : '') +
+                '</div>' +
+
+                '<table class="note-calc-table">' +
+                    '<thead><tr><th>Poste</th><th>Taux</th><th style="text-align:right">Montant</th></tr></thead>' +
+                    '<tbody>' +
+                        '<tr><td><strong>Montant brut</strong></td><td>—</td><td style="text-align:right"><input class="editable-amount" value="' + brut.toFixed(2) + '" onchange="recalcNote(this,' + inv.id + ')"> &euro;</td></tr>' +
+                        '<tr><td>Assiette majoree (+15%)</td><td>×1,15</td><td style="text-align:right">' + assietteMajoree.toFixed(2) + ' &euro;</td></tr>' +
+                        '<tr style="color:var(--text-secondary)"><td>Vieillesse deplafonnee</td><td>6,55%</td><td style="text-align:right">- ' + vieillesse.toFixed(2) + ' &euro;</td></tr>' +
+                        '<tr style="color:var(--text-secondary)"><td>CSG</td><td>9,80%</td><td style="text-align:right">- ' + csg.toFixed(2) + ' &euro;</td></tr>' +
+                        '<tr style="color:var(--text-secondary)"><td>CRDS</td><td>0,50%</td><td style="text-align:right">- ' + crds.toFixed(2) + ' &euro;</td></tr>' +
+                        '<tr style="color:var(--text-secondary)"><td>Formation professionnelle</td><td>0,35%</td><td style="text-align:right">- ' + formation.toFixed(2) + ' &euro;</td></tr>' +
+                        '<tr><td><strong>Total precomptes</strong></td><td></td><td style="text-align:right"><strong>- ' + totalPrecomptes.toFixed(2) + ' &euro;</strong></td></tr>' +
+                    '</tbody>' +
+                '</table>' +
+
+                '<div class="note-total-row">' +
+                    '<span class="note-total-label">Net a payer a l\'auteur</span>' +
+                    '<span class="note-total-value">' + net.toFixed(2) + ' &euro;</span>' +
+                '</div>' +
+
+                '<div class="contract-actions">' +
+                    '<button class="btn btn-outline" onclick="printView(\'notes\')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Imprimer / PDF</button>' +
+                '</div>' +
+            '</div>';
+    }
+
+    window.renderNote = renderNote;
+
+    function noteInfoRow(label, value) {
+        return '<div class="note-info-row"><span class="note-info-label">' + label + '</span><span class="note-info-value">' + esc(value) + '</span></div>';
+    }
+
+    function recalcNote(input, id) {
+        var inv = invites.find(function(i) { return i.id === id; });
+        if (!inv) return;
+        var newBrut = parseFloat(input.value) || 0;
+        inv.montantBrut = newBrut;
+        saveData();
+        renderNote();
+        showToast('Montant mis a jour', 'info');
+    }
+
+    window.recalcNote = recalcNote;
+
+    // ============================================================
+    // FEUILLES DE ROUTE
+    // ============================================================
+    function renderRoute() {
+        var sel = document.getElementById('routeSelect');
+        var container = document.getElementById('routeContent');
+        if (!sel || !sel.value) {
+            container.innerHTML = '<div class="locked-notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 10-16 0c0 3 2.7 7 8 11.7z"/></svg><p>Aucun invite avec formulaire rempli.</p></div>';
+            return;
+        }
+
+        var inv = invites.find(function(i) { return i.id === parseInt(sel.value); });
+        if (!inv) return;
+
+        var transportIcon = { train: '&#128646;', avion: '&#9992;&#65039;', voiture: '&#128663;', aucun: '' };
+        var transportName = { train: 'Train', avion: 'Avion', voiture: 'Voiture', aucun: 'Pas de transport' };
+        var icon = transportIcon[inv.transport] || '&#128646;';
+        var tName = transportName[inv.transport] || '';
+
+        var items = [];
+
+        // Transport aller
+        if (inv.transport !== 'aucun' && inv.dateAller) {
+            items.push({
+                type: 'transport',
+                category: 'Transport aller',
+                title: tName + ' — ' + (inv.villeDepart || '?') + ' → Marseille',
+                detail: formatDateLong(inv.dateAller),
+                icon: icon
+            });
+        }
+
+        // Hotel
+        if (inv.hotel && inv.hotel !== 'Aucun') {
+            items.push({
+                type: 'hotel',
+                category: 'Hebergement',
+                title: inv.hotel,
+                detail: inv.nuits ? 'Nuits du ' + inv.nuits : '',
+                icon: '&#127976;'
+            });
+        }
+
+        // Intervention
+        if (inv.dateIntervention) {
+            var typeMap = {
+                'lecture': 'Lecture', 'rencontre': 'Grande rencontre',
+                'table-ronde': 'Table ronde', 'atelier': 'Atelier',
+                'performance': 'Performance', 'concert': 'Concert litteraire'
+            };
+            items.push({
+                type: 'intervention',
+                category: 'Intervention',
+                title: (typeMap[inv.typeIntervention] || 'Intervention') + ' — ' + inv.lieu,
+                detail: formatDateLong(inv.dateIntervention) + (inv.heureIntervention ? ' a ' + inv.heureIntervention : ''),
+                icon: '&#127916;'
+            });
+        }
+
+        // Transport retour
+        if (inv.transport !== 'aucun' && inv.dateRetour) {
+            items.push({
+                type: 'transport',
+                category: 'Transport retour',
+                title: tName + ' — Marseille → ' + (inv.villeDepart || '?'),
+                detail: formatDateLong(inv.dateRetour),
+                icon: icon
+            });
+        }
+
+        var timelineHTML = items.map(function(item, idx) {
+            return '<div class="timeline-item ' + item.type + '">' +
+                '<button class="remove-step-btn" onclick="removeRouteStep(this)" title="Supprimer">&times;</button>' +
+                '<div class="timeline-category">' + item.icon + ' ' + item.category + '</div>' +
+                '<div class="timeline-title"><span contenteditable="true" class="timeline-editable">' + esc(item.title) + '</span></div>' +
+                '<div class="timeline-detail"><span contenteditable="true" class="timeline-editable">' + esc(item.detail) + '</span></div>' +
+            '</div>';
+        }).join('');
+
+        container.innerHTML =
+            '<div class="route-doc">' +
+                '<h2>FEUILLE DE ROUTE</h2>' +
+                '<div class="route-subtitle">' + esc(inv.prenom + ' ' + inv.nom) + ' — Festival Oh les beaux jours ! 2026</div>' +
+
+                '<div class="timeline">' +
+                    timelineHTML +
+                '</div>' +
+
+                '<button class="add-step-btn" onclick="addRouteStep()">+ Ajouter une etape</button>' +
+
+                '<div class="route-contacts">' +
+                    '<h4>Contacts festival</h4>' +
+                    '<div class="contact-row"><span class="contact-role">Direction artistique</span><span class="contact-info">Sophie Music — 06 00 00 00 00</span></div>' +
+                    '<div class="contact-row"><span class="contact-role">Production / Logistique</span><span class="contact-info">Marc Dupont — 06 11 11 11 11</span></div>' +
+                    '<div class="contact-row"><span class="contact-role">Accueil invites</span><span class="contact-info">Lea Martin — 06 22 22 22 22</span></div>' +
+                    '<div class="contact-row"><span class="contact-role">Urgences</span><span class="contact-info">Standard festival — 04 91 00 00 00</span></div>' +
+                '</div>' +
+
+                '<div class="route-actions">' +
+                    '<button class="btn btn-outline" onclick="printView(\'routes\')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Imprimer / PDF</button>' +
+                    '<button class="btn btn-teal btn-sm" onclick="markRouteSent(' + inv.id + ')">Marquer comme envoyee</button>' +
+                '</div>' +
+            '</div>';
+    }
+
+    window.renderRoute = renderRoute;
+
+    function addRouteStep() {
+        var timeline = document.querySelector('#routeContent .timeline');
+        if (!timeline) return;
+
+        var newItem = document.createElement('div');
+        newItem.className = 'timeline-item transport';
+        newItem.innerHTML =
+            '<button class="remove-step-btn" onclick="removeRouteStep(this)" title="Supprimer">&times;</button>' +
+            '<div class="timeline-category">&#128205; Etape personnalisee</div>' +
+            '<div class="timeline-title"><span contenteditable="true" class="timeline-editable">Titre de l\'etape</span></div>' +
+            '<div class="timeline-detail"><span contenteditable="true" class="timeline-editable">Details...</span></div>';
+
+        timeline.appendChild(newItem);
+        showToast('Etape ajoutee', 'info');
+    }
+
+    window.addRouteStep = addRouteStep;
+
+    function removeRouteStep(btn) {
+        var item = btn.closest('.timeline-item');
+        if (item) {
+            item.remove();
+            showToast('Etape supprimee', 'info');
+        }
+    }
+
+    window.removeRouteStep = removeRouteStep;
+
+    function markRouteSent(id) {
+        var inv = invites.find(function(i) { return i.id === id; });
+        if (!inv) return;
+        inv.feuilleEnvoyee = true;
+        saveData();
+        showToast('Feuille de route marquee comme envoyee !', 'success');
+    }
+
+    window.markRouteSent = markRouteSent;
+
+    // ============================================================
+    // PRINT
+    // ============================================================
+    function printView(viewName) {
+        document.querySelectorAll('.view').forEach(function(v) {
+            v.classList.remove('print-target');
+        });
+        var target = document.getElementById('view-' + viewName);
+        if (target) target.classList.add('print-target');
+        window.print();
+        setTimeout(function() {
+            if (target) target.classList.remove('print-target');
+        }, 500);
+    }
+
+    window.printView = printView;
+
+    // ============================================================
+    // RESET
+    // ============================================================
+    function resetDemo() {
+        if (!confirm('Reinitialiser toutes les donnees de la demo ?')) return;
+        invites = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        saveData();
+        switchView('dashboard');
+        showToast('Demo reinitialisee', 'info');
+    }
+
+    window.resetDemo = resetDemo;
+
+    // ============================================================
+    // UTILITIES
+    // ============================================================
+    function esc(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ''));
+        return div.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+        if (!dateStr) return '—';
+        var d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('fr-FR', { day: 'numeric', month: '2-digit', year: 'numeric' });
+    }
+
+    function formatDateLong(dateStr) {
+        if (!dateStr) return '—';
+        var d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function formatMoney(n) {
+        return (n || 0).toFixed(2).replace('.', ',') + ' \u20ac';
+    }
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    loadData();
+    renderDashboard();
+
+})();
+</script>
+</body>
+</html>

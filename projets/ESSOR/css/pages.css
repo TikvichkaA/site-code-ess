@@ -1,0 +1,601 @@
+/* ============================================
+   ESSOR — Styles spécifiques aux pages
+============================================ */
+
+/* ============================================
+   Accueil — Hero
+============================================ */
+.home-hero {
+    padding: 6rem 0 5rem;
+}
+
+.home-hero .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   Accueil — Actions cards
+============================================ */
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.action-card {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--navy);
+    transition: var(--transition);
+}
+
+.action-card:hover {
+    border-color: var(--border);
+}
+
+.action-card.juridique { border-left-color: var(--vermillon); }
+.action-card.administratif { border-left-color: var(--or); }
+.action-card.francais { border-left-color: var(--bleu-spada); }
+
+.action-card .card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.action-card.juridique .card-icon { background: var(--vermillon-bg); color: var(--vermillon); }
+.action-card.administratif .card-icon { background: var(--or-bg); color: var(--or-dark); }
+.action-card.francais .card-icon { background: #e8f0fe; color: var(--bleu-spada); }
+
+.action-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.action-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.action-card .card-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--vermillon);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-card .card-link:hover {
+    gap: 8px;
+}
+
+/* ============================================
+   Accueil — Chiffres clés
+============================================ */
+.stats-section {
+    background: var(--bg-alt);
+    padding: 4rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--vermillon);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Accueil — Aperçu parcours
+============================================ */
+.parcours-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.parcours-step-preview {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.parcours-step-preview:hover {
+    border-color: var(--border);
+    text-decoration: none;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-inverse);
+}
+
+.step-number.spada { background: var(--bleu-spada); }
+.step-number.guda { background: var(--teal-guda); }
+.step-number.ofpra { background: var(--rouge-ofpra); }
+.step-number.cnda { background: var(--violet-cnda); }
+
+.parcours-step-preview h4 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.parcours-step-preview p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Accueil — CTA bénévole
+============================================ */
+.cta-benevole {
+    background: var(--navy);
+    color: var(--text-inverse);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.cta-benevole h2 {
+    color: var(--text-inverse);
+    margin-bottom: 0.75rem;
+}
+
+.cta-benevole p {
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   Qui sommes-nous
+============================================ */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.value-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+}
+
+.value-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.6rem;
+}
+
+.value-card h3 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* Timeline historique */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--vermillon);
+    border: 3px solid var(--bg-warm);
+    margin-left: -5.5px;
+}
+
+.timeline-year {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--vermillon);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-item p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Team grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-muted);
+    overflow: hidden;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h4 {
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+}
+
+.team-member .role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Nos actions
+============================================ */
+.action-section {
+    padding: 5rem 0;
+}
+
+.action-section:nth-child(even) {
+    background: var(--bg-alt);
+}
+
+.action-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.action-layout.reverse {
+    direction: rtl;
+}
+
+.action-layout.reverse > * {
+    direction: ltr;
+}
+
+.action-image {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-alt);
+    aspect-ratio: 4/3;
+}
+
+.action-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.action-content h2 {
+    margin-bottom: 1rem;
+}
+
+.action-content p {
+    color: var(--text-light);
+}
+
+.action-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.action-stat .number {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--vermillon);
+    line-height: 1;
+}
+
+.action-stat .label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Contact
+============================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info-card {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--vermillon-bg);
+    color: var(--vermillon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+.contact-item p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.horaires-list {
+    list-style: none;
+    padding: 0;
+}
+
+.horaires-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.9rem;
+}
+
+.horaires-list li:last-child {
+    border-bottom: none;
+}
+
+.horaires-list .jour {
+    font-weight: 600;
+}
+
+.map-container {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 2rem;
+    height: 300px;
+    background: var(--bg-alt);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ============================================
+   Bénévole
+============================================ */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.mission-card {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.mission-card:hover {
+    border-color: var(--border);
+}
+
+.mission-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.mission-card h3 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.mission-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.profils-recherches {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.profil-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+}
+
+.profil-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--or-bg);
+    color: var(--or-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+.profil-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+.profil-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Responsive — Pages
+============================================ */
+@media (max-width: 968px) {
+    .action-cards { grid-template-columns: 1fr; margin-top: -2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .parcours-preview { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .action-layout { grid-template-columns: 1fr; }
+    .action-layout.reverse { direction: ltr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .missions-grid { grid-template-columns: 1fr; }
+    .profils-recherches { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .home-hero { padding: 4rem 0 3.5rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .stat-number { font-size: 2.2rem; }
+    .parcours-preview { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .parcours-preview { grid-template-columns: 1fr; }
+}

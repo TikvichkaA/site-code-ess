@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposition & Devis N°2026-0311 — Outil de production festival | Oh les beaux jours !</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+        :root {
+            --primary: #1a3a5c;
+            --primary-light: #2a5580;
+            --accent: #d4663e;
+            --accent-light: #e8845e;
+            --gold: #c8963e;
+            --teal: #1a8a7a;
+            --text: #1a2332;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f6f8fb;
+            --bg-warm: #fdf6f0;
+            --border: #dde2ea;
+            --border-light: #edf0f4;
+            --success: #2d8a5e;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #eef1f5;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Print Controls */
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(26,58,92,0.3);
+            transition: all 0.3s ease;
+        }
+        .print-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26,58,92,0.4);
+        }
+        .print-btn svg { width: 18px; height: 18px; }
+        .print-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Document */
+        .document {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .page { padding: 50px 60px; }
+        .page-break { border-top: 2px solid var(--border-light); padding-top: 50px; }
+
+        /* Header */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--primary);
+        }
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .company-tagline {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+        .company-details { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; }
+        .doc-meta { text-align: right; }
+        .doc-type {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .doc-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .doc-number { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+        .doc-dates { font-size: 0.78rem; color: var(--text-light); line-height: 1.8; }
+
+        /* Parties */
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        .party-block {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+        }
+        .party-block.client { background: var(--bg-warm); border-color: var(--accent); }
+        .party-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .party-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--primary); }
+        .party-details { font-size: 0.8rem; color: var(--text-light); line-height: 1.7; }
+
+        /* Context */
+        .context-block {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--primary);
+            padding: 20px 25px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 35px;
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .context-block strong { color: var(--text); }
+
+        /* Section titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+        .section-title:first-child { margin-top: 0; }
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+
+        /* Diagnostic grid */
+        .diag-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .diag-card {
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+        .diag-card.pain {
+            background: #fef3f0;
+            border-color: var(--accent-light);
+        }
+        .diag-card.solution {
+            background: #f0faf6;
+            border-color: var(--success);
+        }
+        .diag-card h4 {
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .diag-card.pain h4 { color: var(--accent); }
+        .diag-card.solution h4 { color: var(--success); }
+        .diag-card ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .diag-card li {
+            padding: 3px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .diag-card.pain li::before {
+            content: '\2717';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+        .diag-card.solution li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        /* Feature list */
+        .feature-list {
+            margin-bottom: 30px;
+        }
+        .feature-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .feature-item:last-child { border-bottom: none; }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .fi-blue { background: #e8f0f8; }
+        .fi-coral { background: #fef3f0; }
+        .fi-teal { background: #e6f7f5; }
+        .fi-gold { background: #fdf3e3; }
+        .fi-green { background: #e6f4ed; }
+        .fi-purple { background: #f3eef8; }
+        .feature-content h4 {
+            font-size: 0.88rem;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .feature-content p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Lots detail */
+        .lot-block {
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .lot-header {
+            background: var(--primary);
+            color: white;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .lot-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .lot-header .lot-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .lot-body { padding: 20px; }
+        .lot-body p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .lot-deliverables {
+            list-style: none;
+            font-size: 0.8rem;
+        }
+        .lot-deliverables li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+            color: var(--text-light);
+        }
+        .lot-deliverables li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .lot-timeline {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--bg-alt);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        /* Pricing table */
+        .pricing-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .pricing-table thead th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            text-align: left;
+        }
+        .pricing-table thead th:last-child { text-align: right; }
+        .pricing-table tbody td {
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        .pricing-table tbody tr:hover { background: var(--bg-alt); }
+        .lot-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .task-name { font-weight: 500; }
+        .task-detail { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+
+        .total-row td {
+            background: var(--bg-alt);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px 16px;
+            border-top: 2px solid var(--primary);
+        }
+        .total-amount {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* Stack */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .stack-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: var(--bg-alt);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+        .stack-icon {
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .stack-name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+        .stack-role { font-size: 0.72rem; color: var(--text-muted); }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .timeline-step {
+            flex: 1;
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            position: relative;
+        }
+        .timeline-step:last-child { border-right: none; }
+        .timeline-step .step-week {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .timeline-step .step-name {
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--primary);
+        }
+        .timeline-step .step-desc {
+            font-size: 0.68rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* Scope */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .scope-card {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .scope-card h4 {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .scope-card ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .scope-card li {
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .scope-card li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+        .scope-excluded li::before { content: '\2717'; color: #c94444; }
+
+        /* Conditions */
+        .conditions {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        .conditions h4 {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .conditions h4:first-child { margin-top: 0; }
+        .conditions ul { padding-left: 18px; }
+        .conditions li { margin-bottom: 3px; }
+
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+        .highlight-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .highlight-box p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .highlight-box .price-highlight {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        /* Signature */
+        .signature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border);
+        }
+        .sig-party {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            min-height: 140px;
+        }
+        .sig-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sig-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+        .sig-hint { font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
+
+        /* Footer */
+        .doc-footer {
+            text-align: center;
+            padding: 20px 50px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { color: var(--primary-light); }
+
+        /* Print */
+        @media print {
+            html { font-size: 12.5px; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-controls, .back-link { display: none !important; }
+            .document { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+            .page { padding: 30px 35px; }
+            .page-break { page-break-before: always; border-top: none; padding-top: 30px; }
+            .pricing-table tbody tr:hover { background: transparent; }
+            @page { size: A4; margin: 8mm; }
+        }
+        @media screen and (max-width: 768px) {
+            .document { margin: 10px; }
+            .page { padding: 25px 20px; }
+            .doc-header { flex-direction: column; gap: 20px; }
+            .doc-meta { text-align: left; }
+            .parties, .scope-grid, .diag-grid { grid-template-columns: 1fr; }
+            .signature-block { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; }
+            .timeline-step { border-right: none; border-bottom: 1px solid var(--border); }
+            .stack-grid { grid-template-columns: 1fr; }
+            .print-controls { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Exporter en PDF
+        </button>
+        <span class="print-hint">Ctrl+P puis "Enregistrer en PDF"</span>
+    </div>
+
+    <div class="document">
+
+        <!-- ==========================================
+             PAGE 1 — En-tête & Diagnostic
+        ========================================== -->
+        <div class="page">
+            <a href="index.html" class="back-link">&larr; Retour &agrave; la d&eacute;mo interactive</a>
+
+            <!-- Header -->
+            <div class="doc-header">
+                <div class="company-info">
+                    <div class="company-name">PINGLIER EMMANUEL</div>
+                    <div class="company-tagline">Conseil en automatisation, gestion des donn&eacute;es &amp; d&eacute;veloppement informatique</div>
+                    <div class="company-details">
+                        39 rue Marceau, 94200 Ivry-sur-Seine<br>
+                        SIRET : 942 385 311 00017<br>
+                        T&eacute;l. : 06 28 13 48 36 &mdash; Email : contact@unjouruneapp.com<br>
+                        TVA intracommunautaire : FR56942385311
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <div class="doc-type">PROPOSITION</div>
+                    <div class="doc-subtitle">&amp; DEVIS</div>
+                    <div class="doc-number">N&deg; 2026-0311-001</div>
+                    <div class="doc-dates">
+                        <strong>Date d'&eacute;mission :</strong> 11 mars 2026<br>
+                        <strong>Validit&eacute; :</strong> 30 jours<br>
+                        <strong>&Eacute;ch&eacute;ance :</strong> 10 avril 2026
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parties -->
+            <div class="parties">
+                <div class="party-block">
+                    <div class="party-label">Prestataire</div>
+                    <div class="party-name">PINGLIER EMMANUEL</div>
+                    <div class="party-details">
+                        39 rue Marceau<br>
+                        94200 Ivry-sur-Seine<br>
+                        Contact : Emmanuel Pinglier<br>
+                        contact@unjouruneapp.com &mdash; 06 28 13 48 36
+                    </div>
+                </div>
+                <div class="party-block client">
+                    <div class="party-label">Client</div>
+                    <div class="party-name">OH LES BEAUX JOURS !</div>
+                    <div class="party-details">
+                        Association loi 1901<br>
+                        [Adresse]<br>
+                        [Code postal &mdash; Marseille]<br>
+                        Contact : [Nom du contact] &mdash; [Fonction]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contexte -->
+            <div class="context-block">
+                <p>
+                    <strong>Objet :</strong> Conception et d&eacute;veloppement d'un <strong>outil de production sur mesure</strong> pour le festival <strong>Oh les beaux jours&nbsp;!</strong> &mdash; couvrant la <strong>contractualisation des artistes</strong> (auteurs, musiciens, illustrateurs, intermittents&hellip;), la <strong>g&eacute;n&eacute;ration automatique de documents</strong> (contrats adapt&eacute;s au statut, notes de droits d'auteurs, feuilles de route logistiques), le <strong>suivi des r&eacute;mun&eacute;rations</strong> et le <strong>pilotage budg&eacute;taire</strong>, en lien avec les outils existants (Google Sheets, Excel).
+                </p>
+            </div>
+
+            <!-- Diagnostic -->
+            <div class="section-title">
+                <div class="section-icon">1</div>
+                <h2>Diagnostic &mdash; Constats &amp; r&eacute;ponses</h2>
+            </div>
+
+            <div class="diag-grid">
+                <div class="diag-card pain">
+                    <h4>Aujourd'hui</h4>
+                    <ul>
+                        <li>Contrats r&eacute;dig&eacute;s manuellement sous Word, template par template</li>
+                        <li>Feuilles de route cr&eacute;&eacute;es &agrave; la main depuis un mod&egrave;le Word</li>
+                        <li>R&eacute;mun&eacute;rations inscrites manuellement avec des bar&egrave;mes &agrave; retrouver</li>
+                        <li>Multiples statuts (auteur, intermittent, salari&eacute;, asso) = multiples types de contrats</li>
+                        <li>Donn&eacute;es dispers&eacute;es entre Google Sheets, Word et Excel</li>
+                        <li>Beaucoup de cas particuliers, copier-coller &agrave; risque d'erreurs</li>
+                        <li>Pas de visibilit&eacute; globale sur l'avancement</li>
+                    </ul>
+                </div>
+                <div class="diag-card solution">
+                    <h4>Demain, avec l'outil</h4>
+                    <ul>
+                        <li>Contrats g&eacute;n&eacute;r&eacute;s automatiquement selon le statut de l'invit&eacute;</li>
+                        <li>Feuilles de route &eacute;dit&eacute;es depuis les donn&eacute;es logistiques centralis&eacute;es</li>
+                        <li>Bar&egrave;mes int&eacute;gr&eacute;s, montants pr&eacute;-calcul&eacute;s, modifiables &agrave; la main</li>
+                        <li>Un seul formulaire adaptatif pour tous les statuts</li>
+                        <li>Base de donn&eacute;es unique alimentant contrats, FDR et budget</li>
+                        <li>Flexibilit&eacute; maximale : chaque document reste &eacute;ditable</li>
+                        <li>Tableau de bord visuel avec suivi pipeline</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Principes -->
+            <div class="section-title">
+                <div class="section-icon">2</div>
+                <h2>Principes directeurs</h2>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon fi-blue">&#128736;&#65039;</div>
+                    <div class="feature-content">
+                        <h4>Flexibilit&eacute; avant tout</h4>
+                        <p>Chaque cas particulier est g&eacute;rable : l'outil pr&eacute;-remplit les documents mais chaque champ reste modifiable manuellement avant validation.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon fi-coral">&#128194;</div>
+                    <div class="feature-content">
+                        <h4>Une base, plusieurs documents</h4>
+                        <p>R&eacute;mun&eacute;rations et logistique alimentent la m&ecirc;me base de donn&eacute;es. Contrats, notes de droits et FDR sont g&eacute;n&eacute;r&eacute;s depuis la m&ecirc;me source.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon fi-teal">&#128200;</div>
+                    <div class="feature-content">
+                        <h4>L'Excel de suivi budg&eacute;taire reste</h4>
+                        <p>Pas question de casser ce qui fonctionne. L'outil exporte vers votre Excel existant et le compl&egrave;te, sans le remplacer.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon fi-gold">&#9997;&#65039;</div>
+                    <div class="feature-content">
+                        <h4>Signature &eacute;lectronique int&eacute;gr&eacute;e</h4>
+                        <p>Les contrats partent par email et reviennent sign&eacute;s. Les notes de droits sont conserv&eacute;es et envoy&eacute;es apr&egrave;s paiement.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon fi-green">&#128065;&#65039;</div>
+                    <div class="feature-content">
+                        <h4>Visibilit&eacute; en temps r&eacute;el</h4>
+                        <p>Dashboard de suivi : o&ugrave; en est chaque invit&eacute; dans le pipeline (formulaire &rarr; contrat &rarr; signature &rarr; paiement &rarr; FDR).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PAGE 2 — Description fonctionnelle par lot
+        ========================================== -->
+        <div class="page page-break">
+
+            <div class="section-title" style="margin-top:0">
+                <div class="section-icon">3</div>
+                <h2>Description fonctionnelle &mdash; 3 lots progressifs</h2>
+            </div>
+
+            <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:25px; line-height:1.7;">
+                Le projet est d&eacute;coup&eacute; en <strong>3 lots ind&eacute;pendants et cumulatifs</strong>. Chaque lot est livr&eacute; et utilisable avant le d&eacute;marrage du suivant. Cette approche permet de <strong>commencer &agrave; utiliser l'outil rapidement</strong> et d'ajuster le p&eacute;rim&egrave;tre au fil de l'eau.
+            </p>
+
+            <!-- LOT 1 -->
+            <div class="lot-block">
+                <div class="lot-header">
+                    <h3>Lot 1 &mdash; Socle &amp; contractualisation</h3>
+                    <div class="lot-price">800 &euro; HT</div>
+                </div>
+                <div class="lot-body">
+                    <p>Mise en place de la base de donn&eacute;es centrale, du formulaire invit&eacute; adaptatif et de la g&eacute;n&eacute;ration des contrats selon le statut. Import des donn&eacute;es existantes depuis Google Sheets.</p>
+                    <ul class="lot-deliverables">
+                        <li><strong>Audit &amp; mod&eacute;lisation</strong> &mdash; Cartographie des statuts, types de contrats associ&eacute;s et bar&egrave;mes de r&eacute;mun&eacute;ration existants</li>
+                        <li><strong>Base de donn&eacute;es centrale</strong> (Airtable) &mdash; Tables invit&eacute;s, statuts, interventions, r&eacute;mun&eacute;rations, donn&eacute;es logistiques</li>
+                        <li><strong>Import Google Sheets</strong> &mdash; R&eacute;cup&eacute;ration et migration des donn&eacute;es existantes</li>
+                        <li><strong>Formulaire invit&eacute; adaptatif</strong> &mdash; Champs conditionnels selon le statut (auteur / intermittent / salari&eacute; / association), donn&eacute;es admin + logistiques en un seul formulaire</li>
+                        <li><strong>Templates de contrats</strong> &mdash; 1 template par type de statut, aliment&eacute; par les donn&eacute;es financ&egrave;res et administratives de la base</li>
+                        <li><strong>G&eacute;n&eacute;ration contrats PDF</strong> &mdash; Contrats pr&eacute;-remplis, &eacute;ditables avant envoi, export PDF</li>
+                    </ul>
+                    <div class="lot-timeline">Dur&eacute;e estim&eacute;e : 2 semaines</div>
+                </div>
+            </div>
+
+            <!-- LOT 2 -->
+            <div class="lot-block">
+                <div class="lot-header" style="background: var(--primary-light);">
+                    <h3>Lot 2 &mdash; Documents, envoi &amp; signature</h3>
+                    <div class="lot-price">900 &euro; HT</div>
+                </div>
+                <div class="lot-body">
+                    <p>G&eacute;n&eacute;ration des notes de droits d'auteurs et feuilles de route, workflow d'envoi par email avec signature &eacute;lectronique, suivi du pipeline contractuel.</p>
+                    <ul class="lot-deliverables">
+                        <li><strong>Notes de droits d'auteurs</strong> &mdash; G&eacute;n&eacute;ration automatique avec bar&egrave;mes (pr&eacute;compte, brut/net), conserv&eacute;es et envoy&eacute;es apr&egrave;s paiement</li>
+                        <li><strong>Feuilles de route logistiques</strong> &mdash; Template FDR aliment&eacute; par les donn&eacute;es de pr&eacute;sence, transport et h&eacute;bergement</li>
+                        <li><strong>Envoi par email</strong> &mdash; Contrats et FDR envoy&eacute;s directement depuis l'outil</li>
+                        <li><strong>Signature &eacute;lectronique</strong> &mdash; Int&eacute;gration d'un service de signature (Yousign ou DocuSeal) pour les contrats</li>
+                        <li><strong>Suivi des statuts</strong> &mdash; Pipeline visuel : envoy&eacute; &rarr; sign&eacute; &rarr; pay&eacute;, avec notifications et rappels</li>
+                        <li><strong>Enrichissement templates</strong> &mdash; Ajustement des templates contrats et FDR selon les retours d'usage du lot 1</li>
+                    </ul>
+                    <div class="lot-timeline">Dur&eacute;e estim&eacute;e : 2 semaines</div>
+                </div>
+            </div>
+
+            <!-- LOT 3 -->
+            <div class="lot-block">
+                <div class="lot-header" style="background: var(--teal);">
+                    <h3>Lot 3 &mdash; Pilotage, budget &amp; formation</h3>
+                    <div class="lot-price">500 &euro; HT</div>
+                </div>
+                <div class="lot-body">
+                    <p>Tableau de bord de pilotage, suivi des r&eacute;mun&eacute;rations, export vers l'Excel de suivi budg&eacute;taire et formation de l'&eacute;quipe.</p>
+                    <ul class="lot-deliverables">
+                        <li><strong>Dashboard de production</strong> &mdash; Vue d'ensemble de tous les invit&eacute;s : avancement dans le pipeline, alertes, statistiques</li>
+                        <li><strong>Suivi des r&eacute;mun&eacute;rations</strong> &mdash; R&eacute;capitulatif par statut, par type d'intervention, totaux et projections</li>
+                        <li><strong>Export Excel budg&eacute;taire</strong> &mdash; Synchronisation ou export vers votre fichier Excel de suivi budg&eacute;taire existant</li>
+                        <li><strong>Formation &eacute;quipe</strong> &mdash; 1 session de formation en visio (1h30) + guide d'utilisation</li>
+                        <li><strong>Ajustements post-livraison</strong> &mdash; 2 it&eacute;rations de retouches selon les retours de l'&eacute;quipe</li>
+                    </ul>
+                    <div class="lot-timeline">Dur&eacute;e estim&eacute;e : 1 semaine</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             PAGE 3 — Chiffrage, stack & planning
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Chiffrage -->
+            <div class="section-title" style="margin-top:0">
+                <div class="section-icon">4</div>
+                <h2>Chiffrage d&eacute;taill&eacute;</h2>
+            </div>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="width:55%">D&eacute;signation</th>
+                        <th class="text-center" style="width:15%">Forfait</th>
+                        <th class="text-right" style="width:15%">Montant HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Lot 1 -->
+                    <tr>
+                        <td>
+                            <span class="lot-label">Lot 1 &mdash; Socle &amp; contractualisation</span>
+                            <span class="task-name">Audit, BDD, formulaire adaptatif, contrats</span>
+                            <div class="task-detail">Mod&eacute;lisation des statuts et bar&egrave;mes, base Airtable, import Google Sheets, formulaire conditionnel, templates contrats par statut, g&eacute;n&eacute;ration PDF</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td class="text-right">800 &euro;</td>
+                    </tr>
+                    <!-- Lot 2 -->
+                    <tr>
+                        <td>
+                            <span class="lot-label">Lot 2 &mdash; Documents, envoi &amp; signature</span>
+                            <span class="task-name">Notes de droits, FDR, email, e-signature, suivi</span>
+                            <div class="task-detail">Notes de droits d'auteurs avec bar&egrave;mes, feuilles de route logistiques, envoi email, int&eacute;gration signature &eacute;lectronique, pipeline de suivi</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td class="text-right">900 &euro;</td>
+                    </tr>
+                    <!-- Lot 3 -->
+                    <tr>
+                        <td>
+                            <span class="lot-label">Lot 3 &mdash; Pilotage, budget &amp; formation</span>
+                            <span class="task-name">Dashboard, r&eacute;mun&eacute;rations, export Excel, formation</span>
+                            <div class="task-detail">Tableau de bord de production, suivi r&eacute;mun&eacute;rations, export vers Excel budg&eacute;taire existant, formation &eacute;quipe 1h30, guide d'utilisation</div>
+                        </td>
+                        <td class="text-center">Forfait</td>
+                        <td class="text-right">500 &euro;</td>
+                    </tr>
+                    <!-- Total -->
+                    <tr class="total-row">
+                        <td colspan="2"><strong>TOTAL HT</strong></td>
+                        <td class="text-right"><span class="total-amount">2 200 &euro;</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:0.82rem">TVA (20%)</td>
+                        <td class="text-right" style="font-size:0.82rem">440 &euro;</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2"><strong>TOTAL TTC</strong></td>
+                        <td class="text-right"><span class="total-amount">2 640 &euro;</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Highlight -->
+            <div class="highlight-box">
+                <h3>Tarification associative</h3>
+                <p>Ce tarif est adapt&eacute; aux structures de l'&Eacute;conomie Sociale et Solidaire. Il int&egrave;gre un effort tarifaire de plus de 30% par rapport &agrave; une tarification standard. Les 3 lots sont ind&eacute;pendants : vous pouvez d&eacute;marrer par le lot 1 seul et d&eacute;cider de la suite apr&egrave;s utilisation.</p>
+                <div class="price-highlight">2 200 &euro; HT &nbsp;les 3 lots</div>
+            </div>
+
+            <!-- Stack technique -->
+            <div class="section-title">
+                <div class="section-icon">5</div>
+                <h2>Stack technique envisag&eacute;e</h2>
+            </div>
+
+            <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:15px;">
+                Choix d&eacute;finitifs valid&eacute;s ensemble au d&eacute;marrage du lot 1. Privil&eacute;ge les outils pragmatiques et souverains quand c'est possible.
+            </p>
+
+            <div class="stack-grid">
+                <div class="stack-item">
+                    <div class="stack-icon">&#128194;</div>
+                    <div>
+                        <div class="stack-name">Airtable</div>
+                        <div class="stack-role">Base de donn&eacute;es centrale</div>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">&#128203;</div>
+                    <div>
+                        <div class="stack-name">Fillout ou Tally</div>
+                        <div class="stack-role">Formulaire invit&eacute;s</div>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">&#9889;</div>
+                    <div>
+                        <div class="stack-name">n8n ou Make</div>
+                        <div class="stack-role">Automatisation workflows</div>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">&#128196;</div>
+                    <div>
+                        <div class="stack-name">Carbone.io</div>
+                        <div class="stack-role">G&eacute;n&eacute;ration documents</div>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">&#9997;&#65039;</div>
+                    <div>
+                        <div class="stack-name">Yousign ou DocuSeal</div>
+                        <div class="stack-role">Signature &eacute;lectronique</div>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">&#128202;</div>
+                    <div>
+                        <div class="stack-name">Excel existant</div>
+                        <div class="stack-role">Suivi budg&eacute;taire (conserv&eacute;)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planning -->
+            <div class="section-title">
+                <div class="section-icon">6</div>
+                <h2>Planning pr&eacute;visionnel &mdash; au plus court</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-week">Semaines 1-2</div>
+                    <div class="step-name">Lot 1</div>
+                    <div class="step-desc">Audit, BDD, formulaire, contrats</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-week">Semaines 3-4</div>
+                    <div class="step-name">Lot 2</div>
+                    <div class="step-desc">Notes, FDR, email, signature</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-week">Semaine 5</div>
+                    <div class="step-name">Lot 3</div>
+                    <div class="step-desc">Dashboard, budget, formation</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-week">Semaine 6</div>
+                    <div class="step-name">Garantie</div>
+                    <div class="step-desc">Ajustements &amp; stabilisation</div>
+                </div>
+            </div>
+
+            <div class="context-block" style="border-left-color: var(--accent);">
+                <p>
+                    <strong>Note :</strong> Ce planning suppose un d&eacute;marrage rapide (acc&egrave;s aux templates existants, Google Sheets et Excel dans la semaine 1) et une disponibilit&eacute; r&eacute;guli&egrave;re de votre &eacute;quipe pour les validations interm&eacute;diaires. Chaque lot peut &ecirc;tre d&eacute;marr&eacute; ind&eacute;pendamment si vous souhaitez &eacute;taler dans le temps.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             PAGE 4 — Périmètre, conditions, signature
+        ========================================== -->
+        <div class="page page-break">
+
+            <!-- Périmètre -->
+            <div class="section-title" style="margin-top:0">
+                <div class="section-icon">7</div>
+                <h2>P&eacute;rim&egrave;tre &amp; livrables</h2>
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-card">
+                    <h4>&#9989; Inclus</h4>
+                    <ul>
+                        <li>Audit des templates et bar&egrave;mes existants</li>
+                        <li>Base de donn&eacute;es Airtable structur&eacute;e</li>
+                        <li>Import des donn&eacute;es Google Sheets</li>
+                        <li>Formulaire invit&eacute; adaptatif multi-statuts</li>
+                        <li>Templates contrats par type de statut</li>
+                        <li>G&eacute;n&eacute;ration contrats, notes de droits, FDR</li>
+                        <li>Int&eacute;gration signature &eacute;lectronique</li>
+                        <li>Dashboard de suivi &amp; pipeline visuel</li>
+                        <li>Export vers Excel budg&eacute;taire</li>
+                        <li>Formation &eacute;quipe (1h30 visio) + guide</li>
+                        <li>Garantie corrective 30 jours</li>
+                    </ul>
+                </div>
+                <div class="scope-card scope-excluded">
+                    <h4>&#10060; Non inclus</h4>
+                    <ul>
+                        <li>Abonnements outils tiers (Airtable, Yousign, etc.)</li>
+                        <li>Paiement en ligne ou encaissement via l'outil</li>
+                        <li>R&eacute;daction du contenu juridique des contrats</li>
+                        <li>Comptabilit&eacute; ou facturation</li>
+                        <li>Refonte de l'Excel de suivi budg&eacute;taire</li>
+                        <li>Cr&eacute;ation de nouveaux bar&egrave;mes (utilisation des bar&egrave;mes existants)</li>
+                        <li>Support technique au-del&agrave; de la p&eacute;riode de garantie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="section-title">
+                <div class="section-icon">8</div>
+                <h2>Conditions</h2>
+            </div>
+
+            <div class="conditions">
+                <h4>Modalit&eacute;s de r&egrave;glement</h4>
+                <ul>
+                    <li><strong>Option A &mdash; Par lot :</strong> 100% &agrave; la livraison de chaque lot (800 &euro; + 900 &euro; + 500 &euro; HT)</li>
+                    <li><strong>Option B &mdash; Global :</strong> 40% &agrave; la commande (880 &euro;), 40% &agrave; la livraison du lot 2 (880 &euro;), 20% &agrave; la livraison finale (880 &euro;) &mdash; soit 2 640 &euro; TTC</li>
+                    <li>R&egrave;glement par virement bancaire sous 30 jours &agrave; r&eacute;ception de facture</li>
+                </ul>
+
+                <h4>Propri&eacute;t&eacute; intellectuelle</h4>
+                <ul>
+                    <li>Les templates de documents, automatisations et configurations sont c&eacute;d&eacute;s en pleine propri&eacute;t&eacute; au client &agrave; r&eacute;ception du solde</li>
+                    <li>Le client est libre de modifier, adapter et r&eacute;utiliser l'ensemble des livrables</li>
+                </ul>
+
+                <h4>Co&ucirc;ts r&eacute;currents (hors devis)</h4>
+                <ul>
+                    <li><strong>Airtable :</strong> plan gratuit (1 200 enregistrements) ou Team &agrave; 20&euro;/mois (50 000 enregistrements)</li>
+                    <li><strong>Signature &eacute;lectronique :</strong> selon le volume (Yousign &agrave; partir de 25&euro;/mois, DocuSeal gratuit en auto-h&eacute;berg&eacute;)</li>
+                    <li><strong>Automatisation :</strong> n8n (gratuit en auto-h&eacute;berg&eacute;) ou Make (&agrave; partir de 9&euro;/mois)</li>
+                </ul>
+
+                <h4>Garantie</h4>
+                <ul>
+                    <li>Corrections de bugs et ajustements mineurs inclus pendant <strong>30 jours</strong> apr&egrave;s la livraison de chaque lot</li>
+                    <li>Au-del&agrave;, les modifications sont factur&eacute;es au tarif associatif de <strong>55 &euro; HT/h</strong></li>
+                </ul>
+
+                <h4>Pr&eacute;requis client</h4>
+                <ul>
+                    <li>Acc&egrave;s aux templates de contrats et FDR existants (Word)</li>
+                    <li>Acc&egrave;s au Google Sheets contenant les donn&eacute;es invit&eacute;s</li>
+                    <li>Acc&egrave;s &agrave; l'Excel de suivi budg&eacute;taire</li>
+                    <li>Grilles de bar&egrave;mes de r&eacute;mun&eacute;ration en vigueur</li>
+                    <li>Un interlocuteur disponible pour les validations (1 point/semaine)</li>
+                </ul>
+            </div>
+
+            <!-- Signatures -->
+            <div class="signature-block">
+                <div class="sig-party">
+                    <div class="sig-label">Le prestataire</div>
+                    <div class="sig-name">PINGLIER EMMANUEL</div>
+                    <div class="sig-hint">Date et signature :</div>
+                </div>
+                <div class="sig-party">
+                    <div class="sig-label">Le client &mdash; Bon pour accord</div>
+                    <div class="sig-name">OH LES BEAUX JOURS !</div>
+                    <div class="sig-hint">Date, signature et mention &laquo; Bon pour accord &raquo; :</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            PINGLIER EMMANUEL &mdash; Entrepreneur individuel (micro-entreprise) &mdash; SIRET : 942 385 311 00017 &mdash; TVA : FR56942385311<br>
+            39 rue Marceau, 94200 Ivry-sur-Seine &mdash; contact@unjouruneapp.com &mdash; 06 28 13 48 36
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.document').style.opacity = '0';
+        document.querySelector('.document').style.transform = 'translateY(20px)';
+        document.querySelector('.document').style.transition = 'all 0.6s ease';
+        setTimeout(function() {
+            document.querySelector('.document').style.opacity = '1';
+            document.querySelector('.document').style.transform = 'translateY(0)';
+        }, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription aux permanences - ESSOR</title>
+    <meta name="description" content="Inscrivez-vous aux permanences juridiques d'ESSOR : accompagnement des demandeurs d'asile en Ile-de-France.">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="site-logo">
+                <span class="site-logo-icon">E</span>
+                ESSOR
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                    <li><a href="nos-actions.html">Nos actions</a></li>
+                    <li><a href="parcours-asile.html">Parcours d'asile</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="nav-cta">
+                        <a href="inscription.html" class="btn btn-vermillon btn-sm">Etre accompagn&eacute;</a>
+                        <a href="benevole.html" class="btn btn-or btn-sm">Devenir b&eacute;n&eacute;vole</a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero hero-sm">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80&auto=format&fit=crop" alt="">
+        </div>
+        <div class="container">
+            <h1>Inscription aux permanences</h1>
+            <p class="lead">Inscrivez-vous pour b&eacute;n&eacute;ficier d'un accompagnement personnalis&eacute; ou pour proposer vos comp&eacute;tences comme b&eacute;n&eacute;vole.</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <section class="section">
+            <div class="container">
+
+                <!-- Sélecteur type d'usager -->
+                <div class="section-title">
+                    <h2>Vous &ecirc;tes&hellip;</h2>
+                </div>
+                <div class="user-type-selector reveal">
+                    <div class="user-type-card selected" data-type="beneficiaire" tabindex="0" role="button" aria-pressed="true">
+                        <div class="user-type-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>Demandeur d'asile</h3>
+                        <p>Je souhaite &ecirc;tre accompagn&eacute; dans mes d&eacute;marches</p>
+                    </div>
+                    <div class="user-type-card benevole" data-type="benevole" tabindex="0" role="button" aria-pressed="false">
+                        <div class="user-type-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </div>
+                        <h3>B&eacute;n&eacute;vole juriste</h3>
+                        <p>Je souhaite donner de mon temps</p>
+                    </div>
+                </div>
+
+                <!-- Formulaire bénéficiaire -->
+                <div id="form-beneficiaire" style="max-width: 650px; margin: 0 auto;">
+                    <div class="form-card reveal">
+                        <h3 class="mb-3">Inscription &mdash; B&eacute;n&eacute;ficiaire</h3>
+                        <form id="inscription-beneficiaire">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="ins-prenom" class="form-label">Pr&eacute;nom <span class="required">*</span></label>
+                                    <input type="text" id="ins-prenom" name="prenom" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ins-nom" class="form-label">Nom <span class="required">*</span></label>
+                                    <input type="text" id="ins-nom" name="nom" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="ins-telephone" class="form-label">T&eacute;l&eacute;phone <span class="required">*</span></label>
+                                    <input type="tel" id="ins-telephone" name="telephone" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ins-email" class="form-label">Email</label>
+                                    <input type="email" id="ins-email" name="email" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ins-nationalite" class="form-label">Nationalit&eacute; <span class="required">*</span></label>
+                                <input type="text" id="ins-nationalite" name="nationalite" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ins-type-demande" class="form-label">Type de demande <span class="required">*</span></label>
+                                <select id="ins-type-demande" name="type_demande" class="form-input" required>
+                                    <option value="">-- Choisir --</option>
+                                    <option value="premiere-demande">Premi&egrave;re demande d'asile</option>
+                                    <option value="recours">Recours CNDA</option>
+                                    <option value="reexamen">R&eacute;examen</option>
+                                    <option value="autre">Autre / Je ne sais pas</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ins-creneau" class="form-label">Cr&eacute;neau souhait&eacute; <span class="required">*</span></label>
+                                <select id="ins-creneau" name="creneau" class="form-input" required>
+                                    <option value="">-- Choisir un cr&eacute;neau --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ins-message" class="form-label">Message (facultatif)</label>
+                                <textarea id="ins-message" name="message" class="form-input" rows="3" placeholder="D&eacute;crivez bri&egrave;vement votre situation..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-vermillon btn-lg" style="width: 100%; justify-content: center;">Envoyer mon inscription</button>
+                        </form>
+                        <div id="confirmation-beneficiaire" class="form-confirmation hidden">
+                            <div class="confirmation-icon">&#10003;</div>
+                            <h3>Inscription envoy&eacute;e</h3>
+                            <p>Merci ! Nous avons bien re&ccedil;u votre demande d'inscription. Nous vous recontacterons pour confirmer votre cr&eacute;neau.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire bénévole -->
+                <div id="form-benevole" class="hidden" style="max-width: 650px; margin: 0 auto;">
+                    <div class="form-card reveal">
+                        <h3 class="mb-3">Inscription &mdash; B&eacute;n&eacute;vole juriste</h3>
+                        <form id="inscription-benevole">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="ben-prenom" class="form-label">Pr&eacute;nom <span class="required">*</span></label>
+                                    <input type="text" id="ben-prenom" name="prenom" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ben-nom" class="form-label">Nom <span class="required">*</span></label>
+                                    <input type="text" id="ben-nom" name="nom" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="ben-email" class="form-label">Email <span class="required">*</span></label>
+                                    <input type="email" id="ben-email" name="email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ben-telephone" class="form-label">T&eacute;l&eacute;phone <span class="required">*</span></label>
+                                    <input type="tel" id="ben-telephone" name="telephone" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ben-statut" class="form-label">Statut professionnel <span class="required">*</span></label>
+                                <select id="ben-statut" name="statut" class="form-input" required>
+                                    <option value="">-- Choisir --</option>
+                                    <option value="avocat">&Eacute;tudiant en droit</option>
+                                    <option value="etudiant">Avocat</option>
+                                    <option value="juriste">Juriste</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sp&eacute;cialit&eacute;s</label>
+                                <div class="form-checkboxes">
+                                    <label class="form-checkbox">
+                                        <input type="checkbox" name="specialites" value="droit-asile"> Droit d'asile
+                                    </label>
+                                    <label class="form-checkbox">
+                                        <input type="checkbox" name="specialites" value="droit-etrangers"> Droit des &eacute;trangers
+                                    </label>
+                                    <label class="form-checkbox">
+                                        <input type="checkbox" name="specialites" value="droit-social"> Droit social
+                                    </label>
+                                    <label class="form-checkbox">
+                                        <input type="checkbox" name="specialites" value="interpretation"> Interpr&eacute;tation
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ben-disponibilites" class="form-label">Disponibilit&eacute;s <span class="required">*</span></label>
+                                <input type="text" id="ben-disponibilites" name="disponibilites" class="form-input" required placeholder="Ex : Mardi apr&egrave;s-midi, 2 fois par mois">
+                            </div>
+                            <div class="form-group">
+                                <label for="ben-motivation" class="form-label">Motivation</label>
+                                <textarea id="ben-motivation" name="motivation" class="form-input" rows="4" placeholder="Pourquoi souhaitez-vous rejoindre ESSOR ?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-or btn-lg" style="width: 100%; justify-content: center;">Envoyer ma candidature</button>
+                        </form>
+                        <div id="confirmation-benevole" class="form-confirmation hidden">
+                            <div class="confirmation-icon">&#10003;</div>
+                            <h3>Candidature envoy&eacute;e</h3>
+                            <p>Merci pour votre int&eacute;r&ecirc;t ! Nous reviendrons vers vous tr&egrave;s prochainement pour organiser votre int&eacute;gration.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">ESSOR</div>
+                    <p class="footer-desc">Association loi 1901 accompagnant les demandeurs d'asile en Ile-de-France depuis 2012.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                        <li><a href="nos-actions.html">Nos actions</a></li>
+                        <li><a href="parcours-asile.html">Parcours d'asile</a></li>
+                        <li><a href="inscription.html">Inscription permanence</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Agir</h4>
+                    <ul class="footer-links">
+                        <li><a href="benevole.html">Devenir b&eacute;n&eacute;vole</a></li>
+                        <li><a href="contact.html">Nous contacter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span data-config="association.adresse">12 rue de l'Esp&eacute;rance, 75013 Paris</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <a href="#" data-config="association.telephone">01 45 67 89 10</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="#" data-config="association.email">contact@association-essor.org</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 ESSOR. Tous droits r&eacute;serv&eacute;s.</span>
+                <span>Association loi 1901</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config-loader.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/inscription.js"></script>
+</body>
+</html>

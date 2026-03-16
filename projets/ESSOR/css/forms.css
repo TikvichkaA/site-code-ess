@@ -1,0 +1,252 @@
+/* ============================================
+   ESSOR — Formulaires d'inscription
+============================================ */
+
+/* Form card wrapper */
+.form-card {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-light);
+}
+
+/* Form elements */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+}
+
+.required {
+    color: var(--vermillon);
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: var(--transition-fast);
+    line-height: 1.5;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--vermillon);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+select.form-input {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 36px;
+}
+
+/* Checkboxes */
+.form-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--vermillon);
+    cursor: pointer;
+}
+
+/* Form row (2 cols) */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Validation */
+.form-input.error {
+    border-color: var(--vermillon);
+    background: var(--vermillon-bg);
+}
+
+.form-error {
+    font-size: 0.8rem;
+    color: var(--vermillon);
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.form-input.error + .form-error {
+    display: block;
+}
+
+/* ============================================
+   Sélecteur de type d'usager
+============================================ */
+.user-type-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.user-type-card {
+    background: var(--bg);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.user-type-card:hover {
+    border-color: var(--border);
+}
+
+.user-type-card.selected {
+    border-color: var(--vermillon);
+}
+
+.user-type-card.selected.benevole {
+    border-color: var(--or);
+}
+
+.user-type-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.8rem;
+}
+
+.user-type-card:first-child .user-type-icon {
+    background: var(--vermillon-bg);
+    color: var(--vermillon);
+}
+
+.user-type-card:last-child .user-type-icon {
+    background: var(--or-bg);
+    color: var(--or-dark);
+}
+
+.user-type-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+}
+
+.user-type-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Confirmation
+============================================ */
+.form-confirmation {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.confirmation-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #e8f5e9;
+    color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.form-confirmation h3 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+}
+
+.form-confirmation p {
+    color: var(--text-light);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Loading state */
+.btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Responsive
+============================================ */
+@media (max-width: 768px) {
+    .user-type-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+}
