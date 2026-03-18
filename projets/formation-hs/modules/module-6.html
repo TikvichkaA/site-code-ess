@@ -317,6 +317,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -409,6 +411,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Projection de sang au visage pendant un tatouage',
+            steps: [{
+                scenario: 'Vous tatouez l\'intérieur du bras d\'un client lorsqu\'une artériole superficielle est touchée. Un jet de sang atteint votre visage, notamment vos yeux. Vous ne portiez ni lunettes de protection ni visière, uniquement des gants et un masque chirurgical. Vos yeux sont irrités et vous sentez du sang sur vos paupières.',
+                question: 'Quelle est la conduite à tenir immédiate ?',
+                choices: [
+                    { text: 'S\'essuyer les yeux avec une compresse, appliquer du collyre antiseptique et reprendre le tatouage après quelques minutes', correct: false, feedback: 'Insuffisant et dangereux. Une projection oculaire de sang est un AES à part entière. S\'essuyer les yeux ne constitue pas un rinçage efficace. Le collyre antiseptique n\'est pas le geste de premiers secours recommandé. Vous devez rincer abondamment au sérum physiologique (ou à l\'eau) pendant 5 minutes minimum, puis consulter aux urgences dans les 4 heures pour évaluation du risque viral (VIH, VHB, VHC) et éventuel traitement post-exposition.' },
+                    { text: 'Rincer abondamment les yeux au sérum physiologique (ou à l\'eau claire) pendant au moins 5 minutes, stopper l\'acte, consulter aux urgences dans les 4 heures, déclarer l\'accident dans les 24 heures', correct: true, feedback: 'Correct ! Une projection de sang dans les yeux est un AES par contact muqueux. Le protocole est : (1) Rinçage abondant au sérum physiologique ou à l\'eau pendant 5 minutes minimum, paupières ouvertes. (2) Arrêt immédiat de l\'acte et sécurisation du client. (3) Consultation aux urgences dans les 4 heures pour évaluation du risque et éventuel TPE anti-VIH. (4) Déclaration d\'accident du travail dans les 24 heures. Cette situation rappelle aussi l\'importance de porter systématiquement des lunettes de protection ou une visière lors de tout acte à risque de projection.' },
+                    { text: 'Se laver le visage au savon, désinfecter les yeux à la Bétadine et continuer l\'acte en mettant des lunettes pour la suite', correct: false, feedback: 'Dangereux. La Bétadine ne doit jamais être appliquée dans les yeux (toxicité oculaire). Le geste correct est un rinçage prolongé au sérum physiologique ou à l\'eau claire. De plus, cet incident constitue un AES nécessitant une consultation aux urgences dans les 4 heures, pas simplement un nettoyage local. Reprendre l\'acte sans consultation médicale fait perdre la possibilité d\'un traitement post-exposition.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Collègue non vacciné contre l\'hépatite B',
+            steps: [{
+                scenario: 'Vous venez d\'embaucher un nouveau perceur dans votre studio. En vérifiant son dossier, vous constatez qu\'il n\'a jamais été vacciné contre l\'hépatite B. Il vous dit qu\'il ne souhaite pas se faire vacciner car « ce n\'est pas obligatoire pour les tatoueurs-perceurs ». Il a par ailleurs son attestation de formation H&S à jour.',
+                question: 'Comment devez-vous gérer cette situation ?',
+                choices: [
+                    { text: 'Il a raison, la vaccination VHB n\'est pas obligatoire : le laisser travailler sans aucune démarche supplémentaire', correct: false, feedback: 'Techniquement exact sur le plan légal (la vaccination VHB n\'est pas obligatoire pour les tatoueurs-perceurs), mais cette réponse est insuffisante en tant qu\'employeur responsable. Le VHB est 50 à 100 fois plus contagieux que le VIH et survit jusqu\'à 7 jours sur une surface sèche. En cas d\'AES, un professionnel non vacciné court un risque majeur de contamination. De plus, en tant qu\'employeur, vous avez une obligation de sécurité envers vos salariés (article L.4121-1 du Code du travail). Ne pas informer et encourager la vaccination pourrait engager votre responsabilité.' },
+                    { text: 'Lui interdire de travailler tant qu\'il n\'est pas vacciné car la vaccination VHB est obligatoire pour les professionnels du tatouage et du perçage', correct: false, feedback: 'Faux. La vaccination contre l\'hépatite B n\'est pas légalement obligatoire pour les professionnels du tatouage et du perçage (contrairement aux professionnels de santé). Vous ne pouvez pas interdire à un salarié de travailler sur ce motif. En revanche, la vaccination est très fortement recommandée par les autorités sanitaires et la Haute Autorité de Santé.' },
+                    { text: 'L\'informer des risques (VHB 50-100x plus contagieux que le VIH, survie 7 jours), lui recommander fortement la vaccination, documenter cet échange par écrit, et renforcer la formation sur le protocole AES', correct: true, feedback: 'Correct ! En tant qu\'employeur, vous devez : (1) Informer clairement le salarié des risques liés au VHB dans son activité professionnelle (risque d\'AES, contagiosité 50-100 fois supérieure au VIH, survie du virus 7 jours sur surface sèche). (2) Lui recommander fortement la vaccination et lui proposer de la prendre en charge via la médecine du travail. (3) Documenter cet échange par écrit (courrier, e-mail) pour prouver que vous avez rempli votre obligation d\'information. (4) S\'assurer qu\'il maîtrise parfaitement le protocole AES. (5) Vérifier que son schéma DTP (obligatoire) est à jour. Le refus du salarié ne constitue pas une faute, mais la trace écrite protège votre responsabilité d\'employeur.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

@@ -266,6 +266,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -367,6 +369,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Maintenance de l\'autoclave en retard',
+            steps: [{
+                scenario: 'En v\u00e9rifiant votre registre de st\u00e9rilisation, vous constatez que la maintenance annuelle de votre autoclave de classe B aurait d\u00fb \u00eatre effectu\u00e9e il y a deux mois. Le test de Bowie-Dick quotidien continue de passer avec succ\u00e8s, et les indicateurs chimiques virent correctement. Votre planning est charg\u00e9 pour les prochaines semaines et vous h\u00e9sitez \u00e0 immobiliser l\'appareil.',
+                question: 'Que devez-vous faire ?',
+                choices: [
+                    { text: 'Continuer \u00e0 utiliser l\'autoclave normalement puisque les tests de Bowie-Dick et les indicateurs chimiques sont satisfaisants', correct: false, feedback: 'Faux. Les contr\u00f4les quotidiens (Bowie-Dick, indicateurs chimiques) ne remplacent pas la maintenance pr\u00e9ventive. La maintenance annuelle v\u00e9rifie l\'\u00e9tat des joints, des soupapes de s\u00e9curit\u00e9, des capteurs de temp\u00e9rature et de pression, et le calibrage de l\'appareil. Un d\u00e9faut non d\u00e9tect\u00e9 par les tests de routine pourrait entra\u00eener une st\u00e9rilisation incompl\u00e8te ou un accident.' },
+                    { text: 'Planifier la maintenance dans les meilleurs d\u00e9lais, continuer \u00e0 utiliser l\'autoclave en renfor\u00e7ant les contr\u00f4les (test biologique suppl\u00e9mentaire), et pr\u00e9voir du mat\u00e9riel \u00e0 usage unique en secours', correct: true, feedback: 'Correct ! La maintenance est en retard mais l\'appareil fonctionne. La d\u00e9marche responsable est : 1) Planifier la maintenance au plus vite aupr\u00e8s d\'un technicien qualifi\u00e9. 2) En attendant, renforcer la surveillance : ajouter un contr\u00f4le biologique (ampoules de spores Geobacillus stearothermophilus) pour valider l\'efficacit\u00e9 r\u00e9elle de la st\u00e9rilisation. 3) Avoir du mat\u00e9riel st\u00e9rile \u00e0 usage unique en r\u00e9serve au cas o\u00f9 un test \u00e9chouerait. 4) Documenter le retard et les mesures compensatoires dans le registre.' },
+                    { text: 'Arr\u00eater imm\u00e9diatement l\'autoclave et annuler tous les rendez-vous jusqu\'\u00e0 la maintenance', correct: false, feedback: 'Ce n\'est pas proportionn\u00e9 si les contr\u00f4les quotidiens sont satisfaisants. L\'arr\u00eat imm\u00e9diat est justifi\u00e9 en cas d\'\u00e9chec d\'un test (Bowie-Dick, biologique), mais pas pour un retard de maintenance quand les tests de routine restent conformes. La priorit\u00e9 est de programmer la maintenance rapidement tout en renfor\u00e7ant les contr\u00f4les.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Sachets de st\u00e9rilisation dont l\'int\u00e9grit\u00e9 est compromise',
+            steps: [{
+                scenario: 'Vous sortez une charge de l\'autoclave apr\u00e8s un cycle B \u00e0 134 \u00b0C / 18 minutes. En inspectant les sachets, vous remarquez que deux d\'entre eux pr\u00e9sentent des d\u00e9fauts : le premier a une soudure l\u00e9g\u00e8rement ouverte sur un coin (environ 3 mm), et le second montre une micro-perforation visible au niveau d\'une pointe d\'instrument qui a perc\u00e9 le sachet. Les indicateurs chimiques sur les deux sachets ont correctement vir\u00e9. Vous avez besoin de ces instruments pour le prochain client.',
+                question: 'Que faites-vous de ces instruments ?',
+                choices: [
+                    { text: 'Utiliser les instruments car les indicateurs chimiques ont vir\u00e9 correctement, preuve que la st\u00e9rilisation a fonctionn\u00e9', correct: false, feedback: 'Faux. Le virage de l\'indicateur chimique prouve seulement que les param\u00e8tres de temp\u00e9rature ont \u00e9t\u00e9 atteints, mais il ne garantit pas le maintien de la st\u00e9rilit\u00e9 apr\u00e8s le cycle. Un sachet dont l\'int\u00e9grit\u00e9 est compromise (soudure ouverte, perforation) n\'assure plus la barri\u00e8re st\u00e9rile : les micro-organismes peuvent recontaminer les instruments d\u00e8s le refroidissement. La norme ISO 11607-1 exige l\'int\u00e9grit\u00e9 totale de l\'emballage.' },
+                    { text: 'Consid\u00e9rer ces instruments comme non st\u00e9riles, les reconditionner dans de nouveaux sachets et relancer un cycle de st\u00e9rilisation complet', correct: true, feedback: 'Correct ! Tout sachet dont l\'int\u00e9grit\u00e9 est compromise doit \u00eatre consid\u00e9r\u00e9 comme non st\u00e9rile, m\u00eame si les indicateurs chimiques ont vir\u00e9. La d\u00e9marche est : 1) Reprendre les instruments. 2) Les reconditionner dans de nouveaux sachets conformes \u00e0 la norme ISO 11607-1. 3) Relancer un cycle complet de st\u00e9rilisation. 4) V\u00e9rifier le chargement de l\'autoclave : les instruments ne doivent pas \u00eatre en contact avec les soudures des sachets voisins. 5) En attendant, utiliser du mat\u00e9riel \u00e0 usage unique pour le client.' },
+                    { text: 'Utiliser uniquement le sachet avec la soudure ouverte (d\u00e9faut mineur) et restériliser celui avec la perforation', correct: false, feedback: 'Faux. Les deux d\u00e9fauts sont \u00e9galement r\u00e9dhibitoires. Une soudure ouverte de 3 mm, m\u00eame "l\u00e9g\u00e8re", brise la barri\u00e8re st\u00e9rile et permet l\'entr\u00e9e de micro-organismes. Il n\'y a pas de d\u00e9faut "mineur" en mati\u00e8re d\'int\u00e9grit\u00e9 des emballages de st\u00e9rilisation : soit le sachet est intact, soit les instruments sont consid\u00e9r\u00e9s comme non st\u00e9riles.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

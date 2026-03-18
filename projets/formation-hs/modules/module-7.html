@@ -229,6 +229,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -329,6 +331,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Collecteur DASRI plein en pleine séance de tatouage',
+            steps: [{
+                scenario: 'Vous êtes en pleine séance de tatouage. En changeant de configuration d\'aiguilles, vous devez jeter l\'aiguille usagée dans le collecteur PCT (boîte jaune). Vous constatez que le collecteur est rempli au-delà de la limite de remplissage : des aiguilles dépassent de l\'ouverture et il est impossible d\'y insérer quoi que ce soit de manière sécurisée. Votre prochain enlèvement DASRI par le prestataire est prévu dans 10 jours.',
+                question: 'Que devez-vous faire ?',
+                choices: [
+                    { text: 'Tasser le contenu du collecteur avec une pince pour faire de la place et continuer à l\'utiliser jusqu\'à la prochaine collecte', correct: false, feedback: 'Extrêmement dangereux. Il est strictement interdit de tasser, comprimer ou manipuler le contenu d\'un collecteur PCT. Cette manipulation expose au risque de piqûre accidentelle (AES) avec des aiguilles contaminées. De plus, un collecteur rempli au-delà de la limite est une non-conformité sanctionnable par l\'ARS.' },
+                    { text: 'Fermer définitivement le collecteur plein, le stocker en zone DASRI dédiée, utiliser un nouveau collecteur pour continuer la séance, et contacter le prestataire pour un enlèvement anticipé si nécessaire', correct: true, feedback: 'Correct ! Le protocole est : (1) Fermer définitivement le collecteur plein en activant le système de fermeture irréversible. (2) Le stocker dans la zone de stockage DASRI identifiée, inaccessible au public. (3) Sortir immédiatement un nouveau collecteur PCT neuf pour poursuivre la séance en toute sécurité. (4) Si le volume de DASRI produit dépasse la capacité de stockage avant la prochaine collecte, contacter le prestataire agréé pour un enlèvement anticipé. Vous devez toujours avoir des collecteurs de rechange en stock. La limite de remplissage ne doit jamais être dépassée.' },
+                    { text: 'Jeter temporairement les aiguilles usagées dans un gobelet en plastique rigide en attendant d\'avoir un nouveau collecteur', correct: false, feedback: 'Interdit. Les PCT (piquants, coupants, tranchants) ne doivent être éliminés que dans un collecteur jaune rigide conforme à la norme NF X 30-500. Un gobelet en plastique n\'offre aucune résistance à la perforation et ne dispose pas de système de fermeture sécurisé. Cette pratique expose à un risque d\'AES pour vous, vos collègues et le personnel de collecte, et constitue une infraction passible de sanctions pénales.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Encres périmées découvertes dans le stock',
+            steps: [{
+                scenario: 'En faisant l\'inventaire mensuel de votre stock, vous découvrez que 8 flacons d\'encre de tatouage (3 couleurs différentes) ont dépassé leur date de péremption depuis 2 mois. Ces encres représentent une valeur d\'environ 200 euros. Elles sont visuellement identiques aux encres neuves : pas de changement de couleur, pas de dépôt, pas d\'odeur inhabituelle. Vous avez un tatouage prévu cet après-midi nécessitant l\'une de ces couleurs.',
+                question: 'Quelle décision prenez-vous ?',
+                choices: [
+                    { text: 'Les utiliser quand même car elles semblent en bon état visuellement, la date de péremption est juste indicative pour les encres', correct: false, feedback: 'Faux et dangereux. La date de péremption des encres de tatouage n\'est pas indicative : elle garantit la stabilité chimique et microbiologique du produit. Après cette date, la stérilité n\'est plus garantie par le fabricant, les conservateurs peuvent avoir perdu leur efficacité, et certains composants chimiques peuvent se dégrader en sous-produits potentiellement toxiques. L\'aspect visuel ne permet pas de détecter une contamination bactérienne ou une dégradation chimique. Utiliser des encres périmées engage votre responsabilité en cas de complication (infection, réaction allergique).' },
+                    { text: 'Retirer immédiatement les encres périmées du stock, les éliminer selon les consignes du fabricant, commander les encres de remplacement, et reporter le rendez-vous si la couleur nécessaire n\'est pas disponible en stock conforme', correct: true, feedback: 'Correct ! Le protocole est : (1) Retirer les encres périmées du stock et les isoler avec la mention « périmé — ne pas utiliser ». (2) Les éliminer conformément aux instructions du fabricant (généralement en DASRI ou selon la FDS). (3) Mettre à jour le registre de traçabilité. (4) Commander immédiatement les encres de remplacement auprès d\'un fournisseur conforme. (5) Pour le rendez-vous de l\'après-midi : si la couleur n\'est pas disponible en stock conforme, contacter le client pour reporter. Ne jamais utiliser un produit périmé. Mettre en place un système de rotation des stocks (FIFO : premier entré, premier sorti) et des alertes de péremption pour éviter cette situation à l\'avenir.' },
+                    { text: 'Contacter le fournisseur pour lui demander une extension de la date de péremption puisque les encres semblent intactes', correct: false, feedback: 'Impossible et non conforme. Un fournisseur ne peut pas « étendre » la date de péremption d\'un produit déjà commercialisé. Cette date est déterminée par des essais de stabilité réalisés lors de la mise sur le marché. Le règlement REACH et les bonnes pratiques de fabrication imposent cette limite. Le fournisseur pourrait éventuellement accepter un retour ou un échange commercial, mais en aucun cas modifier la date de péremption. La responsabilité de la vérification des dates incombe au professionnel utilisateur.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

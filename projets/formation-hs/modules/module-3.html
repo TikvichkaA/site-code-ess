@@ -153,6 +153,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -250,6 +252,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'D\u00e9couverte d\'un plan de travail contamin\u00e9',
+            steps: [{
+                scenario: 'En d\u00e9but de journ\u00e9e, vous constatez que votre coll\u00e8gue a termin\u00e9 tard la veille et n\'a pas nettoy\u00e9 son poste de travail. Vous observez des traces de sang s\u00e9ch\u00e9 sur le plan de travail, une cup d\'encre entam\u00e9e rest\u00e9e ouverte toute la nuit, des gants usag\u00e9s jet\u00e9s \u00e0 c\u00f4t\u00e9 de la poubelle (et non dedans), et le flacon de d\u00e9sinfectant de surface laiss\u00e9 ouvert. Votre premier client arrive dans 30 minutes.',
+                question: 'Quelle est la proc\u00e9dure correcte \u00e0 suivre ?',
+                choices: [
+                    { text: 'Nettoyer rapidement le plan de travail avec un coup de spray d\u00e9sinfectant et essuyer les traces, puis recevoir le client normalement', correct: false, feedback: 'Faux. Les traces de sang s\u00e9ch\u00e9 peuvent contenir des virus actifs (le VHB survit jusqu\'\u00e0 7 jours sur surface s\u00e8che). Un simple spray ne suffit pas. Il faut un protocole complet de d\u00e9contamination : nettoyage avec un d\u00e9tergent-d\u00e9sinfectant, temps de contact respect\u00e9, et \u00e9limination conforme des d\u00e9chets. L\'encre ouverte toute la nuit est \u00e9galement contamin\u00e9e et doit \u00eatre jet\u00e9e.' },
+                    { text: '\u00c9liminer les d\u00e9chets dans les conteneurs adapt\u00e9s (DASRI), d\u00e9contaminer le plan de travail avec un d\u00e9tergent-d\u00e9sinfectant en respectant le temps de contact, jeter l\'encre ouverte, et v\u00e9rifier l\'\u00e9tat du flacon d\u00e9sinfectant avant de reconstituer un poste propre', correct: true, feedback: 'Correct ! Le protocole complet est : 1) Mettre des gants de protection. 2) Ramasser les d\u00e9chets contamin\u00e9s (gants, cups) et les \u00e9liminer en DASRI. 3) D\u00e9contaminer le plan de travail avec un d\u00e9tergent-d\u00e9sinfectant virucide (norme EN 14476) en respectant le temps de contact indiqu\u00e9. 4) Jeter l\'encre rest\u00e9e ouverte toute la nuit (risque de contamination bact\u00e9rienne). 5) V\u00e9rifier que le d\u00e9sinfectant n\'a pas s\u00e9ch\u00e9 ou perdu son efficacit\u00e9. 6) Signaler le manquement au coll\u00e8gue.' },
+                    { text: 'Refuser de travailler \u00e0 ce poste et annuler le rendez-vous du client, seul le coll\u00e8gue responsable peut nettoyer sa propre contamination', correct: false, feedback: 'Faux. Tout professionnel est responsable de la s\u00e9curit\u00e9 sanitaire du poste de travail qu\'il utilise. Attendre le coll\u00e8gue ou annuler n\'est pas n\u00e9cessaire : le poste peut \u00eatre d\u00e9contamin\u00e9 correctement en suivant le protocole. En revanche, il convient de signaler le manquement et de rappeler les r\u00e8gles d\'hygi\u00e8ne au coll\u00e8gue.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'D\u00e9faut d\'hygi\u00e8ne des mains entre deux clients',
+            steps: [{
+                scenario: 'Vous observez un coll\u00e8gue en pleine journ\u00e9e charg\u00e9e. Il vient de terminer un tatouage, retire ses gants, r\u00e9pond \u00e0 un appel sur son t\u00e9l\u00e9phone personnel, manipule le carnet de rendez-vous, touche la poign\u00e9e de porte du studio, puis enfile directement une nouvelle paire de gants pour accueillir le client suivant et pr\u00e9parer son poste. Il ne s\'est pas lav\u00e9 les mains.',
+                question: 'Pourquoi cette pratique pose-t-elle un probl\u00e8me majeur et que faut-il corriger ?',
+                choices: [
+                    { text: 'Ce n\'est pas grave car les gants prot\u00e8gent suffisamment le client suivant', correct: false, feedback: 'Faux. Les gants ne sont pas une barri\u00e8re absolue : ils peuvent pr\u00e9senter des micro-perforations invisibles. De plus, enfiler des gants sur des mains contamin\u00e9es (t\u00e9l\u00e9phone, poign\u00e9e, carnet) contamine l\'ext\u00e9rieur des gants par transfert lors de l\'enfilage. Le lavage des mains est l\'\u00e9tape la plus importante pour \u00e9liminer la flore transitoire acquise par contact.' },
+                    { text: 'Apr\u00e8s le retrait des gants, il doit se laver les mains au savon doux (ou friction hydro-alcoolique), puis enfiler de nouveaux gants propres avant de toucher le mat\u00e9riel ou le client suivant', correct: true, feedback: 'Correct ! Le lavage des mains (ou la friction hydro-alcoolique si les mains ne sont pas visiblement souill\u00e9es) est obligatoire entre chaque client, AVANT d\'enfiler de nouveaux gants. Apr\u00e8s retrait des gants, les mains portent de la flore transitoire (micro-perforations, contamination au retrait). Toucher le t\u00e9l\u00e9phone, le carnet et la poign\u00e9e ajoute des contaminants suppl\u00e9mentaires. La flore transitoire est \u00e9limin\u00e9e par un lavage de 30 secondes minimum ou une friction hydro-alcoolique.' },
+                    { text: 'Il suffit d\'utiliser un gel hydro-alcoolique par-dessus les gants avant de toucher le client suivant', correct: false, feedback: 'Faux. Le gel hydro-alcoolique ne s\'utilise jamais SUR les gants. Les gants usag\u00e9s doivent \u00eatre retir\u00e9s et jet\u00e9s apr\u00e8s chaque acte. L\'hygi\u00e8ne des mains se fait sur les mains nues, puis de nouveaux gants propres sont enfil\u00e9s. L\'application de SHA sur des gants peut alt\u00e9rer leur int\u00e9grit\u00e9 et ne d\u00e9sinfecte pas les mains sous les gants.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

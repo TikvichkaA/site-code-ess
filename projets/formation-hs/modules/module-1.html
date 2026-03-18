@@ -173,6 +173,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -269,6 +271,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Mineur souhaitant un tatouage',
+            steps: [{
+                scenario: 'Un adolescent de 16 ans se pr\u00e9sente seul dans votre studio et souhaite se faire tatouer un petit motif sur l\'avant-bras. Il affirme que ses parents sont d\'accord mais qu\'ils n\'ont pas pu venir. Il vous montre un message SMS de sa m\u00e8re disant "oui c\'est bon tu peux y aller". Il propose de payer en esp\u00e8ces et insiste pour que l\'acte soit r\u00e9alis\u00e9 aujourd\'hui.',
+                question: 'Quelle est la d\u00e9marche correcte \u00e0 suivre ?',
+                choices: [
+                    { text: 'Accepter car le SMS de la m\u00e8re constitue une preuve suffisante de consentement parental', correct: false, feedback: 'Faux. Un SMS ne constitue pas une autorisation parentale valide. L\'article R.1311-11 du Code de la sant\u00e9 publique exige une autorisation \u00e9crite sign\u00e9e par le repr\u00e9sentant l\u00e9gal, accompagn\u00e9e d\'une pi\u00e8ce d\'identit\u00e9 du parent et du mineur. Ce document doit \u00eatre conserv\u00e9 pendant 3 ans.' },
+                    { text: 'Refuser de r\u00e9aliser l\'acte aujourd\'hui et demander au mineur de revenir accompagn\u00e9 d\'un parent muni d\'une pi\u00e8ce d\'identit\u00e9, pour signer l\'autorisation parentale \u00e9crite sur place', correct: true, feedback: 'Correct ! Pour un mineur, l\'autorisation parentale \u00e9crite est obligatoire (art. R.1311-11 du CSP). Le parent ou repr\u00e9sentant l\u00e9gal doit signer le formulaire en personne, pr\u00e9senter sa pi\u00e8ce d\'identit\u00e9, et le mineur doit \u00e9galement pr\u00e9senter la sienne. Le professionnel doit informer clairement le mineur et son repr\u00e9sentant des risques li\u00e9s \u00e0 l\'acte. Le document est conserv\u00e9 3 ans.' },
+                    { text: 'Refuser d\u00e9finitivement car le tatouage est interdit aux mineurs en France', correct: false, feedback: 'Faux. Le tatouage n\'est pas interdit aux mineurs en France. Il est autoris\u00e9 sous r\u00e9serve de l\'obtention d\'une autorisation parentale \u00e9crite sign\u00e9e par le repr\u00e9sentant l\u00e9gal. En revanche, le per\u00e7age de certaines zones peut faire l\'objet de restrictions sp\u00e9cifiques.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Absence de d\u00e9claration ARS',
+            steps: [{
+                scenario: 'Vous venez d\'obtenir votre attestation de formation hygi\u00e8ne et salubrit\u00e9 (21 heures). Un ami tatoueur vous propose de travailler d\u00e8s la semaine prochaine dans son studio en tant qu\'ind\u00e9pendant. Il vous dit que sa propre d\u00e9claration ARS couvre tous les professionnels travaillant dans son local et que vous n\'avez pas besoin de faire votre propre d\u00e9claration.',
+                question: 'Que devez-vous faire avant de commencer \u00e0 exercer ?',
+                choices: [
+                    { text: 'Commencer \u00e0 travailler imm\u00e9diatement puisque la d\u00e9claration ARS du studio couvre tous les intervenants sur place', correct: false, feedback: 'Faux. La d\u00e9claration ARS est personnelle et nominative (article R.1311-6 du CSP). Chaque professionnel doit effectuer sa propre d\u00e9claration aupr\u00e8s de l\'ARS de sa r\u00e9gion avant tout exercice. La d\u00e9claration du g\u00e9rant du studio ne couvre que lui-m\u00eame.' },
+                    { text: 'Effectuer votre propre d\u00e9claration d\'activit\u00e9 aupr\u00e8s de l\'ARS de votre r\u00e9gion avant de commencer \u00e0 exercer, avec votre attestation de formation et les justificatifs requis', correct: true, feedback: 'Correct ! La d\u00e9claration aupr\u00e8s de l\'ARS est obligatoire, personnelle et pr\u00e9alable \u00e0 tout exercice (art. R.1311-6 du CSP). Vous devez fournir : votre attestation de formation, une pi\u00e8ce d\'identit\u00e9, un justificatif du local d\'exercice. Le r\u00e9c\u00e9piss\u00e9 de d\u00e9claration doit \u00eatre affich\u00e9 dans le studio. Exercer sans d\u00e9claration vous expose \u00e0 une contravention de 5e classe.' },
+                    { text: 'Attendre d\'avoir vos premiers clients pour faire la d\u00e9claration, car l\'ARS n\'effectue des contr\u00f4les que rarement', correct: false, feedback: 'Faux. La d\u00e9claration doit \u00eatre effectu\u00e9e AVANT tout exercice, pas apr\u00e8s. Exercer sans d\u00e9claration constitue une infraction sanctionn\u00e9e par une contravention de 5e classe (1 500 \u20ac). L\'ARS peut proc\u00e9der \u00e0 des contr\u00f4les inopin\u00e9s, et l\'absence de d\u00e9claration peut entra\u00eener une mise en demeure, voire une fermeture administrative.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

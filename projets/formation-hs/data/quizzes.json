@@ -109,6 +109,116 @@
       ],
       "correct": 2,
       "feedback": "Le professionnel a l'obligation de signaler tout effet indesirable grave aux autorites sanitaires. Ce signalement participe au dispositif de vigilance coordonne par l'ANSES."
+    },
+    {
+      "question": "Quelle declaration le professionnel doit-il effectuer aupres de l'ARS avant d'exercer l'activite de tatouage ou de percage ?",
+      "options": [
+        "Une demande d'autorisation prealable avec examen de competences",
+        "Une declaration d'activite aupres de l'Agence regionale de sante (ARS) du lieu d'exercice",
+        "Une inscription au registre du commerce et des societes uniquement",
+        "Aucune declaration n'est necessaire"
+      ],
+      "correct": 1,
+      "feedback": "Tout professionnel souhaitant pratiquer le tatouage ou le percage doit effectuer une declaration d'activite aupres de l'ARS du lieu d'exercice avant de debuter son activite. Cette declaration est obligatoire et doit etre renouvelee en cas de changement de lieu."
+    },
+    {
+      "question": "Quelle formation est obligatoire pour exercer l'activite de tatouage ou de percage en France ?",
+      "options": [
+        "Un diplome universitaire en dermatologie",
+        "Une formation aux conditions d'hygiene et de salubrite d'une duree minimale de 21 heures",
+        "Un CAP esthetique-cosmetique",
+        "Aucune formation n'est requise si le professionnel a plus de 5 ans d'experience"
+      ],
+      "correct": 1,
+      "feedback": "La reglementation impose une formation aux conditions d'hygiene et de salubrite d'une duree minimale de 21 heures (3 jours), dispensee par un organisme de formation habilite. L'attestation de formation doit etre affichee dans le local."
+    },
+    {
+      "question": "Le reglement europeen CLP concerne les encres de tatouage. Que signifie l'acronyme CLP ?",
+      "options": [
+        "Controle des Liquides Pigmentes",
+        "Classification, Labelling, Packaging (classification, etiquetage, emballage)",
+        "Comite de Liaison des Perceurs",
+        "Cahier des Limites de Production"
+      ],
+      "correct": 1,
+      "feedback": "Le reglement CLP (Classification, Labelling and Packaging) est le reglement europeen (CE n° 1272/2008) qui harmonise la classification, l'etiquetage et l'emballage des substances et melanges chimiques, y compris les encres de tatouage."
+    },
+    {
+      "question": "Quel organisme peut effectuer des controles inopines dans les studios de tatouage et de percage ?",
+      "options": [
+        "La Direction Generale de la Concurrence et de la Repression des Fraudes (DGCCRF) uniquement",
+        "L'Agence regionale de sante (ARS) et les services de l'Etat habilites",
+        "La gendarmerie nationale uniquement",
+        "L'Ordre des medecins"
+      ],
+      "correct": 1,
+      "feedback": "L'ARS et les agents habilites des services de l'Etat peuvent realiser des inspections inopinees pour verifier le respect des conditions d'hygiene et de salubrite. En cas de manquement grave, la fermeture administrative du local peut etre prononcee."
+    },
+    {
+      "question": "Concernant le percage des mineurs, quelle zone est soumise a des restrictions particulieres ?",
+      "options": [
+        "Le lobe de l'oreille uniquement",
+        "Toutes les zones sauf le lobe de l'oreille sont interdites pour les mineurs de moins de 16 ans",
+        "Le percage de toute zone est autorise des l'age de 12 ans",
+        "Seul le percage genital est interdit pour les mineurs"
+      ],
+      "correct": 1,
+      "feedback": "Pour les mineurs de moins de 16 ans, seul le percage du lobe de l'oreille est autorise avec le consentement du representant legal. Les autres zones corporelles ne peuvent etre percees qu'a partir de 16 ans avec autorisation ecrite du representant legal."
+    },
+    {
+      "question": "Quel document le professionnel doit-il tenir a jour pour assurer la tracabilite des actes realises ?",
+      "options": [
+        "Un livre de comptes uniquement",
+        "Un registre des actes mentionnant la date, l'identite du client, la nature de l'acte, la zone corporelle, les produits et materiels utilises (numeros de lots)",
+        "Un agenda electronique sans detail des actes",
+        "Aucun document de tracabilite n'est exige"
+      ],
+      "correct": 1,
+      "feedback": "Le professionnel doit tenir un registre de tracabilite mentionnant pour chaque acte : la date, l'identite du client, la nature de l'acte, la zone du corps concernee, les references des encres et materiels utilises (numeros de lots). Ce registre est consultable lors des controles."
+    },
+    {
+      "question": "Quelles sanctions un professionnel encourt-il en cas de non-respect des regles d'hygiene et de salubrite ?",
+      "options": [
+        "Un simple avertissement verbal sans consequence",
+        "Des sanctions administratives (mise en demeure, fermeture) et/ou penales (amende, poursuite en cas de dommage corporel)",
+        "Uniquement une amende forfaitaire de 50 euros",
+        "Aucune sanction n'est prevue par la loi"
+      ],
+      "correct": 1,
+      "feedback": "Le non-respect de la reglementation peut entrainer des sanctions administratives (mise en demeure, fermeture temporaire ou definitive du local) et des poursuites penales en cas de dommage corporel. Le professionnel engage sa responsabilite civile et penale."
+    },
+    {
+      "question": "Le consentement eclaire du client doit comporter quelles informations essentielles ?",
+      "options": [
+        "Uniquement le prix de la prestation",
+        "La nature de l'acte, les risques encourus, les contre-indications, les soins post-acte et la signature du client",
+        "Le nom de l'artiste et la date uniquement",
+        "Une simple mention 'le client accepte l'acte'"
+      ],
+      "correct": 1,
+      "feedback": "Le consentement eclaire doit detailler la nature de l'acte, les risques (infectieux, allergiques, cicatriciels), les contre-indications, les consignes de soins post-acte, et etre signe par le client attestant avoir compris et accepte ces informations."
+    },
+    {
+      "question": "L'article R.1311-6 du Code de la sante publique interdit la pratique du tatouage et du percage dans quels types de lieux ?",
+      "options": [
+        "Dans les centres commerciaux",
+        "Dans les foires, salons et marches, sauf dispositions specifiques avec autorisation prefectorale",
+        "Dans les zones rurales uniquement",
+        "Dans les grandes villes de plus de 100 000 habitants"
+      ],
+      "correct": 1,
+      "feedback": "La pratique du tatouage et du percage est encadree dans les manifestations temporaires (foires, salons, conventions). Une autorisation prefectorale et le respect de conditions d'hygiene specifiques sont necessaires pour exercer lors de ces evenements."
+    },
+    {
+      "question": "Quelle obligation le professionnel a-t-il concernant l'affichage dans son local ?",
+      "options": [
+        "Afficher uniquement ses tarifs",
+        "Afficher son attestation de formation, les informations sur les risques, les contre-indications, et les coordonnees de l'ARS competente",
+        "Aucun affichage n'est impose par la reglementation",
+        "Afficher uniquement son numero SIRET"
+      ],
+      "correct": 1,
+      "feedback": "Le professionnel doit afficher de maniere visible : son attestation de formation hygiene et salubrite, les informations sur les risques et contre-indications, les consignes de soins post-acte, et les coordonnees de l'ARS territoriale competente."
     }
   ],
   "module-2": [
@@ -221,6 +331,116 @@
       ],
       "correct": 2,
       "feedback": "L'aiguille penetre a travers l'epiderme et le derme, creant une effraction cutanee. Cette rupture de la barriere ouvre une porte d'entree aux micro-organismes, d'ou l'importance cruciale de l'asepsie."
+    },
+    {
+      "question": "Quel est le role principal des cellules de Langerhans presentes dans l'epiderme ?",
+      "options": [
+        "Produire la keratine pour renforcer la peau",
+        "Assurer la defense immunitaire cutanee en captant et presentant les antigenes aux lymphocytes",
+        "Secreter le sebum pour hydrater la peau",
+        "Produire la melanine en reponse aux UV"
+      ],
+      "correct": 1,
+      "feedback": "Les cellules de Langerhans sont des cellules dendritiques de l'epiderme qui jouent un role cle dans l'immunite cutanee. Elles captent les antigenes (bacteries, corps etrangers comme les pigments de tatouage) et les presentent aux lymphocytes T pour declencher une reponse immunitaire."
+    },
+    {
+      "question": "Quelle structure du derme assure principalement son elasticite et sa resistance mecanique ?",
+      "options": [
+        "Les melanocytes et les keratinocytes",
+        "Les fibres de collagene et d'elastine",
+        "Les glandes sudoripares et les follicules pileux",
+        "Les cellules de Merkel et les corpuscules de Meissner"
+      ],
+      "correct": 1,
+      "feedback": "Le derme contient un reseau de fibres de collagene (resistance mecanique) et d'elastine (elasticite). Ces fibres, synthetisees par les fibroblastes, constituent la matrice extracellulaire du derme. Le tatouage penetre dans cette couche et les pigments restent pieges dans cette matrice."
+    },
+    {
+      "question": "Comment les pigments de tatouage sont-ils retenus de maniere permanente dans le derme ?",
+      "options": [
+        "Ils se fixent chimiquement aux cellules de l'epiderme",
+        "Ils sont phagocytes par les macrophages du derme qui les sequestrent de facon stable",
+        "Ils s'evaporent puis se recondensent dans la peau",
+        "Ils sont absorbes par les vaisseaux sanguins et redistribues dans le corps"
+      ],
+      "correct": 1,
+      "feedback": "Les pigments de tatouage sont phagocytes (avales) par les macrophages du derme. Ces cellules immunitaires sequestrent les particules de pigment de maniere stable. Lorsqu'un macrophage meurt, les pigments sont recaptures par un nouveau macrophage, assurant la permanence du tatouage."
+    },
+    {
+      "question": "L'hypoderme, couche la plus profonde de la peau, est principalement compose de :",
+      "options": [
+        "Fibres de keratine et cellules mortes",
+        "Tissu adipeux (graisse) et tissu conjonctif lache",
+        "Cellules pigmentaires et terminaisons nerveuses uniquement",
+        "Muscle strie et tissu osseux"
+      ],
+      "correct": 1,
+      "feedback": "L'hypoderme est constitue principalement de tissu adipeux (adipocytes) organise en lobules separes par du tissu conjonctif. Il assure l'isolation thermique, la reserve energetique et l'amortissement des chocs. L'aiguille de tatouage ne doit pas atteindre cette couche."
+    },
+    {
+      "question": "Quelle phase de la cicatrisation correspond a la formation du tissu de granulation ?",
+      "options": [
+        "La phase inflammatoire",
+        "La phase de proliferation (ou phase de granulation)",
+        "La phase de remodelage",
+        "La phase d'hemostase"
+      ],
+      "correct": 1,
+      "feedback": "La phase de proliferation (jours 3 a 21 environ) voit la formation du tissu de granulation : les fibroblastes produisent du collagene, de nouveaux vaisseaux sanguins se forment (angiogenese), et les keratinocytes recouvrent progressivement la plaie (reepithelialisation)."
+    },
+    {
+      "question": "La vascularisation de la peau (apport sanguin) se situe principalement dans quelle couche ?",
+      "options": [
+        "L'epiderme, qui est richement vascularise",
+        "Le derme, qui contient les reseaux vasculaires (plexus superficiel et profond)",
+        "La couche cornee, qui est la plus irriguee",
+        "L'hypoderme exclusivement"
+      ],
+      "correct": 1,
+      "feedback": "L'epiderme est avasculaire (sans vaisseaux sanguins) et se nourrit par diffusion depuis le derme. Le derme contient deux plexus vasculaires (superficiel et profond) qui assurent la nutrition cutanee. C'est pourquoi le tatouage dans le derme provoque un saignement."
+    },
+    {
+      "question": "Quel est le temps de renouvellement complet de l'epiderme (cycle de vie d'un keratinocyte de la couche basale a la desquamation) ?",
+      "options": [
+        "3 a 5 jours",
+        "21 a 28 jours en moyenne",
+        "6 mois a 1 an",
+        "48 heures"
+      ],
+      "correct": 1,
+      "feedback": "Le renouvellement complet de l'epiderme prend en moyenne 21 a 28 jours. Un keratinocyte nait dans la couche basale, migre vers la surface en se differanciant progressivement, et finit par desquamer sous forme de cellule cornee morte. C'est pourquoi l'encre deposee dans l'epiderme ne reste pas."
+    },
+    {
+      "question": "Que sont les recepteurs sensoriels cutanes et quel est leur interet pour le professionnel du tatouage ?",
+      "options": [
+        "Des cellules qui produisent de la sueur en reaction a la chaleur",
+        "Des terminaisons nerveuses (corpuscules de Meissner, Pacini, Ruffini) qui detectent le toucher, la pression et la douleur, expliquant la douleur ressentie lors du tatouage",
+        "Des glandes qui secretent des hormones de croissance",
+        "Des pigments naturels qui reagissent a la lumiere"
+      ],
+      "correct": 1,
+      "feedback": "La peau contient de nombreux recepteurs sensoriels : corpuscules de Meissner (toucher fin), de Pacini (pression profonde), de Ruffini (etirement), et terminaisons nerveuses libres (douleur, temperature). Leur densite varie selon les zones, ce qui explique les differences de douleur ressentie lors du tatouage."
+    },
+    {
+      "question": "Quelle est la consequence d'un tatouage realise trop en profondeur, atteignant l'hypoderme ?",
+      "options": [
+        "Le tatouage sera plus lumineux et plus net",
+        "L'encre va diffuser de maniere incontrolee (blowout), provoquant des taches floues sous la peau et un risque accru de cicatrice",
+        "L'encre sera mieux fixee et durera plus longtemps",
+        "Il n'y a aucune consequence particuliere"
+      ],
+      "correct": 1,
+      "feedback": "Un tatouage trop profond (atteignant l'hypoderme) entraine un blowout : l'encre diffuse dans le tissu adipeux lache, creant des taches floues et grisatres sous la peau. De plus, cela augmente le risque de saignement excessif, de douleur et de cicatrisation pathologique (cicatrice cheloide)."
+    },
+    {
+      "question": "Qu'est-ce qu'une cicatrice cheloide et pourquoi est-elle une preoccupation pour le tatouage et le percage ?",
+      "options": [
+        "Une cicatrice normale qui disparait en quelques jours",
+        "Une cicatrisation excessive ou le tissu cicatriciel depasse les limites de la plaie d'origine, formant un relief permanent, et pouvant survenir apres un tatouage ou un percage chez les personnes predisposees",
+        "Une infection bacterienne de la plaie qui guerit spontanement",
+        "Un changement de couleur temporaire de la peau autour du tatouage"
+      ],
+      "correct": 1,
+      "feedback": "Une cicatrice cheloide est une proliferation excessive de tissu cicatriciel qui depasse les bords de la plaie initiale. Certaines personnes y sont predisposees (facteurs genetiques, phototypes fonces). Le professionnel doit interroger le client sur ses antecedents de cicatrisation avant tout acte."
     }
   ],
   "module-3": [
@@ -333,6 +553,116 @@
       ],
       "correct": 1,
       "feedback": "La transmission manuportee est le premier mode de contamination. C'est pourquoi l'hygiene des mains (lavage et friction hydroalcoolique) est la mesure de prevention la plus importante et la plus efficace."
+    },
+    {
+      "question": "Quelle est la duree minimale recommandee pour un lavage simple des mains avec du savon doux ?",
+      "options": [
+        "5 secondes suffisent",
+        "30 secondes au minimum, en frottant toutes les surfaces des mains",
+        "2 minutes exactement",
+        "Le temps n'a pas d'importance, seul le savon compte"
+      ],
+      "correct": 1,
+      "feedback": "Le lavage simple des mains doit durer au minimum 30 secondes, en veillant a frotter toutes les surfaces : paumes, dos des mains, espaces interdigitaux, pouces, ongles et poignets. Le rincage doit etre abondant et le sechage realise avec un essuie-mains a usage unique."
+    },
+    {
+      "question": "Quelle est la duree minimale de la friction hydro-alcoolique (SHA) pour qu'elle soit efficace ?",
+      "options": [
+        "5 secondes",
+        "10 secondes",
+        "20 a 30 secondes, jusqu'a sechage complet par friction",
+        "2 minutes"
+      ],
+      "correct": 2,
+      "feedback": "La friction hydro-alcoolique doit durer 20 a 30 secondes, en couvrant toutes les surfaces des mains. Le critere d'efficacite est le sechage complet par friction (sans essuyer). Si les mains sechent en moins de 15 secondes, la quantite de SHA appliquee etait insuffisante."
+    },
+    {
+      "question": "Quel type de micro-organisme est le plus resistant dans l'environnement et peut survivre des mois sur des surfaces seches ?",
+      "options": [
+        "Les virus enveloppes comme le VIH",
+        "Les spores bacteriennes (ex. Clostridium)",
+        "Les levures comme Candida albicans",
+        "Les bacteries Gram negatif comme E. coli"
+      ],
+      "correct": 1,
+      "feedback": "Les spores bacteriennes (ex. Clostridium, Bacillus) sont les formes de resistance les plus extremes. Elles peuvent survivre des mois voire des annees dans l'environnement, resister a la chaleur, aux desinfectants courants et a la dessiccation. Seule la sterilisation par autoclave les detruit."
+    },
+    {
+      "question": "Staphylococcus aureus (staphylocoque dore) est un germe redoute en tatouage/percage. Pourquoi ?",
+      "options": [
+        "Parce qu'il est de couleur doree et tache la peau",
+        "Parce qu'il peut provoquer des infections cutanees graves (abces, impetigo, septicemie) et certaines souches sont resistantes aux antibiotiques (SARM)",
+        "Parce qu'il ne se transmet que par voie aerienne",
+        "Parce qu'il est inoffensif et ne pose aucun probleme"
+      ],
+      "correct": 1,
+      "feedback": "S. aureus est un pathogene majeur responsable d'infections cutanees (abces, furoncles, impetigo) pouvant evoluer vers des infections graves (septicemie). Les souches SARM (S. aureus resistant a la meticilline) posent un probleme therapeutique car elles resistent a de nombreux antibiotiques."
+    },
+    {
+      "question": "Qu'est-ce que la chaine de transmission des infections ?",
+      "options": [
+        "La liste des personnes infectees dans un hopital",
+        "L'enchainement des elements necessaires a la transmission d'un agent infectieux : reservoir, porte de sortie, mode de transmission, porte d'entree, hote receptif",
+        "Un protocole de nettoyage en chaine du materiel",
+        "La chronologie des symptomes d'une maladie infectieuse"
+      ],
+      "correct": 1,
+      "feedback": "La chaine de transmission comprend : un agent infectieux, un reservoir (personne infectee, environnement), une porte de sortie (sang, secretions), un mode de transmission (contact, manuporte), une porte d'entree (peau lesee, muqueuse) et un hote receptif. Rompre un maillon de cette chaine empeche l'infection."
+    },
+    {
+      "question": "Pourquoi les virus enveloppes (VIH, hepatite B, hepatite C) sont-ils plus fragiles dans l'environnement que les virus nus ?",
+      "options": [
+        "Parce qu'ils sont plus gros et donc plus visibles",
+        "Parce que leur enveloppe lipidique est detruite par les detergents, les antiseptiques et la dessiccation, ce qui les inactive",
+        "Parce qu'ils ne peuvent infecter que les animaux",
+        "Parce qu'ils sont trop petits pour survivre a l'air libre"
+      ],
+      "correct": 1,
+      "feedback": "Les virus enveloppes possedent une membrane lipidique fragile qui est detruite par les savons, detergents, antiseptiques alcooliques et la dessiccation. Cependant, le VHB reste exceptionnellement resistant : il peut survivre jusqu'a 7 jours sur une surface seche a temperature ambiante."
+    },
+    {
+      "question": "Quelles sont les 5 indications de l'hygiene des mains definies par l'OMS dans le contexte des soins ?",
+      "options": [
+        "Avant et apres le repas, avant et apres le sommeil, apres un effort physique",
+        "Avant le contact avec le client, avant un geste aseptique, apres un risque d'exposition au sang, apres le contact avec le client, apres le contact avec l'environnement du client",
+        "Avant chaque pause, apres chaque pause, avant le dejeuner, apres le dejeuner, en fin de journee",
+        "Le matin en arrivant et le soir en partant uniquement"
+      ],
+      "correct": 1,
+      "feedback": "Les 5 indications OMS sont : (1) avant le contact client, (2) avant un geste aseptique, (3) apres un risque d'exposition a un liquide biologique, (4) apres le contact client, (5) apres le contact avec l'environnement du client. Ces moments sont directement applicables en tatouage/percage."
+    },
+    {
+      "question": "Pseudomonas aeruginosa est une bacterie frequemment associee a des infections liees au percage. Pourquoi est-elle particulierement problematique ?",
+      "options": [
+        "Parce qu'elle est visible a l'oeil nu",
+        "Parce qu'elle est naturellement resistante a de nombreux antibiotiques et prolifere en milieu humide (solutions contaminees, eau stagnante)",
+        "Parce qu'elle ne touche que les enfants",
+        "Parce qu'elle provoque uniquement des reactions allergiques"
+      ],
+      "correct": 1,
+      "feedback": "Pseudomonas aeruginosa est une bacterie opportuniste naturellement resistante a de nombreux antibiotiques. Elle prolifere en milieu humide et a ete associee a des infections apres percage du cartilage de l'oreille, souvent via des solutions de soins contaminees ou de l'eau non sterile."
+    },
+    {
+      "question": "Quel est le role du lavage des mains par rapport a la solution hydro-alcoolique (SHA) sur les spores bacteriennes ?",
+      "options": [
+        "La SHA est plus efficace que le lavage contre les spores",
+        "Le lavage a l'eau et au savon elimine les spores par action mecanique, tandis que la SHA est inefficace contre les spores",
+        "Ni le lavage ni la SHA n'ont d'effet sur les spores",
+        "Les spores ne sont pas un risque en tatouage/percage"
+      ],
+      "correct": 1,
+      "feedback": "La SHA n'a pas d'activite sporicide. Seul le lavage a l'eau et au savon permet d'eliminer les spores par action mecanique d'entrainement. C'est pourquoi en cas de suspicion de contamination par des spores (ex. Clostridium), le lavage des mains est prefere a la SHA."
+    },
+    {
+      "question": "En microbiologie, que signifie le terme 'porteur sain' et pourquoi est-ce un concept important en tatouage/percage ?",
+      "options": [
+        "Une personne vaccinee contre toutes les maladies infectieuses",
+        "Une personne infectee par un micro-organisme pathogene sans presenter de symptomes, mais pouvant le transmettre a d'autres",
+        "Une personne qui ne peut pas etre infectee par des germes",
+        "Un professionnel du tatouage qui ne tombe jamais malade"
+      ],
+      "correct": 1,
+      "feedback": "Un porteur sain (ou porteur asymptomatique) heberge un agent infectieux sans presenter de symptomes. Il peut transmettre l'infection sans le savoir. C'est pourquoi en tatouage/percage, chaque client doit etre considere comme potentiellement porteur, justifiant l'application systematique des precautions standard."
     }
   ],
   "module-4": [
@@ -445,6 +775,116 @@
       ],
       "correct": 1,
       "feedback": "Le professionnel doit refuser de pratiquer un acte sur une zone presentant une infection cutanee active (herpes, impetigo, folliculite...), une plaie, un coup de soleil, une dermatose ou tout etat cutane compromettant la cicatrisation et augmentant les risques."
+    },
+    {
+      "question": "Qu'est-ce qu'un dermatite de contact allergique au nickel et pourquoi est-ce important en percage ?",
+      "options": [
+        "Une infection bacterienne liee a l'utilisation de bijoux en or",
+        "Une reaction allergique retardee (type IV) au nickel contenu dans certains bijoux, provoquant eczema, rougeur et prurit autour du percage",
+        "Une reaction immediate (type I) provoquant un choc anaphylactique",
+        "Une coloration verte de la peau sans consequence medicale"
+      ],
+      "correct": 1,
+      "feedback": "L'allergie au nickel est la dermatite de contact allergique la plus frequente. Elle touche environ 10 a 15 % de la population. Les bijoux de percage contenant du nickel peuvent provoquer un eczema de contact au site du percage. Le reglement europeen (directive 94/27/CE) limite la liberation de nickel dans les bijoux."
+    },
+    {
+      "question": "Quel est le risque infectieux specifique associe a la reactivation du virus herpes simplex (HSV) apres un tatouage ou un maquillage permanent des levres ?",
+      "options": [
+        "Il n'existe aucun lien entre herpes et tatouage",
+        "Le traumatisme cutane du tatouage peut reactiver un herpes labial latent, provoquant une poussee d'herpes sur la zone tatouee avec risque de surinfection et d'alteration du resultat",
+        "L'herpes provoque uniquement une modification de la couleur de l'encre",
+        "L'herpes guerit plus vite grace au tatouage"
+      ],
+      "correct": 1,
+      "feedback": "Le traumatisme cutane du tatouage ou du maquillage permanent peut reactiver le virus HSV-1 latent dans les ganglions nerveux. La poussee d'herpes qui en resulte peut surinfeter la zone, alterer le resultat et retarder la cicatrisation. Un traitement antiviral preventif peut etre prescrit par le medecin."
+    },
+    {
+      "question": "Quelles sont les principales contre-indications temporaires a la realisation d'un tatouage ?",
+      "options": [
+        "Avoir les cheveux longs ou porter des lunettes",
+        "Grossesse, allaitement, prise d'anticoagulants, coup de soleil recent sur la zone, infection cutanee active, immunodepression temporaire",
+        "Etre age de plus de 60 ans",
+        "Avoir deja un tatouage sur une autre partie du corps"
+      ],
+      "correct": 1,
+      "feedback": "Les contre-indications temporaires incluent : grossesse et allaitement (principe de precaution), traitement anticoagulant (risque hemorragique), coup de soleil ou peau irritee, infection cutanee active, immunodepression (chimio, corticotherapie). Le professionnel doit interroger le client sur ces facteurs avant l'acte."
+    },
+    {
+      "question": "Qu'est-ce qu'un granulome a corps etranger dans le contexte du tatouage ?",
+      "options": [
+        "Un type de tatouage decoratif en relief",
+        "Une reaction inflammatoire chronique du systeme immunitaire autour des particules de pigment, formant un nodule sous la peau",
+        "Un bijou de percage particulier en forme de granule",
+        "Une infection bacterienne aigue necessitant une hospitalisation d'urgence"
+      ],
+      "correct": 1,
+      "feedback": "Un granulome a corps etranger est une reaction inflammatoire chronique ou le systeme immunitaire tente d'isoler les particules de pigment qu'il considere comme un corps etranger. Il se manifeste par un nodule ferme sous la peau, parfois douloureux, pouvant apparaitre des mois ou des annees apres le tatouage."
+    },
+    {
+      "question": "Quel risque specifique est associe au tatouage chez les personnes diabetiques ?",
+      "options": [
+        "Aucun risque, le diabete n'a aucune incidence",
+        "Un risque accru d'infection et de retard de cicatrisation en raison de la microangiopathie et de l'immunodepression relative liees au diabete",
+        "Un risque de modification de la glycemie par les encres",
+        "Un risque d'allergie au glucose contenu dans les encres"
+      ],
+      "correct": 1,
+      "feedback": "Le diabete, surtout s'il est mal equilibre, altere la microcirculation (microangiopathie) et affaiblit les defenses immunitaires. Cela augmente le risque d'infection et ralentit la cicatrisation. Le professionnel doit s'assurer que le diabete est bien equilibre et orienter le client vers son medecin si necessaire."
+    },
+    {
+      "question": "Qu'est-ce que le phenomene de Koebner et pourquoi est-il pertinent en tatouage ?",
+      "options": [
+        "Un effet de mode dans le tatouage contemporain",
+        "L'apparition de lesions de certaines dermatoses (psoriasis, vitiligo, lichen plan) sur les zones de traumatisme cutane, comme un tatouage",
+        "Une technique de tatouage en 3D",
+        "Un type de reaction allergique aux encres blanches"
+      ],
+      "correct": 1,
+      "feedback": "Le phenomene de Koebner est l'apparition de lesions cutanees specifiques d'une dermatose preexistante (psoriasis, vitiligo, lichen plan) sur une zone soumise a un traumatisme. Le tatouage, en tant que traumatisme cutane, peut declencher ce phenomene chez les personnes atteintes de ces pathologies."
+    },
+    {
+      "question": "Les encres de tatouage peuvent-elles interferer avec un examen IRM (imagerie par resonance magnetique) ?",
+      "options": [
+        "Non, les encres n'ont aucun effet lors d'une IRM",
+        "Oui, certains pigments contenant des oxydes metalliques peuvent reagir au champ magnetique, provoquant une sensation de brulure ou de picotement, et parfois des artefacts sur l'image",
+        "L'IRM est totalement interdite aux personnes tatouees",
+        "Seuls les tatouages de plus de 10 cm posent un probleme en IRM"
+      ],
+      "correct": 1,
+      "feedback": "Certains pigments de tatouage contenant des oxydes metalliques (oxyde de fer, dioxyde de titane) peuvent interagir avec le champ magnetique de l'IRM. Cela peut provoquer un echauffement local, une sensation de brulure ou des artefacts sur l'image. Le client doit signaler ses tatouages au radiologue."
+    },
+    {
+      "question": "Quel est le risque principal de l'utilisation de produits anesthesiants topiques (cremes anesthesiantes) par le tatoueur sans prescription medicale ?",
+      "options": [
+        "Il n'y a aucun risque, les cremes anesthesiantes sont des cosmetiques",
+        "Un risque d'effets indesirables graves (reaction allergique, toxicite systemique en cas de surdosage ou d'application sur une surface trop etendue) et une pratique illegale d'exercice de la medecine",
+        "Un risque de modification de la couleur de l'encre uniquement",
+        "Un risque de sechage excessif de la peau"
+      ],
+      "correct": 1,
+      "feedback": "L'application de cremes anesthesiantes contenant de la lidocaine ou du prilocaine est un acte medical. Le tatoueur qui les applique sans prescription exerce illegalement la medecine. De plus, un surdosage ou une application sur une surface trop importante peut provoquer une toxicite systemique (convulsions, troubles cardiaques)."
+    },
+    {
+      "question": "Qu'est-ce qu'une complication cheloide et en quoi differe-t-elle d'une cicatrice hypertrophique ?",
+      "options": [
+        "Ce sont deux termes identiques pour la meme complication",
+        "La cicatrice hypertrophique reste dans les limites de la plaie et regresse spontanement, tandis que la cheloide depasse les bords de la plaie et ne regresse pas sans traitement",
+        "La cheloide est une infection alors que l'hypertrophique est une allergie",
+        "La cicatrice hypertrophique est toujours plus grave que la cheloide"
+      ],
+      "correct": 1,
+      "feedback": "La cicatrice hypertrophique est un epaississement du tissu cicatriciel qui reste confine aux limites de la plaie initiale et tend a regresser avec le temps. La cheloide depasse les limites de la plaie, ne regresse pas spontanement, peut etre douloureuse ou prurigineuse, et necessite souvent un traitement medical."
+    },
+    {
+      "question": "Pourquoi est-il important d'interroger le client sur d'eventuels traitements medicamenteux en cours avant un tatouage ou un percage ?",
+      "options": [
+        "Pour adapter le prix de la prestation",
+        "Parce que certains medicaments (anticoagulants, immunosuppresseurs, isotretinoine/Roaccutane, antibiotiques) peuvent augmenter le risque de saignement, d'infection ou de mauvaise cicatrisation",
+        "Pour recommander au client d'arreter tous ses traitements",
+        "Cette question ne concerne pas le tatoueur"
+      ],
+      "correct": 1,
+      "feedback": "Certains medicaments modifient les risques : les anticoagulants augmentent le saignement, les immunosuppresseurs le risque d'infection, l'isotretinoine (Roaccutane) altere la cicatrisation pendant et jusqu'a 6-12 mois apres le traitement. Le professionnel doit integrer ces informations dans son evaluation prealable."
     }
   ],
   "module-5": [
@@ -557,6 +997,116 @@
       ],
       "correct": 1,
       "feedback": "A chaque cycle, le professionnel doit verifier les parametres physiques enregistres (temperature, pression, temps de plateau) et le virage de l'indicateur chimique de passage (integre au sachet). Le ticket ou diagramme du cycle doit etre archive."
+    },
+    {
+      "question": "Qu'est-ce que la pre-desinfection (ou pre-traitement) du materiel reutilisable et pourquoi est-elle indispensable avant le nettoyage ?",
+      "options": [
+        "C'est une etape facultative qui consiste a essuyer les instruments avec un chiffon sec",
+        "C'est le trempage immediat du materiel souille dans un bain de produit detergent-desinfectant pour abaisser la charge microbienne, eviter le sechage des souillures et proteger le personnel lors de la manipulation ulterieure",
+        "C'est la sterilisation a l'autoclave avant le nettoyage",
+        "C'est le rincage des instruments a l'eau froide uniquement"
+      ],
+      "correct": 1,
+      "feedback": "La pre-desinfection est la premiere etape obligatoire du traitement du materiel reutilisable. Elle consiste a immerger immediatement les instruments souilles dans un bain de detergent-desinfectant. Elle vise a reduire la charge microbienne, empecher le sechage du sang et des souillures organiques, et proteger le personnel."
+    },
+    {
+      "question": "A quelle frequence le test de Bowie-Dick doit-il etre realise sur un autoclave de type B ?",
+      "options": [
+        "Une fois par an",
+        "Une fois par semaine",
+        "Quotidiennement, au premier cycle de la journee, avant la mise en charge de l'autoclave",
+        "Uniquement apres une panne"
+      ],
+      "correct": 2,
+      "feedback": "Le test de Bowie-Dick doit etre realise chaque jour, au premier cycle de la journee, avant d'utiliser l'autoclave pour steriliser des charges. Il verifie l'efficacite du systeme de vide et la bonne penetration de la vapeur. En cas d'echec, l'autoclave ne doit pas etre utilise tant que la cause n'est pas identifiee."
+    },
+    {
+      "question": "Quel est le role du vide prealable (pre-vide) dans un cycle de sterilisation d'un autoclave de type B ?",
+      "options": [
+        "Refroidir les instruments avant la sterilisation",
+        "Eliminer l'air present dans la chambre et les emballages pour permettre a la vapeur d'eau saturee de penetrer uniformement au coeur de la charge",
+        "Secher les instruments apres la sterilisation",
+        "Augmenter la pression atmospherique dans la chambre"
+      ],
+      "correct": 1,
+      "feedback": "Le pre-vide fractionne (alternance de phases de vide et d'injections de vapeur) est essentiel pour chasser l'air de la chambre, des emballages et des corps creux. L'air residuel empeche le contact vapeur-surface et cree des zones non sterilisees. C'est le principal avantage du type B sur les types N et S."
+    },
+    {
+      "question": "Qu'est-ce qu'un indicateur biologique de sterilisation et quand est-il utilise ?",
+      "options": [
+        "Un thermometre electronique place dans l'autoclave",
+        "Un support contenant des spores bacteriennes thermoresistantes (Geobacillus stearothermophilus) place dans la charge pour verifier l'efficacite letale du cycle de sterilisation",
+        "Un produit chimique qui change de couleur a 100 °C",
+        "Un filtre a air integre a l'autoclave"
+      ],
+      "correct": 1,
+      "feedback": "L'indicateur biologique contient des spores de Geobacillus stearothermophilus, la bacterie la plus resistante a la vapeur sous pression. Apres le cycle, le support est incube : si aucune croissance bacterienne n'est detectee, la sterilisation est validee. Ce test est recommande periodiquement (hebdomadaire ou mensuel) et apres toute maintenance."
+    },
+    {
+      "question": "Qu'est-ce que l'eau osmosee (ou eau demineralisee) et pourquoi est-elle utilisee dans les autoclaves ?",
+      "options": [
+        "De l'eau du robinet filtree avec un filtre a cafe",
+        "De l'eau purifiee par osmose inverse, debarrassee de ses mineraux, utilisee pour eviter l'entartrage de l'autoclave et la formation de depots mineraux sur les instruments",
+        "De l'eau de mer dessalee",
+        "De l'eau sterile pour injection"
+      ],
+      "correct": 1,
+      "feedback": "L'eau osmosee est une eau purifiee dont les sels mineraux ont ete retires par filtration membranaire. Son utilisation dans l'autoclave previent l'entartrage de la chambre et du generateur de vapeur, evite les depots mineraux sur les instruments, et prolonge la duree de vie de l'appareil."
+    },
+    {
+      "question": "Quelle est la difference entre un indicateur chimique de classe 1 (indicateur de passage) et un indicateur chimique de classe 5 (integrateur) ?",
+      "options": [
+        "Il n'existe pas de difference, ce sont les memes produits",
+        "L'indicateur de classe 1 confirme uniquement que le sachet est passe dans l'autoclave (exposition a la vapeur), tandis que l'integrateur de classe 5 reagit a la combinaison temps-temperature-vapeur et indique si les conditions de sterilisation ont ete atteintes",
+        "L'indicateur de classe 5 est moins fiable que celui de classe 1",
+        "L'indicateur de classe 1 remplace les indicateurs biologiques"
+      ],
+      "correct": 1,
+      "feedback": "L'indicateur de classe 1 (bande adhesive, virage sur le sachet) montre seulement que l'objet a ete expose a la vapeur. L'integrateur de classe 5 reagit aux trois parametres critiques (temperature, temps, qualite de la vapeur) et fournit une information plus fiable sur l'efficacite reelle du cycle de sterilisation."
+    },
+    {
+      "question": "Quelle est la duree de peremption de la sterilite d'un instrument conditionne en sachet de sterilisation scelle ?",
+      "options": [
+        "24 heures maximum",
+        "Elle depend des conditions de stockage : en general de 1 a 6 mois selon le type d'emballage, le mode de scellage et les conditions de conservation",
+        "La sterilite est permanente et illimitee une fois le sachet scelle",
+        "7 jours exactement, quel que soit le type d'emballage"
+      ],
+      "correct": 1,
+      "feedback": "La duree de maintien de la sterilite depend du type d'emballage (sachet simple ou double), du mode de scellage (thermosoudure ou adhesif), et des conditions de stockage (sec, a l'abri de la poussiere, sans manipulation excessive). En pratique, les durees varient de 1 a 6 mois. L'integrite de l'emballage doit etre verifiee avant chaque utilisation."
+    },
+    {
+      "question": "Que designe le terme 'charge creuse' en sterilisation et pourquoi necessite-t-elle un autoclave de type B ?",
+      "options": [
+        "Un emballage vide place dans l'autoclave pour le test",
+        "Un instrument comportant une lumiere (cavite interne, tube, canule) dans laquelle l'air peut rester piege, necessitant un pre-vide fractionne pour etre evacue et remplace par la vapeur",
+        "Un sachet contenant plusieurs instruments empiles",
+        "Un indicateur chimique defectueux"
+      ],
+      "correct": 1,
+      "feedback": "Une charge creuse est un instrument comportant une cavite interne (tube, aiguille creuse, canule). L'air piege dans ces cavites empeche la vapeur d'atteindre les surfaces internes. Seul l'autoclave de type B, avec son cycle de pre-vide fractionne, evacue efficacement cet air residuel pour garantir la sterilisation de ces zones."
+    },
+    {
+      "question": "Pourquoi ne doit-on jamais steriliser un instrument qui n'a pas ete prealablement nettoye ?",
+      "options": [
+        "Le nettoyage n'est pas necessaire si l'autoclave est performant",
+        "Parce que les souillures organiques (sang, tissus) protegent les micro-organismes de l'action de la vapeur et peuvent fixer des residus sur les instruments, compromettant l'efficacite de la sterilisation",
+        "Pour des raisons uniquement esthetiques",
+        "Parce que l'autoclave se salit et necessite un nettoyage supplementaire"
+      ],
+      "correct": 1,
+      "feedback": "Les souillures organiques (sang, proteines, biofilms) forment une barriere protectrice autour des micro-organismes, les rendant inaccessibles a la vapeur. De plus, la chaleur peut fixer ces souillures sur les instruments (coagulation des proteines). Le nettoyage prealable est donc une etape indispensable pour garantir l'efficacite de la sterilisation."
+    },
+    {
+      "question": "Quel est le role de la thermosoudeuse dans le processus de sterilisation ?",
+      "options": [
+        "Chauffer les instruments avant l'autoclave",
+        "Sceller hermetiquement les sachets de sterilisation par soudure thermique, garantissant le maintien de la sterilite apres le cycle d'autoclave jusqu'a l'ouverture",
+        "Secher les instruments apres le rincage",
+        "Faire fondre les indicateurs chimiques"
+      ],
+      "correct": 1,
+      "feedback": "La thermosoudeuse scelle les gaines et sachets de sterilisation par une soudure thermique etanche. La qualite de la soudure est essentielle pour maintenir la sterilite jusqu'a l'ouverture. La soudure doit etre continue, reguliere, d'une largeur suffisante et verifiee visuellement avant chaque stockage."
     }
   ],
   "module-6": [
@@ -669,6 +1219,116 @@
       ],
       "correct": 1,
       "feedback": "L'erreur la plus frequente est de croire que les gants remplacent l'hygiene des mains. L'hygiene des mains est indispensable AVANT d'enfiler les gants (pour ne pas contaminer l'interieur) et APRES le retrait (car les gants ne sont jamais parfaitement etanches)."
+    },
+    {
+      "question": "Quelle est la duree minimale recommandee pour une friction hydro-alcoolique (SHA) des mains ?",
+      "options": [
+        "5 secondes",
+        "10 secondes",
+        "30 secondes jusqu'a sechage complet",
+        "2 minutes"
+      ],
+      "correct": 2,
+      "feedback": "La friction hydro-alcoolique doit durer au minimum 30 secondes, en couvrant toutes les surfaces des mains (paumes, dos, espaces interdigitaux, pouces, ongles), et se poursuivre jusqu'au sechage complet du produit. Un sechage complet garantit l'efficacite antimicrobienne."
+    },
+    {
+      "question": "En cas de projection de sang ou de liquide biologique sur les muqueuses (oeil, bouche), quelle est la conduite a tenir immediate ?",
+      "options": [
+        "Frotter vigoureusement la zone touchee avec un coton imbibe d'alcool",
+        "Rincer abondamment et immediatement au serum physiologique ou a l'eau claire pendant au moins 5 minutes",
+        "Appliquer un pansement compressif",
+        "Ne rien faire et attendre la consultation medicale"
+      ],
+      "correct": 1,
+      "feedback": "En cas de projection sur les muqueuses, il faut rincer immediatement et abondamment au serum physiologique sterile ou a defaut a l'eau claire pendant au minimum 5 minutes. Ne jamais utiliser de produit antiseptique agressif sur les muqueuses oculaires."
+    },
+    {
+      "question": "Quel est le taux de seroconversion apres une piqure avec une aiguille contaminee par le VIH ?",
+      "options": [
+        "Environ 30 %",
+        "Environ 10 %",
+        "Environ 0,3 %",
+        "Environ 50 %"
+      ],
+      "correct": 2,
+      "feedback": "Le risque de seroconversion apres une piqure par aiguille contaminee par le VIH est d'environ 0,3 %. Bien que relativement faible, ce risque justifie la mise en place rapide d'un traitement post-exposition (TPE) dans les 4 heures suivant l'accident."
+    },
+    {
+      "question": "Comment doit-on retirer les gants a usage unique apres un acte ?",
+      "options": [
+        "En les arrachant rapidement par le bout des doigts",
+        "En pincant l'exterieur du premier gant au niveau du poignet, le retourner sur lui-meme, le maintenir dans la main gantee, puis glisser les doigts nus sous le poignet du second gant et le retourner sur le premier",
+        "En les decoupant aux ciseaux",
+        "En les rincant a l'eau avant de les tirer"
+      ],
+      "correct": 1,
+      "feedback": "La technique de retrait sans contamination consiste a pincer l'exterieur du premier gant au poignet, le retourner, le maintenir en boule dans la main gantee, puis glisser les doigts nus sous le second gant et le retourner par-dessus le premier, evitant tout contact avec la face externe souillee."
+    },
+    {
+      "question": "Quelle est la difference entre un lavage simple et un lavage antiseptique des mains ?",
+      "options": [
+        "Il n'y a aucune difference",
+        "Le lavage simple utilise un savon doux et elimine principalement la flore transitoire ; le lavage antiseptique utilise un savon antiseptique et reduit aussi une partie de la flore residente",
+        "Le lavage antiseptique dure moins longtemps que le lavage simple",
+        "Le lavage simple utilise de l'eau chaude, le lavage antiseptique de l'eau froide"
+      ],
+      "correct": 1,
+      "feedback": "Le lavage simple au savon doux elimine les salissures et la flore transitoire (duree 30 secondes). Le lavage antiseptique utilise un savon antiseptique (chlorhexidine ou povidone iodee) qui elimine la flore transitoire et reduit significativement la flore residente (duree 60 secondes)."
+    },
+    {
+      "question": "Quels elements anatomiques des mains sont le plus souvent oublies lors du lavage ou de la friction ?",
+      "options": [
+        "Les paumes",
+        "Les pouces, le bout des doigts, les espaces interdigitaux et le dos des mains",
+        "Les avant-bras uniquement",
+        "Les poignets uniquement"
+      ],
+      "correct": 1,
+      "feedback": "Les zones les plus frequemment oubliees lors de l'hygiene des mains sont les pouces, le bout des doigts (ongles), les espaces interdigitaux et le dos des mains. C'est pourquoi la technique normalisee en 7 etapes insiste sur ces zones specifiques."
+    },
+    {
+      "question": "Pourquoi le port de bijoux aux mains et aux poignets est-il interdit pour le professionnel lors des actes ?",
+      "options": [
+        "Pour des raisons esthetiques uniquement",
+        "Parce que les bijoux sont des reservoirs de micro-organismes, empechent un lavage efficace des mains et peuvent perforer les gants",
+        "Pour eviter d'abimer les bijoux avec les produits chimiques",
+        "Ce n'est pas interdit, c'est simplement deconseille"
+      ],
+      "correct": 1,
+      "feedback": "Les bijoux (bagues, montres, bracelets) sont des reservoirs de bacteries qui empechent un nettoyage efficace de la peau sous-jacente. Ils peuvent egalement perforer les gants et creer un risque de blessure ou de contamination lors de l'acte."
+    },
+    {
+      "question": "Quelle est la conduite a tenir si un gant se dechire pendant un acte de tatouage ?",
+      "options": [
+        "Continuer l'acte en faisant attention",
+        "Arreter immediatement le geste, retirer les deux gants, realiser une hygiene des mains, verifier l'absence de blessure, puis enfiler une nouvelle paire de gants steriles",
+        "Mettre un second gant par-dessus le gant dechire",
+        "Terminer l'acte rapidement puis changer de gants"
+      ],
+      "correct": 1,
+      "feedback": "En cas de dechirure d'un gant, il faut interrompre immediatement le geste, retirer les deux gants, realiser une hygiene des mains, verifier l'absence de blessure cutanee (si blessure : protocole AES), puis enfiler une nouvelle paire de gants avant de reprendre l'acte."
+    },
+    {
+      "question": "Quel est l'objectif principal du port de la tenue professionnelle dediee ?",
+      "options": [
+        "Donner une image professionnelle au studio",
+        "Proteger le professionnel des projections de sang et de liquides biologiques, et eviter la contamination croisee entre la vie privee et le milieu professionnel",
+        "Respecter un code vestimentaire impose par la convention collective",
+        "Eviter de tacher ses vetements personnels avec les encres"
+      ],
+      "correct": 1,
+      "feedback": "La tenue professionnelle dediee protege le professionnel contre les projections biologiques et empeche le transfert de micro-organismes entre l'environnement exterieur et le milieu de travail. Elle doit etre a manches courtes, changee quotidiennement ou en cas de souillure, et lavee a 60 degres C minimum."
+    },
+    {
+      "question": "Quel est le role du Traitement Post-Exposition (TPE) dans le cadre d'un AES ?",
+      "options": [
+        "Guerir une infection deja etablie par le VIH",
+        "Prevenir l'installation du VIH en administrant des antiretroviraux dans les heures suivant l'exposition, avant que le virus ne s'integre definitivement dans les cellules",
+        "Vacciner le professionnel contre l'hepatite B apres l'accident",
+        "Desinfecter la plaie en profondeur"
+      ],
+      "correct": 1,
+      "feedback": "Le TPE est un traitement antiretroviral preventif administre dans les heures suivant un AES a risque. Il vise a empecher le VIH de s'installer dans l'organisme en bloquant sa replication. Son efficacite est maximale s'il est debute dans les 4 heures et il est prescrit pour une duree de 28 jours."
     }
   ],
   "module-7": [
@@ -781,6 +1441,116 @@
       ],
       "correct": 2,
       "feedback": "Le materiel a usage unique est concu pour un seul usage sur un seul client. Il doit etre jete immediatement apres l'acte dans la filiere appropriee (DASRI pour le materiel contamine). Toute reutilisation est strictement interdite."
+    },
+    {
+      "question": "Quel est le taux de remplissage maximal recommande pour un collecteur OPCT avant sa fermeture definitive ?",
+      "options": [
+        "100 % (le collecteur doit etre completement plein)",
+        "Environ 80 % de sa capacite maximale, sans jamais forcer ou tasser le contenu",
+        "50 % uniquement",
+        "Il n'y a pas de limite, on peut depasser le niveau de remplissage"
+      ],
+      "correct": 1,
+      "feedback": "Le collecteur OPCT ne doit pas etre rempli au-dela de 80 % de sa capacite (repere de remplissage maximal indique sur le conteneur). Un remplissage excessif augmente le risque de piqure accidentelle lors de la fermeture et empeche la fermeture definitive securisee."
+    },
+    {
+      "question": "Quelle est la norme de reference pour les sacs utilises pour l'elimination des DASRI mous (compresses, gants souilles) ?",
+      "options": [
+        "NF X 30-500",
+        "NF X 30-501",
+        "ISO 11607-1",
+        "EN 13060"
+      ],
+      "correct": 1,
+      "feedback": "La norme NF X 30-501 definit les exigences pour les sacs en plastique destines a l'elimination des DASRI mous (compresses, gants, draps d'examen souilles). Ces sacs doivent etre de couleur jaune, resistants a la dechirure et a la perforation."
+    },
+    {
+      "question": "Combien de temps le professionnel doit-il conserver les bordereaux de suivi des dechets (BSD) CERFA apres l'enlevement des DASRI ?",
+      "options": [
+        "1 an",
+        "3 ans",
+        "5 ans",
+        "10 ans"
+      ],
+      "correct": 1,
+      "feedback": "Les bordereaux de suivi des dechets (BSD) CERFA doivent etre conserves pendant 3 ans. Ils attestent de la tracabilite complete de la filiere d'elimination des DASRI, depuis la production jusqu'au traitement final (incineration ou banalisation)."
+    },
+    {
+      "question": "Comment doivent etre stockes les DASRI en attente d'enlevement dans le studio ?",
+      "options": [
+        "Dans la salle de travail a proximite du fauteuil",
+        "Dans un local ou un emplacement dedie, identifie, a l'ecart des zones de travail et de stockage du materiel propre, inaccessible au public",
+        "Dans la salle d'attente pour faciliter l'acces du collecteur",
+        "A l'exterieur du batiment sans protection"
+      ],
+      "correct": 1,
+      "feedback": "Les DASRI doivent etre entreposees dans un emplacement dedie, identifie, a l'ecart des zones de travail et de stockage propre, inaccessible au public et aux animaux. Le local doit etre ventile, facile a nettoyer et les conteneurs doivent etre poses sur un bac de retention si necessaire."
+    },
+    {
+      "question": "Le niobium est parfois utilise pour les bijoux de percage. Quel est son principal avantage ?",
+      "options": [
+        "Il est le metal le moins cher du marche",
+        "Il est biocompatible, hypoallergenique et peut etre anodise pour obtenir differentes couleurs sans ajout de substance chimique",
+        "Il est magnetique et facilite les examens IRM",
+        "Il est plus dur que l'acier et ne peut jamais etre raye"
+      ],
+      "correct": 1,
+      "feedback": "Le niobium est un metal biocompatible et hypoallergenique, adapte aux bijoux de premiere pose. Son avantage unique est qu'il peut etre anodise (traitement electrochimique de surface) pour produire des couleurs variees sans ajout de peinture ni de substance chimique, ce qui evite tout risque d'allergie supplementaire."
+    },
+    {
+      "question": "Pourquoi est-il interdit de recapuchonner les aiguilles usagees apres usage ?",
+      "options": [
+        "Parce que le capuchon est trop petit pour l'aiguille usagee",
+        "Parce que le geste de recapuchonnage est la premiere cause d'accident d'exposition au sang (AES) par piqure accidentelle",
+        "Parce que les capuchons ne sont pas fournis avec les aiguilles",
+        "Ce n'est pas interdit, c'est meme recommande"
+      ],
+      "correct": 1,
+      "feedback": "Le recapuchonnage des aiguilles est strictement interdit car c'est la premiere cause d'AES par piqure. L'aiguille usagee doit etre eliminee immediatement apres usage dans le collecteur OPCT le plus proche, sans manipulation intermediaire."
+    },
+    {
+      "question": "Quelle mention obligatoire doit figurer sur l'etiquetage d'une encre de tatouage conformement a la reglementation ?",
+      "options": [
+        "Uniquement le nom du fabricant",
+        "La mention 'Melange destine a etre utilise pour le tatouage ou le maquillage permanent', la liste des ingredients, le numero de lot et la date de durabilite minimale",
+        "Uniquement le prix de vente conseille",
+        "Le mode d'emploi detaille pour le consommateur final"
+      ],
+      "correct": 1,
+      "feedback": "L'etiquetage des encres doit comporter la mention specifique d'usage, la liste complete des ingredients (pigments, solvants, additifs), le numero de lot permettant la tracabilite, et la date de durabilite minimale. Ces informations sont essentielles pour la tracabilite et la vigilance."
+    },
+    {
+      "question": "Dans quel type de filiere les dechets assimilables aux ordures menageres (emballages non contamines, papier) du studio doivent-ils etre elimines ?",
+      "options": [
+        "Dans la filiere DASRI obligatoirement",
+        "Dans la filiere des dechets menagers classiques (poubelle ordinaire), en les separant rigoureusement des DASRI",
+        "Dans une decharge specialisee pour dechets industriels",
+        "Il n'est pas necessaire de les eliminer"
+      ],
+      "correct": 1,
+      "feedback": "Les dechets non contamines (emballages d'encre vides, papier, carton) sont des dechets assimilables aux ordures menageres (DAOM) et suivent la filiere classique. La separation rigoureuse DASRI/DAOM est essentielle pour eviter le surclassement inutile et reduire les couts d'elimination."
+    },
+    {
+      "question": "Lors de la reception d'une commande de materiel sterile, quel controle le professionnel doit-il effectuer ?",
+      "options": [
+        "Verifier uniquement que le nombre de boites correspond a la commande",
+        "Verifier l'integrite des emballages, les dates de peremption, les numeros de lots, la conformite des references et les conditions de transport",
+        "Stocker directement sans verification si le fournisseur est de confiance",
+        "Ouvrir tous les sachets pour verifier le contenu"
+      ],
+      "correct": 1,
+      "feedback": "A la reception, le professionnel doit verifier : l'integrite de chaque emballage (pas de perforation, pas d'humidite), les dates de peremption, les numeros de lots (pour la tracabilite), la conformite des references commandees et les conditions de transport (pas d'exposition a la chaleur ou a l'humidite)."
+    },
+    {
+      "question": "Les flacons d'encre de tatouage ouverts ont-ils une duree de conservation limitee ?",
+      "options": [
+        "Non, une fois ouverts, ils se conservent indefiniment",
+        "Oui, le professionnel doit respecter la duree de conservation apres ouverture (PAO) indiquee par le fabricant, noter la date d'ouverture sur le flacon, et eliminer le flacon une fois cette duree depassee",
+        "Oui, mais uniquement si le flacon change de couleur",
+        "Non, seuls les flacons non ouverts ont une date de peremption"
+      ],
+      "correct": 1,
+      "feedback": "Les flacons d'encre ouverts ont une duree de conservation limitee apres ouverture (PAO, symbolisee par un pot ouvert sur l'etiquette). Le professionnel doit noter la date d'ouverture, respecter la PAO du fabricant et eliminer tout flacon dont la PAO est depassee pour eviter les contaminations microbiennes."
     }
   ],
   "module-8": [
@@ -893,6 +1663,116 @@
       ],
       "correct": 2,
       "feedback": "La reglementation impose la realisation des actes dans des locaux fixes conformes aux exigences sanitaires. Les interventions a domicile ne permettent pas de garantir les conditions d'hygiene requises. Des dispositions specifiques existent pour les evenements et conventions."
+    },
+    {
+      "question": "Qu'est-ce que le principe de la 'marche en avant' dans l'organisation des locaux ?",
+      "options": [
+        "Une technique de marche pour eviter les chutes dans le studio",
+        "Un circuit d'organisation ou le materiel progresse toujours du sale vers le propre, sans retour en arriere ni croisement entre les circuits propres et sales",
+        "L'obligation de marcher toujours dans le sens des aiguilles d'une montre",
+        "Un exercice de formation pour les nouveaux employes"
+      ],
+      "correct": 1,
+      "feedback": "La marche en avant est un principe d'organisation spatiale ou le flux de materiel va toujours du sale (materiel souille) vers le propre (materiel sterilise) sans croisement. Cela evite la recontamination du materiel propre par du materiel sale et reduit le risque d'infections croisees."
+    },
+    {
+      "question": "Quelle est la surface minimale recommandee pour une salle de travail de tatouage/percage ?",
+      "options": [
+        "Aucune surface minimale n'est requise",
+        "La salle doit etre suffisamment spacieuse pour permettre le travail dans de bonnes conditions, le bionettoyage, et eviter la promiscuite entre les postes de travail si plusieurs postes coexistent",
+        "Exactement 5 m2",
+        "Au moins 50 m2"
+      ],
+      "correct": 1,
+      "feedback": "La reglementation ne fixe pas de surface minimale exacte mais exige que la salle soit suffisamment spacieuse pour permettre une realisation des actes dans de bonnes conditions d'hygiene, un bionettoyage efficace, et une separation adequate entre les postes si le studio en comporte plusieurs."
+    },
+    {
+      "question": "Les revetements de sol de la salle de travail doivent repondre a des criteres specifiques. Lequel des materiaux suivants est acceptable ?",
+      "options": [
+        "Un parquet en bois massif verni",
+        "Un revetement en PVC ou en resine, lisse, sans joints ouverts, remontant en plinthe arrondie (gorge) pour faciliter le nettoyage",
+        "Une moquette a poils courts",
+        "Un sol en tomettes de terre cuite non vitrifie"
+      ],
+      "correct": 1,
+      "feedback": "Le sol de la salle de travail doit etre en materiau lisse, non poreux, impermeable et facilement lessivable. Le PVC soude ou la resine avec remontee en plinthe arrondie (gorge sanitaire) est le revetement ideal car il elimine les joints ouverts ou s'accumulent les micro-organismes."
+    },
+    {
+      "question": "Pourquoi les poubelles de la salle de travail doivent-elles etre a commande non manuelle (pedale) ?",
+      "options": [
+        "Pour des raisons esthetiques uniquement",
+        "Pour eviter la contamination des mains lors de l'ouverture du couvercle, reduisant ainsi le risque de transmission croisee",
+        "Parce que les poubelles a commande manuelle sont interdites en France",
+        "Pour faciliter le tri selectif"
+      ],
+      "correct": 1,
+      "feedback": "Les poubelles a commande au pied (pedale) evitent la contamination des mains par contact avec le couvercle. Toucher une poubelle avec des gants contamines ou des mains propres rompt la chaine d'asepsie. Ce principe s'applique egalement aux distributeurs de savon et d'essuie-mains."
+    },
+    {
+      "question": "En quoi la presence d'animaux dans le local de tatouage/percage est-elle reglementee ?",
+      "options": [
+        "Les animaux de compagnie sont autorises dans la zone d'accueil uniquement",
+        "La presence d'animaux est interdite dans l'ensemble du local professionnel (salle de travail, zone de sterilisation et espaces annexes) pour des raisons d'hygiene",
+        "Seuls les chats sont autorises car ils sont naturellement propres",
+        "Les animaux sont autorises partout s'ils sont vaccines"
+      ],
+      "correct": 1,
+      "feedback": "La presence d'animaux est interdite dans les locaux professionnels de tatouage et de percage. Les animaux sont des reservoirs de micro-organismes (poils, salive, parasites) et leur presence est incompatible avec les exigences d'hygiene et de salubrite imposees par la reglementation."
+    },
+    {
+      "question": "Quel type d'eclairage est necessaire dans la salle de realisation des actes ?",
+      "options": [
+        "Un eclairage tamisee pour le confort du client",
+        "Un eclairage suffisant et adapte, avec une lampe d'appoint orientable pour la zone de travail, permettant une bonne visibilite des details cutanes",
+        "La lumiere naturelle uniquement, sans eclairage artificiel",
+        "Un eclairage UV pour desinfecter la zone en permanence"
+      ],
+      "correct": 1,
+      "feedback": "La salle de travail doit disposer d'un eclairage general suffisant et d'une lampe d'appoint orientable (type lampe a bras articule) pour la zone de travail. Un bon eclairage est essentiel pour la precision du geste, la detection d'anomalies cutanees et le respect du protocole d'asepsie."
+    },
+    {
+      "question": "Lors d'un controle sanitaire de l'ARS, quels documents le professionnel doit-il pouvoir presenter ?",
+      "options": [
+        "Uniquement son extrait Kbis",
+        "L'attestation de formation, la declaration d'activite, les registres de tracabilite des actes, les documents de tracabilite du materiel et des encres, les BSD CERFA, et le carnet de maintenance de l'autoclave",
+        "Uniquement les factures d'achat du materiel",
+        "Son curriculum vitae et ses diplomes scolaires"
+      ],
+      "correct": 1,
+      "feedback": "Lors d'une inspection ARS, le professionnel doit presenter : attestation de formation H&S, declaration d'activite ARS, fiches de consentement et registres de tracabilite des actes, documents de tracabilite des produits/materiels, BSD CERFA pour les DASRI, carnet de maintenance de l'autoclave avec les tickets de cycles."
+    },
+    {
+      "question": "La zone d'accueil/attente doit-elle repondre a des exigences d'hygiene particulieres ?",
+      "options": [
+        "Non, seule la salle de travail est soumise a des exigences",
+        "Oui, elle doit etre propre, entretenue, et nettement separee de la zone de travail pour eviter que les clients n'accedent a la salle de travail sans y etre invites",
+        "Non, la zone d'accueil peut etre amenagee comme un salon classique sans contrainte",
+        "Oui, elle doit etre sterile comme la salle de travail"
+      ],
+      "correct": 1,
+      "feedback": "La zone d'accueil doit etre propre, entretenue et clairement separee de la zone de travail. Elle sert a l'information du client (affichage obligatoire), au recueil du consentement eclaire et aux echanges prealables a l'acte. Les clients ne doivent pas circuler librement dans les zones techniques."
+    },
+    {
+      "question": "Comment doivent etre gerees les surfaces non directement en contact avec le client mais presentes dans la salle de travail (poignees de porte, interrupteurs, telephone) ?",
+      "options": [
+        "Elles ne necessitent aucun entretien particulier",
+        "Elles doivent etre nettoyees et desinfectees regulierement, car elles constituent des surfaces a haut potentiel de contamination (surfaces 'high-touch')",
+        "Elles doivent etre recouvertes de film plastique en permanence sans jamais etre nettoyees",
+        "Elles doivent etre remplacees chaque semaine"
+      ],
+      "correct": 1,
+      "feedback": "Les surfaces 'high-touch' (poignees, interrupteurs, telephone, claviers) sont des reservoirs de germes frequemment touches. Elles doivent etre nettoyees-desinfectees plusieurs fois par jour et entre chaque client si elles ont ete touchees avec des gants contamines. L'utilisation de film plastique protecteur sur certaines surfaces (telephone, machines) est une bonne pratique complementaire."
+    },
+    {
+      "question": "Quelle est l'obligation du professionnel concernant l'entretien et la maintenance de l'autoclave ?",
+      "options": [
+        "Aucune maintenance n'est requise si l'autoclave fonctionne correctement",
+        "Le professionnel doit assurer un entretien regulier (nettoyage, detartrage), realiser les controles quotidiens (test de Bowie-Dick, test de vide) et faire effectuer une maintenance annuelle par un technicien qualifie, en archivant tous les documents",
+        "Uniquement un nettoyage exterieur mensuel",
+        "La maintenance est a la charge exclusive du fabricant"
+      ],
+      "correct": 1,
+      "feedback": "L'autoclave necessite un entretien regulier (nettoyage de la cuve, detartrage selon les recommandations du fabricant), des controles quotidiens (Bowie-Dick, test de vide) et une maintenance preventive annuelle par un technicien qualifie. Le carnet de maintenance et tous les tickets de cycles doivent etre archives."
     }
   ],
   "module-9": [
@@ -1005,6 +1885,116 @@
       ],
       "correct": 2,
       "feedback": "Les antiseptiques de reference sont la chlorhexidine (en solution aqueuse ou alcoolique) ou la povidone iodee (Betadine). L'antisepsie se fait en deux temps : detersion (savon antiseptique) puis antisepsie (solution antiseptique de la meme gamme) pour une efficacite optimale."
+    },
+    {
+      "question": "Pourquoi est-il important d'utiliser des antiseptiques de la meme gamme (meme famille chimique) pour la detersion et l'antisepsie ?",
+      "options": [
+        "Pour des raisons de cout uniquement",
+        "Pour eviter les incompatibilites chimiques entre produits de familles differentes, qui pourraient reduire l'efficacite antimicrobienne ou provoquer des irritations cutanees",
+        "Pour que les couleurs des produits soient assorties",
+        "Il n'y a aucune raison particuliere, c'est une simple recommandation esthetique"
+      ],
+      "correct": 1,
+      "feedback": "L'utilisation de produits de la meme gamme (ex. savon a la chlorhexidine + solution de chlorhexidine, ou savon a la povidone iodee + solution de povidone iodee) evite les incompatibilites chimiques qui peuvent neutraliser l'effet antimicrobien. Par exemple, la chlorhexidine est inactivee par les savons anioniques."
+    },
+    {
+      "question": "Quelle est la technique correcte d'application de l'antiseptique sur la peau avant un tatouage ?",
+      "options": [
+        "Appliquer une seule fois en frottant vigoureusement",
+        "Appliquer en mouvements circulaires du centre vers la peripherie, laisser secher spontanement (ne pas essuyer), puis reappliquer une seconde couche (antisepsie en deux temps)",
+        "Appliquer de la peripherie vers le centre en un seul passage",
+        "Vaporiser a distance sans contact avec la peau"
+      ],
+      "correct": 1,
+      "feedback": "L'antiseptique s'applique du centre de la zone vers la peripherie, par mouvements circulaires concentriques. Le sechage spontane est essentiel (ne jamais essuyer car c'est pendant le sechage que l'action antimicrobienne est maximale). Une seconde application renforce l'efficacite (protocole en deux temps)."
+    },
+    {
+      "question": "Quelle est la duree de validite d'un champ sterile une fois deploye ?",
+      "options": [
+        "24 heures",
+        "Le champ sterile doit etre utilise immediatement apres sa mise en place et considere comme contamine s'il a ete quitte des yeux ou si un doute existe sur sa sterilite",
+        "Une semaine s'il est couvert",
+        "Il reste sterile indefiniment tant qu'il n'est pas touche"
+      ],
+      "correct": 1,
+      "feedback": "Un champ sterile n'a pas de 'duree de validite' formelle une fois deploye : il doit etre utilise immediatement. Il est considere comme contamine s'il a ete laisse sans surveillance, si un element non sterile l'a touche, ou s'il a ete expose a des projections. En cas de doute, il faut le remplacer."
+    },
+    {
+      "question": "Quels signes d'alerte d'infection le professionnel doit-il indiquer au client pour qu'il consulte un medecin apres un tatouage ou un percage ?",
+      "options": [
+        "Un leger rougissement autour du tatouage les premiers jours",
+        "Une rougeur qui s'etend au-dela de la zone tatouee, un gonflement important, un ecoulement purulent (pus jaune-vert), une douleur croissante, de la fievre ou des traces rouges partant du tatouage",
+        "Des demangeaisons legeres pendant la cicatrisation",
+        "La formation de petites croutes sur le tatouage"
+      ],
+      "correct": 1,
+      "feedback": "Les signes d'alerte d'infection a signaler au client sont : rougeur extensive depassant la zone tatouee, gonflement croissant, ecoulement purulent (pus jaune-vert), douleur qui augmente au lieu de diminuer, fievre, trainee rouge (lymphangite). Ces signes necessitent une consultation medicale urgente."
+    },
+    {
+      "question": "Pourquoi le rasoir utilise pour la depilation de la zone a tatouer doit-il etre a usage unique ?",
+      "options": [
+        "Pour des raisons de cout, les rasoirs jetables sont moins chers",
+        "Pour eviter la transmission de micro-organismes d'un client a l'autre, car les lames peuvent vehiculer du sang et des germes meme apres nettoyage",
+        "Parce que les rasoirs reutilisables rasent moins bien",
+        "Ce n'est qu'une recommandation, pas une obligation"
+      ],
+      "correct": 1,
+      "feedback": "Le rasoir de depilation doit etre strictement a usage unique car les lames peuvent creer des micro-coupures invisibles et vehiculer des agents infectieux (VHB, VHC, bacteries) d'un client a l'autre. Un rasoir reutilisable, meme desinfecte, ne garantit pas l'elimination de tous les pathogenes."
+    },
+    {
+      "question": "Lors du percage, comment le professionnel doit-il manipuler le bijou de premiere pose pour maintenir sa sterilite ?",
+      "options": [
+        "Il peut le manipuler a mains nues s'il vient d'etre lave",
+        "Il doit le manipuler exclusivement avec des gants steriles ou des pinces steriles, en evitant tout contact avec des surfaces non steriles",
+        "Il peut le rincer sous l'eau du robinet juste avant la pose",
+        "Il doit le plonger dans l'alcool a 90 degres pendant 10 secondes"
+      ],
+      "correct": 1,
+      "feedback": "Le bijou de premiere pose, sterilise en sachet, doit etre manipule avec des gants steriles ou des pinces steriles. Il ne doit jamais entrer en contact avec une surface non sterile. L'ouverture du sachet sterile doit se faire de maniere aseptique, au dernier moment, juste avant la pose."
+    },
+    {
+      "question": "Quelle est la particularite de la preparation aseptique pour un percage buccal (langue, levre) ?",
+      "options": [
+        "Aucune preparation n'est necessaire pour les muqueuses buccales",
+        "Un bain de bouche antiseptique sans alcool est realise avant l'acte pour reduire la charge microbienne de la cavite buccale, en complement de l'antisepsie externe de la zone",
+        "Le client doit se brosser les dents avec un dentifrice abrasif",
+        "Un antibiotique oral est systematiquement prescrit avant le percage"
+      ],
+      "correct": 1,
+      "feedback": "Pour un percage buccal, le protocole inclut un bain de bouche antiseptique sans alcool (type chlorhexidine buccale) avant l'acte pour reduire la flore buccale abondante. L'antisepsie externe de la zone (levre, menton) est realisee en parallele. Les bains de bouche alcoolises sont evites car ils irritent les muqueuses."
+    },
+    {
+      "question": "Pourquoi est-il deconseille d'utiliser de l'eau oxygene (peroxyde d'hydrogene) comme antiseptique principal pour les soins post-percage ?",
+      "options": [
+        "Parce qu'elle est trop chere",
+        "Parce qu'elle est cytotoxique (toxique pour les cellules en cours de cicatrisation), retarde la cicatrisation et a un spectre antibacterien limite",
+        "Parce qu'elle decolore les bijoux",
+        "Parce qu'elle n'existe pas en pharmacie"
+      ],
+      "correct": 1,
+      "feedback": "L'eau oxygene est cytotoxique : elle detruit non seulement les bacteries mais aussi les fibroblastes et keratinocytes en cours de proliferation, retardant la cicatrisation. Son spectre antibacterien est limite et de courte duree. Le serum physiologique sterile est prefere pour les soins quotidiens de percage."
+    },
+    {
+      "question": "Que doit faire le professionnel si un instrument sterile tombe au sol pendant un acte ?",
+      "options": [
+        "Le ramasser, le desinfecter rapidement a l'alcool et le reutiliser",
+        "Le considerer comme contamine, l'ecarter immediatement et utiliser un nouvel instrument sterile. L'instrument tombe suit le circuit de retraitement ou d'elimination selon sa nature",
+        "Le rincer sous l'eau du robinet et continuer l'acte",
+        "Le remettre sur le champ sterile si le sol a ete nettoye le matin"
+      ],
+      "correct": 1,
+      "feedback": "Un instrument tombe au sol est considere comme contamine, quelle que soit la proprete apparente du sol. Il doit etre immediatement ecarte et remplace par un nouvel instrument sterile. L'instrument contamine sera retraite (si reutilisable) ou elimine en DASRI (si a usage unique)."
+    },
+    {
+      "question": "Quel est le temps d'action minimum a respecter pour un antiseptique avant de debuter le tatouage ou le percage ?",
+      "options": [
+        "L'acte peut debuter immediatement apres application, sans attendre",
+        "Il faut respecter le temps de sechage spontane de l'antiseptique (1 a 2 minutes selon le produit), car c'est pendant ce sechage que l'activite antimicrobienne est maximale",
+        "Il faut attendre exactement 30 minutes",
+        "Il faut rincer l'antiseptique avant de commencer"
+      ],
+      "correct": 1,
+      "feedback": "Le temps de sechage spontane de l'antiseptique (generalement 1 a 2 minutes) doit etre respecte avant de debuter l'acte. C'est pendant cette phase de sechage que l'action antimicrobienne est a son maximum. Il ne faut jamais essuyer, souffler ou eventer pour accelerer le sechage, ni rincer le produit."
     }
   ]
 }

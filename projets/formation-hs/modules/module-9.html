@@ -246,6 +246,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -340,6 +342,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Contamination du champ stérile en cours de tatouage',
+            steps: [{
+                scenario: 'Vous êtes en train de tatouer un motif sur l\'épaule d\'un client. La séance dure depuis 45 minutes. En vous retournant pour attraper une nouvelle teinte d\'encre, votre coude accroche le bord du champ stérile et le fait glisser partiellement hors du plan de travail. Plusieurs godets d\'encre se renversent sur le champ, une compresse stérile tombe au sol, et le bord du champ entre en contact avec votre pantalon. Le client est toujours en position, la zone tatouée est ouverte.',
+                question: 'Comment devez-vous réagir ?',
+                choices: [
+                    { text: 'Remettre le champ en place, ramasser la compresse, redresser les godets et continuer le tatouage car le matériel en contact avec la peau est toujours stérile', correct: false, feedback: 'Faux et dangereux. Un champ stérile déplacé, touché par un vêtement ou dont des éléments sont tombés au sol est intégralement compromis. La compresse tombée au sol est contaminée et ne doit en aucun cas être réutilisée. Les godets renversés ont pu être contaminés par le contact avec le champ compromis. Remettre en place un champ contaminé revient à travailler en conditions non aseptiques, exposant le client à un risque d\'infection.' },
+                    { text: 'Stopper le geste, couvrir la zone tatouée du client avec un film protecteur stérile, éliminer l\'intégralité du champ contaminé et de son contenu, désinfecter le plan de travail, mettre en place un nouveau champ stérile avec du matériel neuf, changer de gants, puis reprendre le tatouage', correct: true, feedback: 'Correct ! Le protocole en cas de rupture d\'asepsie est : (1) Arrêter immédiatement le geste. (2) Protéger la zone de travail ouverte sur le client (film stérile ou compresse stérile). (3) Éliminer intégralement le champ compromis et tout son contenu (godets, compresses, matériel) en DASRI. (4) Nettoyer et désinfecter le plan de travail. (5) Se laver les mains (friction hydroalcoolique). (6) Mettre en place un nouveau champ stérile avec du matériel neuf (godets, encres, compresses). (7) Enfiler de nouveaux gants. (8) Reprendre le tatouage. Cette procédure prend du temps mais elle est indispensable pour garantir la sécurité du client.' },
+                    { text: 'Continuer le tatouage avec le matériel restant sur le plan de travail qui n\'a pas été touché, en évitant la zone du champ qui a bougé', correct: false, feedback: 'Incorrect. Le principe d\'asepsie est clair : en cas de doute sur la stérilité, tout est considéré comme contaminé. Il est impossible de déterminer avec certitude quels éléments du champ ont été affectés par le déplacement et le contact avec le vêtement. Des micro-organismes peuvent avoir été transférés par contact ou par l\'air lors du mouvement du champ. La totalité du champ et de son contenu doit être remplacée.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Le client touche la zone préparée avant le perçage',
+            steps: [{
+                scenario: 'Vous venez de réaliser la double antisepsie de la zone du tragus (cartilage de l\'oreille) d\'une cliente pour un perçage. Vous vous retournez pour ouvrir l\'emballage stérile du cathéter sur votre champ stérile. Quand vous vous retournez vers la cliente, vous la voyez en train de toucher son oreille avec ses doigts pour « vérifier le marquage » du point de perçage. Elle retire immédiatement sa main en réalisant son erreur et s\'excuse.',
+                question: 'Que devez-vous faire avant de procéder au perçage ?',
+                choices: [
+                    { text: 'Passer rapidement un coton imbibé d\'antiseptique sur la zone touchée et procéder au perçage, une seule application suffit puisque la zone avait déjà été désinfectée', correct: false, feedback: 'Insuffisant. Le contact des doigts de la cliente a recontaminé la zone avec la flore cutanée transitoire et résidente de ses mains (staphylocoques, bactéries diverses). Une simple application rapide ne reconstitue pas le niveau d\'antisepsie obtenu par la double application initiale. Le protocole de double antisepsie centrifuge doit être repris intégralement, avec des compresses stériles neuves et le temps de séchage complet entre les deux applications.' },
+                    { text: 'Reprendre intégralement le protocole de double antisepsie cutanée (deux applications centrifuges avec compresses stériles neuves et temps de séchage), changer de gants stériles si la zone touchée a été en contact avec vos gants, et expliquer à la cliente l\'importance de ne pas toucher la zone préparée', correct: true, feedback: 'Correct ! Le contact digital a rompu l\'asepsie de la zone. Le protocole complet est : (1) Reprendre la double antisepsie cutanée depuis le début (deux applications centrifuges, compresses stériles neuves, temps de séchage entre chaque application). (2) Changer de gants stériles si vous avez touché la zone contaminée ou la cliente. (3) Vérifier que le marquage est toujours visible (le refaire si nécessaire avec du matériel stérile). (4) Expliquer calmement à la cliente pourquoi elle ne doit pas toucher la zone préparée — c\'est aussi un moment pédagogique. (5) Attendre que la zone soit parfaitement sèche avant de procéder au perçage. La patience ici prévient le risque infectieux.' },
+                    { text: 'Demander à la cliente de se laver les mains avec du gel hydroalcoolique, puis lui demander de retoucher la zone pour « redistribuer » l\'antiseptique déjà appliqué', correct: false, feedback: 'Totalement incorrect. Même avec des mains désinfectées au gel hydroalcoolique, les mains de la cliente ne sont pas stériles. « Redistribuer » l\'antiseptique n\'a aucun sens scientifique : l\'antiseptique initial a été éliminé ou dilué par le contact avec les doigts et la flore cutanée des mains a été déposée sur la zone. La préparation cutanée aseptique est un acte professionnel qui doit être réalisé par le praticien avec du matériel stérile, selon un protocole précis (mouvement centrifuge, double application).' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

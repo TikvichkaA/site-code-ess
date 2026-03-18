@@ -269,6 +269,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -362,6 +364,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Cliente allergique au nickel souhaitant un piercing',
+            steps: [{
+                scenario: 'Une cliente de 30 ans souhaite un piercing au nombril. Lors de l\'entretien pr\u00e9alable, elle vous informe qu\'elle est allergique au nickel : elle ne peut pas porter de bijoux fantaisie car sa peau r\u00e9agit syst\u00e9matiquement (rougeurs, d\u00e9mangeaisons, eczéma de contact). Elle vous demande si le piercing est possible malgr\u00e9 cette allergie.',
+                question: 'Quelle est la bonne d\u00e9marche \u00e0 suivre ?',
+                choices: [
+                    { text: 'Refuser le piercing car l\'allergie au nickel est une contre-indication absolue \u00e0 tout per\u00e7age corporel', correct: false, feedback: 'Faux. L\'allergie au nickel n\'est pas une contre-indication absolue au per\u00e7age. Elle impose en revanche le choix d\'un mat\u00e9riau strictement exempt de nickel. Le titane ASTM F-136 (implant grade) ou le niobium sont des alternatives parfaitement adapt\u00e9es car ils ne contiennent quasiment pas de nickel.' },
+                    { text: 'Accepter le piercing en utilisant exclusivement un bijou de premi\u00e8re pose en titane ASTM F-136 (implant grade), informer la cliente des risques r\u00e9siduels et documenter l\'allergie dans le dossier client', correct: true, feedback: 'Correct ! L\'allergie au nickel impose : 1) Un bijou de premi\u00e8re pose en titane ASTM F-136 (quasi nul en nickel) ou en niobium. 2) Proscrire absolument l\'acier chirurgical (10 \u00e0 14 % de nickel). 3) Mentionner l\'allergie dans le dossier client et sur le consentement \u00e9clair\u00e9. 4) Informer la cliente qu\'elle devra toujours porter des bijoux sans nickel, m\u00eame apr\u00e8s cicatrisation compl\u00e8te. Le titane ASTM F-136 est conforme \u00e0 la directive europ\u00e9enne 94/27/CE sur le nickel.' },
+                    { text: 'Accepter le piercing avec un bijou en acier chirurgical ASTM F-138, car l\'acier chirurgical est hypoallerg\u00e9nique et adapt\u00e9 aux peaux sensibles', correct: false, feedback: 'Faux. L\'acier chirurgical ASTM F-138 contient 10 \u00e0 14 % de nickel. M\u00eame si la lib\u00e9ration de nickel est limit\u00e9e par la couche de passivation, elle reste suffisante pour d\u00e9clencher une r\u00e9action chez une personne d\u00e9j\u00e0 sensibilis\u00e9e. Chez cette cliente, l\'acier chirurgical provoquerait tr\u00e8s probablement un ecz\u00e9ma de contact au niveau du piercing.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'R\u00e9action allergique retard\u00e9e \u00e0 une encre de tatouage',
+            steps: [{
+                scenario: 'Un client revient vous voir 6 semaines apr\u00e8s un tatouage multicolore sur l\'avant-bras. Il pr\u00e9sente un gonflement localis\u00e9 et des d\u00e9mangeaisons persistantes, mais uniquement sur les parties rouges du tatouage. Les autres couleurs (noir, bleu, vert) sont parfaitement cicatris\u00e9es. Il n\'a pas de fi\u00e8vre et l\'\u00e9tat g\u00e9n\u00e9ral est bon. Il vous demande s\'il doit s\'inqui\u00e9ter.',
+                question: 'Quel est votre diagnostic probable et quelle conduite tenez-vous ?',
+                choices: [
+                    { text: 'C\'est une infection bact\u00e9rienne localis\u00e9e, lui conseiller d\'appliquer un antiseptique puissant sur la zone rouge', correct: false, feedback: 'Faux. Une infection bact\u00e9rienne ne se limiterait pas \u00e0 une seule couleur du tatouage. Ici, seul le rouge est concern\u00e9, les autres couleurs sont parfaitement cicatris\u00e9es. L\'absence de fi\u00e8vre, de pus et le d\u00e9lai de 6 semaines orientent vers une r\u00e9action allergique au pigment rouge, pas vers une infection.' },
+                    { text: 'Suspecter une r\u00e9action allergique au pigment rouge (fr\u00e9quente avec les pigments azo\u00efques), orienter vers un dermatologue, documenter l\'\u00e9v\u00e9nement et effectuer un signalement ANSES', correct: true, feedback: 'Correct ! Les signes sont typiques d\'une allergie retard\u00e9e au pigment rouge : r\u00e9action limit\u00e9e \u00e0 la zone rouge, d\u00e9lai de plusieurs semaines, absence de signes infectieux. Les pigments rouges (azo\u00efques) sont les plus allergisants. La conduite \u00e0 tenir : 1) Orienter le client vers un dermatologue pour diagnostic et traitement. 2) Relever le num\u00e9ro de lot et la marque de l\'encre rouge utilis\u00e9e. 3) D\u00e9clarer l\'effet ind\u00e9sirable sur le portail ANSES (signalement.social-sante.gouv.fr). 4) Conserver l\'\u00e9chantillon d\'encre si possible.' },
+                    { text: 'Le rassurer et lui dire de patienter, les rougeurs sur le rouge sont normales et dispara\u00eetront avec le temps', correct: false, feedback: 'Faux. Un gonflement et des d\u00e9mangeaisons persistants \u00e0 6 semaines ne sont pas une \u00e9volution normale de la cicatrisation. La phase inflammatoire est termin\u00e9e depuis plusieurs semaines. Ces sympt\u00f4mes localis\u00e9s au pigment rouge \u00e9voquent une r\u00e9action allergique qui n\u00e9cessite un avis m\u00e9dical, car elle peut s\'aggraver (granulome, ecz\u00e9ma chronique).' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

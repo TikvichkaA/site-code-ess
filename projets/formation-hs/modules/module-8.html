@@ -222,6 +222,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -318,6 +320,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Dégât des eaux dans la zone de stérilisation',
+            steps: [{
+                scenario: 'En arrivant un lundi matin à votre studio de tatouage, vous découvrez qu\'une fuite d\'eau provenant de l\'appartement du dessus a inondé votre zone de stérilisation pendant le week-end. Le sol est recouvert de 2 cm d\'eau stagnante, les murs présentent des traces d\'humidité et de moisissures naissantes, et plusieurs sachets de matériel stérilisé stockés dans un tiroir bas sont mouillés. Votre autoclave semble intact mais a été éclaboussé. Vous avez 3 clients prévus dans la journée.',
+                question: 'Quelles mesures devez-vous prendre ?',
+                choices: [
+                    { text: 'Éponger l\'eau, sécher la pièce avec un ventilateur, vérifier visuellement le matériel stérilisé et utiliser les sachets qui semblent secs à l\'extérieur', correct: false, feedback: 'Insuffisant et dangereux. Un sachet de stérilisation mouillé ou ayant été en contact avec de l\'humidité est considéré comme compromis : la barrière stérile est rompue même si l\'extérieur semble sec (l\'eau peut avoir pénétré par capillarité). Les moisissures naissantes indiquent une contamination fongique de l\'environnement. Un simple séchage au ventilateur ne suffit pas à éliminer les spores. L\'autoclave éclaboussé doit être vérifié avant toute utilisation.' },
+                    { text: 'Annuler les rendez-vous de la journée, éliminer tout le matériel stérilisé exposé à l\'humidité, assécher et désinfecter intégralement la zone, traiter les moisissures, faire vérifier l\'autoclave, restériliser le matériel nécessaire, et ne reprendre l\'activité qu\'après remise en conformité complète', correct: true, feedback: 'Correct ! Le protocole est : (1) Annuler ou reporter les rendez-vous — impossible de travailler dans ces conditions. (2) Éliminer tout le matériel stérilisé dont les emballages ont été exposés à l\'eau ou à l\'humidité (la stérilité est compromise). (3) Assécher complètement la zone (aspiration, déshumidificateur professionnel). (4) Traiter les moisissures avec un produit fongicide adapté. (5) Nettoyer et désinfecter l\'intégralité des surfaces (sol, murs, mobilier, étagères). (6) Faire vérifier l\'autoclave par le fournisseur ou un technicien avant de le réutiliser. (7) Restériliser le matériel réutilisable après nettoyage. (8) Ne reprendre l\'activité qu\'une fois la zone entièrement sèche, désinfectée et exempte de moisissures. Documenter l\'incident dans le registre de maintenance.' },
+                    { text: 'Déplacer les rendez-vous dans la zone de travail principale et utiliser le matériel stérilisé stocké ailleurs, sans toucher à la zone de stérilisation', correct: false, feedback: 'Partiellement correct mais insuffisant. Utiliser du matériel stérilisé stocké hors de la zone inondée est une bonne idée temporaire, mais cela ne résout pas le problème de fond. La zone de stérilisation contaminée par l\'eau et les moisissures doit être traitée en priorité. De plus, sans autoclave opérationnel vérifié, vous ne pouvez pas stériliser de nouveau matériel si votre stock s\'épuise. Il faut aussi documenter l\'incident et prendre des mesures correctives avant de reprendre l\'activité normalement.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Panne de ventilation en pleine activité',
+            steps: [{
+                scenario: 'En plein été, lors d\'une journée de forte chaleur (35 °C), la VMC (ventilation mécanique contrôlée) de votre studio de tatouage tombe en panne. La température dans la zone de travail monte rapidement. Vous utilisez des produits désinfectants (détergent-désinfectant de surfaces, solution hydroalcoolique) dont les vapeurs commencent à stagner dans la pièce. Vous ressentez des maux de tête et une légère irritation des voies respiratoires. Deux clients sont en attente.',
+                question: 'Quelle est la conduite à tenir ?',
+                choices: [
+                    { text: 'Ouvrir les fenêtres et continuer à travailler normalement, la ventilation naturelle est suffisante pour remplacer la VMC', correct: false, feedback: 'Insuffisant. L\'ouverture des fenêtres peut aider temporairement, mais elle ne remplace pas la VMC : elle ne garantit pas un renouvellement d\'air contrôlé et peut introduire des contaminants extérieurs (poussière, pollen, insectes) dans la zone de travail. De plus, vos symptômes (maux de tête, irritation respiratoire) indiquent déjà une exposition aux vapeurs chimiques qui nécessite une action immédiate. La chaleur excessive peut aussi altérer la conservation des produits et le confort/sécurité du client.' },
+                    { text: 'Arrêter immédiatement l\'utilisation des produits volatils, aérer le local, évacuer la zone de travail, reporter les rendez-vous, et faire réparer la VMC avant de reprendre l\'activité', correct: true, feedback: 'Correct ! Vos symptômes indiquent une intoxication aux vapeurs chimiques (COV des désinfectants, vapeurs d\'alcool). Le protocole est : (1) Cesser immédiatement l\'utilisation de tout produit volatil. (2) Aérer largement le local (fenêtres, portes). (3) Évacuer la zone de travail et se mettre à l\'air libre jusqu\'à disparition des symptômes. (4) Reporter les rendez-vous : la ventilation est une exigence réglementaire (NF EN 17169) et travailler sans renouvellement d\'air contrôlé expose à des risques sanitaires pour vous et vos clients. (5) Faire intervenir un technicien pour réparer la VMC. (6) Ne reprendre l\'activité qu\'après remise en fonctionnement de la ventilation. Si les symptômes persistent, consulter un médecin et envisager une déclaration de maladie professionnelle.' },
+                    { text: 'Installer un ventilateur portatif dans la zone de travail pour brasser l\'air et continuer les tatouages prévus', correct: false, feedback: 'Dangereux à double titre. Un ventilateur portatif brasse l\'air ambiant sans l\'évacuer ni le renouveler : les vapeurs chimiques restent dans la pièce. Pire, le brassage d\'air dans la zone de travail peut soulever des particules et des micro-organismes, compromettant l\'asepsie du champ stérile et des surfaces désinfectées. La NF EN 17169 exige un système de ventilation adéquat, pas un simple brassage d\'air. La poursuite de l\'activité avec vos symptômes constitue un risque professionnel.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>

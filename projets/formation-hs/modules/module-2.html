@@ -155,6 +155,8 @@
             <div class="module-section">
                 <h2>Étude de cas</h2>
                 <div id="caseStudy"></div>
+                <div id="caseStudy2"></div>
+                <div id="caseStudy3"></div>
             </div>
 
             <!-- Travaux pratiques -->
@@ -255,6 +257,36 @@
         };
         const cs = new CaseStudy('caseStudy', caseData);
         cs.render();
+
+        const caseData2 = {
+            title: 'Client sujet aux ch\u00e9lo\u00efdes',
+            steps: [{
+                scenario: 'Un client de 28 ans souhaite un piercing au cartilage de l\'oreille (h\u00e9lix). Lors de l\'entretien pr\u00e9alable, vous remarquez qu\'il pr\u00e9sente des cicatrices \u00e9paisses et saillantes sur les \u00e9paules, qu\'il vous dit \u00eatre des ch\u00e9lo\u00efdes apparues apr\u00e8s des blessures mineures. Il vous assure qu\'\u00e0 l\'oreille "ce ne sera pas pareil" et insiste pour proc\u00e9der.',
+                question: 'Quelle est la conduite \u00e0 tenir ?',
+                choices: [
+                    { text: 'Accepter le piercing car les ch\u00e9lo\u00efdes sur les \u00e9paules ne pr\u00e9jugent pas du comportement cicatriciel \u00e0 l\'oreille', correct: false, feedback: 'Faux. La pr\u00e9disposition aux ch\u00e9lo\u00efdes est g\u00e9n\u00e9ralis\u00e9e : un patient qui forme des ch\u00e9lo\u00efdes sur une zone en formera tr\u00e8s probablement sur d\'autres zones. Le cartilage de l\'oreille est particuli\u00e8rement expos\u00e9 aux ch\u00e9lo\u00efdes en raison de la tension cutan\u00e9e et de la vascularisation r\u00e9duite.' },
+                    { text: 'Informer le client du risque tr\u00e8s \u00e9lev\u00e9 de ch\u00e9lo\u00efde sur le cartilage de l\'oreille compte tenu de son terrain, d\u00e9conseiller fortement l\'acte et recommander un avis dermatologique pr\u00e9alable', correct: true, feedback: 'Correct ! Les ant\u00e9c\u00e9dents de ch\u00e9lo\u00efdes constituent une contre-indication relative majeure au per\u00e7age. Le cartilage auriculaire est une zone particuli\u00e8rement \u00e0 risque car : la peau y est fine, la vascularisation limit\u00e9e ralentit la cicatrisation, et la tension cutan\u00e9e favorise la formation de ch\u00e9lo\u00efdes. Le professionnel doit informer clairement du risque, d\u00e9conseiller l\'acte et orienter vers un dermatologue.' },
+                    { text: 'Proposer un piercing au lobe plut\u00f4t qu\'au cartilage, car le lobe ne forme jamais de ch\u00e9lo\u00efdes', correct: false, feedback: 'Faux. Le lobe d\'oreille est l\'une des zones les PLUS fr\u00e9quemment touch\u00e9es par les ch\u00e9lo\u00efdes. Chez un patient pr\u00e9dispos\u00e9, tout traumatisme cutan\u00e9 peut g\u00e9n\u00e9rer une ch\u00e9lo\u00efde, y compris au lobe. D\u00e9placer le per\u00e7age vers le lobe ne r\u00e9duit pas le risque.' }
+                ]
+            }]
+        };
+        const cs2 = new CaseStudy('caseStudy2', caseData2);
+        cs2.render();
+
+        const caseData3 = {
+            title: 'Tatouage sur un grain de beaut\u00e9',
+            steps: [{
+                scenario: 'Une cliente souhaite un tatouage floral sur l\'omoplate. En pr\u00e9parant la zone, vous constatez la pr\u00e9sence d\'un grain de beaut\u00e9 (naevus) d\'environ 6 mm de diam\u00e8tre, de couleur brune irr\u00e9guli\u00e8re, situ\u00e9 en plein centre de la zone \u00e0 tatouer. La cliente vous demande de "tatouer par-dessus, \u00e7a le camouflera".',
+                question: 'Comment devez-vous r\u00e9agir ?',
+                choices: [
+                    { text: 'Tatouer par-dessus le grain de beaut\u00e9 comme demand\u00e9 par la cliente, c\'est une pratique courante et sans risque', correct: false, feedback: 'Faux. Tatouer sur un naevus est fortement d\u00e9conseill\u00e9. Le pigment de tatouage masque le grain de beaut\u00e9 et rend impossible la surveillance dermatologique ult\u00e9rieure (r\u00e8gle ABCDE). Si le naevus \u00e9volue vers un m\u00e9lanome, les modifications seront invisibles sous l\'encre. De plus, le traumatisme r\u00e9p\u00e9t\u00e9 des aiguilles pourrait stimuler des cellules potentiellement atypiques.' },
+                    { text: 'Refuser de tatouer sur le grain de beaut\u00e9, adapter le motif pour contourner le naevus, et recommander \u00e0 la cliente de consulter un dermatologue pour faire examiner ce naevus irr\u00e9gulier', correct: true, feedback: 'Correct ! On ne tatoue jamais sur un grain de beaut\u00e9 car : 1) Le pigment emp\u00eache la surveillance dermatologique (d\u00e9tection de m\u00e9lanome par la r\u00e8gle ABCDE). 2) Un naevus \u00e0 couleur irr\u00e9guli\u00e8re doit \u00eatre examin\u00e9 par un dermatologue. 3) Le professionnel doit adapter le trac\u00e9 pour laisser une marge de s\u00e9curit\u00e9 autour du naevus (au moins 5 mm). L\'orientation vers un dermatologue est ici d\'autant plus justifi\u00e9e que la couleur est irr\u00e9guli\u00e8re.' },
+                    { text: 'Refuser compl\u00e8tement le tatouage sur cette zone car la pr\u00e9sence d\'un grain de beaut\u00e9 interdit tout tatouage sur l\'omoplate', correct: false, feedback: 'Faux. La pr\u00e9sence d\'un grain de beaut\u00e9 n\'interdit pas de tatouer sur l\'omoplate dans son ensemble. Il suffit d\'adapter le motif pour contourner le naevus en laissant une marge suffisante (au moins 5 mm). Le reste de la zone peut \u00eatre tatou\u00e9 normalement, \u00e0 condition de ne pas recouvrir le grain de beaut\u00e9.' }
+                ]
+            }]
+        };
+        const cs3 = new CaseStudy('caseStudy3', caseData3);
+        cs3.render();
     </script>
     <script src="../js/pwa-register.js"></script>
 </body>
