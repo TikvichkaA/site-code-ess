@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 620" width="880" height="620" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <pattern id="hatchGray" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#d5dbdb" stroke-width="0.8"/>
+    </pattern>
+    <marker id="exitArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,1 L9,5 L0,9z" fill="#27ae60"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="620" rx="16" fill="#f8fbf9"/>
+
+  <!-- Header -->
+  <rect width="880" height="64" rx="16" fill="#1a5276"/>
+  <rect y="50" width="880" height="14" fill="#1a5276"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" letter-spacing="0.3">Plan des locaux — Etablissement recevant du public (ERP)</text>
+  <text x="440" y="52" text-anchor="middle" font-size="11" fill="#aed6f1">Formation Hygiene et Salubrite — Tatouage / Percage corporel</text>
+
+  <!-- ========== OUTER WALLS ========== -->
+  <rect x="40" y="85" width="800" height="460" rx="3" fill="#fff" stroke="#2c3e50" stroke-width="4"/>
+
+  <!-- ========== HORIZONTAL DIVIDER (separates top from bottom row) ========== -->
+  <!-- Top row height: ~220px, bottom row: ~240px -->
+  <line x1="40" y1="305" x2="480" y2="305" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- ========== VERTICAL DIVIDER (Accueil | Salle Theorique) ========== -->
+  <line x1="310" y1="85" x2="310" y2="305" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- ========== VERTICAL DIVIDER (Salle Pratique | right block) ========== -->
+  <line x1="480" y1="305" x2="480" y2="545" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- ========== RIGHT BLOCK internal walls ========== -->
+  <!-- Horizontal: Stockage DASRI / Point d'eau vs Sanitaires -->
+  <line x1="480" y1="415" x2="840" y2="415" stroke="#2c3e50" stroke-width="3"/>
+  <!-- Vertical: Stockage DASRI | Point d'eau -->
+  <line x1="660" y1="305" x2="660" y2="415" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- Right column wall top -->
+  <line x1="480" y1="85" x2="480" y2="305" stroke="#2c3e50" stroke-width="0"/>
+
+  <!-- ===== ZONE 1: ACCUEIL (top-left) ===== -->
+  <rect x="42" y="87" width="266" height="216" fill="#ebf5fb" rx="0"/>
+  <circle cx="70" cy="115" r="16" fill="#1a5276"/>
+  <text x="70" y="120" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1</text>
+  <text x="175" y="120" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a5276">ACCUEIL</text>
+  <text x="175" y="138" text-anchor="middle" font-size="10" fill="#5d6d7e">Reception des clients</text>
+
+  <!-- Desk accueil -->
+  <rect x="80" y="165" width="90" height="40" rx="5" fill="#d4e6f1" stroke="#1a5276" stroke-width="1.5"/>
+  <text x="125" y="189" text-anchor="middle" font-size="9" fill="#1a5276">Comptoir</text>
+  <!-- Waiting seats -->
+  <rect x="200" y="170" width="60" height="25" rx="4" fill="#aed6f1" stroke="#1a5276" stroke-width="1"/>
+  <text x="230" y="187" text-anchor="middle" font-size="8" fill="#1a5276">Salle d'attente</text>
+
+  <!-- Affichage obligatoire -->
+  <rect x="80" y="230" width="80" height="15" rx="2" fill="#d4e6f1" stroke="#1a5276" stroke-width="1"/>
+  <text x="120" y="241" text-anchor="middle" font-size="7" fill="#1a5276">Affichage oblig.</text>
+
+  <!-- Entry door (left wall) -->
+  <rect x="40" y="160" width="4" height="50" fill="#27ae60"/>
+  <path d="M44,210 A50,50 0 0,1 44,160" fill="none" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="25" y="190" text-anchor="middle" font-size="9" fill="#27ae60" font-weight="bold" transform="rotate(-90,25,190)">ENTREE</text>
+
+  <!-- ===== ZONE 2: SALLE THEORIQUE (top-right) ===== -->
+  <rect x="312" y="87" width="526" height="216" fill="#eafaf1" rx="0"/>
+  <circle cx="340" cy="115" r="16" fill="#27ae60"/>
+  <text x="340" y="120" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2</text>
+  <text x="575" y="120" text-anchor="middle" font-size="16" font-weight="bold" fill="#27ae60">SALLE THEORIQUE</text>
+  <text x="575" y="138" text-anchor="middle" font-size="10" fill="#5d6d7e">Cours et presentations</text>
+
+  <!-- Table rows (classroom style) -->
+  <rect x="360" y="165" width="130" height="20" rx="3" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+  <rect x="360" y="195" width="130" height="20" rx="3" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+  <rect x="360" y="225" width="130" height="20" rx="3" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+  <text x="425" y="180" text-anchor="middle" font-size="7" fill="#27ae60">Tables</text>
+
+  <!-- Chairs dots -->
+  <circle cx="505" cy="175" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="520" cy="175" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="535" cy="175" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="505" cy="205" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="520" cy="205" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="535" cy="205" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="505" cy="235" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="520" cy="235" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+  <circle cx="535" cy="235" r="5" fill="#a9dfbf" stroke="#27ae60" stroke-width="1"/>
+
+  <!-- Whiteboard / screen -->
+  <rect x="620" y="160" width="10" height="100" rx="2" fill="#2c3e50"/>
+  <text x="650" y="215" text-anchor="start" font-size="8" fill="#2c3e50">Tableau /</text>
+  <text x="650" y="227" text-anchor="start" font-size="8" fill="#2c3e50">Ecran</text>
+
+  <!-- Projector -->
+  <rect x="720" y="195" width="25" height="18" rx="3" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+  <text x="733" y="208" text-anchor="middle" font-size="6" fill="#27ae60">Proj.</text>
+
+  <!-- Door from Accueil to Salle Theorique -->
+  <rect x="308" y="150" width="6" height="0" fill="#fff"/>
+  <rect x="306" y="150" width="8" height="45" fill="#fff"/>
+  <path d="M314,150 A45,45 0 0,1 314,195" fill="none" stroke="#5d6d7e" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ===== ZONE 3: SALLE PRATIQUE (bottom-left) ===== -->
+  <rect x="42" y="307" width="436" height="236" fill="#fdf2e9" rx="0"/>
+  <circle cx="70" cy="335" r="16" fill="#e67e22"/>
+  <text x="70" y="340" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3</text>
+  <text x="260" y="340" text-anchor="middle" font-size="16" font-weight="bold" fill="#e67e22">SALLE PRATIQUE</text>
+  <text x="260" y="358" text-anchor="middle" font-size="10" fill="#5d6d7e">Ateliers tatouage / percage</text>
+
+  <!-- Work stations -->
+  <rect x="80" y="385" width="100" height="65" rx="8" fill="#fad7a0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="130" y="415" text-anchor="middle" font-size="8" fill="#e67e22" font-weight="bold">Poste 1</text>
+  <text x="130" y="428" text-anchor="middle" font-size="7" fill="#e67e22">Fauteuil + plan</text>
+  <text x="130" y="440" text-anchor="middle" font-size="7" fill="#e67e22">de travail</text>
+
+  <rect x="210" y="385" width="100" height="65" rx="8" fill="#fad7a0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="260" y="415" text-anchor="middle" font-size="8" fill="#e67e22" font-weight="bold">Poste 2</text>
+  <text x="260" y="428" text-anchor="middle" font-size="7" fill="#e67e22">Fauteuil + plan</text>
+  <text x="260" y="440" text-anchor="middle" font-size="7" fill="#e67e22">de travail</text>
+
+  <rect x="340" y="385" width="100" height="65" rx="8" fill="#fad7a0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="390" y="415" text-anchor="middle" font-size="8" fill="#e67e22" font-weight="bold">Poste 3</text>
+  <text x="390" y="428" text-anchor="middle" font-size="7" fill="#e67e22">Fauteuil + plan</text>
+  <text x="390" y="440" text-anchor="middle" font-size="7" fill="#e67e22">de travail</text>
+
+  <!-- Hand wash in salle pratique -->
+  <rect x="80" y="475" width="55" height="35" rx="6" fill="#d4e6f1" stroke="#1a5276" stroke-width="1.5"/>
+  <text x="108" y="493" text-anchor="middle" font-size="7" fill="#1a5276">Lavabo</text>
+  <text x="108" y="503" text-anchor="middle" font-size="7" fill="#1a5276">mains</text>
+
+  <!-- PHA dispenser -->
+  <rect x="155" y="480" width="45" height="25" rx="3" fill="#d4e6f1" stroke="#1a5276" stroke-width="1"/>
+  <text x="178" y="497" text-anchor="middle" font-size="7" fill="#1a5276">PHA</text>
+
+  <!-- PCT container -->
+  <rect x="220" y="478" width="40" height="28" rx="4" fill="#f7dc6f" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="240" y="496" text-anchor="middle" font-size="7" fill="#f39c12">PCT</text>
+
+  <!-- Door from Accueil to Salle Pratique -->
+  <rect x="130" y="302" width="50" height="6" fill="#fff"/>
+  <path d="M130,308 A50,50 0 0,0 180,308" fill="none" stroke="#5d6d7e" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ===== ZONE 4: STOCKAGE DASRI (middle-right top) ===== -->
+  <rect x="482" y="307" width="176" height="106" fill="#fef9e7" rx="0"/>
+  <circle cx="510" cy="335" r="16" fill="#f39c12"/>
+  <text x="510" y="340" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4</text>
+  <text x="575" y="340" text-anchor="middle" font-size="14" font-weight="bold" fill="#f39c12">STOCKAGE</text>
+  <text x="575" y="356" text-anchor="middle" font-size="14" font-weight="bold" fill="#f39c12">DASRI</text>
+
+  <!-- DASRI containers -->
+  <rect x="500" y="372" width="45" height="30" rx="4" fill="#f7dc6f" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="523" y="391" text-anchor="middle" font-size="7" fill="#f39c12">DASRI</text>
+  <rect x="555" y="372" width="45" height="30" rx="4" fill="#fadbd8" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="578" y="386" text-anchor="middle" font-size="6" fill="#e74c3c">OPCT</text>
+  <text x="578" y="396" text-anchor="middle" font-size="6" fill="#e74c3c">aiguilles</text>
+  <rect x="610" y="372" width="35" height="30" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="628" y="391" text-anchor="middle" font-size="6" fill="#27ae60">DAOM</text>
+
+  <!-- ===== ZONE 5: POINT D'EAU (middle-right bottom) ===== -->
+  <rect x="662" y="307" width="176" height="106" fill="#e8f6f3" rx="0"/>
+  <circle cx="690" cy="335" r="16" fill="#1abc9c"/>
+  <text x="690" y="340" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5</text>
+  <text x="755" y="340" text-anchor="middle" font-size="14" font-weight="bold" fill="#1abc9c">POINT D'EAU</text>
+
+  <!-- Sink -->
+  <rect x="695" y="370" width="50" height="30" rx="10" fill="#a3e4d7" stroke="#1abc9c" stroke-width="1.5"/>
+  <text x="720" y="389" text-anchor="middle" font-size="8" fill="#1abc9c">Evier</text>
+  <!-- Faucet -->
+  <circle cx="720" cy="365" r="4" fill="#1abc9c"/>
+
+  <!-- PHA -->
+  <rect x="760" y="375" width="40" height="20" rx="3" fill="#a3e4d7" stroke="#1abc9c" stroke-width="1"/>
+  <text x="780" y="389" text-anchor="middle" font-size="7" fill="#1abc9c">PHA</text>
+
+  <!-- ===== ZONE 6: SANITAIRES (bottom-right) ===== -->
+  <rect x="482" y="417" width="356" height="126" fill="#f5eef8" rx="0"/>
+  <circle cx="510" cy="445" r="16" fill="#8e44ad"/>
+  <text x="510" y="450" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">6</text>
+  <text x="660" y="448" text-anchor="middle" font-size="16" font-weight="bold" fill="#8e44ad">SANITAIRES</text>
+
+  <!-- Toilets -->
+  <rect x="520" y="470" width="40" height="35" rx="5" fill="#e8daef" stroke="#8e44ad" stroke-width="1"/>
+  <text x="540" y="492" text-anchor="middle" font-size="8" fill="#8e44ad">WC</text>
+  <rect x="575" y="470" width="40" height="35" rx="5" fill="#e8daef" stroke="#8e44ad" stroke-width="1"/>
+  <text x="595" y="492" text-anchor="middle" font-size="8" fill="#8e44ad">WC</text>
+
+  <!-- Sink sanitaires -->
+  <rect x="640" y="472" width="45" height="28" rx="10" fill="#e8daef" stroke="#8e44ad" stroke-width="1"/>
+  <text x="663" y="490" text-anchor="middle" font-size="7" fill="#8e44ad">Lavabo</text>
+
+  <!-- Miroir -->
+  <rect x="700" y="475" width="30" height="22" rx="2" fill="#d2b4de" stroke="#8e44ad" stroke-width="1"/>
+  <text x="715" y="490" text-anchor="middle" font-size="6" fill="#8e44ad">Miroir</text>
+
+  <!-- Door sanitaires (right wall) -->
+  <rect x="834" y="445" width="8" height="45" fill="#fff"/>
+  <path d="M838,490 A45,45 0 0,1 838,445" fill="none" stroke="#5d6d7e" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ===== EMERGENCY EXIT (top right) ===== -->
+  <rect x="785" y="85" width="4" height="40" fill="#e74c3c"/>
+  <text x="810" y="108" text-anchor="middle" font-size="8" fill="#e74c3c" font-weight="bold">Issue de</text>
+  <text x="810" y="118" text-anchor="middle" font-size="8" fill="#e74c3c" font-weight="bold">secours</text>
+
+  <!-- ===== FIRE EXTINGUISHER symbols ===== -->
+  <!-- Accueil -->
+  <circle cx="265" cy="275" r="8" fill="#e74c3c" opacity="0.9"/>
+  <text x="265" y="279" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff">E</text>
+  <!-- Salle pratique -->
+  <circle cx="440" cy="505" r="8" fill="#e74c3c" opacity="0.9"/>
+  <text x="440" y="509" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff">E</text>
+  <!-- Salle theorique -->
+  <circle cx="790" cy="265" r="8" fill="#e74c3c" opacity="0.9"/>
+  <text x="790" y="269" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff">E</text>
+
+  <!-- ===== EVACUATION ARROWS ===== -->
+  <line x1="260" y1="290" x2="180" y2="290" stroke="#27ae60" stroke-width="2" marker-end="url(#exitArr)" stroke-dasharray="6,3"/>
+  <line x1="575" y1="270" x2="575" y2="290" stroke="#27ae60" stroke-width="2" marker-end="url(#exitArr)" stroke-dasharray="6,3"/>
+
+  <!-- ===== LEGEND ===== -->
+  <rect x="40" y="555" width="800" height="35" rx="6" fill="#f0f3f5" stroke="#d5dbdb" stroke-width="1"/>
+
+  <!-- Legend items -->
+  <circle cx="65" cy="573" r="7" fill="#e74c3c" opacity="0.9"/>
+  <text x="65" y="577" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff">E</text>
+  <text x="80" y="577" font-size="9" fill="#2c3e50">Extincteur</text>
+
+  <rect x="155" y="566" width="4" height="14" fill="#27ae60"/>
+  <text x="168" y="577" font-size="9" fill="#2c3e50">Entree</text>
+
+  <rect x="225" y="566" width="4" height="14" fill="#e74c3c"/>
+  <text x="238" y="577" font-size="9" fill="#2c3e50">Issue de secours</text>
+
+  <line x1="340" y1="573" x2="365" y2="573" stroke="#27ae60" stroke-width="2" marker-end="url(#exitArr)" stroke-dasharray="5,3"/>
+  <text x="375" y="577" font-size="9" fill="#2c3e50">Sens d'evacuation</text>
+
+  <path d="M500,566 A14,14 0 0,1 500,580" fill="none" stroke="#5d6d7e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="515" y="577" font-size="9" fill="#2c3e50">Porte</text>
+
+  <text x="600" y="577" font-size="9" fill="#1a5276" font-weight="bold">Conforme arrete du 12 decembre 2008 / R. 123-2 Code de la construction</text>
+
+  <!-- North indicator -->
+  <circle cx="820" cy="100" r="12" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+  <text x="820" y="104" text-anchor="middle" font-size="10" font-weight="bold" fill="#2c3e50">N</text>
+  <line x1="820" y1="88" x2="820" y2="83" stroke="#2c3e50" stroke-width="2"/>
+  <polygon points="816,86 820,78 824,86" fill="#2c3e50"/>
+</svg>
