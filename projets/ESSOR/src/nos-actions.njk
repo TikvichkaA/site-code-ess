@@ -20,7 +20,7 @@ permalink: /nos-actions/
 
 <main class="page-content">
 
-    {% for action in actions %}
+    {% for action in actions.sections %}
     <!-- {{ action.badge_label }} -->
     <section class="action-section" id="{{ action.id }}">
         <div class="container">
@@ -30,7 +30,7 @@ permalink: /nos-actions/
                     <h2>{{ action.titre }}</h2>
                     <p>{{ action.description }}</p>
                     <ul class="list-check">
-                        {% for item in action.items %}
+                        {% for item in action.points %}
                         <li>{{ item }}</li>
                         {% endfor %}
                     </ul>

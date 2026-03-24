@@ -50,7 +50,7 @@ permalink: /qui-sommes-nous/
                 <p>{{ p.section_valeurs.description }}</p>
             </div>
             <div class="values-grid reveal">
-                {% for valeur in valeurs %}
+                {% for valeur in valeurs.liste %}
                 <div class="value-card">
                     <div class="value-icon" style="background: {{ valeur.bg_color }}; color: {{ valeur.text_color }};">
                         {{ valeur.icone | safe }}
@@ -70,7 +70,7 @@ permalink: /qui-sommes-nous/
                 <h2>{{ p.section_histoire.titre }}</h2>
             </div>
             <div class="timeline reveal" style="max-width: 700px; margin: 0 auto;">
-                {% for item in timeline %}
+                {% for item in timeline.jalons %}
                 <div class="timeline-item">
                     <div class="timeline-year">{{ item.annee }}</div>
                     <p>{{ item.texte }}</p>
@@ -88,7 +88,7 @@ permalink: /qui-sommes-nous/
                 <p>{{ p.section_equipe.description }}</p>
             </div>
             <div class="team-grid reveal">
-                {% for membre in equipe %}
+                {% for membre in equipe.membres %}
                 <div class="team-member">
                     <div class="team-photo">
                         <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>

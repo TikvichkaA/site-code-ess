@@ -6,7 +6,7 @@ media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  # --- Fichiers de configuration ---
+  # --- Paramètres du site ---
   - name: "settings"
     label: "Paramètres"
     files:
@@ -43,68 +43,72 @@ collections:
               - { name: "permanences_par_an", label: "Permanences par an", widget: "string" }
           - { name: "footer_desc", label: "Description footer", widget: "text" }
 
-  - name: "equipe"
-    label: "Équipe"
-    file: "src/_data/equipe.json"
-    fields:
-      - name: "items"
-        label: "Membres"
-        widget: "list"
+  # --- Données structurées ---
+  - name: "donnees"
+    label: "Données"
+    files:
+      - name: "equipe"
+        label: "Équipe"
+        file: "src/_data/equipe.json"
         fields:
-          - { name: "nom", label: "Nom", widget: "string" }
-          - { name: "role", label: "Rôle", widget: "string" }
-
-  - name: "valeurs"
-    label: "Valeurs"
-    file: "src/_data/valeurs.json"
-    fields:
-      - name: "items"
-        label: "Valeurs"
-        widget: "list"
-        fields:
-          - { name: "titre", label: "Titre", widget: "string" }
-          - { name: "description", label: "Description", widget: "text" }
-          - { name: "icone", label: "Icône SVG", widget: "text" }
-          - { name: "bg_color", label: "Couleur de fond", widget: "string" }
-          - { name: "text_color", label: "Couleur du texte", widget: "string" }
-
-  - name: "timeline"
-    label: "Historique"
-    file: "src/_data/timeline.json"
-    fields:
-      - name: "items"
-        label: "Jalons"
-        widget: "list"
-        fields:
-          - { name: "annee", label: "Année", widget: "string" }
-          - { name: "texte", label: "Description", widget: "text" }
-
-  - name: "actions"
-    label: "Actions"
-    file: "src/_data/actions.json"
-    fields:
-      - name: "items"
-        label: "Sections d'action"
-        widget: "list"
-        fields:
-          - { name: "id", label: "Identifiant", widget: "string" }
-          - { name: "badge_color", label: "Couleur du badge", widget: "select", options: ["vermillon", "or", "navy"] }
-          - { name: "badge_label", label: "Libellé du badge", widget: "string" }
-          - { name: "titre", label: "Titre", widget: "string" }
-          - { name: "description", label: "Description", widget: "text" }
-          - name: "items"
-            label: "Points clés"
-            widget: "list"
-            field: { name: "item", label: "Point", widget: "string" }
-          - name: "stats"
-            label: "Statistiques"
+          - name: "membres"
+            label: "Membres"
             widget: "list"
             fields:
-              - { name: "number", label: "Nombre", widget: "string" }
-              - { name: "label", label: "Libellé", widget: "string" }
-          - { name: "image", label: "Image", widget: "image" }
-          - { name: "image_alt", label: "Texte alternatif", widget: "string" }
-          - { name: "reverse", label: "Layout inversé", widget: "boolean", default: false }
+              - { name: "nom", label: "Nom", widget: "string" }
+              - { name: "role", label: "Rôle", widget: "string" }
+
+      - name: "valeurs"
+        label: "Valeurs"
+        file: "src/_data/valeurs.json"
+        fields:
+          - name: "liste"
+            label: "Valeurs"
+            widget: "list"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "icone", label: "Icône SVG", widget: "text" }
+              - { name: "bg_color", label: "Couleur de fond", widget: "string" }
+              - { name: "text_color", label: "Couleur du texte", widget: "string" }
+
+      - name: "timeline"
+        label: "Historique"
+        file: "src/_data/timeline.json"
+        fields:
+          - name: "jalons"
+            label: "Jalons"
+            widget: "list"
+            fields:
+              - { name: "annee", label: "Année", widget: "string" }
+              - { name: "texte", label: "Description", widget: "text" }
+
+      - name: "actions"
+        label: "Actions"
+        file: "src/_data/actions.json"
+        fields:
+          - name: "sections"
+            label: "Sections d'action"
+            widget: "list"
+            fields:
+              - { name: "id", label: "Identifiant", widget: "string" }
+              - { name: "badge_color", label: "Couleur du badge", widget: "select", options: ["vermillon", "or", "navy"] }
+              - { name: "badge_label", label: "Libellé du badge", widget: "string" }
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "points"
+                label: "Points clés"
+                widget: "list"
+                field: { name: "point", label: "Point", widget: "string" }
+              - name: "stats"
+                label: "Statistiques"
+                widget: "list"
+                fields:
+                  - { name: "number", label: "Nombre", widget: "string" }
+                  - { name: "label", label: "Libellé", widget: "string" }
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "image_alt", label: "Texte alternatif", widget: "string" }
+              - { name: "reverse", label: "Layout inversé", widget: "boolean", default: false }
 
   # --- Pages ---
   - name: "pages"
