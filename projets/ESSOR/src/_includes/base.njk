@@ -11,6 +11,7 @@
     {% if extra_css %}{% for css_file in extra_css %}
     <link rel="stylesheet" href="{{ css_file.href }}"{% if css_file.media %} media="{{ css_file.media }}"{% endif %}>
     {% endfor %}{% endif %}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -25,5 +26,12 @@
     {% if extra_js %}{% for js_file in extra_js %}
     <script src="{{ js_file }}"></script>
     {% endfor %}{% endif %}
+    <script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user) {
+            if (!user) { window.netlifyIdentity.on("login", function() { document.location.href = "/admin/"; }); }
+        });
+    }
+    </script>
 </body>
 </html>
