@@ -537,82 +537,6 @@
         }
 
         /* ============================================
-           Message Template Section
-        ============================================ */
-        .message-template {
-            padding: var(--space-3xl) 0;
-            background: var(--bg-alt);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .message-box {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: var(--space-xl);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            position: relative;
-        }
-
-        [data-theme="dark"] .message-box {
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .message-box p {
-            font-size: 0.9375rem;
-            line-height: 1.8;
-            margin-bottom: var(--space-sm);
-            white-space: pre-line;
-        }
-
-        .message-box .message-label {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: var(--primary-bg);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: 1px solid rgba(13, 148, 136, 0.15);
-            margin-bottom: var(--space-md);
-        }
-
-        .copy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: var(--space-md);
-            padding: 0.625rem 1.25rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 2px 10px var(--glow-primary);
-        }
-
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px var(--glow-primary);
-        }
-
-        .copy-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* ============================================
            Responsive
         ============================================ */
         @media (max-width: 968px) {
@@ -964,53 +888,6 @@
         </div>
     </section>
 
-    <!-- Message Template Section -->
-    <section class="message-template" id="message">
-        <div class="container">
-            <div class="section-header" data-reveal="up">
-                <span class="section-tag">Message type</span>
-                <h2 class="section-title">Message pour formulaire de contact CCI</h2>
-                <p class="section-subtitle">Un message prêt à copier-coller pour contacter votre CCI</p>
-            </div>
-
-            <div class="message-box" data-reveal="up" data-delay="1">
-                <span class="message-label">Message type</span>
-                <p id="message-text">Objet : Proposition de partenariat — Outils numériques pour PME/TPE à tarifs préférentiels
-
-Madame, Monsieur,
-
-Je suis Emmanuel Pinglier, développeur web indépendant et fondateur de Code'ess, une entreprise spécialisée dans la création d'outils numériques open source et souverains.
-
-Ingénieur diplômé de l'École Polytechnique, ancien officier et consultant secteur public, j'accompagne aujourd'hui les petites structures dans leur transformation numérique avec une approche pragmatique : des solutions performantes, sans dépendance aux grandes plateformes, et à des tarifs adaptés.
-
-Je souhaiterais vous proposer un partenariat pour accompagner les PME et TPE de votre réseau dans leurs besoins numériques :
-— Sites web professionnels (à partir de 250 € HT)
-— Automatisation et intégration d'IA dans leurs processus
-— Migration vers des outils souverains (alternatives aux GAFAM)
-— Applications métier sur mesure
-
-Les adhérents de votre CCI bénéficieraient de tarifs préférentiels (-30%) et d'un accompagnement complet incluant formation et transfert de compétences.
-
-Mes atouts :
-— 31 applications livrées en 31 jours (défi "Un Jour Une App")
-— 100% open source, hébergement FR/EU, conformité RGPD native
-— Expérience terrain en ESS (Linkee, On Purpose, formations IA)
-
-Je serais ravi de vous présenter cette offre plus en détail lors d'un échange téléphonique ou d'une rencontre à votre convenance.
-
-Cordialement,
-Emmanuel Pinglier
-Code'ess — Numérique libre et responsable
-contact@unjouruneapp.com
-SIRET 942 385 311 00017</p>
-                <button class="copy-btn" onclick="copyMessage()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                    Copier le message
-                </button>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Contact Section -->
     <section class="cci-cta" id="contact-cci">
         <div class="container">
@@ -1071,20 +948,5 @@ SIRET 942 385 311 00017</p>
     </footer>
 
     <script src="script.js" defer></script>
-    <script>
-        function copyMessage() {
-            const text = document.getElementById('message-text').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                const original = btn.innerHTML;
-                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copié !';
-                btn.style.background = 'linear-gradient(135deg, #059669, #047857)';
-                setTimeout(() => {
-                    btn.innerHTML = original;
-                    btn.style.background = '';
-                }, 2000);
-            });
-        }
-    </script>
 </body>
 </html>
