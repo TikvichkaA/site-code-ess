@@ -1,0 +1,166 @@
+---
+title: "ESSOR - Accompagnement des demandeurs d'asile en Ile-de-France"
+description: "ESSOR accompagne les demandeurs d'asile en Ile-de-France depuis 2012 : aide juridique, administrative et cours de français."
+layout: base.njk
+permalink: /
+---
+
+{% set p = pages.accueil %}
+
+<!-- Hero -->
+<section class="hero home-hero">
+    <div class="hero-bg">
+        <img src="{{ p.hero.image }}" alt="">
+    </div>
+    <div class="container">
+        <div class="hero-content">
+            <span class="hero-badge">{{ p.hero.badge }}</span>
+            <h1>{{ p.hero.titre }}</h1>
+            <p class="lead">{{ p.hero.lead }}</p>
+            <div class="btn-group">
+                <a href="{{ p.hero.cta_principal.url }}" class="btn btn-vermillon btn-lg">{{ p.hero.cta_principal.texte }}</a>
+                <a href="{{ p.hero.cta_secondaire.url }}" class="btn btn-outline-light btn-lg">{{ p.hero.cta_secondaire.texte }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bandeau urgence -->
+<div class="urgency-banner">
+    <div class="container">
+        <span class="number">{{ p.bandeau_urgence.nombre }}</span>
+        <span class="label">{{ p.bandeau_urgence.texte }}</span>
+    </div>
+</div>
+
+<!-- 3 Cards actions -->
+<section class="section">
+    <div class="container">
+        <div class="action-cards reveal">
+            <div class="action-card juridique">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>Accompagnement juridique</h3>
+                <p>Pr&eacute;paration des dossiers OFPRA et recours CNDA, permanences avec des juristes et avocats b&eacute;n&eacute;voles.</p>
+                <a href="/nos-actions/#juridique" class="card-link">En savoir plus &rarr;</a>
+            </div>
+            <div class="action-card administratif">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Aide administrative &amp; sociale</h3>
+                <p>Acc&egrave;s aux droits, h&eacute;bergement, sant&eacute;, accompagnement dans les d&eacute;marches aupr&egrave;s des administrations.</p>
+                <a href="/nos-actions/#administratif" class="card-link">En savoir plus &rarr;</a>
+            </div>
+            <div class="action-card francais">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+                <h3>Cours de fran&ccedil;ais</h3>
+                <p>Ateliers de fran&ccedil;ais langue &eacute;trang&egrave;re pour faciliter l'int&eacute;gration et l'autonomie au quotidien.</p>
+                <a href="/nos-actions/#francais" class="card-link">En savoir plus &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chiffres clés -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid reveal">
+            <div class="stat-item">
+                <div class="stat-number">{{ site.chiffres.personnes_accompagnees }}</div>
+                <div class="stat-label">personnes accompagn&eacute;es</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ site.chiffres.benevoles }}</div>
+                <div class="stat-label">b&eacute;n&eacute;voles actifs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ site.chiffres.annees }}</div>
+                <div class="stat-label">ann&eacute;es d'engagement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ site.chiffres.permanences_par_an }}</div>
+                <div class="stat-label">permanences par an</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Aperçu parcours d'asile -->
+<section class="section">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>{{ p.section_parcours.titre }}</h2>
+            <p>{{ p.section_parcours.description }}</p>
+        </div>
+        <div class="parcours-preview reveal">
+            <a href="/parcours-asile/#spada" class="parcours-step-preview">
+                <div class="step-number spada">1</div>
+                <h4>SPADA</h4>
+                <p>Premier accueil et pr&eacute;-enregistrement</p>
+            </a>
+            <a href="/parcours-asile/#guda" class="parcours-step-preview">
+                <div class="step-number guda">2</div>
+                <h4>GUDA</h4>
+                <p>Guichet unique, empreintes, attestation</p>
+            </a>
+            <a href="/parcours-asile/#ofpra" class="parcours-step-preview">
+                <div class="step-number ofpra">3</div>
+                <h4>OFPRA</h4>
+                <p>Dossier, entretien, d&eacute;cision</p>
+            </a>
+            <a href="/parcours-asile/#cnda" class="parcours-step-preview">
+                <div class="step-number cnda">4</div>
+                <h4>CNDA</h4>
+                <p>Recours en cas de rejet</p>
+            </a>
+        </div>
+        <div class="text-center">
+            <a href="/parcours-asile/" class="btn btn-navy">D&eacute;couvrir le parcours complet</a>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignage -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="reveal" style="max-width: 700px; margin: 0 auto;">
+            {% for temoignage in collections.temoignages %}
+            {% if temoignage.data.afficher_sur == "accueil" %}
+            <blockquote class="pull-quote">
+                {{ temoignage.content | safe }}
+                <cite>{{ temoignage.data.nom }}, {{ temoignage.data.role }}</cite>
+            </blockquote>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Dernières actus -->
+<section class="section">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Actualit&eacute;s</h2>
+        </div>
+        <div class="grid grid-3 reveal">
+            {% for actu in collections.actualites %}
+            <article class="card">
+                <span class="badge badge-{{ actu.data.badge_color }}">{{ actu.data.badge }}</span>
+                <h3 class="mt-2">{{ actu.data.title }}</h3>
+                <p class="text-small text-muted mt-1">{{ actu.data.excerpt }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Bénévole -->
+{% set cta_titre = p.cta_benevole.titre %}
+{% set cta_texte = p.cta_benevole.texte %}
+{% set cta_btn_principal = p.cta_benevole.btn_principal %}
+{% set cta_btn_secondaire = p.cta_benevole.btn_secondaire %}
+{% include "cta-benevole.njk" %}

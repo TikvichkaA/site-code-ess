@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/qui-sommes-nous.html"
+  to = "/qui-sommes-nous/"
+  status = 301
+
+[[redirects]]
+  from = "/nos-actions.html"
+  to = "/nos-actions/"
+  status = 301
+
+[[redirects]]
+  from = "/parcours-asile.html"
+  to = "/parcours-asile/"
+  status = 301
+
+[[redirects]]
+  from = "/inscription.html"
+  to = "/inscription/"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/benevole.html"
+  to = "/benevole/"
+  status = 301

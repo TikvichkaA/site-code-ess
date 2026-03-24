@@ -1,0 +1,23 @@
+[
+  {
+    "titre": "Solidarité",
+    "description": "L'accueil et l'entraide comme réponses concrètes à la détresse des personnes exilées. Personne ne doit rester seul face à la complexité administrative.",
+    "icone": "<svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z\"/></svg>",
+    "bg_color": "var(--vermillon-bg)",
+    "text_color": "var(--vermillon)"
+  },
+  {
+    "titre": "Justice",
+    "description": "Défendre le droit d'asile comme droit fondamental. Informer les personnes de leurs droits et les aider à les exercer pleinement.",
+    "icone": "<svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"M2 17l10 5 10-5\"/><path d=\"M2 12l10 5 10-5\"/></svg>",
+    "bg_color": "var(--or-bg)",
+    "text_color": "var(--or-dark)"
+  },
+  {
+    "titre": "Humanisme",
+    "description": "Chaque personne est accueillie avec dignité et respect. Notre accompagnement est global : juridique, social et humain.",
+    "icone": "<svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><line x1=\"9\" y1=\"9\" x2=\"9.01\" y2=\"9\"/><line x1=\"15\" y1=\"9\" x2=\"15.01\" y2=\"9\"/></svg>",
+    "bg_color": "#e8f0fe",
+    "text_color": "var(--bleu-spada)"
+  }
+]

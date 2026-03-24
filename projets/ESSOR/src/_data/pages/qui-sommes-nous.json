@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "titre": "Qui sommes-nous",
+    "lead": "Depuis 2012, ESSOR se mobilise aux côtés des demandeurs d'asile en Ile-de-France. Retour sur notre histoire, nos valeurs et notre équipe.",
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1400&q=80&auto=format&fit=crop"
+  },
+  "mission": {
+    "badge": "Notre mission",
+    "titre": "Accompagner ceux qui demandent protection",
+    "paragraphes": [
+      "ESSOR — Entraide, Solidarité, SOuRires — est une association loi 1901 fondée en 2012. Nous accompagnons les demandeurs d'asile dans leurs démarches juridiques, administratives et leur apprentissage du français.",
+      "Notre conviction : chaque personne en quête de protection mérite un accompagnement digne, informé et humain. Le droit d'asile est un droit fondamental, garanti par la Convention de Genève de 1951 et inscrit dans la Constitution française."
+    ],
+    "alerte": "Nous intervenons à toutes les étapes de la procédure : de la première orientation SPADA jusqu'au recours devant la CNDA.",
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80&auto=format&fit=crop",
+    "image_alt": "L'équipe ESSOR"
+  },
+  "section_valeurs": {
+    "titre": "Nos valeurs",
+    "description": "Trois piliers qui guident chacune de nos actions au quotidien."
+  },
+  "section_histoire": {
+    "titre": "Notre histoire"
+  },
+  "section_equipe": {
+    "titre": "L'équipe",
+    "description": "Bénévoles engagés, juristes, travailleurs sociaux et enseignants de FLE."
+  },
+  "cta_benevole": {
+    "titre": "Envie de nous rejoindre ?",
+    "texte": "Nous recherchons en permanence des bénévoles motivés pour accompagner les demandeurs d'asile.",
+    "btn_principal": { "texte": "Devenir bénévole", "url": "/benevole/", "style": "btn-or" },
+    "btn_secondaire": { "texte": "Nous contacter", "url": "/contact/", "style": "btn-outline-light" }
+  }
+}

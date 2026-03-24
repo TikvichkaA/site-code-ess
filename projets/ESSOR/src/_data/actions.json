@@ -1,0 +1,65 @@
+[
+  {
+    "id": "juridique",
+    "badge_color": "vermillon",
+    "badge_label": "Accompagnement juridique",
+    "titre": "Défendre le droit d'asile",
+    "description": "Nos permanences juridiques rassemblent avocats, juristes et étudiants en droit pour accompagner chaque demandeur d'asile dans la préparation de son dossier.",
+    "items": [
+      "Préparation du récit de vie pour l'OFPRA",
+      "Aide à la constitution du dossier de preuves",
+      "Préparation à l'entretien OFPRA",
+      "Rédaction et suivi des recours CNDA",
+      "Information sur les droits et les procédures"
+    ],
+    "stats": [
+      { "number": "350+", "label": "dossiers suivis / an" },
+      { "number": "65%", "label": "taux de protection" }
+    ],
+    "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80&auto=format&fit=crop",
+    "image_alt": "Accompagnement juridique",
+    "reverse": false
+  },
+  {
+    "id": "administratif",
+    "badge_color": "or",
+    "badge_label": "Aide administrative & sociale",
+    "titre": "Accompagner au quotidien",
+    "description": "Au-delà de la procédure d'asile, les personnes exilées font face à de nombreuses difficultés administratives. Nous les aidons à accéder à leurs droits.",
+    "items": [
+      "Accès à l'hébergement d'urgence et au CADA",
+      "Ouverture des droits CMU-C / PUMa",
+      "Demande d'ADA (allocation pour demandeur d'asile)",
+      "Domiciliation postale",
+      "Orientation vers les partenaires sociaux"
+    ],
+    "stats": [
+      { "number": "200+", "label": "accompagnements sociaux / an" },
+      { "number": "15", "label": "partenaires associatifs" }
+    ],
+    "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80&auto=format&fit=crop",
+    "image_alt": "Aide administrative",
+    "reverse": true
+  },
+  {
+    "id": "francais",
+    "badge_color": "navy",
+    "badge_label": "Cours de français",
+    "titre": "La langue, clé de l'intégration",
+    "description": "Maîtriser le français est essentiel pour comprendre la procédure d'asile, accéder à ses droits et s'intégrer. Nos ateliers FLE sont adaptés à tous les niveaux.",
+    "items": [
+      "Ateliers FLE tous niveaux (A1 à B2)",
+      "Français à visée professionnelle",
+      "Conversations et ateliers thématiques",
+      "Préparation au DELF",
+      "Alphabétisation pour les primo-arrivants"
+    ],
+    "stats": [
+      { "number": "120", "label": "apprenants par session" },
+      { "number": "3", "label": "sessions par semaine" }
+    ],
+    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80&auto=format&fit=crop",
+    "image_alt": "Cours de français",
+    "reverse": false
+  }
+]

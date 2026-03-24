@@ -1,6 +1,7 @@
 /**
  * ESSOR — Navigation
- * Menu mobile, header sticky, scroll effects, active link
+ * Menu mobile, header sticky, scroll effects, smooth scroll
+ * Active link is now handled server-side in header.njk
  */
 (function() {
     'use strict';
@@ -33,15 +34,6 @@
                 header.classList.toggle('scrolled', window.scrollY > 30);
             }, { passive: true });
         }
-
-        // Active nav link
-        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            var href = link.getAttribute('href');
-            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-                link.classList.add('active');
-            }
-        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {

@@ -1,12 +1,10 @@
 {
-  "association": {
-    "nom": "ESSOR",
-    "nom_complet": "ESSOR - Entraide, Solidarité, SOuRires",
-    "adresse": "12 rue de l'Espérance, 75013 Paris",
-    "telephone": "01 45 67 89 10",
-    "email": "contact@association-essor.org",
-    "site": "https://association-essor.org"
-  },
+  "nom": "ESSOR",
+  "nom_complet": "ESSOR - Entraide, Solidarité, SOuRires",
+  "adresse": "12 rue de l'Espérance, 75013 Paris",
+  "telephone": "01 45 67 89 10",
+  "email": "contact@association-essor.org",
+  "site": "https://association-essor.org",
   "permanences": {
     "juridique": "Mardi et jeudi, 14h-17h",
     "administrative": "Lundi et mercredi, 10h-12h30",
@@ -20,16 +18,11 @@
     { "value": "jeudi-15h", "label": "Jeudi 15h-16h" },
     { "value": "jeudi-16h", "label": "Jeudi 16h-17h" }
   ],
-  "inscription": {
-    "endpoint": "https://script.google.com/macros/s/VOTRE_ID_ICI/exec"
-  },
-  "contact": {
-    "endpoint": "https://script.google.com/macros/s/VOTRE_ID_ICI/exec"
-  },
   "chiffres": {
     "personnes_accompagnees": "2 500+",
     "benevoles": "80",
     "annees": "12",
     "permanences_par_an": "400+"
-  }
+  },
+  "footer_desc": "Association loi 1901 accompagnant les demandeurs d'asile en Ile-de-France depuis 2012. Aide juridique, administrative et linguistique."
 }

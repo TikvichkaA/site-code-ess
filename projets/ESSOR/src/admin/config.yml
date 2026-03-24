@@ -1,0 +1,376 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  # --- Fichiers de configuration ---
+  - name: "settings"
+    label: "Paramètres"
+    files:
+      - name: "site"
+        label: "Informations du site"
+        file: "src/_data/site.json"
+        fields:
+          - { name: "nom", label: "Nom court", widget: "string" }
+          - { name: "nom_complet", label: "Nom complet", widget: "string" }
+          - { name: "adresse", label: "Adresse", widget: "string" }
+          - { name: "telephone", label: "Téléphone", widget: "string" }
+          - { name: "email", label: "Email", widget: "string" }
+          - { name: "site", label: "URL du site", widget: "string" }
+          - name: "permanences"
+            label: "Horaires des permanences"
+            widget: "object"
+            fields:
+              - { name: "juridique", label: "Permanence juridique", widget: "string" }
+              - { name: "administrative", label: "Aide administrative", widget: "string" }
+              - { name: "francais", label: "Cours de français", widget: "string" }
+          - name: "creneaux"
+            label: "Créneaux d'inscription"
+            widget: "list"
+            fields:
+              - { name: "value", label: "Identifiant", widget: "string" }
+              - { name: "label", label: "Libellé affiché", widget: "string" }
+          - name: "chiffres"
+            label: "Chiffres clés"
+            widget: "object"
+            fields:
+              - { name: "personnes_accompagnees", label: "Personnes accompagnées", widget: "string" }
+              - { name: "benevoles", label: "Bénévoles", widget: "string" }
+              - { name: "annees", label: "Années", widget: "string" }
+              - { name: "permanences_par_an", label: "Permanences par an", widget: "string" }
+          - { name: "footer_desc", label: "Description footer", widget: "text" }
+
+  - name: "equipe"
+    label: "Équipe"
+    file: "src/_data/equipe.json"
+    fields:
+      - name: "items"
+        label: "Membres"
+        widget: "list"
+        fields:
+          - { name: "nom", label: "Nom", widget: "string" }
+          - { name: "role", label: "Rôle", widget: "string" }
+
+  - name: "valeurs"
+    label: "Valeurs"
+    file: "src/_data/valeurs.json"
+    fields:
+      - name: "items"
+        label: "Valeurs"
+        widget: "list"
+        fields:
+          - { name: "titre", label: "Titre", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+          - { name: "icone", label: "Icône SVG", widget: "text" }
+          - { name: "bg_color", label: "Couleur de fond", widget: "string" }
+          - { name: "text_color", label: "Couleur du texte", widget: "string" }
+
+  - name: "timeline"
+    label: "Historique"
+    file: "src/_data/timeline.json"
+    fields:
+      - name: "items"
+        label: "Jalons"
+        widget: "list"
+        fields:
+          - { name: "annee", label: "Année", widget: "string" }
+          - { name: "texte", label: "Description", widget: "text" }
+
+  - name: "actions"
+    label: "Actions"
+    file: "src/_data/actions.json"
+    fields:
+      - name: "items"
+        label: "Sections d'action"
+        widget: "list"
+        fields:
+          - { name: "id", label: "Identifiant", widget: "string" }
+          - { name: "badge_color", label: "Couleur du badge", widget: "select", options: ["vermillon", "or", "navy"] }
+          - { name: "badge_label", label: "Libellé du badge", widget: "string" }
+          - { name: "titre", label: "Titre", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+          - name: "items"
+            label: "Points clés"
+            widget: "list"
+            field: { name: "item", label: "Point", widget: "string" }
+          - name: "stats"
+            label: "Statistiques"
+            widget: "list"
+            fields:
+              - { name: "number", label: "Nombre", widget: "string" }
+              - { name: "label", label: "Libellé", widget: "string" }
+          - { name: "image", label: "Image", widget: "image" }
+          - { name: "image_alt", label: "Texte alternatif", widget: "string" }
+          - { name: "reverse", label: "Layout inversé", widget: "boolean", default: false }
+
+  # --- Pages ---
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "accueil"
+        label: "Accueil"
+        file: "src/_data/pages/accueil.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "badge", label: "Badge", widget: "string" }
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - name: "cta_principal"
+                label: "CTA principal"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+              - name: "cta_secondaire"
+                label: "CTA secondaire"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+          - name: "bandeau_urgence"
+            label: "Bandeau urgence"
+            widget: "object"
+            fields:
+              - { name: "nombre", label: "Nombre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "string" }
+          - name: "section_parcours"
+            label: "Section parcours"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "cta_benevole"
+            label: "CTA bénévole"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "text" }
+              - name: "btn_principal"
+                label: "Bouton principal"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+              - name: "btn_secondaire"
+                label: "Bouton secondaire"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+
+      - name: "qui-sommes-nous"
+        label: "Qui sommes-nous"
+        file: "src/_data/pages/qui-sommes-nous.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+          - name: "mission"
+            label: "Section mission"
+            widget: "object"
+            fields:
+              - { name: "badge", label: "Badge", widget: "string" }
+              - { name: "titre", label: "Titre", widget: "string" }
+              - name: "paragraphes"
+                label: "Paragraphes"
+                widget: "list"
+                field: { name: "texte", label: "Paragraphe", widget: "text" }
+              - { name: "alerte", label: "Alerte info", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "image_alt", label: "Texte alternatif", widget: "string" }
+          - name: "section_valeurs"
+            label: "Section valeurs"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "section_histoire"
+            label: "Section histoire"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+          - name: "section_equipe"
+            label: "Section équipe"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "cta_benevole"
+            label: "CTA bénévole"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "text" }
+              - name: "btn_principal"
+                label: "Bouton principal"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+              - name: "btn_secondaire"
+                label: "Bouton secondaire"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+
+      - name: "nos-actions"
+        label: "Nos actions"
+        file: "src/_data/pages/nos-actions.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+          - name: "cta"
+            label: "CTA"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "text" }
+              - name: "btn_principal"
+                label: "Bouton principal"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+              - name: "btn_secondaire"
+                label: "Bouton secondaire"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+
+      - name: "benevole"
+        label: "Bénévole"
+        file: "src/_data/pages/benevole.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+          - name: "section_missions"
+            label: "Section missions"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "missions"
+            label: "Missions"
+            widget: "list"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "icone", label: "Icône SVG", widget: "text" }
+              - { name: "bg_color", label: "Couleur de fond", widget: "string" }
+              - { name: "text_color", label: "Couleur du texte", widget: "string" }
+          - name: "section_profils"
+            label: "Section profils"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "profils"
+            label: "Profils recherchés"
+            widget: "list"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "icone", label: "Icône SVG", widget: "text" }
+          - name: "section_temoignages"
+            label: "Section témoignages"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+          - name: "cta"
+            label: "CTA"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "texte", label: "Texte", widget: "text" }
+              - name: "btn_principal"
+                label: "Bouton principal"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+              - name: "btn_secondaire"
+                label: "Bouton secondaire"
+                widget: "object"
+                fields:
+                  - { name: "texte", label: "Texte", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "style", label: "Style CSS", widget: "string" }
+
+      - name: "contact"
+        label: "Contact"
+        file: "src/_data/pages/contact.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+
+      - name: "inscription"
+        label: "Inscription"
+        file: "src/_data/pages/inscription.json"
+        fields:
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "titre", label: "Titre", widget: "string" }
+              - { name: "lead", label: "Sous-titre", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+
+  # --- Collections dossier ---
+  - name: "actualites"
+    label: "Actualités"
+    folder: "src/actualites"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "badge", label: "Badge", widget: "string" }
+      - { name: "badge_color", label: "Couleur du badge", widget: "select", options: ["vermillon", "or", "navy"] }
+      - { name: "excerpt", label: "Extrait", widget: "text" }
+      - { name: "body", label: "Contenu", widget: "markdown" }
+
+  - name: "temoignages"
+    label: "Témoignages"
+    folder: "src/temoignages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "nom", label: "Nom", widget: "string" }
+      - { name: "role", label: "Rôle / Description", widget: "string" }
+      - { name: "afficher_sur", label: "Afficher sur", widget: "select", options: ["accueil", "benevole"] }
+      - { name: "body", label: "Témoignage", widget: "markdown" }

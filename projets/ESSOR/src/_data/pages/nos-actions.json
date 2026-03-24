@@ -1,0 +1,13 @@
+{
+  "hero": {
+    "titre": "Nos actions",
+    "lead": "Trois axes d'intervention complémentaires pour accompagner les demandeurs d'asile dans toutes leurs démarches.",
+    "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80&auto=format&fit=crop"
+  },
+  "cta": {
+    "titre": "Besoin d'aide dans vos démarches ?",
+    "texte": "Inscrivez-vous à l'une de nos permanences ou contactez-nous pour être orienté.",
+    "btn_principal": { "texte": "S'inscrire à une permanence", "url": "/inscription/", "style": "btn-vermillon" },
+    "btn_secondaire": { "texte": "Nous contacter", "url": "/contact/", "style": "btn-outline-light" }
+  }
+}

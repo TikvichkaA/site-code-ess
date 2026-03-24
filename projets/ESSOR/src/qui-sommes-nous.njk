@@ -1,0 +1,111 @@
+---
+title: "Qui sommes-nous"
+description: "Découvrez ESSOR, association d'accompagnement des demandeurs d'asile en Ile-de-France depuis 2012."
+layout: base.njk
+permalink: /qui-sommes-nous/
+---
+
+{% set p = pages['qui-sommes-nous'] %}
+
+<!-- Hero -->
+<section class="hero hero-sm">
+    <div class="hero-bg">
+        <img src="{{ p.hero.image }}" alt="">
+    </div>
+    <div class="container">
+        <h1>{{ p.hero.titre }}</h1>
+        <p class="lead">{{ p.hero.lead }}</p>
+    </div>
+</section>
+
+<main class="page-content">
+
+    <!-- Mission -->
+    <section class="section">
+        <div class="container">
+            <div class="action-layout reveal">
+                <div>
+                    <span class="badge badge-vermillon mb-2">{{ p.mission.badge }}</span>
+                    <h2>{{ p.mission.titre }}</h2>
+                    {% for para in p.mission.paragraphes %}
+                    <p>{{ para }}</p>
+                    {% endfor %}
+                    <div class="alert alert-info mt-3">
+                        <span class="alert-icon">&#9432;</span>
+                        <div>{{ p.mission.alerte }}</div>
+                    </div>
+                </div>
+                <div class="action-image">
+                    <img src="{{ p.mission.image }}" alt="{{ p.mission.image_alt }}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valeurs -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_valeurs.titre }}</h2>
+                <p>{{ p.section_valeurs.description }}</p>
+            </div>
+            <div class="values-grid reveal">
+                {% for valeur in valeurs %}
+                <div class="value-card">
+                    <div class="value-icon" style="background: {{ valeur.bg_color }}; color: {{ valeur.text_color }};">
+                        {{ valeur.icone | safe }}
+                    </div>
+                    <h3>{{ valeur.titre }}</h3>
+                    <p>{{ valeur.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline historique -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_histoire.titre }}</h2>
+            </div>
+            <div class="timeline reveal" style="max-width: 700px; margin: 0 auto;">
+                {% for item in timeline %}
+                <div class="timeline-item">
+                    <div class="timeline-year">{{ item.annee }}</div>
+                    <p>{{ item.texte }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_equipe.titre }}</h2>
+                <p>{{ p.section_equipe.description }}</p>
+            </div>
+            <div class="team-grid reveal">
+                {% for membre in equipe %}
+                <div class="team-member">
+                    <div class="team-photo">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>{{ membre.nom }}</h4>
+                    <span class="role">{{ membre.role }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    {% set cta_titre = p.cta_benevole.titre %}
+    {% set cta_texte = p.cta_benevole.texte %}
+    {% set cta_btn_principal = p.cta_benevole.btn_principal %}
+    {% set cta_btn_secondaire = p.cta_benevole.btn_secondaire %}
+    {% include "cta-benevole.njk" %}
+
+</main>

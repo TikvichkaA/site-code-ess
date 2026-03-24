@@ -1,0 +1,19 @@
+{# Hero section - paramètres: titre, lead, image, badge (optionnel), variant ("sm" ou "full"), extra_content (optionnel) #}
+<section class="hero{% if variant == 'sm' %} hero-sm{% elif variant == 'full' %} home-hero{% endif %}">
+    <div class="hero-bg">
+        <img src="{{ hero_image }}" alt="">
+    </div>
+    <div class="container">
+        {% if variant == 'full' %}
+        <div class="hero-content">
+            {% if hero_badge %}<span class="hero-badge">{{ hero_badge }}</span>{% endif %}
+            <h1>{{ hero_titre | safe }}</h1>
+            <p class="lead">{{ hero_lead | safe }}</p>
+            {% block hero_extra %}{% endblock %}
+        </div>
+        {% else %}
+        <h1>{{ hero_titre | safe }}</h1>
+        <p class="lead">{{ hero_lead | safe }}</p>
+        {% endif %}
+    </div>
+</section>

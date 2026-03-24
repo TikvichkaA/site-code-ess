@@ -1,6 +1,6 @@
 /**
  * ESSOR — Inscription
- * Toggle type usager, validation, POST Google Sheets
+ * Toggle type usager, validation, POST Netlify Forms
  * Gère aussi le formulaire de contact
  */
 (function() {
@@ -37,33 +37,6 @@
             });
         });
 
-        // --- Charger les créneaux depuis config ---
-        function loadCreneaux() {
-            var select = document.getElementById('ins-creneau');
-            if (!select) return;
-
-            // Wait for config to be loaded
-            var interval = setInterval(function() {
-                if (window.ESSORConfig && window.ESSORConfig.getConfig()) {
-                    clearInterval(interval);
-                    var config = window.ESSORConfig.getConfig();
-                    if (config.creneaux && config.creneaux.length) {
-                        config.creneaux.forEach(function(c) {
-                            var opt = document.createElement('option');
-                            opt.value = c.value;
-                            opt.textContent = c.label;
-                            select.appendChild(opt);
-                        });
-                    }
-                }
-            }, 100);
-
-            // Timeout after 3s
-            setTimeout(function() { clearInterval(interval); }, 3000);
-        }
-
-        loadCreneaux();
-
         // --- Validation ---
         function validateField(input) {
             var isValid = input.checkValidity();
@@ -94,67 +67,19 @@
             });
         });
 
-        // --- Submit forms ---
-        function getEndpoint() {
-            if (window.ESSORConfig && window.ESSORConfig.getConfig()) {
-                return window.ESSORConfig.get('inscription.endpoint');
-            }
-            return null;
-        }
-
-        function getContactEndpoint() {
-            if (window.ESSORConfig && window.ESSORConfig.getConfig()) {
-                return window.ESSORConfig.get('contact.endpoint');
-            }
-            return null;
-        }
-
-        function collectFormData(form) {
-            var data = {};
-            var inputs = form.querySelectorAll('input, select, textarea');
-            inputs.forEach(function(input) {
-                if (input.type === 'checkbox') {
-                    if (!data[input.name]) data[input.name] = [];
-                    if (input.checked) data[input.name].push(input.value);
-                } else {
-                    data[input.name] = input.value;
-                }
-            });
-            // Convert checkbox arrays to strings
-            for (var key in data) {
-                if (Array.isArray(data[key])) {
-                    data[key] = data[key].join(', ');
-                }
-            }
-            return data;
-        }
-
-        function submitForm(form, type, confirmationId) {
+        // --- Submit forms via Netlify ---
+        function submitForm(form, confirmationId) {
             if (!validateForm(form)) return;
 
             var btn = form.querySelector('button[type="submit"]');
             if (btn) btn.classList.add('loading');
 
-            var data = collectFormData(form);
-            data.type = type;
-            data.timestamp = new Date().toISOString();
+            var formData = new FormData(form);
 
-            var endpoint = type === 'contact' ? getContactEndpoint() : getEndpoint();
-
-            if (!endpoint || endpoint.includes('VOTRE_ID_ICI')) {
-                // Demo mode
-                setTimeout(function() {
-                    if (btn) btn.classList.remove('loading');
-                    showConfirmation(form, confirmationId);
-                }, 1000);
-                return;
-            }
-
-            fetch(endpoint, {
+            fetch(form.action || '/', {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
             }).then(function() {
                 if (btn) btn.classList.remove('loading');
                 showConfirmation(form, confirmationId);
@@ -175,7 +100,7 @@
         if (formBenef) {
             formBenef.addEventListener('submit', function(e) {
                 e.preventDefault();
-                submitForm(formBenef, 'beneficiaire', 'confirmation-beneficiaire');
+                submitForm(formBenef, 'confirmation-beneficiaire');
             });
         }
 
@@ -184,7 +109,7 @@
         if (formBenev) {
             formBenev.addEventListener('submit', function(e) {
                 e.preventDefault();
-                submitForm(formBenev, 'benevole', 'confirmation-benevole');
+                submitForm(formBenev, 'confirmation-benevole');
             });
         }
 
@@ -193,7 +118,7 @@
         if (formContact) {
             formContact.addEventListener('submit', function(e) {
                 e.preventDefault();
-                submitForm(formContact, 'contact', 'contact-confirmation');
+                submitForm(formContact, 'contact-confirmation');
             });
         }
 

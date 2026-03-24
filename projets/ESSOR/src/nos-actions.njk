@@ -1,0 +1,61 @@
+---
+title: Nos actions
+description: "Accompagnement juridique, aide administrative et cours de français : découvrez les actions d'ESSOR auprès des demandeurs d'asile."
+layout: base.njk
+permalink: /nos-actions/
+---
+
+{% set p = pages['nos-actions'] %}
+
+<!-- Hero -->
+<section class="hero hero-sm">
+    <div class="hero-bg">
+        <img src="{{ p.hero.image }}" alt="">
+    </div>
+    <div class="container">
+        <h1>{{ p.hero.titre }}</h1>
+        <p class="lead">{{ p.hero.lead }}</p>
+    </div>
+</section>
+
+<main class="page-content">
+
+    {% for action in actions %}
+    <!-- {{ action.badge_label }} -->
+    <section class="action-section" id="{{ action.id }}">
+        <div class="container">
+            <div class="action-layout{% if action.reverse %} reverse{% endif %} reveal">
+                <div class="action-content">
+                    <span class="badge badge-{{ action.badge_color }} mb-2">{{ action.badge_label }}</span>
+                    <h2>{{ action.titre }}</h2>
+                    <p>{{ action.description }}</p>
+                    <ul class="list-check">
+                        {% for item in action.items %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="action-stats">
+                        {% for stat in action.stats %}
+                        <div class="action-stat">
+                            <div class="number">{{ stat.number }}</div>
+                            <div class="label">{{ stat.label }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="action-image">
+                    <img src="{{ action.image }}" alt="{{ action.image_alt }}">
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    <!-- CTA -->
+    {% set cta_titre = p.cta.titre %}
+    {% set cta_texte = p.cta.texte %}
+    {% set cta_btn_principal = p.cta.btn_principal %}
+    {% set cta_btn_secondaire = p.cta.btn_secondaire %}
+    {% include "cta-benevole.njk" %}
+
+</main>

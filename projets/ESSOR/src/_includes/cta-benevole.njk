@@ -1,0 +1,11 @@
+{# CTA section - paramètres: cta_titre, cta_texte, cta_btn_principal, cta_btn_secondaire #}
+<section class="cta-benevole">
+    <div class="container reveal">
+        <h2>{{ cta_titre }}</h2>
+        <p>{{ cta_texte }}</p>
+        <div class="btn-group" style="justify-content: center;">
+            <a href="{{ cta_btn_principal.url }}" class="btn {{ cta_btn_principal.style }} btn-lg">{{ cta_btn_principal.texte }}</a>
+            <a href="{{ cta_btn_secondaire.url }}" class="btn {{ cta_btn_secondaire.style }} btn-lg">{{ cta_btn_secondaire.texte }}</a>
+        </div>
+    </div>
+</section>

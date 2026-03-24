@@ -1,0 +1,93 @@
+---
+title: Devenir bénévole
+description: "Rejoignez ESSOR comme bénévole : juristes, interprètes, enseignants de FLE. Accompagnez les demandeurs d'asile."
+layout: base.njk
+permalink: /benevole/
+---
+
+{% set p = pages.benevole %}
+
+<!-- Hero -->
+<section class="hero hero-sm">
+    <div class="hero-bg">
+        <img src="{{ p.hero.image }}" alt="">
+    </div>
+    <div class="container">
+        <h1>{{ p.hero.titre }}</h1>
+        <p class="lead">{{ p.hero.lead }}</p>
+    </div>
+</section>
+
+<main class="page-content">
+
+    <!-- Missions -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_missions.titre }}</h2>
+                <p>{{ p.section_missions.description }}</p>
+            </div>
+            <div class="missions-grid reveal">
+                {% for mission in p.missions %}
+                <div class="mission-card">
+                    <div class="mission-icon" style="background: {{ mission.bg_color }}; color: {{ mission.text_color }};">
+                        {{ mission.icone | safe }}
+                    </div>
+                    <h3>{{ mission.titre }}</h3>
+                    <p>{{ mission.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Profils recherchés -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_profils.titre }}</h2>
+                <p>{{ p.section_profils.description }}</p>
+            </div>
+            <div class="profils-recherches reveal">
+                {% for profil in p.profils %}
+                <div class="profil-item">
+                    <div class="profil-icon">
+                        {{ profil.icone | safe }}
+                    </div>
+                    <div>
+                        <h4>{{ profil.titre }}</h4>
+                        <p>{{ profil.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages bénévoles -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>{{ p.section_temoignages.titre }}</h2>
+            </div>
+            <div class="grid grid-2 reveal">
+                {% for temoignage in collections.temoignages %}
+                {% if temoignage.data.afficher_sur == "benevole" %}
+                <blockquote class="pull-quote">
+                    {{ temoignage.content | safe }}
+                    <cite>{{ temoignage.data.nom }}, {{ temoignage.data.role }}</cite>
+                </blockquote>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    {% set cta_titre = p.cta.titre %}
+    {% set cta_texte = p.cta.texte %}
+    {% set cta_btn_principal = p.cta.btn_principal %}
+    {% set cta_btn_secondaire = p.cta.btn_secondaire %}
+    {% include "cta-benevole.njk" %}
+
+</main>

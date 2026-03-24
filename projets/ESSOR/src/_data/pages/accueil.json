@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "badge": "Depuis 2012 en Ile-de-France",
+    "titre": "Aux côtés des demandeurs d'asile, chaque jour",
+    "lead": "ESSOR accompagne les personnes en quête de protection internationale dans leurs démarches juridiques, administratives et leur apprentissage du français.",
+    "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80&auto=format&fit=crop",
+    "cta_principal": { "texte": "Etre accompagné", "url": "/inscription/" },
+    "cta_secondaire": { "texte": "Comprendre le parcours d'asile", "url": "/parcours-asile/" }
+  },
+  "bandeau_urgence": {
+    "nombre": "120 000+",
+    "texte": "demandes d'asile déposées en France en 2024 — un droit fondamental qu'il faut accompagner"
+  },
+  "section_parcours": {
+    "titre": "Le parcours de demande d'asile",
+    "description": "Quatre étapes clés que chaque demandeur d'asile doit connaître. Nous vous accompagnons à chacune d'entre elles."
+  },
+  "cta_benevole": {
+    "titre": "Rejoignez-nous comme bénévole",
+    "texte": "Juristes, interprètes, enseignants de FLE… Vos compétences peuvent transformer des vies. Quelques heures par semaine suffisent.",
+    "btn_principal": { "texte": "Devenir bénévole", "url": "/benevole/", "style": "btn-or" },
+    "btn_secondaire": { "texte": "Nous contacter", "url": "/contact/", "style": "btn-outline-light" }
+  }
+}

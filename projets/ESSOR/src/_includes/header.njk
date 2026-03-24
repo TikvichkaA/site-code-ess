@@ -1,0 +1,25 @@
+<!-- Header -->
+<header class="site-header">
+    <div class="container">
+        <a href="/" class="site-logo">
+            <span class="site-logo-icon">E</span>
+            ESSOR
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/"{% if page.url == "/" %} class="active"{% endif %}>Accueil</a></li>
+                <li><a href="/qui-sommes-nous/"{% if page.url == "/qui-sommes-nous/" %} class="active"{% endif %}>Qui sommes-nous</a></li>
+                <li><a href="/nos-actions/"{% if page.url == "/nos-actions/" %} class="active"{% endif %}>Nos actions</a></li>
+                <li><a href="/parcours-asile/"{% if page.url == "/parcours-asile/" %} class="active"{% endif %}>Parcours d'asile</a></li>
+                <li><a href="/contact/"{% if page.url == "/contact/" %} class="active"{% endif %}>Contact</a></li>
+                <li class="nav-cta">
+                    <a href="/inscription/" class="btn btn-vermillon btn-sm">Etre accompagn&eacute;</a>
+                    <a href="/benevole/" class="btn btn-or btn-sm">Devenir b&eacute;n&eacute;vole</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</header>
