@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offre CCI — Outils numériques pour PME/TPE à tarifs réduits | Code'ess</title>
+    <meta name="description" content="Offre partenaire CCI : refonte et création d'outils numériques pour les PME et TPE. Sites web, automatisation, IA — open source, souverain, à prix adapté.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://code-ess.unjouruneapp.com/offre-cci.html">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Offre CCI — Outils numériques pour PME/TPE à tarifs réduits | Code'ess">
+    <meta property="og:description" content="Offre partenaire CCI : refonte et création d'outils numériques pour les PME et TPE. Sites web, automatisation, IA — open source, souverain, à prix adapté.">
+    <meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+    <meta property="og:url" content="https://code-ess.unjouruneapp.com/offre-cci.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CCI Page Specific Styles
+        ============================================ */
+
+        /* Hero */
+        .cci-hero {
+            position: relative;
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .cci-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(13, 148, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+
+        .cci-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+
+        .cci-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cci-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(240, 253, 250, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-light);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+        }
+
+        .cci-hero-content h1 {
+            margin-bottom: var(--space-md);
+        }
+
+        .cci-hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cci-intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+
+        .cci-hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .cci-hero-stats {
+            display: flex;
+            gap: var(--space-xl);
+        }
+
+        /* Visual panel */
+        .cci-visual {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cci-visual-card {
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-lg);
+            transform: rotate(1deg);
+            transition: var(--transition-slow);
+            box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 400px;
+        }
+
+        .cci-visual-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.15) 45%,
+                rgba(255, 255, 255, 0.15) 55%,
+                transparent 60%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        .cci-visual-card:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-8px);
+            box-shadow: 0 35px 60px -15px rgba(13, 148, 136, 0.4);
+        }
+
+        .cci-visual-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cci-visual-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cci-visual-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .cci-visual-list li svg {
+            width: 20px;
+            height: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           Forces Section
+        ============================================ */
+        .forces {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forces::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.06), transparent 70%);
+            top: -100px;
+            left: -100px;
+            pointer-events: none;
+        }
+
+        .forces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .force-card {
+            position: relative;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .force-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .force-card:hover::before { opacity: 1; }
+
+        .force-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 0 20px rgba(13, 148, 136, 0.1);
+        }
+
+        [data-theme="dark"] .force-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .force-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 15px var(--glow-primary);
+            transition: var(--transition);
+        }
+
+        .force-card:hover .force-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .force-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .force-card h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* ============================================
+           Offres / Pricing Section
+        ============================================ */
+        .offres {
+            padding: var(--space-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offres::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .offres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .offre-card {
+            position: relative;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offre-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .offre-card:hover::before { opacity: 1; }
+
+        .offre-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 0 20px rgba(13, 148, 136, 0.1);
+        }
+
+        .offre-card.featured {
+            border: 2px solid var(--primary);
+        }
+
+        .offre-card.featured .offre-badge {
+            display: inline-block;
+        }
+
+        [data-theme="dark"] .offre-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .offre-card.featured {
+            border-color: var(--primary);
+        }
+
+        .offre-badge {
+            display: none;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+            width: fit-content;
+        }
+
+        .offre-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 15px var(--glow-primary);
+            transition: var(--transition);
+        }
+
+        .offre-card:hover .offre-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .offre-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .offre-card h3 {
+            margin-bottom: var(--space-xs);
+        }
+
+        .offre-price {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-md);
+        }
+
+        .offre-price small {
+            font-size: 0.875rem;
+            font-weight: 500;
+            -webkit-text-fill-color: var(--text-muted);
+        }
+
+        .offre-details {
+            list-style: none;
+            margin-bottom: var(--space-lg);
+            flex: 1;
+        }
+
+        .offre-details li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-light);
+        }
+
+        .offre-details li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .offre-note {
+            max-width: 700px;
+            margin: var(--space-xl) auto 0;
+            text-align: center;
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ============================================
+           Garanties Section
+        ============================================ */
+        .garanties {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .garanties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .garantie-item {
+            text-align: center;
+            padding: var(--space-lg);
+            transition: var(--transition);
+        }
+
+        .garantie-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .garantie-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(79, 70, 229, 0.08));
+            border-radius: 50%;
+            margin: 0 auto var(--space-md);
+            font-size: 1.75rem;
+            transition: var(--transition);
+        }
+
+        .garantie-item:hover .garantie-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scale(1.1);
+        }
+
+        .garantie-item h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .garantie-item p {
+            font-size: 0.875rem;
+        }
+
+        /* ============================================
+           CTA Section
+        ============================================ */
+        .cci-cta {
+            padding: var(--space-3xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cci-cta .section-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .cci-cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-xl);
+        }
+
+        .cci-contact-info {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .cci-contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.9375rem;
+            color: var(--text-light);
+        }
+
+        .cci-contact-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+        }
+
+        .cci-contact-item a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           Message Template Section
+        ============================================ */
+        .message-template {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        [data-theme="dark"] .message-box {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .message-box p {
+            font-size: 0.9375rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-sm);
+            white-space: pre-line;
+        }
+
+        .message-box .message-label {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            margin-bottom: var(--space-md);
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: var(--space-md);
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px var(--glow-primary);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--glow-primary);
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ============================================
+           Responsive
+        ============================================ */
+        @media (max-width: 968px) {
+            .cci-hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cci-visual {
+                order: -1;
+            }
+
+            .cci-visual-card {
+                transform: none;
+                max-width: 100%;
+            }
+
+            .cci-hero-stats {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cci-hero {
+                min-height: auto;
+                padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl);
+            }
+
+            .cci-hero-cta {
+                flex-direction: column;
+            }
+
+            .cci-hero-cta .btn {
+                width: 100%;
+            }
+
+            .cci-contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-sm);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .forces-grid,
+            .offres-grid,
+            .garanties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <span class="logo-chevron">&lt;/&gt;</span>
+                <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#engagements">Engagements</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="qui-suis-je.html">Qui suis-je</a></li>
+                <li><a href="#contact-cci" class="btn btn-nav">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-toggle" id="dark-toggle" aria-label="Basculer le mode sombre">
+                    <svg class="dark-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="dark-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+    <!-- Hero Section -->
+    <section class="cci-hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+
+        <div class="container cci-hero-grid">
+            <div class="cci-hero-content">
+                <div class="cci-badge" data-reveal="up">
+                    <span>&#129309;</span>
+                    <span>Offre partenaire CCI</span>
+                </div>
+                <h1 data-reveal="up" data-delay="1">
+                    Des outils numériques <span class="highlight">performants</span> pour vos PME et TPE
+                </h1>
+                <p class="cci-intro" data-reveal="up" data-delay="2">
+                    Votre CCI accompagne les entreprises locales dans leur transformation. Je vous propose une offre sur mesure pour équiper vos adhérents d'outils numériques modernes, souverains et accessibles, sans dépendance aux grands groupes.
+                </p>
+                <div class="cci-hero-cta" data-reveal="up" data-delay="3">
+                    <a href="#offres" class="btn btn-primary">Voir les offres</a>
+                    <a href="#contact-cci" class="btn btn-secondary">Prendre contact</a>
+                </div>
+                <div class="cci-hero-stats" data-reveal="up" data-delay="4">
+                    <div class="stat">
+                        <span class="stat-number">-30%</span>
+                        <span class="stat-label">Tarifs CCI vs marché</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Open source & souverain</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">31</span>
+                        <span class="stat-label">Apps livrées en 31 jours</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cci-visual" data-reveal="scale">
+                <div class="cci-visual-card">
+                    <h3>Ce que vos adhérents obtiennent</h3>
+                    <ul class="cci-visual-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                            Site web professionnel clé en main
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Automatisation des tâches répétitives
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            IA intégrée à leurs processus
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Hébergement souverain (FR/EU)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            Formation et autonomie incluses
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <!-- Forces / Pourquoi moi -->
+    <section class="forces" id="forces">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Mes forces</span>
+                <h2 class="section-title">Pourquoi travailler avec Code'ess ?</h2>
+                <p class="section-subtitle">Un profil rare qui combine rigueur d'ingénieur, engagement social et rapidité d'exécution</p>
+            </div>
+
+            <div class="forces-grid">
+                <!-- Force 1 -->
+                <div class="force-card" data-reveal="up" data-delay="0">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Rapidité d'exécution prouvée</h3>
+                    <p class="service-description">
+                        Avec le défi <strong>Un Jour Une App</strong>, j'ai livré 31 applications fonctionnelles en 31 jours : React, Vue, Python, vanilla JS. Pas de promesses, des preuves.
+                    </p>
+                </div>
+
+                <!-- Force 2 -->
+                <div class="force-card" data-reveal="up" data-delay="1">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+                    </div>
+                    <h3>Formation Polytechnique</h3>
+                    <p class="service-description">
+                        Ingénieur diplômé de l'X, spécialisé en cryptographie. Rigueur analytique, capacité à résoudre des problèmes complexes et à structurer des solutions pérennes.
+                    </p>
+                </div>
+
+                <!-- Force 3 -->
+                <div class="force-card" data-reveal="up" data-delay="2">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Stack technique polyvalente</h3>
+                    <p class="service-description">
+                        HTML/CSS/JS, React, Vue, Python, 11ty, WordPress, n8n, Supabase, IA générative. Je choisis l'outil adapté au besoin, pas l'inverse.
+                    </p>
+                </div>
+
+                <!-- Force 4 -->
+                <div class="force-card" data-reveal="up" data-delay="3">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <h3>Tarifs adaptés, pas low-cost</h3>
+                    <p class="service-description">
+                        Des grilles tarifaires pensées pour les PME et TPE. Open source = pas de frais de licence. Hébergement souverain = souvent moins cher que le cloud US.
+                    </p>
+                </div>
+
+                <!-- Force 5 -->
+                <div class="force-card" data-reveal="up" data-delay="4">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Souveraineté numérique</h3>
+                    <p class="service-description">
+                        Zéro donnée hors UE. Alternatives concrètes aux GAFAM. Conformité RGPD native. Vos adhérents gardent le contrôle de leurs outils et de leurs données.
+                    </p>
+                </div>
+
+                <!-- Force 6 -->
+                <div class="force-card" data-reveal="up" data-delay="5">
+                    <div class="force-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3>Terrain et transfert</h3>
+                    <p class="service-description">
+                        Ancien officier, consultant secteur public, formateur. Je ne livre pas un produit, je transfère une compétence. Chaque projet inclut formation et documentation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offres Section -->
+    <section class="offres" id="offres">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Offres CCI</span>
+                <h2 class="section-title">Trois formules pour vos adhérents</h2>
+                <p class="section-subtitle">Des tarifs négociés pour les entreprises accompagnées par votre CCI. Devis personnalisé sur demande.</p>
+            </div>
+
+            <div class="offres-grid">
+                <!-- Offre 1 : Présence Web -->
+                <div class="offre-card" data-reveal="up" data-delay="0">
+                    <div class="offre-badge">Populaire</div>
+                    <div class="offre-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>Présence Web</h3>
+                    <div class="offre-price">A partir de 1 200 &euro; <small>HT</small></div>
+                    <ul class="offre-details">
+                        <li>Site vitrine professionnel (5-10 pages)</li>
+                        <li>Design responsive sur mesure</li>
+                        <li>Optimisation SEO de base</li>
+                        <li>Formulaire de contact</li>
+                        <li>Hébergement souverain 1 an inclus</li>
+                        <li>Formation prise en main (2h)</li>
+                        <li>Code source livré, vous en êtes propriétaire</li>
+                    </ul>
+                    <a href="#contact-cci" class="btn btn-primary btn-full">Demander un devis</a>
+                </div>
+
+                <!-- Offre 2 : Automatisation -->
+                <div class="offre-card featured" data-reveal="up" data-delay="1">
+                    <div class="offre-badge">Meilleur rapport qualité/prix</div>
+                    <div class="offre-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Automatisation & IA</h3>
+                    <div class="offre-price">A partir de 2 000 &euro; <small>HT</small></div>
+                    <ul class="offre-details">
+                        <li>Audit des processus manuels</li>
+                        <li>Mise en place de workflows automatisés (n8n)</li>
+                        <li>Intégration IA (chatbot, tri, rédaction...)</li>
+                        <li>Connexion aux outils existants</li>
+                        <li>Tableaux de bord sur mesure</li>
+                        <li>Formation équipe (demi-journée)</li>
+                        <li>Documentation complète</li>
+                    </ul>
+                    <a href="#contact-cci" class="btn btn-primary btn-full">Demander un devis</a>
+                </div>
+
+                <!-- Offre 3 : Sur mesure -->
+                <div class="offre-card" data-reveal="up" data-delay="2">
+                    <div class="offre-badge">Sur mesure</div>
+                    <div class="offre-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Application Métier</h3>
+                    <div class="offre-price">Sur devis</div>
+                    <ul class="offre-details">
+                        <li>Application web sur mesure</li>
+                        <li>Intranet, CRM, outil de gestion</li>
+                        <li>Migration depuis outils propriétaires</li>
+                        <li>API et intégrations avancées</li>
+                        <li>Hébergement souverain configurable</li>
+                        <li>Accompagnement et maintenance</li>
+                        <li>Transfert complet de propriété</li>
+                    </ul>
+                    <a href="#contact-cci" class="btn btn-primary btn-full">Discuter du projet</a>
+                </div>
+            </div>
+
+            <p class="offre-note" data-reveal="up">
+                Tous les tarifs sont indicatifs et adaptés au contexte CCI. Chaque devis est personnalisé selon la complexité du projet.
+                Les adhérents CCI bénéficient d'une réduction de 30% sur les tarifs standards.
+            </p>
+        </div>
+    </section>
+
+    <!-- Garanties Section -->
+    <section class="garanties" id="garanties">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Garanties</span>
+                <h2 class="section-title">Un partenariat transparent</h2>
+                <p class="section-subtitle">Ce que la CCI et ses adhérents peuvent attendre</p>
+            </div>
+
+            <div class="garanties-grid">
+                <div class="garantie-item" data-reveal="up" data-delay="0">
+                    <div class="garantie-icon">&#128736;&#65039;</div>
+                    <h4>Code livré = code possédé</h4>
+                    <p>Pas de vendor lock-in. Le code source appartient au client, sans restriction.</p>
+                </div>
+                <div class="garantie-item" data-reveal="up" data-delay="1">
+                    <div class="garantie-icon">&#9202;&#65039;</div>
+                    <h4>Délais tenus</h4>
+                    <p>Planning contractuel avec jalons. Livraison itérative avec démos régulières.</p>
+                </div>
+                <div class="garantie-item" data-reveal="up" data-delay="2">
+                    <div class="garantie-icon">&#127891;</div>
+                    <h4>Formation incluse</h4>
+                    <p>Chaque livraison inclut une formation et une documentation pour rendre le client autonome.</p>
+                </div>
+                <div class="garantie-item" data-reveal="up" data-delay="3">
+                    <div class="garantie-icon">&#127466;&#127482;</div>
+                    <h4>Hébergement souverain</h4>
+                    <p>Données en France ou en Europe. Conformité RGPD garantie.</p>
+                </div>
+                <div class="garantie-item" data-reveal="up" data-delay="4">
+                    <div class="garantie-icon">&#128200;</div>
+                    <h4>Reporting CCI</h4>
+                    <p>Bilan trimestriel des projets accompagnés, à disposition de votre équipe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Template Section -->
+    <section class="message-template" id="message">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Message type</span>
+                <h2 class="section-title">Message pour formulaire de contact CCI</h2>
+                <p class="section-subtitle">Un message prêt à copier-coller pour contacter votre CCI</p>
+            </div>
+
+            <div class="message-box" data-reveal="up" data-delay="1">
+                <span class="message-label">Message type</span>
+                <p id="message-text">Objet : Proposition de partenariat — Outils numériques pour PME/TPE à tarifs préférentiels
+
+Madame, Monsieur,
+
+Je suis Emmanuel Pinglier, développeur web indépendant et fondateur de Code'ess, une entreprise spécialisée dans la création d'outils numériques open source et souverains.
+
+Ingénieur diplômé de l'École Polytechnique, ancien officier et consultant secteur public, j'accompagne aujourd'hui les petites structures dans leur transformation numérique avec une approche pragmatique : des solutions performantes, sans dépendance aux grandes plateformes, et à des tarifs adaptés.
+
+Je souhaiterais vous proposer un partenariat pour accompagner les PME et TPE de votre réseau dans leurs besoins numériques :
+— Sites web professionnels (à partir de 1 200 € HT)
+— Automatisation et intégration d'IA dans leurs processus
+— Migration vers des outils souverains (alternatives aux GAFAM)
+— Applications métier sur mesure
+
+Les adhérents de votre CCI bénéficieraient de tarifs préférentiels (-30%) et d'un accompagnement complet incluant formation et transfert de compétences.
+
+Mes atouts :
+— 31 applications livrées en 31 jours (défi "Un Jour Une App")
+— 100% open source, hébergement FR/EU, conformité RGPD native
+— Expérience terrain en ESS (Linkee, On Purpose, formations IA)
+
+Je serais ravi de vous présenter cette offre plus en détail lors d'un échange téléphonique ou d'une rencontre à votre convenance.
+
+Cordialement,
+Emmanuel Pinglier
+Code'ess — Numérique libre et responsable
+contact@unjouruneapp.com
+SIRET 942 385 311 00017</p>
+                <button class="copy-btn" onclick="copyMessage()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                    Copier le message
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Contact Section -->
+    <section class="cci-cta" id="contact-cci">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Construisons ce partenariat ensemble</h2>
+                <p class="section-subtitle">Un premier échange sans engagement pour comprendre les besoins de votre réseau</p>
+            </div>
+
+            <div class="cci-cta-actions" data-reveal="up" data-delay="1">
+                <a href="mailto:contact@unjouruneapp.com?subject=Partenariat%20CCI%20-%20Outils%20numériques%20PME/TPE" class="btn btn-primary">Envoyer un email</a>
+                <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/" target="_blank" class="btn btn-secondary">Me contacter sur LinkedIn</a>
+            </div>
+
+            <div class="cci-contact-info" data-reveal="up" data-delay="2">
+                <div class="cci-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:contact@unjouruneapp.com">contact@unjouruneapp.com</a>
+                </div>
+                <div class="cci-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Ivry-sur-Seine, France
+                </div>
+                <div class="cci-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                    SIRET 942 385 311 00017
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-chevron">&lt;/&gt;</span>
+                        <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+                    </a>
+                    <p class="footer-tagline">Numérique libre et responsable au service de l'intérêt général</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#engagements">Engagements</a>
+                    <a href="index.html#alternatives">Alternatives</a>
+                    <a href="qui-suis-je.html">Qui suis-je</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Code'ess — par Emmanuel Pinglier — EI — SIRET 942 385 311 00017</p>
+                <p><a href="#">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+        function copyMessage() {
+            const text = document.getElementById('message-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const original = btn.innerHTML;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copié !';
+                btn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
