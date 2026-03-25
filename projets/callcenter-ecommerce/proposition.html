@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposition technique - Architecture Call Center E-commerce</title>
+    <style>
+        :root {
+            --bleu: #1a2744;
+            --bleu-clair: #2c3e6b;
+            --accent: #4f7df9;
+            --accent-light: #e8eeff;
+            --gris-bg: #f6f7fb;
+            --gris-border: #e2e5ed;
+            --texte: #2d3142;
+            --texte-light: #6b7280;
+            --vert: #22c55e;
+            --orange: #f59e0b;
+            --rouge: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--texte);
+            line-height: 1.6;
+            background: var(--gris-bg);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bleu) 0%, var(--bleu-clair) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+        }
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem auto;
+            max-width: 900px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        section h2 {
+            font-size: 1.3rem;
+            color: var(--bleu);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+        section h3 {
+            font-size: 1.05rem;
+            color: var(--bleu-clair);
+            margin: 1.5rem 0 0.8rem;
+        }
+        section h3:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        /* KPI boxes */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .kpi-box {
+            background: var(--gris-bg);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid var(--gris-border);
+        }
+        .kpi-box .number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .kpi-box .label {
+            font-size: 0.8rem;
+            color: var(--texte-light);
+            margin-top: 0.3rem;
+        }
+
+        /* Ref card */
+        .ref-card {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .ref-card strong {
+            color: var(--bleu);
+        }
+
+        /* Flow diagram */
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .flow .step {
+            background: var(--accent-light);
+            color: var(--bleu);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .flow .arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Architecture diagram */
+        .archi-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.8rem;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        .archi-left, .archi-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .archi-center {
+            background: var(--accent);
+            color: white;
+            padding: 2rem 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .archi-center small {
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: 0.75rem;
+        }
+        .archi-box {
+            background: white;
+            border: 2px solid var(--gris-border);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        .archi-box strong {
+            display: block;
+            color: var(--bleu);
+            font-size: 0.9rem;
+        }
+        .archi-box span {
+            color: var(--texte-light);
+            font-size: 0.75rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+        thead th {
+            background: var(--bleu);
+            color: white;
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        thead th:first-child { border-radius: 8px 0 0 0; }
+        thead th:last-child { border-radius: 0 8px 0 0; }
+        tbody td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--gris-border);
+        }
+        tbody tr:hover { background: var(--gris-bg); }
+
+        /* Scenario cards */
+        .scenario-card {
+            border: 1px solid var(--gris-border);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        .scenario-card::before {
+            content: attr(data-num);
+            position: absolute;
+            top: -0.6rem;
+            left: 1rem;
+            background: var(--accent);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .scenario-card h4 {
+            color: var(--bleu);
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        .scenario-card p {
+            color: var(--texte-light);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        .scenario-card .tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.72rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 0.4rem;
+        }
+
+        /* Board cards */
+        .board-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .board-card {
+            border: 1px solid var(--gris-border);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            border-top: 3px solid var(--accent);
+        }
+        .board-card h4 {
+            color: var(--bleu);
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+        .board-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .board-card li {
+            font-size: 0.82rem;
+            color: var(--texte-light);
+            padding: 0.15rem 0;
+        }
+        .board-card li::before {
+            content: "\2022";
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-light);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 0.4rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .timeline-item .week {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            color: var(--bleu);
+            margin: 0.1rem 0;
+        }
+        .timeline-item p {
+            font-size: 0.82rem;
+            color: var(--texte-light);
+            margin: 0;
+        }
+
+        /* Checklist */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+        .check-list li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+        .check-list li::before {
+            content: "\2713";
+            color: var(--vert);
+            font-weight: 700;
+            margin-right: 0.6rem;
+        }
+
+        /* Questions */
+        .question-list {
+            counter-reset: q;
+            list-style: none;
+            padding: 0;
+        }
+        .question-list li {
+            counter-increment: q;
+            padding: 0.6rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        .question-list li::before {
+            content: counter(q);
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--texte-light);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.4rem; }
+            section { padding: 1.3rem; margin: 1rem; }
+            .archi-grid { grid-template-columns: 1fr; }
+            .archi-center { min-height: auto; }
+            .board-grid { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: 1fr 1fr; }
+            .flow .step { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Architecture Call Center E-commerce</h1>
+    <p>Proposition technique - Automatisation complète avec Make</p>
+    <div class="badge">Kavkom + Monday + Make + Stripe/Alma/Scalapay + Boxtal</div>
+</div>
+
+<!-- Ref -->
+<section>
+    <h2>Pourquoi cette mission me correspond</h2>
+
+    <div class="ref-card">
+        <strong>CRM complet Linkee - Aircall + Airtable</strong><br>
+        J'ai concu et deploye un CRM complet construit sur Airtable pour Linkee, avec integration poussee d'Aircall (telephonie cloud, comparable a Kavkom) : synchronisation temps reel des appels, qualification automatique des leads, suivi performance par agent, dashboards de pilotage commercial.
+    </div>
+
+    <div class="ref-card">
+        <strong>Pratique intensive Make / n8n</strong><br>
+        Scenarios multi-etapes avec routeurs et gestion d'erreurs, integrations API REST (paiements, CRM, logistique, facturation), architectures modulaires pour la montee en charge.
+    </div>
+</section>
+
+<!-- Architecture overview -->
+<section>
+    <h2>Architecture globale</h2>
+
+    <div class="flow">
+        <span class="step">Kavkom</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Make</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Monday</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Paiement</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Facture</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">Boxtal</span>
+    </div>
+
+    <div class="archi-grid">
+        <div class="archi-left">
+            <div class="archi-box">
+                <strong>Kavkom</strong>
+                <span>Telephonie + CRM</span>
+            </div>
+            <div class="archi-box">
+                <strong>Page de vente</strong>
+                <span>Interface televendeur</span>
+            </div>
+            <div class="archi-box">
+                <strong>Stripe / Alma / Scalapay</strong>
+                <span>Paiements</span>
+            </div>
+        </div>
+
+        <div class="archi-center">
+            MAKE<br>
+            <small>Orchestrateur<br>6 scenarios<br>~70k ops/mois</small>
+        </div>
+
+        <div class="archi-right">
+            <div class="archi-box">
+                <strong>Monday.com</strong>
+                <span>Hub central data</span>
+            </div>
+            <div class="archi-box">
+                <strong>Facturation</strong>
+                <span>Pennylane / Sellsy</span>
+            </div>
+            <div class="archi-box">
+                <strong>Boxtal</strong>
+                <span>Expedition</span>
+            </div>
+        </div>
+    </div>
+
+    <h3>Pourquoi Make plutot que Zapier</h3>
+    <ul class="check-list">
+        <li>Routeurs natifs pour orienter les flux selon le moyen de paiement</li>
+        <li>Gestion d'erreurs avancee (error handlers, retry, rattrapage)</li>
+        <li>Cout par operation nettement inferieur a volume equivalent</li>
+        <li>Visualisation claire des scenarios pour la maintenance</li>
+    </ul>
+</section>
+
+<!-- Monday structure -->
+<section>
+    <h2>Structure Monday.com - 4 boards</h2>
+
+    <div class="board-grid">
+        <div class="board-card">
+            <h4>Leads / Fiches</h4>
+            <ul>
+                <li>Nom, prenom, telephone, email</li>
+                <li>Source, vendeur assigne</li>
+                <li>Statut : a relancer / repondeur / barrage / refus / commande</li>
+                <li>Date dernier appel, nb tentatives</li>
+                <li>ID Kavkom (lien CRM)</li>
+            </ul>
+        </div>
+        <div class="board-card">
+            <h4>Commandes</h4>
+            <ul>
+                <li>Client, vendeur, produit/pack, prix</li>
+                <li>Moyen de paiement + statut paiement</li>
+                <li>Statut : nouvelle &rarr; payee &rarr; facturee &rarr; expediee &rarr; livree</li>
+                <li>N&deg; facture, N&deg; tracking</li>
+            </ul>
+        </div>
+        <div class="board-card">
+            <h4>Dashboard Vendeurs</h4>
+            <ul>
+                <li>CA jour / semaine / mois</li>
+                <li>Nb ventes, nb appels</li>
+                <li>Taux de transformation</li>
+                <li>Panier moyen, nb refus</li>
+            </ul>
+        </div>
+        <div class="board-card">
+            <h4>Clients</h4>
+            <ul>
+                <li>Coordonnees completes</li>
+                <li>Adresse de livraison</li>
+                <li>Historique achats (lien commandes)</li>
+                <li>Total depense, nb commandes</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Scenarios Make -->
+<section>
+    <h2>6 scenarios Make</h2>
+
+    <div class="scenario-card" data-num="1">
+        <h4>Sync appels Kavkom &rarr; Monday</h4>
+        <p>Webhook fin d'appel &rarr; recherche/creation lead &rarr; MAJ date, tentatives, vendeur, qualification</p>
+        <span class="tag">Temps reel</span>
+    </div>
+
+    <div class="scenario-card" data-num="2">
+        <h4>Nouvelle commande &rarr; Paiement</h4>
+        <p>Webhook page de vente &rarr; routeur (Stripe / Alma / Scalapay) &rarr; creation commande Monday &rarr; MAJ lead en "Commande"</p>
+        <span class="tag">Temps reel</span>
+    </div>
+
+    <div class="scenario-card" data-num="3">
+        <h4>Confirmation paiement &rarr; Facturation</h4>
+        <p>Webhook paiement &rarr; MAJ statut commande &rarr; creation facture &rarr; envoi email client</p>
+        <span class="tag">Temps reel</span>
+    </div>
+
+    <div class="scenario-card" data-num="4">
+        <h4>Facture validee &rarr; Expedition Boxtal</h4>
+        <p>Trigger Monday &rarr; creation expedition Boxtal &rarr; etiquette + tracking &rarr; email client</p>
+        <span class="tag">Temps reel</span>
+    </div>
+
+    <div class="scenario-card" data-num="5">
+        <h4>Suivi livraison</h4>
+        <p>Webhook Boxtal &rarr; MAJ statut commande Monday &rarr; notification client</p>
+        <span class="tag">Temps reel</span>
+    </div>
+
+    <div class="scenario-card" data-num="6">
+        <h4>Agregation KPIs vendeurs</h4>
+        <p>Planification quotidienne &rarr; calcul CA, taux transfo, panier moyen par vendeur &rarr; MAJ dashboard</p>
+        <span class="tag">1x / jour</span>
+    </div>
+</section>
+
+<!-- Dashboards -->
+<section>
+    <h2>Dashboards de pilotage</h2>
+
+    <h3>Vue globale (Direction)</h3>
+    <div class="kpi-row">
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">CA Jour</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">CA Semaine</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">CA Mois</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--%</div>
+            <div class="label">Taux transfo</div>
+        </div>
+    </div>
+    <div class="kpi-row">
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">Nb ventes</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">Panier moyen</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">Nb refus</div>
+        </div>
+        <div class="kpi-box">
+            <div class="number">--</div>
+            <div class="label">Pipeline actif</div>
+        </div>
+    </div>
+
+    <h3>Vue par vendeur</h3>
+    <p style="font-size:0.88rem; color:var(--texte-light);">
+        Chaque vendeur dispose de sa propre vue avec ses KPIs individuels, ses dernieres commandes et ses fiches en cours. Filtrage par jour / semaine / mois.
+    </p>
+</section>
+
+<!-- Integrations API -->
+<section>
+    <h2>Integrations API</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Methode</th>
+                <th>Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Kavkom</strong></td>
+                <td>Webhooks + REST API</td>
+                <td>Sync appels, contacts, agents, call-logs</td>
+            </tr>
+            <tr>
+                <td><strong>Monday.com</strong></td>
+                <td>API GraphQL + Webhooks</td>
+                <td>CRUD items, colonnes, recherche, triggers</td>
+            </tr>
+            <tr>
+                <td><strong>Stripe</strong></td>
+                <td>REST API + Webhooks</td>
+                <td>Payment intents, confirmations, remboursements</td>
+            </tr>
+            <tr>
+                <td><strong>Alma</strong></td>
+                <td>REST API + Webhooks</td>
+                <td>Paiement fractionne 2x/3x/4x, suivi</td>
+            </tr>
+            <tr>
+                <td><strong>Scalapay</strong></td>
+                <td>REST API + Webhooks</td>
+                <td>Ordres de paiement, confirmations</td>
+            </tr>
+            <tr>
+                <td><strong>Facturation</strong></td>
+                <td>REST API</td>
+                <td>Creation factures, envoi email</td>
+            </tr>
+            <tr>
+                <td><strong>Boxtal</strong></td>
+                <td>REST API + Webhooks</td>
+                <td>Expeditions, etiquettes, tracking, devis transporteurs</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Security -->
+<section>
+    <h2>Fiabilite &amp; Securite</h2>
+
+    <div class="board-grid">
+        <div class="board-card" style="border-top-color: var(--vert);">
+            <h4>Gestion des erreurs</h4>
+            <ul>
+                <li>Error handlers sur chaque scenario</li>
+                <li>Retry automatique (3 tentatives)</li>
+                <li>Verification quotidienne des statuts incoherents</li>
+                <li>Notifications email en cas d'echec</li>
+            </ul>
+        </div>
+        <div class="board-card" style="border-top-color: var(--orange);">
+            <h4>Securite des donnees</h4>
+            <ul>
+                <li>Webhooks securises par signature HMAC</li>
+                <li>Tokens API dans les connexions Make</li>
+                <li>Acces Monday par role (vendeur/manager/admin)</li>
+                <li>Page de vente restreinte (IP / auth)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Volumetrie -->
+<section>
+    <h2>Volumetrie estimee</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Scenario</th>
+                <th>Ops / exec</th>
+                <th>Exec / jour</th>
+                <th>Ops / mois</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Sync Kavkom</td><td>~5</td><td>300</td><td>45 000</td></tr>
+            <tr><td>Nouvelle commande</td><td>~8</td><td>40</td><td>9 600</td></tr>
+            <tr><td>Confirmation paiement</td><td>~6</td><td>40</td><td>7 200</td></tr>
+            <tr><td>Expedition</td><td>~5</td><td>35</td><td>5 250</td></tr>
+            <tr><td>Suivi livraison</td><td>~3</td><td>35</td><td>3 150</td></tr>
+            <tr><td>KPIs quotidiens</td><td>~20</td><td>1</td><td>600</td></tr>
+            <tr><td><strong>TOTAL</strong></td><td></td><td></td><td><strong>~70 800</strong></td></tr>
+        </tbody>
+    </table>
+    <p style="font-size:0.85rem; color:var(--texte-light); margin-top:0.5rem;">
+        Plan Make recommande : Teams (~99&euro;/mois), ajustable selon la croissance.
+    </p>
+</section>
+
+<!-- Planning -->
+<section>
+    <h2>Planning - 5 a 6 semaines</h2>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="week">Semaine 1</span>
+            <h4>Cadrage &amp; Setup</h4>
+            <p>Structure Monday.com (4 boards), connexions API, environnement Make</p>
+        </div>
+        <div class="timeline-item">
+            <span class="week">Semaine 2</span>
+            <h4>Flux Kavkom + Leads</h4>
+            <p>Scenarios sync appels + qualification automatique des leads</p>
+        </div>
+        <div class="timeline-item">
+            <span class="week">Semaine 2-3</span>
+            <h4>Ventes + Paiements</h4>
+            <p>Page de vente interne + integration Stripe / Alma / Scalapay</p>
+        </div>
+        <div class="timeline-item">
+            <span class="week">Semaine 3-4</span>
+            <h4>Facturation + Expedition</h4>
+            <p>Chaine facture &rarr; Boxtal automatisee de bout en bout</p>
+        </div>
+        <div class="timeline-item">
+            <span class="week">Semaine 4-5</span>
+            <h4>Dashboards + KPIs</h4>
+            <p>Dashboards direction + vendeurs, agregation automatique</p>
+        </div>
+        <div class="timeline-item">
+            <span class="week">Semaine 5-6</span>
+            <h4>Tests + Formation</h4>
+            <p>Tests end-to-end, corrections, formation equipe</p>
+        </div>
+    </div>
+</section>
+
+<!-- Methodologie -->
+<section>
+    <h2>Methodologie</h2>
+    <ul class="check-list">
+        <li>Cadrage initial (1 call) : validation des flux, acces outils, choix facturation</li>
+        <li>Livraisons iteratives : chaque phase testee et validee avant la suivante</li>
+        <li>Points reguliers : 1 a 2 par semaine</li>
+        <li>Documentation complete de chaque scenario Make</li>
+        <li>Formation equipe en fin de projet</li>
+    </ul>
+</section>
+
+<!-- Questions -->
+<section>
+    <h2>Questions pour affiner</h2>
+    <ol class="question-list">
+        <li><strong>Logiciel de facturation</strong> : outil deja en place ? (Pennylane, Sellsy, Tiime...)</li>
+        <li><strong>Volume</strong> : combien de vendeurs au lancement ? Combien d'appels/jour vises ?</li>
+        <li><strong>Catalogue</strong> : combien de produits / packs differents ?</li>
+        <li><strong>Kavkom</strong> : acces API / webhooks active sur votre plan ?</li>
+        <li><strong>Page de vente</strong> : existe deja ou a creer entierement ?</li>
+    </ol>
+</section>
+
+<div class="footer">
+    Disponible pour un demarrage rapide &middot; Collaboration long terme possible
+</div>
+
+</body>
+</html>

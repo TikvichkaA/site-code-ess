@@ -1,0 +1,22 @@
+Bonjour,
+
+Votre projet m'intéresse beaucoup car il correspond exactement à mon coeur de métier.
+
+J'ai notamment conçu un CRM complet sur Airtable pour Linkee, avec intégration Aircall (téléphonie cloud, très proche de Kavkom) : sync appels temps réel, qualification auto des leads, suivi performance par agent, dashboards de pilotage. C'est directement le même type d'architecture que ce que vous recherchez.
+
+Je travaille quotidiennement avec Make et n8n sur des architectures multi-outils (paiements, CRM, logistique, facturation).
+
+Mon approche pour votre projet :
+
+- Make comme orchestrateur (plus flexible et économique que Zapier)
+- Monday.com structuré en 4 boards : Leads, Commandes, Clients, Dashboard Vendeurs
+- 6 scénarios Make couvrant toute la chaîne : Kavkom > Monday > Paiement > Facture > Boxtal
+- Dashboards temps réel : CA, taux transfo, panier moyen — par vendeur et global
+- Déploiement en 5-6 semaines, livraisons itératives
+
+J'ai préparé une proposition technique détaillée avec l'architecture complète, les flux, les intégrations API et le planning :
+[LIEN VERS LA PAGE HTML]
+
+Disponible pour un call rapide si vous souhaitez en discuter.
+
+Cordialement
