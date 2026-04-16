@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Pinglier - Profil Cybersécurité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back-link:hover {
+            color: #111;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #111;
+            display: inline-block;
+        }
+
+        .profile-text {
+            color: #444;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-text strong {
+            color: #111;
+        }
+
+        /* Experiences */
+        .experience {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-title {
+            font-weight: 500;
+            color: #111;
+        }
+
+        .experience-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .experience-company {
+            font-size: 0.9rem;
+            color: #0077b5;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-desc {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .experience-desc ul {
+            margin-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .experience-desc li {
+            margin-bottom: 0.2rem;
+        }
+
+        /* Tags inline */
+        .experience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .experience-tag {
+            background: #f0f7ff;
+            color: #0077b5;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Formation */
+        .formation {
+            margin-bottom: 1rem;
+        }
+
+        .formation:last-child {
+            margin-bottom: 0;
+        }
+
+        .formation-title {
+            font-weight: 500;
+            color: #111;
+        }
+
+        .formation-school {
+            font-size: 0.9rem;
+            color: #0077b5;
+        }
+
+        .formation-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .formation-desc {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.3rem;
+        }
+
+        /* Competences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 0.85rem;
+            color: #555;
+            padding: 0.2rem 0;
+        }
+
+        /* Certifications */
+        .certification {
+            margin-bottom: 1rem;
+        }
+
+        .certification:last-child {
+            margin-bottom: 0;
+        }
+
+        .certification-title {
+            font-weight: 500;
+            color: #111;
+        }
+
+        .certification-issuer {
+            font-size: 0.9rem;
+            color: #0077b5;
+        }
+
+        .certification-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .certification-desc {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.3rem;
+        }
+
+        /* Engagements */
+        .engagements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .engagement-tag {
+            background: #e8f4f8;
+            color: #0077b5;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Langues */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .language-tag {
+            background: #f5f5f5;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        .language-level {
+            color: #888;
+            font-size: 0.75rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #0077b5;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            margin: 0 0.3rem;
+        }
+
+        .contact-btn:hover {
+            background: #0077b5;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #999;
+            font-size: 0.75rem;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="qui-suis-je.html" class="back-link">&larr; Profil complet</a>
+            <h1>Emmanuel Pinglier</h1>
+            <p class="tagline">Polytechnicien, ancien officier, cryptographe de formation. Du développement d'outils IA à l'audit de sécurité applicative. Certifié Google Cybersecurity.</p>
+        </header>
+
+        <section>
+            <h2>Démarche</h2>
+            <p class="profile-text">
+                Après quatre ans comme <strong>officier dans l'Armée de Terre</strong> — dont une opération extérieure au Mali — j'ai conservé une exigence forte sur la fiabilité des systèmes et la rigueur opérationnelle. En développant ensuite des outils numériques et des intégrations IA pour des structures de l'ESS, j'ai été confronté aux <strong>risques spécifiques des applications basées sur des LLM</strong> : injection de prompt, exfiltration de données, manipulation de chaînes RAG.
+            </p>
+            <p class="profile-text">
+                Ce constat m'a conduit à approfondir la <strong>sécurité des applications IA</strong> (OWASP Top 10 for LLM), puis à élargir à la <strong>défense applicative en général</strong> : vulnérabilités web, durcissement d'infrastructure, gestion des accès, politique de moindre privilège.
+            </p>
+            <p class="profile-text">
+                En pratique, mes missions suivent souvent le même schéma : une structure me sollicite pour <strong>développer un outil ou intégrer de l'IA</strong>, et l'accompagnement s'étend naturellement vers un <strong>audit de sécurité</strong>, une transformation numérique, ou des recommandations de durcissement. Le développement et la sécurité sont les deux faces d'un même engagement pour un numérique fiable.
+            </p>
+        </section>
+
+        <section>
+            <h2>Missions de sécurité & transformation numérique</h2>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Audit de sécurité IA & outils internes</span>
+                    <span class="experience-date">2024 - 2025</span>
+                </div>
+                <div class="experience-company">On Purpose France</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Mission initiale : développement d'outils d'automatisation et d'intégration IA (matching mentors-missions, workflows n8n)</li>
+                        <li>Élargie à un audit de sécurité des pratiques numériques : revue des accès, sécurité des outils IA utilisés en interne</li>
+                        <li>Recommandations de durcissement et formation des équipes à l'usage sécurisé de l'IA générative</li>
+                        <li>Sensibilisation aux risques de fuite de données via les outils LLM grand public</li>
+                    </ul>
+                    <div class="experience-tags">
+                        <span class="experience-tag">Sécurité IA</span>
+                        <span class="experience-tag">Audit des accès</span>
+                        <span class="experience-tag">Formation équipes</span>
+                        <span class="experience-tag">RGPD</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Outils numériques & sécurisation des données</span>
+                    <span class="experience-date">Oct. 2024 - Avr. 2025</span>
+                </div>
+                <div class="experience-company">Linkee (association d'aide alimentaire)</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Développement d'outils internes pour une association de premier plan</li>
+                        <li>Sécurisation des données bénéficiaires et mise en place de bonnes pratiques d'accès</li>
+                        <li>Recommandations sur l'architecture de sécurité et la conformité RGPD</li>
+                    </ul>
+                    <div class="experience-tags">
+                        <span class="experience-tag">Données sensibles</span>
+                        <span class="experience-tag">Architecture sécurité</span>
+                        <span class="experience-tag">RGPD</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Sensibilisation sécurité & usage IA</span>
+                    <span class="experience-date">2024 - 2026</span>
+                </div>
+                <div class="experience-company">Structures ESS diverses</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Formations sur l'usage sécurisé de l'IA générative en contexte associatif</li>
+                        <li>Risques de fuite de données, bonnes pratiques de prompt, choix d'outils respectueux de la confidentialité</li>
+                        <li>Accompagnement à la transition vers des outils souverains et à la dégafamisation</li>
+                    </ul>
+                    <div class="experience-tags">
+                        <span class="experience-tag">Formation IA sécurisée</span>
+                        <span class="experience-tag">Souveraineté numérique</span>
+                        <span class="experience-tag">Confidentialité</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Gouvernance numérique — Ministère de la Justice</span>
+                    <span class="experience-date">Sept. 2023 - Déc. 2023</span>
+                </div>
+                <div class="experience-company">BearingPoint - Paris</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Assistance à la gouvernance numérique (Budget 2024, 150M&nbsp;EUR)</li>
+                        <li>Organisation d'ateliers de collecte et arbitrage des besoins numériques</li>
+                        <li>Sensibilisation aux enjeux de sécurité et de souveraineté dans les choix d'infrastructure</li>
+                    </ul>
+                    <div class="experience-tags">
+                        <span class="experience-tag">Secteur public</span>
+                        <span class="experience-tag">Transformation numérique</span>
+                        <span class="experience-tag">Gouvernance SI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Réalisations techniques</h2>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Développement produit IA — Calcul carbone</span>
+                    <span class="experience-date">Avr. 2024 - Oct. 2024</span>
+                </div>
+                <div class="experience-company">Simply Carbon - Paris (CDD)</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Finalisation du développement technique de l'outil de calcul carbone</li>
+                        <li>Intégration IA pour fluidifier le parcours utilisateur</li>
+                        <li>Recherche automatisée de facteurs d'émissions via données ouvertes et bases spécialisées</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Un Jour Une App</span>
+                    <span class="experience-date">Janvier 2026</span>
+                </div>
+                <div class="experience-company">Projet personnel</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>31 applications web développées en 31 jours (React, Vue, vanilla JS, Python, Supabase)</li>
+                        <li>Plusieurs apps intégrant des aspects de sécurité : gestion d'accès, sanitization, API sécurisées</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Recherche en cryptographie</span>
+                    <span class="experience-date">2017 - 2018</span>
+                </div>
+                <div class="experience-company">École Polytechnique - Stage recherche</div>
+                <div class="experience-desc">
+                    Co-auteur d'un article sur l'algorithme de Satoh : chiffrement utilisant le comptage des points rationnels sur une courbe elliptique définie sur le corps des nombres p-adiques. Implémentation en SAGE.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications & Formation</h2>
+
+            <div class="certification">
+                <div class="certification-title">Google Cybersecurity Professional Certificate</div>
+                <div class="certification-issuer">Google / Coursera</div>
+                <div class="certification-date">2026</div>
+                <div class="certification-desc">Gestion des risques, sécurité réseau, outils SIEM (Splunk, Chronicle), détection d'incidents, Python pour la cybersécurité, Linux, SQL, réponse aux menaces.</div>
+            </div>
+
+            <div class="certification">
+                <div class="certification-title">École Polytechnique — Spécialisation cryptographie</div>
+                <div class="certification-issuer">Palaiseau</div>
+                <div class="certification-date">2016 - 2019</div>
+                <div class="certification-desc">Formation d'ingénieur. Spécialisation en cryptographie : algorithme de Satoh, courbes elliptiques, corps p-adiques. Fondamentaux mathématiques de la sécurité de l'information.</div>
+            </div>
+
+            <div class="certification">
+                <div class="certification-title">Master Adaptation au changement climatique</div>
+                <div class="certification-issuer">Université Paris-Saclay</div>
+                <div class="certification-date">2022 - 2023</div>
+            </div>
+
+            <div class="certification">
+                <div class="certification-title">Agrégation de mathématiques</div>
+                <div class="certification-date">2022 - Admissible</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Compétences sécurité</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Sécurité IA / LLM</h3>
+                    <ul>
+                        <li>OWASP Top 10 for LLM Applications</li>
+                        <li>Prompt injection (directe / indirecte)</li>
+                        <li>Sécurité des chaînes RAG</li>
+                        <li>Output sanitization</li>
+                        <li>Data exfiltration prevention</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Défense applicative</h3>
+                    <ul>
+                        <li>OWASP Top 10 (web)</li>
+                        <li>Analyse de surface d'attaque</li>
+                        <li>Durcissement d'infrastructure</li>
+                        <li>RBAC / moindre privilège</li>
+                        <li>Secure coding practices</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Audit technique RGPD</h3>
+                    <ul>
+                        <li>Cartographie des traitements et flux</li>
+                        <li>Cookies, consentement, bandeau CNIL</li>
+                        <li>Revue sous-traitants et transferts hors UE</li>
+                        <li>Durées de conservation et minimisation</li>
+                        <li>Plan de mise en conformité technique</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Outils & techniques</h3>
+                    <ul>
+                        <li>Python, Linux, SQL</li>
+                        <li>SIEM (Splunk, Chronicle)</li>
+                        <li>Gestion des secrets</li>
+                        <li>CI/CD sécurisé</li>
+                        <li>Analyse de logs et traçabilité</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Parcours complémentaire</h2>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Officier d'artillerie — Lieutenant JTAC</span>
+                    <span class="experience-date">Août 2019 - Mars 2023</span>
+                </div>
+                <div class="experience-company">Armée de Terre — 9e Brigade d'infanterie de Marine</div>
+                <div class="experience-desc">
+                    <ul>
+                        <li>Chef d'équipe spécialiste des appuis aériens (Opération Barkhane, Mali)</li>
+                        <li>Gestion de crise, décision sous pression, habilitations de sécurité</li>
+                        <li>Citation à l'ordre de la brigade pour une opération aéroportée</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience">
+                <div class="experience-header">
+                    <span class="experience-title">Professeur vacataire — Séminaire Défense & Renseignement</span>
+                    <span class="experience-date">Nov. 2022 - Présent</span>
+                </div>
+                <div class="experience-company">Université Paris-Saclay — M2 Diplomatie et négociations stratégiques</div>
+                <div class="experience-desc">
+                    20h de cours magistral : défense, renseignement, risque pays. Sensibilisation aux enjeux de sécurité nationale et de guerre informationnelle.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Langues</h2>
+            <div class="languages">
+                <span class="language-tag">Anglais <span class="language-level">C1 (TOEIC 965)</span></span>
+                <span class="language-tag">Bulgare <span class="language-level">B2</span></span>
+                <span class="language-tag">Chinois <span class="language-level">B1 (HSK 3)</span></span>
+                <span class="language-tag">Russe <span class="language-level">B1</span></span>
+                <span class="language-tag">Géorgien <span class="language-level">A2</span></span>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact</h2>
+            <p>Besoin d'un audit de sécurité, d'un accompagnement IA sécurisé, ou d'une mission de développement ?</p>
+            <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/" target="_blank" rel="noopener" class="contact-btn">
+                LinkedIn
+            </a>
+            <a href="mailto:contact@unjouruneapp.com" class="contact-btn">
+                contact@unjouruneapp.com
+            </a>
+        </section>
+
+        <footer>
+            <a href="index.html">Code'ess</a> · <a href="qui-suis-je.html">Profil complet</a> — 2026
+        </footer>
+    </div>
+</body>
+</html>
