@@ -349,3 +349,29 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-counter]').forEach(el => {
     statsObserver.observe(el);
 });
+
+// ============================================
+// UTM Tracking
+// ============================================
+(function() {
+    const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const url = new URL(window.location.href);
+    const hasUtm = UTM_PARAMS.some(p => url.searchParams.has(p));
+
+    // Store UTM params from URL into sessionStorage
+    if (hasUtm) {
+        UTM_PARAMS.forEach(p => {
+            const val = url.searchParams.get(p);
+            if (val) sessionStorage.setItem(p, val);
+        });
+    }
+
+    // Inject stored UTM values into hidden form fields
+    document.querySelectorAll('form').forEach(form => {
+        UTM_PARAMS.forEach(p => {
+            const field = form.querySelector(`input[name="${p}"]`);
+            const val = sessionStorage.getItem(p);
+            if (field && val) field.value = val;
+        });
+    });
+})();

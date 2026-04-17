@@ -56,8 +56,11 @@
         ============================================ */
         .about-hero {
             position: relative;
+            min-height: 100vh;
             padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .about-hero::before {
@@ -610,6 +613,167 @@
         }
 
         /* ============================================
+           Social Links
+        ============================================ */
+        .about-socials {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--glow-primary);
+        }
+
+        [data-theme="dark"] .social-link {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============================================
+           Decorative Blobs
+        ============================================ */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.15), transparent 70%);
+            top: -100px;
+            right: -150px;
+            filter: blur(10rem);
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.12), transparent 70%);
+            bottom: -100px;
+            left: -150px;
+            filter: blur(10rem);
+        }
+
+        /* ============================================
+           Tech Tags Bar
+        ============================================ */
+        .tech-tags-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            border-radius: 50px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--glow-primary);
+        }
+
+        [data-theme="dark"] .tech-tag {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(13, 148, 136, 0.25);
+        }
+
+        [data-theme="dark"] .tech-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ============================================
+           Contact Section (embedded)
+        ============================================ */
+        .about-contact {
+            padding: var(--space-3xl) 0;
+            background: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .contact-info-item svg {
+            width: 22px;
+            height: 22px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-info-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
            CTA Section
         ============================================ */
         .about-cta {
@@ -635,6 +799,10 @@
            Responsive
         ============================================ */
         @media (max-width: 968px) {
+            .about-hero {
+                min-height: auto;
+            }
+
             .about-hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -658,8 +826,16 @@
                 justify-content: center;
             }
 
+            .about-socials {
+                justify-content: center;
+            }
+
             .about-facts {
                 justify-content: center;
+            }
+
+            .about-contact-grid {
+                grid-template-columns: 1fr;
             }
 
             .timeline-list::before {
@@ -690,6 +866,10 @@
                 width: 18px;
                 height: 18px;
             }
+
+            .blob {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -705,11 +885,12 @@
                 <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#engagements">Engagements</a></li>
-                <li><a href="index.html#alternatives">Alternatives</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#experiences">Expériences</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#engagements">Engagements</a></li>
                 <li><a href="book.html">Book</a></li>
-                <li><a href="index.html#contact" class="btn btn-nav">Contact</a></li>
+                <li><a href="#contact" class="btn btn-nav">Contact</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="dark-toggle" id="dark-toggle" aria-label="Basculer le mode sombre">
@@ -726,6 +907,10 @@
     </header>
 
     <main>
+    <!-- Decorative Blobs -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+
     <!-- Hero Section -->
     <section class="about-hero">
         <div class="shape shape-1"></div>
@@ -742,8 +927,16 @@
                     Polytechnicien, ancien officier, consultant secteur public, associé On Purpose. Engagé dans l'ESS et le monde associatif, je construis aujourd'hui des outils numériques libres et souverains pour les structures qui en ont besoin.
                 </p>
                 <div class="about-hero-cta">
-                    <a href="index.html#contact" class="btn btn-primary">Me contacter</a>
+                    <a href="#contact" class="btn btn-primary">Me contacter</a>
                     <a href="book.html" class="btn btn-secondary">Voir mes réalisations</a>
+                </div>
+                <div class="about-socials">
+                    <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/epmusic" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
                 </div>
                 <div class="about-facts">
                     <div class="about-fact">
@@ -779,7 +972,7 @@
     </section>
 
     <!-- Story Section -->
-    <section class="story">
+    <section id="parcours" class="story">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Mon parcours</span>
@@ -810,7 +1003,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="timeline">
+    <section id="experiences" class="timeline">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Expériences</span>
@@ -827,6 +1020,7 @@
                         <h4>Développeur web indépendant</h4>
                         <p class="timeline-org">Code'ess (EI)</p>
                         <p>Développement open source, conseil en souveraineté numérique et automatisation pour les structures de l'ESS.</p>
+                        <div class="skill-tags" style="margin-top:0.5rem"><span class="skill-tag">React</span><span class="skill-tag">11ty</span><span class="skill-tag">Python</span><span class="skill-tag">n8n</span><span class="skill-tag">Claude Code</span></div>
                     </div>
                 </div>
 
@@ -839,6 +1033,7 @@
                         <h4>Développeur numérique</h4>
                         <p class="timeline-org">Linkee (association d'aide alimentaire)</p>
                         <p>Développement d'outils numériques pour une association solidaire de premier plan.</p>
+                        <div class="skill-tags" style="margin-top:0.5rem"><span class="skill-tag">Vue</span><span class="skill-tag">Supabase</span><span class="skill-tag">API REST</span></div>
                     </div>
                 </div>
 
@@ -851,6 +1046,7 @@
                         <h4>Consultant secteur public</h4>
                         <p class="timeline-org">BearingPoint — Ministère de la Justice</p>
                         <p>Conseil en transformation numérique pour le secteur public.</p>
+                        <div class="skill-tags" style="margin-top:0.5rem"><span class="skill-tag">Gestion de projet</span><span class="skill-tag">Transformation digitale</span></div>
                     </div>
                 </div>
 
@@ -863,6 +1059,7 @@
                         <h4>Officier d'artillerie</h4>
                         <p class="timeline-org">Armée de Terre — Opération Barkhane</p>
                         <p>Leadership, gestion de crise, commandement en opération extérieure.</p>
+                        <div class="skill-tags" style="margin-top:0.5rem"><span class="skill-tag">Leadership</span><span class="skill-tag">Gestion de crise</span></div>
                     </div>
                 </div>
 
@@ -875,6 +1072,7 @@
                         <h4>École Polytechnique</h4>
                         <p class="timeline-org">Palaiseau</p>
                         <p>Formation d'ingénieur, spécialisé en cryptographie (algorithme de Satoh). Examinateur en CPGE au Lycée Hoche.</p>
+                        <div class="skill-tags" style="margin-top:0.5rem"><span class="skill-tag">Cryptographie</span><span class="skill-tag">Mathématiques</span></div>
                     </div>
                 </div>
             </div>
@@ -882,12 +1080,27 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="skills">
+    <section id="competences" class="skills">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Compétences</span>
                 <h2 class="section-title">Ce que je sais faire</h2>
                 <p class="section-subtitle">Un profil hybride : technique, stratégique et terrain</p>
+            </div>
+
+            <div class="tech-tags-bar" data-reveal="up">
+                <span class="tech-tag">HTML / CSS / JS</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Vue</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">11ty</span>
+                <span class="tech-tag">n8n</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Claude Code</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Netlify</span>
+                <span class="tech-tag">API REST</span>
             </div>
 
             <div class="skills-grid">
@@ -987,7 +1200,7 @@
     </section>
 
     <!-- Engagements Section -->
-    <section class="engagements-asso">
+    <section id="engagements" class="engagements-asso">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Engagements</span>
@@ -1020,17 +1233,64 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="about-cta">
+    <!-- Contact Section -->
+    <section id="contact" class="about-contact">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Travaillons ensemble</span>
                 <h2 class="section-title">Envie de reprendre le contrôle<br>de votre numérique ?</h2>
                 <p class="section-subtitle">Discutons de votre projet, sans engagement. Premier échange gratuit.</p>
             </div>
-            <div class="about-cta-actions" data-reveal="up" data-delay="1">
-                <a href="index.html#contact" class="btn btn-primary">Discutons de votre projet</a>
-                <a href="book.html" class="btn btn-secondary">Voir le book</a>
+
+            <div class="about-contact-grid">
+                <div class="contact-info-list" data-reveal="up">
+                    <div class="contact-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:emmanuel@code-ess.fr">emmanuel@code-ess.fr</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Ivry-sur-Seine, France</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        <span>EI — SIRET 942 385 311 00017</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        <span>Agréé CII (Crédit d'Impôt Innovation)</span>
+                    </div>
+                    <div style="margin-top:var(--space-md)">
+                        <a href="book.html" class="btn btn-secondary">Voir le book</a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contact-form" data-reveal="up" data-delay="1" name="contact-profil" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact-profil">
+                    <input type="hidden" name="utm_source" value="">
+                    <input type="hidden" name="utm_medium" value="">
+                    <input type="hidden" name="utm_campaign" value="">
+                    <input type="hidden" name="utm_content" value="">
+                    <input type="hidden" name="utm_term" value="">
+                    <p class="form-group" style="display:none"><label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label></p>
+                    <div class="form-group">
+                        <label for="name">Votre nom *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="structure">Votre structure</label>
+                        <input type="text" id="structure" name="structure" placeholder="Association, coopérative...">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Décrivez brièvement votre projet ou votre besoin..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+                </form>
             </div>
         </div>
     </section>
