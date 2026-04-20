@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RCC - Pilotage Budgétaire</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --primary: #2d6a4f;
+    --primary-light: #40916c;
+    --primary-dark: #1b4332;
+    --accent: #d4a843;
+    --danger: #e63946;
+    --text: #1d3557;
+    --text-light: #6c757d;
+    --border: #dee2e6;
+    --success: #40916c;
+    --warning: #e9c46a;
+    --info: #457b9d;
+    --shadow: 0 2px 8px rgba(0,0,0,.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); }
+
+  /* ===== TOPBAR ===== */
+  .topbar { background:var(--primary-dark); color:#fff; padding:0 1.5rem; display:flex; align-items:center; height:52px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,.2); gap:1rem; }
+  .topbar .logo { font-size:1.1rem; font-weight:700; letter-spacing:.02em; white-space:nowrap; }
+  .topbar .logo span { color:var(--accent); }
+  .topbar .separator { width:1px; height:28px; background:rgba(255,255,255,.2); }
+
+  /* Toolbar actions */
+  .toolbar { display:flex; gap:.3rem; margin-left:auto; align-items:center; }
+  .tb-btn { background:rgba(255,255,255,.1); border:none; color:#fff; padding:.4rem .7rem; border-radius:6px; font-size:.78rem; cursor:pointer; display:flex; align-items:center; gap:.35rem; transition:.15s; position:relative; white-space:nowrap; }
+  .tb-btn:hover { background:rgba(255,255,255,.22); }
+  .tb-btn svg { width:16px; height:16px; fill:currentColor; flex-shrink:0; }
+  .tb-badge { position:absolute; top:-4px; right:-4px; background:var(--danger); color:#fff; font-size:.6rem; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .tb-preview { border:1px dashed rgba(255,255,255,.35); background:transparent; }
+  .tb-preview:hover .tooltip { visibility:visible; opacity:1; }
+  .collab-dots { display:flex; gap:-4px; }
+  .collab-dot { width:22px; height:22px; border-radius:50%; border:2px solid var(--primary-dark); font-size:.55rem; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; margin-left:-6px; }
+
+  /* ===== TOOLTIP SYSTEM ===== */
+  .has-tooltip { position:relative; }
+  .tooltip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%); background:#1d3557; color:#fff; padding:.65rem .9rem; border-radius:8px; font-size:.75rem; line-height:1.4; width:max-content; max-width:300px; z-index:500; box-shadow:var(--shadow-lg); transition:.15s; pointer-events:none; text-align:left; }
+  .tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:6px solid transparent; border-top-color:#1d3557; }
+  .has-tooltip:hover .tooltip { visibility:visible; opacity:1; }
+  .tooltip-right { left:auto; right:0; transform:none; }
+  .tooltip-right::after { left:auto; right:16px; }
+  .tooltip-left { left:0; transform:none; }
+  .tooltip-left::after { left:16px; }
+  .tooltip b { color:var(--accent); }
+  .tooltip .tip-tag { display:inline-block; background:var(--accent); color:#1d3557; font-size:.6rem; font-weight:700; padding:.1rem .4rem; border-radius:3px; margin-bottom:.3rem; text-transform:uppercase; letter-spacing:.04em; }
+
+  /* ===== TABS ===== */
+  .tabs { background:#fff; border-bottom:1px solid var(--border); display:flex; gap:0; padding:0 1.5rem; position:sticky; top:52px; z-index:99; overflow-x:auto; }
+  .tab { padding:.75rem 1.2rem; cursor:pointer; border-bottom:3px solid transparent; font-size:.82rem; font-weight:500; color:var(--text-light); transition:.15s; white-space:nowrap; display:flex; align-items:center; gap:.4rem; }
+  .tab:hover { color:var(--text); background:#f8f9fa; }
+  .tab.active { color:var(--primary); border-bottom-color:var(--primary); font-weight:600; }
+  .tab .tab-badge { font-size:.55rem; background:var(--accent); color:#1d3557; padding:.1rem .35rem; border-radius:3px; font-weight:700; text-transform:uppercase; }
+  .tab .tab-badge.new { background:var(--info); color:#fff; }
+
+  /* ===== LAYOUT ===== */
+  .page { display:none; padding:1.5rem 2rem 3rem; max-width:1440px; margin:0 auto; }
+  .page.active { display:block; }
+
+  /* ===== KPI CARDS ===== */
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:.9rem; margin-bottom:1.4rem; }
+  .kpi { background:var(--card); border-radius:10px; padding:1.1rem 1.2rem; box-shadow:var(--shadow); border-left:4px solid var(--primary); position:relative; }
+  .kpi.danger { border-left-color:var(--danger); }
+  .kpi.warning { border-left-color:var(--warning); }
+  .kpi.accent { border-left-color:var(--accent); }
+  .kpi.info { border-left-color:var(--info); }
+  .kpi .label { font-size:.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.04em; margin-bottom:.35rem; }
+  .kpi .value { font-size:1.5rem; font-weight:700; }
+  .kpi .detail { font-size:.72rem; color:var(--text-light); margin-top:.25rem; }
+  .kpi .value.negative { color:var(--danger); }
+  .kpi .value.positive { color:var(--success); }
+  .kpi .sparkline { position:absolute; bottom:.6rem; right:.8rem; opacity:.3; }
+  .kpi-clickable { cursor:pointer; transition:transform .1s; }
+  .kpi-clickable:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+
+  /* ===== CHARTS ===== */
+  .chart-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.4rem; }
+  .chart-card { background:var(--card); border-radius:10px; padding:1.2rem; box-shadow:var(--shadow); position:relative; }
+  .chart-card h3 { font-size:.88rem; margin-bottom:.8rem; color:var(--text); display:flex; align-items:center; gap:.5rem; }
+  .chart-card canvas { max-height:300px; }
+
+  /* ===== TABLES ===== */
+  .table-card { background:var(--card); border-radius:10px; padding:1.2rem; box-shadow:var(--shadow); margin-bottom:1.2rem; overflow-x:auto; }
+  .table-card h3 { font-size:.88rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem; }
+  table { width:100%; border-collapse:collapse; font-size:.78rem; }
+  thead th { background:#f1f3f5; padding:.5rem .7rem; text-align:left; font-weight:600; color:var(--text); border-bottom:2px solid var(--border); white-space:nowrap; }
+  tbody td { padding:.5rem .7rem; border-bottom:1px solid #f1f3f5; }
+  tbody tr:hover { background:#f8f9fa; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .neg { color:var(--danger); }
+  .pos { color:var(--success); }
+  .status { display:inline-block; padding:.15rem .5rem; border-radius:10px; font-size:.68rem; font-weight:600; }
+  .status.complet { background:#d8f3dc; color:#1b4332; }
+  .status.construction { background:#fff3cd; color:#664d03; }
+  .status.attente { background:#f8d7da; color:#842029; }
+  .status.info { background:#d0ecf7; color:#0c4a6e; }
+
+  /* ===== MATRIX TABLE ===== */
+  .matrix-table th, .matrix-table td { text-align:center; min-width:95px; }
+  .matrix-table th:first-child, .matrix-table td:first-child { text-align:left; min-width:180px; position:sticky; left:0; background:inherit; z-index:1; }
+  .matrix-table thead th:first-child { background:#f1f3f5; }
+  .matrix-table .total-row td { font-weight:700; background:#f1f3f5; border-top:2px solid var(--border); }
+  .cell-amount { font-size:.76rem; }
+  .cell-empty { color:#ccc; }
+
+  /* ===== FINANCEUR CARDS ===== */
+  .financeur-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1rem; }
+  .financeur-card { background:var(--card); border-radius:10px; padding:1.2rem; box-shadow:var(--shadow); }
+  .financeur-card h4 { color:var(--primary); margin-bottom:.6rem; font-size:.95rem; display:flex; align-items:center; gap:.5rem; }
+  .financeur-meta { display:flex; gap:.6rem; margin-bottom:.8rem; font-size:.78rem; flex-wrap:wrap; }
+  .financeur-meta .tag { background:#e9ecef; padding:.15rem .5rem; border-radius:5px; }
+  .progress-bar { height:7px; background:#e9ecef; border-radius:4px; overflow:hidden; margin:.4rem 0; }
+  .progress-fill { height:100%; border-radius:4px; transition:width .5s; }
+  .progress-fill.ok { background:var(--success); }
+  .progress-fill.partial { background:var(--warning); }
+  .progress-fill.none { background:var(--danger); }
+  .financeur-projects { list-style:none; }
+  .financeur-projects li { padding:.3rem 0; border-bottom:1px solid #f1f3f5; font-size:.78rem; display:flex; justify-content:space-between; }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-header { margin-bottom:1rem; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:.5rem; }
+  .section-header div { }
+  .section-header h2 { font-size:1.15rem; font-weight:700; }
+  .section-header p { font-size:.8rem; color:var(--text-light); margin-top:.2rem; }
+
+  /* ===== FILTER BAR ===== */
+  .filter-bar { display:flex; gap:.6rem; margin-bottom:1rem; flex-wrap:wrap; align-items:center; }
+  .filter-bar select, .filter-bar input { padding:.4rem .7rem; border:1px solid var(--border); border-radius:7px; font-size:.78rem; background:#fff; }
+  .filter-bar label { font-size:.76rem; color:var(--text-light); }
+
+  /* ===== ACTION BUTTONS ===== */
+  .action-bar { display:flex; gap:.5rem; flex-wrap:wrap; }
+  .btn { padding:.4rem .9rem; border-radius:7px; font-size:.78rem; font-weight:500; cursor:pointer; border:none; display:inline-flex; align-items:center; gap:.35rem; transition:.15s; }
+  .btn-primary { background:var(--primary); color:#fff; }
+  .btn-primary:hover { background:var(--primary-light); }
+  .btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); }
+  .btn-outline:hover { background:#f8f9fa; border-color:var(--text-light); }
+  .btn-ghost { background:transparent; border:1px dashed var(--border); color:var(--text-light); }
+  .btn-ghost:hover { border-color:var(--info); color:var(--info); }
+  .btn svg { width:14px; height:14px; fill:currentColor; }
+
+  /* ===== PREVIEW OVERLAY ===== */
+  .preview-overlay { position:relative; }
+  .preview-overlay::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,.55); backdrop-filter:blur(1px); z-index:2; border-radius:10px; pointer-events:none; }
+  .preview-overlay::after { content:'Apercu — Fonctionnalite a developper'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--info); color:#fff; padding:.5rem 1.2rem; border-radius:8px; font-size:.8rem; font-weight:600; z-index:3; white-space:nowrap; pointer-events:none; letter-spacing:.01em; }
+  .preview-badge { display:inline-block; background:var(--info); color:#fff; font-size:.58rem; font-weight:700; padding:.12rem .4rem; border-radius:3px; text-transform:uppercase; letter-spacing:.04em; vertical-align:middle; margin-left:.4rem; }
+
+  /* ===== NOTIFICATION PANEL ===== */
+  .notif-panel { display:none; position:fixed; top:52px; right:0; width:380px; max-height:calc(100vh - 52px); background:#fff; box-shadow:var(--shadow-lg); z-index:200; overflow-y:auto; border-left:1px solid var(--border); }
+  .notif-panel.open { display:block; }
+  .notif-panel h3 { padding:1rem 1.2rem .6rem; font-size:.9rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .notif-item { padding:.8rem 1.2rem; border-bottom:1px solid #f1f3f5; font-size:.78rem; cursor:pointer; transition:.1s; }
+  .notif-item:hover { background:#f8f9fa; }
+  .notif-item .notif-type { font-size:.65rem; font-weight:600; text-transform:uppercase; letter-spacing:.03em; margin-bottom:.25rem; }
+  .notif-item .notif-type.alert { color:var(--danger); }
+  .notif-item .notif-type.info { color:var(--info); }
+  .notif-item .notif-type.reminder { color:var(--accent); }
+  .notif-item .notif-time { font-size:.68rem; color:var(--text-light); margin-top:.3rem; }
+  .notif-item.unread { border-left:3px solid var(--info); }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop { display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:300; align-items:center; justify-content:center; }
+  .modal-backdrop.open { display:flex; }
+  .modal { background:#fff; border-radius:12px; width:90%; max-width:600px; max-height:80vh; overflow-y:auto; box-shadow:var(--shadow-lg); }
+  .modal-header { padding:1.2rem 1.5rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .modal-header h3 { font-size:1rem; }
+  .modal-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--text-light); padding:.2rem; }
+  .modal-body { padding:1.5rem; }
+  .modal-body p { font-size:.85rem; line-height:1.6; margin-bottom:.8rem; }
+  .modal-body .feature-list { list-style:none; }
+  .modal-body .feature-list li { padding:.5rem 0; border-bottom:1px solid #f1f3f5; font-size:.82rem; display:flex; align-items:flex-start; gap:.5rem; }
+  .modal-body .feature-list li::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--primary); margin-top:.35rem; flex-shrink:0; }
+
+  /* ===== WATERMARK ===== */
+  .watermark { position:fixed; bottom:.8rem; right:1rem; background:var(--primary-dark); color:#fff; padding:.35rem .9rem; border-radius:7px; font-size:.7rem; opacity:.9; z-index:200; }
+  .watermark strong { color:var(--accent); }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1000px) { .chart-row { grid-template-columns:1fr; } .tabs { overflow-x:auto; } .page { padding:1rem; } }
+  @media(max-width:700px) { .kpi-grid { grid-template-columns:1fr 1fr; } .topbar { padding:0 .8rem; } .toolbar .tb-label { display:none; } .notif-panel { width:100%; } }
+  @media(max-width:500px) { .kpi-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PASSWORD GATE                                                 -->
+<!-- ============================================================ -->
+<div id="passwordGate" style="position:fixed;inset:0;background:var(--primary-dark);z-index:9999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:2.5rem 2.5rem 2rem;box-shadow:0 12px 40px rgba(0,0,0,.3);text-align:center;max-width:380px;width:90%;">
+    <div style="font-size:1.3rem;font-weight:700;color:var(--primary);margin-bottom:.3rem;">RCC - Pilotage Budgetaire</div>
+    <div style="font-size:.8rem;color:var(--text-light);margin-bottom:1.5rem;">Maquette confidentielle &mdash; Acces restreint</div>
+    <input type="password" id="pwdInput" placeholder="Mot de passe" style="width:100%;padding:.65rem 1rem;border:2px solid var(--border);border-radius:8px;font-size:.95rem;text-align:center;outline:none;transition:.15s;" onkeydown="if(event.key==='Enter')checkPwd()">
+    <div id="pwdError" style="color:var(--danger);font-size:.78rem;margin-top:.5rem;min-height:1.2em;"></div>
+    <button onclick="checkPwd()" style="margin-top:.8rem;width:100%;padding:.6rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;transition:.15s;">Acceder</button>
+    <div style="margin-top:1.2rem;font-size:.68rem;color:var(--text-light);">Un Jour Une App &mdash; Avril 2026</div>
+  </div>
+</div>
+<script>
+function checkPwd(){
+  var v=document.getElementById('pwdInput').value;
+  if(v==='RCC2026!'){
+    document.getElementById('passwordGate').style.display='none';
+  } else {
+    document.getElementById('pwdError').textContent='Mot de passe incorrect';
+    document.getElementById('pwdInput').style.borderColor='var(--danger)';
+    document.getElementById('pwdInput').value='';
+    document.getElementById('pwdInput').focus();
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){document.getElementById('pwdInput').focus();});
+</script>
+
+<!-- ============================================================ -->
+<!-- TOPBAR WITH TOOLBAR ACTIONS                                   -->
+<!-- ============================================================ -->
+<div class="topbar">
+  <div class="logo"><span>RCC</span> Pilotage Budget 2026</div>
+  <div class="separator"></div>
+
+  <div class="toolbar">
+    <!-- Sync Google Sheets -->
+    <button class="tb-btn has-tooltip" onclick="showModal('syncModal')">
+      <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+      <span class="tb-label">Sync Sheets</span>
+      <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Synchronisation Google Sheets</b><br>Import automatique des 6 fichiers de poles existants. Connexion bidirectionnelle : les coordos continuent a saisir dans leurs Sheets habituels, l'outil agrege en temps reel.</div>
+    </button>
+
+    <!-- Export -->
+    <button class="tb-btn has-tooltip" onclick="showModal('exportModal')">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      <span class="tb-label">Exporter</span>
+      <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Export multi-format</b><br>PDF (rapport financeur), Excel (tableaux editables), ou envoi direct par email. Modeles pre-configures pour chaque financeur (ADEME, Erasmus+...).</div>
+    </button>
+
+    <!-- Scenarios -->
+    <button class="tb-btn tb-preview has-tooltip" onclick="showModal('scenarioModal')">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H5V5h7v12z"/></svg>
+      <span class="tb-label">Scenarios</span>
+      <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Simulateur de scenarios</b><br>Comparer 3 scenarios : optimiste, realiste, pessimiste. Tester l'impact d'un nouveau financement ou d'une coupe budgetaire avant de prendre la decision.</div>
+    </button>
+
+    <!-- Notifications -->
+    <button class="tb-btn has-tooltip" onclick="toggleNotif()" id="notifBtn">
+      <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+      <span class="tb-badge">5</span>
+      <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Centre de notifications</b><br>Alertes budget depasse, echeances financeurs, rappels de saisie, modifications par les coordos.</div>
+    </button>
+
+    <!-- Collaborateurs online -->
+    <div class="tb-btn tb-preview has-tooltip" style="cursor:default;">
+      <div class="collab-dots">
+        <div class="collab-dot" style="background:#e63946;">CM</div>
+        <div class="collab-dot" style="background:#457b9d;">SL</div>
+        <div class="collab-dot" style="background:#2a9d8f;">JG</div>
+      </div>
+      <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Mode collaboratif temps reel</b><br>Voir qui est connecte et sur quel onglet. Curseurs partages, verrouillage automatique des cellules en cours d'edition. Commentaires inline.</div>
+    </div>
+
+    <!-- Settings -->
+    <button class="tb-btn tb-preview has-tooltip" onclick="showModal('settingsModal')">
+      <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+      <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Administration</b><br>Droits d'acces par pole/role, parametrage des seuils d'alerte, gestion des comptes comptables, personnalisation du dashboard.</div>
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- NOTIFICATION PANEL                                            -->
+<!-- ============================================================ -->
+<div class="notif-panel" id="notifPanel">
+  <h3>Notifications <span style="font-size:.7rem;color:var(--text-light);font-weight:400;">5 non lues</span></h3>
+  <div class="notif-item unread">
+    <div class="notif-type alert">Alerte budget</div>
+    <div>Le poste <strong>Politique salariale</strong> affiche un ecart de -272 861 EUR entre depenses et recettes. Action requise.</div>
+    <div class="notif-time">Il y a 2 heures</div>
+  </div>
+  <div class="notif-item unread">
+    <div class="notif-type reminder">Echeance financeur</div>
+    <div>Convention <strong>ADEME</strong> : rapport intermediaire a remettre avant le <strong>30 juin 2026</strong>.</div>
+    <div class="notif-time">Il y a 5 heures</div>
+  </div>
+  <div class="notif-item unread">
+    <div class="notif-type info">Modification</div>
+    <div><strong>Stephanie L.</strong> a mis a jour le budget du projet Reglementation (+706 EUR en depenses realisees).</div>
+    <div class="notif-time">Hier, 16h42</div>
+  </div>
+  <div class="notif-item unread">
+    <div class="notif-type alert">Seuil depasse</div>
+    <div>Commission RH : les depenses realisees sur <strong>Accompagnement RH</strong> atteignent 93% du previsionnel actualise.</div>
+    <div class="notif-time">Hier, 11h15</div>
+  </div>
+  <div class="notif-item unread">
+    <div class="notif-type reminder">Rappel de saisie</div>
+    <div>4 poles n'ont pas actualise leur previsionnel depuis plus de <strong>30 jours</strong>.</div>
+    <div class="notif-time">17 avril 2026</div>
+  </div>
+  <div class="notif-item">
+    <div class="notif-type info">Sync reussie</div>
+    <div>Importation Google Sheets : 6 fichiers synchronises avec succes.</div>
+    <div class="notif-time">15 avril 2026</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABS                                                          -->
+<!-- ============================================================ -->
+<div class="tabs">
+  <div class="tab active" data-page="dashboard">Tableau de bord</div>
+  <div class="tab" data-page="poles">Budget par Pole</div>
+  <div class="tab" data-page="matrix">Matrice Financeurs</div>
+  <div class="tab" data-page="financeurs">Suivi Financeurs</div>
+  <div class="tab" data-page="projets">Detail Projets</div>
+  <div class="tab" data-page="tresorerie">Tresorerie <span class="tab-badge new">new</span></div>
+  <div class="tab" data-page="rh">Plan de charge RH <span class="tab-badge new">new</span></div>
+  <div class="tab" data-page="conventions">Conventions <span class="tab-badge new">new</span></div>
+  <div class="tab" data-page="historique">Historique <span class="tab-badge">audit</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 : DASHBOARD                                            -->
+<!-- ============================================================ -->
+<div class="page active" id="dashboard">
+  <div class="section-header">
+    <div>
+      <h2>Vue d'ensemble</h2>
+      <p>Consolidation de l'ensemble des poles du Reseau Compost Citoyen - Budget 2026</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-outline has-tooltip" onclick="showModal('compareModal')">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;"><path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v-2H5V5h5V3zm4 18h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-5v2h5v14h-5v2z"/></svg>
+        Comparer N-1
+        <div class="tooltip"><div class="tip-tag">A venir</div><b>Comparaison N / N-1</b><br>Afficher les ecarts avec le budget 2025 pour chaque indicateur : evolution des depenses, nouvelles sources de financement, variation des ETP.</div>
+      </button>
+      <button class="btn btn-ghost has-tooltip" onclick="showModal('customModal')">
+        Personnaliser
+        <div class="tooltip"><div class="tip-tag">A venir</div><b>Dashboard personnalisable</b><br>Choisir les KPIs a afficher, reorganiser les graphiques par drag&amp;drop, creer des vues sauvegardees par role (coordinatrice, tresoriere, CA).</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi kpi-clickable has-tooltip">
+      <div class="label">Budget total depenses</div>
+      <div class="value">587 254 EUR</div>
+      <div class="detail">Previsionnel debut d'annee (hors salaires)</div>
+      <div class="tooltip tooltip-left"><b>Clic pour voir</b> le detail des depenses par nature comptable (achats, prestations, deplacement, RH...).</div>
+    </div>
+    <div class="kpi kpi-clickable">
+      <div class="label">Total recettes identifiees</div>
+      <div class="value">134 515 EUR</div>
+      <div class="detail">Subventions + ventes + mecenat</div>
+    </div>
+    <div class="kpi danger kpi-clickable has-tooltip">
+      <div class="label">Deficit previsionnel</div>
+      <div class="value negative">-452 739 EUR</div>
+      <div class="detail">Hors temps salarie-e-s</div>
+      <div class="tooltip"><div class="tip-tag">Alerte</div>Deficit superieur a 50% du budget total. <b>Clic pour acceder</b> aux recommandations automatiques de reequilibrage.</div>
+    </div>
+    <div class="kpi warning">
+      <div class="label">ETP mobilises</div>
+      <div class="value">6,2 ETP</div>
+      <div class="detail">Dont 0,83 ETP benevoles (j.h)</div>
+    </div>
+    <div class="kpi accent">
+      <div class="label">Poles actifs</div>
+      <div class="value">6</div>
+      <div class="detail">37 projets / activites recenses</div>
+    </div>
+    <div class="kpi kpi-clickable has-tooltip">
+      <div class="label">Taux d'execution</div>
+      <div class="value">4,2 %</div>
+      <div class="detail">Realise / Previsionnel</div>
+      <div class="tooltip tooltip-right"><b>Clic pour acceder</b> au graphique mensuel d'avancement avec projection de consommation a fin d'annee.</div>
+    </div>
+    <div class="kpi info has-tooltip" style="border-left-style:dashed;">
+      <div class="label">Sante financiere <span class="preview-badge">a venir</span></div>
+      <div class="value" style="font-size:1.2rem;">Score : 42/100</div>
+      <div class="detail">Indice composite : couverture, tresorerie, diversification</div>
+      <div class="tooltip"><div class="tip-tag">A venir</div><b>Score de sante financiere</b><br>Indice agrege calculant : taux de couverture des depenses, diversification des financeurs, niveau de tresorerie, retard de versements. Mise a jour automatique.</div>
+    </div>
+    <div class="kpi info has-tooltip" style="border-left-style:dashed;">
+      <div class="label">Prochaine echeance <span class="preview-badge">a venir</span></div>
+      <div class="value" style="font-size:1.1rem;">30 juin 2026</div>
+      <div class="detail">Rapport ADEME intermediaire</div>
+      <div class="tooltip"><div class="tip-tag">A venir</div><b>Rappel automatique des echeances</b><br>Echeances des conventions, dates limites AAP, rapports a remettre. Alertes configurables a J-30, J-15, J-7.</div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <h3>Depenses vs Recettes par Pole (previsionnel)</h3>
+      <canvas id="chartPoles"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Repartition des recettes par source</h3>
+      <canvas id="chartRecettes"></canvas>
+    </div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-card">
+      <h3>Excedent / Deficit par Pole</h3>
+      <canvas id="chartExcedent"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Avancement budgetaire (Realise vs Previsionnel)</h3>
+      <canvas id="chartAvancement"></canvas>
+    </div>
+  </div>
+
+  <!-- PREVIEW: Additional dashboard charts -->
+  <div class="chart-row">
+    <div class="chart-card preview-overlay" style="min-height:200px;">
+      <h3>Evolution mensuelle des depenses (courbe cumulative)</h3>
+      <canvas id="chartEvol" style="filter:blur(2px);"></canvas>
+    </div>
+    <div class="chart-card preview-overlay" style="min-height:200px;">
+      <h3>Concentration des financeurs (indice Herfindahl)</h3>
+      <canvas id="chartHerfindahl" style="filter:blur(2px);"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 : BUDGET PAR POLE                                      -->
+<!-- ============================================================ -->
+<div class="page" id="poles">
+  <div class="section-header">
+    <div>
+      <h2>Budget par Pole</h2>
+      <p>Vue consolidee par pole avec statut et moyens humains</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-outline has-tooltip">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Edition inline
+        <div class="tooltip"><div class="tip-tag">A venir</div><b>Saisie directe dans l'outil</b><br>Modifier les montants directement dans le tableau. Les changements sont repercutes dans le Google Sheet source en temps reel.</div>
+      </button>
+      <button class="btn btn-ghost has-tooltip">
+        Commentaires
+        <div class="tooltip"><div class="tip-tag">A venir</div><b>Notes et commentaires par cellule</b><br>Ajouter des commentaires sur n'importe quel montant. Historique des discussions visible par tous les coordos.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <label>Affichage :</label>
+    <select id="poleView">
+      <option value="previ">Previsionnel (debut d'annee)</option>
+      <option value="actual">Previsionnel actualise</option>
+      <option value="realise">Realise</option>
+    </select>
+    <label>Annee :</label>
+    <select><option>2026</option><option>2025</option></select>
+    <button class="btn btn-ghost has-tooltip" style="margin-left:auto;">
+      Trier / Filtrer
+      <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Tri et filtres avances</b><br>Trier par excedent, par statut, filtrer par coordo responsable, par nature de depense, par financeur affecte.</div>
+    </button>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Pole</th>
+          <th>Nb projets</th>
+          <th class="num">Depenses</th>
+          <th class="num">Recettes</th>
+          <th class="num">Excedent / Deficit</th>
+          <th class="num">ETP salarie</th>
+          <th class="num">ETP benevole</th>
+          <th>Statut budgets</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Filiere Representation</strong></td><td>6</td><td class="num">33 209 EUR</td><td class="num">66 115 EUR</td><td class="num pos">+32 906 EUR</td><td class="num">0,79</td><td class="num">0,00</td><td><span class="status complet">Complet</span></td></tr>
+        <tr><td><strong>Commission RH</strong></td><td>7</td><td class="num">293 804 EUR</td><td class="num">2 400 EUR</td><td class="num neg">-291 404 EUR</td><td class="num">0,05</td><td class="num">0,00</td><td><span class="status complet">Complet</span></td></tr>
+        <tr><td><strong>Animation & Developpement</strong></td><td>8</td><td class="num">85 200 EUR</td><td class="num">28 000 EUR</td><td class="num neg">-57 200 EUR</td><td class="num">1,80</td><td class="num">0,35</td><td><span class="status construction">En construction</span></td></tr>
+        <tr><td><strong>Communication</strong></td><td>5</td><td class="num">42 600 EUR</td><td class="num">12 000 EUR</td><td class="num neg">-30 600 EUR</td><td class="num">1,20</td><td class="num">0,10</td><td><span class="status construction">En construction</span></td></tr>
+        <tr><td><strong>Qualite & Certification</strong></td><td>6</td><td class="num">78 441 EUR</td><td class="num">18 000 EUR</td><td class="num neg">-60 441 EUR</td><td class="num">1,50</td><td class="num">0,25</td><td><span class="status complet">Complet</span></td></tr>
+        <tr><td><strong>Administratif & Gouvernance</strong></td><td>5</td><td class="num">54 000 EUR</td><td class="num">8 000 EUR</td><td class="num neg">-46 000 EUR</td><td class="num">0,85</td><td class="num">0,13</td><td><span class="status attente">En attente</span></td></tr>
+      </tbody>
+      <tfoot><tr style="font-weight:700;background:#f1f3f5;"><td>TOTAL</td><td>37</td><td class="num">587 254 EUR</td><td class="num">134 515 EUR</td><td class="num neg">-452 739 EUR</td><td class="num">6,19</td><td class="num">0,83</td><td></td></tr></tfoot>
+    </table>
+  </div>
+
+  <div class="section-header" style="margin-top:1.5rem;"><div><h2>Detail : Pole Filiere Representation</h2><p>Donnees reelles issues du fichier budget</p></div></div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Projet / Activite</th><th>Statut</th><th class="num">Depenses previ.</th><th class="num">Depenses actual.</th><th class="num">Realise</th><th class="num">Recettes previ.</th><th class="num">Excedent previ.</th><th class="num">ETP salarie</th></tr></thead>
+      <tbody>
+        <tr><td>Plaidoyer National</td><td><span class="status complet">Complet</span></td><td class="num">6 600 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num neg">-6 600 EUR</td><td class="num">0,32</td></tr>
+        <tr><td>Reglementation</td><td><span class="status complet">Complet</span></td><td class="num">13 900 EUR</td><td class="num">2 400 EUR</td><td class="num">0 EUR</td><td class="num">3 000 EUR</td><td class="num neg">-10 900 EUR</td><td class="num">0,07</td></tr>
+        <tr><td>Plaidoyer local</td><td><span class="status complet">Complet</span></td><td class="num">10 200 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num neg">-10 200 EUR</td><td class="num">0,10</td></tr>
+        <tr><td>Partenariat / Mecenat</td><td><span class="status complet">Complet</span></td><td class="num">1 069 EUR</td><td class="num">69 EUR</td><td class="num">0 EUR</td><td class="num">50 000 EUR</td><td class="num pos">+48 931 EUR</td><td class="num">0,11</td></tr>
+        <tr><td>Animation interne</td><td><span class="status complet">Complet</span></td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0,02</td></tr>
+        <tr><td>Reseau Europeen</td><td><span class="status construction">En construction</span></td><td class="num">1 440 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">13 115 EUR</td><td class="num pos">+11 675 EUR</td><td class="num">0,18</td></tr>
+      </tbody>
+      <tfoot><tr style="font-weight:700;background:#f1f3f5;"><td>TOTAL POLE</td><td></td><td class="num">33 209 EUR</td><td class="num">2 469 EUR</td><td class="num">0 EUR</td><td class="num">66 115 EUR</td><td class="num pos">+32 906 EUR</td><td class="num">0,79</td></tr></tfoot>
+    </table>
+  </div>
+
+  <div class="section-header" style="margin-top:1.5rem;"><div><h2>Detail : Commission RH</h2><p>Donnees reelles issues du fichier budget</p></div></div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Projet / Activite</th><th>Statut</th><th class="num">Depenses previ.</th><th class="num">Depenses actual.</th><th class="num">Realise</th><th class="num">Recettes previ.</th><th class="num">Excedent previ.</th><th class="num">ETP salarie</th></tr></thead>
+      <tbody>
+        <tr><td>Mutualisation RH inter-reg</td><td><span class="status complet">Complet</span></td><td class="num">3 000 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">2 400 EUR</td><td class="num neg">-600 EUR</td><td class="num">0,01</td></tr>
+        <tr><td>Suivi administratif RH</td><td><span class="status complet">Complet</span></td><td class="num">4 170 EUR</td><td class="num">3 159 EUR</td><td class="num">970 EUR</td><td class="num">0 EUR</td><td class="num neg">-4 170 EUR</td><td class="num">0,00</td></tr>
+        <tr><td>Programme de formation</td><td><span class="status complet">Complet</span></td><td class="num">1 000 EUR</td><td class="num">1 000 EUR</td><td class="num">114 EUR</td><td class="num">0 EUR</td><td class="num neg">-1 000 EUR</td><td class="num">0,01</td></tr>
+        <tr><td>Accompagnement RH</td><td><span class="status complet">Complet</span></td><td class="num">400 EUR</td><td class="num">373 EUR</td><td class="num">373 EUR</td><td class="num">0 EUR</td><td class="num neg">-400 EUR</td><td class="num">0,01</td></tr>
+        <tr><td>QVCT</td><td><span class="status complet">Complet</span></td><td class="num">1 700 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td><td class="num neg">-1 700 EUR</td><td class="num">0,00</td></tr>
+        <tr><td>Politique salariale</td><td><span class="status complet">Complet</span></td><td class="num">272 861 EUR</td><td class="num">136 EUR</td><td class="num">3 298 EUR</td><td class="num">0 EUR</td><td class="num neg">-272 861 EUR</td><td class="num">0,00</td></tr>
+        <tr><td>Bureaux, equipements, moyens</td><td><span class="status construction">En construction</span></td><td class="num">10 673 EUR</td><td class="num">8 202 EUR</td><td class="num">1 237 EUR</td><td class="num">0 EUR</td><td class="num neg">-10 673 EUR</td><td class="num">0,00</td></tr>
+      </tbody>
+      <tfoot><tr style="font-weight:700;background:#f1f3f5;"><td>TOTAL POLE</td><td></td><td class="num">293 804 EUR</td><td class="num">12 870 EUR</td><td class="num">5 993 EUR</td><td class="num">2 400 EUR</td><td class="num neg">-291 404 EUR</td><td class="num">0,05</td></tr></tfoot>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 : MATRICE FINANCEURS                                   -->
+<!-- ============================================================ -->
+<div class="page" id="matrix">
+  <div class="section-header">
+    <div>
+      <h2>Matrice Projets x Financeurs</h2>
+      <p>Qui finance quoi ? Vue croisee projets / sources de financement</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-primary has-tooltip" onclick="showModal('exportModal')">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Exporter cette vue
+        <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Export cible</b><br>Generer un PDF ou Excel de cette matrice pour le CA ou un financeur specifique. Ajout automatique du logo RCC et mise en forme professionnelle.</div>
+      </button>
+      <button class="btn btn-ghost has-tooltip">
+        + Ajouter financeur
+        <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Ajout dynamique de colonnes</b><br>Ajouter un nouveau financeur depuis un referentiel. La colonne est creee dans la matrice et disponible dans les fiches projet.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <label>Pole :</label>
+    <select><option>Tous les poles</option><option>Filiere Representation</option><option>Commission RH</option><option>Animation & Developpement</option><option>Communication</option><option>Qualite & Certification</option><option>Administratif & Gouvernance</option></select>
+    <label>Annee :</label>
+    <select><option>2026</option><option>2025</option></select>
+    <label style="margin-left:auto;">Afficher :</label>
+    <select><option>Montants</option><option>% du budget</option><option>Statut versement</option></select>
+  </div>
+
+  <div class="table-card" style="overflow-x:auto;">
+    <table class="matrix-table">
+      <thead><tr><th>Projet / Activite</th><th>Budget total</th><th>ADEME</th><th>Erasmus+</th><th>OPCO</th><th>Mecenat prive</th><th>Participation RR</th><th>Fonds propres RCC</th><th>Reste a financer</th></tr></thead>
+      <tbody>
+        <tr><td>Plaidoyer National</td><td class="num">6 600 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num neg">6 600 EUR</td></tr>
+        <tr><td>Reglementation</td><td class="num">13 900 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">2 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">1 000 EUR</td><td class="num neg">10 900 EUR</td></tr>
+        <tr><td>Plaidoyer local</td><td class="num">10 200 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num neg">10 200 EUR</td></tr>
+        <tr><td>Partenariat / Mecenat</td><td class="num">1 069 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount pos">50 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num pos">+48 931 EUR</td></tr>
+        <tr><td>Reseau Europeen</td><td class="num">1 440 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount pos">13 115 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num pos">+11 675 EUR</td></tr>
+        <tr><td>Mutualisation RH inter-reg</td><td class="num">3 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">2 400 EUR</td><td class="num cell-empty">&mdash;</td><td class="num neg">600 EUR</td></tr>
+        <tr><td>Politique salariale</td><td class="num">272 861 EUR</td><td class="num cell-amount">120 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">15 000 EUR</td><td class="num neg">137 861 EUR</td></tr>
+        <tr><td>Programme de formation</td><td class="num">1 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">1 000 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num">0 EUR</td></tr>
+        <tr><td>Bureaux, equipements</td><td class="num">10 673 EUR</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-empty">&mdash;</td><td class="num cell-amount">3 500 EUR</td><td class="num neg">7 173 EUR</td></tr>
+        <tr class="total-row"><td>TOTAL</td><td class="num">320 743 EUR</td><td class="num">120 000 EUR</td><td class="num">13 115 EUR</td><td class="num">3 000 EUR</td><td class="num">50 000 EUR</td><td class="num">2 400 EUR</td><td class="num">19 500 EUR</td><td class="num neg">112 728 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-row" style="margin-top:1rem;">
+    <div class="chart-card"><h3>Repartition par financeur</h3><canvas id="chartFinanceurs"></canvas></div>
+    <div class="chart-card"><h3>Taux de couverture par projet</h3><canvas id="chartCouverture"></canvas></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 : SUIVI FINANCEURS                                     -->
+<!-- ============================================================ -->
+<div class="page" id="financeurs">
+  <div class="section-header">
+    <div>
+      <h2>Suivi des Financeurs</h2>
+      <p>Pour chaque financeur : projets finances, depenses eligibles, etat des versements</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-primary has-tooltip" onclick="showModal('rapportModal')">
+        Generer rapport financeur
+        <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Rapport automatique par financeur</b><br>Selectionner un financeur et generer automatiquement le rapport d'avancement dans le format attendu (depenses eligibles, justificatifs, reste a percevoir).</div>
+      </button>
+      <button class="btn btn-ghost has-tooltip">
+        + Nouveau financeur
+        <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Creer une fiche financeur</b><br>Referentiel complet : coordonnees, type (public/prive), contraintes, periodicite, interlocuteur dedie.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="financeur-grid">
+    <div class="financeur-card">
+      <h4>ADEME <span class="has-tooltip" style="cursor:help;"><span class="preview-badge">Fiche complete</span><span class="tooltip" style="font-weight:400;"><div class="tip-tag">A venir</div><b>Fiche financeur detaillee</b><br>Clic pour acceder a : historique des conventions (2024, 2025, 2026), documents uploades, interlocuteur, rappels automatiques.</span></span></h4>
+      <div class="financeur-meta"><span class="tag">Convention pluriannuelle</span><span class="tag">120 000 EUR engages</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Versements : <strong>45 000 EUR recus</strong> sur 120 000 EUR</div>
+      <div class="progress-bar"><div class="progress-fill partial" style="width:37.5%"></div></div>
+      <div style="font-size:.7rem;color:var(--text-light);margin-bottom:.7rem;">37,5% verse &mdash; Prochain versement attendu : T2 2026</div>
+      <ul class="financeur-projects"><li><span>Politique salariale (salaires)</span><span>120 000 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Depenses eligibles :</strong> Salaires et charges sociales, alternance</div>
+    </div>
+
+    <div class="financeur-card">
+      <h4>Erasmus+</h4>
+      <div class="financeur-meta"><span class="tag">Projet specifique</span><span class="tag">13 115 EUR engages</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Versements : <strong>0 EUR recu</strong> sur 13 115 EUR</div>
+      <div class="progress-bar"><div class="progress-fill none" style="width:0%"></div></div>
+      <div style="font-size:.7rem;color:var(--text-light);margin-bottom:.7rem;">0% verse &mdash; En attente de demarrage projet</div>
+      <ul class="financeur-projects"><li><span>Reseau Europeen</span><span>13 115 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Depenses eligibles :</strong> Deplacements, hebergement, prestations traduction</div>
+    </div>
+
+    <div class="financeur-card">
+      <h4>Mecenat prive (a trouver)</h4>
+      <div class="financeur-meta"><span class="tag">Prospection en cours</span><span class="tag">50 000 EUR vises</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Versements : <strong>0 EUR recu</strong> sur 50 000 EUR</div>
+      <div class="progress-bar"><div class="progress-fill none" style="width:0%"></div></div>
+      <div style="font-size:.7rem;color:var(--text-light);margin-bottom:.7rem;">0% verse &mdash; Phase de recherche active</div>
+      <ul class="financeur-projects"><li><span>Partenariat / Mecenat</span><span>50 000 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Depenses eligibles :</strong> A definir selon financeur</div>
+    </div>
+
+    <div class="financeur-card">
+      <h4>OPCO (formation)</h4>
+      <div class="financeur-meta"><span class="tag">Annuel</span><span class="tag">3 000 EUR engages</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Versements : <strong>0 EUR recu</strong> sur 3 000 EUR</div>
+      <div class="progress-bar"><div class="progress-fill none" style="width:0%"></div></div>
+      <div style="font-size:.7rem;color:var(--text-light);margin-bottom:.7rem;">0% verse &mdash; Demande a deposer</div>
+      <ul class="financeur-projects"><li><span>Reglementation (webinaires)</span><span>2 000 EUR</span></li><li><span>Programme de formation</span><span>1 000 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Depenses eligibles :</strong> Formation continue, couts pedagogiques</div>
+    </div>
+
+    <div class="financeur-card">
+      <h4>Participation Reseaux Regionaux</h4>
+      <div class="financeur-meta"><span class="tag">Mutualisation</span><span class="tag">2 400 EUR engages</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Versements : <strong>0 EUR recu</strong> sur 2 400 EUR</div>
+      <div class="progress-bar"><div class="progress-fill none" style="width:0%"></div></div>
+      <ul class="financeur-projects"><li><span>Mutualisation RH inter-reg</span><span>2 400 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Depenses eligibles :</strong> Outils communs, demarche qualite partagee</div>
+    </div>
+
+    <div class="financeur-card">
+      <h4>Fonds propres RCC national</h4>
+      <div class="financeur-meta"><span class="tag">Autofinancement</span><span class="tag">19 500 EUR affectes</span></div>
+      <div style="font-size:.78rem;margin-bottom:.4rem;">Disponible : <strong>19 500 EUR</strong> &mdash; engagement immediat</div>
+      <div class="progress-bar"><div class="progress-fill ok" style="width:100%"></div></div>
+      <ul class="financeur-projects"><li><span>Politique salariale (complement)</span><span>15 000 EUR</span></li><li><span>Bureaux, equipements</span><span>3 500 EUR</span></li><li><span>Reglementation (evenements)</span><span>1 000 EUR</span></li></ul>
+      <div style="margin-top:.6rem;font-size:.74rem;color:var(--text-light);"><strong>Source :</strong> Adhesions, cotisations OF, excedents N-1</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5 : DETAIL PROJETS                                       -->
+<!-- ============================================================ -->
+<div class="page" id="projets">
+  <div class="section-header">
+    <div>
+      <h2>Detail par Projet</h2>
+      <p>Fiche detaillee d'un projet avec ventilation trimestrielle et affectation RH</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-ghost has-tooltip">
+        Imprimer fiche
+        <div class="tooltip tooltip-right"><div class="tip-tag">Fonction cle</div><b>Impression fiche projet</b><br>Generer un PDF formaté de la fiche projet pour classeur ou pour transmission au financeur concerne.</div>
+      </button>
+      <button class="btn btn-ghost has-tooltip">
+        Historique modifs
+        <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Journal des modifications</b><br>Voir qui a modifie quoi et quand sur cette fiche. Restauration possible d'une version anterieure.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <label>Projet :</label>
+    <select id="projetSelect"><option>Plaidoyer National</option><option selected>Reglementation</option><option>Plaidoyer local</option><option>Partenariat / Mecenat</option><option>Reseau Europeen</option><option>Mutualisation RH inter-reg</option></select>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Pole</div><div class="value" style="font-size:1rem;">Filiere Representation</div></div>
+    <div class="kpi"><div class="label">Statut budget</div><div class="value" style="font-size:1rem;"><span class="status complet">Complet</span></div></div>
+    <div class="kpi"><div class="label">Depenses prevues</div><div class="value">13 900 EUR</div></div>
+    <div class="kpi"><div class="label">Recettes prevues</div><div class="value">3 000 EUR</div></div>
+    <div class="kpi danger"><div class="label">Reste a financer</div><div class="value negative">-10 900 EUR</div></div>
+    <div class="kpi"><div class="label">ETP mobilises</div><div class="value">0,07</div><div class="detail">15 jour.femme/an</div></div>
+  </div>
+
+  <div class="table-card">
+    <h3>Charges (Depenses)</h3>
+    <table>
+      <thead><tr><th>N Compte</th><th>Nature</th><th>Details</th><th class="num">Previ. 2026</th><th class="num">T1</th><th class="num">T2</th><th class="num">T3</th><th class="num">T4</th></tr></thead>
+      <tbody>
+        <tr><td>604</td><td>Webinaires</td><td>2 webinaires/an</td><td class="num">2 400 EUR</td><td class="num">1 200 EUR</td><td class="num">1 200 EUR</td><td class="num">0 EUR</td><td class="num">0 EUR</td></tr>
+        <tr><td>604</td><td>Fiches Techniques</td><td>Prestation redaction</td><td class="num">2 500 EUR</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        <tr><td>604</td><td>Moderation Forum, FAQ</td><td>500EUR/mois au RCCNA</td><td class="num">6 000 EUR</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        <tr><td>604</td><td>Expertise juridique</td><td>Conseil / expertise</td><td class="num">0 EUR</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        <tr><td>625</td><td>Evenements externes</td><td>Frais de deplacement</td><td class="num">1 000 EUR</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        <tr><td>&mdash;</td><td>Formation (OPCO)</td><td>Montee en competence</td><td class="num">2 000 EUR</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="font-weight:700;background:#f1f3f5;"><td colspan="3">SOUS-TOTAL hors salaire</td><td class="num">13 900 EUR</td><td colspan="4"></td></tr>
+        <tr style="font-weight:700;background:#f1f3f5;"><td colspan="3">Salaires & charges sociales</td><td class="num">2 829 EUR</td><td colspan="4"></td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="chart-row">
+    <div class="table-card">
+      <h3>Moyens humains affectes</h3>
+      <table>
+        <thead><tr><th>Personne</th><th>Role</th><th class="num">j.h prevus</th><th class="num">ETP</th></tr></thead>
+        <tbody>
+          <tr><td>Chloe</td><td>Salariee</td><td class="num">15</td><td class="num">0,066</td></tr>
+          <tr><td>Stephanie</td><td>Salariee</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Cecile S</td><td>Salariee</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Julie</td><td>Salariee</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Malo</td><td>Alternant</td><td class="num">0</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-card">
+      <h3>Financement identifie</h3>
+      <table>
+        <thead><tr><th>Source</th><th class="num">Montant</th><th>Etat versement</th></tr></thead>
+        <tbody>
+          <tr><td>OPCO (webinaires)</td><td class="num">2 000 EUR</td><td><span class="status construction">A deposer</span></td></tr>
+          <tr><td>Evenement exterieur (entree)</td><td class="num">1 000 EUR</td><td><span class="status attente">Non confirme</span></td></tr>
+        </tbody>
+        <tfoot><tr style="font-weight:700;background:#f1f3f5;"><td>TOTAL RECETTES</td><td class="num">3 000 EUR</td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- PREVIEW: Pièces justificatives -->
+  <div class="table-card preview-overlay" style="min-height:120px;">
+    <h3>Pieces justificatives <span class="preview-badge">a venir</span></h3>
+    <table>
+      <thead><tr><th>Document</th><th>Type</th><th>Date</th><th>Montant</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Facture Webinaire #1</td><td>Facture</td><td>15/03/2026</td><td class="num">1 200 EUR</td><td><span class="status complet">Valide</span></td></tr>
+        <tr><td>Devis Fiches Techniques</td><td>Devis</td><td>02/01/2026</td><td class="num">2 500 EUR</td><td><span class="status construction">En attente</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 6 : TRESORERIE (PREVIEW)                                 -->
+<!-- ============================================================ -->
+<div class="page" id="tresorerie">
+  <div class="section-header">
+    <div>
+      <h2>Plan de Tresorerie Previsionnel <span class="preview-badge">a venir</span></h2>
+      <p>Projection mensuelle des encaissements et decaissements &mdash; anticipation des tensions de tresorerie</p>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Solde bancaire actuel</div><div class="value">82 400 EUR</div><div class="detail">Au 20 avril 2026</div></div>
+    <div class="kpi warning"><div class="label">Solde previsionnel a fin juin</div><div class="value" style="color:var(--warning);">34 200 EUR</div><div class="detail">Apres versements salaires T2</div></div>
+    <div class="kpi danger"><div class="label">Point bas prevu</div><div class="value negative">12 800 EUR</div><div class="detail">Septembre 2026 &mdash; avant versement ADEME T3</div></div>
+    <div class="kpi info" style="border-left-style:dashed;"><div class="label">Alerte tresorerie</div><div class="value" style="font-size:1rem;">Tension prevue en sept.</div><div class="detail">Decaler le reglement fournisseur de 30j recommande</div></div>
+  </div>
+
+  <div class="chart-card preview-overlay" style="min-height:300px;margin-bottom:1.5rem;">
+    <h3>Courbe de tresorerie mensuelle (encaissements vs decaissements cumulatifs)</h3>
+    <div style="padding:3rem;text-align:center;color:var(--text-light);font-size:.85rem;">
+      Graphique interactif avec :<br>
+      - Courbe des encaissements prevus (versements financeurs, cotisations)<br>
+      - Courbe des decaissements prevus (salaires, prestataires, loyer)<br>
+      - Zone de tension en rouge quand le solde passe sous le seuil d'alerte<br>
+      - Vue par trimestre ou par mois
+    </div>
+  </div>
+
+  <div class="table-card preview-overlay" style="min-height:200px;">
+    <h3>Echeancier detaille</h3>
+    <table>
+      <thead><tr><th>Mois</th><th class="num">Encaissements</th><th class="num">Decaissements</th><th class="num">Solde mensuel</th><th class="num">Solde cumule</th><th>Alertes</th></tr></thead>
+      <tbody>
+        <tr><td>Janvier</td><td class="num">8 500 EUR</td><td class="num">24 200 EUR</td><td class="num neg">-15 700 EUR</td><td class="num">66 700 EUR</td><td></td></tr>
+        <tr><td>Fevrier</td><td class="num">2 400 EUR</td><td class="num">23 800 EUR</td><td class="num neg">-21 400 EUR</td><td class="num">45 300 EUR</td><td></td></tr>
+        <tr><td>Mars</td><td class="num">45 000 EUR</td><td class="num">24 100 EUR</td><td class="num pos">+20 900 EUR</td><td class="num">66 200 EUR</td><td><span class="status info">Versement ADEME</span></td></tr>
+        <tr><td>...</td><td class="num">...</td><td class="num">...</td><td class="num">...</td><td class="num">...</td><td></td></tr>
+        <tr><td><strong>Sept.</strong></td><td class="num">0 EUR</td><td class="num">25 400 EUR</td><td class="num neg">-25 400 EUR</td><td class="num neg"><strong>12 800 EUR</strong></td><td><span class="status attente">Tension !</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 7 : PLAN DE CHARGE RH (PREVIEW)                          -->
+<!-- ============================================================ -->
+<div class="page" id="rh">
+  <div class="section-header">
+    <div>
+      <h2>Plan de Charge RH <span class="preview-badge">a venir</span></h2>
+      <p>Repartition du temps de chaque salarie-e et benevole sur les projets, par trimestre</p>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Salarie-e-s</div><div class="value">7</div><div class="detail">Dont 1 alternant (Malo)</div></div>
+    <div class="kpi"><div class="label">ETP total affecte</div><div class="value">6,19 ETP</div></div>
+    <div class="kpi warning"><div class="label">Surcharge detectee</div><div class="value" style="color:var(--warning);">2 personnes</div><div class="detail">Chloe (1.2 ETP) et Stephanie (1.05 ETP)</div></div>
+    <div class="kpi info" style="border-left-style:dashed;"><div class="label">ETP non affecte</div><div class="value">0,8 ETP</div><div class="detail">Capacite disponible a redistribuer</div></div>
+  </div>
+
+  <div class="table-card preview-overlay" style="min-height:200px;">
+    <h3>Charge par salarie-e (ETP par trimestre)</h3>
+    <table>
+      <thead><tr><th>Nom</th><th>Statut</th><th class="num">T1</th><th class="num">T2</th><th class="num">T3</th><th class="num">T4</th><th class="num">Total ETP</th><th>Alerte</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Chloe M.</strong></td><td>Salariee</td><td class="num">0,30</td><td class="num">0,35</td><td class="num">0,28</td><td class="num">0,27</td><td class="num neg"><strong>1,20</strong></td><td><span class="status attente">Surcharge</span></td></tr>
+        <tr><td><strong>Stephanie L.</strong></td><td>Salariee</td><td class="num">0,25</td><td class="num">0,30</td><td class="num">0,25</td><td class="num">0,25</td><td class="num neg"><strong>1,05</strong></td><td><span class="status attente">Surcharge</span></td></tr>
+        <tr><td>Cecile S.</td><td>Salariee</td><td class="num">0,20</td><td class="num">0,22</td><td class="num">0,20</td><td class="num">0,18</td><td class="num">0,80</td><td></td></tr>
+        <tr><td>Julie G.</td><td>Salariee</td><td class="num">0,18</td><td class="num">0,20</td><td class="num">0,18</td><td class="num">0,19</td><td class="num">0,75</td><td></td></tr>
+        <tr><td>Marianne</td><td>Salariee</td><td class="num">0,15</td><td class="num">0,18</td><td class="num">0,15</td><td class="num">0,12</td><td class="num">0,60</td><td></td></tr>
+        <tr><td>Cecile L.</td><td>Salariee</td><td class="num">0,10</td><td class="num">0,12</td><td class="num">0,10</td><td class="num">0,08</td><td class="num">0,40</td><td></td></tr>
+        <tr><td>Malo</td><td>Alternant</td><td class="num">0,10</td><td class="num">0,10</td><td class="num">0,10</td><td class="num">0,10</td><td class="num">0,40</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-card preview-overlay" style="min-height:250px;">
+    <h3>Heatmap : affectation par personne x projet</h3>
+    <div style="padding:2rem;text-align:center;color:var(--text-light);font-size:.85rem;">
+      Grille coloree montrant l'intensite d'affectation de chaque salarie-e sur chaque projet.<br>
+      Permet de visualiser la concentration et de reequilibrer la charge.<br>
+      Code couleur : vert = charge legere, jaune = normal, rouge = surcharge
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 8 : CONVENTIONS (PREVIEW)                                -->
+<!-- ============================================================ -->
+<div class="page" id="conventions">
+  <div class="section-header">
+    <div>
+      <h2>Gestion des Conventions <span class="preview-badge">a venir</span></h2>
+      <p>Suivi des conventions signees, echeances, documents a fournir, renouvellements</p>
+    </div>
+  </div>
+
+  <div class="table-card preview-overlay" style="min-height:200px;">
+    <table>
+      <thead><tr><th>Convention</th><th>Financeur</th><th>Montant</th><th>Debut</th><th>Fin</th><th>Prochain jalon</th><th>Documents</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Convention ADEME 2025-2027</strong></td>
+          <td>ADEME</td>
+          <td class="num">360 000 EUR</td>
+          <td>01/01/2025</td>
+          <td>31/12/2027</td>
+          <td><strong>30/06/2026</strong><br><span style="font-size:.7rem;color:var(--text-light);">Rapport intermediaire annee 2</span></td>
+          <td>
+            <span class="status complet">Convention signee</span><br>
+            <span class="status construction">Rapport T1 a envoyer</span>
+          </td>
+          <td><span class="status complet">Active</span></td>
+        </tr>
+        <tr>
+          <td><strong>Erasmus+ Compost4EU</strong></td>
+          <td>Commission EU</td>
+          <td class="num">13 115 EUR</td>
+          <td>01/09/2026</td>
+          <td>31/08/2028</td>
+          <td>01/09/2026<br><span style="font-size:.7rem;color:var(--text-light);">Demarrage projet</span></td>
+          <td><span class="status construction">Accord en cours</span></td>
+          <td><span class="status construction">En montage</span></td>
+        </tr>
+        <tr>
+          <td><strong>OPCO Formation 2026</strong></td>
+          <td>OPCO</td>
+          <td class="num">3 000 EUR</td>
+          <td>01/01/2026</td>
+          <td>31/12/2026</td>
+          <td>15/05/2026<br><span style="font-size:.7rem;color:var(--text-light);">Date limite depot</span></td>
+          <td><span class="status attente">Dossier a preparer</span></td>
+          <td><span class="status attente">A deposer</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-card preview-overlay" style="min-height:180px;">
+    <h3>Timeline des conventions et echeances</h3>
+    <div style="padding:2rem;text-align:center;color:var(--text-light);font-size:.85rem;">
+      Frise chronologique interactive montrant :<br>
+      - Duree de chaque convention (barre horizontale)<br>
+      - Jalons et echeances (points cliquables)<br>
+      - Alertes automatiques avant chaque date limite<br>
+      - Possibilite de zoomer par trimestre / annee
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 9 : HISTORIQUE / AUDIT TRAIL (PREVIEW)                   -->
+<!-- ============================================================ -->
+<div class="page" id="historique">
+  <div class="section-header">
+    <div>
+      <h2>Historique des Modifications <span class="preview-badge">audit</span></h2>
+      <p>Journal complet des actions : qui a modifie quoi, quand, avec possibilite de restauration</p>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-ghost has-tooltip">
+        Filtrer par utilisateur
+        <div class="tooltip tooltip-right"><div class="tip-tag">A venir</div><b>Filtres avances</b><br>Par personne, par pole, par type de modification, par periode.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="table-card preview-overlay" style="min-height:350px;">
+    <table>
+      <thead><tr><th>Date & Heure</th><th>Utilisateur</th><th>Action</th><th>Element modifie</th><th>Ancienne valeur</th><th>Nouvelle valeur</th><th></th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>20/04/2026 09:15</strong></td><td>Stephanie L.</td><td><span class="status info">Modification</span></td>
+          <td>Reglementation > Depenses actual.</td><td class="num">1 694 EUR</td><td class="num">2 400 EUR</td>
+          <td><button class="btn btn-ghost" style="font-size:.7rem;padding:.2rem .5rem;">Restaurer</button></td>
+        </tr>
+        <tr>
+          <td>19/04/2026 16:42</td><td>Stephanie L.</td><td><span class="status info">Modification</span></td>
+          <td>Reglementation > Realise</td><td class="num">0 EUR</td><td class="num">706 EUR</td>
+          <td><button class="btn btn-ghost" style="font-size:.7rem;padding:.2rem .5rem;">Restaurer</button></td>
+        </tr>
+        <tr>
+          <td>18/04/2026 11:30</td><td>Chloe M.</td><td><span class="status construction">Ajout</span></td>
+          <td>Mecenat > Recettes previ.</td><td class="num">&mdash;</td><td class="num">50 000 EUR</td>
+          <td><button class="btn btn-ghost" style="font-size:.7rem;padding:.2rem .5rem;">Restaurer</button></td>
+        </tr>
+        <tr>
+          <td>17/04/2026 14:20</td><td>Systeme</td><td><span class="status complet">Sync</span></td>
+          <td>Import Google Sheets (6 fichiers)</td><td>&mdash;</td><td>Succes</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>15/04/2026 10:00</td><td>Cecile S.</td><td><span class="status info">Modification</span></td>
+          <td>Plaidoyer Nat. > ETP Chloe</td><td class="num">10 j.h</td><td class="num">15 j.h</td>
+          <td><button class="btn btn-ghost" style="font-size:.7rem;padding:.2rem .5rem;">Restaurer</button></td>
+        </tr>
+        <tr>
+          <td>12/04/2026 09:45</td><td>Chloe M.</td><td><span class="status attente">Suppression</span></td>
+          <td>Projet "Compostage urbain" (brouillon)</td><td>&mdash;</td><td>&mdash;</td>
+          <td><button class="btn btn-ghost" style="font-size:.7rem;padding:.2rem .5rem;">Restaurer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MODALS                                                        -->
+<!-- ============================================================ -->
+
+<!-- Sync Modal -->
+<div class="modal-backdrop" id="syncModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Synchronisation Google Sheets</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Connexion aux fichiers budgetaires existants de chaque pole, directement depuis Google Drive.</p>
+      <ul class="feature-list">
+        <li>Import automatique des 6 fichiers de poles (1 fichier par pole)</li>
+        <li>Consolidation temps reel dans le tableau de bord</li>
+        <li>Sync bidirectionnelle : les coordos continuent a saisir dans leurs Sheets habituels</li>
+        <li>Detection automatique des nouveaux onglets (nouveaux projets)</li>
+        <li>Mapping intelligent des colonnes (previsionnel, actualise, realise)</li>
+        <li>Historique de synchronisation avec alertes en cas d'erreur</li>
+      </ul>
+      <p style="color:var(--info);font-weight:600;">Cette fonctionnalite est au coeur de l'outil : zero ressaisie, les habitudes de travail sont preservees.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Export Modal -->
+<div class="modal-backdrop" id="exportModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Export multi-format</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Generer des exports adaptes a chaque destinataire :</p>
+      <ul class="feature-list">
+        <li><strong>PDF Rapport financeur</strong> &mdash; Format professionnel avec logo RCC, resume executif, tableaux detailles par projet, graphiques. Un modele par financeur (ADEME, Erasmus+...).</li>
+        <li><strong>PDF Synthese CA</strong> &mdash; Vue consolidee pour le Conseil d'Administration avec indicateurs cles et recommandations.</li>
+        <li><strong>Excel editable</strong> &mdash; Export du tableau selectionne, preservant formules et mise en forme.</li>
+        <li><strong>Envoi direct par email</strong> &mdash; Selectionner un destinataire et joindre automatiquement le PDF genere.</li>
+        <li><strong>Export comptable</strong> &mdash; Format compatible avec le logiciel comptable (plan comptable associatif).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Scenario Modal -->
+<div class="modal-backdrop" id="scenarioModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Simulateur de Scenarios</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Comparer differentes hypotheses budgetaires avant de prendre des decisions :</p>
+      <ul class="feature-list">
+        <li><strong>Scenario optimiste</strong> &mdash; Tous les financements prevus sont obtenus + nouveau mecenat</li>
+        <li><strong>Scenario realiste</strong> &mdash; Budget actuel sans changement</li>
+        <li><strong>Scenario pessimiste</strong> &mdash; Perte d'un financeur, reduction de subventions</li>
+        <li><strong>Scenario personnalise</strong> &mdash; Modifier manuellement n'importe quel poste et voir l'impact en temps reel</li>
+        <li>Comparaison cote a cote avec graphiques d'impact</li>
+        <li>Sauvegarde des scenarios pour presentation au CA</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Compare N-1 Modal -->
+<div class="modal-backdrop" id="compareModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Comparaison N / N-1</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Afficher les ecarts avec le budget de l'annee precedente :</p>
+      <ul class="feature-list">
+        <li>Colonne supplementaire "2025" a cote de chaque montant 2026</li>
+        <li>Fleche d'evolution (hausse/baisse) avec pourcentage de variation</li>
+        <li>Graphique d'evolution sur 3 ans (2024, 2025, 2026)</li>
+        <li>Detection des nouveaux postes et des postes supprimes</li>
+        <li>Analyse de la diversification des financeurs dans le temps</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Dashboard Modal -->
+<div class="modal-backdrop" id="customModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Dashboard personnalisable</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Chaque utilisateur peut adapter l'affichage a son role :</p>
+      <ul class="feature-list">
+        <li><strong>Coordinatrice</strong> &mdash; Vue globale avec alertes, echeances, tresorerie</li>
+        <li><strong>Responsable de pole</strong> &mdash; Detail de son pole uniquement + ses projets</li>
+        <li><strong>Tresoriere / CA</strong> &mdash; KPIs financiers, comparaisons N-1, camemberts</li>
+        <li><strong>Chargee de fundraising</strong> &mdash; Matrice financeurs, pipeline de prospection</li>
+        <li>Drag & drop des widgets, KPIs configurables, vues sauvegardees</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Rapport financeur Modal -->
+<div class="modal-backdrop" id="rapportModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Generateur de rapports financeurs</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Generer automatiquement les rapports d'avancement pour chaque financeur :</p>
+      <ul class="feature-list">
+        <li>Selection du financeur et de la periode</li>
+        <li>Extraction automatique des depenses eligibles</li>
+        <li>Tableau recapitulatif au format attendu par le financeur</li>
+        <li>Liste des pieces justificatives associees</li>
+        <li>Comparaison budget previsionnel vs realise</li>
+        <li>Export PDF pre-formate avec logo et mise en page officielle</li>
+        <li>Archivage automatique du rapport dans le dossier du financeur</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-backdrop" id="settingsModal" onclick="if(event.target===this)closeModals()">
+  <div class="modal">
+    <div class="modal-header"><h3>Administration & Parametrage</h3><button class="modal-close" onclick="closeModals()">&times;</button></div>
+    <div class="modal-body">
+      <p>Configurer l'outil selon les besoins de l'association :</p>
+      <ul class="feature-list">
+        <li><strong>Droits d'acces par role</strong> &mdash; Qui peut voir/modifier quel pole. La coordinatrice voit tout, les responsables de pole voient leur perimetre.</li>
+        <li><strong>Seuils d'alerte</strong> &mdash; Configurer les % de depassement qui declenchent une alerte (ex : alerte quand realise > 80% du previsionnel).</li>
+        <li><strong>Plan comptable</strong> &mdash; Gerer la nomenclature des comptes (604, 625, 633...) utilisee dans les fichiers.</li>
+        <li><strong>Referentiel financeurs</strong> &mdash; Liste des financeurs avec informations de contact, interlocuteurs.</li>
+        <li><strong>Notifications</strong> &mdash; Configurer frequence et canaux (email, Slack, in-app).</li>
+        <li><strong>Backup & securite</strong> &mdash; Sauvegardes automatiques, chiffrement des donnees sensibles.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="watermark">Maquette <strong>Un Jour Une App</strong> &mdash; Avril 2026</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS                                                       -->
+<!-- ============================================================ -->
+<script>
+/* Tab navigation */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.page).classList.add('active');
+    document.getElementById('notifPanel').classList.remove('open');
+  });
+});
+
+/* Notification panel */
+function toggleNotif() {
+  document.getElementById('notifPanel').classList.toggle('open');
+}
+
+/* Modals */
+function showModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModals() { document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open')); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModals(); });
+
+/* Colors */
+const C = {
+  green:'rgba(45,106,79,.85)', greenL:'rgba(64,145,108,.7)', accent:'rgba(212,168,67,.85)',
+  danger:'rgba(230,57,70,.8)', blue:'rgba(29,53,87,.7)', purple:'rgba(133,89,136,.7)',
+  orange:'rgba(233,196,106,.85)', teal:'rgba(42,157,143,.7)'
+};
+
+/* Chart 1 */
+new Chart(document.getElementById('chartPoles'),{type:'bar',data:{labels:['Filiere Repr.','Commission RH','Animation','Communication','Qualite','Admin & Gouv.'],datasets:[{label:'Depenses',data:[33209,293804,85200,42600,78441,54000],backgroundColor:C.danger,borderRadius:4},{label:'Recettes',data:[66115,2400,28000,12000,18000,8000],backgroundColor:C.green,borderRadius:4}]},options:{responsive:true,plugins:{legend:{position:'bottom'}},scales:{y:{ticks:{callback:v=>(v/1000)+'k'}}}}});
+
+/* Chart 2 */
+new Chart(document.getElementById('chartRecettes'),{type:'doughnut',data:{labels:['ADEME','Erasmus+','OPCO','Mecenat prive','Participation RR','Fonds propres','Autres'],datasets:[{data:[120000,13115,3000,50000,2400,19500,5000],backgroundColor:[C.green,C.blue,C.teal,C.accent,C.purple,C.greenL,C.orange]}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:11}}}}}});
+
+/* Chart 3 */
+new Chart(document.getElementById('chartExcedent'),{type:'bar',data:{labels:['Filiere Repr.','Commission RH','Animation','Communication','Qualite','Admin & Gouv.'],datasets:[{label:'Excedent / Deficit',data:[32906,-291404,-57200,-30600,-60441,-46000],backgroundColor:ctx=>ctx.raw>=0?C.green:C.danger,borderRadius:4}]},options:{responsive:true,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>(v/1000)+'k'}}}}});
+
+/* Chart 4 */
+new Chart(document.getElementById('chartAvancement'),{type:'bar',data:{labels:['Filiere Repr.','Commission RH','Animation','Communication','Qualite','Admin & Gouv.'],datasets:[{label:'Previsionnel',data:[33209,293804,85200,42600,78441,54000],backgroundColor:'rgba(200,200,200,.5)',borderRadius:4},{label:'Realise',data:[0,5993,8200,3400,6500,2100],backgroundColor:C.green,borderRadius:4}]},options:{responsive:true,plugins:{legend:{position:'bottom'}},scales:{y:{ticks:{callback:v=>(v/1000)+'k'}}}}});
+
+/* Chart 5 */
+new Chart(document.getElementById('chartFinanceurs'),{type:'pie',data:{labels:['ADEME','Erasmus+','OPCO','Mecenat prive','Participation RR','Fonds propres RCC'],datasets:[{data:[120000,13115,3000,50000,2400,19500],backgroundColor:[C.green,C.blue,C.teal,C.accent,C.purple,C.greenL]}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:11}}}}}});
+
+/* Chart 6 */
+new Chart(document.getElementById('chartCouverture'),{type:'bar',data:{labels:['Plaidoyer Nat.','Reglementation','Plaidoyer local','Mecenat','Reseau Eur.','Mutual. RH','Pol. salariale','Formation','Bureaux'],datasets:[{label:'% couvert',data:[0,21.6,0,100,100,80,49.4,100,32.8],backgroundColor:ctx=>{const v=ctx.raw;return v>=80?C.green:v>=40?C.orange:C.danger;},borderRadius:4}]},options:{responsive:true,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:110,ticks:{callback:v=>v+'%'}}}}});
+
+/* Blurred preview charts (just enough data to look real) */
+try {
+  new Chart(document.getElementById('chartEvol'),{type:'line',data:{labels:['Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'],datasets:[{label:'Depenses cumulees',data:[24200,48000,72100,96300,120400,144600,168800,193000,218400,242600,266800,291000],borderColor:C.danger,fill:false,tension:.3},{label:'Recettes cumulees',data:[8500,10900,55900,58300,60700,73800,76200,78600,78600,91700,94100,134500],borderColor:C.green,fill:false,tension:.3}]},options:{responsive:true,plugins:{legend:{position:'bottom'}}}});
+} catch(e){}
+try {
+  new Chart(document.getElementById('chartHerfindahl'),{type:'bar',data:{labels:['2024','2025','2026'],datasets:[{label:'Indice HHI',data:[4200,3800,3100],backgroundColor:[C.danger,C.orange,C.green],borderRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{max:5000}}}});
+} catch(e){}
+</script>
+
+</body>
+</html>
