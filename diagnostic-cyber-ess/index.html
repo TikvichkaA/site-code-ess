@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>Diagnostic cybersécurité ESS — 3 minutes pour évaluer votre exposition</title>
+<meta name="description" content="Auto-diagnostic gratuit pour les associations et structures de l'ESS. 16 questions, 3 minutes, un score /10 et des priorités concrètes.">
+<link rel="canonical" href="https://code-ess.unjouruneapp.com/diagnostic-cyber-ess">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diagnostic cybersécurité ESS — Évaluez votre exposition en 3 minutes">
+<meta property="og:description" content="16 questions, un score /10, 3 priorités concrètes. Gratuit pour les associations et structures de l'ESS.">
+<meta property="og:url" content="https://code-ess.unjouruneapp.com/diagnostic-cyber-ess">
+<meta name="twitter:card" content="summary">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f7f7fb;
+    --bg-card: #ffffff;
+    --text: #0b1020;
+    --text-muted: #5b647a;
+    --text-soft: #8089a0;
+    --line: #e7e9f0;
+    --line-soft: #f0f2f7;
+    --accent: #4f46e5;
+    --accent-soft: #eef0ff;
+    --accent-dark: #3730a3;
+    --green: #16a34a;
+    --green-soft: #ecfdf5;
+    --orange: #ea580c;
+    --orange-soft: #fff4ed;
+    --red: #dc2626;
+    --red-soft: #fef2f2;
+    --shadow: 0 1px 2px rgba(11, 16, 32, 0.04), 0 8px 24px rgba(11, 16, 32, 0.06);
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+  /* Header */
+  header.app {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-card);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .header-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; }
+  .brand-dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .progress-wrap { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .progress-bar { height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.35s ease; width: 0%; }
+  .progress-count { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.85rem; min-width: 44px; text-align: right; }
+
+  /* Layout */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 24px 20px 40px;
+  }
+  .container { width: 100%; max-width: 640px; }
+
+  /* Screens */
+  .screen { display: none; animation: slideIn 0.3s ease; }
+  .screen.active { display: block; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Intro */
+  .hero { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; background: var(--accent-soft); color: var(--accent-dark); font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 14px; }
+  h1 em { font-style: normal; background: linear-gradient(120deg, var(--accent) 0%, #a855f7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { color: var(--text-muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto 28px; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 32px; }
+  .feature { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 12px; text-align: center; }
+  .feature .icon { font-size: 1.4rem; margin-bottom: 4px; display: block; }
+  .feature .label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+  .feature .value { font-size: 0.95rem; font-weight: 700; }
+  @media (max-width: 480px) {
+    .features { grid-template-columns: 1fr; gap: 8px; }
+    .feature { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; }
+    .feature .icon { margin-bottom: 0; }
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px; min-height: 52px;
+    background: var(--text); color: #fff;
+    border-radius: 12px; font-weight: 600; font-size: 1rem;
+    transition: transform 0.15s, background 0.15s;
+    width: 100%;
+  }
+  .btn-primary:hover { background: #1a2042; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; min-height: 48px;
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--line); border-radius: 12px;
+    font-weight: 500; font-size: 0.95rem;
+    transition: background 0.15s;
+  }
+  .btn-secondary:hover { background: var(--line-soft); }
+  .btn-link { color: var(--text-muted); padding: 8px 12px; font-size: 0.9rem; }
+  .btn-link:hover { color: var(--text); }
+
+  .footer-note { text-align: center; color: var(--text-soft); font-size: 0.82rem; margin-top: 16px; }
+
+  /* Question */
+  .q-category { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .q-title { font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; }
+  .q-help { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; }
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .option {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    text-align: left;
+    transition: all 0.15s;
+    width: 100%;
+    min-height: 56px;
+  }
+  .option:hover { border-color: #c7caff; background: #fafbff; }
+  .option.selected { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08); }
+  .option-radio {
+    flex-shrink: 0; width: 22px; height: 22px;
+    border: 2px solid var(--line); border-radius: 50%;
+    margin-top: 1px; position: relative;
+    transition: border-color 0.15s;
+  }
+  .option.selected .option-radio { border-color: var(--accent); }
+  .option.selected .option-radio::after {
+    content: ''; position: absolute; inset: 3px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .option-content { flex: 1; }
+  .option-label { font-weight: 600; font-size: 0.98rem; line-height: 1.4; }
+  .option-hint { color: var(--text-muted); font-size: 0.85rem; margin-top: 2px; }
+
+  .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+
+  /* Results */
+  .score-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .score-ring { position: relative; width: 180px; height: 180px; margin: 0 auto 16px; }
+  .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring .ring-bg { fill: none; stroke: var(--line); stroke-width: 12; }
+  .score-ring .ring-fill { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dasharray 1s ease, stroke 1s ease; }
+  .score-ring-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .score-num { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .score-denom { font-size: 1rem; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+  .score-tag { display: inline-block; padding: 6px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; margin-top: 4px; }
+  .score-tag.green { background: var(--green-soft); color: var(--green); }
+  .score-tag.orange { background: var(--orange-soft); color: var(--orange); }
+  .score-tag.red { background: var(--red-soft); color: var(--red); }
+  .score-headline { font-size: 1.25rem; font-weight: 700; margin: 14px 0 6px; line-height: 1.3; }
+  .score-pitch { color: var(--text-muted); font-size: 0.95rem; max-width: 420px; margin: 0 auto; }
+
+  /* Category breakdown */
+  .breakdown { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+  .breakdown h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+  .cat { margin-bottom: 12px; }
+  .cat:last-child { margin-bottom: 0; }
+  .cat-head { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 4px; }
+  .cat-name { font-weight: 600; }
+  .cat-score { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .cat-bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .cat-fill { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
+  .cat-fill.green { background: var(--green); }
+  .cat-fill.orange { background: var(--orange); }
+  .cat-fill.red { background: var(--red); }
+
+  /* Recommendations */
+  .recos { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+  .recos h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+  .reco { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+  .reco:last-child { border-bottom: 0; padding-bottom: 0; }
+  .reco:first-child { padding-top: 0; }
+  .reco-num {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .reco-body { flex: 1; }
+  .reco-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+  .reco-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+  .reco-meta { display: flex; gap: 8px; margin-top: 6px; }
+  .reco-pill { font-size: 0.75rem; padding: 2px 8px; border-radius: 99px; background: var(--line-soft); color: var(--text-muted); font-weight: 500; }
+
+  /* CTA card */
+  .cta-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .cta-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+  .cta-card p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 16px; line-height: 1.5; }
+  .cta-card .btn-primary { background: #fff; color: var(--text); }
+  .cta-card .btn-primary:hover { background: #f0f0f0; }
+
+  /* Form (capture lead) */
+  .form-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .form-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .form-card .form-help { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+  .field input, .field textarea {
+    width: 100%; padding: 12px 14px; min-height: 44px;
+    background: var(--bg);
+    border: 1.5px solid var(--line); border-radius: 10px;
+    font-family: inherit; font-size: 0.95rem; color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: 0; border-color: var(--accent); background: #fff; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .field-row { grid-template-columns: 1fr; gap: 0; } }
+  .form-disclaimer { font-size: 0.78rem; color: var(--text-soft); margin-top: 12px; line-height: 1.5; }
+
+  /* Sent confirmation */
+  .sent-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 32px 24px; text-align: center; }
+  .sent-icon { width: 56px; height: 56px; margin: 0 auto 16px; background: var(--green-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+  .sent-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .sent-card p { color: var(--text-muted); margin-bottom: 20px; }
+
+  footer.app {
+    text-align: center;
+    padding: 24px 20px;
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--line);
+  }
+  footer.app a { color: var(--text-muted); }
+
+  /* Loading */
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header class="app">
+  <div class="header-inner">
+    <div class="brand"><span class="brand-dot"></span><span>Diag&nbsp;Cyber&nbsp;ESS</span></div>
+    <div class="progress-wrap" id="progress-wrap" style="display:none;">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="progress-count" id="progress-count" style="display:none;">0/16</div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Intro -->
+    <section class="screen active" id="screen-intro">
+      <div class="hero">
+        <div class="badge"><span class="badge-dot"></span>Gratuit · Anonyme · 3 minutes</div>
+        <h1>Votre association est-elle <em>vraiment</em> protégée ?</h1>
+        <p class="lede">16 questions simples pour évaluer votre exposition aux risques cyber. Conçu pour les associations et structures de l'ESS, à partir de 25+ audits réalisés.</p>
+        <div class="features">
+          <div class="feature"><span class="icon">⏱️</span><div><div class="value">3 min</div><div class="label">Pas plus</div></div></div>
+          <div class="feature"><span class="icon">📊</span><div><div class="value">Score /10</div><div class="label">Et 3 priorités</div></div></div>
+          <div class="feature"><span class="icon">🔒</span><div><div class="value">Anonyme</div><div class="label">Sauf si vous voulez un suivi</div></div></div>
+        </div>
+        <button class="btn-primary" id="btn-start">Commencer le diagnostic →</button>
+        <p class="footer-note">Aucun compte requis. Aucun scan technique. Vos réponses ne quittent votre appareil que si vous demandez explicitement un retour.</p>
+      </div>
+    </section>
+
+    <!-- Question screen (single, populated dynamically) -->
+    <section class="screen" id="screen-question">
+      <div class="q-category" id="q-category"></div>
+      <h2 class="q-title" id="q-title"></h2>
+      <p class="q-help" id="q-help"></p>
+      <div class="options" id="q-options"></div>
+      <div class="nav-row">
+        <button class="btn-link" id="btn-back">← Précédent</button>
+        <button class="btn-secondary" id="btn-next" style="min-width:120px;" disabled>Suivant →</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="screen" id="screen-results">
+      <div class="score-card">
+        <div class="score-ring">
+          <svg viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="80"></circle>
+            <circle class="ring-fill" id="ring-fill" cx="100" cy="100" r="80" stroke-dasharray="0 502" pathLength="502"></circle>
+          </svg>
+          <div class="score-ring-inner">
+            <div class="score-num" id="score-num">—</div>
+            <div class="score-denom">sur 10</div>
+          </div>
+        </div>
+        <div class="score-tag" id="score-tag">—</div>
+        <h2 class="score-headline" id="score-headline">—</h2>
+        <p class="score-pitch" id="score-pitch">—</p>
+      </div>
+
+      <div class="breakdown">
+        <h3>Détail par domaine</h3>
+        <div id="cat-list"></div>
+      </div>
+
+      <div class="recos">
+        <h3>Vos 3 priorités</h3>
+        <div id="reco-list"></div>
+      </div>
+
+      <div class="cta-card" id="cta-card">
+        <h3 id="cta-title">Discuter de vos résultats ?</h3>
+        <p id="cta-desc">Je peux vous proposer un audit complet et gratuit, ou simplement répondre à vos questions. Aucun engagement.</p>
+        <button class="btn-primary" id="btn-show-form">Demander un retour →</button>
+      </div>
+
+      <div class="form-card" id="form-card" style="display:none;">
+        <h3>Recevoir un retour personnalisé</h3>
+        <p class="form-help">On vous envoie vos résultats et on convient d'un échange si vous le souhaitez.</p>
+        <form id="lead-form" action="https://formsubmit.co/contact@unjouruneapp.com" method="POST">
+          <input type="hidden" name="_subject" id="form-subject" value="Diagnostic cyber ESS">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" id="form-next" value="">
+          <input type="hidden" name="Score" id="form-score" value="">
+          <input type="hidden" name="Detail_par_categorie" id="form-breakdown" value="">
+          <input type="hidden" name="Reponses_completes" id="form-answers" value="">
+          <input type="hidden" name="Date" id="form-date" value="">
+
+          <div class="field-row">
+            <div class="field">
+              <label for="lead-name">Prénom</label>
+              <input type="text" id="lead-name" name="Prenom" required autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="lead-org">Organisation</label>
+              <input type="text" id="lead-org" name="Organisation" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="lead-email">Email</label>
+            <input type="email" id="lead-email" name="email" required autocomplete="email" placeholder="vous@asso.fr">
+          </div>
+          <div class="field">
+            <label for="lead-msg">Question ou contexte (optionnel)</label>
+            <textarea id="lead-msg" name="Message" placeholder="Ce qui vous inquiète le plus, votre stack si vous la connaissez, etc."></textarea>
+          </div>
+          <button class="btn-primary" type="submit" id="btn-submit">Envoyer mes résultats</button>
+          <p class="form-disclaimer">En envoyant, vous acceptez d'être recontacté par email à propos de ce diagnostic. Aucune liste de diffusion, aucun partage tiers.</p>
+        </form>
+      </div>
+
+      <div class="nav-row" style="margin-top:24px;">
+        <button class="btn-link" id="btn-restart">↻ Refaire le diagnostic</button>
+      </div>
+    </section>
+
+    <!-- Sent confirmation -->
+    <section class="screen" id="screen-sent">
+      <div class="sent-card">
+        <div class="sent-icon">✓</div>
+        <h3>Message envoyé</h3>
+        <p>On vous recontacte sous 48h ouvrées avec un retour personnalisé sur votre score.</p>
+        <button class="btn-secondary" id="btn-restart-2">Refaire le diagnostic</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="app">
+  Diagnostic réalisé en partenariat avec <a href="https://onpurpose.org" target="_blank" rel="noopener">On Purpose Paris</a> · Construit à partir de 25+ audits ESS
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const QUESTIONS = [
+    // ─── Site web (3) ──────────────────────────────────────────────
+    {
+      cat: 'site',
+      title: 'Quel type de site avez-vous ?',
+      help: 'Le risque dépend fortement de la stack technique.',
+      options: [
+        { label: 'Site SaaS managé (Webflow, Squarespace, Wix...)', hint: 'Mises à jour automatiques côté éditeur', score: 1 },
+        { label: 'WordPress, Drupal ou autre CMS', hint: 'Le plus fréquent dans l\'ESS', score: 0.5 },
+        { label: 'Site sur-mesure développé par un prestataire', hint: 'Variable selon l\'entretien', score: 0.5 },
+        { label: 'Plusieurs sites (vitrine + outils, ancien + nouveau)', hint: 'Surface élargie', score: 0.3 },
+        { label: 'Je ne sais pas', score: 0.1 }
+      ]
+    },
+    {
+      cat: 'site',
+      title: 'Les mises à jour de votre site sont…',
+      help: 'CMS, plugins, thèmes, extensions.',
+      options: [
+        { label: 'Automatiques ou faites chaque mois', score: 1 },
+        { label: 'Faites quand on y pense, ou par notre prestataire au coup par coup', score: 0.5 },
+        { label: 'Rares ou jamais', score: 0 },
+        { label: 'Je ne sais pas qui s\'en occupe', score: 0.1 }
+      ]
+    },
+    {
+      cat: 'site',
+      title: 'Avez-vous des sous-domaines anciens ou des outils oubliés en ligne ?',
+      help: 'Ex : ancien site, ancien intranet, vieux ownCloud, ancien CRM, "v1" ou "old".',
+      options: [
+        { label: 'Non, on a fait le ménage', score: 1 },
+        { label: 'Quelques-uns existent encore mais sont utilisés', score: 0.6 },
+        { label: 'Oui, certains tournent encore mais plus personne ne les utilise', score: 0 },
+        { label: 'Je ne sais pas', score: 0.2 }
+      ]
+    },
+
+    // ─── Email & M365 (4) ──────────────────────────────────────────
+    {
+      cat: 'email',
+      title: 'Quelle messagerie utilisez-vous ?',
+      help: 'C\'est le vecteur n°1 d\'attaque sur les associations.',
+      options: [
+        { label: 'Microsoft 365 (Outlook, Exchange Online)', score: 0.5 },
+        { label: 'Google Workspace (Gmail pro)', score: 0.7 },
+        { label: 'Hébergeur classique (OVH, Gandi, Infomaniak…)', score: 0.4 },
+        { label: 'Autre / je ne sais pas', score: 0.2 }
+      ]
+    },
+    {
+      cat: 'email',
+      title: 'L\'authentification à deux facteurs (2FA / MFA) est…',
+      help: 'Code par SMS, application Authenticator, clé physique.',
+      options: [
+        { label: 'Activée et obligatoire pour tout le monde', score: 1 },
+        { label: 'Activée pour les comptes sensibles (direction, compta)', score: 0.5 },
+        { label: 'Activée par certains volontairement', score: 0.3 },
+        { label: 'Pas activée, ou je ne sais pas', score: 0 }
+      ]
+    },
+    {
+      cat: 'email',
+      title: 'Avez-vous configuré DMARC / SPF / DKIM sur votre nom de domaine ?',
+      help: 'Protections anti-usurpation d\'email. Si vous ne savez pas, c\'est probablement non.',
+      options: [
+        { label: 'Oui, les trois sont en place et stricts', score: 1 },
+        { label: 'Partiellement (SPF mais pas DMARC strict)', score: 0.5 },
+        { label: 'Non / je ne sais pas', score: 0 }
+      ]
+    },
+    {
+      cat: 'email',
+      title: 'Recevez-vous régulièrement des emails frauduleux qui semblent venir de collègues ?',
+      help: 'Ex : faux email du président demandant un virement, faux fournisseur changeant de RIB.',
+      options: [
+        { label: 'Jamais ou très rarement', score: 1 },
+        { label: 'Quelques fois par an', score: 0.6 },
+        { label: 'Régulièrement, on en a déjà été victime', score: 0 },
+        { label: 'Je ne sais pas', score: 0.3 }
+      ]
+    },
+
+    // ─── Pratiques internes (3) ────────────────────────────────────
+    {
+      cat: 'pratiques',
+      title: 'Comment partagez-vous les mots de passe entre collègues ?',
+      help: 'Compte commun pour les outils, codes wifi, etc.',
+      options: [
+        { label: 'Gestionnaire de mots de passe (Bitwarden, 1Password, Dashlane…)', score: 1 },
+        { label: 'Document partagé (Drive, OneDrive, Notion)', score: 0.2 },
+        { label: 'Par email, Slack, ou oralement', score: 0 },
+        { label: 'Chacun a ses propres comptes, on ne partage pas', score: 0.8 },
+        { label: 'Je ne sais pas', score: 0.2 }
+      ]
+    },
+    {
+      cat: 'pratiques',
+      title: 'Quand un salarié ou bénévole part, ses comptes sont…',
+      help: 'Email, outils SaaS, accès aux fichiers partagés.',
+      options: [
+        { label: 'Désactivés dans la journée, processus écrit', score: 1 },
+        { label: 'Désactivés sous quelques jours', score: 0.7 },
+        { label: 'Désactivés progressivement, parfois on oublie', score: 0.3 },
+        { label: 'Pas de processus / je ne sais pas', score: 0 }
+      ]
+    },
+    {
+      cat: 'pratiques',
+      title: 'Avez-vous fait une sensibilisation au phishing dans les 12 derniers mois ?',
+      help: 'Atelier, e-learning, faux phishing test.',
+      options: [
+        { label: 'Oui, formation pour toute l\'équipe', score: 1 },
+        { label: 'Oui mais c\'était il y a plus d\'un an', score: 0.5 },
+        { label: 'Non, jamais', score: 0 },
+        { label: 'Je ne sais pas', score: 0.1 }
+      ]
+    },
+
+    // ─── Outils & accès (3) ────────────────────────────────────────
+    {
+      cat: 'outils',
+      title: 'Vos outils d\'administration (admin du site, accès distant, RDS…) sont…',
+      help: 'Tout ce qui permet de modifier le site ou se connecter au système.',
+      options: [
+        { label: 'Accessibles seulement via VPN ou IP autorisées', score: 1 },
+        { label: 'Accessibles depuis Internet mais avec MFA', score: 0.7 },
+        { label: 'Accessibles depuis Internet avec un simple mot de passe', score: 0 },
+        { label: 'Je ne sais pas / pas concerné', score: 0.3 }
+      ]
+    },
+    {
+      cat: 'outils',
+      title: 'Combien d\'outils SaaS différents utilise votre structure ?',
+      help: 'Notion, HelloAsso, Mailchimp, Slack, CRM, comptabilité… chaque compte = surface d\'attaque.',
+      options: [
+        { label: 'Moins de 5, et on les a cartographiés', score: 1 },
+        { label: 'Entre 5 et 15', score: 0.6 },
+        { label: 'Plus de 15, ou je ne sais pas combien', score: 0.2 }
+      ]
+    },
+    {
+      cat: 'outils',
+      title: 'Qui a les accès "administrateur" sur vos outils principaux ?',
+      help: 'Sur le site, la messagerie, les SaaS critiques.',
+      options: [
+        { label: 'Seulement 1 ou 2 personnes, identifiées', score: 1 },
+        { label: 'Plusieurs personnes mais on sait qui', score: 0.6 },
+        { label: 'Plein de monde, parfois d\'anciens prestataires', score: 0 },
+        { label: 'Je ne sais pas', score: 0.1 }
+      ]
+    },
+
+    // ─── Continuité & gouvernance (3) ──────────────────────────────
+    {
+      cat: 'continuite',
+      title: 'Avez-vous des sauvegardes hors-site testées ?',
+      help: 'Sauvegarde sur un disque déconnecté, ou cloud séparé. "Hors-site" = pas sur le même compte ni le même réseau.',
+      options: [
+        { label: 'Oui, et on a déjà testé une restauration', score: 1 },
+        { label: 'Oui, mais jamais testé', score: 0.6 },
+        { label: 'Sauvegardes sur le même cloud / serveur', score: 0.2 },
+        { label: 'Pas de sauvegarde, ou je ne sais pas', score: 0 }
+      ]
+    },
+    {
+      cat: 'continuite',
+      title: 'Que feriez-vous si vous receviez une demande de rançon demain matin ?',
+      help: 'Plan de réponse, contacts à appeler, procédure.',
+      options: [
+        { label: 'On a un plan écrit avec les contacts à joindre', score: 1 },
+        { label: 'On saurait à peu près quoi faire mais rien d\'écrit', score: 0.5 },
+        { label: 'Aucune idée', score: 0 }
+      ]
+    },
+    {
+      cat: 'continuite',
+      title: 'Avez-vous un référent cybersécurité ?',
+      help: 'Interne ou prestataire identifié, pas juste "le neveu informaticien".',
+      options: [
+        { label: 'Oui, prestataire spécialisé sécurité', score: 1 },
+        { label: 'Oui, en interne (DSI, RSSI, ou rôle assimilé)', score: 1 },
+        { label: 'Notre prestataire IT généraliste s\'en occupe', score: 0.5 },
+        { label: 'Personne en particulier', score: 0 }
+      ]
+    }
+  ];
+
+  const CATEGORIES = {
+    site: { name: 'Site web', icon: '🌐' },
+    email: { name: 'Email & messagerie', icon: '✉️' },
+    pratiques: { name: 'Pratiques internes', icon: '👥' },
+    outils: { name: 'Outils & accès', icon: '🔑' },
+    continuite: { name: 'Continuité & gouvernance', icon: '🛡️' }
+  };
+
+  // Recommendation pool — picked based on lowest categories + low-scoring answers
+  const RECOS = {
+    email_mfa: { title: 'Activer le 2FA / MFA partout', desc: 'C\'est la mesure n°1 contre les attaques par mot de passe : elle bloque 95% des compromissions de compte. Sur Microsoft 365 ou Google Workspace, c\'est gratuit et activable en 30 minutes par l\'admin.', cost: '0€', time: '30 min' },
+    email_dmarc: { title: 'Configurer DMARC / SPF / DKIM', desc: 'Sans ces 3 enregistrements DNS, n\'importe qui peut envoyer un email "de la part de" votre association. C\'est le vecteur principal de fraude au président.', cost: '0€', time: '1h' },
+    email_basic: { title: 'Désactiver l\'authentification "Basic Auth" Exchange', desc: 'Si vous êtes sur Microsoft 365, ce protocole legacy contourne le 2FA. À désactiver via le Microsoft 365 admin center.', cost: '0€', time: '30 min' },
+    pratiques_pwd: { title: 'Adopter un gestionnaire de mots de passe', desc: 'Bitwarden propose une licence gratuite pour les associations. Plus de mots de passe Excel ou Slack, et chacun ses identifiants.', cost: '0€ pour assos', time: '1 demi-journée' },
+    pratiques_offboard: { title: 'Mettre en place un processus d\'offboarding', desc: 'Une checklist d\'1 page : révoquer email, SaaS, accès partagés, mots de passe communs. Effet immédiat sur la surface d\'attaque.', cost: '0€', time: '2h' },
+    pratiques_phish: { title: 'Sensibiliser au phishing', desc: 'Une session d\'1h avec exemples concrets touchant l\'ESS (faux financeur, faux président, faux RIB). Replay annuel.', cost: '0 à 500€', time: '1h' },
+    site_updates: { title: 'Mettre à jour le site régulièrement', desc: 'WordPress et ses plugins concentrent la majorité des piratages d\'associations. Activer les mises à jour auto et auditer les plugins inutiles.', cost: '0€', time: '2h/mois' },
+    site_zombies: { title: 'Faire le ménage des sous-domaines oubliés', desc: 'Anciens sites, vieux outils, "v1" ou "preprod" : ce sont les portes d\'entrée préférées. Identifier puis supprimer ou bloquer en VPN.', cost: '0€', time: '1 demi-journée' },
+    site_admin: { title: 'Restreindre l\'accès à l\'admin du site', desc: 'Plugin Wordfence, restriction IP, ou simplement renommer /wp-admin. Élimine le brute force opportuniste.', cost: '0€', time: '30 min' },
+    outils_vpn: { title: 'Mettre les admins derrière un VPN ou IP allowlist', desc: 'Tout ce qui n\'a pas besoin d\'être accessible depuis Internet ne devrait pas l\'être. Tailscale est gratuit jusqu\'à 100 appareils.', cost: '0€', time: '2h' },
+    outils_inventory: { title: 'Cartographier vos comptes SaaS et accès admins', desc: 'Une feuille avec : outil, qui paie, qui a l\'admin, qui a accès. Permet aussi de couper ce qui ne sert plus.', cost: '0€', time: '2h' },
+    continuite_backup: { title: 'Mettre en place une sauvegarde hors-site testée', desc: 'Cloud séparé, ou disque externe déconnecté. Restauration testée 1× par trimestre. C\'est la seule défense réelle contre le ransomware.', cost: '5-50€/mois', time: '1 jour init.' },
+    continuite_plan: { title: 'Écrire un mini-plan de réponse à incident', desc: 'Une page : qui appeler (CERT, prestataire), comment isoler, comment communiquer. Pas besoin d\'être parfait, juste écrit.', cost: '0€', time: '2h' },
+    continuite_referent: { title: 'Identifier un référent cybersécurité', desc: 'Interne ou prestataire spécialisé. Pas le neveu informaticien : quelqu\'un qui connaît le sujet et que vous pouvez appeler.', cost: 'variable', time: '–' },
+    site_audit: { title: 'Faire auditer votre site et infrastructure', desc: 'Reconnaissance externe (sans toucher à vos serveurs) pour identifier les fuites publiques, panneaux exposés, données sensibles indexées.', cost: 'gratuit pour ESS', time: '2-3 jours côté auditeur' }
+  };
+
+  // State
+  let currentQ = 0;
+  const answers = new Array(QUESTIONS.length).fill(null);
+
+  // DOM
+  const $ = id => document.getElementById(id);
+  const screens = {
+    intro: $('screen-intro'),
+    question: $('screen-question'),
+    results: $('screen-results'),
+    sent: $('screen-sent')
+  };
+
+  function show(name) {
+    Object.keys(screens).forEach(k => screens[k].classList.remove('active'));
+    screens[name].classList.add('active');
+    window.scrollTo(0, 0);
+    const showProgress = name === 'question';
+    $('progress-wrap').style.display = showProgress ? 'block' : 'none';
+    $('progress-count').style.display = showProgress ? 'block' : 'none';
+  }
+
+  function renderQuestion() {
+    const q = QUESTIONS[currentQ];
+    const cat = CATEGORIES[q.cat];
+    $('q-category').textContent = cat.icon + ' ' + cat.name;
+    $('q-title').textContent = q.title;
+    $('q-help').textContent = q.help || '';
+    $('q-help').style.display = q.help ? 'block' : 'none';
+
+    const ul = $('q-options');
+    ul.innerHTML = '';
+    q.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option' + (answers[currentQ] === idx ? ' selected' : '');
+      btn.innerHTML = `
+        <div class="option-radio"></div>
+        <div class="option-content">
+          <div class="option-label"></div>
+          ${opt.hint ? '<div class="option-hint"></div>' : ''}
+        </div>
+      `;
+      btn.querySelector('.option-label').textContent = opt.label;
+      if (opt.hint) btn.querySelector('.option-hint').textContent = opt.hint;
+      btn.addEventListener('click', () => {
+        answers[currentQ] = idx;
+        // Visually mark
+        ul.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        btn.classList.add('selected');
+        $('btn-next').disabled = false;
+        // Auto-advance after a beat
+        setTimeout(next, 280);
+      });
+      ul.appendChild(btn);
+    });
+
+    // Progress
+    const pct = (currentQ / QUESTIONS.length) * 100;
+    $('progress-bar').style.width = pct + '%';
+    $('progress-count').textContent = (currentQ + 1) + '/' + QUESTIONS.length;
+
+    $('btn-back').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+    $('btn-next').disabled = answers[currentQ] === null;
+    $('btn-next').textContent = currentQ === QUESTIONS.length - 1 ? 'Voir mon score →' : 'Suivant →';
+  }
+
+  function next() {
+    if (answers[currentQ] === null) return;
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      computeAndShowResults();
+    }
+  }
+  function back() {
+    if (currentQ > 0) { currentQ--; renderQuestion(); }
+  }
+
+  function computeAndShowResults() {
+    // Total score
+    let total = 0, max = 0;
+    const catScores = {};
+    Object.keys(CATEGORIES).forEach(c => catScores[c] = { sum: 0, max: 0 });
+
+    QUESTIONS.forEach((q, i) => {
+      const a = answers[i];
+      const score = (a !== null) ? q.options[a].score : 0;
+      total += score;
+      max += 1;
+      catScores[q.cat].sum += score;
+      catScores[q.cat].max += 1;
+    });
+
+    const score10 = Math.round((total / max) * 100) / 10; // X.X /10
+    const tier = score10 >= 7 ? 'green' : score10 >= 4.5 ? 'orange' : 'red';
+
+    // Update score visual
+    $('score-num').textContent = score10.toFixed(1).replace('.', ',');
+    const ring = $('ring-fill');
+    const dash = (score10 / 10) * 502;
+    ring.setAttribute('stroke-dasharray', dash + ' ' + (502 - dash));
+    const colors = { green: '#16a34a', orange: '#ea580c', red: '#dc2626' };
+    ring.setAttribute('stroke', colors[tier]);
+
+    const tagEl = $('score-tag');
+    tagEl.className = 'score-tag ' + tier;
+    tagEl.textContent = tier === 'green' ? 'Bonne posture' : tier === 'orange' ? 'À renforcer' : 'Risque élevé';
+
+    // Headline + pitch (branching)
+    const branch = getBranch(score10, catScores);
+    $('score-headline').textContent = branch.headline;
+    $('score-pitch').textContent = branch.pitch;
+    $('cta-title').textContent = branch.ctaTitle;
+    $('cta-desc').textContent = branch.ctaDesc;
+
+    // Category breakdown
+    const catList = $('cat-list');
+    catList.innerHTML = '';
+    Object.keys(CATEGORIES).forEach(key => {
+      const cat = CATEGORIES[key];
+      const s = catScores[key];
+      const v = s.max > 0 ? (s.sum / s.max) * 10 : 0;
+      const ct = v >= 7 ? 'green' : v >= 4.5 ? 'orange' : 'red';
+      const item = document.createElement('div');
+      item.className = 'cat';
+      item.innerHTML = `
+        <div class="cat-head">
+          <span class="cat-name">${cat.icon} ${cat.name}</span>
+          <span class="cat-score">${v.toFixed(1).replace('.', ',')}/10</span>
+        </div>
+        <div class="cat-bar"><div class="cat-fill ${ct}" style="width:${v * 10}%"></div></div>
+      `;
+      catList.appendChild(item);
+    });
+
+    // Recommendations — pick from low-scoring questions
+    const recos = pickRecos(catScores);
+    const recoList = $('reco-list');
+    recoList.innerHTML = '';
+    recos.forEach((r, i) => {
+      const item = document.createElement('div');
+      item.className = 'reco';
+      item.innerHTML = `
+        <div class="reco-num">${i + 1}</div>
+        <div class="reco-body">
+          <div class="reco-title"></div>
+          <div class="reco-desc"></div>
+          <div class="reco-meta">
+            <span class="reco-pill">💰 ${r.cost}</span>
+            <span class="reco-pill">⏱️ ${r.time}</span>
+          </div>
+        </div>
+      `;
+      item.querySelector('.reco-title').textContent = r.title;
+      item.querySelector('.reco-desc').textContent = r.desc;
+      recoList.appendChild(item);
+    });
+
+    // Hidden form fields
+    $('form-subject').value = `[Diag ESS] Score ${score10.toFixed(1).replace('.', ',')}/10 — ${tier === 'red' ? 'Risque élevé' : tier === 'orange' ? 'À renforcer' : 'Bonne posture'}`;
+    $('form-score').value = score10.toFixed(1).replace('.', ',') + '/10';
+    $('form-breakdown').value = Object.keys(CATEGORIES).map(k => {
+      const s = catScores[k];
+      const v = s.max > 0 ? (s.sum / s.max) * 10 : 0;
+      return CATEGORIES[k].name + ': ' + v.toFixed(1).replace('.', ',') + '/10';
+    }).join(' | ');
+    $('form-answers').value = QUESTIONS.map((q, i) => {
+      const a = answers[i];
+      const lbl = (a !== null) ? q.options[a].label : '(non répondu)';
+      return (i + 1) + '. ' + q.title + ' → ' + lbl;
+    }).join('\n');
+    $('form-date').value = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    $('form-next').value = window.location.href.split('?')[0] + '?sent=1';
+
+    show('results');
+  }
+
+  function getBranch(score, cats) {
+    if (score >= 7) {
+      return {
+        headline: 'Bonne posture défensive',
+        pitch: 'Vous êtes au-dessus de la moyenne du secteur. Quelques améliorations restent possibles, surtout sur les domaines en orange ci-dessous.',
+        ctaTitle: 'Confirmer votre posture par un audit ?',
+        ctaDesc: 'Un audit de reconnaissance externe (sans toucher à vos systèmes) peut confirmer ce score et identifier les angles morts. Gratuit pour les structures ESS.'
+      };
+    }
+    if (score >= 4.5) {
+      return {
+        headline: 'Posture à renforcer',
+        pitch: 'Plusieurs failles classiques sont probablement présentes. Les corriger ne demande ni budget ni compétence rare — surtout du temps. Voir vos 3 priorités ci-dessous.',
+        ctaTitle: 'Discuter de vos résultats ?',
+        ctaDesc: 'Je peux vous proposer un audit plus précis (gratuit pour les associations) ou simplement répondre à vos questions sur les priorités à traiter.'
+      };
+    }
+    return {
+      headline: 'Risque élevé — action recommandée',
+      pitch: 'Votre score correspond au profil typique d\'une structure victime de ransomware ou de fraude au président dans les 12-24 mois. Les corrections principales sont gratuites et rapides.',
+      ctaTitle: 'Audit gratuit recommandé',
+      ctaDesc: 'À ce niveau, un audit externe permet d\'identifier précisément les portes ouvertes. C\'est gratuit pour les structures ESS, sans engagement, et le rapport reste confidentiel.'
+    };
+  }
+
+  function pickRecos(cats) {
+    // Sort categories by score ascending (worst first)
+    const sortedCats = Object.keys(cats).sort((a, b) => {
+      const sa = cats[a].max > 0 ? cats[a].sum / cats[a].max : 1;
+      const sb = cats[b].max > 0 ? cats[b].sum / cats[b].max : 1;
+      return sa - sb;
+    });
+
+    // Map question answer → reco key. Pick recos based on actual weak answers, prioritized by category weakness.
+    const candidates = [];
+    QUESTIONS.forEach((q, i) => {
+      const a = answers[i];
+      if (a === null) return;
+      const sc = q.options[a].score;
+      if (sc >= 0.7) return; // strong answer, skip
+      let recoKey = null;
+      // Question index → reco mapping
+      const map = {
+        0: 'site_updates',     // type de site
+        1: 'site_updates',     // mises à jour
+        2: 'site_zombies',     // sous-domaines anciens
+        3: 'email_dmarc',      // messagerie type
+        4: 'email_mfa',        // MFA
+        5: 'email_dmarc',      // DMARC
+        6: 'pratiques_phish',  // emails frauduleux
+        7: 'pratiques_pwd',    // partage mdp
+        8: 'pratiques_offboard', // offboarding
+        9: 'pratiques_phish',  // sensibilisation
+        10: 'outils_vpn',      // admin protégés
+        11: 'outils_inventory',// SaaS
+        12: 'outils_inventory',// admins
+        13: 'continuite_backup', // backup
+        14: 'continuite_plan', // plan rançon
+        15: 'continuite_referent' // référent
+      };
+      recoKey = map[i];
+      if (!recoKey) return;
+      candidates.push({ key: recoKey, weakness: 1 - sc, cat: q.cat });
+    });
+
+    // Boost candidates whose category is among the weakest
+    candidates.forEach(c => {
+      const catRank = sortedCats.indexOf(c.cat);
+      c.priority = c.weakness + (4 - catRank) * 0.15;
+    });
+
+    // Dedupe by reco key, keep highest priority
+    const seen = {};
+    candidates.forEach(c => {
+      if (!seen[c.key] || seen[c.key].priority < c.priority) seen[c.key] = c;
+    });
+
+    let picked = Object.values(seen).sort((a, b) => b.priority - a.priority).slice(0, 3);
+
+    // If less than 3 (everything was strong), fill with audit suggestion
+    while (picked.length < 3) {
+      const filler = picked.length === 0 ? 'site_audit' : picked.length === 1 ? 'continuite_referent' : 'continuite_plan';
+      if (!picked.some(p => p.key === filler)) picked.push({ key: filler });
+      else break;
+    }
+
+    return picked.map(p => RECOS[p.key]);
+  }
+
+  // Event wiring
+  $('btn-start').addEventListener('click', () => {
+    currentQ = 0;
+    renderQuestion();
+    show('question');
+  });
+  $('btn-back').addEventListener('click', back);
+  $('btn-next').addEventListener('click', next);
+  $('btn-restart').addEventListener('click', () => {
+    answers.fill(null);
+    currentQ = 0;
+    show('intro');
+  });
+  $('btn-restart-2').addEventListener('click', () => {
+    answers.fill(null);
+    currentQ = 0;
+    show('intro');
+  });
+  $('btn-show-form').addEventListener('click', () => {
+    $('form-card').style.display = 'block';
+    $('cta-card').style.display = 'none';
+    $('lead-name').focus();
+    $('form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  $('lead-form').addEventListener('submit', (e) => {
+    const btn = $('btn-submit');
+    btn.innerHTML = '<span class="spinner"></span> Envoi…';
+    btn.disabled = true;
+    // Form submits to FormSubmit which redirects to ?sent=1
+  });
+
+  // Handle "?sent=1" redirect
+  if (window.location.search.indexOf('sent=1') !== -1) {
+    show('sent');
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (!screens.question.classList.contains('active')) return;
+    if (e.key === 'ArrowRight' || e.key === 'Enter') {
+      if (!$('btn-next').disabled) next();
+    } else if (e.key === 'ArrowLeft') {
+      back();
+    } else if (e.key >= '1' && e.key <= '9') {
+      const idx = parseInt(e.key) - 1;
+      const opts = $('q-options').querySelectorAll('.option');
+      if (opts[idx]) opts[idx].click();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
