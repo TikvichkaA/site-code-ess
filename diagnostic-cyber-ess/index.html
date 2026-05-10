@@ -349,11 +349,9 @@
       <div class="form-card" id="form-card" style="display:none;">
         <h3>Recevoir un retour personnalisé</h3>
         <p class="form-help">On vous envoie vos résultats et on convient d'un échange si vous le souhaitez.</p>
-        <form id="lead-form" action="https://formsubmit.co/contact@unjouruneapp.com" method="POST">
-          <input type="hidden" name="_subject" id="form-subject" value="Diagnostic cyber ESS">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" id="form-next" value="">
+        <form id="lead-form" name="diag-cyber-ess" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/diagnostic-cyber-ess/?sent=1">
+          <input type="hidden" name="form-name" value="diag-cyber-ess">
+          <p style="display:none;"><label>Ne pas remplir : <input name="bot-field"></label></p>
           <input type="hidden" name="Score" id="form-score" value="">
           <input type="hidden" name="Detail_par_categorie" id="form-breakdown" value="">
           <input type="hidden" name="Reponses_completes" id="form-answers" value="">
@@ -783,7 +781,6 @@
     });
 
     // Hidden form fields
-    $('form-subject').value = `[Diag ESS] Score ${score10.toFixed(1).replace('.', ',')}/10 — ${tier === 'red' ? 'Risque élevé' : tier === 'orange' ? 'À renforcer' : 'Bonne posture'}`;
     $('form-score').value = score10.toFixed(1).replace('.', ',') + '/10';
     $('form-breakdown').value = Object.keys(CATEGORIES).map(k => {
       const s = catScores[k];
@@ -796,7 +793,6 @@
       return (i + 1) + '. ' + q.title + ' → ' + lbl;
     }).join('\n');
     $('form-date').value = new Date().toISOString().slice(0, 16).replace('T', ' ');
-    $('form-next').value = window.location.href.split('?')[0] + '?sent=1';
 
     show('results');
   }
