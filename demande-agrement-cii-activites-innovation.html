@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Activités d'innovation — Code'ess — Demande d'agrément CII 2026-2030</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --text: #1a1a2e;
+            --text-light: #4a4a5e;
+            --text-muted: #7a7a8e;
+            --primary: #1a3a5c;
+            --primary-light: #2a5a8c;
+            --accent: #c0392b;
+            --bg: #ffffff;
+            --bg-alt: #f7f8fa;
+            --border: #dde1e8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: A4;
+            margin: 20mm 22mm 24mm 22mm;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.65;
+            color: var(--text);
+            background: #e0e0e0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .document {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: var(--bg);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+        }
+
+        .page {
+            padding: 50px 55px;
+        }
+
+        /* Header */
+        .doc-header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 18px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .doc-header-left h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .doc-header-left .subtitle {
+            font-size: 9.5pt;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .doc-header-right {
+            text-align: right;
+            font-size: 8.5pt;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .doc-header-right .label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Section titles */
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 30px;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1.5px solid var(--border);
+            page-break-after: avoid;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-top: 20px;
+            margin-bottom: 8px;
+            page-break-after: avoid;
+        }
+
+        h4 {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 14px;
+            margin-bottom: 6px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 8px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        ul, ol {
+            margin-left: 18px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        li strong {
+            color: var(--primary-light);
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--primary);
+            padding: 14px 18px;
+            margin: 14px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 4px;
+            font-size: 10pt;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        /* Innovation box */
+        .innovation-box {
+            background: #fdf6f5;
+            border-left: 4px solid var(--accent);
+            padding: 14px 18px;
+            margin: 14px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .innovation-box p, .innovation-box li {
+            font-size: 10pt;
+        }
+
+        .volet-title {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 10pt;
+            margin-bottom: 6px;
+        }
+
+        /* Project cards */
+        .project-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin: 14px 0;
+            page-break-inside: avoid;
+        }
+
+        .project-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .project-context {
+            font-size: 9.5pt;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        /* Means grid */
+        .means-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .means-item {
+            background: var(--bg-alt);
+            padding: 12px 14px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+        }
+
+        .means-item h4 {
+            font-size: 9.5pt;
+            margin-top: 0;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 30px;
+            padding-top: 14px;
+            border-top: 1.5px solid var(--border);
+            text-align: center;
+            font-size: 9pt;
+            color: var(--text-muted);
+        }
+
+        /* Page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Print button */
+        .print-controls {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--primary-light);
+        }
+
+        @media print {
+            body { background: white; }
+            .document { max-width: none; margin: 0; box-shadow: none; }
+            .page { padding: 0; }
+            .print-controls { display: none !important; }
+            h2, h3, h4 { page-break-after: avoid; }
+            .project-card, .highlight-box, .innovation-box { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Exporter PDF
+        </button>
+    </div>
+
+    <div class="document">
+        <div class="page">
+
+            <!-- HEADER -->
+            <div class="doc-header">
+                <div class="doc-header-left">
+                    <h1>Activit&eacute;s d&rsquo;innovation</h1>
+                    <div class="subtitle">Demande d&rsquo;agr&eacute;ment CII 2026&ndash;2030</div>
+                </div>
+                <div class="doc-header-right">
+                    <span class="label">Code&rsquo;ess</span> &mdash; EI<br>
+                    SIRET 942 385 311 00017<br>
+                    Emmanuel Pinglier<br>
+                    contact@unjouruneapp.com<br>
+                    <br>
+                    <em>Entreprise non titulaire d&rsquo;un<br>agr&eacute;ment CIR en cours de validit&eacute;</em>
+                </div>
+            </div>
+
+            <!-- 1. PRESENTATION -->
+            <h2>1. Pr&eacute;sentation de l&rsquo;entreprise</h2>
+
+            <p><strong>Code&rsquo;ess</strong>, fond&eacute;e par Emmanuel Pinglier, con&ccedil;oit des solutions num&eacute;riques pour l&rsquo;&eacute;conomie sociale et solidaire (ESS) et les entreprises &agrave; impact. L&rsquo;entreprise intervient sur trois axes&nbsp;:</p>
+
+            <ul>
+                <li><strong>D&eacute;veloppement d&rsquo;applications et de produits num&eacute;riques</strong> &mdash; Sites, applications web (React, Vue, Python, Node.js), PWA, avec int&eacute;gration d&rsquo;IA et de traitement de donn&eacute;es&nbsp;;</li>
+                <li><strong>IA appliqu&eacute;e et automatisation</strong> &mdash; Int&eacute;gration de mod&egrave;les de langage (LLM), traitement automatique du langage naturel (NLP), pipelines de donn&eacute;es, workflows d&rsquo;automatisation&nbsp;;</li>
+                <li><strong>Conseil en num&eacute;rique responsable et cybers&eacute;curit&eacute;</strong> &mdash; Audits de s&eacute;curit&eacute; (OWASP Top 10, s&eacute;curit&eacute; LLM), conformit&eacute; RGPD, migration vers des solutions open source et souveraines.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Profil du fondateur&nbsp;:</strong> Dipl&ocirc;m&eacute; de l&rsquo;&Eacute;cole Polytechnique (X2016, sp&eacute;cialisation cryptographie sur courbes elliptiques &mdash; algorithme de Satoh), ancien officier. Certifi&eacute; Google Cybersecurity Professional (2026). Enseignant vacataire &agrave; l&rsquo;Universit&eacute; Paris-Saclay (Master Adaptation au Changement Climatique) et examinateur en CPGE. Formateur IA et transformation num&eacute;rique aupr&egrave;s d&rsquo;On Purpose France.</p>
+            </div>
+
+            <!-- 2. ACTIVITES D'INNOVATION -->
+            <h2>2. Activit&eacute;s d&rsquo;innovation</h2>
+
+            <p>Les travaux d&rsquo;innovation de Code&rsquo;ess portent sur la conception de <strong>produits num&eacute;riques nouveaux</strong> int&eacute;grant des briques technologiques r&eacute;centes (IA g&eacute;n&eacute;rative, NLP, pipelines de donn&eacute;es) pour r&eacute;pondre &agrave; des besoins mal couverts par les solutions existantes du march&eacute;.</p>
+
+            <h3>2.1 Int&eacute;gration d&rsquo;IA et de NLP dans des produits m&eacute;tier</h3>
+
+            <p>Code&rsquo;ess con&ccedil;oit des fonctionnalit&eacute;s d&rsquo;intelligence artificielle au sein de produits logiciels destin&eacute;s &agrave; des march&eacute;s sp&eacute;cifiques. Le travail d&rsquo;innovation porte sur&nbsp;:</p>
+
+            <ul>
+                <li>L&rsquo;<strong>adaptation de mod&egrave;les de langage &agrave; des domaines m&eacute;tier sp&eacute;cialis&eacute;s</strong> (comptabilit&eacute; carbone, aide sociale, civic tech), o&ugrave; les donn&eacute;es sont h&eacute;t&eacute;rog&egrave;nes, les nomenclatures complexes, et les mod&egrave;les g&eacute;n&eacute;ralistes insuffisants&nbsp;;</li>
+                <li>La <strong>recherche automatis&eacute;e dans des bases de donn&eacute;es techniques</strong> via NLP, pour remplacer des processus manuels longs et sujets &agrave; erreur par des syst&egrave;mes capables d&rsquo;interpr&eacute;ter des descriptions en langage naturel et de les apparier aux bons r&eacute;f&eacute;rentiels&nbsp;;</li>
+                <li>La <strong>conception d&rsquo;interfaces utilisateur augment&eacute;es par l&rsquo;IA</strong> qui fluidifient le parcours sans cr&eacute;er de d&eacute;pendance ni d&rsquo;hallucination pr&eacute;judiciable.</li>
+            </ul>
+
+            <h3>2.2 Pipelines de donn&eacute;es et structuration d&rsquo;information</h3>
+
+            <ul>
+                <li><strong>Scraping et extraction</strong> de donn&eacute;es &agrave; partir de sources web non structur&eacute;es (sites institutionnels, registres publics, APIs ouvertes)&nbsp;;</li>
+                <li><strong>Structuration par NLP</strong> de donn&eacute;es textuelles en objets exploitables (profils, entit&eacute;s, d&eacute;clarations, crit&egrave;res de scoring)&nbsp;;</li>
+                <li><strong>Algorithmes de matching et de scoring</strong> pour croiser des donn&eacute;es multi-sources et produire des recommandations actionnables.</li>
+            </ul>
+
+            <h3>2.3 Applications compagnon pour les professionnels de terrain</h3>
+
+            <ul>
+                <li>Architecture <strong>offline-first</strong> avec synchronisation diff&eacute;r&eacute;e&nbsp;;</li>
+                <li>Gestion de <strong>donn&eacute;es sensibles</strong> (donn&eacute;es sociales, donn&eacute;es de b&eacute;n&eacute;ficiaires) dans le respect du RGPD&nbsp;;</li>
+                <li>Interfaces optimis&eacute;es pour un usage en mobilit&eacute; (recherche universelle, fiches r&eacute;flexes, suivi de situations).</li>
+            </ul>
+
+            <!-- PAGE BREAK -->
+            <div class="page-break"></div>
+
+            <!-- 3. SIMPLY CARBON -->
+            <h2>3. Description d&rsquo;un projet innovant&nbsp;: Simply Carbon</h2>
+
+            <h3>Contexte</h3>
+
+            <p><strong>Simply Carbon</strong> est une startup climat (Paris) qui d&eacute;veloppe un outil SaaS B2B de calcul d&rsquo;empreinte carbone. Emmanuel Pinglier a rejoint l&rsquo;&eacute;quipe en CDD de 6 mois (avril &mdash; octobre 2024) en tant que d&eacute;veloppeur produit IA.</p>
+
+            <h3>Probl&eacute;matique</h3>
+
+            <p>Le calcul de l&rsquo;empreinte carbone d&rsquo;une entreprise requiert d&rsquo;associer chaque poste d&rsquo;activit&eacute; au <strong>facteur d&rsquo;&eacute;mission</strong> correspondant dans des bases de r&eacute;f&eacute;rence. La base principale est la <strong>Base Carbone de l&rsquo;ADEME</strong>, compl&eacute;t&eacute;e par des comparaisons avec le <strong>GHG Protocol</strong> &mdash; soit plusieurs milliers de facteurs d&rsquo;&eacute;mission. Ce processus &eacute;tait essentiellement <strong>manuel</strong>&nbsp;: l&rsquo;utilisateur devait naviguer dans des nomenclatures arborescentes complexes et s&eacute;lectionner le bon facteur parmi des milliers d&rsquo;entr&eacute;es.</p>
+
+            <p>Les difficult&eacute;s techniques &eacute;taient les suivantes&nbsp;:</p>
+
+            <ul>
+                <li><strong>H&eacute;t&eacute;rog&eacute;n&eacute;it&eacute; des r&eacute;f&eacute;rentiels</strong> &mdash; La Base Carbone ADEME et le GHG Protocol utilisent des nomenclatures, des unit&eacute;s et des niveaux de granularit&eacute; diff&eacute;rents&nbsp;;</li>
+                <li><strong>Ambigu&iuml;t&eacute; du langage naturel</strong> &mdash; La description d&rsquo;une activit&eacute; par l&rsquo;utilisateur (ex.&nbsp;&laquo;&nbsp;livraison de colis par camion&nbsp;&raquo;) peut correspondre &agrave; des dizaines de facteurs d&rsquo;&eacute;mission distincts selon le type de v&eacute;hicule, le carburant, la distance, le taux de chargement&nbsp;;</li>
+                <li><strong>Volume des r&eacute;f&eacute;rentiels</strong> &mdash; Plusieurs milliers de facteurs d&rsquo;&eacute;mission organis&eacute;s en arborescences &agrave; plusieurs niveaux&nbsp;;</li>
+                <li><strong>Exigence de fiabilit&eacute;</strong> &mdash; Une erreur d&rsquo;appariement se propage dans tout le bilan carbone&nbsp;;</li>
+                <li><strong>Limites des mod&egrave;les de langage disponibles (2024)</strong> &mdash; Les mod&egrave;les de raisonnement (DeepSeek R1, GPT o1) n&rsquo;existaient pas encore. Les LLM g&eacute;n&eacute;ralistes produisaient des r&eacute;sultats insuffisants&nbsp;: hallucinations de facteurs inexistants, confusion entre cat&eacute;gories proches, incapacit&eacute; &agrave; d&eacute;sambiguïser sans guidage structur&eacute;.</li>
+            </ul>
+
+            <h3>Travaux r&eacute;alis&eacute;s</h3>
+
+            <h4>1. Recherche automatis&eacute;e de facteurs d&rsquo;&eacute;mission par cha&icirc;ne de raisonnement en cascade</h4>
+
+            <p>Face aux limites des LLM g&eacute;n&eacute;ralistes de l&rsquo;&eacute;poque, le travail d&rsquo;innovation a consist&eacute; &agrave; concevoir une <strong>architecture de prompt engineering en cascade</strong> combinant recherche vectorielle et cha&icirc;ne de raisonnement (chain-of-thought)&nbsp;:</p>
+
+            <ul>
+                <li><strong>Indexation vectorielle</strong> des milliers de facteurs d&rsquo;&eacute;mission de la Base Carbone ADEME&nbsp;: chaque facteur est transform&eacute; en embedding s&eacute;mantique pour permettre une recherche par similarit&eacute; &agrave; partir d&rsquo;une description en langage naturel&nbsp;;</li>
+                <li><strong>Mod&egrave;les segment&eacute;s en cascade</strong>&nbsp;: plut&ocirc;t qu&rsquo;un appel unique &agrave; un LLM g&eacute;n&eacute;raliste, l&rsquo;architecture d&eacute;compose la t&acirc;che en &eacute;tapes successives &mdash; identification de la cat&eacute;gorie d&rsquo;activit&eacute;, extraction des param&egrave;tres discriminants (type d&rsquo;&eacute;nergie, mode de transport, p&eacute;rim&egrave;tre g&eacute;ographique&hellip;), puis s&eacute;lection fine du facteur dans le sous-ensemble pertinent&nbsp;;</li>
+                <li><strong>Prompt engineering avec chain-of-thought</strong>&nbsp;: chaque &eacute;tape utilise des prompts structur&eacute;s for&ccedil;ant le mod&egrave;le &agrave; expliciter son raisonnement avant de produire un r&eacute;sultat. Cette approche a &eacute;t&eacute; d&eacute;velopp&eacute;e avant que les mod&egrave;les de raisonnement natifs (o1, DeepSeek R1) ne la rendent standard fin 2024-2025.</li>
+            </ul>
+
+            <h4>2. Int&eacute;gration IA dans le parcours utilisateur</h4>
+
+            <ul>
+                <li>Suggestion automatique du facteur le plus probable au fur et &agrave; mesure de la saisie&nbsp;;</li>
+                <li>D&eacute;tection des incoh&eacute;rences (ex.&nbsp;facteur d&rsquo;&eacute;mission &eacute;lectrique appliqu&eacute; &agrave; un v&eacute;hicule diesel)&nbsp;;</li>
+                <li>Guidage vers la bonne granularit&eacute; quand la description est trop vague.</li>
+            </ul>
+
+            <h4>3. Mod&egrave;le de comptabilit&eacute; carbone consolid&eacute;e sur la cha&icirc;ne de valeur</h4>
+
+            <p>Au-del&agrave; de la recherche de facteurs, le travail a port&eacute; sur la <strong>red&eacute;finition du mod&egrave;le de collecte de donn&eacute;es carbone</strong> lui-m&ecirc;me. Les outils existants (Greenly, Carbometrix) collectent les donn&eacute;es poste par poste, ce qui g&eacute;n&egrave;re des redondances lorsqu&rsquo;une m&ecirc;me donn&eacute;e source alimente plusieurs postes d&rsquo;&eacute;mission.</p>
+
+            <p>L&rsquo;approche d&eacute;velopp&eacute;e s&rsquo;inspire de la <strong>comptabilit&eacute; financi&egrave;re consolid&eacute;e</strong>&nbsp;: les donn&eacute;es sont collect&eacute;es une seule fois au niveau de la cha&icirc;ne de valeur de l&rsquo;entreprise, puis propag&eacute;es automatiquement vers les postes d&rsquo;&eacute;mission concern&eacute;s (scopes 1, 2, 3)&nbsp;:</p>
+
+            <ul>
+                <li><strong>&Eacute;limine les doubles saisies</strong> et les incoh&eacute;rences entre postes aliment&eacute;s par la m&ecirc;me source&nbsp;;</li>
+                <li><strong>Garantit la tra&ccedil;abilit&eacute;</strong> de chaque facteur d&rsquo;&eacute;mission jusqu&rsquo;&agrave; la donn&eacute;e source&nbsp;;</li>
+                <li><strong>Facilite la mise &agrave; jour</strong>&nbsp;: quand une donn&eacute;e source change, tous les postes impact&eacute;s sont recalcul&eacute;s automatiquement&nbsp;;</li>
+                <li><strong>Reproduit la logique de consolidation comptable</strong>, famili&egrave;re aux directions financi&egrave;res, ce qui facilite l&rsquo;adoption.</li>
+            </ul>
+
+            <div class="innovation-box">
+                <p><strong>Ce mod&egrave;le de comptabilit&eacute; carbone consolid&eacute;e n&rsquo;a pas d&rsquo;&eacute;quivalent identifi&eacute; sur le march&eacute;.</strong> Les concurrents (Greenly, Carbometrix) proposent de la recherche de facteurs d&rsquo;&eacute;mission assist&eacute;e, mais aucun ne structure la collecte selon la cha&icirc;ne de valeur avec propagation automatique.</p>
+            </div>
+
+            <h3>Caract&egrave;re innovant</h3>
+
+            <div class="innovation-box">
+                <div class="volet-title">Volet 1 &mdash; Recherche de facteurs d&rsquo;&eacute;mission par architecture IA en cascade</div>
+                <ul>
+                    <li><strong>Incertitudes techniques lev&eacute;es</strong> &mdash; En 2024, la correspondance entre langage naturel et nomenclature technique des facteurs d&rsquo;&eacute;mission n&rsquo;&eacute;tait pas un probl&egrave;me r&eacute;solu par les LLM disponibles. L&rsquo;architecture en cascade avec chain-of-thought a anticip&eacute; de plusieurs mois les capacit&eacute;s de raisonnement rendues natives par les mod&egrave;les de fin 2024 (o1, DeepSeek R1)&nbsp;;</li>
+                    <li><strong>Sup&eacute;riorit&eacute; fonctionnelle</strong> &mdash; Par rapport aux concurrents (Greenly, Carbometrix), gain en ergonomie (saisie en langage courant vs. navigation dans des arborescences) et en fiabilit&eacute; (d&eacute;sambiguïsation explicite vs. suggestion na&iuml;ve).</li>
+                </ul>
+
+                <div class="volet-title" style="margin-top: 12px;">Volet 2 &mdash; Mod&egrave;le de comptabilit&eacute; carbone consolid&eacute;e</div>
+                <ul>
+                    <li><strong>Produit nouveau sans &eacute;quivalent march&eacute;</strong> &mdash; Le mod&egrave;le de collecte bas&eacute; sur la cha&icirc;ne de valeur, avec propagation automatique vers les postes d&rsquo;&eacute;mission, n&rsquo;a pas d&rsquo;&eacute;quivalent identifi&eacute;. Innovation de concept transposant au carbone une logique de consolidation issue de la comptabilit&eacute; financi&egrave;re&nbsp;;</li>
+                    <li><strong>Sup&eacute;riorit&eacute; technique</strong> &mdash; &Eacute;limination des redondances de collecte et tra&ccedil;abilit&eacute; automatique des donn&eacute;es source, am&eacute;lioration structurelle par rapport au mod&egrave;le &laquo;&nbsp;poste par poste&nbsp;&raquo; utilis&eacute; par l&rsquo;ensemble des acteurs du march&eacute;.</li>
+                </ul>
+            </div>
+
+            <!-- PAGE BREAK -->
+            <div class="page-break"></div>
+
+            <!-- 4. AUTRES PROJETS -->
+            <h2>4. Autres projets illustrant les activit&eacute;s d&rsquo;innovation</h2>
+
+            <div class="project-card">
+                <h4>4.1 Pipeline de donn&eacute;es et matching algorithmique &mdash; On Purpose France (2025)</h4>
+                <p class="project-context">Programme de transition de carri&egrave;re vers l&rsquo;&eacute;conomie sociale. Objectif&nbsp;: 40 placements/an en &Icirc;le-de-France.</p>
+                <ul>
+                    <li><strong>Pipeline de collecte de donn&eacute;es</strong> croisant l&rsquo;API Recherche d&rsquo;Entreprises, les donn&eacute;es de subventions du PLF (jaunes budg&eacute;taires) et des sources sectorielles&nbsp;;</li>
+                    <li><strong>Algorithme de scoring multi-crit&egrave;res</strong> (10+ crit&egrave;res&nbsp;: taille, secteur, statut juridique, subventions ESS, localisation) pour qualifier automatiquement les organisations cibles&nbsp;;</li>
+                    <li>Audit de s&eacute;curit&eacute; d&rsquo;un <strong>syst&egrave;me RAG</strong> d&eacute;ploy&eacute; en interne&nbsp;: analyse des vuln&eacute;rabilit&eacute;s (injection de prompt, exfiltration via Qdrant, guardrails Mistral), recommandations et plan de rem&eacute;diation.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h4>4.2 Application compagnon pour travailleuses sociales &mdash; TS Compagnon (2025-2026)</h4>
+                <p class="project-context">Professionnelles en intervention terrain, acc&egrave;s rapide &agrave; l&rsquo;information r&eacute;glementaire sans connectivit&eacute; fiable.</p>
+                <ul>
+                    <li><strong>PWA offline-first</strong> avec Service Worker et synchronisation diff&eacute;r&eacute;e (Supabase)&nbsp;;</li>
+                    <li><strong>Recherche universelle</strong> &agrave; travers dispositifs, glossaire et fiches r&eacute;flexes, fonctionnant int&eacute;gralement hors ligne&nbsp;;</li>
+                    <li>Architecture de <strong>stockage s&eacute;curis&eacute; de donn&eacute;es sensibles</strong> (situations de b&eacute;n&eacute;ficiaires) sur le terminal, avec chiffrement local.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h4>4.3 Veille &eacute;lectorale et structuration NLP &mdash; Municipales 2026</h4>
+                <p class="project-context">Civic tech&nbsp;: structuration de l&rsquo;information politique locale. 90+ communes, 100+ profils.</p>
+                <ul>
+                    <li>Pipeline de <strong>scraping multi-sources</strong> (Node.js, Cheerio) avec gestion des structures de pages h&eacute;t&eacute;rog&egrave;nes&nbsp;;</li>
+                    <li><strong>Traitement NLP</strong> pour extraire et structurer des donn&eacute;es textuelles non normalis&eacute;es (d&eacute;clarations, prises de position, profils biographiques)&nbsp;;</li>
+                    <li>Base de donn&eacute;es structur&eacute;e (Supabase) avec <strong>requ&ecirc;tes analytiques complexes</strong> sur corpus textuel.</li>
+                </ul>
+            </div>
+
+            <!-- 5. MOYENS -->
+            <h2>5. Moyens d&eacute;di&eacute;s &agrave; l&rsquo;innovation</h2>
+
+            <h3>Moyens humains</h3>
+            <ul>
+                <li><strong>Emmanuel Pinglier</strong> (fondateur) &mdash; Formation Polytechnique (math&eacute;matiques, cryptographie), comp&eacute;tences en d&eacute;veloppement full-stack (Python, JavaScript, React, Vue, Node.js), IA/NLP, cybers&eacute;curit&eacute;&nbsp;;</li>
+                <li><strong>Formation continue</strong> &mdash; Google Cybersecurity Professional Certificate (2026), veille OWASP (web et LLM), suivi des &eacute;volutions des mod&egrave;les de langage et des frameworks d&rsquo;IA.</li>
+            </ul>
+
+            <h3>Moyens techniques</h3>
+            <ul>
+                <li>Environnements de d&eacute;veloppement et d&rsquo;h&eacute;bergement sur infrastructure fran&ccedil;aise (OVH, Scaleway, Infomaniak)&nbsp;;</li>
+                <li>Acc&egrave;s aux APIs d&rsquo;IA (OpenAI, Mistral, Anthropic) et aux bases de donn&eacute;es ouvertes (ADEME, INSEE, registres d&rsquo;entreprises)&nbsp;;</li>
+                <li>Outils de s&eacute;curit&eacute; et d&rsquo;audit (SIEM, frameworks OWASP, outils de test d&rsquo;injection)&nbsp;;</li>
+                <li>Plateforme de prototypage rapide (Supabase, n8n, Make).</li>
+            </ul>
+
+            <h3>Veille et diffusion des connaissances</h3>
+            <ul>
+                <li>Enseignement universitaire (Paris-Saclay) et en classes pr&eacute;paratoires&nbsp;;</li>
+                <li>Formation de professionnels de l&rsquo;ESS &agrave; l&rsquo;IA et &agrave; la transformation num&eacute;rique (On Purpose France)&nbsp;;</li>
+                <li>Publication d&rsquo;analyses techniques (s&eacute;curit&eacute; LLM, souverainet&eacute; num&eacute;rique)&nbsp;;</li>
+                <li>Participation aux communaut&eacute;s open source.</li>
+            </ul>
+
+            <!-- 6. PERSPECTIVES -->
+            <h2>6. Perspectives 2026&ndash;2030</h2>
+
+            <ol>
+                <li style="margin-bottom:10px"><strong>IA appliqu&eacute;e aux donn&eacute;es ESS</strong> &mdash; D&eacute;veloppement d&rsquo;outils de traitement automatique de donn&eacute;es sp&eacute;cifiques au secteur ESS (rapports d&rsquo;impact, donn&eacute;es de b&eacute;n&eacute;ficiaires, indicateurs sociaux), o&ugrave; les mod&egrave;les g&eacute;n&eacute;ralistes sont insuffisants et o&ugrave; les volumes de donn&eacute;es ne justifient pas un entra&icirc;nement from scratch&nbsp;;</li>
+                <li style="margin-bottom:10px"><strong>S&eacute;curisation des syst&egrave;mes LLM pour les petites structures</strong> &mdash; M&eacute;thodologies et outils de s&eacute;curisation des applications d&rsquo;IA g&eacute;n&eacute;rative adapt&eacute;s aux moyens des associations et PME ESS (audit simplifi&eacute;, configurations s&eacute;curis&eacute;es par d&eacute;faut, monitoring l&eacute;ger)&nbsp;;</li>
+                <li><strong>Applications offline-first pour les professionnels de terrain</strong> &mdash; Poursuite du d&eacute;veloppement de PWA compagnon pour les m&eacute;tiers du social, de l&rsquo;aide alimentaire et de l&rsquo;accompagnement, avec des contraintes d&rsquo;accessibilit&eacute;, de confidentialit&eacute; et de r&eacute;silience r&eacute;seau.</li>
+            </ol>
+
+            <!-- FOOTER -->
+            <div class="doc-footer">
+                Document &eacute;tabli le 3 avril 2026 &mdash; Code&rsquo;ess &mdash; Emmanuel Pinglier &mdash; contact@unjouruneapp.com
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

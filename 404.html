@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Page introuvable (404) — Code'ess</title>
+    <meta name="description" content="Cette page n'existe pas ou a été déplacée. Retour à l'accueil ou découvrez le baromètre, les formations et le blog Code'ess.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f172a;
+            --ink-soft: #475569;
+            --ink-muted: #94a3b8;
+            --accent: #0d9488;
+            --accent-dark: #0f766e;
+            --accent-soft: #f0fdfa;
+            --paper: #ffffff;
+            --warm: #f8fafc;
+            --line: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(13, 148, 136, 0.08), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(79, 70, 229, 0.06), transparent 50%),
+                var(--warm);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        .nav-bar {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .logo-chevron {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 0.95em;
+        }
+        .logo-ess { color: var(--accent); }
+        .nav-back {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color .2s;
+        }
+        .nav-back:hover { border-color: var(--ink-soft); }
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
+        }
+        .panel {
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+        }
+        .code {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(5rem, 18vw, 9rem);
+            letter-spacing: -0.04em;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .lede {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            max-width: 540px;
+            margin: 0 auto 36px;
+        }
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform .15s, box-shadow .2s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(13, 148, 136, 0.32); }
+        .btn-ghost {
+            background: var(--paper);
+            color: var(--ink);
+            border: 1px solid var(--line);
+        }
+        .btn-ghost:hover { border-color: var(--ink-soft); transform: translateY(-1px); }
+        .quick-links {
+            border-top: 1px solid var(--line);
+            padding-top: 32px;
+            margin-top: 8px;
+        }
+        .quick-links-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-muted);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            text-align: left;
+        }
+        .quick-card {
+            display: block;
+            padding: 16px 18px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color .2s, transform .15s;
+        }
+        .quick-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .quick-card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .quick-card-desc {
+            font-size: 0.82rem;
+            color: var(--ink-muted);
+            line-height: 1.4;
+        }
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.82rem;
+            color: var(--ink-muted);
+        }
+        footer a { color: var(--ink-soft); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="/" class="logo" aria-label="Retour à l'accueil Code'ess">
+            <span class="logo-chevron">&lt;/&gt;</span>
+            <span>Code<span class="logo-ess">'ess</span></span>
+        </a>
+        <a href="/" class="nav-back">← Retour à l'accueil</a>
+    </div>
+
+    <main>
+        <div class="panel">
+            <div class="code" aria-hidden="true">404</div>
+            <h1>Cette page n'existe pas</h1>
+            <p class="lede">
+                L'URL a peut-être changé, ou la page a été déplacée. Pas de souci —
+                voici les destinations les plus utiles pour reprendre votre navigation.
+            </p>
+            <div class="cta-row">
+                <a href="/" class="btn btn-primary">Accueil Code'ess</a>
+                <a href="/panorama-ess" class="btn btn-ghost">Baromètre 2026 de l'ESS</a>
+            </div>
+
+            <div class="quick-links">
+                <div class="quick-links-label">Pages les plus consultées</div>
+                <div class="quick-grid">
+                    <a href="/diagnostic-cyber-ess" class="quick-card">
+                        <div class="quick-card-title">Diagnostic cyber gratuit</div>
+                        <div class="quick-card-desc">16 questions, score /10, 3 priorités. 3 min, anonyme.</div>
+                    </a>
+                    <a href="/formations.html" class="quick-card">
+                        <div class="quick-card-title">Formations IA</div>
+                        <div class="quick-card-desc">1 jour, 30 h ou 10 jours pour s'approprier l'IA générative.</div>
+                    </a>
+                    <a href="/blog/dmarc-spf-dkim-association.html" class="quick-card">
+                        <div class="quick-card-title">Blog cybersécurité</div>
+                        <div class="quick-card-desc">DMARC, Microsoft 365, GAFAM : guides pour les associations.</div>
+                    </a>
+                    <a href="/qui-suis-je.html" class="quick-card">
+                        <div class="quick-card-title">Qui suis-je</div>
+                        <div class="quick-card-desc">Emmanuel Pinglier — conseil numérique libre pour l'ESS.</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Un lien cassé à signaler ? Écrivez à <a href="mailto:contact@unjouruneapp.com">contact@unjouruneapp.com</a>.
+    </footer>
+</body>
+</html>

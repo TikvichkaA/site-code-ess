@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Lettre de motivation — La Ceinture Verte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1e293b;
+            --muted: #64748b;
+            --accent: #2f6a4d;
+            --accent-light: #e8f3ec;
+            --rule: #e2e8f0;
+        }
+
+        @page {
+            size: A4;
+            margin: 22mm 24mm 24mm 24mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11.25pt;
+            line-height: 1.55;
+            color: var(--ink);
+            background: #f1f5f9;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .sheet {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 16px auto;
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            padding: 22mm 24mm 24mm;
+        }
+
+        /* --- En-tête --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 22px;
+        }
+
+        .sender-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .sender-tagline {
+            margin-top: 6px;
+            font-size: 10.5pt;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .contact {
+            text-align: right;
+            font-size: 9.75pt;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* --- Destinataire --- */
+        .meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+            font-size: 10pt;
+        }
+
+        .recipient {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .recipient strong {
+            display: block;
+            color: var(--ink);
+            font-size: 10.5pt;
+            margin-bottom: 4px;
+        }
+
+        .date-place {
+            text-align: right;
+            color: var(--muted);
+            align-self: end;
+        }
+
+        /* --- Objet --- */
+        .subject {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            margin-bottom: 22px;
+            font-size: 10.5pt;
+        }
+
+        .subject span {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* --- Corps --- */
+        .body p {
+            margin-bottom: 12px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .body p.greeting {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .body p.closing {
+            margin-top: 18px;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .signature {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .signature .role {
+            font-weight: 400;
+            font-size: 10pt;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* --- Pied de page discret --- */
+        .footer {
+            margin-top: 32px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule);
+            font-size: 8.5pt;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .sheet {
+                margin: 0;
+                box-shadow: none;
+                padding: 0;
+                min-height: auto;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Bouton impression écran */
+        .print-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .print-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(47, 106, 77, 0.35);
+        }
+
+        .print-btn:hover {
+            background: #256b47;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-bar no-print">
+        <button class="print-btn" onclick="window.print()">Exporter en PDF</button>
+    </div>
+
+    <article class="sheet">
+        <header class="header">
+            <div>
+                <div class="sender-name">Emmanuel Pinglier</div>
+                <div class="sender-tagline">Développeur web · Numérique ESS · Code'ess</div>
+            </div>
+            <div class="contact">
+                <strong>em.pinglier@gmail.com</strong><br>
+                Ivry-sur-Seine (94)<br>
+                <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/">linkedin.com/in/emmanuel-pinglier</a><br>
+                <a href="https://code-ess.unjouruneapp.com">code-ess.unjouruneapp.com</a>
+            </div>
+        </header>
+
+        <div class="meta">
+            <div class="recipient">
+                <strong>La Ceinture Verte — Ceinture Verte Groupe</strong>
+                Recrutement — Lead Tech &amp; Produit (CTO)<br>
+                Plateforme d'appui à l'exploitation
+            </div>
+            <div class="date-place">
+                Ivry-sur-Seine, le 10 juin 2026
+            </div>
+        </div>
+
+        <div class="subject">
+            <span>Objet :</span> Candidature au poste de Lead Tech &amp; Produit — Plateforme d'appui à l'exploitation
+        </div>
+
+        <div class="body">
+            <p class="greeting">Bonjour,</p>
+
+            <p>Je postule au poste de Lead Tech &amp; Produit sur la plateforme d'appui à l'exploitation.</p>
+
+            <p>Ce qui m'attire, c'est le moment où vous en êtes&nbsp;: le modèle coopératif tourne (fermes aménagées, territoires qui se structurent, levée solidaire, incubateur innovation), et il faut maintenant un outil que les maraîchers ouvrent <strong>tous les jours</strong> — pas un site de plus. Piloter la production, la rentabilité, trouver la bonne ressource au bon moment, se brancher à des outils existants&nbsp;: c'est un vrai produit, pas un projet vitrine.</p>
+
+            <p>Et vous n'attaquez pas le sujet les mains vides. La vidéo technique, la formation à distance, le conseil en performance économique, le volet européen… ce sont déjà des briques. Le travail, c'est de les faire tenir ensemble dans un prototype crédible pour début 2027, testé sur le terrain avec des fermes du réseau.</p>
+
+            <p>Je m'appelle Emmanuel Pinglier. Polytechnicien, ex-officier, un passage conseil secteur public, puis Linkee (aide alimentaire), On Purpose, un master climat. Aujourd'hui je travaille en indépendant (Code'ess) pour des structures ESS&nbsp;: développement, automatisation, IA quand elle simplifie la vie des équipes. Je suis basé en région parisienne, mobile partout où il y a des coopératives et des maraîchers à écouter.</p>
+
+            <p>Techniquement, je suis le profil «&nbsp;je fais le proto moi-même&nbsp;»&nbsp;: front, back, API, base de données, un peu de data/IA, un peu de devops. React, Vue, Python, Supabase, Docker — et surtout l'habitude de sortir quelque chose d'utilisable vite, puis de corriger avec les retours réels. Chez ce type d'organisation, le risque n'est pas de mal coder&nbsp;: c'est de construire un outil que personne n'a le temps d'adopter.</p>
+
+            <p>Votre certification Qualiopi confirme aussi que la formation n'est pas un module à côté, mais au cœur de ce que la plateforme doit porter.</p>
+
+            <p>Ce qui me motive, c'est l'impact si ça marche — et le plaisir de construire un outil utile à une filière qui en a besoin.</p>
+
+            <p class="closing">Si ça vous dit, je serais heureux d'en parler&nbsp;: premiers cas d'usage, fermes pilotes, ce qu'il faut absolument dans le MVP (et ce qu'on peut repousser).</p>
+
+            <p>Bien cordialement,</p>
+
+            <div class="signature">
+                Emmanuel Pinglier
+                <div class="role">Développeur web indépendant — Code'ess</div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            Lettre de motivation — La Ceinture Verte — juin 2026
+        </footer>
+    </article>
+
+</body>
+</html>
