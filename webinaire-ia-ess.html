@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posez toutes vos questions sur l'IA à un expert — Webinaire 60 min pour l'ESS | Code'ess</title>
+    <meta name="description" content="Webinaire 60 min + 15 min Q&R pour les organisations de l'ESS et les partenaires d'On Purpose. Vous posez vos questions sur l'IA générative à l'inscription, un expert y répond en direct. Aucune préparation requise, aucune question naïve.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://code-ess.unjouruneapp.com/webinaire-ia-ess.html">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Posez toutes vos questions sur l'IA à un expert — Webinaire ESS">
+    <meta property="og:description" content="60 minutes pour poser vos questions sur l'IA. Vous demandez, l'expert répond — pas de cours, pas de pitch. Pour les organisations de l'ESS, en partenariat avec On Purpose.">
+    <meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+    <meta property="og:url" content="https://code-ess.unjouruneapp.com/webinaire-ia-ess.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <!-- JSON-LD : Event -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Posez toutes vos questions sur l'IA à un expert",
+      "description": "Webinaire 60 min + 15 min Q&R libre pour les organisations de l'ESS et les partenaires d'On Purpose. Format AMA : vous posez vos questions à l'inscription, un expert répond en direct.",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://code-ess.unjouruneapp.com/webinaire-ia-ess.html"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Code'ess",
+        "url": "https://code-ess.unjouruneapp.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Hero */
+        .web-hero {
+            position: relative;
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+            overflow: hidden;
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+        }
+        .web-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(13, 148, 136, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            pointer-events: none;
+        }
+        .web-hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+        .web-hero-content { position: relative; z-index: 2; }
+        .web-badge {
+            display: inline-flex; align-items: center; gap: var(--space-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(240, 253, 250, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-light);
+            border-radius: 50px;
+            font-size: 0.875rem; font-weight: 500; color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+        }
+        .web-hero-content h1 { margin-bottom: var(--space-md); }
+        .web-hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .web-intro { font-size: 1.15rem; line-height: 1.75; margin-bottom: var(--space-xl); color: var(--text-light); }
+        .web-hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-2xl); }
+        .web-meta { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+        .web-meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--text-light); }
+        .web-meta-item svg { width: 18px; height: 18px; color: var(--primary); }
+
+        .web-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
+        .web-visual-card {
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-lg);
+            transform: rotate(-1deg);
+            transition: var(--transition-slow);
+            box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.3);
+            position: relative; overflow: hidden; max-width: 420px;
+        }
+        .web-visual-card:hover {
+            transform: rotate(0deg) scale(1.03) translateY(-6px);
+            box-shadow: 0 35px 60px -15px rgba(13, 148, 136, 0.4);
+        }
+        .web-visual-card h3 {
+            font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
+            color: white; margin-bottom: var(--space-md);
+        }
+        .web-visual-list { list-style: none; }
+        .web-visual-list li {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.95); font-size: 0.95rem;
+            margin-bottom: 0.7rem; font-weight: 500; line-height: 1.5;
+        }
+        .web-visual-list li svg { width: 18px; height: 18px; color: rgba(255,255,255,0.85); flex-shrink: 0; margin-top: 3px; }
+
+        /* Comment ça marche */
+        .howto { padding: var(--space-3xl) 0; background: var(--bg-alt); position: relative; overflow: hidden; }
+        .howto::before {
+            content: ''; position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(13,148,136,0.06), transparent 70%);
+            top: -100px; right: -100px; pointer-events: none;
+        }
+        .howto-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .howto-step {
+            position: relative;
+            padding: var(--space-lg);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        [data-theme="dark"] .howto-step { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); }
+        .howto-step-num {
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+        }
+        .howto-step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .howto-step p { font-size: 0.92rem; color: var(--text-light); line-height: 1.55; margin: 0; }
+        @media (max-width: 900px) {
+            .howto-steps { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .howto-steps { grid-template-columns: 1fr; }
+        }
+
+        /* Exemples de questions */
+        .questions { padding: var(--space-3xl) 0; }
+        .questions-intro { text-align: center; max-width: 720px; margin: 0 auto var(--space-2xl); font-size: 1.05rem; color: var(--text-light); line-height: 1.7; }
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .question-col {
+            padding: var(--space-lg);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            border-left: 3px solid var(--primary);
+        }
+        [data-theme="dark"] .question-col { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); border-left-color: var(--primary); }
+        .question-col h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            margin-bottom: var(--space-md);
+        }
+        .question-list {
+            list-style: none;
+            padding: 0; margin: 0;
+        }
+        .question-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.08);
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.55;
+        }
+        [data-theme="dark"] .question-list li { border-bottom-color: rgba(255,255,255,0.08); }
+        .question-list li:last-child { border-bottom: none; }
+        .question-list li::before {
+            content: '« ';
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .question-list li::after {
+            content: ' »';
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Animateur */
+        .animateur { padding: var(--space-3xl) 0; background: var(--bg-alt); }
+        .animateur-card {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: var(--space-2xl);
+            background: rgba(255,255,255,0.9);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        [data-theme="dark"] .animateur-card { background: rgba(30,41,59,0.85); border-color: rgba(255,255,255,0.06); }
+        .animateur-card h3 { font-size: 1.3rem; margin-bottom: var(--space-md); }
+        .animateur-list { list-style: none; padding: 0; margin: var(--space-md) 0 0; }
+        .animateur-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.55rem 0;
+            color: var(--text-light);
+            font-size: 0.97rem;
+            line-height: 1.6;
+        }
+        .animateur-list li svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+
+        /* Pour qui */
+        .cibles { padding: var(--space-3xl) 0; }
+        .cibles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); max-width: 1100px; margin: 0 auto; }
+        .cible-card {
+            padding: var(--space-lg);
+            background: rgba(255,255,255,0.85);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition-slow);
+        }
+        [data-theme="dark"] .cible-card { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); }
+        .cible-card:hover { transform: translateY(-4px); }
+        .cible-card .cible-icon {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--space-sm);
+        }
+        .cible-card .cible-icon svg { width: 22px; height: 22px; color: white; }
+        .cible-card h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .cible-card p { font-size: 0.92rem; color: var(--text-light); margin: 0; line-height: 1.55; }
+
+        /* Inscription */
+        .inscription { padding: var(--space-3xl) 0; background: var(--bg-alt); }
+        .inscription-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .inscription-info p { color: var(--text-light); line-height: 1.7; margin-bottom: var(--space-md); }
+        .inscription-info ul { list-style: none; padding: 0; margin: 0; }
+        .inscription-info ul li {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+        .inscription-info ul li svg { width: 18px; height: 18px; color: var(--primary); flex-shrink: 0; margin-top: 3px; }
+        .inscription-form {
+            padding: var(--space-xl);
+            background: rgba(255,255,255,0.95);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        [data-theme="dark"] .inscription-form { background: rgba(30,41,59,0.92); border-color: rgba(255,255,255,0.06); }
+        .form-group { margin-bottom: var(--space-md); }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.92rem; }
+        .form-group label .form-required { color: var(--primary-dark); margin-left: 0.2rem; }
+        .form-group label .form-hint { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-light); margin-top: 0.15rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: white;
+            color: var(--text);
+            transition: border-color 0.2s;
+        }
+        [data-theme="dark"] .form-group input, [data-theme="dark"] .form-group select, [data-theme="dark"] .form-group textarea {
+            background: rgba(15,23,42,0.6); color: var(--text); border-color: rgba(255,255,255,0.1);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--primary);
+        }
+        .form-group.question-block {
+            padding: var(--space-md);
+            background: rgba(13,148,136,0.05);
+            border-radius: var(--radius);
+            border-left: 3px solid var(--primary);
+        }
+        [data-theme="dark"] .form-group.question-block { background: rgba(13,148,136,0.1); }
+        .form-group.question-block label { color: var(--primary-dark); }
+        [data-theme="dark"] .form-group.question-block label { color: #5eead4; }
+        .btn-full { width: 100%; }
+
+        @media (max-width: 900px) {
+            .web-hero-grid, .inscription-wrapper { grid-template-columns: 1fr; }
+            .web-visual { order: -1; max-width: 360px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <span class="logo-chevron">&lt;/&gt;</span>
+                <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="/panorama-ess">Baromètre 2026</a></li>
+                <li><a href="formations.html">Formations</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="qui-suis-je.html">Qui suis-je</a></li>
+                <li><a href="#inscription" class="btn btn-nav">S'inscrire</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-toggle" id="dark-toggle" aria-label="Basculer le mode sombre">
+                    <svg class="dark-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="dark-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+    <!-- HERO -->
+    <section class="web-hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+
+        <div class="container web-hero-grid">
+            <div class="web-hero-content">
+                <div class="web-badge" data-reveal="up">
+                    <span>&#129300;</span>
+                    <span>Webinaire — En partenariat avec On Purpose</span>
+                </div>
+                <h1 data-reveal="up" data-delay="1">
+                    Posez toutes vos questions<br>
+                    sur l'<span class="highlight">IA</span> à un expert.
+                </h1>
+                <p class="web-intro" data-reveal="up" data-delay="2">
+                    Une heure où le rapport est inversé&nbsp;: vous posez les questions, un expert répond. Pas de cours, pas de pitch, pas de slide récité à voix haute. <strong>Vous écrivez vos questions à l'inscription</strong>, je les regroupe par thème, j'y réponds en direct devant les autres participants. Aucune préparation requise. Aucune question naïve.
+                </p>
+                <div class="web-hero-cta" data-reveal="up" data-delay="3">
+                    <a href="#inscription" class="btn btn-primary">Poser ma question</a>
+                    <a href="#comment" class="btn btn-secondary">Comment ça marche</a>
+                </div>
+                <div class="web-meta" data-reveal="up" data-delay="4">
+                    <div class="web-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span>60 min + 15 min Q&amp;R libre</span>
+                    </div>
+                    <div class="web-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span>Date à confirmer</span>
+                    </div>
+                    <div class="web-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                        <span>BigBlueButton — souverain</span>
+                    </div>
+                    <div class="web-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 12h14"/></svg>
+                        <span>Gratuit pour les partenaires</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="web-visual" data-reveal="scale">
+                <div class="web-visual-card">
+                    <h3>Trois règles du jeu</h3>
+                    <ul class="web-visual-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Aucune question n'est nulle. Si vous vous la posez, d'autres aussi.</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>« Je ne sais pas » est une réponse acceptable — et je l'utilise.</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>On déborde sur le chat plutôt que de bâcler une réponse.</span>
+                        </li>
+                    </ul>
+                    <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.2);">
+                        <div style="color: rgba(255,255,255,0.9); font-size: 0.88rem; line-height: 1.55;">
+                            Un document de synthèse Q&amp;R est envoyé à tous les inscrits après le webinaire.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section class="howto" id="comment">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Le format</span>
+                <h2 class="section-title">Comment ça se passe.</h2>
+                <p class="section-subtitle">Un Q&amp;R bâclé est pire qu'un cours. Pour que cette heure vaille la peine, le format est sérieusement préparé. Voici comment.</p>
+            </div>
+
+            <div class="howto-steps">
+                <div class="howto-step" data-reveal="up" data-delay="0">
+                    <div class="howto-step-num">1</div>
+                    <h3>Vous posez votre question à l'inscription</h3>
+                    <p>Le formulaire ci-dessous contient un champ « votre question » obligatoire. Vous pouvez en poser plusieurs si vous voulez. Le formuler honnêtement&nbsp;: c'est le moment d'écrire ce que vous n'oseriez pas demander à voix haute.</p>
+                </div>
+                <div class="howto-step" data-reveal="up" data-delay="1">
+                    <div class="howto-step-num">2</div>
+                    <h3>Je regroupe et je prépare</h3>
+                    <p>Dans la semaine qui précède, je regroupe les questions par thème (souveraineté, éthique, outils, usages, environnement…) et je prépare des réponses sourcées. Vos questions personnelles restent anonymes pendant le webinaire.</p>
+                </div>
+                <div class="howto-step" data-reveal="up" data-delay="2">
+                    <div class="howto-step-num">3</div>
+                    <h3>Je réponds en direct, par thème</h3>
+                    <p>Cinq minutes de cadrage minimum pour qu'on parte du même point. Puis quarante-cinq minutes de réponses, thème par thème, en intégrant les nouvelles questions du chat en temps réel.</p>
+                </div>
+                <div class="howto-step" data-reveal="up" data-delay="3">
+                    <div class="howto-step-num">4</div>
+                    <h3>Vous repartez avec une synthèse</h3>
+                    <p>Un document Q&amp;R reprenant toutes les questions et leurs réponses (y compris celles auxquelles on n'aura pas eu le temps de répondre à l'oral) est envoyé à tous les inscrits. Libre de diffusion auprès de vos équipes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXEMPLES DE QUESTIONS -->
+    <section class="questions">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Le genre de questions</span>
+                <h2 class="section-title">Tout est sur la table.</h2>
+            </div>
+            <p class="questions-intro" data-reveal="up">Pour vous donner une idée du registre — voici le type de questions qui sont déjà arrivées sur des formats équivalents. Aucune n'est meilleure qu'une autre. La vôtre a sa place.</p>
+
+            <div class="questions-grid">
+                <div class="question-col" data-reveal="up" data-delay="0">
+                    <h3>Comprendre ce que c'est</h3>
+                    <ul class="question-list">
+                        <li>Est-ce vrai que c'est juste un perroquet statistique&nbsp;?</li>
+                        <li>Comment je sais si une réponse de l'IA est fausse&nbsp;?</li>
+                        <li>Pourquoi ça parle français si c'est entraîné en anglais&nbsp;?</li>
+                        <li>L'IA, l'AGI, les LLM, les agents — qu'est-ce qui est quoi&nbsp;?</li>
+                        <li>Est-ce que ça comprend vraiment ce qu'on lui dit&nbsp;?</li>
+                    </ul>
+                </div>
+
+                <div class="question-col" data-reveal="up" data-delay="1">
+                    <h3>Éthique et souveraineté</h3>
+                    <ul class="question-list">
+                        <li>Si je donne mes données d'adhérents à ChatGPT, qui en fait quoi&nbsp;?</li>
+                        <li>Combien ça consomme vraiment, une requête ChatGPT&nbsp;?</li>
+                        <li>Comment éviter que les biais de l'IA touchent nos publics&nbsp;?</li>
+                        <li>Pourquoi Mistral et pas OpenAI&nbsp;?</li>
+                        <li>Qui sont les travailleurs du clic et pourquoi ça nous concerne&nbsp;?</li>
+                    </ul>
+                </div>
+
+                <div class="question-col" data-reveal="up" data-delay="2">
+                    <h3>Usages concrets dans l'ESS</h3>
+                    <ul class="question-list">
+                        <li>J'ai 0 budget IT, je peux faire quoi de concret&nbsp;?</li>
+                        <li>Mon CA me demande « une stratégie IA », c'est quoi&nbsp;?</li>
+                        <li>Est-ce que l'IA va remplacer mes bénévoles à la communication&nbsp;?</li>
+                        <li>Albert, Le Chat, Llama — je dois choisir lequel et comment&nbsp;?</li>
+                        <li>Les salariés utilisent ChatGPT sans cadre — je fais quoi&nbsp;?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANIMATEUR -->
+    <section class="animateur">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Qui répond</span>
+                <h2 class="section-title">Un expert qui dit aussi « je ne sais pas ».</h2>
+            </div>
+
+            <div class="animateur-card" data-reveal="up">
+                <h3>Emmanuel Pinglier — fondateur de Code'ess</h3>
+                <p style="color: var(--text-light); line-height: 1.7; font-size: 1rem;">
+                    Pas un évangéliste qui vend un futur radieux. Pas un consultant qui découvre votre métier le matin du webinaire. Quelqu'un qui utilise ces outils chaque jour pour livrer du travail réel, qui connaît la technique pour de vrai, et qui assume de dire « je ne sais pas » en public quand c'est le cas.
+                </p>
+                <ul class="animateur-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+                        <span><strong>Ingénieur Polytechnique</strong>, spécialisation cryptographie&nbsp;: capable d'expliquer le fonctionnement réel d'un LLM sans le mystifier ni le démystifier de travers.</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span><strong>Praticien quotidien</strong>&nbsp;: code, audite, rédige avec Claude, Mistral, GPT pour de vrais clients. Pas de démos de salon.</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span><strong>Auteur du baromètre 2026 de la cybersécurité dans l'ESS</strong>&nbsp;: 35 organisations auditées entre mars et mai 2026. Connaît les réalités opérationnelles des associations, coopératives et fondations.</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <span><strong>Stack agnostique</strong>&nbsp;: Claude, ChatGPT, Mistral, Le Chat, Gemini, Albert, Llama local. Aucun intérêt à vendre un fournisseur.</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span><strong>Souveraineté en pratique</strong>&nbsp;: webinaire diffusé sur BigBlueButton, vos questions et leur enregistrement ne servent jamais à entraîner un modèle.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- POUR QUI -->
+    <section class="cibles">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Pour qui</span>
+                <h2 class="section-title">Pensé pour les organisations à mission.</h2>
+                <p class="section-subtitle">Aucun pré-requis technique. Si vous tenez une organisation à impact et que la question de l'IA tourne dans vos couloirs, ce webinaire est pour vous.</p>
+            </div>
+
+            <div class="cibles-grid">
+                <div class="cible-card" data-reveal="up" data-delay="0">
+                    <div class="cible-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>Dirigeantes et dirigeants</h4>
+                    <p>Associations, coopératives, fondations, B-corps, entreprises à mission. Vous arbitrez, vos équipes attendent un cadre.</p>
+                </div>
+
+                <div class="cible-card" data-reveal="up" data-delay="1">
+                    <div class="cible-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+                    </div>
+                    <h4>Responsables com', ops, RH</h4>
+                    <p>Vous êtes en première ligne sur les usages réels de l'IA dans la structure. Vous avez besoin de réponses sourcées, pas de discours.</p>
+                </div>
+
+                <div class="cible-card" data-reveal="up" data-delay="2">
+                    <div class="cible-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Associates On Purpose</h4>
+                    <p>En cycle ou alumni. Vous tombez dans des structures sans cadre IA et vous voulez des réponses claires pour ne pas improviser.</p>
+                </div>
+
+                <div class="cible-card" data-reveal="up" data-delay="3">
+                    <div class="cible-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h4>Administrateurs et CA</h4>
+                    <p>Le sujet IA arrive sur la table sans que personne ne soit vraiment outillé pour en parler. Soixante minutes pour caler un cadre commun.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSCRIPTION -->
+    <section class="inscription" id="inscription">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Inscription</span>
+                <h2 class="section-title">Inscrivez-vous, posez votre question.</h2>
+                <p class="section-subtitle">La date n'est pas encore arrêtée — elle sera calée selon le rythme d'On Purpose et de ses partenaires. En vous inscrivant ici, vous gardez votre place et vous êtes prévenu·e dès qu'elle est confirmée. Votre question, elle, est déjà dans la pile.</p>
+            </div>
+
+            <div class="inscription-wrapper">
+                <div class="inscription-info" data-reveal="left">
+                    <p><strong>Le format en clair :</strong></p>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span><strong>60 minutes de Q&amp;R structuré + 15 minutes de Q&amp;R libre</strong></span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                            <span><strong>BigBlueButton</strong> — souverain, RGPD natif, jamais Zoom ni Teams</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 12h14"/></svg>
+                            <span><strong>Gratuit</strong> pour les partenaires d'On Purpose et leurs équipes</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                            <span><strong>Synthèse Q&amp;R + replay</strong> envoyés à tous les inscrits, libres de diffusion interne</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            <span><strong>Vos questions restent anonymes</strong> pendant le webinaire — vos données ne quittent pas l'Europe</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                            <span><strong>Aucun pitch déguisé</strong> — les suites éventuelles (formations 1j / 30h / 10j) sont mentionnées explicitement à la fin, deux minutes max</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="inscription-form" data-reveal="right" name="webinaire-ia-ess" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="webinaire-ia-ess">
+                    <p class="form-group" style="display:none"><label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label></p>
+
+                    <div class="form-group">
+                        <label for="name">Votre nom <span class="form-required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="form-required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="structure">Votre structure</label>
+                        <input type="text" id="structure" name="structure" placeholder="Association, coopérative, fondation, B-corp...">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Votre rôle</label>
+                        <select id="role" name="role">
+                            <option value="">— choisir —</option>
+                            <option>Dirigeant·e / DG</option>
+                            <option>Responsable communication</option>
+                            <option>Responsable opérations / RH</option>
+                            <option>Associate On Purpose</option>
+                            <option>Administrateur·rice / membre du CA</option>
+                            <option>Salarié·e / bénévole</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lien-op">Lien avec On Purpose</label>
+                        <select id="lien-op" name="lien-on-purpose">
+                            <option value="">— choisir —</option>
+                            <option>Partenaire d'accueil On Purpose</option>
+                            <option>Associate en cycle</option>
+                            <option>Alumni On Purpose</option>
+                            <option>Autre / pas de lien direct</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group question-block">
+                        <label for="question">Votre question sur l'IA <span class="form-required">*</span>
+                            <span class="form-hint">C'est le cœur du webinaire. Formulez-la honnêtement, telle qu'elle se pose dans votre tête. Anonyme pendant le live.</span>
+                        </label>
+                        <textarea id="question" name="question" rows="4" required placeholder="Exemple : « Si je donne mes données d'adhérents à ChatGPT, qui en fait quoi ? » ou « Mon CA me demande une stratégie IA, par où je commence ? »"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question2">Une autre question ?
+                            <span class="form-hint">Optionnel. Vous pouvez en poser plusieurs.</span>
+                        </label>
+                        <textarea id="question2" name="question-2" rows="2"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Réserver ma place et envoyer ma question</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-chevron">&lt;/&gt;</span>
+                        <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+                    </a>
+                    <p class="footer-tagline">Numérique libre et responsable au service de l'intérêt général</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="formations.html">Formations</a>
+                    <a href="/panorama-ess">Baromètre 2026</a>
+                    <a href="qui-suis-je.html">Qui suis-je</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Code'ess — par Emmanuel Pinglier — EI — SIRET 942 385 311 00017 — <strong>Agréé CII</strong></p>
+                <p><a href="#">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

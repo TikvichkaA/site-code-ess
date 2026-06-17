@@ -338,6 +338,36 @@ a {
     color: var(--primary);
 }
 
+.nav-links a.nav-barometre {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #c2253c;
+    font-weight: 600;
+}
+
+.nav-links a.nav-barometre::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #c2253c;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(194, 37, 60, 0.15);
+}
+
+.nav-links a.nav-barometre:hover {
+    color: #8a1a2c;
+}
+
+[data-theme="dark"] .nav-links a.nav-barometre {
+    color: #f5d7dc;
+}
+
+[data-theme="dark"] .nav-links a.nav-barometre::before {
+    background: #f5d7dc;
+    box-shadow: 0 0 0 4px rgba(245, 215, 220, 0.15);
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -1757,6 +1787,307 @@ a {
     .temoignages-grid,
     .alternatives-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Announcement Bandeau (Baromètre)
+============================================ */
+.announce-bar {
+    position: relative;
+    background: linear-gradient(135deg, #14181f 0%, #2a323d 100%);
+    color: #faf7f2;
+    padding: 0.625rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 101;
+}
+
+.announce-bar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(194, 37, 60, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(13, 148, 136, 0.18) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.announce-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.announce-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    background: #c2253c;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.announce-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+.announce-text {
+    color: rgba(250, 247, 242, 0.95);
+}
+
+.announce-text strong {
+    color: white;
+    font-weight: 600;
+}
+
+.announce-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    transition: border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.announce-link:hover {
+    border-bottom-color: white;
+}
+
+.announce-link::after {
+    content: " →";
+    margin-left: 2px;
+}
+
+@media (max-width: 640px) {
+    .announce-bar {
+        font-size: 0.8rem;
+    }
+    .announce-inner {
+        gap: 0.5rem;
+    }
+}
+
+/* ============================================
+   Baromètre Highlight Section
+============================================ */
+.barometre {
+    position: relative;
+    padding: var(--space-3xl) 0;
+    background: #14181f;
+    color: #faf7f2;
+    overflow: hidden;
+}
+
+.barometre::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 30%, rgba(194, 37, 60, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(13, 148, 136, 0.15) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.barometre-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+.barometre-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.375rem 0.875rem;
+    background: rgba(194, 37, 60, 0.15);
+    border: 1px solid rgba(194, 37, 60, 0.35);
+    color: #f5d7dc;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    margin-bottom: var(--space-md);
+}
+
+.barometre-eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #c2253c;
+    border-radius: 50%;
+}
+
+.barometre-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.85rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+    color: white;
+    letter-spacing: -0.02em;
+}
+
+.barometre-title em {
+    font-style: normal;
+    color: #f5d7dc;
+}
+
+.barometre-lede {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(250, 247, 242, 0.78);
+    margin-bottom: var(--space-lg);
+    max-width: 540px;
+}
+
+.barometre-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.95rem 1.5rem;
+    background: #c2253c;
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(194, 37, 60, 0.35);
+}
+
+.barometre-cta:hover {
+    background: #8a1a2c;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(194, 37, 60, 0.45);
+}
+
+.barometre-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: var(--space-md);
+    color: rgba(250, 247, 242, 0.9);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+}
+
+.barometre-cta-secondary:hover {
+    border-bottom-color: white;
+    color: white;
+}
+
+.barometre-stats {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.barometre-stat {
+    background: rgba(20, 24, 31, 0.95);
+    padding: var(--space-lg) var(--space-md);
+    text-align: left;
+}
+
+.barometre-stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+}
+
+.barometre-stat-number .unit {
+    font-size: 0.5em;
+    color: rgba(250, 247, 242, 0.5);
+    margin-left: 0.2em;
+    font-weight: 500;
+}
+
+.barometre-stat-number.accent {
+    color: #f5d7dc;
+}
+
+.barometre-stat-label {
+    font-size: 0.85rem;
+    color: rgba(250, 247, 242, 0.7);
+    line-height: 1.4;
+}
+
+.barometre-meta {
+    position: relative;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    font-size: 0.85rem;
+    color: rgba(250, 247, 242, 0.55);
+}
+
+.barometre-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.barometre-meta-item::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: rgba(250, 247, 242, 0.4);
+    border-radius: 50%;
+}
+
+.barometre-meta-item:first-child::before {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .barometre-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+    .barometre-cta-secondary {
+        margin-left: 0;
+        margin-top: var(--space-sm);
+        display: block;
     }
 }
 

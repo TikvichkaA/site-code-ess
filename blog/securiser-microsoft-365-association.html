@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sécuriser Microsoft 365 dans une association : checklist 2026 — Code'ess</title>
+    <meta name="description" content="Comment sécuriser Microsoft 365 dans une association : MFA, désactivation basic auth, conditional access, DMARC. Checklist gratuite tirée de 35 audits ESS.">
+    <meta name="keywords" content="sécuriser microsoft 365 association, M365 nonprofit sécurité, mfa microsoft 365 association, basic auth exchange désactiver, conditional access nonprofit, microsoft 365 ess">
+    <meta name="author" content="Emmanuel Pinglier">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://code-ess.unjouruneapp.com/blog/securiser-microsoft-365-association.html">
+    <link rel="alternate" type="text/html" href="https://code-ess.unjouruneapp.com/panorama-ess" title="Panorama cybersécurité ESS 2026">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sécuriser Microsoft 365 dans une association : checklist 2026">
+    <meta property="og:description" content="MFA, désactivation basic auth, conditional access, DMARC : checklist gratuite tirée de 35 audits d'associations et structures de l'ESS.">
+    <meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+    <meta property="og:image:alt" content="Sécuriser Microsoft 365 dans une association — checklist 2026">
+    <meta property="og:url" content="https://code-ess.unjouruneapp.com/blog/securiser-microsoft-365-association.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Code'ess">
+    <meta property="article:published_time" content="2026-06-14">
+    <meta property="article:modified_time" content="2026-06-14">
+    <meta property="article:author" content="Emmanuel Pinglier">
+    <meta property="article:section" content="Cybersécurité ESS">
+    <meta property="article:tag" content="Microsoft 365">
+    <meta property="article:tag" content="associations">
+    <meta property="article:tag" content="MFA">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sécuriser Microsoft 365 dans une association : checklist 2026">
+    <meta name="twitter:description" content="MFA, basic auth, conditional access, DMARC : checklist sécurité M365 pour assos et structures ESS.">
+    <meta name="twitter:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+
+    <!-- JSON-LD : BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Sécuriser Microsoft 365 dans une association : checklist 2026",
+      "description": "Comment sécuriser Microsoft 365 dans une association : MFA, désactivation basic auth, conditional access, DMARC. Checklist gratuite tirée de 35 audits ESS.",
+      "author": {
+        "@type": "Person",
+        "name": "Emmanuel Pinglier",
+        "url": "https://code-ess.unjouruneapp.com/qui-suis-je.html",
+        "jobTitle": "Auditeur cybersécurité ESS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Code'ess",
+        "url": "https://code-ess.unjouruneapp.com",
+        "logo": { "@type": "ImageObject", "url": "https://code-ess.unjouruneapp.com/photo.jpg" }
+      },
+      "datePublished": "2026-06-14",
+      "dateModified": "2026-06-14",
+      "inLanguage": "fr-FR",
+      "image": "https://code-ess.unjouruneapp.com/photo.jpg",
+      "mainEntityOfPage": "https://code-ess.unjouruneapp.com/blog/securiser-microsoft-365-association.html",
+      "isBasedOn": "https://code-ess.unjouruneapp.com/panorama-ess",
+      "keywords": "Microsoft 365 nonprofit, MFA association, basic auth, conditional access",
+      "about": [
+        { "@type": "Thing", "name": "Microsoft 365" },
+        { "@type": "Thing", "name": "MFA" },
+        { "@type": "Thing", "name": "Cybersécurité associations" }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD : FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Microsoft 365 est-il gratuit pour les associations ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui pour les associations éligibles. Microsoft propose Microsoft 365 Business Premium gratuit (jusqu'à 10 utilisateurs) ou à tarif très réduit via le programme Microsoft for Nonprofits. Conditions : association à but non lucratif reconnue, vérification via TechSoup France." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la première mesure de sécurité à prendre sur Microsoft 365 dans une association ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Activer la MFA (authentification multifacteur) obligatoire pour tous les comptes, via les Security Defaults ou une Conditional Access policy. Cette seule mesure bloque environ 95 % des compromissions de compte selon Microsoft. Configuration : 15 minutes." }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi désactiver l'authentification basic auth sur Exchange Online ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Le basic auth (IMAP, POP3, SMTP AUTH, Authenticated SMTP) contourne la MFA. Un attaquant qui a le mot de passe d'un utilisateur peut se connecter via ces protocoles legacy même si la MFA est activée. Microsoft désactive progressivement basic auth, mais beaucoup d'associations le laissent activé par habitude." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce qu'une Conditional Access policy ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Une règle qui dit : 'pour accéder à telle ressource depuis tel emplacement, l'utilisateur doit valider tel facteur'. Exemple : exiger MFA pour les comptes admin, bloquer les connexions hors France pour la compta, exiger un appareil géré pour SharePoint. Disponible avec Microsoft 365 Business Premium et plus." }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il sauvegarder Microsoft 365 séparément ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Microsoft applique le modèle de responsabilité partagée : ils garantissent la disponibilité, vous êtes responsable de vos données. Microsoft conserve les données 30 à 93 jours après suppression selon le type. Pour une vraie sauvegarde anti-ransomware ou anti-erreur humaine, utiliser un outil tiers (Veeam, Synology Active Backup, AvePoint, dragondisk)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien coûte une licence Microsoft 365 pour une association ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Via Microsoft for Nonprofits (éligibilité à vérifier via TechSoup France) : Business Standard à environ 0 €/utilisateur/mois, Business Premium à environ 5 €/utilisateur/mois (vs 22 € prix public). Tarifs 2026 à vérifier sur le site Microsoft for Nonprofits." }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment savoir si mon Microsoft 365 est correctement sécurisé ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Microsoft fournit le Secure Score dans le Defender Portal : un score /100 avec recommandations classées par impact. Objectif raisonnable pour une association : 50-60 %. Au-dessus de 70 %, vous êtes dans le top 10 % des structures de votre taille." }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD : Breadcrumb -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Code'ess", "item": "https://code-ess.unjouruneapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://code-ess.unjouruneapp.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Sécuriser Microsoft 365 association", "item": "https://code-ess.unjouruneapp.com/blog/securiser-microsoft-365-association.html" }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-light: #14b8a6;
+            --primary-dark: #0f766e;
+            --primary-bg: #f0fdfa;
+            --secondary: #4f46e5;
+            --accent: #c2253c;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0f172a;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --code-bg: #1e293b;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-heading: 'Outfit', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', Menlo, Consolas, monospace;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--primary); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--primary-dark); text-decoration: underline; }
+
+        .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); padding: 0 24px; }
+        .topbar-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .topbar-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+        .topbar-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--primary); color: white; border-radius: 8px; font-size: 0.95rem; }
+        .topbar-back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--primary-bg); color: var(--primary); border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+        .topbar-back:hover { background: var(--primary); color: white; text-decoration: none; }
+
+        .article-header { padding: 60px 24px 40px; text-align: center; background: linear-gradient(135deg, var(--bg) 0%, var(--primary-bg) 100%); }
+        .article-header-inner { max-width: 780px; margin: 0 auto; }
+        .article-meta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.82rem; color: var(--text-light); margin-bottom: 16px; flex-wrap: wrap; justify-content: center; }
+        .article-tag { padding: 4px 12px; background: var(--primary); color: white; border-radius: 50px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .article-header h1 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .article-header h1 span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .article-header .subtitle { font-size: 1.1rem; color: var(--text-light); max-width: 620px; margin: 0 auto; }
+
+        .toc { max-width: 780px; margin: 32px auto 0; padding: 20px 24px; background: var(--bg-alt); border-radius: var(--radius); border: 1px solid var(--border-light); }
+        .toc h3 { font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 12px; }
+        .toc ol { list-style: decimal-leading-zero; margin-left: 24px; columns: 2; column-gap: 24px; }
+        .toc li { font-size: 0.92rem; margin-bottom: 6px; break-inside: avoid; }
+        @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+        .article-body { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+        .article-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; margin: 56px 0 16px; color: var(--text); letter-spacing: -0.01em; }
+        .article-body h2:first-child { margin-top: 0; }
+        .article-body h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+        .article-body p { margin-bottom: 20px; font-size: 1.02rem; color: var(--text); line-height: 1.8; }
+        .article-body ul, .article-body ol { margin: 0 0 20px 24px; font-size: 1.02rem; line-height: 1.8; }
+        .article-body li { margin-bottom: 10px; }
+        .article-body strong { color: var(--text); font-weight: 700; }
+        .article-body code { font-family: var(--font-mono); font-size: 0.92em; padding: 2px 6px; background: var(--primary-bg); color: var(--primary-dark); border-radius: 4px; }
+        .article-body pre { font-family: var(--font-mono); background: var(--code-bg); color: #f1f5f9; padding: 18px 22px; border-radius: var(--radius); overflow-x: auto; font-size: 0.88rem; line-height: 1.55; margin: 16px 0 24px; }
+        .article-body pre code { background: transparent; color: inherit; padding: 0; }
+
+        .callout { background: var(--primary-bg); border-left: 4px solid var(--primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 22px; margin: 28px 0; font-size: 0.97rem; }
+        .callout p { margin-bottom: 8px; color: var(--primary-dark); }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--primary-dark); }
+        .callout.warning { background: #fef3c7; border-left-color: #d97706; }
+        .callout.warning p, .callout.warning strong { color: #92400e; }
+        .callout.danger { background: #fef2f2; border-left-color: var(--accent); }
+        .callout.danger p, .callout.danger strong { color: #8a1a2c; }
+
+        .comparison { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.92rem; }
+        .comparison th { background: var(--bg-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .comparison td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+        .comparison tr:nth-child(even) td { background: var(--bg-alt); }
+        .impact-high { color: var(--accent); font-weight: 700; }
+        .impact-med { color: #d97706; font-weight: 700; }
+        .impact-low { color: var(--primary); font-weight: 700; }
+
+        .checklist { list-style: none; margin-left: 0 !important; }
+        .checklist li { position: relative; padding-left: 32px; margin-bottom: 12px; }
+        .checklist li::before { content: '☐'; position: absolute; left: 0; top: 0; font-size: 1.3rem; color: var(--primary); font-weight: 700; }
+
+        .faq-block { margin-top: 24px; }
+        .faq-item { border-top: 1px solid var(--border); padding: 20px 0; }
+        .faq-item:first-child { border-top: 0; padding-top: 8px; }
+        .faq-item h3 { font-family: var(--font-heading); font-size: 1.05rem; margin: 0 0 8px; }
+        .faq-item p { margin-bottom: 0; }
+
+        .article-cta { text-align: center; padding: 60px 24px; background: var(--bg-dark); }
+        .article-cta h2 { font-family: var(--font-heading); color: white; font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+        .article-cta p { color: var(--text-muted); margin-bottom: 24px; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: white; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; border-radius: var(--radius); transition: var(--transition); }
+        .cta-btn:hover { background: var(--primary-light); color: white; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(13,148,136,0.3); text-decoration: none; }
+        .cta-btn.secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .cta-btn.secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .article-footer { padding: 24px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); }
+        .article-footer a { color: var(--primary-light); }
+
+        @media (max-width: 640px) {
+            .article-header { padding: 40px 16px 30px; }
+            .article-body { padding: 32px 16px 60px; }
+            .comparison { font-size: 0.82rem; }
+            .comparison th, .comparison td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-inner">
+        <a href="../index.html" class="topbar-brand">
+            <div class="topbar-icon">&lt;/&gt;</div>
+            <span>Code<span style="background:linear-gradient(135deg,#0d9488,#4f46e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">'ess</span></span>
+        </a>
+        <a href="../index.html" class="topbar-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Retour au site
+        </a>
+    </div>
+</div>
+
+<main>
+
+<header class="article-header">
+    <div class="article-header-inner">
+        <div class="article-meta">
+            <span class="article-tag">Cybersécurité ESS</span>
+            <span>14 juin 2026</span>
+            <span>· 15 min de lecture</span>
+        </div>
+        <h1>Sécuriser <span>Microsoft 365</span> dans une association : checklist 2026</h1>
+        <p class="subtitle">12 actions concrètes pour passer d'un M365 par défaut à un environnement durci, tirées de <strong>35 audits d'associations et structures de l'ESS</strong>. La moitié des actions coûtent <strong>0 €</strong>.</p>
+    </div>
+
+    <nav class="toc" aria-label="Sommaire">
+        <h3>Sommaire</h3>
+        <ol>
+            <li><a href="#contexte">Pourquoi M365 est une cible</a></li>
+            <li><a href="#priorisation">Tableau des 12 actions par impact</a></li>
+            <li><a href="#mfa">1. Activer MFA partout</a></li>
+            <li><a href="#basic-auth">2. Désactiver basic auth</a></li>
+            <li><a href="#admin">3. Compte admin séparé</a></li>
+            <li><a href="#conditional">4. Conditional Access</a></li>
+            <li><a href="#dmarc">5. SPF, DKIM, DMARC</a></li>
+            <li><a href="#sharing">6. Partage externe</a></li>
+            <li><a href="#sharepoint">7. SharePoint/OneDrive</a></li>
+            <li><a href="#audit-log">8. Journalisation</a></li>
+            <li><a href="#defender">9. Defender pour Office 365</a></li>
+            <li><a href="#backup">10. Sauvegarde tiers</a></li>
+            <li><a href="#offboarding">11. Offboarding</a></li>
+            <li><a href="#secure-score">12. Secure Score</a></li>
+            <li><a href="#nonprofits">Microsoft for Nonprofits</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ol>
+    </nav>
+</header>
+
+<article class="article-body">
+
+    <h2 id="contexte">Pourquoi Microsoft 365 est une cible pour les associations</h2>
+    <p>Sur les 35 structures de l'ESS auditées dans le <a href="/panorama-ess"><strong>Panorama cybersécurité 2026</strong></a>, environ <strong>40 % utilisent Microsoft 365</strong> — c'est la première suite bureautique du secteur. La raison est pragmatique : Microsoft <a href="https://www.microsoft.com/fr-fr/nonprofits" target="_blank" rel="noopener">propose des licences gratuites ou massivement réduites</a> aux associations éligibles, ce qui en fait souvent le choix par défaut.</p>
+
+    <p>Le problème : Microsoft 365 <em>par défaut</em> n'est pas sécurisé. La configuration sortie d'usine optimise pour la compatibilité — ce qui veut dire que basic auth est encore actif, que la MFA n'est pas obligatoire pour tous les comptes, que SharePoint partage par défaut "tout l'organisation" et que le partage externe est ouvert.</p>
+
+    <p>Dans nos audits, <strong>80 % des incidents observés sur M365 dans l'ESS</strong> auraient été évités par les trois mêmes mesures : MFA obligatoire, désactivation de basic auth, et compte admin séparé. Aucune ne coûte un euro. Toutes prennent moins d'une heure.</p>
+
+    <div class="callout">
+        <p><strong>Cet article est un guide opérationnel.</strong> Si vous voulez d'abord situer votre exposition globale, faites notre <a href="/diagnostic-cyber-ess">diagnostic cybersécurité ESS (3 min)</a> ou lisez le <a href="/panorama-ess">baromètre 2026 complet</a>.</p>
+    </div>
+
+    <h2 id="priorisation">Les 12 actions, priorisées par impact</h2>
+
+    <table class="comparison">
+        <thead>
+            <tr><th>#</th><th>Action</th><th>Impact</th><th>Coût</th><th>Temps</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>MFA obligatoire pour tous les comptes</td><td class="impact-high">Critique</td><td>0 €</td><td>30 min</td></tr>
+            <tr><td>2</td><td>Désactiver basic auth (IMAP/POP3/SMTP)</td><td class="impact-high">Critique</td><td>0 €</td><td>20 min</td></tr>
+            <tr><td>3</td><td>Compte admin séparé du compte courant</td><td class="impact-high">Critique</td><td>0 €</td><td>30 min</td></tr>
+            <tr><td>4</td><td>Conditional Access (BP+)</td><td class="impact-high">Critique</td><td>licence BP</td><td>2 h</td></tr>
+            <tr><td>5</td><td>SPF + DKIM + DMARC</td><td class="impact-high">Critique</td><td>0 €</td><td>1 h init.</td></tr>
+            <tr><td>6</td><td>Restreindre partage externe SharePoint/OneDrive</td><td class="impact-med">Élevé</td><td>0 €</td><td>30 min</td></tr>
+            <tr><td>7</td><td>Désactiver "anyone with link" par défaut</td><td class="impact-med">Élevé</td><td>0 €</td><td>10 min</td></tr>
+            <tr><td>8</td><td>Activer audit log + rétention 90j</td><td class="impact-med">Élevé</td><td>0 €</td><td>15 min</td></tr>
+            <tr><td>9</td><td>Defender for Office 365 (anti-phishing)</td><td class="impact-med">Élevé</td><td>licence BP</td><td>1 h</td></tr>
+            <tr><td>10</td><td>Sauvegarde tiers (Veeam, AvePoint, Synology)</td><td class="impact-med">Élevé</td><td>0,50–4 €/u/mois</td><td>1 j init.</td></tr>
+            <tr><td>11</td><td>Procédure d'offboarding écrite</td><td class="impact-low">Moyen</td><td>0 €</td><td>2 h</td></tr>
+            <tr><td>12</td><td>Surveiller Secure Score mensuellement</td><td class="impact-low">Moyen</td><td>0 €</td><td>15 min/mois</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="mfa">1. Activer la MFA obligatoire pour tous les comptes</h2>
+
+    <p>La mesure n°1 contre les attaques par mot de passe. Selon les chiffres Microsoft, la MFA bloque <strong>environ 99 % des compromissions de compte</strong>.</p>
+
+    <h3>Option simple — Security Defaults</h3>
+    <p>Pour les associations sans licence Business Premium, Microsoft fournit les <em>Security Defaults</em> : un préset qui active la MFA pour tous les comptes en 1 clic.</p>
+    <p>Aller dans le <strong>Microsoft 365 admin center</strong> → <strong>Identity</strong> → <strong>Properties</strong> → <strong>Security defaults</strong> → <strong>Enabled</strong>.</p>
+
+    <h3>Option fine — Conditional Access (Business Premium)</h3>
+    <p>Permet d'exiger la MFA différemment selon le rôle, l'application, l'emplacement. Recommandé dès que vous avez des comptes admin ou que vous gérez des données sensibles.</p>
+
+    <div class="callout warning">
+        <p><strong>Attention :</strong> activer la MFA implique d'enrôler chaque utilisateur. Prévoir une période de 7 jours d'enrôlement pendant laquelle la MFA est <em>proposée</em> avant de devenir <em>obligatoire</em>, et communiquer clairement (mail + session de 30 min).</p>
+    </div>
+
+    <h2 id="basic-auth">2. Désactiver basic auth sur Exchange Online</h2>
+
+    <p>Le basic auth — IMAP, POP3, SMTP AUTH, Authenticated SMTP, EWS, Outlook Anywhere — <strong>contourne la MFA</strong>. Un attaquant qui a obtenu le mot de passe par phishing peut se connecter via ces protocoles legacy même MFA activée.</p>
+
+    <p>Microsoft désactive progressivement basic auth depuis 2022, mais beaucoup d'associations ont des exceptions héritées (scanner, imprimante multifonction, ancien CRM). À vérifier :</p>
+
+    <p>Dans <strong>Microsoft 365 admin center</strong> → <strong>Settings</strong> → <strong>Org settings</strong> → <strong>Modern authentication</strong>, décocher tous les protocoles legacy.</p>
+
+    <p>Côté Exchange Online, vérifier les <em>Authentication Policies</em> dans le centre d'administration Exchange. PowerShell :</p>
+<pre><code>Get-AuthenticationPolicy | Format-List Name, Allow*
+
+# Désactiver basic auth IMAP, POP, SMTP pour tous
+$policy = New-AuthenticationPolicy -Name "Block Basic Auth"
+Set-OrganizationConfig -DefaultAuthenticationPolicy $policy.Id</code></pre>
+
+    <div class="callout">
+        <p><strong>Vérifier les dépendances avant.</strong> Si l'imprimante multifonction de l'asso envoie des rapports par email via SMTP AUTH, il faut soit la migrer en SMTP relai (sans auth), soit créer une exception unique pour son IP.</p>
+    </div>
+
+    <h2 id="admin">3. Séparer le compte admin du compte courant</h2>
+
+    <p>Pattern très fréquent dans l'ESS : la directrice utilise son compte personnel (<code>direction@asso.org</code>) qui est aussi le <em>Global Admin</em>. Conséquence : si son compte est compromis par phishing, l'attaquant a aussi les droits Global Admin.</p>
+
+    <h3>Bonne pratique</h3>
+    <ol>
+        <li>Créer un compte <code>admin@asso.org</code> dédié à l'administration, sans licence Exchange (donc sans mail).</li>
+        <li>Lui donner le rôle <em>Global Admin</em> et MFA <strong>obligatoire</strong>, idéalement avec une clé FIDO2 physique.</li>
+        <li>Retirer le rôle Global Admin du compte courant de la directrice.</li>
+        <li>Lui donner à la place le rôle <em>Helpdesk Admin</em> ou <em>User Admin</em> selon ses besoins quotidiens.</li>
+    </ol>
+    <p>Si vous avez moins de 5 personnes : créer au moins 2 comptes Global Admin (pour éviter le verrouillage), tous deux séparés des comptes courants.</p>
+
+    <h2 id="conditional">4. Mettre en place des Conditional Access policies</h2>
+
+    <p>Disponible avec Microsoft 365 Business Premium ou supérieur. Trois policies à mettre en place pour une asso :</p>
+
+    <ol>
+        <li><strong>"Require MFA for all users"</strong> — sauf comptes break-glass.</li>
+        <li><strong>"Require MFA for admins"</strong> — toujours, sans exception, avec méthode forte (Authenticator ou FIDO2).</li>
+        <li><strong>"Block legacy authentication"</strong> — protection complémentaire de la désactivation basic auth.</li>
+    </ol>
+
+    <p>Aller dans <strong>Microsoft Entra admin center</strong> → <strong>Protection</strong> → <strong>Conditional Access</strong> → <strong>Policies</strong>.</p>
+
+    <div class="callout warning">
+        <p><strong>Toujours créer un compte "break-glass"</strong> exclu de toutes les Conditional Access policies, avec mot de passe long stocké hors-ligne. C'est le compte qui permet de récupérer l'accès si vous vous bloquez vous-même.</p>
+    </div>
+
+    <h2 id="dmarc">5. Configurer SPF, DKIM, DMARC</h2>
+
+    <p>Microsoft 365 fournit SPF et DKIM côté technique, mais c'est à l'association de publier les enregistrements DNS et d'activer DKIM dans la console. DMARC est intégralement à faire.</p>
+
+    <p>Sujet trop long pour cet article — voir le <a href="/blog/dmarc-spf-dkim-association.html"><strong>guide complet DMARC, SPF, DKIM pour une association</strong></a> qui couvre le cas Microsoft 365 spécifiquement.</p>
+
+    <h2 id="sharing">6. Restreindre le partage externe SharePoint et OneDrive</h2>
+
+    <p>Par défaut, SharePoint et OneDrive autorisent le partage externe avec <em>"Anyone with the link"</em>. Risque : un lien public est partagé par erreur sur Slack ou Twitter et indexé par Google.</p>
+
+    <p>Aller dans le <strong>SharePoint admin center</strong> → <strong>Policies</strong> → <strong>Sharing</strong>. Pour une asso, configuration recommandée :</p>
+    <ul>
+        <li><strong>External sharing : "New and existing guests"</strong> — pas "Anyone".</li>
+        <li><strong>Default link type : "People with existing access"</strong> ou "Specific people".</li>
+        <li><strong>Expiration : 30 jours</strong> pour les liens externes.</li>
+        <li><strong>Domain whitelist</strong> si possible : restreindre aux domaines des partenaires connus.</li>
+    </ul>
+
+    <h2 id="sharepoint">7. Désactiver "Anyone with link" par défaut</h2>
+
+    <p>Suite du précédent : changer le type de lien par défaut. Quand un utilisateur clique sur "Share" dans Word ou OneDrive, c'est le type "Anyone" qui apparaît préselectionné. Changer ce défaut épargne 80 % des fuites accidentelles.</p>
+
+    <h2 id="audit-log">8. Activer l'audit log et le configurer en rétention 90 jours</h2>
+
+    <p>L'audit log de Microsoft 365 est désactivé par défaut sur de nombreux tenants anciens. Sans audit log, impossible de répondre à "qui a accédé à ce fichier ?" ou "depuis où s'est connecté ce compte compromis ?" — alors que la donnée existe côté Microsoft, juste pas activée.</p>
+
+    <p>Activer via le <strong>Microsoft Purview compliance portal</strong> → <strong>Audit</strong> → <strong>Start recording user and admin activity</strong>. Pour les associations en E3/E5/Business Premium, la rétention par défaut est de 180 jours. Pour Business Standard, c'est 90 jours.</p>
+
+    <h2 id="defender">9. Activer Defender for Office 365 (anti-phishing avancé)</h2>
+
+    <p>Inclus dans Microsoft 365 Business Premium et au-delà. Trois policies à configurer dans le Defender portal :</p>
+    <ul>
+        <li><strong>Safe Links</strong> — réécrit les URLs dans les emails et bloque les sites malveillants au moment du clic.</li>
+        <li><strong>Safe Attachments</strong> — détonne les pièces jointes dans une sandbox avant livraison.</li>
+        <li><strong>Anti-phishing</strong> — détecte les tentatives d'usurpation d'identité (impersonation), particulièrement utile contre la fraude au président.</li>
+    </ul>
+
+    <h2 id="backup">10. Mettre en place une sauvegarde tiers</h2>
+
+    <div class="callout danger">
+        <p><strong>Microsoft ne sauvegarde pas vos données pour vous.</strong> Microsoft garantit la disponibilité du service, pas la récupération en cas de suppression, ransomware ou erreur humaine. Délai de rétention par défaut : 30 à 93 jours selon le type de donnée.</p>
+    </div>
+
+    <p>Quelques options pour une asso :</p>
+    <ul>
+        <li><strong>Synology Active Backup for Microsoft 365</strong> — gratuit si vous avez un NAS Synology.</li>
+        <li><strong>Veeam Backup for Microsoft 365</strong> — leader du marché, licence Community gratuite jusqu'à 10 users.</li>
+        <li><strong>AvePoint Cloud Backup</strong> — tarif nonprofit, simple.</li>
+        <li><strong>Dragondisk Backup365</strong> — solution française avec tarif association.</li>
+    </ul>
+
+    <p>Tester la <strong>restauration</strong> trimestriellement : une sauvegarde non testée n'existe pas.</p>
+
+    <h2 id="offboarding">11. Procédure d'offboarding écrite</h2>
+
+    <p>Pattern observé sur 8 audits sur 10 : un ancien salarié ou bénévole a toujours accès à la messagerie ou à SharePoint des mois après son départ.</p>
+
+    <p>Checklist d'offboarding M365 (à exécuter le jour J) :</p>
+    <ul class="checklist">
+        <li>Désactiver le compte dans Entra (Block sign-in)</li>
+        <li>Révoquer toutes les sessions actives (Revoke sessions)</li>
+        <li>Réinitialiser le mot de passe</li>
+        <li>Retirer la MFA enregistrée</li>
+        <li>Transférer la boîte aux lettres au manager (<em>litigation hold</em> ou <em>shared mailbox</em>)</li>
+        <li>Transférer OneDrive au manager</li>
+        <li>Retirer des groupes Teams / SharePoint / DL</li>
+        <li>Retirer la licence (après 30 jours minimum pour rétention)</li>
+        <li>Supprimer le compte après 90 jours</li>
+    </ul>
+
+    <h2 id="secure-score">12. Surveiller le Microsoft Secure Score mensuellement</h2>
+
+    <p>Microsoft fournit un <strong>Secure Score</strong> (/100) dans le Defender portal qui mesure la posture de sécurité de votre tenant et propose des recommandations classées par impact.</p>
+
+    <p>Repères :</p>
+    <ul>
+        <li><strong>20-30 %</strong> : configuration par défaut, beaucoup à faire.</li>
+        <li><strong>40-50 %</strong> : MFA + basic auth désactivé. Vous avez fait l'essentiel.</li>
+        <li><strong>60-70 %</strong> : top 25 % des structures de votre taille.</li>
+        <li><strong>80 %+</strong> : tenant durci, exigence type CISO.</li>
+    </ul>
+
+    <p>Objectif raisonnable pour une asso : <strong>50-60 %</strong>. Suivre mensuellement : 15 min, et chaque action gagne typiquement 1 à 5 points.</p>
+
+    <h2 id="nonprofits">Microsoft for Nonprofits : ce que vous pouvez avoir gratuitement</h2>
+
+    <p>Le programme <a href="https://www.microsoft.com/fr-fr/nonprofits" target="_blank" rel="noopener">Microsoft for Nonprofits</a> offre aux associations éligibles :</p>
+
+    <table class="comparison">
+        <thead><tr><th>Licence</th><th>Tarif public</th><th>Tarif nonprofit</th><th>Inclut</th></tr></thead>
+        <tbody>
+            <tr><td>Business Basic</td><td>~7 €</td><td>0 €/u/mois (10 premiers)</td><td>Exchange, Teams, SharePoint web</td></tr>
+            <tr><td>Business Standard</td><td>~13 €</td><td>~3 €/u/mois</td><td>+ Apps Office desktop</td></tr>
+            <tr><td>Business Premium</td><td>~22 €</td><td>~5 €/u/mois</td><td>+ Defender, Conditional Access, Intune</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>Recommandation 2026 : prendre au moins une licence Business Premium pour la personne qui administre le tenant.</strong> Elle ouvre Conditional Access et Defender, qui font la différence sur le score de sécurité réel.</p>
+
+    <p>Vérification d'éligibilité : passer par <a href="https://www.solidatech.fr/" target="_blank" rel="noopener">Solidatech</a> (équivalent français de TechSoup) qui valide le statut et redistribue les licences.</p>
+
+    <h2 id="faq">Questions fréquentes</h2>
+    <div class="faq-block">
+        <div class="faq-item">
+            <h3>Microsoft 365 est-il gratuit pour les associations ?</h3>
+            <p>Oui pour les associations éligibles. Microsoft propose Microsoft 365 Business Basic gratuit (jusqu'à 10 utilisateurs) ou Business Premium à environ 5 €/utilisateur/mois (vs 22 € prix public) via le programme Microsoft for Nonprofits. Vérification d'éligibilité via <a href="https://www.solidatech.fr/" target="_blank" rel="noopener">Solidatech</a>.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quelle est la première mesure de sécurité à prendre sur Microsoft 365 dans une association ?</h3>
+            <p>Activer la MFA obligatoire pour tous les comptes, via les Security Defaults ou une Conditional Access policy. Cette seule mesure bloque environ 99 % des compromissions de compte selon Microsoft. Configuration : 30 minutes.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Pourquoi désactiver l'authentification basic auth sur Exchange Online ?</h3>
+            <p>Le basic auth (IMAP, POP3, SMTP AUTH, Authenticated SMTP) contourne la MFA. Un attaquant qui a le mot de passe peut se connecter via ces protocoles legacy même MFA activée. Microsoft désactive progressivement basic auth, mais beaucoup d'associations ont des exceptions héritées (imprimante, scanner, ancien CRM).</p>
+        </div>
+        <div class="faq-item">
+            <h3>Qu'est-ce qu'une Conditional Access policy ?</h3>
+            <p>Une règle qui dit : "pour accéder à telle ressource depuis tel emplacement, l'utilisateur doit valider tel facteur". Exemple : exiger MFA pour les comptes admin, bloquer les connexions hors France pour la compta, exiger un appareil géré pour SharePoint. Disponible avec Business Premium et au-delà.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Faut-il sauvegarder Microsoft 365 séparément ?</h3>
+            <p>Oui. Microsoft applique le modèle de responsabilité partagée : ils garantissent la disponibilité, vous êtes responsable de vos données. Microsoft conserve 30 à 93 jours après suppression. Pour une vraie sauvegarde anti-ransomware, utiliser un outil tiers (Veeam Community, Synology, AvePoint).</p>
+        </div>
+        <div class="faq-item">
+            <h3>Combien coûte une licence Microsoft 365 pour une association ?</h3>
+            <p>Via Microsoft for Nonprofits : Business Basic à 0 €/u/mois (limité), Business Standard à ~3 €/u/mois, Business Premium à ~5 €/u/mois. Tarifs 2026 à vérifier sur le site Microsoft for Nonprofits.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Comment savoir si mon Microsoft 365 est correctement sécurisé ?</h3>
+            <p>Microsoft fournit le Secure Score dans le Defender Portal : un score /100 avec recommandations classées par impact. Objectif raisonnable pour une association : 50-60 %. Au-dessus de 70 %, vous êtes dans le top 25 % des structures de votre taille.</p>
+        </div>
+    </div>
+
+    <h2>Pour aller plus loin</h2>
+    <ul>
+        <li><a href="/panorama-ess"><strong>Panorama cybersécurité ESS — baromètre 2026</strong></a> : 35 audits, vulnérabilités observées, guide pratique.</li>
+        <li><a href="/diagnostic-cyber-ess"><strong>Diagnostic cybersécurité ESS</strong></a> : auto-évaluation 3 minutes.</li>
+        <li><a href="/blog/dmarc-spf-dkim-association.html"><strong>Guide DMARC, SPF, DKIM pour une association</strong></a></li>
+        <li><a href="https://learn.microsoft.com/fr-fr/microsoft-365/admin/security-and-compliance/" target="_blank" rel="noopener">Microsoft Learn — Sécurité et conformité Microsoft 365</a></li>
+        <li><a href="https://cyber.gouv.fr/publications/guide-dhygiene-informatique" target="_blank" rel="noopener">ANSSI — Guide d'hygiène informatique</a></li>
+        <li><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr — Diag Cyber Asso</a></li>
+    </ul>
+
+</article>
+
+<section class="article-cta">
+    <h2>Sécuriser votre Microsoft 365, sans devenir admin sys</h2>
+    <p>Code'ess accompagne les associations et structures de l'ESS sur l'audit et le durcissement Microsoft 365, la configuration DMARC, le déploiement MFA et la sensibilisation. Audit pédagogique gratuit pour les structures éligibles.</p>
+    <div class="cta-row">
+        <a href="/diagnostic-cyber-ess" class="cta-btn">Faire le diagnostic 3 min</a>
+        <a href="/qui-suis-je.html" class="cta-btn secondary">Me contacter</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="article-footer">
+    Code'ess — Numérique libre &amp; responsable pour l'ESS · <a href="/panorama-ess">Baromètre 2026</a> · <a href="/diagnostic-cyber-ess">Diagnostic</a> · <a href="/blog/dmarc-spf-dkim-association.html">Guide DMARC</a> · <a href="/formations.html">Formations</a>
+</footer>
+
+</body>
+</html>

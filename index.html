@@ -66,6 +66,15 @@
     <!-- Cursor Glow -->
     <div class="cursor-glow"></div>
 
+    <!-- Bandeau d'annonce : Baromètre 2026 -->
+    <div class="announce-bar" role="region" aria-label="Annonce">
+        <div class="announce-inner">
+            <span class="announce-badge">Nouveau</span>
+            <span class="announce-text"><strong>Baromètre 2026</strong> de la cybersécurité dans l'ESS — 35 audits, score médian 5/10</span>
+            <a href="/panorama-ess" class="announce-link">Lire le panorama</a>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <header class="header">
         <nav class="nav container">
@@ -74,9 +83,12 @@
                 <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
             </a>
             <ul class="nav-links">
+                <li><a href="/panorama-ess" class="nav-barometre">Baromètre 2026</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#engagements">Engagements</a></li>
                 <li><a href="#alternatives">Alternatives</a></li>
+                <li><a href="webinaire-ia-ess.html">Webinaire IA</a></li>
+                <li><a href="formations.html">Formations</a></li>
                 <li><a href="book.html">Book</a></li>
                 <li><a href="blog/degafamisation-seo.html">Blog</a></li>
                 <li><a href="qui-suis-je.html">Qui suis-je</a></li>
@@ -193,6 +205,60 @@
             </div>
         </div>
         <div class="hero-bg"></div>
+    </section>
+
+    <!-- Baromètre 2026 Section -->
+    <section class="barometre" id="barometre" aria-labelledby="barometre-title">
+        <div class="container">
+            <div class="barometre-content">
+                <div data-reveal="up">
+                    <span class="barometre-eyebrow">Publication · Mai 2026</span>
+                    <h2 id="barometre-title" class="barometre-title">
+                        Panorama de la cybersécurité<br>
+                        dans <em>l'économie sociale et solidaire</em>
+                    </h2>
+                    <p class="barometre-lede">
+                        Pendant neuf semaines, trente-cinq structures de l'ESS — associations,
+                        coopératives, SCOP, fondations, SAS à mission, établissements publics —
+                        ont vu leur surface d'attaque cartographiée et auscultée.
+                        Le baromètre 2026 compile ce que ces audits révèlent.
+                    </p>
+                    <a href="/panorama-ess" class="barometre-cta">
+                        Lire le baromètre
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="/diagnostic-cyber-ess" class="barometre-cta-secondary">
+                        Auto-diagnostic en 3 minutes
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="barometre-stats" data-reveal="up" data-delay="1">
+                    <div class="barometre-stat">
+                        <div class="barometre-stat-number">35</div>
+                        <div class="barometre-stat-label">structures ESS auditées<br>(mars – mai 2026)</div>
+                    </div>
+                    <div class="barometre-stat">
+                        <div class="barometre-stat-number accent">5<span class="unit">/10</span></div>
+                        <div class="barometre-stat-label">score médian de maturité<br>cybersécurité</div>
+                    </div>
+                    <div class="barometre-stat">
+                        <div class="barometre-stat-number">9</div>
+                        <div class="barometre-stat-label">semaines de reconnaissance<br>et tests sous autorisation</div>
+                    </div>
+                    <div class="barometre-stat">
+                        <div class="barometre-stat-number accent">MFA</div>
+                        <div class="barometre-stat-label">action n°1 à coût zéro<br>identifiée sur 35 cibles</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="barometre-meta">
+                <span class="barometre-meta-item">Associations · Coopératives · Fondations · SCOP</span>
+                <span class="barometre-meta-item">Reconnaissance passive & tests actifs sous autorisation</span>
+                <span class="barometre-meta-item">Données anonymisées · Reproductible CC</span>
+            </div>
+        </div>
     </section>
 
     <!-- Services Section -->
@@ -618,6 +684,7 @@
                     <a href="#services">Services</a>
                     <a href="#engagements">Engagements</a>
                     <a href="#alternatives">Alternatives</a>
+                    <a href="formations.html">Formations</a>
                     <a href="qui-suis-je.html">Qui suis-je</a>
                     <a href="#contact">Contact</a>
                 </div>

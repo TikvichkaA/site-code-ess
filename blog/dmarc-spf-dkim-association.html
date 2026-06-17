@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMARC, SPF, DKIM pour une association : guide complet 2026 — Code'ess</title>
+    <meta name="description" content="Comment protéger une association contre l'usurpation d'email : configurer SPF, DKIM et DMARC pas à pas sur Microsoft 365, Google Workspace, OVH, Gandi. Guide gratuit.">
+    <meta name="keywords" content="dmarc association, spf association, dkim association, configurer dmarc gmail, usurpation email association, fraude au président, anti-phishing association">
+    <meta name="author" content="Emmanuel Pinglier">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html">
+    <link rel="alternate" type="text/html" href="https://code-ess.unjouruneapp.com/panorama-ess" title="Panorama cybersécurité ESS 2026">
+    <!-- Open Graph -->
+    <meta property="og:title" content="DMARC, SPF, DKIM pour une association : guide complet 2026">
+    <meta property="og:description" content="Comment protéger une association contre l'usurpation d'email : configurer SPF, DKIM et DMARC pas à pas. Microsoft 365, Google Workspace, OVH, Gandi.">
+    <meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+    <meta property="og:image:alt" content="Configurer DMARC SPF DKIM pour une association — guide technique">
+    <meta property="og:url" content="https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Code'ess">
+    <meta property="article:published_time" content="2026-06-14">
+    <meta property="article:modified_time" content="2026-06-14">
+    <meta property="article:author" content="Emmanuel Pinglier">
+    <meta property="article:section" content="Cybersécurité ESS">
+    <meta property="article:tag" content="DMARC">
+    <meta property="article:tag" content="SPF">
+    <meta property="article:tag" content="DKIM">
+    <meta property="article:tag" content="associations">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DMARC, SPF, DKIM pour une association : guide complet 2026">
+    <meta name="twitter:description" content="Configurer SPF, DKIM et DMARC dans une association loi 1901. Microsoft 365, Google Workspace, OVH, Gandi — pas à pas.">
+    <meta name="twitter:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+
+    <!-- JSON-LD : BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "DMARC, SPF, DKIM pour une association : guide complet 2026",
+      "description": "Comment protéger une association contre l'usurpation d'email : configurer SPF, DKIM et DMARC pas à pas sur Microsoft 365, Google Workspace, OVH, Gandi.",
+      "author": {
+        "@type": "Person",
+        "name": "Emmanuel Pinglier",
+        "url": "https://code-ess.unjouruneapp.com/qui-suis-je.html",
+        "jobTitle": "Auditeur cybersécurité ESS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Code'ess",
+        "url": "https://code-ess.unjouruneapp.com",
+        "logo": { "@type": "ImageObject", "url": "https://code-ess.unjouruneapp.com/photo.jpg" }
+      },
+      "datePublished": "2026-06-14",
+      "dateModified": "2026-06-14",
+      "inLanguage": "fr-FR",
+      "image": "https://code-ess.unjouruneapp.com/photo.jpg",
+      "mainEntityOfPage": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html",
+      "isBasedOn": "https://code-ess.unjouruneapp.com/panorama-ess",
+      "keywords": "DMARC association, SPF association, DKIM association, anti-usurpation email, fraude au président",
+      "about": [
+        { "@type": "Thing", "name": "DMARC" },
+        { "@type": "Thing", "name": "SPF" },
+        { "@type": "Thing", "name": "DKIM" },
+        { "@type": "Thing", "name": "Cybersécurité associations" }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD : HowTo (configuration DMARC) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Configurer DMARC, SPF et DKIM pour une association",
+      "description": "Trois protocoles d'authentification d'email à mettre en place pour empêcher l'usurpation du domaine de votre association.",
+      "totalTime": "PT1H",
+      "estimatedCost": { "@type": "MonetaryAmount", "currency": "EUR", "value": "0" },
+      "supply": [
+        { "@type": "HowToSupply", "name": "Accès administrateur à la zone DNS du domaine" },
+        { "@type": "HowToSupply", "name": "Accès administrateur à la messagerie (Microsoft 365, Google Workspace ou autre)" }
+      ],
+      "tool": [
+        { "@type": "HowToTool", "name": "Console DNS de l'hébergeur (OVH, Gandi, Cloudflare, Infomaniak)" },
+        { "@type": "HowToTool", "name": "Outil de vérification mxtoolbox.com ou dmarcian.com" }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Configurer SPF",
+          "text": "Ajouter un enregistrement TXT sur le domaine listant les serveurs autorisés à envoyer des emails en votre nom. Exemple Microsoft 365 : v=spf1 include:spf.protection.outlook.com -all. Exemple Google Workspace : v=spf1 include:_spf.google.com ~all.",
+          "url": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html#etape-spf"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Activer DKIM",
+          "text": "Côté messagerie, générer une paire de clés DKIM puis publier la clé publique dans le DNS sous un sélecteur (ex : selector1._domainkey). Microsoft 365 propose 2 sélecteurs ; Google Workspace 1.",
+          "url": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html#etape-dkim"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Publier DMARC en mode observation",
+          "text": "Ajouter un TXT sur _dmarc.votredomaine.org avec v=DMARC1; p=none; rua=mailto:dmarc@votredomaine.org. Permet de collecter les rapports pendant 2-4 semaines avant durcissement.",
+          "url": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html#etape-dmarc-none"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Analyser les rapports DMARC",
+          "text": "Examiner les rapports XML reçus. Identifier les services tiers légitimes (Mailchimp, HelloAsso, SendinBlue) à inclure dans le SPF et DKIM avant de durcir la politique.",
+          "url": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html#etape-rapports"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Durcir DMARC en quarantine puis reject",
+          "text": "Passer la politique à p=quarantine; pct=50 pendant 2 semaines, puis p=quarantine; pct=100, puis p=reject. Vérifier régulièrement que les emails légitimes passent.",
+          "url": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html#etape-durcissement"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD : FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que DMARC, SPF et DKIM ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Trois standards qui authentifient un email comme provenant légitimement du domaine indiqué dans le 'De :'. SPF liste les serveurs autorisés à envoyer pour votre domaine. DKIM signe cryptographiquement chaque message. DMARC dit aux serveurs destinataires ce qu'ils doivent faire des emails qui échouent à ces vérifications, et envoie des rapports." }
+        },
+        {
+          "@type": "Question",
+          "name": "Une petite association a-t-elle vraiment besoin de DMARC ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les associations sont des cibles privilégiées de la fraude au président et au faux fournisseur précisément parce que leurs domaines sont souvent non protégés. Sans DMARC, n'importe qui peut envoyer un email 'de la part de' tresorier@votreasso.org. Configurer SPF + DKIM + DMARC est gratuit et bloque la quasi-totalité de ces usurpations." }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps faut-il pour mettre en place DMARC ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "1 heure technique pour publier les enregistrements DNS initiaux. Puis 2 à 4 semaines d'observation (p=none) pour collecter les rapports et identifier tous les services tiers légitimes (Mailchimp, HelloAsso, SendinBlue) avant de durcir la politique en p=quarantine puis p=reject." }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment savoir si DMARC est déjà configuré sur mon domaine ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Outil gratuit : mxtoolbox.com/dmarc.aspx ou dmarcian.com/dmarc-inspector/. Taper votre domaine. Si rien n'apparaît, vous n'avez pas DMARC. Si vous voyez 'p=none', vous êtes en mode observation. 'p=quarantine' ou 'p=reject' signifie politique active." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est le risque si je publie DMARC=reject trop vite ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Vos emails légitimes envoyés par Mailchimp, votre CRM, votre outil de billetterie ou un partenaire peuvent être rejetés par les destinataires. C'est pourquoi on passe par p=none pendant 2-4 semaines, on analyse les rapports XML pour repérer tous les expéditeurs légitimes, on les ajoute au SPF/DKIM, et seulement ensuite on durcit." }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il un service payant pour analyser les rapports DMARC ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Non pour les petites associations. Postmark, dmarcian et Valimail offrent des plans gratuits limités. Pour une association de moins de 10k emails sortants/mois, le plan gratuit suffit. Les rapports DMARC restent du XML brut illisible sans outil." }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD : Breadcrumb -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Code'ess", "item": "https://code-ess.unjouruneapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://code-ess.unjouruneapp.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "DMARC SPF DKIM pour une association", "item": "https://code-ess.unjouruneapp.com/blog/dmarc-spf-dkim-association.html" }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-light: #14b8a6;
+            --primary-dark: #0f766e;
+            --primary-bg: #f0fdfa;
+            --secondary: #4f46e5;
+            --accent: #c2253c;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0f172a;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --code-bg: #1e293b;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-heading: 'Outfit', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', Menlo, Consolas, monospace;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--primary); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--primary-dark); text-decoration: underline; }
+
+        .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); padding: 0 24px; }
+        .topbar-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .topbar-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+        .topbar-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--primary); color: white; border-radius: 8px; font-size: 0.95rem; }
+        .topbar-back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--primary-bg); color: var(--primary); border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+        .topbar-back:hover { background: var(--primary); color: white; text-decoration: none; }
+
+        .article-header { padding: 60px 24px 40px; text-align: center; background: linear-gradient(135deg, var(--bg) 0%, var(--primary-bg) 100%); }
+        .article-header-inner { max-width: 780px; margin: 0 auto; }
+        .article-meta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.82rem; color: var(--text-light); margin-bottom: 16px; flex-wrap: wrap; justify-content: center; }
+        .article-tag { padding: 4px 12px; background: var(--primary); color: white; border-radius: 50px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .article-header h1 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .article-header h1 span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .article-header .subtitle { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        .toc { max-width: 780px; margin: 32px auto 0; padding: 20px 24px; background: var(--bg-alt); border-radius: var(--radius); border: 1px solid var(--border-light); }
+        .toc h3 { font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 12px; }
+        .toc ol { list-style: decimal-leading-zero; margin-left: 24px; columns: 2; column-gap: 24px; }
+        .toc li { font-size: 0.92rem; margin-bottom: 6px; break-inside: avoid; }
+        @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+        .article-body { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+        .article-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; margin: 56px 0 16px; color: var(--text); letter-spacing: -0.01em; }
+        .article-body h2:first-child { margin-top: 0; }
+        .article-body h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+        .article-body p { margin-bottom: 20px; font-size: 1.02rem; color: var(--text); line-height: 1.8; }
+        .article-body ul, .article-body ol { margin: 0 0 20px 24px; font-size: 1.02rem; line-height: 1.8; }
+        .article-body li { margin-bottom: 10px; }
+        .article-body strong { color: var(--text); font-weight: 700; }
+        .article-body code { font-family: var(--font-mono); font-size: 0.92em; padding: 2px 6px; background: var(--primary-bg); color: var(--primary-dark); border-radius: 4px; }
+        .article-body pre { font-family: var(--font-mono); background: var(--code-bg); color: #f1f5f9; padding: 18px 22px; border-radius: var(--radius); overflow-x: auto; font-size: 0.88rem; line-height: 1.55; margin: 16px 0 24px; }
+        .article-body pre code { background: transparent; color: inherit; padding: 0; }
+
+        .callout { background: var(--primary-bg); border-left: 4px solid var(--primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 22px; margin: 28px 0; font-size: 0.97rem; }
+        .callout p { margin-bottom: 8px; color: var(--primary-dark); }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--primary-dark); }
+        .callout.warning { background: #fef3c7; border-left-color: #d97706; }
+        .callout.warning p, .callout.warning strong { color: #92400e; }
+        .callout.danger { background: #fef2f2; border-left-color: var(--accent); }
+        .callout.danger p, .callout.danger strong { color: #8a1a2c; }
+
+        .comparison { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.92rem; }
+        .comparison th { background: var(--bg-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .comparison td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+        .comparison tr:nth-child(even) td { background: var(--bg-alt); }
+        .comparison code { font-size: 0.85em; }
+
+        .step { display: flex; gap: 16px; margin: 24px 0; padding: 20px 22px; background: var(--bg-alt); border-radius: var(--radius); border: 1px solid var(--border-light); }
+        .step-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 1.05rem; }
+        .step-body { flex: 1; }
+        .step-body h3 { margin-top: 0; }
+        .step-body p:last-child { margin-bottom: 0; }
+
+        .faq-block { margin-top: 24px; }
+        .faq-item { border-top: 1px solid var(--border); padding: 20px 0; }
+        .faq-item:first-child { border-top: 0; padding-top: 8px; }
+        .faq-item h3 { font-family: var(--font-heading); font-size: 1.05rem; margin: 0 0 8px; }
+        .faq-item p { margin-bottom: 0; }
+
+        .article-cta { text-align: center; padding: 60px 24px; background: var(--bg-dark); }
+        .article-cta h2 { font-family: var(--font-heading); color: white; font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+        .article-cta p { color: var(--text-muted); margin-bottom: 24px; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: white; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; border-radius: var(--radius); transition: var(--transition); }
+        .cta-btn:hover { background: var(--primary-light); color: white; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(13,148,136,0.3); text-decoration: none; }
+        .cta-btn.secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .cta-btn.secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .article-footer { padding: 24px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); }
+        .article-footer a { color: var(--primary-light); }
+
+        @media (max-width: 640px) {
+            .article-header { padding: 40px 16px 30px; }
+            .article-body { padding: 32px 16px 60px; }
+            .comparison { font-size: 0.82rem; }
+            .comparison th, .comparison td { padding: 8px 10px; }
+            .step { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-inner">
+        <a href="../index.html" class="topbar-brand">
+            <div class="topbar-icon">&lt;/&gt;</div>
+            <span>Code<span style="background:linear-gradient(135deg,#0d9488,#4f46e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">'ess</span></span>
+        </a>
+        <a href="../index.html" class="topbar-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Retour au site
+        </a>
+    </div>
+</div>
+
+<main>
+
+<header class="article-header">
+    <div class="article-header-inner">
+        <div class="article-meta">
+            <span class="article-tag">Cybersécurité ESS</span>
+            <span>14 juin 2026</span>
+            <span>· 18 min de lecture</span>
+        </div>
+        <h1>DMARC, SPF, DKIM dans une <span>association</span> : guide complet 2026</h1>
+        <p class="subtitle">Comment empêcher l'usurpation de votre adresse <code style="background:rgba(0,0,0,0.05);padding:2px 8px;border-radius:4px;">@votreasso.org</code> et bloquer la fraude au président en 1 heure de configuration, sans rien dépenser.</p>
+    </div>
+
+    <nav class="toc" aria-label="Sommaire">
+        <h3>Sommaire</h3>
+        <ol>
+            <li><a href="#pourquoi">Pourquoi c'est critique pour une asso</a></li>
+            <li><a href="#les-trois">SPF, DKIM, DMARC en 2 min</a></li>
+            <li><a href="#etape-spf">Étape 1 — Configurer SPF</a></li>
+            <li><a href="#etape-dkim">Étape 2 — Activer DKIM</a></li>
+            <li><a href="#etape-dmarc-none">Étape 3 — Publier DMARC</a></li>
+            <li><a href="#etape-rapports">Étape 4 — Analyser les rapports</a></li>
+            <li><a href="#etape-durcissement">Étape 5 — Durcir DMARC</a></li>
+            <li><a href="#m365">Cas Microsoft 365</a></li>
+            <li><a href="#gworkspace">Cas Google Workspace</a></li>
+            <li><a href="#ovh-gandi">Cas OVH, Gandi, Infomaniak</a></li>
+            <li><a href="#tiers">Services tiers (Mailchimp, HelloAsso)</a></li>
+            <li><a href="#verification">Vérifier que tout fonctionne</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ol>
+    </nav>
+</header>
+
+<article class="article-body">
+
+    <h2 id="pourquoi">Pourquoi DMARC est critique pour une association</h2>
+    <p>Dans le <a href="/panorama-ess">Panorama de la cybersécurité dans l'ESS — baromètre 2026</a>, sur 35 audits menés entre mars et mai 2026, <strong>plus de 80 % des associations auditées n'avaient pas de politique DMARC active</strong>. Sur ces domaines non protégés, n'importe qui sur Internet peut envoyer un email frauduleux qui apparaîtra comme provenant de <code>tresorier@votreasso.org</code> ou <code>presidence@votreasso.org</code>.</p>
+
+    <p>C'est exactement le mécanisme de deux fraudes massives dans le secteur associatif :</p>
+    <ul>
+        <li><strong>La fraude au président</strong> — un faux email "du président" demande un virement urgent au trésorier ou au comptable.</li>
+        <li><strong>La fraude au changement de RIB</strong> — un faux email "d'un fournisseur" annonce un changement de coordonnées bancaires pour les prochains paiements.</li>
+    </ul>
+
+    <p>Le coût d'un incident de ce type pour une asso : entre <strong>5 000 € et 80 000 €</strong> selon les cas remontés. Le coût de la prévention : <strong>0 €</strong> et environ une heure de travail technique. C'est le rapport effort / impact le plus favorable en cybersécurité associative.</p>
+
+    <div class="callout">
+        <p><strong>Vous voulez vérifier l'état actuel de votre domaine ?</strong> Allez sur <a href="https://mxtoolbox.com/dmarc.aspx" target="_blank" rel="noopener">mxtoolbox.com/dmarc.aspx</a> ou faites notre <a href="/diagnostic-cyber-ess">auto-diagnostic cybersécurité ESS (3 min)</a>.</p>
+    </div>
+
+    <h2 id="les-trois">SPF, DKIM, DMARC en deux minutes</h2>
+    <p>Les trois protocoles forment une pile cohérente d'authentification d'email. Aucun ne suffit seul, mais ensemble ils permettent aux serveurs destinataires de reconnaître et de rejeter un email frauduleux.</p>
+
+    <table class="comparison">
+        <thead>
+            <tr><th>Protocole</th><th>Rôle</th><th>Forme technique</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>SPF</strong><br><small>Sender Policy Framework</small></td>
+                <td>Liste publique des serveurs autorisés à envoyer en votre nom.</td>
+                <td>Enregistrement TXT à la racine du domaine.</td>
+            </tr>
+            <tr>
+                <td><strong>DKIM</strong><br><small>DomainKeys Identified Mail</small></td>
+                <td>Signature cryptographique de chaque email — preuve qu'il vient bien de votre serveur.</td>
+                <td>TXT sur un sous-domaine "sélecteur" (ex : <code>selector1._domainkey</code>).</td>
+            </tr>
+            <tr>
+                <td><strong>DMARC</strong><br><small>Domain-based Message Authentication</small></td>
+                <td>Politique : que faire si SPF et DKIM échouent ? Et envoyer des rapports.</td>
+                <td>TXT sur <code>_dmarc.votredomaine.org</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Important : DMARC ne fonctionne que si SPF <strong>ou</strong> DKIM passe ET que le domaine "alignement" correspond. Sans SPF/DKIM bien configurés, DMARC ne sert à rien.</p>
+
+    <h2 id="etape-spf">Étape 1 — Configurer SPF (15 min)</h2>
+
+    <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+            <h3>Identifier votre messagerie principale</h3>
+            <p>Microsoft 365, Google Workspace, Infomaniak, OVH, Gandi… Chaque hébergeur fournit la valeur SPF à utiliser.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+            <h3>Publier un enregistrement TXT à la racine du domaine</h3>
+            <p>Exemples selon votre messagerie :</p>
+<pre><code>; Microsoft 365
+@   IN TXT  "v=spf1 include:spf.protection.outlook.com -all"
+
+; Google Workspace
+@   IN TXT  "v=spf1 include:_spf.google.com ~all"
+
+; Infomaniak
+@   IN TXT  "v=spf1 include:spf.infomaniak.ch ~all"
+
+; OVH
+@   IN TXT  "v=spf1 include:mx.ovh.com ~all"</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+            <h3>Choisir entre <code>~all</code> et <code>-all</code></h3>
+            <p><strong><code>~all</code></strong> (softfail) : les emails non autorisés sont marqués suspects mais peuvent passer. Recommandé au début.<br>
+            <strong><code>-all</code></strong> (hardfail) : les emails non autorisés sont rejetés. Plus strict, à activer après vérification.</p>
+        </div>
+    </div>
+
+    <div class="callout warning">
+        <p><strong>Une seule ligne SPF par domaine.</strong> Si vous avez deux enregistrements TXT commençant par <code>v=spf1</code>, ils s'annulent et le SPF est invalide. Pour ajouter un nouvel expéditeur, on enrichit la ligne existante avec un <code>include:</code> supplémentaire.</p>
+    </div>
+
+    <h2 id="etape-dkim">Étape 2 — Activer DKIM (15 min)</h2>
+
+    <p>DKIM signe cryptographiquement chaque email envoyé, prouvant qu'il vient bien de votre serveur de messagerie. La clé publique est publiée dans le DNS sous un nom appelé <em>sélecteur</em>.</p>
+
+    <h3>Microsoft 365</h3>
+    <p>Microsoft 365 propose deux sélecteurs : <code>selector1</code> et <code>selector2</code> (pour la rotation). Aller dans le <strong>Microsoft 365 Defender portal</strong> → <strong>Email &amp; Collaboration</strong> → <strong>Policies &amp; Rules</strong> → <strong>Threat Policies</strong> → <strong>Email Authentication</strong> → <strong>DKIM</strong>. Microsoft demande de publier deux CNAME :</p>
+<pre><code>selector1._domainkey.votredomaine.org  IN CNAME  selector1-votredomaine-org._domainkey.votretenant.onmicrosoft.com.
+selector2._domainkey.votredomaine.org  IN CNAME  selector2-votredomaine-org._domainkey.votretenant.onmicrosoft.com.</code></pre>
+    <p>Une fois publiés, cliquer sur <strong>"Enable"</strong> dans la console.</p>
+
+    <h3>Google Workspace</h3>
+    <p>Aller dans la <strong>Console d'administration Google</strong> → <strong>Applications</strong> → <strong>Google Workspace</strong> → <strong>Gmail</strong> → <strong>Authentifier le courrier</strong>. Cliquer sur <strong>"Générer un nouvel enregistrement"</strong> avec un sélecteur (ex : <code>google</code>) et publier dans le DNS :</p>
+<pre><code>google._domainkey.votredomaine.org  IN TXT  "v=DKIM1; k=rsa; p=MIIBIjANBgkq…"</code></pre>
+    <p>Attendre 48 h, puis cliquer sur <strong>"Démarrer l'authentification"</strong>.</p>
+
+    <h3>Infomaniak, OVH, Gandi</h3>
+    <p>L'activation DKIM est en général disponible dans l'interface de gestion email. Les enregistrements DNS sont fournis automatiquement.</p>
+
+    <h2 id="etape-dmarc-none">Étape 3 — Publier DMARC en mode observation (5 min)</h2>
+
+    <p>Une fois SPF et DKIM en place, publier un enregistrement DMARC en mode <strong>observation</strong> pendant 2 à 4 semaines pour collecter les rapports avant durcissement.</p>
+
+<pre><code>_dmarc.votredomaine.org  IN TXT  "v=DMARC1; p=none; rua=mailto:dmarc@votredomaine.org; ruf=mailto:dmarc@votredomaine.org; fo=1; adkim=r; aspf=r"</code></pre>
+
+    <p>Décodage des paramètres :</p>
+    <ul>
+        <li><code>p=none</code> — politique d'observation : ne rien faire des emails qui échouent, juste collecter les rapports.</li>
+        <li><code>rua=</code> — adresse pour les rapports agrégés (XML quotidiens).</li>
+        <li><code>ruf=</code> — adresse pour les rapports forensiques (par email échoué, optionnel).</li>
+        <li><code>fo=1</code> — envoyer un rapport forensique dès qu'un mécanisme échoue.</li>
+        <li><code>adkim=r</code> / <code>aspf=r</code> — alignement relaxe (recommandé au début).</li>
+    </ul>
+
+    <div class="callout">
+        <p><strong>Astuce association à budget zéro :</strong> créer une boîte <code>dmarc@votredomaine.org</code> dédiée à recevoir les rapports. Ne pas utiliser une boîte personnelle — vous allez recevoir <strong>beaucoup</strong> de XML.</p>
+    </div>
+
+    <h2 id="etape-rapports">Étape 4 — Analyser les rapports DMARC (1-4 semaines)</h2>
+
+    <p>Les rapports DMARC sont des fichiers XML difficiles à lire à la main. Plusieurs services gratuits ou freemium les agrègent en interface lisible :</p>
+
+    <table class="comparison">
+        <thead><tr><th>Service</th><th>Plan gratuit</th><th>Plan asso</th></tr></thead>
+        <tbody>
+            <tr><td><a href="https://postmarkapp.com/dmarc" target="_blank" rel="noopener">Postmark DMARC Monitoring</a></td><td>Illimité, gratuit</td><td>—</td></tr>
+            <tr><td><a href="https://dmarcian.com/pricing/" target="_blank" rel="noopener">dmarcian</a></td><td>Limité (essai)</td><td>Tarif nonprofit disponible</td></tr>
+            <tr><td><a href="https://valimail.com/dmarc-monitor/" target="_blank" rel="noopener">Valimail Monitor</a></td><td>Gratuit (basique)</td><td>—</td></tr>
+            <tr><td><a href="https://dmarcreport.com/" target="_blank" rel="noopener">DMARC Report</a></td><td>Gratuit jusqu'à 100k emails/mois</td><td>Inclus</td></tr>
+        </tbody>
+    </table>
+
+    <p>L'objectif de cette phase : identifier <strong>tous les expéditeurs légitimes</strong> qui envoient en votre nom mais qui n'apparaissent pas dans votre SPF/DKIM. Sources fréquentes oubliées :</p>
+    <ul>
+        <li>Mailchimp, SendinBlue, Brevo, Mailjet pour la newsletter</li>
+        <li>HelloAsso pour les notifications de don</li>
+        <li>OVH ou Gandi pour les redirections d'email</li>
+        <li>Outils CRM (Salesforce, HubSpot)</li>
+        <li>L'imprimante de la salariée qui envoie des emails via le serveur de messagerie</li>
+    </ul>
+
+    <h2 id="etape-durcissement">Étape 5 — Durcir DMARC progressivement</h2>
+
+    <p>Quand les rapports ne montrent plus que des expéditeurs légitimes (et des tentatives d'usurpation), on durcit la politique en trois étapes espacées de 2 semaines chacune :</p>
+
+    <div class="step">
+        <div class="step-num">A</div>
+        <div class="step-body">
+            <h3>Quarantine 50 %</h3>
+<pre><code>v=DMARC1; p=quarantine; pct=50; rua=mailto:dmarc@votredomaine.org</code></pre>
+            <p>La moitié des emails qui échouent sont mis en quarantaine (spam) chez le destinataire.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">B</div>
+        <div class="step-body">
+            <h3>Quarantine 100 %</h3>
+<pre><code>v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@votredomaine.org</code></pre>
+            <p>Tous les emails qui échouent sont en quarantaine. Vérifier qu'aucun email légitime ne tombe.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">C</div>
+        <div class="step-body">
+            <h3>Reject</h3>
+<pre><code>v=DMARC1; p=reject; rua=mailto:dmarc@votredomaine.org; adkim=s; aspf=s</code></pre>
+            <p>Tous les emails qui échouent sont rejetés. Alignement strict. L'association est protégée.</p>
+        </div>
+    </div>
+
+    <h2 id="m365">Cas Microsoft 365 (le piège <code>basic auth</code>)</h2>
+    <p>Si votre association est sur Microsoft 365, une attention particulière : <strong>l'authentification <code>basic auth</code> sur Exchange Online contourne le 2FA</strong>. Même avec MFA activé, un attaquant ayant le mot de passe peut se connecter via IMAP/POP3/SMTP en basic auth.</p>
+    <p>Vérifier dans le <strong>Microsoft 365 admin center</strong> → <strong>Settings</strong> → <strong>Org settings</strong> → <strong>Modern authentication</strong> que tous les protocoles legacy (IMAP, POP3, SMTP auth, Authenticated SMTP) sont <strong>désactivés</strong>. Cette mesure est complémentaire à DMARC et vaut autant.</p>
+
+    <h2 id="gworkspace">Cas Google Workspace</h2>
+    <p>Plus simple : un seul sélecteur DKIM par défaut. Bien penser à activer aussi le paramètre <strong>"Strict spam filtering"</strong> dans Gmail admin → Apps → Gmail → Spam, Phishing and Malware.</p>
+    <p>Le programme <a href="https://www.google.com/nonprofits/" target="_blank" rel="noopener">Google for Nonprofits</a> donne accès gratuitement à Google Workspace pour les associations éligibles.</p>
+
+    <h2 id="ovh-gandi">Cas OVH, Gandi, Infomaniak (messagerie d'hébergeur)</h2>
+    <p>Si votre association n'a pas de suite type Microsoft 365 ou Google Workspace, vous utilisez probablement la messagerie de votre hébergeur de domaine. Les valeurs SPF varient :</p>
+    <ul>
+        <li><strong>OVH</strong> : <code>v=spf1 include:mx.ovh.com ~all</code></li>
+        <li><strong>Gandi</strong> : <code>v=spf1 include:_mailcust.gandi.net ~all</code></li>
+        <li><strong>Infomaniak</strong> : <code>v=spf1 include:spf.infomaniak.ch ~all</code></li>
+    </ul>
+    <p>Pour DKIM, l'activation se fait dans l'interface de gestion email de l'hébergeur (souvent un toggle "Activer DKIM" qui publie automatiquement la clé).</p>
+
+    <h2 id="tiers">Services tiers : Mailchimp, HelloAsso, Brevo</h2>
+
+    <p>Si vous envoyez des newsletters via Mailchimp, des reçus fiscaux via HelloAsso, ou des emails transactionnels via Brevo/SendinBlue, ces services <strong>doivent</strong> être autorisés dans votre SPF et idéalement signer en DKIM avec votre domaine.</p>
+
+    <table class="comparison">
+        <thead><tr><th>Service</th><th>SPF include</th><th>DKIM</th></tr></thead>
+        <tbody>
+            <tr><td>Mailchimp</td><td><code>include:servers.mcsv.net</code></td><td>2 CNAME (k1, k2) fournis dans Mailchimp</td></tr>
+            <tr><td>Brevo (ex-Sendinblue)</td><td><code>include:spf.brevo.com</code></td><td>1 TXT fourni dans Brevo</td></tr>
+            <tr><td>SendGrid</td><td><code>include:sendgrid.net</code></td><td>2 CNAME fournis dans SendGrid</td></tr>
+            <tr><td>HelloAsso</td><td>Pas d'envoi en votre nom (envoie depuis <code>@helloasso.com</code>)</td><td>—</td></tr>
+            <tr><td>Mailjet</td><td><code>include:spf.mailjet.com</code></td><td>1 TXT fourni dans Mailjet</td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout danger">
+        <p><strong>Limite SPF : 10 lookups DNS maximum.</strong> Chaque <code>include:</code> consomme un lookup. Au-delà de 10, SPF est invalide. Pour les associations qui cumulent Mailchimp + Brevo + SendGrid + Outlook, utiliser un service de SPF flattening comme <a href="https://www.dmarcian.com/dmarc-tools/spf-surveyor/" target="_blank" rel="noopener">SPF Surveyor</a>.</p>
+    </div>
+
+    <h2 id="verification">Vérifier que tout fonctionne</h2>
+
+    <p>Trois outils gratuits pour vérifier votre configuration :</p>
+    <ul>
+        <li><a href="https://mxtoolbox.com/SuperTool.aspx" target="_blank" rel="noopener">MXToolbox SuperTool</a> — vérifier SPF, DKIM, DMARC d'un seul coup.</li>
+        <li><a href="https://www.mail-tester.com/" target="_blank" rel="noopener">Mail-Tester</a> — envoyer un email à l'adresse générée et obtenir un score /10.</li>
+        <li><a href="https://www.dmarcian.com/dmarc-inspector/" target="_blank" rel="noopener">dmarcian DMARC Inspector</a> — inspecter spécifiquement DMARC.</li>
+    </ul>
+
+    <p>Bon score Mail-Tester pour une association : <strong>9 / 10 ou plus</strong>. Si vous êtes en dessous de 8, un email légitime peut tomber en spam.</p>
+
+    <h2 id="faq">Questions fréquentes</h2>
+    <div class="faq-block">
+        <div class="faq-item">
+            <h3>Qu'est-ce que DMARC, SPF et DKIM ?</h3>
+            <p>Trois standards qui authentifient un email comme provenant légitimement du domaine indiqué dans le "De :". SPF liste les serveurs autorisés à envoyer pour votre domaine. DKIM signe cryptographiquement chaque message. DMARC dit aux serveurs destinataires ce qu'ils doivent faire des emails qui échouent à ces vérifications, et envoie des rapports.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Une petite association a-t-elle vraiment besoin de DMARC ?</h3>
+            <p>Oui. Les associations sont des cibles privilégiées de la fraude au président et au faux fournisseur précisément parce que leurs domaines sont souvent non protégés. Sans DMARC, n'importe qui peut envoyer un email "de la part de" <code>tresorier@votreasso.org</code>. Configurer SPF + DKIM + DMARC est gratuit et bloque la quasi-totalité de ces usurpations.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Combien de temps faut-il pour mettre en place DMARC ?</h3>
+            <p>1 heure technique pour publier les enregistrements DNS initiaux. Puis 2 à 4 semaines d'observation (p=none) pour collecter les rapports et identifier tous les services tiers légitimes (Mailchimp, HelloAsso, Brevo) avant de durcir la politique en <code>p=quarantine</code> puis <code>p=reject</code>.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Comment savoir si DMARC est déjà configuré sur mon domaine ?</h3>
+            <p>Outil gratuit : <a href="https://mxtoolbox.com/dmarc.aspx" target="_blank" rel="noopener">mxtoolbox.com/dmarc.aspx</a>. Taper votre domaine. Si rien n'apparaît, vous n'avez pas DMARC. Si vous voyez <code>p=none</code>, vous êtes en observation. <code>p=quarantine</code> ou <code>p=reject</code> signifie politique active.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quel est le risque si je publie DMARC=reject trop vite ?</h3>
+            <p>Vos emails légitimes envoyés par Mailchimp, votre CRM, votre outil de billetterie ou un partenaire peuvent être rejetés. C'est pourquoi on passe par <code>p=none</code> pendant 2-4 semaines, on analyse les rapports XML pour repérer tous les expéditeurs légitimes, on les ajoute au SPF/DKIM, et seulement ensuite on durcit.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Faut-il un service payant pour analyser les rapports DMARC ?</h3>
+            <p>Non pour les petites associations. Postmark DMARC Monitoring est gratuit et illimité. Pour une asso de moins de 100k emails sortants/mois, c'est largement suffisant.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Qu'est-ce que l'alignement strict (<code>adkim=s</code>) ?</h3>
+            <p>L'alignement vérifie que le domaine "De :" visible correspond exactement au domaine signé par DKIM (ou listé dans SPF). En mode strict, <code>news.votreasso.org</code> ne peut pas être signé pour <code>votreasso.org</code>. Recommandé après stabilisation.</p>
+        </div>
+    </div>
+
+    <h2>Pour aller plus loin</h2>
+    <ul>
+        <li><a href="/panorama-ess"><strong>Panorama cybersécurité ESS — baromètre 2026</strong></a> : 35 audits, score médian 4,9/10, guide complet.</li>
+        <li><a href="/diagnostic-cyber-ess"><strong>Diagnostic cybersécurité ESS</strong></a> : auto-évaluation 3 minutes, gratuite et anonyme.</li>
+        <li><a href="https://cyber.gouv.fr/publications/guide-dhygiene-informatique" target="_blank" rel="noopener">ANSSI — Guide d'hygiène informatique</a></li>
+        <li><a href="https://www.cnil.fr/fr/principes-cles/guide-de-la-securite-des-donnees-personnelles" target="_blank" rel="noopener">CNIL — Sécurité des données personnelles</a></li>
+        <li><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr — Diag Cyber Asso</a></li>
+        <li><a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener">RFC 7489 — spécification DMARC officielle</a></li>
+    </ul>
+
+</article>
+
+<section class="article-cta">
+    <h2>Pas envie de toucher au DNS vous-même ?</h2>
+    <p>Code'ess accompagne les associations et structures de l'ESS sur la mise en place de SPF, DKIM, DMARC, la sécurisation Microsoft 365 / Google Workspace et la sensibilisation au phishing. Audit pédagogique gratuit pour les structures éligibles.</p>
+    <div class="cta-row">
+        <a href="/diagnostic-cyber-ess" class="cta-btn">Faire le diagnostic 3 min</a>
+        <a href="/qui-suis-je.html" class="cta-btn secondary">Me contacter</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="article-footer">
+    Code'ess — Numérique libre &amp; responsable pour l'ESS · <a href="/panorama-ess">Baromètre 2026</a> · <a href="/diagnostic-cyber-ess">Diagnostic</a> · <a href="/formations.html">Formations</a> · <a href="/qui-suis-je.html">Qui suis-je</a>
+</footer>
+
+</body>
+</html>
