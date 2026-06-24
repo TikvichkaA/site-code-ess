@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation IA pour associations & ESS | Code'ess</title>
+    <meta name="description" content="Formation à la réflexion et à l'usage de l'IA générative. Trois formats : 1 jour pour le déclic, 30 h pour apprivoiser l'outil, 10 jours pour installer une pratique collective. Pour équipes qui veulent s'approprier l'IA sans s'y dissoudre.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://code-ess.unjouruneapp.com/formations">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Penser et travailler dans un monde d'IA — Formation Code'ess">
+    <meta property="og:description" content="Trois formats — 1 jour, 30 heures, 10 jours — pour s'approprier l'IA générative sans naïveté ni dépendance. Réflexion critique et usage pratique, ensemble.">
+    <meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+    <meta property="og:url" content="https://code-ess.unjouruneapp.com/formations">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <!-- JSON-LD : Course -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Penser et travailler dans un monde d'IA",
+      "description": "Formation à la réflexion critique et à l'usage de l'IA générative — Claude, ChatGPT, Mistral, Le Chat. Décline trois formats : 1 jour (déclic), 30 heures (apprivoiser), 10 jours (parcours collectif).",
+      "provider": {
+        "@type": "Organization",
+        "name": "Code'ess",
+        "url": "https://code-ess.unjouruneapp.com"
+      },
+      "hasCourseInstance": [
+        {"@type":"CourseInstance","name":"Format 1 jour — Déclic","courseMode":"blended","courseWorkload":"PT7H"},
+        {"@type":"CourseInstance","name":"Format 30 heures — Apprivoiser","courseMode":"blended","courseWorkload":"PT30H"},
+        {"@type":"CourseInstance","name":"Format 10 jours — Parcours","courseMode":"blended","courseWorkload":"PT70H"}
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           Formations Page — Single Theme Styles
+        ============================================ */
+
+        /* Hero */
+        .form-hero {
+            position: relative;
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .form-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(13, 148, 136, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            pointer-events: none;
+        }
+        .form-hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+        .form-hero-content { position: relative; z-index: 2; }
+        .form-badge {
+            display: inline-flex; align-items: center; gap: var(--space-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(240, 253, 250, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-light);
+            border-radius: 50px;
+            font-size: 0.875rem; font-weight: 500; color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+        }
+        .form-hero-content h1 { margin-bottom: var(--space-md); }
+        .form-hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .form-intro { font-size: 1.15rem; line-height: 1.75; margin-bottom: var(--space-xl); color: var(--text-light); }
+        .form-hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-2xl); }
+        .form-hero-stats { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+
+        .form-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
+        .form-visual-card {
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-lg);
+            transform: rotate(-1deg);
+            transition: var(--transition-slow);
+            box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.3);
+            position: relative; overflow: hidden; max-width: 420px;
+        }
+        .form-visual-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.15) 55%, transparent 60%);
+            background-size: 200% 100%;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+        .form-visual-card:hover {
+            transform: rotate(0deg) scale(1.03) translateY(-6px);
+            box-shadow: 0 35px 60px -15px rgba(13, 148, 136, 0.4);
+        }
+        .form-visual-card h3 {
+            font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
+            color: white; margin-bottom: var(--space-md);
+            position: relative; z-index: 1;
+        }
+        .form-visual-list { list-style: none; position: relative; z-index: 1; }
+        .form-visual-list li {
+            display: flex; align-items: center; gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.95); font-size: 0.95rem;
+            margin-bottom: 0.6rem; font-weight: 500;
+        }
+        .form-visual-list li svg { width: 18px; height: 18px; color: rgba(255,255,255,0.85); flex-shrink: 0; }
+
+        /* ============================================
+           Thèse (le pourquoi)
+        ============================================ */
+        .these { padding: var(--space-3xl) 0; background: var(--bg-alt); position: relative; overflow: hidden; }
+        .these::before {
+            content: ''; position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(13,148,136,0.06), transparent 70%);
+            top: -100px; left: -100px; pointer-events: none;
+        }
+        .these-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl); align-items: start;
+            max-width: 980px; margin: 0 auto;
+        }
+        .these-col {
+            padding: var(--space-xl);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+        }
+        [data-theme="dark"] .these-col { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); }
+        .these-col h3 { font-size: 1.15rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: 0.5rem; }
+        .these-col h3 .these-marker { font-family: var(--font-heading); font-size: 1.8rem; opacity: 0.4; }
+        .these-col.danger h3 { color: #c44d4d; }
+        [data-theme="dark"] .these-col.danger h3 { color: #ee8888; }
+        .these-col p { font-size: 0.95rem; color: var(--text-light); margin-bottom: var(--space-sm); }
+        .these-conclusion {
+            max-width: 760px; margin: var(--space-2xl) auto 0;
+            padding: var(--space-lg);
+            text-align: center;
+            font-size: 1.1rem; line-height: 1.7;
+            font-style: italic;
+            color: var(--text); border-top: 2px solid var(--primary);
+        }
+        @media (max-width: 768px) { .these-grid { grid-template-columns: 1fr; gap: var(--space-md); } }
+
+        /* ============================================
+           Forces
+        ============================================ */
+        .forces { padding: var(--space-3xl) 0; position: relative; overflow: hidden; }
+        .forces-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+        .force-card {
+            position: relative; padding: var(--space-xl);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg); box-shadow: var(--shadow);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(0,0,0,0.04); overflow: hidden;
+        }
+        .force-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12); }
+        [data-theme="dark"] .force-card { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); }
+        .force-icon {
+            width: 52px; height: 52px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius); margin-bottom: var(--space-md);
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+        .force-icon svg { width: 24px; height: 24px; color: white; }
+        .force-card h3 { margin-bottom: var(--space-sm); font-size: 1.1rem; }
+
+        /* ============================================
+           Formats (cards d'aperçu)
+        ============================================ */
+        .formats { padding: var(--space-3xl) 0; background: var(--bg-alt); position: relative; overflow: hidden; }
+        .formats::after {
+            content: ''; position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(79,70,229,0.05), transparent 70%);
+            bottom: -100px; right: -100px; pointer-events: none;
+        }
+        .formats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); }
+        .format-card {
+            position: relative; padding: var(--space-xl);
+            background: rgba(255,255,255,0.85); backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg); box-shadow: var(--shadow);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(0,0,0,0.04); overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .format-card.featured { border: 2px solid var(--primary); }
+        .format-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.14); }
+        [data-theme="dark"] .format-card { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.06); }
+        [data-theme="dark"] .format-card.featured { border-color: var(--primary); }
+        .format-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 0.75rem; font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+            width: fit-content;
+        }
+        .format-title { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: var(--space-xs); }
+        .format-duration {
+            font-family: var(--font-heading);
+            font-size: 2rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-md);
+        }
+        .format-duration small {
+            display: block;
+            font-size: 0.85rem; font-weight: 500;
+            -webkit-text-fill-color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        .format-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-md); border-top: 1px dashed rgba(0,0,0,0.08); padding-top: var(--space-md); }
+        .format-meta strong { color: var(--text); font-weight: 600; }
+        .format-details { list-style: none; margin-bottom: var(--space-lg); flex: 1; }
+        .format-details li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        .format-details li::before {
+            content: '\2713'; position: absolute; left: 0;
+            color: var(--primary); font-weight: 700;
+        }
+        .format-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--text);
+            margin-bottom: var(--space-md);
+        }
+        .format-price small { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); }
+
+        /* ============================================
+           Programme détaillé (3 grosses fiches)
+        ============================================ */
+        .programme { padding: var(--space-3xl) 0; position: relative; overflow: hidden; }
+        .programme-block {
+            margin-bottom: var(--space-3xl);
+            scroll-margin-top: 100px;
+            padding: var(--space-2xl);
+            background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        [data-theme="dark"] .programme-block { background: rgba(30,41,59,0.7); border-color: rgba(255,255,255,0.06); }
+        .programme-block:last-child { margin-bottom: 0; }
+        .programme-block.featured { border: 2px solid var(--primary); }
+
+        .programme-head {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-lg);
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 2px solid var(--primary);
+        }
+        .programme-num {
+            font-family: var(--font-heading); font-weight: 800;
+            font-size: 1.4rem;
+            width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white; border-radius: var(--radius);
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+        .programme-head h3 { font-size: 1.6rem; margin: 0; }
+        .programme-head .programme-sub { font-size: 0.95rem; color: var(--text-muted); margin: 0.3rem 0 0; }
+        .programme-head .programme-dur {
+            font-family: var(--font-heading);
+            font-size: 1.4rem; font-weight: 700;
+            padding: 0.5rem 1rem;
+            background: rgba(13,148,136,0.1);
+            color: var(--primary-dark);
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        [data-theme="dark"] .programme-head .programme-dur { background: rgba(13,148,136,0.22); color: var(--primary-light); }
+
+        .programme-pitch {
+            font-size: 1.05rem; line-height: 1.7;
+            color: var(--text-light); margin-bottom: var(--space-xl);
+            font-style: italic;
+            border-left: 3px solid var(--primary);
+            padding-left: var(--space-md);
+        }
+
+        .programme-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            padding: var(--space-md);
+            background: rgba(13,148,136,0.04);
+            border-radius: var(--radius);
+            font-size: 0.92rem;
+        }
+        [data-theme="dark"] .programme-meta { background: rgba(13,148,136,0.1); }
+        .programme-meta div strong { display: block; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; color: var(--primary-dark); }
+        [data-theme="dark"] .programme-meta div strong { color: var(--primary-light); }
+        .programme-meta div span { color: var(--text-light); }
+
+        .programme-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .module-card {
+            padding: var(--space-md) var(--space-lg);
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .module-card { background: rgba(15,23,42,0.5); border-color: rgba(255,255,255,0.06); }
+        .module-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+        .module-card-head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 0.5rem; flex-wrap: wrap;
+            margin-bottom: var(--space-sm);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] .module-card-head { border-color: rgba(255,255,255,0.1); }
+        .module-card-name { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--text); }
+        .module-card-tag {
+            font-size: 0.72rem; font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            background: rgba(13,148,136,0.1);
+            color: var(--primary-dark); border-radius: 999px;
+            white-space: nowrap;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        [data-theme="dark"] .module-card-tag { background: rgba(13,148,136,0.22); color: var(--primary-light); }
+        .module-card ul { list-style: none; margin: 0; padding: 0; }
+        .module-card ul li {
+            font-size: 0.88rem; color: var(--text-light);
+            padding-left: 1rem; position: relative;
+            margin-bottom: 0.35rem; line-height: 1.5;
+        }
+        .module-card ul li::before { content: '\25B8'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+        .module-card ul li strong { color: var(--text); font-weight: 600; }
+
+        .programme-deliverables {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+        }
+        [data-theme="dark"] .programme-deliverables { border-color: rgba(255,255,255,0.1); }
+        .programme-deliverables div { font-size: 0.9rem; color: var(--text-light); }
+        .programme-deliverables div strong {
+            display: block; color: var(--primary-dark);
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+        [data-theme="dark"] .programme-deliverables div strong { color: var(--primary-light); }
+
+        /* ============================================
+           Modalités
+        ============================================ */
+        .modalites { padding: var(--space-3xl) 0; background: var(--bg-alt); }
+        .modalites-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-lg); }
+        .modalite-item { text-align: left; padding: var(--space-lg); transition: var(--transition); }
+        .modalite-item:hover { transform: translateY(-4px); }
+        .modalite-icon {
+            width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(13,148,136,0.1), rgba(79,70,229,0.08));
+            border-radius: 50%; margin-bottom: var(--space-md);
+            font-size: 1.6rem; transition: var(--transition);
+        }
+        .modalite-item:hover .modalite-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scale(1.08);
+        }
+        .modalite-item h4 { margin-bottom: 0.3rem; font-size: 1.05rem; }
+        .modalite-item p { font-size: 0.92rem; color: var(--text-light); }
+
+        /* ============================================
+           FAQ
+        ============================================ */
+        .faq { padding: var(--space-3xl) 0; }
+        .faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: var(--space-md); }
+        .faq-item {
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+        }
+        [data-theme="dark"] .faq-item { background: rgba(30,41,59,0.7); border-color: rgba(255,255,255,0.06); }
+        .faq-item summary {
+            cursor: pointer; font-weight: 600; font-size: 1.05rem;
+            display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm);
+            list-style: none;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--primary); transition: transform 0.2s; }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item p { margin-top: var(--space-sm); font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+
+        /* ============================================
+           CTA Contact
+        ============================================ */
+        .form-cta { padding: var(--space-3xl) 0; text-align: center; }
+        .form-cta-actions {
+            display: flex; justify-content: center;
+            gap: var(--space-sm); flex-wrap: wrap;
+            margin-bottom: var(--space-xl);
+        }
+        .form-contact-info { display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap; }
+        .form-contact-item { display: flex; align-items: center; gap: var(--space-xs); font-size: 0.9375rem; color: var(--text-light); }
+        .form-contact-item svg { width: 18px; height: 18px; color: var(--primary); }
+        .form-contact-item a { color: var(--primary); font-weight: 600; }
+
+        /* ============================================
+           Print bar
+        ============================================ */
+        .print-bar {
+            position: fixed; bottom: var(--space-md); right: var(--space-md);
+            z-index: 90; display: flex; gap: 0.5rem;
+        }
+        .print-bar button {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1rem;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 999px;
+            font-size: 0.85rem; font-weight: 600;
+            color: var(--text);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .print-bar button:hover {
+            background: var(--primary); color: white;
+            transform: translateY(-2px);
+        }
+        .print-bar button svg { width: 16px; height: 16px; }
+        [data-theme="dark"] .print-bar button { background: rgba(30,41,59,0.95); color: white; border-color: rgba(255,255,255,0.1); }
+
+        /* ============================================
+           Responsive
+        ============================================ */
+        @media (max-width: 968px) {
+            .form-hero-grid { grid-template-columns: 1fr; }
+            .form-visual { order: -1; }
+            .form-visual-card { transform: none; max-width: 100%; }
+            .form-hero-stats { flex-direction: column; gap: var(--space-md); }
+            .programme-head { grid-template-columns: auto 1fr; }
+            .programme-head .programme-dur { grid-column: 1 / -1; justify-self: start; }
+        }
+        @media (max-width: 768px) {
+            .form-hero { min-height: auto; padding: calc(80px + var(--space-2xl)) 0 var(--space-2xl); }
+            .form-hero-cta { flex-direction: column; }
+            .form-hero-cta .btn { width: 100%; }
+            .form-contact-info { flex-direction: column; align-items: center; gap: var(--space-sm); }
+            .print-bar { bottom: 0.5rem; right: 0.5rem; }
+            .programme-block { padding: var(--space-lg); }
+        }
+
+        /* ============================================
+           @media print
+        ============================================ */
+        @media print {
+            @page { margin: 1.2cm 1.5cm; size: A4; }
+            html, body { background: white !important; color: #000 !important; font-size: 10.5pt; }
+
+            .header, .footer, .form-hero-cta, .form-cta-actions,
+            .print-bar, .announce-bar, .cursor-glow,
+            .nav-actions, .nav-toggle, .shape,
+            .form-hero::before, .these::before, .formats::after,
+            .hero-bg { display: none !important; }
+
+            .form-hero { padding: 0 0 1.5rem 0 !important; min-height: auto; }
+            .form-hero-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .form-visual-card { transform: none !important; max-width: 100% !important; box-shadow: none !important; background: #f5f5f5 !important; color: #000 !important; }
+            .form-visual-card h3, .form-visual-list li { color: #000 !important; }
+            .form-visual-list li svg { color: #555 !important; }
+            .form-badge, .format-badge { background: #f0fdfa !important; color: #0d9488 !important; border-color: #0d9488 !important; }
+
+            section { padding: 1.2rem 0 !important; background: white !important; page-break-inside: avoid; }
+            .these-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem !important; }
+            .these-col, .force-card, .format-card, .modalite-item, .programme-block, .module-card, .faq-item {
+                box-shadow: none !important; border: 1px solid #ddd !important;
+                background: #fafafa !important; padding: 0.8rem !important;
+                page-break-inside: avoid;
+            }
+            .programme-block { padding: 1rem !important; margin-bottom: 1.2rem !important; }
+            .programme-modules { grid-template-columns: 1fr 1fr !important; gap: 0.6rem !important; }
+            .forces-grid, .formats-grid, .modalites-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem !important; }
+
+            .force-card::before, .format-card::before { display: none !important; }
+            .force-icon, .modalite-icon, .programme-num { background: #0d9488 !important; color: white !important; box-shadow: none !important; }
+            .format-card .format-duration, .programme-head .programme-dur, .module-card-tag {
+                background: #f0fdfa !important; -webkit-text-fill-color: #0d9488 !important; color: #0d9488 !important;
+            }
+            .form-hero-content h1 .highlight { background: none !important; -webkit-text-fill-color: #0d9488 !important; color: #0d9488 !important; }
+
+            .faq-item summary::after { content: '' !important; display: none !important; }
+            details:not([open]) > *:not(summary) { display: block !important; } /* déplie au print */
+
+            a { color: #0d9488 !important; text-decoration: underline !important; }
+            a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555; }
+            a[href^="#"]:after, a[href^="mailto:"]:after { content: ""; }
+
+            h1 { font-size: 22pt !important; page-break-after: avoid; }
+            h2 { font-size: 16pt !important; page-break-after: avoid; }
+            h3 { font-size: 13pt !important; page-break-after: avoid; }
+            h4 { font-size: 11pt !important; page-break-after: avoid; }
+
+            .print-footer-url { display: block !important; font-size: 8pt; color: #888; text-align: center; }
+        }
+        .print-footer-url { display: none; }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <span class="logo-chevron">&lt;/&gt;</span>
+                <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="/panorama-ess">Baromètre 2026</a></li>
+                <li><a href="/formations" aria-current="page">Formations</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="qui-suis-je.html">Qui suis-je</a></li>
+                <li><a href="#contact-form" class="btn btn-nav">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-toggle" id="dark-toggle" aria-label="Basculer le mode sombre">
+                    <svg class="dark-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="dark-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+    <!-- ============================================
+         HERO
+    ============================================ -->
+    <section class="form-hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+
+        <div class="container form-hero-grid">
+            <div class="form-hero-content">
+                <div class="form-badge" data-reveal="up">
+                    <span>&#129504;</span>
+                    <span>Formation — Une seule promesse, trois durées</span>
+                </div>
+                <h1 data-reveal="up" data-delay="1">
+                    Penser et travailler<br>
+                    dans <span class="highlight">un monde d'IA</span>.
+                </h1>
+                <p class="form-intro" data-reveal="up" data-delay="2">
+                    Une formation qui marche sur deux jambes&nbsp;: <strong>la réflexion critique</strong> (qu'est-ce que ces machines font à nos métiers, à nos pensées, à nos décisions&nbsp;?) et <strong>l'usage pratique</strong> (comment s'en servir sans se faire bouffer). Trois durées au choix selon l'ambition&nbsp;: <strong>1&nbsp;jour</strong> pour le déclic, <strong>30&nbsp;heures</strong> pour apprivoiser, <strong>10&nbsp;jours</strong> pour installer une pratique collective.
+                </p>
+                <div class="form-hero-cta" data-reveal="up" data-delay="3">
+                    <a href="#formats" class="btn btn-primary">Voir les 3 formats</a>
+                    <a href="#contact-form" class="btn btn-secondary">Demander un devis</a>
+                </div>
+                <div class="form-hero-stats" data-reveal="up" data-delay="4">
+                    <div class="stat">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">programme,<br>3 ambitions</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-label">de pratique<br>sur vos vrais dossiers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">slide<br>récité à voix haute</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-visual" data-reveal="scale">
+                <div class="form-visual-card">
+                    <h3>Ce que vos équipes en retirent</h3>
+                    <ul class="form-visual-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Une vision lucide de ce que l'IA change vraiment
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                            Des réflexes pour ne pas s'atrophier
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Des gestes IA utilisables dès le lundi suivant
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+                            Une bibliothèque de prompts, fiches, méthodes
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            Un interlocuteur, pas un PowerPoint
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <!-- ============================================
+         LA THÈSE
+    ============================================ -->
+    <section class="these" id="these">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Pourquoi cette formation</span>
+                <h2 class="section-title">Deux écueils symétriques. Un chemin de crête.</h2>
+                <p class="section-subtitle">L'IA générative ne se résume ni à l'évangélisation enthousiaste, ni au refus de principe. Les deux postures se trompent — et coûtent cher.</p>
+            </div>
+
+            <div class="these-grid">
+                <div class="these-col danger" data-reveal="up" data-delay="0">
+                    <h3><span class="these-marker">A</span> L'enthousiasme bête</h3>
+                    <p>On délègue tout. On copie-colle sans relire. On laisse l'outil rédiger nos décisions, écrire nos analyses, formuler nos relations.</p>
+                    <p>Ce qui arrive&nbsp;: on perd la main, on perd la chair, on perd la responsabilité. À la fin, ce n'est plus nous qui pensons — et notre travail s'aplatit.</p>
+                </div>
+
+                <div class="these-col danger" data-reveal="up" data-delay="1">
+                    <h3><span class="these-marker">B</span> Le refus de principe</h3>
+                    <p>«&nbsp;Ce n'est pas pour nous&nbsp;». On regarde passer le train. On laisse l'IA aux autres — aux concurrents, aux jeunes, aux geeks.</p>
+                    <p>Ce qui arrive&nbsp;: on prend du retard sans même savoir sur quoi, on s'épuise sur des tâches dont d'autres se déchargent, on ne comprend plus le monde qu'on habite.</p>
+                </div>
+            </div>
+
+            <p class="these-conclusion" data-reveal="up" data-delay="2">
+                Le chemin de crête, c'est&nbsp;: <strong>comprendre ce que ces machines sont capables de faire et de ne pas faire</strong>, savoir les utiliser pour de vrai sur ses propres dossiers, et garder intacts les gestes de pensée qui font le prix du travail humain.
+            </p>
+
+            <div data-reveal="up" data-delay="3" style="max-width: 760px; margin: var(--space-lg) auto 0; padding: var(--space-md) var(--space-lg); background: rgba(13,148,136,0.06); border-left: 3px solid var(--primary); border-radius: 0 var(--radius) var(--radius) 0;">
+                <strong style="color: var(--primary-dark); font-family: var(--font-heading); display: block; margin-bottom: 0.4rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;">Fil rouge — partie théorique &amp; réflexive</strong>
+                <p style="margin: 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.7;">
+                    Tous les formats intègrent un temps de <strong>réflexion sur l'IA elle-même</strong>&nbsp;: d'où viennent ces machines (de Turing aux transformers), comment elles fonctionnent vraiment (réseaux neuronaux, attention, scaling laws), où va la recherche (alignement, course aux modèles, sécurité), ce que la philosophie a à dire de tout ça (comprendre, raisonner, créer&nbsp;— et ce qui résiste à la machine). Plus le format est long, plus la part théorique est substantielle. La pratique sans la pensée ne vaut rien&nbsp;; la pensée sans la pratique non plus.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         POURQUOI MOI
+    ============================================ -->
+    <section class="forces" id="pourquoi">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Le formateur</span>
+                <h2 class="section-title">Un praticien qui code, audite, écrit — et forme.</h2>
+                <p class="section-subtitle">Pas un consultant qui découvre votre métier le matin du stage, pas un évangéliste qui vend un futur radieux. Quelqu'un qui utilise ces outils chaque jour pour livrer du travail réel.</p>
+            </div>
+
+            <div class="forces-grid">
+                <div class="force-card" data-reveal="up" data-delay="0">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <h3>Praticien réel</h3>
+                    <p>J'écris, je code, j'audite, je rédige avec ces outils chaque jour, pour de vrais clients. Pas de démos de salon&nbsp;: ce que je montre, je l'utilise en prod.</p>
+                </div>
+
+                <div class="force-card" data-reveal="up" data-delay="1">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></div>
+                    <h3>Formation Polytechnique</h3>
+                    <p>Ingénieur X, spécialisé en cryptographie. Capable d'expliquer comment ça marche pour de bon, sans mystifier ni démystifier de travers.</p>
+                </div>
+
+                <div class="force-card" data-reveal="up" data-delay="2">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                    <h3>Catalogue déjà rodé</h3>
+                    <p>Formation Claude livrée à <strong>LuFilms</strong>, formation IA pour l'ESS, cursus IA niveau école d'ingénieur (3AINT). Pas une première promotion, des supports éprouvés.</p>
+                </div>
+
+                <div class="force-card" data-reveal="up" data-delay="3">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                    <h3>Stack agnostique</h3>
+                    <p>Claude, ChatGPT, Mistral, Le Chat, Gemini, Llama local&nbsp;: je connais les forces et les faiblesses de chacun. L'outil suit le besoin, jamais l'inverse.</p>
+                </div>
+
+                <div class="force-card" data-reveal="up" data-delay="4">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Souveraineté en pratique</h3>
+                    <p>Sessions distancielles sur BigBlueButton ou Jitsi (jamais Zoom ni Teams). Vos données ne servent jamais à entraîner un modèle. Pas de discours qu'on ne pratique pas.</p>
+                </div>
+
+                <div class="force-card" data-reveal="up" data-delay="5">
+                    <div class="force-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                    <h3>Transfert, pas dépendance</h3>
+                    <p>Chaque module livre une fiche pédagogique en CC-BY-SA, une bibliothèque de prompts, un référent interne formé. À la fin, vous n'avez plus besoin de moi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LES 3 FORMATS
+    ============================================ -->
+    <section class="formats" id="formats">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Les 3 formats</span>
+                <h2 class="section-title">Une durée pour chaque ambition</h2>
+                <p class="section-subtitle">Même programme, trois échelles. Du déclic d'une journée au parcours sur six mois. Les formats peuvent s'enchaîner&nbsp;: souvent, le 1 jour sert de cadrage avant de lancer un 30 h ou un 10 jours.</p>
+            </div>
+
+            <div class="formats-grid">
+                <!-- F1 -->
+                <div class="format-card" data-reveal="up" data-delay="0">
+                    <span class="format-badge">Déclic</span>
+                    <h3 class="format-title">Format 1 jour</h3>
+                    <div class="format-duration">7 h<small>une journée en présentiel ou distanciel</small></div>
+                    <div class="format-meta">
+                        <strong>Pour qui&nbsp;:</strong> équipe entière, COMEX, CA, séminaire.<br>
+                        <strong>Objectif&nbsp;:</strong> partager une vision, repartir avec 5 gestes utilisables.<br>
+                        <strong>Effectif&nbsp;:</strong> jusqu'à 15 personnes.
+                    </div>
+                    <ul class="format-details">
+                        <li>Démos en direct, sans triche</li>
+                        <li>Ateliers sur vos vrais dossiers</li>
+                        <li>Méthode de prompt + hygiène cognitive</li>
+                        <li>10 prompts adaptés à votre métier</li>
+                        <li>Plan d'adoption à 30 jours</li>
+                        <li>Attestation de participation</li>
+                    </ul>
+                    <div class="format-price">À partir de 500&nbsp;&euro; <small>HT — pour le groupe</small></div>
+                    <a href="#prog-1j" class="btn btn-secondary" style="width:100%;justify-content:center;">Programme détaillé &darr;</a>
+                </div>
+
+                <!-- F2 -->
+                <div class="format-card featured" data-reveal="up" data-delay="1">
+                    <span class="format-badge">Apprivoiser</span>
+                    <h3 class="format-title">Format 30 heures</h3>
+                    <div class="format-duration">30 h<small>≈ 4 jours, étalés sur 4 à 6 semaines</small></div>
+                    <div class="format-meta">
+                        <strong>Pour qui&nbsp;:</strong> équipes opérationnelles qui veulent maîtriser durablement.<br>
+                        <strong>Objectif&nbsp;:</strong> ancrer une culture commune + 3 à 5 automatisations par participant.<br>
+                        <strong>Effectif&nbsp;:</strong> 6 à 10 personnes.
+                    </div>
+                    <ul class="format-details">
+                        <li>4 journées équilibrées réflexion / pratique</li>
+                        <li>Travail intersessions sur vos dossiers</li>
+                        <li>Bibliothèque collective de prompts</li>
+                        <li>Charte d'usage rédigée ensemble</li>
+                        <li>Évaluation formative et certificative</li>
+                        <li>Conforme aux critères Qualiopi</li>
+                    </ul>
+                    <div class="format-price">À partir de 2&nbsp;500&nbsp;&euro; <small>HT — pour le groupe</small></div>
+                    <a href="#prog-30h" class="btn btn-primary" style="width:100%;justify-content:center;">Programme détaillé &darr;</a>
+                </div>
+
+                <!-- F3 -->
+                <div class="format-card" data-reveal="up" data-delay="2">
+                    <span class="format-badge">Parcours</span>
+                    <h3 class="format-title">Format 10 jours</h3>
+                    <div class="format-duration">70 h<small>≈ 10 jours, étalés sur 3 à 6 mois</small></div>
+                    <div class="format-meta">
+                        <strong>Pour qui&nbsp;:</strong> structures qui veulent installer durablement une culture IA.<br>
+                        <strong>Objectif&nbsp;:</strong> passer d'usages individuels improvisés à une pratique collective réfléchie.<br>
+                        <strong>Effectif&nbsp;:</strong> équipe complète (4 à 12 personnes).
+                    </div>
+                    <ul class="format-details">
+                        <li>5 modules + audit initial</li>
+                        <li>Mentorat individuel : 3 entretiens 1 h</li>
+                        <li>Cellule asynchrone entre sessions</li>
+                        <li>Charte et gouvernance livrées</li>
+                        <li>Mesure d'impact à 90 et 180 jours</li>
+                        <li>Plan «&nbsp;an 2&nbsp;» en clôture</li>
+                    </ul>
+                    <div class="format-price">À partir de 4&nbsp;000&nbsp;&euro; <small>HT — audit initial inclus</small></div>
+                    <a href="#prog-10j" class="btn btn-secondary" style="width:100%;justify-content:center;">Programme détaillé &darr;</a>
+                </div>
+            </div>
+
+            <p style="text-align:center; max-width:760px; margin: var(--space-xl) auto 0; font-size:0.95rem; color: var(--text-muted); font-style: italic;" data-reveal="up">
+                Tarifs indicatifs pour une structure classique. Grille ajustée selon le contexte (effectifs, taille, distanciel/présentiel, lieu, accessibilité). Devis personnalisé sans engagement.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROGRAMME DÉTAILLÉ
+    ============================================ -->
+    <section class="programme" id="programme">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Programme détaillé</span>
+                <h2 class="section-title">Ce qui se passe vraiment dans la salle</h2>
+                <p class="section-subtitle">Trois programmes autonomes, dans l'ordre du temps disponible. Chacun se suffit à lui-même&nbsp;: pas de pré-requis du 1&nbsp;jour pour faire le 30&nbsp;heures.</p>
+            </div>
+
+            <!-- ===== Programme 1 jour ===== -->
+            <article class="programme-block" id="prog-1j">
+                <header class="programme-head">
+                    <div class="programme-num">1J</div>
+                    <div>
+                        <h3>Le déclic — 1 journée</h3>
+                        <p class="programme-sub">Un séminaire d'équipe, un CA, un COMEX&nbsp;: partir à 9 h sceptiques, repartir à 17 h avec une vision partagée et des gestes prêts à l'emploi.</p>
+                    </div>
+                    <span class="programme-dur">7 h</span>
+                </header>
+
+                <p class="programme-pitch">
+                    On consacre la matinée à <em>penser</em> (qu'est-ce que ces machines, qu'est-ce qu'elles changent, qu'est-ce qu'on en attend ou redoute&nbsp;?) et l'après-midi à <em>faire</em> (méthode de prompt, 5 cas concrets, hygiène de l'usage). Pas de magie&nbsp;: une journée bien remplie qui produit du déclic chez tout le monde.
+                </p>
+
+                <div class="programme-meta">
+                    <div><strong>Public</strong><span>Tout public, à partir de la direction. Aucune compétence technique requise.</span></div>
+                    <div><strong>Prérequis</strong><span>Un ordinateur portable et un compte IA gratuit (créé en début de séance si besoin).</span></div>
+                    <div><strong>Effectif</strong><span>De 6 à 15 personnes. Au-delà, sessions parallèles.</span></div>
+                    <div><strong>Modalités</strong><span>Présentiel (Île-de-France ou sur site) ou distanciel BBB/Jitsi.</span></div>
+                </div>
+
+                <div class="programme-modules">
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">Matinée — Penser</span>
+                            <span class="module-card-tag">3 h</span>
+                        </div>
+                        <ul>
+                            <li><strong>Ce qui change vraiment.</strong> Ce que l'IA fait bien, mal, jamais. Pourquoi.</li>
+                            <li><strong>Repères théoriques.</strong> D'où viennent ces machines (de Turing aux transformers), comment elles fonctionnent vraiment, où va la recherche (course aux modèles, alignement).</li>
+                            <li><strong>Démos en direct.</strong> Trois tâches sur Claude / ChatGPT / Mistral — dont une qui tourne mal, exprès.</li>
+                            <li><strong>Tour de table.</strong> Où en sommes-nous collectivement&nbsp;? Niveau, peurs, espoirs, déjà-vu.</li>
+                            <li><strong>Cadre &amp; risques.</strong> Hallucinations, RGPD, propriété, biais, dépendance — l'essentiel en 30 min.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">Après-midi — Faire</span>
+                            <span class="module-card-tag">4 h</span>
+                        </div>
+                        <ul>
+                            <li><strong>Anatomie d'un bon prompt.</strong> Contexte, format, exemple, vérification. Méthode reproductible.</li>
+                            <li><strong>5 cas concrets.</strong> Au choix du groupe&nbsp;: synthèse, courrier, traduction, comparaison de documents, brainstorming structuré.</li>
+                            <li><strong>Hygiène intellectuelle.</strong> Fact-checking, citations, ce qu'on ne donne jamais à un LLM, traces écrites.</li>
+                            <li><strong>Plan d'adoption 30 jours.</strong> 3 actions concrètes par participant, calendrier, référent.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="programme-deliverables">
+                    <div><strong>Livrables</strong>Fiche mémo PDF, bibliothèque de 10 prompts adaptés à votre métier, plan d'adoption 30 jours, attestation de participation.</div>
+                    <div><strong>Évaluation</strong>Quiz d'entrée et de sortie, ateliers évalués à chaud, restitution collective.</div>
+                    <div><strong>Tarif</strong>À partir de 500&nbsp;&euro; HT pour le groupe (jusqu'à 15 personnes).</div>
+                </div>
+            </article>
+
+            <!-- ===== Programme 30 heures ===== -->
+            <article class="programme-block featured" id="prog-30h">
+                <header class="programme-head">
+                    <div class="programme-num">30H</div>
+                    <div>
+                        <h3>Apprivoiser — 30 heures</h3>
+                        <p class="programme-sub">Quatre journées équilibrées entre compréhension et pratique, étalées sur 4 à 6 semaines pour laisser le temps à l'apprentissage de s'ancrer.</p>
+                    </div>
+                    <span class="programme-dur">30 h</span>
+                </header>
+
+                <p class="programme-pitch">
+                    On prend le temps. Comprendre sans devenir tech. Construire ses usages au lieu d'imiter ceux des autres. Installer des réflexes de vigilance qui protègent de l'atrophie. Repartir avec des automatisations qui tiennent, et la méthode pour en construire d'autres.
+                </p>
+
+                <div class="programme-meta">
+                    <div><strong>Public</strong><span>Équipes opérationnelles, encadrement intermédiaire, professions intellectuelles.</span></div>
+                    <div><strong>Prérequis</strong><span>Aucun, hors usage courant d'un ordinateur et d'un navigateur.</span></div>
+                    <div><strong>Effectif</strong><span>6 à 10 personnes. Pédagogie active à effectif maîtrisé.</span></div>
+                    <div><strong>Modalités</strong><span>Mix présentiel/distanciel possible. Intersessions encadrées (≈ 6 h/semaine).</span></div>
+                </div>
+
+                <div class="programme-modules">
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">J1 — Comprendre &amp; situer</span>
+                            <span class="module-card-tag">7 h</span>
+                        </div>
+                        <ul>
+                            <li><strong>Histoire courte.</strong> De Turing aux transformers, des hivers de l'IA à la révolution 2022. Ce qui a vraiment changé, ce qui n'a pas changé.</li>
+                            <li><strong>Comment ça marche, sans maths.</strong> Tokens, attention, génération, contexte. Pourquoi ça hallucine, pourquoi c'est inéluctable.</li>
+                            <li><strong>Panorama 2026.</strong> Claude, ChatGPT, Mistral, Le Chat, Llama local. Quel modèle pour quoi.</li>
+                            <li><strong>Course aux modèles &amp; alignement.</strong> Scaling laws, RLHF, sécurité&nbsp;: ce qui se prépare et pourquoi ça vous concerne.</li>
+                            <li><strong>Cadre.</strong> Coût caché, RGPD, propriété intellectuelle, droit d'auteur.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">J2 — Penser avec l'IA, pas à sa place</span>
+                            <span class="module-card-tag">7 h</span>
+                        </div>
+                        <ul>
+                            <li><strong>Détour philosophique.</strong> Qu'est-ce que comprendre, raisonner, créer pour une machine&nbsp;? Symbolique vs statistique&nbsp;: deux philosophies de la connaissance qui s'affrontent.</li>
+                            <li><strong>Hygiène cognitive.</strong> Ne pas externaliser la pensée. Méthodes concrètes pour rester celui qui décide.</li>
+                            <li><strong>Dialoguer mieux.</strong> La conversation comme méthode, l'itération, le challenge réciproque.</li>
+                            <li><strong>Évaluer une réponse.</strong> Critères de qualité, fact-checking, sources, citations vérifiables.</li>
+                            <li><strong>Atelier.</strong> Un participant apporte un vrai dossier, on travaille en collectif sous les yeux du groupe.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">J3 — Construire son usage</span>
+                            <span class="module-card-tag">7 h</span>
+                        </div>
+                        <ul>
+                            <li>Prompt engineering avancé&nbsp;: structure, exemples, sortie contrainte, comparaison de modèles.</li>
+                            <li>Workflows quotidiens&nbsp;: préparation de réunion, compte-rendu, synthèse, courrier, analyse de document long.</li>
+                            <li>Intégrations légères&nbsp;: Drive ou Nextcloud + LLM, n8n niveau 1, raccourcis sur le poste.</li>
+                            <li>Construction d'une bibliothèque personnelle de prompts (chacun repart avec la sienne).</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">J4 — Garder le cap</span>
+                            <span class="module-card-tag">7 h</span>
+                        </div>
+                        <ul>
+                            <li>Rédaction collective d'une charte d'usage&nbsp;: ce qu'on fait, ce qu'on ne fait pas, ce qu'on signale.</li>
+                            <li>Protocole de relecture et de traçabilité de la production IA.</li>
+                            <li>Risques&nbsp;: prompt injection, fuite de données, dépendance, atrophie, conformité.</li>
+                            <li>Plan d'action&nbsp;: 3 automatisations à déployer, leur cycle de vie, qui en est responsable.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="programme-deliverables">
+                    <div><strong>Intersessions</strong>≈ 6 h/semaine de pratique encadrée + cellule asynchrone (Mattermost ou e-mail).</div>
+                    <div><strong>Évaluation</strong>Quiz d'entrée, exercices intersessions évalués, livrable final (3 automatisations + mini-essai &laquo;&nbsp;ce que j'ai appris&nbsp;&raquo;).</div>
+                    <div><strong>Livrables</strong>Supports, bibliothèque de prompts, charte d'usage, fiches méthodes, protocole de relecture. Tout en CC-BY-SA.</div>
+                    <div><strong>Tarif</strong>À partir de 2&nbsp;500&nbsp;&euro; HT pour le groupe (jusqu'à 10 personnes). Conforme aux critères Qualiopi.</div>
+                </div>
+            </article>
+
+            <!-- ===== Programme 10 jours ===== -->
+            <article class="programme-block" id="prog-10j">
+                <header class="programme-head">
+                    <div class="programme-num">10J</div>
+                    <div>
+                        <h3>Le parcours — 10 jours sur 3 à 6 mois</h3>
+                        <p class="programme-sub">Un parcours d'équipe pour passer d'usages individuels improvisés à une pratique collective réfléchie, mesurée et gouvernée.</p>
+                    </div>
+                    <span class="programme-dur">70 h</span>
+                </header>
+
+                <p class="programme-pitch">
+                    Format le plus engageant&nbsp;: on n'enseigne pas seulement, on accompagne. Audit, culture commune, pratique, gouvernance, bilan. À l'arrivée, un référent interne est formé, une charte est en vigueur, et la structure mesure ce que l'IA lui apporte vraiment — coûts, qualité, satisfaction, risques évités.
+                </p>
+
+                <div class="programme-meta">
+                    <div><strong>Public</strong><span>Une équipe complète ou une fonction transverse (direction + opérations).</span></div>
+                    <div><strong>Prérequis</strong><span>Engagement de la direction sur la durée du parcours et accès aux dossiers réels.</span></div>
+                    <div><strong>Effectif</strong><span>4 à 12 personnes. Mentorat individuel inclus.</span></div>
+                    <div><strong>Modalités</strong><span>Hybride privilégié&nbsp;: présentiel sur les jalons, distanciel BBB/Jitsi entre les sessions.</span></div>
+                </div>
+
+                <div class="programme-modules">
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">M1 — Diagnostic</span>
+                            <span class="module-card-tag">J1-J2</span>
+                        </div>
+                        <ul>
+                            <li>Audit individuel et collectif des usages réels (et fantasmés) de l'IA dans l'équipe.</li>
+                            <li>Cartographie des tâches&nbsp;: où l'IA aide, où elle nuit, où elle est neutre.</li>
+                            <li>Cartographie des risques métier&nbsp;: RGPD, biais, qualité, image, dépendance.</li>
+                            <li>Restitution direction + alignement des objectifs du parcours.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">M2 — Culture commune &amp; fondements</span>
+                            <span class="module-card-tag">J3-J4</span>
+                        </div>
+                        <ul>
+                            <li><strong>Atelier fondamental.</strong> Qu'est-ce qu'on défend dans notre travail que l'IA ne peut pas faire&nbsp;? Pourquoi.</li>
+                            <li><strong>Histoire courte de l'IA.</strong> De Turing aux transformers, des hivers aux étés. Ce qu'on entend par «&nbsp;intelligence&nbsp;» selon les générations.</li>
+                            <li><strong>Comment ça marche vraiment.</strong> Réseaux neuronaux, attention, scaling laws — sans maths mais sans cacher la mécanique.</li>
+                            <li><strong>Détour philosophique.</strong> Comprendre, raisonner, créer&nbsp;: ce qu'une machine peut faire et ce qui résiste. Symbolique vs statistique.</li>
+                            <li><strong>Trajectoire et enjeux.</strong> Où va la recherche&nbsp;? Alignement, sécurité, AGI, contrôle démocratique.</li>
+                            <li><strong>Méthode &amp; hygiène.</strong> Dialogue, itération, vérification, traçabilité. Protocoles pour ne pas s'atrophier.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">M3 — Pratique</span>
+                            <span class="module-card-tag">J5-J6</span>
+                        </div>
+                        <ul>
+                            <li>Prompt engineering avancé sur cas réels apportés par chacun.</li>
+                            <li>Workflows métier&nbsp;: 3 à 5 automatisations par participant, déployées et testées.</li>
+                            <li>Bibliothèque collective de prompts versionnés, partagée et entretenue.</li>
+                            <li>Mentorat individuel&nbsp;: 3 entretiens d'1 h par participant pour lever les blocages.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">M4 — Gouvernance</span>
+                            <span class="module-card-tag">J7-J8</span>
+                        </div>
+                        <ul>
+                            <li>Rédaction collective de la charte d'usage IA de la structure.</li>
+                            <li>Protocole d'évaluation et de traçabilité de la production assistée par IA.</li>
+                            <li>Politique de données&nbsp;: ce qu'on ne donne jamais, ce qu'on chiffre, ce qu'on auto-héberge.</li>
+                            <li>Plan de formation des prochains arrivants et de mise à jour annuelle.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-card-head">
+                            <span class="module-card-name">M5 — Bilan &amp; an 2</span>
+                            <span class="module-card-tag">J9-J10</span>
+                        </div>
+                        <ul>
+                            <li>Mesure d'impact&nbsp;: temps gagné, qualité ressentie, satisfaction, risques évités.</li>
+                            <li>Bilan individuel&nbsp;: où en suis-je, quel rapport à l'IA me convient, qu'est-ce que je consens à déléguer ou pas.</li>
+                            <li>Bilan collectif&nbsp;: ce que la pratique dit de notre identité professionnelle.</li>
+                            <li>Feuille de route an 2&nbsp;: approfondissement, choix d'outils, évolution des métiers.</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card" style="border-style: dashed;">
+                        <div class="module-card-head">
+                            <span class="module-card-name">Inclus dans le parcours</span>
+                            <span class="module-card-tag">tout du long</span>
+                        </div>
+                        <ul>
+                            <li>Audit initial (1 j) + restitution à la direction.</li>
+                            <li>3 entretiens individuels de coaching par participant.</li>
+                            <li>Cellule asynchrone (Mattermost ou e-mail) entre les sessions.</li>
+                            <li>Mesure d'impact à 90 et 180 jours après la clôture.</li>
+                            <li>Restitution CA / AG en fin de parcours.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="programme-deliverables">
+                    <div><strong>Évaluation</strong>Audit d'entrée, livrables intermédiaires, bilan individuel et collectif, mesure d'impact différée.</div>
+                    <div><strong>Livrables</strong>Charte d'usage, bibliothèque de prompts, protocole de relecture, plan an 2, rapport de mesure d'impact.</div>
+                    <div><strong>Tarif</strong>À partir de 4&nbsp;000&nbsp;&euro; HT pour le groupe — audit initial inclus, mentorat inclus, mesure d'impact incluse.</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MODALITÉS
+    ============================================ -->
+    <section class="modalites" id="modalites">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Modalités</span>
+                <h2 class="section-title">Comment ça se passe en vrai</h2>
+                <p class="section-subtitle">Pas de magie. Une pédagogie active, des outils souverains, une évaluation honnête.</p>
+            </div>
+
+            <div class="modalites-grid">
+                <div class="modalite-item" data-reveal="up" data-delay="0">
+                    <div class="modalite-icon">&#127968;</div>
+                    <h4>Présentiel ou distanciel</h4>
+                    <p>Présentiel sur site, à Ivry-sur-Seine ou en salle louée. Distanciel via BigBlueButton ou Jitsi (jamais Zoom ni Teams). Hybride possible pour le 10&nbsp;jours.</p>
+                </div>
+                <div class="modalite-item" data-reveal="up" data-delay="1">
+                    <div class="modalite-icon">&#129504;</div>
+                    <h4>Pédagogie active</h4>
+                    <p>30&nbsp;% d'apport, 70&nbsp;% de pratique sur vos vrais dossiers. Ateliers, mises en situation, peer-review. Pas de PowerPoint lu à voix haute.</p>
+                </div>
+                <div class="modalite-item" data-reveal="up" data-delay="2">
+                    <div class="modalite-icon">&#9989;</div>
+                    <h4>Évaluation transparente</h4>
+                    <p>Quiz d'entrée, évaluation formative en continu, livrable certificatif en clôture. Attestation détaillée individuelle pour chaque participant.</p>
+                </div>
+                <div class="modalite-item" data-reveal="up" data-delay="3">
+                    <div class="modalite-icon">&#128218;</div>
+                    <h4>Supports en CC-BY-SA</h4>
+                    <p>Slides, fiches mémo, prompts types, scripts, modèles de chartes&nbsp;— livrés en Creative Commons. Réutilisables, modifiables, partageables.</p>
+                </div>
+                <div class="modalite-item" data-reveal="up" data-delay="4">
+                    <div class="modalite-icon">&#127937;</div>
+                    <h4>Effectifs maîtrisés</h4>
+                    <p>6 à 15 personnes selon le format. Au-delà, sessions parallèles. En dessous, séance individuelle ou coaching dédié, sur devis.</p>
+                </div>
+                <div class="modalite-item" data-reveal="up" data-delay="5">
+                    <div class="modalite-icon">&#9855;</div>
+                    <h4>Accessibilité</h4>
+                    <p>Signalez vos besoins (handicap, gardes d'enfants, contraintes horaires, langue), on adapte&nbsp;: salle, supports lisibles, sous-titres, rythme, captations. Un référent handicap est désigné.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ
+    ============================================ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Les questions qu'on me pose vraiment</h2>
+                <p class="section-subtitle">Honnêteté plutôt que langue de bois.</p>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Pourquoi un seul thème, pas un menu à la carte&nbsp;?</summary>
+                    <p>Parce que ce qui rend l'IA difficile, ce n'est pas la technique mais le rapport qu'on entretient avec elle. Saucissonner le sujet en quinze ateliers thématiques fait passer à côté de l'essentiel&nbsp;: apprendre à penser avec et à côté de ces machines. Le programme couvre tout ce qui compte au quotidien&nbsp;; les sujets pointus (RAG, agents, cybersécurité, souveraineté) font l'objet d'interventions séparées si vous en avez besoin — voir les <a href="index.html#services">services</a>.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Cybersécurité, RGPD, souveraineté&nbsp;: vous en parlez quand même&nbsp;?</summary>
+                    <p>Oui, mais dans la juste mesure&nbsp;: on aborde les risques de l'usage de l'IA (RGPD, propriété intellectuelle, données sensibles, prompt injection en sensibilisation, dépendance). Si votre besoin principal est un audit cybersécurité, un audit RGPD ou un plan de dégafamisation, ce sont des prestations dédiées — pas de la formation. On en discute en cadrage.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>C'est uniquement pour l'ESS&nbsp;?</summary>
+                    <p>Non. Le programme est conçu pour des équipes de travail intellectuel — associations, coopératives et fondations bien sûr, mais aussi PME, collectivités, cabinets, médias, structures de recherche, services internes de grands groupes. Les exemples sont adaptés à votre contexte en cadrage. L'ESS reste mon terrain de prédilection&nbsp;: l'attention à l'humain et la pédagogie ouverte y trouvent un écho particulier.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Êtes-vous certifié Qualiopi&nbsp;? Mes formations sont-elles finançables&nbsp;?</summary>
+                    <p>Le format 30&nbsp;heures est conçu pour être conforme aux critères Qualiopi (objectifs, prérequis, modalités, évaluation, accessibilité). Selon le contexte, je peux intervenir en sous-traitance d'un organisme certifié partenaire pour permettre la prise en charge OPCO (Uniformation, AKTO, OPCO EP&hellip;) ou CPF. Indiquez votre OPCO en prise de contact&nbsp;: je vous dis honnêtement si c'est jouable, plutôt que de promettre.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Le format 10 jours est-il vraiment 10 jours d'affilée&nbsp;?</summary>
+                    <p>Non, et c'est volontaire. Le parcours est étalé sur 3 à 6 mois, en général une journée par semaine ou par quinzaine, avec du travail en intersessions. C'est ce qui permet d'ancrer les apprentissages dans le quotidien et de mesurer les progrès. Un format bootcamp condensé reste possible mais déconseillé&nbsp;: peu d'effet durable.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quels outils utilisez-vous pour les sessions distancielles&nbsp;?</summary>
+                    <p>BigBlueButton ou Jitsi Meet, hébergés en France ou en UE. Aucune session via Zoom, Teams ou Google Meet. Les supports sont déposés sur un Nextcloud dédié à la formation. C'est cohérent avec une partie du discours&nbsp;: pas de souveraineté qu'on ne pratique pas.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Vos contenus servent-ils à entraîner des modèles IA&nbsp;?</summary>
+                    <p>Non, jamais. Aucun document de votre structure, aucune donnée des participants n'est utilisé pour entraîner ou améliorer un modèle. Les usages en démo/pratique passent par des API d'inférence (sans entraînement) ou des modèles ouverts auto-hébergés. C'est inscrit dans la convention de formation.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Et si on fait un essai avant de s'engager&nbsp;?</summary>
+                    <p>Bien sûr. Pour les structures qui hésitent, je propose un échange de cadrage de 30&nbsp;min (visio, gratuit) pour comprendre vos enjeux, suivi possiblement d'une démo/conférence de 2&nbsp;h auprès de votre équipe (facturée 400&nbsp;&euro; HT, déduite en cas d'engagement sur un format). C'est une bonne porte d'entrée.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA / CONTACT
+    ============================================ -->
+    <section class="form-cta" id="contact-form">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">On en parle&nbsp;?</h2>
+                <p class="section-subtitle">Échange de cadrage gratuit, sans engagement. Vous me dites où vous en êtes, je vous dis si je suis la bonne personne — et si non, qui pourrait l'être.</p>
+            </div>
+
+            <div class="form-cta-actions" data-reveal="up" data-delay="1">
+                <a href="mailto:contact@unjouruneapp.com?subject=Formation%20%E2%80%94%20Penser%20et%20travailler%20dans%20un%20monde%20d'IA" class="btn btn-primary">Demander un devis</a>
+                <a href="https://www.linkedin.com/in/emmanuel-pinglier-449988151/" target="_blank" rel="noopener" class="btn btn-secondary">Échanger sur LinkedIn</a>
+            </div>
+
+            <div class="form-contact-info" data-reveal="up" data-delay="2">
+                <div class="form-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:contact@unjouruneapp.com">contact@unjouruneapp.com</a>
+                </div>
+                <div class="form-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Ivry-sur-Seine — France entière
+                </div>
+                <div class="form-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                    SIRET 942&nbsp;385&nbsp;311&nbsp;00017
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-chevron">&lt;/&gt;</span>
+                        <span class="logo-text">Code<span class="logo-ess">'ess</span></span>
+                    </a>
+                    <p class="footer-tagline">Numérique libre et responsable au service de l'intérêt général</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="/formations">Formations</a>
+                    <a href="/panorama-ess">Baromètre 2026</a>
+                    <a href="qui-suis-je.html">Qui suis-je</a>
+                    <a href="#contact-form">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Code'ess — par Emmanuel Pinglier — EI — SIRET 942 385 311 00017</p>
+                <p><a href="#">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Barre flottante : impression PDF -->
+    <div class="print-bar" aria-hidden="true">
+        <button type="button" onclick="window.print()" title="Imprimer ou enregistrer en PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Télécharger en PDF
+        </button>
+    </div>
+
+    <!-- URL en pied d'impression -->
+    <div class="print-footer-url">code-ess.unjouruneapp.com/formations — Formation : Penser et travailler dans un monde d'IA</div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

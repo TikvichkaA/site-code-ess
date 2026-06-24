@@ -64,6 +64,27 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Clean URL rewrites (200 = serve sans redirect, URL reste propre)
+[[redirects]]
+  from = "/formations"
+  to = "/formations.html"
+  status = 200
+
+[[redirects]]
+  from = "/qui-suis-je"
+  to = "/qui-suis-je.html"
+  status = 200
+
+[[redirects]]
+  from = "/offre-cci"
+  to = "/offre-cci.html"
+  status = 200
+
+[[redirects]]
+  from = "/webinaire-ia-ess"
+  to = "/webinaire-ia-ess.html"
+  status = 200
+
 # Trailing slash redirect
 [[redirects]]
   from = "/*/"

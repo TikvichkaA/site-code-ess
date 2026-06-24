@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersécurité associations & ESS — Baromètre 2026 (35 audits) | Code'ess</title>
+<meta name="description" content="Baromètre 2026 de la cybersécurité dans l'ESS : 35 audits d'associations, coopératives et fondations. Score médian, vulnérabilités, guide pratique.">
+<meta name="keywords" content="cybersécurité associations, cybersécurité ESS, audit cybersécurité association, sécurité informatique économie sociale et solidaire, baromètre 2026, vulnérabilités WordPress association">
+<meta name="author" content="Emmanuel Pinglier">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://code-ess.unjouruneapp.com/panorama-ess">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" type="text/html" href="https://code-ess.unjouruneapp.com/diagnostic-cyber-ess" title="Auto-diagnostic cybersécurité ESS (3 min)">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cybersécurité associations & ESS — Baromètre 2026 (35 audits)">
+<meta property="og:description" content="35 audits d'associations, coopératives et fondations ESS. Score médian 4,9/10, 165+ vulnérabilités, guide pratique pour reprendre le contrôle.">
+<meta property="og:url" content="https://code-ess.unjouruneapp.com/panorama-ess">
+<meta property="og:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+<meta property="og:image:alt" content="Panorama de la cybersécurité dans l'économie sociale et solidaire — Baromètre 2026">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Code'ess">
+<meta property="article:author" content="Emmanuel Pinglier">
+<meta property="article:published_time" content="2026-05-11">
+<meta property="article:section" content="Cybersécurité ESS">
+<meta property="article:tag" content="cybersécurité associations">
+<meta property="article:tag" content="ESS">
+<meta property="article:tag" content="audit sécurité">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cybersécurité associations & ESS — Baromètre 2026 (35 audits)">
+<meta name="twitter:description" content="35 audits d'associations, coopératives et fondations ESS. Score médian 4,9/10, 165+ vulnérabilités, guide pratique.">
+<meta name="twitter:image" content="https://code-ess.unjouruneapp.com/photo.jpg">
+<meta name="twitter:image:alt" content="Panorama de la cybersécurité dans l'ESS — Baromètre 2026">
+
+<!-- JSON-LD : Article (rapport / baromètre) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Report",
+  "headline": "Panorama de la cybersécurité dans l'économie sociale et solidaire — Baromètre 2026",
+  "alternativeHeadline": "Cybersécurité associations & ESS — Baromètre 2026",
+  "name": "Panorama de la cybersécurité dans l'ESS — Baromètre 2026",
+  "description": "Baromètre 2026 de la cybersécurité dans l'économie sociale et solidaire, fondé sur 35 audits pédagogiques d'associations, coopératives, fondations, SCOP, SAS à mission et établissements publics conduits entre mars et mai 2026.",
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11",
+  "inLanguage": "fr-FR",
+  "url": "https://code-ess.unjouruneapp.com/panorama-ess",
+  "mainEntityOfPage": "https://code-ess.unjouruneapp.com/panorama-ess",
+  "image": "https://code-ess.unjouruneapp.com/photo.jpg",
+  "reportNumber": "v1.1",
+  "author": {
+    "@type": "Person",
+    "name": "Emmanuel Pinglier",
+    "url": "https://code-ess.unjouruneapp.com/qui-suis-je.html",
+    "jobTitle": "Auditeur et développeur web indépendant",
+    "alumniOf": { "@type": "EducationalOrganization", "name": "École Polytechnique" }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code'ess",
+    "url": "https://code-ess.unjouruneapp.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://code-ess.unjouruneapp.com/photo.jpg"
+    }
+  },
+  "about": [
+    { "@type": "Thing", "name": "Cybersécurité" },
+    { "@type": "Thing", "name": "Économie sociale et solidaire" },
+    { "@type": "Thing", "name": "Associations" }
+  ],
+  "keywords": "cybersécurité associations, cybersécurité ESS, audit cybersécurité association, vulnérabilités WordPress, DMARC SPF DKIM association, sécurité Microsoft 365 association",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Direction, DSI, conseils d'administration et prestataires d'associations et structures de l'ESS"
+  },
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+}
+</script>
+
+<!-- JSON-LD : Dataset (chiffres clés du baromètre) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Baromètre cybersécurité ESS 2026 — chiffres clés",
+  "description": "Données agrégées issues de 35 audits pédagogiques (24 organisations principales) de structures de l'ESS conduits entre mars et mai 2026. Score médian, distribution des vulnérabilités, coûts de remédiation.",
+  "url": "https://code-ess.unjouruneapp.com/panorama-ess#chiffres-cles",
+  "creator": { "@type": "Person", "name": "Emmanuel Pinglier" },
+  "datePublished": "2026-05-11",
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "keywords": ["cybersécurité ESS", "audit association", "vulnérabilités", "score sécurité"],
+  "variableMeasured": [
+    { "@type": "PropertyValue", "name": "Score médian de posture de sécurité", "value": "4,9/10" },
+    { "@type": "PropertyValue", "name": "Vulnérabilités identifiées", "value": "165+" },
+    { "@type": "PropertyValue", "name": "Vulnérabilités critiques", "value": "15" },
+    { "@type": "PropertyValue", "name": "Vulnérabilités hautes", "value": "38" },
+    { "@type": "PropertyValue", "name": "Organisations auditées", "value": "24" },
+    { "@type": "PropertyValue", "name": "Coût médian de remédiation pour passer de 4 à 7/10", "value": "0 €" }
+  ]
+}
+</script>
+
+<!-- JSON-LD : Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Code'ess", "item": "https://code-ess.unjouruneapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Panorama cybersécurité ESS 2026", "item": "https://code-ess.unjouruneapp.com/panorama-ess" }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --paper: #faf7f2;
+    --paper-2: #f3ede4;
+    --ink: #14181f;
+    --ink-2: #2a323d;
+    --ink-3: #4a5564;
+    --ink-4: #7a8595;
+    --ink-5: #b8c0cb;
+    --rule: #d8d2c6;
+    --rule-soft: #e8e1d4;
+    --accent: #c2253c;
+    --accent-2: #8a1a2c;
+    --accent-soft: #f5d7dc;
+    --steel: #2c5f7d;
+    --steel-soft: #d6e2ea;
+    --gold: #b88a2a;
+    --crit: #c2253c;
+    --high: #e87b35;
+    --med:  #d4a82e;
+    --low:  #5a8a99;
+    --info: #8d97a3;
+    --good: #4a7c59;
+    --good-soft: #d8e4dc;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4 { font-family: "Source Serif Pro", "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -0.01em; }
+  .mono { font-family: "JetBrains Mono", Menlo, Consolas, "Courier New", monospace; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+  a:hover { border-bottom-color: var(--accent); }
+
+  /* ----- Layout ----- */
+  .layout { display: grid; grid-template-columns: 260px 1fr; max-width: 1640px; margin: 0 auto; }
+  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .sidenav { display: none; } }
+
+  .sidenav {
+    position: sticky; top: 0; align-self: start; height: 100vh;
+    padding: 32px 18px 32px 24px;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+    background: var(--paper);
+  }
+  .sidenav .brand { font-family: "Source Serif Pro", Georgia, serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .sidenav .brand-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-4); margin-bottom: 28px; }
+  .sidenav nav ol { list-style: none; padding: 0; margin: 0; counter-reset: nav; }
+  .sidenav nav li { counter-increment: nav; margin-bottom: 4px; }
+  .sidenav nav a {
+    display: block; padding: 6px 8px; font-size: 13px; color: var(--ink-3);
+    border-radius: 4px; border-bottom: none;
+  }
+  .sidenav nav a::before { content: counter(nav, decimal-leading-zero) "  "; color: var(--ink-5); font-family: "JetBrains Mono", monospace; font-size: 10px; }
+  .sidenav nav a:hover { background: var(--paper-2); color: var(--ink); }
+  .sidenav nav a.active { background: var(--ink); color: var(--paper); }
+  .sidenav nav a.active::before { color: var(--ink-5); }
+
+  main { padding: 0 64px 96px; max-width: 1180px; }
+  @media (max-width: 980px) { main { padding: 0 24px 48px; } }
+
+  /* ----- Hero ----- */
+  .hero {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 64px;
+  }
+  .hero .eyebrow {
+    display: inline-block; padding: 6px 12px; background: var(--ink); color: var(--paper);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5.5vw, 64px); line-height: 1.05; margin: 24px 0 16px;
+    color: var(--ink);
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 700; }
+  .hero .lede {
+    font-family: "Source Serif Pro", Georgia, serif;
+    font-size: 22px; line-height: 1.45; color: var(--ink-2);
+    max-width: 820px; margin: 0 0 36px;
+  }
+  .hero .meta {
+    display: flex; gap: 32px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3);
+    border-top: 1px solid var(--rule); padding-top: 20px;
+  }
+  .hero .meta div strong { display: block; color: var(--ink); font-size: 14px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ----- Stat tiles ----- */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 56px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  @media (max-width: 800px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    padding: 22px 24px 24px; border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num { font-family: "Source Serif Pro", Georgia, serif; font-size: 48px; line-height: 1; font-weight: 700; color: var(--ink); }
+  .stat .num small { font-size: 22px; color: var(--ink-3); font-weight: 400; }
+  .stat .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-top: 8px; }
+  .stat .sub { font-size: 12px; color: var(--ink-4); margin-top: 4px; }
+
+  /* ----- Sections ----- */
+  section { margin: 96px 0; scroll-margin-top: 24px; }
+  section.tight { margin: 64px 0; }
+  .section-header { margin-bottom: 32px; }
+  .section-header .num { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .section-header h2 { font-size: 36px; line-height: 1.15; margin: 8px 0 12px; color: var(--ink); }
+  .section-header .deck { font-family: "Source Serif Pro", Georgia, serif; font-size: 18px; line-height: 1.5; color: var(--ink-2); max-width: 760px; }
+
+  h3 { font-size: 22px; margin: 40px 0 16px; color: var(--ink); }
+  h4 { font-size: 16px; margin: 24px 0 10px; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  p { margin: 0 0 16px; max-width: 78ch; }
+  p.dropcap::first-letter { font-family: "Source Serif Pro", Georgia, serif; font-size: 64px; line-height: 0.9; float: left; padding: 6px 10px 0 0; font-weight: 700; color: var(--accent); }
+
+  /* ----- Tables ----- */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0 28px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  thead th { background: var(--paper-2); font-weight: 600; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--ink); }
+  tbody tr:hover { background: rgba(194, 37, 60, 0.03); }
+  table td.num, table th.num { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  table.compact td, table.compact th { padding: 6px 10px; font-size: 12px; }
+
+  .score-cell { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+  .score-cell.s-low { color: var(--crit); }
+  .score-cell.s-med { color: var(--high); }
+  .score-cell.s-ok  { color: var(--good); }
+
+  /* ----- Severity badges ----- */
+  .sev { display: inline-block; padding: 2px 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: white; border-radius: 2px; }
+  .sev.crit { background: var(--crit); }
+  .sev.high { background: var(--high); }
+  .sev.med  { background: var(--med); color: var(--ink); }
+  .sev.low  { background: var(--low); }
+  .sev.info { background: var(--info); }
+  .sev.good { background: var(--good); }
+
+  /* ----- Callouts ----- */
+  .callout {
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px; background: var(--paper-2);
+    margin: 24px 0; font-size: 15px;
+  }
+  .callout.steel { border-left-color: var(--steel); }
+  .callout.gold  { border-left-color: var(--gold); }
+  .callout.good  { border-left-color: var(--good); }
+  .callout strong { display: block; color: var(--ink); margin-bottom: 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  blockquote.pull {
+    font-family: "Source Serif Pro", Georgia, serif;
+    font-size: 24px; line-height: 1.4; font-style: italic;
+    color: var(--ink); border-left: 4px solid var(--accent);
+    padding: 8px 0 8px 24px; margin: 32px 0;
+    max-width: 780px;
+  }
+  blockquote.pull cite { display: block; font-size: 13px; color: var(--ink-3); font-style: normal; margin-top: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ----- Charts ----- */
+  .chart-frame {
+    border: 1px solid var(--rule);
+    background: white;
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 2px;
+  }
+  .chart-frame .chart-title { font-family: "Source Serif Pro", Georgia, serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
+  .chart-frame .chart-sub   { font-size: 12px; color: var(--ink-3); margin-bottom: 18px; }
+  .chart-frame .chart-source { font-size: 11px; color: var(--ink-4); margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--rule-soft); }
+
+  .bar-row { display: grid; grid-template-columns: 220px 1fr 60px; align-items: center; gap: 12px; margin: 6px 0; font-size: 13px; }
+  .bar-row .label { color: var(--ink-2); }
+  .bar-row .bar { background: var(--paper-2); height: 22px; position: relative; }
+  .bar-row .bar > span { display: block; height: 100%; background: var(--ink); transition: width .4s; }
+  .bar-row .bar.crit > span { background: var(--crit); }
+  .bar-row .bar.high > span { background: var(--high); }
+  .bar-row .bar.med  > span { background: var(--med); }
+  .bar-row .bar.low  > span { background: var(--low); }
+  .bar-row .bar.steel> span { background: var(--steel); }
+  .bar-row .bar.good > span { background: var(--good); }
+  .bar-row .val { font-family: "JetBrains Mono", monospace; text-align: right; color: var(--ink-2); font-size: 12px; }
+
+  /* histogram of scores */
+  .hist { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; align-items: end; height: 220px; padding-bottom: 28px; border-bottom: 1px solid var(--ink); margin-top: 14px; }
+  .hist .col { background: var(--ink); position: relative; min-height: 2px; }
+  .hist .col[data-score="3"], .hist .col[data-score="4"] { background: var(--crit); }
+  .hist .col[data-score="5"], .hist .col[data-score="6"] { background: var(--high); }
+  .hist .col[data-score="7"], .hist .col[data-score="8"] { background: var(--good); }
+  .hist .col[data-score="9"], .hist .col[data-score="10"] { background: var(--good); }
+  .hist .col span.tick { position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-3); }
+  .hist .col span.cnt { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink); font-weight: 700; }
+
+  /* Donut */
+  .donut-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: center; }
+  @media (max-width: 700px) { .donut-wrap { grid-template-columns: 1fr; } }
+  .legend { font-size: 13px; }
+  .legend .lg { display: grid; grid-template-columns: 14px 1fr 60px; align-items: center; gap: 10px; padding: 4px 0; border-bottom: 1px dotted var(--rule); }
+  .legend .lg:last-child { border-bottom: none; }
+  .legend .swatch { width: 14px; height: 14px; }
+  .legend .lg .v { font-family: "JetBrains Mono", monospace; text-align: right; color: var(--ink-2); font-size: 12px; }
+
+  /* Two-column blocks */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 800px) { .three-col { grid-template-columns: 1fr; } }
+
+  /* Case study cards */
+  .case {
+    border: 1px solid var(--rule);
+    padding: 24px;
+    background: white;
+    margin-bottom: 24px;
+  }
+  .case-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+  .case-head .title { font-family: "Source Serif Pro", Georgia, serif; font-size: 22px; font-weight: 700; }
+  .case-head .meta { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .case .kchain { background: var(--paper-2); padding: 14px 18px; margin: 14px 0; font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.7; }
+  .case .kchain .arrow { color: var(--accent); margin: 0 6px; }
+
+  /* Pattern cards (causes) */
+  .pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 800px) { .pattern-grid { grid-template-columns: 1fr; } }
+  .pattern {
+    border-top: 3px solid var(--accent);
+    background: white;
+    padding: 18px 20px 20px;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+  }
+  .pattern h4 { margin: 0 0 6px; text-transform: none; letter-spacing: 0; font-size: 16px; color: var(--ink); }
+  .pattern .freq { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 12px; }
+  .pattern p { font-size: 13px; margin: 0 0 10px; color: var(--ink-2); }
+  .pattern .ex { font-size: 12px; color: var(--ink-3); border-top: 1px dotted var(--rule); padding-top: 8px; margin-top: 10px; }
+
+  /* Quick-wins card */
+  .qw {
+    border: 1px solid var(--rule); background: white; margin: 14px 0; padding: 18px 22px;
+    display: grid; grid-template-columns: 60px 1fr 130px 100px; gap: 18px; align-items: center;
+  }
+  @media (max-width: 800px) { .qw { grid-template-columns: 1fr; } }
+  .qw .rank { font-family: "Source Serif Pro", Georgia, serif; font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .qw .title { font-weight: 600; color: var(--ink); font-size: 15px; }
+  .qw .desc  { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+  .qw .effort, .qw .cost { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); text-align: right; }
+  .qw .effort strong, .qw .cost strong { display: block; font-size: 14px; color: var(--ink); }
+
+  /* Self-eval matrix */
+  .matrix {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0;
+    border: 1px solid var(--ink); margin: 24px 0;
+  }
+  .matrix > div { padding: 16px 18px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 13px; }
+  .matrix > div:nth-child(4n) { border-right: none; }
+  .matrix .head { background: var(--ink); color: var(--paper); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+
+  /* Glossary */
+  dl.glossary { margin: 24px 0; }
+  dl.glossary dt { font-weight: 700; color: var(--ink); margin-top: 16px; font-size: 15px; }
+  dl.glossary dd { margin: 4px 0 12px; color: var(--ink-2); font-size: 14px; }
+
+  /* Footer */
+  footer.report-footer {
+    border-top: 2px solid var(--ink); padding: 40px 0 80px; margin-top: 80px;
+    font-size: 13px; color: var(--ink-3);
+  }
+  footer.report-footer .colophon { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+  @media (max-width: 800px) { footer.report-footer .colophon { grid-template-columns: 1fr; } }
+  footer .biggie { font-family: "Source Serif Pro", Georgia, serif; font-size: 28px; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+
+  /* Print */
+  @media print {
+    .sidenav { display: none; }
+    main { max-width: none; padding: 0; }
+    .layout { grid-template-columns: 1fr; }
+    .hero { page-break-after: always; }
+    section { page-break-inside: avoid; }
+  }
+
+  /* Tag */
+  .tag { display: inline-block; padding: 1px 7px; font-size: 11px; background: var(--paper-2); color: var(--ink-3); border: 1px solid var(--rule); margin-right: 4px; border-radius: 2px; }
+  .tag.ok { background: var(--good-soft); color: var(--good); border-color: var(--good); }
+  .tag.bad { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .tag.steel { background: var(--steel-soft); color: var(--steel); border-color: var(--steel); }
+
+  /* Heatmap (impact x exploitability) */
+  .heatmap { display: grid; grid-template-columns: 80px repeat(4, 1fr); grid-template-rows: 30px repeat(3, 70px); gap: 2px; max-width: 720px; margin: 16px 0; }
+  .heatmap .hm-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); display: flex; align-items: center; justify-content: center; font-weight: 600; }
+  .heatmap .hm-y { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-weight: 600; }
+  .heatmap .cell { padding: 8px; font-size: 12px; color: white; line-height: 1.3; }
+  .heatmap .cell.lvl4 { background: var(--crit); }
+  .heatmap .cell.lvl3 { background: var(--high); }
+  .heatmap .cell.lvl2 { background: var(--med); color: var(--ink); }
+  .heatmap .cell.lvl1 { background: var(--low); }
+  .heatmap .cell.lvl0 { background: var(--paper-2); color: var(--ink-3); }
+  .heatmap .cell strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; opacity: 0.85; }
+
+  /* TOC inline */
+  .toc-inline { columns: 2; column-gap: 32px; font-size: 14px; }
+  .toc-inline a { display: block; padding: 6px 0; border-bottom: 1px dotted var(--rule); color: var(--ink-2); }
+  .toc-inline a:hover { color: var(--accent); }
+  .toc-inline a span.idx { font-family: "JetBrains Mono", monospace; color: var(--ink-4); margin-right: 10px; font-size: 12px; }
+
+  hr.fancy {
+    border: none; border-top: 1px solid var(--rule);
+    margin: 48px auto; max-width: 200px; position: relative;
+  }
+  hr.fancy::after {
+    content: "§"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--paper); padding: 0 10px; color: var(--ink-4);
+  }
+
+  .pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { display: inline-block; padding: 3px 9px; font-size: 11px; background: var(--paper-2); color: var(--ink-2); border-radius: 12px; border: 1px solid var(--rule); }
+  .pill.bad { background: var(--accent-soft); color: var(--accent-2); border-color: var(--accent); }
+  .pill.ok  { background: var(--good-soft); color: var(--good); border-color: var(--good); }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidenav">
+    <div class="brand">Panorama ESS</div>
+    <div class="brand-sub">Baromètre cybersécurité · 2026</div>
+    <nav>
+      <ol>
+        <li><a href="#avant-propos">Avant-propos</a></li>
+        <li><a href="#chiffres-cles">Chiffres clés</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#echantillon">L'échantillon</a></li>
+        <li><a href="#photo">Photo à l'instant T</a></li>
+        <li><a href="#anatomie">Anatomie des failles</a></li>
+        <li><a href="#causes">Causes racines</a></li>
+        <li><a href="#architectures">Architectures comparées</a></li>
+        <li><a href="#tiers">Services tiers à risque</a></li>
+        <li><a href="#emblematiques">Cas emblématiques</a></li>
+        <li><a href="#guide">Guide pour les organisations</a></li>
+        <li><a href="#auto-eval">Grille d'auto-évaluation</a></li>
+        <li><a href="#glossaire">Glossaire</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <span class="eyebrow">Baromètre · 2026 · v1.1</span>
+      <h1>La cybersécurité dans l'<em>économie sociale et solidaire</em>, vue de l'intérieur.</h1>
+      <p class="lede">
+        Pendant neuf semaines, trente-cinq structures de l'ESS — associations, coopératives, SCOP, fondations, SAS à mission, établissements publics — ont vu leur surface d'attaque cartographiée et auscultée. Ce panorama compile ce que ces audits révèlent : un secteur où la conscience du risque numérique reste sous-dimensionnée par rapport à la sensibilité des données traitées, mais où des correctifs simples suffisent souvent à reprendre le contrôle.
+      </p>
+      <div class="meta">
+        <div><strong>Auteur</strong>Emmanuel Pinglier</div>
+        <div><strong>Site</strong>code-ess.unjouruneapp.com</div>
+        <div><strong>Période</strong>mars – mai 2026</div>
+        <div><strong>Échantillon</strong>35 organisations</div>
+        <div><strong>Méthode</strong>recon passive, OSINT, tests actifs sous autorisation</div>
+        <div><strong>Lecture</strong>30–40 minutes</div>
+        <div><strong>Public</strong>direction, DSI, CA, prestataires</div>
+      </div>
+    </header>
+
+    <!-- ============ STAT ROW ============ -->
+    <section id="chiffres-cles" class="tight">
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">24</div>
+          <div class="label">Organisations</div>
+          <div class="sub">de 3 à 1 000+ salariés</div>
+        </div>
+        <div class="stat">
+          <div class="num">4,9<small>/10</small></div>
+          <div class="label">Score médian</div>
+          <div class="sub">posture de sécurité globale</div>
+        </div>
+        <div class="stat">
+          <div class="num">165<small>+</small></div>
+          <div class="label">Vulnérabilités identifiées</div>
+          <div class="sub">dont 15 critiques, 38 hautes</div>
+        </div>
+        <div class="stat">
+          <div class="num">0<small> €</small></div>
+          <div class="label">Coût médian de remédiation</div>
+          <div class="sub">pour faire passer la note de 4 à 7</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AVANT-PROPOS ============ -->
+    <section id="avant-propos">
+      <div class="section-header">
+        <div class="num">§ 01 — AVANT-PROPOS</div>
+        <h2>Pourquoi ce panorama existe</h2>
+        <div class="deck">L'ESS porte des données particulièrement sensibles — bénéficiaires précaires, patients, donateurs, mineurs, données de santé — sur des infrastructures conçues avec des moyens contraints. Aucune étude ne mesurait jusqu'ici cet écart à grande échelle, à partir de matériel de terrain.</div>
+      </div>
+
+      <p class="dropcap">
+        Quand on parle cybersécurité dans l'ESS, deux discours coexistent et s'évitent. Le premier, institutionnel, énumère les bonnes pratiques recommandées par l'ANSSI ou la CNIL et constate que « les associations devraient s'en préoccuper davantage ». Le second, vécu, vient des bénévoles et des prestataires : pas de budget, pas d'admin sys, des outils empilés sur dix ans, une dépendance lourde à des agences web qui livrent puis disparaissent. Entre les deux, peu de chiffres.
+      </p>
+
+      <p>
+        Ce baromètre s'appuie sur un matériau qui n'existait pas : trente-cinq audits pédagogiques conduits sur neuf semaines, sur des cibles allant de l'association de quartier au groupement public de plus de mille agents. Chaque audit a suivi le même protocole — reconnaissance passive, fingerprinting, énumération, tests actifs sous autorisation — et a produit un rapport, un email de signalement et une présentation de remédiation. L'agrégat de ces audits, c'est ce panorama.
+      </p>
+
+      <p>
+        Il ne prétend pas être représentatif au sens statistique : un échantillon de trente-cinq cibles, choisi par opportunité, ne se substitue pas à une enquête nationale. Mais il est suffisamment varié — par taille, secteur, statut juridique, choix techniques — pour faire émerger des récurrences solides. Quand dix-huit cibles sur trente-cinq laissent le DMARC en mode permissif, ce n'est plus une coïncidence : c'est un pattern. Et un pattern, ça se traite.
+      </p>
+
+      <div class="callout">
+        <strong>Ce que vous trouverez ici</strong>
+        Une photographie objective de la surface d'attaque ESS en 2026, une typologie des vulnérabilités les plus fréquentes, une analyse des causes organisationnelles, et un guide pratique d'auto-évaluation à l'usage des dirigeants associatifs et coopératifs — pas un manuel pour techniciens.
+      </div>
+
+      <div class="callout steel">
+        <strong>Ce que vous n'y trouverez pas</strong>
+        Aucun nom d'organisation auditée n'est cité dans ce document public. Les vulnérabilités décrites ont toutes été ou sont en cours d'être divulguées en privé aux structures concernées, conformément à une démarche de divulgation responsable (responsible disclosure).
+      </div>
+    </section>
+
+    <!-- ============ MÉTHODE ============ -->
+    <section id="methode">
+      <div class="section-header">
+        <div class="num">§ 02 — MÉTHODE</div>
+        <h2>Comment ces audits ont été conduits</h2>
+        <div class="deck">Une approche en trois temps, pédagogique, alignée sur les standards de la profession (PTES, OWASP) et adaptée aux contraintes éthiques d'un travail sur des structures non commanditaires au départ.</div>
+      </div>
+
+      <div class="three-col">
+        <div>
+          <h4>Phase 0 — Cartographie</h4>
+          <p>Identification de la surface visible : domaines, sous-domaines (via Certificate Transparency logs), pile technique (CMS, framework, hébergeur), services exposés, dépendances tierces, présence sur les réseaux sociaux et les dépôts publics (GitHub, npm).</p>
+        </div>
+        <div>
+          <h4>Phase 1 — OSINT passive</h4>
+          <p>Renseignement à partir de sources ouvertes uniquement, sans interaction intrusive avec la cible : configuration DNS, archives Wayback, fuites publiques (Have I Been Pwned), fichiers de configuration laissés en accès libre, indexation Google, métadonnées de documents.</p>
+        </div>
+        <div>
+          <h4>Phase 2 — Tests actifs (autorisation)</h4>
+          <p>Sondages réseau, exploitation de surface, validation d'hypothèses. <strong>Conduits uniquement après accord explicite</strong> de la structure, ou sur des comptes créés via les formulaires publics (logique d'inscription auto-suffisante). Aucune extraction de données réelles au-delà de la preuve de concept.</p>
+        </div>
+      </div>
+
+      <h3>Le score /10</h3>
+      <p>
+        Chaque cible reçoit une note synthétique sur 10, dérivée d'une grille interne pondérant la sévérité des findings, le nombre de couches défensives présentes (WAF, MFA, segmentation, monitoring), et la qualité de l'hygiène générale (mises à jour, gestion des secrets, configuration TLS, headers HTTP, posture email). C'est un repère pédagogique, pas une métrique normative.
+      </p>
+
+      <table class="compact">
+        <thead><tr><th>Tranche</th><th>Lecture</th><th>Posture</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-cell s-low">0–3</span></td><td>Faiblesses critiques accessibles sans effort</td><td>Compromission probable à court terme</td></tr>
+          <tr><td><span class="score-cell s-low">4</span></td><td>Plusieurs vecteurs d'entrée non protégés</td><td>Exposition haute, remédiation prioritaire</td></tr>
+          <tr><td><span class="score-cell s-med">5–6</span></td><td>Bases en place, défauts de configuration</td><td>Niveau attendu d'une PME sans RSSI</td></tr>
+          <tr><td><span class="score-cell s-ok">7–8</span></td><td>Posture défensive cohérente</td><td>Top quart de l'échantillon ESS</td></tr>
+          <tr><td><span class="score-cell s-ok">9–10</span></td><td>Hygiène professionnelle, défense en profondeur</td><td>Non observé dans cet échantillon</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Limites assumées</h3>
+      <ul>
+        <li><strong>Échantillon non aléatoire.</strong> Les cibles ont été retenues par opportunité (intérêt pédagogique, accessibilité, diversité). Le résultat n'est pas extrapolable mécaniquement à l'ensemble du secteur ESS.</li>
+        <li><strong>Profondeur variable.</strong> Certaines cibles ont fait l'objet de cinq sessions de creusage, d'autres d'une seule. Le score reflète ce qui a été observé, pas une certitude exhaustive.</li>
+        <li><strong>Biais d'observabilité.</strong> Une cible bien défendue à l'extérieur peut cacher des défauts internes invisibles depuis Internet (postes Windows non patchés, réseaux Wi-Fi mal segmentés, PDF stockés en clair sur Google Drive).</li>
+        <li><strong>Pas de mesure du facteur humain direct.</strong> Aucun phishing test n'a été conduit. Or, statistiquement, c'est le vecteur n°1 sur les PME françaises.</li>
+      </ul>
+    </section>
+
+    <!-- ============ ÉCHANTILLON ============ -->
+    <section id="echantillon">
+      <div class="section-header">
+        <div class="num">§ 03 — L'ÉCHANTILLON</div>
+        <h2>Trente-cinq structures, un éventail volontairement large</h2>
+        <div class="deck">Du collectif bénévole à l'établissement public, du recyclage à la santé mentale étudiante, de WordPress mutualisé à Kubernetes sur AWS. La dispersion est délibérée : repérer ce qui dépend de la taille, du secteur ou du statut, et ce qui ne dépend de rien.</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60px">#</th>
+            <th>Profil de l'organisation</th>
+            <th>Secteur</th>
+            <th>Statut juridique</th>
+            <th>Taille</th>
+            <th class="num">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>Recyclage / économie circulaire — multi-clients B2B</td><td>Économie circulaire</td><td>SAS (ESS)</td><td>PME (~50)</td><td class="num"><span class="score-cell s-low">3</span></td></tr>
+          <tr><td>02</td><td>Tech solidaire — plateforme de référencement national</td><td>Tech for good</td><td>Association</td><td>Startup associative (~30)</td><td class="num"><span class="score-cell s-low">3</span></td></tr>
+          <tr><td>03</td><td>Reconversion professionnelle d'impact</td><td>Insertion / impact</td><td>Association loi 1901</td><td>Micro (3–5)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>04</td><td>Aide alimentaire étudiante</td><td>Solidarité étudiante</td><td>Association</td><td>Petite (bénévoles + 2–3)</td><td class="num"><span class="score-cell s-med">4,5</span></td></tr>
+          <tr><td>05</td><td>Formation au numérique et insertion</td><td>Formation / insertion</td><td>GIE / coopérative</td><td>ETI (~200)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>06</td><td>Environnement et plaidoyer territorial</td><td>Environnement</td><td>Association</td><td>Petite (~10 + bénévoles)</td><td class="num"><span class="score-cell s-med">6,5</span></td></tr>
+          <tr><td>07</td><td>Anti-gaspillage alimentaire — collecte de surplus</td><td>Alimentaire</td><td>Association</td><td>Petite (~15)</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>08</td><td>E-commerce solidaire — réemploi à grande échelle</td><td>E-commerce solidaire</td><td>SCIC</td><td>PME (~30)</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>09</td><td>Santé mentale étudiante — écoute pair-à-pair</td><td>Santé mentale</td><td>Association</td><td>Micro (bénévoles)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>10</td><td>Service numérique coopératif et éthique</td><td>Tech coopérative</td><td>SCIC</td><td>PME (~20)</td><td class="num"><span class="score-cell s-ok">8</span></td></tr>
+          <tr><td>11</td><td>Chambre consulaire territoriale</td><td>Public consulaire</td><td>EPA</td><td>Grande (>1 000)</td><td class="num"><span class="score-cell s-med">6,5</span></td></tr>
+          <tr><td>12</td><td>Artisanat B2B export (WordPress managé)</td><td>Artisanat / export</td><td>Entreprise</td><td>TPE</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>13</td><td>Action de solidarité intergénérationnelle</td><td>Lien social</td><td>Association reconnue d'utilité publique</td><td>Grande (sal. + milliers de bénévoles)</td><td class="num"><span class="score-cell s-med">6</span></td></tr>
+          <tr><td>14</td><td>Aménagement urbain métropolitain</td><td>Aménagement public</td><td>Société d'économie mixte</td><td>PME (~80)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>15</td><td>Valorisation des déchets alimentaires</td><td>Économie circulaire</td><td>SAS (ESUS)</td><td>PME (~50–100)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>16</td><td>Logement temporaire pour jeunes actifs</td><td>Logement</td><td>SA (ESUS)</td><td>PME (multi-résidences)</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>17</td><td>Santé cognitive et diagnostic médical</td><td>Santé / médico-social</td><td>Association loi 1901</td><td>Petite</td><td class="num"><span class="score-cell s-med">6</span></td></tr>
+          <tr><td>18</td><td>Tech for good et bénévolat de compétences</td><td>Tech for good</td><td>Association loi 1901</td><td>Petite (~10 + bénévoles)</td><td class="num"><span class="score-cell s-med">6</span></td></tr>
+          <tr><td>19</td><td>Transport à la demande et mobilité partagée</td><td>Mobilité</td><td>SAS</td><td>PME</td><td class="num"><span class="score-cell s-med">6</span></td></tr>
+          <tr><td>20</td><td>Interprétariat et traduction médico-sociale</td><td>Médico-social</td><td>SAS (ESS)</td><td>PME (~50)</td><td class="num"><span class="score-cell s-low">3</span></td></tr>
+          <tr><td>21</td><td>Plateforme associative médico-juridique</td><td>Médico-social / juridique</td><td>Association loi 1901</td><td>Petite</td><td class="num"><span class="score-cell s-low">2</span></td></tr>
+          <tr><td>22</td><td>Association nationale d'aide aux réfugiés et à l'asile</td><td>Solidarité internationale</td><td>Association loi 1901</td><td>Grande (plusieurs centaines de sal., multi-sites)</td><td class="num"><span class="score-cell s-low">3</span></td></tr>
+          <tr><td>23</td><td>Fournisseur d'énergie renouvelable</td><td>Énergie / coopératif</td><td>SCIC</td><td>ETI (multi-régions)</td><td class="num"><span class="score-cell s-low">3</span></td></tr>
+          <tr><td>24</td><td>Action sociale et hébergement d'urgence</td><td>Action sociale</td><td>Association loi 1901</td><td>Grande (plusieurs centaines de sal.)</td><td class="num"><span class="score-cell s-low">4</span></td></tr>
+          <tr><td>25</td><td>Insertion par l'activité économique</td><td>Insertion / propreté urbaine</td><td>Association loi 1901</td><td>PME (~100 sal.)</td><td class="num"><span class="score-cell s-low">2</span></td></tr>
+          <tr><td>26</td><td>Cabinet de conseil pour représentants salariés</td><td>Conseil / représentation</td><td>SCOP</td><td>ETI (multi-sites)</td><td class="num"><span class="score-cell s-low">1</span></td></tr>
+          <tr><td>27</td><td>Carte cadeau éco-solidaire (commerçants durables)</td><td>E-commerce solidaire</td><td>SCIC SA (ESUS)</td><td>Petite (milliers de commerçants partenaires)</td><td class="num"><span class="score-cell s-low">2</span></td></tr>
+          <tr><td>28</td><td>Épicerie anti-gaspillage en réseau</td><td>Alimentaire / réemploi</td><td>SAS (ESS)</td><td>PME (~50 magasins)</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>29</td><td>Fondation philanthropique de lutte contre la pauvreté</td><td>Solidarité / mécénat</td><td>Fondation</td><td>Petite</td><td class="num"><span class="score-cell s-med">6</span></td></tr>
+          <tr><td>30</td><td>SaaS B2B d'alerte et de gestion de crise</td><td>Tech / sécurité civile</td><td>Société B2B</td><td>PME</td><td class="num"><span class="score-cell s-med">5</span></td></tr>
+          <tr><td>31</td><td>Entreprise à mission — rénovation globale de copropriétés</td><td>Rénovation / bâtiment</td><td>Entreprise à mission</td><td>PME</td><td class="num"><span class="score-cell s-med">7</span></td></tr>
+          <tr><td>32</td><td>École de formation aux métiers du bâtiment durable</td><td>Formation / bâtiment</td><td>SAS</td><td>PME (multi-campus)</td><td class="num"><span class="score-cell s-ok">7,5</span></td></tr>
+          <tr><td>33</td><td>Association d'égalité des chances éducative (jeunesse)</td><td>Insertion / éducation</td><td>Association loi 1901</td><td>PME (équipe IT structurée)</td><td class="num"><span class="score-cell s-med">6,5</span></td></tr>
+          <tr><td>34</td><td>Plateforme d'engagement citoyen (jobs à impact, communautés)</td><td>Engagement / impact</td><td>Association loi 1901</td><td>PME (multi-pays)</td><td class="num"><span class="score-cell s-med">6,5</span></td></tr>
+          <tr><td>35</td><td>Cabinet d'études thermiques — rénovation énergétique</td><td>Rénovation / BET</td><td>SAS</td><td>Petite</td><td class="num"><span class="score-cell s-med">7</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="three-col">
+        <div class="chart-frame">
+          <div class="chart-title">Distribution par taille</div>
+          <div class="chart-sub">Salariés équivalent temps plein</div>
+          <div class="bar-row"><span class="label">Micro (&lt; 5)</span><div class="bar"><span style="width:12%"></span></div><span class="val">4</span></div>
+          <div class="bar-row"><span class="label">Petite (5–30)</span><div class="bar"><span style="width:35%"></span></div><span class="val">12</span></div>
+          <div class="bar-row"><span class="label">PME (30–200)</span><div class="bar"><span style="width:43%"></span></div><span class="val">15</span></div>
+          <div class="bar-row"><span class="label">Grande (200+)</span><div class="bar"><span style="width:12%"></span></div><span class="val">4</span></div>
+        </div>
+
+        <div class="chart-frame">
+          <div class="chart-title">Statuts juridiques</div>
+          <div class="chart-sub">Diversité des formes ESS</div>
+          <div class="bar-row"><span class="label">Association loi 1901</span><div class="bar"><span style="width:46%"></span></div><span class="val">16</span></div>
+          <div class="bar-row"><span class="label">SAS / SA / ESUS / Fondation</span><div class="bar"><span style="width:33%"></span></div><span class="val">11</span></div>
+          <div class="bar-row"><span class="label">Coopérative (SCIC, SCOP, GIE)</span><div class="bar"><span style="width:17%"></span></div><span class="val">6</span></div>
+          <div class="bar-row"><span class="label">Public (EPA, SEM) / Société B2B</span><div class="bar"><span style="width:9%"></span></div><span class="val">3</span></div>
+        </div>
+
+        <div class="chart-frame">
+          <div class="chart-title">Données traitées (typologie)</div>
+          <div class="chart-sub">Plusieurs catégories par cible</div>
+          <div class="bar-row"><span class="label">Bénéficiaires précaires</span><div class="bar crit"><span style="width:46%"></span></div><span class="val">11</span></div>
+          <div class="bar-row"><span class="label">Données de santé</span><div class="bar crit"><span style="width:25%"></span></div><span class="val">6</span></div>
+          <div class="bar-row"><span class="label">Mineurs / étudiants</span><div class="bar crit"><span style="width:21%"></span></div><span class="val">5</span></div>
+          <div class="bar-row"><span class="label">Donateurs</span><div class="bar high"><span style="width:29%"></span></div><span class="val">7</span></div>
+          <div class="bar-row"><span class="label">Salariés / RH</span><div class="bar med"><span style="width:79%"></span></div><span class="val">19</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PHOTO À L'INSTANT T ============ -->
+    <section id="photo">
+      <div class="section-header">
+        <div class="num">§ 04 — PHOTO À L'INSTANT T</div>
+        <h2>Ce que voit un attaquant en 2026</h2>
+        <div class="deck">La distribution des scores, des stacks et des sévérités. L'image est moins catastrophique qu'on ne le craint, moins rassurante qu'on ne l'espère : le ventre mou domine, et le ventre mou n'a besoin que de pousser un peu pour basculer.</div>
+      </div>
+
+      <div class="chart-frame">
+        <div class="chart-title">Distribution des scores de sécurité</div>
+        <div class="chart-sub">Nombre d'organisations par tranche de score (sur 10)</div>
+        <div class="hist">
+          <div class="col" data-score="0" style="height:0%"><span class="cnt">0</span><span class="tick">0</span></div>
+          <div class="col" data-score="1" style="height:11%"><span class="cnt">1</span><span class="tick">1</span></div>
+          <div class="col" data-score="2" style="height:33%"><span class="cnt">3</span><span class="tick">2</span></div>
+          <div class="col" data-score="3" style="height:55%"><span class="cnt">5</span><span class="tick">3</span></div>
+          <div class="col" data-score="4" style="height:88%"><span class="cnt">8</span><span class="tick">4</span></div>
+          <div class="col" data-score="5" style="height:55%"><span class="cnt">5</span><span class="tick">5</span></div>
+          <div class="col" data-score="6" style="height:100%"><span class="cnt">9</span><span class="tick">6</span></div>
+          <div class="col" data-score="7" style="height:33%"><span class="cnt">3</span><span class="tick">7</span></div>
+          <div class="col" data-score="8" style="height:11%"><span class="cnt">1</span><span class="tick">8</span></div>
+          <div class="col" data-score="9" style="height:0%"><span class="cnt">0</span><span class="tick">9</span></div>
+          <div class="col" data-score="10" style="height:0%"><span class="cnt">0</span><span class="tick">10</span></div>
+        </div>
+        <div class="chart-source">Note : les scores intermédiaires (4,5 / 6,5 / 7,5) sont arrondis à la tranche inférieure pour la lisibilité de l'histogramme. Médiane : 5,0. Moyenne : 4,7. Source : 35 audits, mars–mai 2026.</div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>Trois constats émergent</h3>
+          <p>
+            <strong>1. Le ventre mou domine, mais la queue basse s'alourdit.</strong> Avec l'élargissement de l'échantillon à trente-cinq cibles, neuf plafonnent entre 1 et 3 — incluant désormais une SCOP de conseil (SQL injection WLangage confirmée → RCE) et deux autres structures à 2/10 (M365 en passoire, profileur django-silk en production). Le ventre mou — score 4 à 6 — concentre 22 cibles. Au total, 89 % de l'échantillon se trouve sous le seuil 7.
+          </p>
+          <p>
+            <strong>2. Quatre cibles dépassent 7, une seule atteint 8.</strong> Le sommet est porté par une coopérative qui a fait du privacy by design un argument commercial. L'arrivée d'autres PME au-dessus de 7 — combinant frontal managé, hébergement edge, SSO professionnel et email durci en <code class="mono">p=reject</code> — confirme qu'une organisation avec une équipe IT moderne peut viser le haut du tableau. Le « plafond ESS » est culturel, pas structurel.
+          </p>
+          <p>
+            <strong>3. Le statut juridique compte moins que la culture interne.</strong> Une SCOP de conseil à 1/10 (SQLi WLangage exploitable) descend en-dessous d'une association environnementale à 6,5/10. Une SAS à 7,5/10 dépasse une SCIC à 5/10. Les déterminants structurants ne sont pas le statut, mais la présence ou l'absence d'un référent technique compétent dans la durée — et la capacité à choisir une stack managée plutôt qu'une dette WebDev de 2018.
+          </p>
+        </div>
+
+        <div>
+          <div class="chart-frame">
+            <div class="chart-title">Score moyen par taille</div>
+            <div class="chart-sub">Effet taille modeste mais réel</div>
+            <div class="bar-row"><span class="label">Micro (&lt; 5 sal.)</span><div class="bar high"><span style="width:43%"></span></div><span class="val">4,3</span></div>
+            <div class="bar-row"><span class="label">Petite (5–30)</span><div class="bar med"><span style="width:48%"></span></div><span class="val">4,8</span></div>
+            <div class="bar-row"><span class="label">PME (30–200)</span><div class="bar med"><span style="width:50%"></span></div><span class="val">5,0</span></div>
+            <div class="bar-row"><span class="label">Grande (200+)</span><div class="bar med"><span style="width:55%"></span></div><span class="val">5,5</span></div>
+            <div class="chart-source">L'écart taille reste modeste (+0,4/10 par tranche en moyenne) et n'atteint plus la zone 6+. L'arrivée d'organisations grandes mais peu défendues (action sociale, solidarité internationale) déplace la moyenne. La taille seule ne professionnalise pas la sécurité.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>L'arrivée des structures « grand public » bouge les chiffres</h3>
+      <p>
+        L'élargissement de l'échantillon à des organisations à fort impact public — coopérative d'utilité collective, association nationale humanitaire, structures sociales et d'interprétariat — puis l'ajout d'une SCOP de conseil (1/10, SQLi WLangage exploitable), d'une structure d'insertion (2/10 sur le tenant M365) et d'une plateforme e-commerce solidaire (2/10, profileur de debug en prod) fait osciller le score moyen entre 4,7 et 4,9. Ce n'est pas que ces structures soient pires que les autres en proportion : c'est qu'elles sont plus grandes, traitent des données plus sensibles (mineurs, populations vulnérables, sociétaires, négociations sensibles), et exposent plus de surface (plateforme métier WLangage, app mobile, M365 multi-domaines). Le ratio « surface / capacité de défense » se dégrade avec la taille, dès lors que la professionnalisation de la sécurité ne suit pas.
+      </p>
+
+      <h3>Distribution par stack technique</h3>
+
+      <div class="two-col">
+        <div class="chart-frame">
+          <div class="chart-title">CMS et frameworks observés</div>
+          <div class="chart-sub">Plusieurs technos par cible — total &gt; 35</div>
+          <div class="bar-row"><span class="label">WordPress (dont blogs/boutiques secondaires)</span><div class="bar"><span style="width:80%"></span></div><span class="val">20</span></div>
+          <div class="bar-row"><span class="label">Drupal (dont 2 EOL)</span><div class="bar"><span style="width:20%"></span></div><span class="val">5</span></div>
+          <div class="bar-row"><span class="label">Django / Wagtail / DRF</span><div class="bar"><span style="width:24%"></span></div><span class="val">6</span></div>
+          <div class="bar-row"><span class="label">Webflow / no-code / SaaS managé</span><div class="bar"><span style="width:24%"></span></div><span class="val">6</span></div>
+          <div class="bar-row"><span class="label">Microsoft 365 (tenant testé)</span><div class="bar"><span style="width:48%"></span></div><span class="val">12</span></div>
+          <div class="bar-row"><span class="label">WebDev / WLangage (PC SOFT)</span><div class="bar"><span style="width:8%"></span></div><span class="val">2</span></div>
+          <div class="bar-row"><span class="label">Odoo (managé + self-hosted)</span><div class="bar"><span style="width:12%"></span></div><span class="val">3</span></div>
+          <div class="bar-row"><span class="label">Custom Node.js / Spring / Kotlin / WeWeb</span><div class="bar"><span style="width:20%"></span></div><span class="val">5</span></div>
+        </div>
+
+        <div class="chart-frame">
+          <div class="chart-title">Hébergement de référence</div>
+          <div class="chart-sub">Hébergeur principal de la plateforme la plus exposée</div>
+          <div class="bar-row"><span class="label">OVH (mutu, dédié, VPS)</span><div class="bar"><span style="width:55%"></span></div><span class="val">7</span></div>
+          <div class="bar-row"><span class="label">AWS (Lambda, EKS, S3)</span><div class="bar"><span style="width:32%"></span></div><span class="val">4</span></div>
+          <div class="bar-row"><span class="label">o2switch / Gandi (mutu FR)</span><div class="bar"><span style="width:25%"></span></div><span class="val">3</span></div>
+          <div class="bar-row"><span class="label">Cloudflare (frontal)</span><div class="bar"><span style="width:25%"></span></div><span class="val">3</span></div>
+          <div class="bar-row"><span class="label">Managed (WordPress.com, Vercel, Webflow)</span><div class="bar"><span style="width:25%"></span></div><span class="val">3</span></div>
+          <div class="bar-row"><span class="label">Autre / multi-cloud</span><div class="bar"><span style="width:15%"></span></div><span class="val">2</span></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Le poids de WordPress — et l'angle mort Microsoft 365</strong>
+        WordPress, seul ou combiné, est présent dans <strong>57 % des organisations</strong> de l'échantillon. À elle seule, sa maîtrise (xmlrpc, hardening, REST API user enum) conditionne la posture sécurité d'une majorité du secteur. Mais l'élargissement des audits à la surface email — tenant Microsoft 365, Basic Auth Exchange Online, énumération <code class="mono">GetCredentialType</code> — révèle un angle mort symétrique : <strong>34 % des structures auditées</strong> (12/35) ont un tenant M365, et dix d'entre elles laissent encore Basic Auth ouvert ou n'enforce pas la MFA. C'est désormais le vecteur n°1 de compromission PME en France (~80 % des incidents) et il échappe complètement à l'audit web classique.
+      </div>
+    </section>
+
+    <!-- ============ ANATOMIE DES FAILLES ============ -->
+    <section id="anatomie">
+      <div class="section-header">
+        <div class="num">§ 05 — ANATOMIE DES FAILLES</div>
+        <h2>Distribution, sévérité, fréquence</h2>
+        <div class="deck">Plus de 210 vulnérabilités identifiées sur trente-cinq audits. Dix-huit critiques, quarante-sept hautes, soixante-quinze moyennes, le reste en informationnelles. Au-delà des chiffres, des familles de défauts qui reviennent partout.</div>
+      </div>
+
+      <div class="chart-frame">
+        <div class="chart-title">Distribution par sévérité</div>
+        <div class="chart-sub">Échelle CRITIQUE / HAUTE / MOYENNE / FAIBLE — toutes cibles confondues</div>
+        <div class="bar-row"><span class="label"><span class="sev crit">Critique</span></span><div class="bar crit"><span style="width:9%"></span></div><span class="val">18</span></div>
+        <div class="bar-row"><span class="label"><span class="sev high">Haute</span></span><div class="bar high"><span style="width:23%"></span></div><span class="val">47</span></div>
+        <div class="bar-row"><span class="label"><span class="sev med">Moyenne</span></span><div class="bar med"><span style="width:36%"></span></div><span class="val">75</span></div>
+        <div class="bar-row"><span class="label"><span class="sev low">Faible / Info</span></span><div class="bar low"><span style="width:32%"></span></div><span class="val">70</span></div>
+        <div class="chart-source">Une faille « critique » signifie qu'un attaquant peut, à partir d'éléments accessibles publiquement, prendre la main sur un système ou exfiltrer des données significatives. Une faille « haute » nécessite généralement un effort de chaînage (kill chain) ou une condition supplémentaire.</div>
+      </div>
+
+      <h3>Top 10 des familles de vulnérabilités</h3>
+      <p>Plutôt que d'aligner des CVE individuelles, on regroupe les findings par cause technique. Ce tableau classe les patterns par fréquence d'apparition dans l'échantillon.</p>
+
+      <div class="chart-frame">
+        <div class="bar-row"><span class="label">1. Admin / service interne sans VPN</span><div class="bar crit"><span style="width:51%"></span></div><span class="val">18/35</span></div>
+        <div class="bar-row"><span class="label">2. DMARC permissif ou absent</span><div class="bar high"><span style="width:51%"></span></div><span class="val">18/35</span></div>
+        <div class="bar-row"><span class="label">3. Pas de rate limiting sur login / signup</span><div class="bar high"><span style="width:46%"></span></div><span class="val">16/35</span></div>
+        <div class="bar-row"><span class="label">4. API REST trop bavarde (PII, énumération)</span><div class="bar high"><span style="width:43%"></span></div><span class="val">15/35</span></div>
+        <div class="bar-row"><span class="label">5. M365 Basic Auth / MFA non forcé (énumération + spray)</span><div class="bar crit"><span style="width:34%"></span></div><span class="val">12/35</span></div>
+        <div class="bar-row"><span class="label">6. WordPress xmlrpc.php ouvert</span><div class="bar med"><span style="width:34%"></span></div><span class="val">12/35</span></div>
+        <div class="bar-row"><span class="label">7. Headers de sécurité absents</span><div class="bar med"><span style="width:31%"></span></div><span class="val">11/35</span></div>
+        <div class="bar-row"><span class="label">8. CMS / serveur / framework en fin de vie (EOL)</span><div class="bar crit"><span style="width:31%"></span></div><span class="val">11/35</span></div>
+        <div class="bar-row"><span class="label">9. Sous-domaines staging non nettoyés</span><div class="bar med"><span style="width:29%"></span></div><span class="val">10/35</span></div>
+        <div class="bar-row"><span class="label">10. Endpoint sans authentification (logique cassée)</span><div class="bar crit"><span style="width:23%"></span></div><span class="val">8/35</span></div>
+        <div class="bar-row"><span class="label">11. IDOR / contrôle d'accès objet manquant</span><div class="bar crit"><span style="width:14%"></span></div><span class="val">5/35</span></div>
+        <div class="bar-row"><span class="label">12. Trackers sans consentement (RGPD)</span><div class="bar low"><span style="width:11%"></span></div><span class="val">4/35</span></div>
+        <div class="chart-source">Lecture : « 18/35 » signifie que dix-huit des trente-cinq organisations auditées présentent au moins une instance de cette famille. Les couleurs reflètent la sévérité moyenne observée — un xmlrpc isolé est moyen, un xmlrpc + brute force admin sans MFA devient critique par chaînage. Nouveauté 2026 : la surface M365 (énumération + Basic Auth Exchange Online) émerge comme vecteur n°5 — testée systématiquement à partir de mai, elle révèle un risque BEC/ransomware non couvert par la posture web.</div>
+      </div>
+
+      <h3>Carte de risque exploitabilité × impact</h3>
+      <p>
+        Une vulnérabilité ne se mesure pas à sa technicité, mais au croisement de la facilité avec laquelle un attaquant peut la déclencher (exploitabilité) et de ce qu'il peut en faire (impact). Cette carte synthétise où se concentrent les risques observés dans l'échantillon ESS.
+      </p>
+
+      <div class="heatmap">
+        <div class="hm-h"></div>
+        <div class="hm-h">Faible</div>
+        <div class="hm-h">Moyen</div>
+        <div class="hm-h">Élevé</div>
+        <div class="hm-h">Très élevé</div>
+
+        <div class="hm-y">Trivial</div>
+        <div class="cell lvl2"><strong>Faible</strong>Headers manquants, robots.txt</div>
+        <div class="cell lvl3"><strong>Moyen</strong>User enum API, DMARC absent, DNS bavard</div>
+        <div class="cell lvl4"><strong>Élevé</strong>xmlrpc + brute force, signup oracle, CDN bypass</div>
+        <div class="cell lvl4"><strong>Très élevé</strong>Endpoint sans auth, n8n RCE, EOL exposé</div>
+
+        <div class="hm-y">Modéré</div>
+        <div class="cell lvl1"><strong>Très faible</strong>Métadonnées PDF</div>
+        <div class="cell lvl2"><strong>Faible</strong>S3 listing média, CORS *</div>
+        <div class="cell lvl3"><strong>Moyen</strong>Brute force admin, xmlrpc multicall</div>
+        <div class="cell lvl4"><strong>Élevé</strong>SQLi via paramètre, IDOR sur endpoints internes</div>
+
+        <div class="hm-y">Difficile</div>
+        <div class="cell lvl0"><strong>Négligeable</strong></div>
+        <div class="cell lvl1"><strong>Très faible</strong>Versions dans headers</div>
+        <div class="cell lvl2"><strong>Faible</strong>Race conditions identifiées</div>
+        <div class="cell lvl3"><strong>Moyen</strong>0-day chaîné, social engineering ciblé</div>
+      </div>
+
+      <div class="callout gold">
+        <strong>Lecture clé</strong>
+        Le centre de gravité de l'échantillon ESS se trouve dans la diagonale haute-droite : des vulnérabilités <em>triviales à exploiter</em> (un script automatisé, ou un simple navigateur) avec un <em>impact élevé à très élevé</em> (compromission de comptes, exfiltration de données nominatives, prise de contrôle d'un service tiers). Ce sont les cibles de prédilection des attaques de masse — pas des attaquants ciblés, simplement des scanners qui ratissent Internet.
+      </div>
+
+      <h3>Les dix-huit critiques observées en 2026</h3>
+      <p>Voici la liste exhaustive, anonymisée, des dix-huit vulnérabilités classées critiques dans cet échantillon. La majorité aurait pu être évitée par une configuration par défaut plus restrictive ; aucune ne demandait un attaquant sophistiqué.</p>
+
+      <table>
+        <thead>
+          <tr><th style="width:50px">#</th><th>Type de faille</th><th>Vecteur</th><th>Impact observé</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>C1</td><td><strong>IDOR : mot de passe en clair de tout utilisateur via API</strong></td><td>Endpoint API « lookup compte » accessible à tout client authentifié</td><td>Plusieurs dizaines de milliers de comptes accessibles en clair, dont la direction. Account takeover sur interprètes, hôpitaux, administrateurs. Mots de passe stockés en clair côté serveur (champ <code class="mono">pass_text</code>).</td></tr>
+          <tr><td>C2</td><td><strong>4 buckets S3 multi-tenants en upload sans authentification</strong></td><td><code class="mono">POST /upload</code> sur 4 API (deux structures, prod + dev) délivrant des pre-signed URLs sans aucun contrôle</td><td>Upload arbitraire avec content-type contrôlable → XSS stockée servie depuis le domaine de l'API. Buckets <code class="mono">public-read</code>. Une même brique de code partagée entre deux structures = même faille dans les deux.</td></tr>
+          <tr><td>C3</td><td><strong>Pipeline de mise à jour APK mobile avec mot de passe client-side</strong></td><td>Panneau d'administration WebDev/WinDev exposé sur Internet, mot de passe hardcodé dans le JavaScript de la page. Vérification 100 % côté client.</td><td><strong>Supply chain mobile</strong> : un attaquant peut publier un APK malveillant qui sera distribué automatiquement à tous les utilisateurs de l'application (interprètes, hôpitaux, médico-social).</td></tr>
+          <tr><td>C4</td><td><strong>Fuite massive de PII via DDP Meteor non authentifié</strong></td><td>Méthodes <code class="mono">getPersonById</code>, <code class="mono">getAllPersonsByEmail</code>, <code class="mono">getQuestionnaire</code>, <code class="mono">downloadfile</code> appelables sans aucune session</td><td>Plusieurs milliers de profils sociétaires extractibles, dont mineurs (date de naissance, adresse), <strong>IBAN et BIC en clair</strong>, numéros de téléphone, références bancaires. Confirmé sur trois profils réels par chaînage <code class="mono">cooperativeId → personId</code>.</td></tr>
+          <tr><td>C5</td><td><strong>Hébergement de fichiers et admin Joomla 3.x EOL exposé</strong></td><td>CMS et composants tiers (K2, JCE, Fabrik) en fin de vie depuis 2023, panneau <code class="mono">/administrator/</code> ouvert sans WAF ni IP filtering</td><td>Plusieurs listes publiquement énumérables, surface multiple de SQL injection et de path traversal connues, plus aucun patch officiel. Cible : association nationale d'aide aux réfugiés (centaines de sal., données médico-juridiques de demandeurs d'asile).</td></tr>
+          <tr><td>C6</td><td>SQL injection avec bypass de parser (Apache Superset self-hosted)</td><td>Compte « guest » par défaut + bypass <code class="mono">ts_stat()</code> + <code class="mono">chr()</code></td><td>Extraction de <strong>plusieurs dizaines de milliers de comptes</strong> (emails, noms, hashes bcrypt, téléphones, devTokens JWT staff).</td></tr>
+          <tr><td>C7</td><td>n8n self-hosted, trois CVE CVSS ≥ 9,9</td><td>Webhook content-type confusion</td><td>RCE non authentifiée (mitigée par UUIDs non découvrables — chance, pas posture défensive).</td></tr>
+          <tr><td>C8</td><td>RDS Gateway Windows exposé, NTLM info disclosure, sans rate limiting</td><td><code class="mono">/Rpc/rpcproxy.dll</code> NTLM révèle domaine AD, hostname, OS</td><td>Surface complète de password spray sur des centaines d'usernames identifiables via LinkedIn. Aucun lockout observé sur 8 essais. Cible : association d'action sociale.</td></tr>
+          <tr><td>C9</td><td>WordPress en version obsolète &gt; 18 mois</td><td>CMS</td><td>Défacement, takeover, ransomware. Multi-cible.</td></tr>
+          <tr><td>C10</td><td>Origin server non protégé derrière CDN</td><td>DNS history, balise meta <code class="mono">generator</code></td><td>Bypass complet du WAF Cloudflare en 30 secondes.</td></tr>
+          <tr><td>C11</td><td>Stack obsolète, 22 CVE cumulées</td><td>Composants tiers EOL</td><td>Compromission probable.</td></tr>
+          <tr><td>C12</td><td>Réunions Zoom à URL permanente avec mot de passe en clair dans le DNS public</td><td>DNS</td><td>Zoom-bombing, écoute d'entretiens RH.</td></tr>
+          <tr><td>C13</td><td>Kill chain : API publique → emails → admin Django sans rate limiting</td><td>Chaîne</td><td>Compromission back-office RH d'une PME logement.</td></tr>
+          <tr><td>C14</td><td>Kill chain : brute force admin → file manager (RCE elFinder) → .env / .git</td><td>Chaîne</td><td>Compromission serveur de formation, données apprenants.</td></tr>
+          <tr><td>C15</td><td>DoS HTTP/2 sur origin non protégé</td><td>Configuration nginx</td><td>Indisponibilité d'un service avec un VPS à 5 €/mois.</td></tr>
+          <tr><td>C16</td><td><strong>SQL injection sur portail métier WLangage / WEBDEV legacy</strong></td><td>Formulaire login d'un portail PC SOFT WEBDEV exposé sur Internet. Payloads triviaux <code class="mono">' OR 1=1--</code> et <code class="mono">admin'--</code> déclenchent erreurs MySQL 1064 affichées dans une popup JavaScript.</td><td>Stack technique révélée (IP DB interne, fragment de requête SQL, accès natif MySQL sans paramétrage). Vecteur RCE documenté via fonctions WLangage <code class="mono">ExeRun()</code>/<code class="mono">LanceAppli()</code>. Cible : cabinet de conseil pour représentants salariés (plusieurs centaines de consultants).</td></tr>
+          <tr><td>C17</td><td><strong>Profiler django-silk exposé en production sans authentification</strong></td><td><code class="mono">/silk/requests/</code>, <code class="mono">/silk/profiling/</code>, <code class="mono">/silk/cleardb/</code> accessibles sans login. Des milliers de requêtes loggées avec POST bodies et URLs en clair.</td><td>Vol direct de cartes cadeaux : les URLs « magic link » contenant le numéro de carte en clair sont leakées en continu. Téléchargement immédiat du PDF de carte sans authentification. Endpoint destructif <code class="mono">/silk/cleardb/</code> ouvert. Cible : plateforme de carte cadeau éco-solidaire (milliers de commerçants partenaires).</td></tr>
+          <tr><td>C18</td><td><strong>Basic Auth Exchange Online + MFA contournable + énumération massive</strong></td><td>IMAP / SMTP submission / EAS / EWS annoncent <code class="mono">AUTH=PLAIN</code> et <code class="mono">BasicChallengeAdded: True</code>. ROPC OAuth ne renvoie pas <code class="mono">AADSTS50079</code> mais <code class="mono">AADSTS50126</code> (wrong password) → MFA non forcé en première ligne. Des dizaines de requêtes <code class="mono">GetCredentialType</code> sans throttling, OneDrive personnels énumérables par UPN, Smart Lockout absent à 8 essais.</td><td>Compromission par password spray sans aucun MFA challenge. Vecteur n°1 BEC/ransomware pour les PME M365 depuis 2022. Cible : structure d'insertion (~100 salariés, plusieurs dizaines de comptes M365 cartographiés en quelques minutes). Le score web (~6/10) ne reflète pas le risque réel.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Trois nouvelles critiques emblématiques (C16–C18)</strong>
+        Les trois critiques découvertes lors de la dernière série d'audits illustrent trois angles morts récurrents de l'ESS : (1) le portail métier en WLangage/WEBDEV de 2015 qu'aucun audit ne couvre parce que personne ne se souvient de son existence (C16) ; (2) l'outil de debug oublié en production qui transforme un SaaS solidaire en passoire à PII et magic links (C17) ; (3) la surface Microsoft 365 — Basic Auth, MFA non forcé, énumération sans throttling — qui rend caduc tout durcissement web (C18). Sur les dix-huit critiques recensées, treize sont reproductibles avec un navigateur, <code class="mono">curl</code>, et la lecture du code JavaScript public.
+      </div>
+
+      <blockquote class="pull">
+        « Le problème n'est pas la qualité technique des outils choisis — qui sont souvent excellents — mais leur exposition publique sans contrôle d'accès périmétrique. »
+        <cite>Observation cross-audits</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ CAUSES RACINES ============ -->
+    <section id="causes">
+      <div class="section-header">
+        <div class="num">§ 06 — CAUSES RACINES</div>
+        <h2>Pourquoi ces failles existent — et pourquoi elles persistent</h2>
+        <div class="deck">Les vulnérabilités techniques sont des symptômes. Les causes sont organisationnelles, contractuelles, culturelles. On les retrouve dans presque toutes les structures auditées, indépendamment du statut juridique ou de la taille.</div>
+      </div>
+
+      <div class="pattern-grid">
+        <div class="pattern">
+          <h4>1. Pas d'admin système dédié</h4>
+          <div class="freq">Très fréquent · 25 / 35 cibles</div>
+          <p>Les outils sont déployés par un développeur, un bénévole, un stagiaire, un prestataire ponctuel — puis oubliés. Personne ne surveille les mises à jour ni la surface d'exposition. Trois ans plus tard, le service tourne sur une version EOL connue de tous les scanners.</p>
+          <div class="ex">Symptômes : ownCloud 2015, Dolibarr 2015, PHP 5.6, Lotus Domino 9, Drupal 9 EOL.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>2. Exposition par défaut</h4>
+          <div class="freq">Très fréquent · 23 / 35 cibles</div>
+          <p>Les services sont exposés sur Internet sans VPN ni restriction d'IP, parce que c'est plus simple pour le staff distribué et les bénévoles. cPanel, RabbitMQ, Vaultwarden, panels admin Django — tout finit en <em>.assoc.fr</em> accessible à toute la planète.</p>
+          <div class="ex">Symptômes : VPN web UI publique, RabbitMQ management, gestionnaires de mots de passe.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>3. Shadow IT</h4>
+          <div class="freq">Fréquent · 15 / 35 cibles</div>
+          <p>Utilisation de comptes personnels ou institutionnels externes pour des besoins de l'organisation : Zoom personnel, Google Forms, Drive partagé, Trello d'un autre employeur. Les données sortent du périmètre maîtrisé sans qu'aucune décision n'ait été prise.</p>
+          <div class="ex">Symptômes : Google Forms pour recrutement bénévoles, Zoom universitaire pour entretiens.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>4. Sous-domaines fantômes</h4>
+          <div class="freq">Fréquent · 14 / 35 cibles</div>
+          <p>DNS créés pour un besoin ponctuel — staging, CDN d'agence, campagne marketing — jamais nettoyés ensuite. Ils restent indexés dans les Certificate Transparency logs, exploitables des années plus tard pour du subdomain takeover.</p>
+          <div class="ex">Symptômes : sept sous-domaines inutiles sur une cible, vingt-cinq sur une autre.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>5. Le développeur est parti</h4>
+          <div class="freq">Fréquent · 12 / 35 cibles</div>
+          <p>Le prestataire ou le bénévole qui a monté l'infrastructure n'est plus là. Les mots de passe d'admin sont chez lui, dans son gestionnaire perso. Personne ne sait maintenir, encore moins moderniser. Le service continue de tourner — jusqu'à la première CVE qui mord.</p>
+          <div class="ex">Symptômes : sites WordPress 2018 inactifs, ERP custom sans documentation.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>6. Budget sécurité = 0 €</h4>
+          <div class="freq">Universel · 35 / 35 cibles</div>
+          <p>Aucune ligne budgétaire dédiée à la sécurité. Pas d'audit annuel, pas de bug bounty, pas de SOC, pas de SIEM. Quand un incident survient, on improvise — souvent dans l'urgence, parfois pendant le week-end. Le coût d'un incident dépasse alors l'investissement annuel qu'aurait coûté sa prévention.</p>
+          <div class="ex">Le coût moyen d'un incident PME en France (2024) : 50 000 à 200 000 €.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>7. Multi-tenancy mal maîtrisée</h4>
+          <div class="freq">Occasionnel · 4 / 35 cibles</div>
+          <p>Une même plateforme sert plusieurs clients (b2b solidaire, plateforme mutualisée, Moodle multi-écoles). L'authentification est globale, mais la segmentation des données reste imparfaite. Un client peut, sous certaines conditions, accéder aux données d'un autre.</p>
+          <div class="ex">Symptômes : même code partagé entre deux structures, même faille dans les deux.</div>
+        </div>
+
+        <div class="pattern">
+          <h4>8. Dépendance au prestataire</h4>
+          <div class="freq">Fréquent · 18 / 35 cibles</div>
+          <p>L'organisation n'a aucune visibilité sur la sécurité du code livré par l'agence web. Le contrat ne prévoit ni audit, ni mises à jour de sécurité, ni période de garantie. Une fois la facture payée, plus personne ne touche au code — sauf un pentester quelques années plus tard.</p>
+          <div class="ex">Symptômes : code livré 2020, jamais mis à jour, vulnérabilités cumulées.</div>
+        </div>
+      </div>
+
+      <h3>Facteurs aggravants spécifiques à l'ESS</h3>
+      <table>
+        <thead><tr><th>Facteur</th><th>Mécanisme</th><th>Conséquence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Turnover des bénévoles</strong></td>
+            <td>Les comptes ne sont pas révoqués, les mots de passe partagés ne sont pas renouvelés, la connaissance se perd à chaque rotation.</td>
+            <td>Comptes orphelins, secrets toujours valides, dette de gouvernance.</td>
+          </tr>
+          <tr>
+            <td><strong>Direction non-technique</strong></td>
+            <td>Les décideurs ne comprennent pas les risques numériques, priorisent les fonctionnalités visibles, considèrent la sécurité comme un sujet « pour plus tard ».</td>
+            <td>Pas d'arbitrage budgétaire en faveur de la sécurité.</td>
+          </tr>
+          <tr>
+            <td><strong>Données sensibles sous-estimées</strong></td>
+            <td>« On est une asso, qui voudrait nous attaquer ? » alors que les données traitées (santé mentale, précarité, mineurs, personnes âgées isolées) sont parmi les plus rentables sur les marchés noirs.</td>
+            <td>Sous-estimation systémique de la valeur de l'actif informationnel.</td>
+          </tr>
+          <tr>
+            <td><strong>Prestataires low-cost</strong></td>
+            <td>Agences web ESS-friendly qui livrent du WordPress ou du Drupal sans durcissement, à bas prix, sans contrat de maintenance sécurité.</td>
+            <td>Stack par défaut, jamais durcie, vieillissante.</td>
+          </tr>
+          <tr>
+            <td><strong>Pas de politique de mot de passe</strong></td>
+            <td>Mots de passe partagés par email ou messagerie, pas de gestionnaire central, pas d'authentification multifacteur.</td>
+            <td>Une seule fuite suffit à compromettre l'ensemble.</td>
+          </tr>
+          <tr>
+            <td><strong>RGPD perçu comme une contrainte</strong></td>
+            <td>Politique de confidentialité copiée d'un autre site, registre des traitements inexistant ou symbolique, pas de DPO opérationnel.</td>
+            <td>Non-conformité formelle ; risque de sanction CNIL en cas d'incident.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <blockquote class="pull">
+        « Le diagnostic n'est pas <em>la stack est mauvaise</em>, mais <em>il manque un périmètre de sécurité</em>. Les outils choisis sont bons — il faut juste arrêter de les exposer en clear-net. »
+        <cite>Audit anonymisé</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ ARCHITECTURES COMPARÉES ============ -->
+    <section id="architectures">
+      <div class="section-header">
+        <div class="num">§ 07 — ARCHITECTURES COMPARÉES</div>
+        <h2>Le no-code est-il plus sûr que le sur-mesure ?</h2>
+        <div class="deck">Question récurrente dans les conseils d'administration. La réponse n'est pas binaire — mais les données sont nettes : ce qui n'est pas administré par l'organisation est très souvent mieux défendu que ce qu'elle administre elle-même sans compétence dédiée.</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Approche</th>
+            <th>Score moyen observé</th>
+            <th>Avantages sécurité</th>
+            <th>Risques résiduels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SaaS / no-code</strong><br><span class="tag">Webflow</span><span class="tag">Airtable</span><span class="tag">Odoo.sh</span><span class="tag">WeWeb</span></td>
+            <td><span class="score-cell s-ok">6 – 8 / 10</span></td>
+            <td>Surface d'attaque serveur quasi nulle, mises à jour gérées, WAF inclus, hardening par défaut. Le vendor a plus à perdre que l'organisation.</td>
+            <td>Données chez un tiers (souvent US), dépendance totale, configuration applicative parfois trop laxiste (Supabase RPC, Firebase rules).</td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare en frontal</strong><br><span class="tag">CDN</span><span class="tag">WAF</span><span class="tag">DDoS</span></td>
+            <td><span class="score-cell s-ok">7 – 8 / 10</span></td>
+            <td>WAF, protection DDoS, certificats SSL automatiques, masquage de l'origin. Effet immédiat sur le profil de risque.</td>
+            <td>Contournable si l'origin est exposé directement (DNS history, balise meta). Une cible auditée avait Cloudflare et un origin DigitalOcean joignable : protection nulle.</td>
+          </tr>
+          <tr>
+            <td><strong>Managed hosting</strong><br><span class="tag">WordPress.com</span><span class="tag">Firebase</span><span class="tag">Vercel</span></td>
+            <td><span class="score-cell s-med">5 / 10</span></td>
+            <td>Mises à jour automatiques, isolation réseau, support technique. Pour les petites structures, le meilleur rapport sécurité / effort.</td>
+            <td>Configuration applicative encore sous responsabilité du client (xmlrpc, Firebase Security Rules, plugins WP). Le vendor ne sécurise pas le contenu.</td>
+          </tr>
+          <tr>
+            <td><strong>Mutualisé classique</strong><br><span class="tag">o2switch</span><span class="tag">OVH web</span><span class="tag">Gandi</span></td>
+            <td><span class="score-cell s-med">4 – 5 / 10</span></td>
+            <td>Isolation basique, certaines protections (Tiger-Protect chez o2switch), prix bas, hébergement souverain.</td>
+            <td>Accès cPanel souvent exposé, PHP parfois ancien, pas de VPN, pas de WAF par défaut. Configuration laissée au client.</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud sur-mesure</strong><br><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">DigitalOcean</span></td>
+            <td><span class="score-cell s-med">3 – 6 / 10</span></td>
+            <td>Scalabilité, services managés (RDS, EKS), IAM granulaire, segmentation réseau. Quand bien fait, excellent.</td>
+            <td>Complexité de configuration. Erreurs IAM coûteuses, secrets dans le code, services exposés à 0.0.0.0/0 par négligence. Forte hétérogénéité.</td>
+          </tr>
+          <tr>
+            <td><strong>VPS / dédié self-hosted</strong><br><span class="tag">OVH dédié</span><span class="tag">Scaleway</span></td>
+            <td><span class="score-cell s-low">2 – 4 / 10</span></td>
+            <td>Contrôle total, possibilité de durcissement profond, conformité fine.</td>
+            <td><strong>Le pire scénario observé.</strong> Nécessite un admin sys compétent dans la durée. Souvent abandonné après le déploiement initial. Toutes les cibles avec un score &lt; 4 utilisent du self-hosted.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Ce que l'échantillon nous apprend</h3>
+
+      <div class="two-col">
+        <div>
+          <h4>1. Le self-hosted sans admin sys est le pire scénario</h4>
+          <p>Tous les scores ≤ 4 de l'échantillon impliquent du self-hosted vieillissant : une plateforme de jeu vidéo en PHP 5.6 abandonnée depuis 2018, un webmail Lotus Domino EOL depuis cinq ans, un ownCloud 2015 figé sur le filesystem avec sa base morte. Le contrôle total qu'offre le self-hosted devient une dette quand personne ne l'exerce.</p>
+
+          <h4>2. Le no-code est sous-représenté dans les findings</h4>
+          <p>Webflow, Odoo.sh, Wix, Airtable n'apparaissent presque jamais dans la liste des sources de critiques. Pas parce qu'ils sont parfaits, mais parce qu'ils n'ont quasiment pas de surface d'attaque côté serveur exposée à l'auditeur. Le risque est ailleurs : externalisation, vendor lock-in, RGPD.</p>
+        </div>
+
+        <div>
+          <h4>3. Cloudflare est excellent — quand l'origin est protégé</h4>
+          <p>Une cible auditée affichait fièrement le bouclier Cloudflare. La balise <code class="mono">&lt;meta name="generator"&gt;</code> de la page contenait l'IP DigitalOcean de l'origin. Trente secondes pour la trouver, accès direct au serveur, DoS HTTP/2 avec un VPS à 5 €/mois. Le WAF n'a servi à rien.</p>
+
+          <h4>4. Les stacks custom ne sont pas plus vulnérables — elles demandent plus de discipline</h4>
+          <p>Django, Laravel, Node.js bien faits sont solides. Les failles observées ne sont pas des CVE de framework, mais des oublis humains : une route oubliée sans <code class="mono">@auth</code>, un admin sans rate limiting, un CORS <code class="mono">*</code> laissé en dev. Le framework ne protège pas contre l'inattention.</p>
+        </div>
+      </div>
+
+      <div class="callout steel">
+        <strong>Pour les conseils d'administration</strong>
+        Si votre organisation fait moins de 30 salariés et n'a pas d'administrateur système dédié, le no-code et le SaaS managé sont presque toujours un meilleur choix de sécurité que le self-hosted, même si l'arbitrage économique est plus complexe (coût récurrent vs investissement initial). Une exception : Cloudflare en frontal d'un hébergement managé combine le meilleur des deux mondes pour un coût marginal.
+      </div>
+
+      <h3>Une arborescence de décision pour 2026</h3>
+      <p>Pour une organisation qui démarre ou qui restructure son SI, voici l'arbre de décision qui maximise la posture de sécurité dans le contexte ESS :</p>
+
+      <table>
+        <thead>
+          <tr><th>Si vous êtes…</th><th>Choisir</th><th>Éviter</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Une asso de moins de 10 salariés, site vitrine</td>
+            <td>WordPress.com (Business), Webflow, ou WP managé chez OVH/Infomaniak avec WAF</td>
+            <td>VPS auto-hébergé, hébergement chez un bénévole</td>
+          </tr>
+          <tr>
+            <td>Une asso avec une plateforme métier (gestion de bénéficiaires, dons, événements)</td>
+            <td>SaaS spécialisé ESS (HelloAsso, AssoConnect, Eudonet) ou solution open source <em>managée</em></td>
+            <td>Développement custom sans contrat de maintenance ≥ 3 ans</td>
+          </tr>
+          <tr>
+            <td>Une PME ESS avec data sensibles (santé, mineurs, précarité)</td>
+            <td>Cloudflare frontal + hébergeur français certifié HDS si santé + MFA obligatoire</td>
+            <td>Mutualisé classique exposé à l'Internet brut</td>
+          </tr>
+          <tr>
+            <td>Une coopérative ou EPA &gt; 100 salariés</td>
+            <td>Cloud managé (AWS/Azure FR) + DSI ou DPO opérationnel + audit annuel</td>
+            <td>Stack custom sans architecte sécurité</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============ SERVICES TIERS ============ -->
+    <section id="tiers">
+      <div class="section-header">
+        <div class="num">§ 08 — SERVICES TIERS À RISQUE</div>
+        <h2>Les outils qui apparaissent le plus souvent dans les findings</h2>
+        <div class="deck">Treize services tiers concentrent l'essentiel des findings critiques et hautes. Aucun n'est mauvais en soi — tous, mal configurés ou exposés sans périmètre, deviennent des autoroutes d'attaque.</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Problème observé</th>
+            <th>Risque</th>
+            <th class="num">Sév.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>WordPress xmlrpc.php</strong></td>
+            <td>Endpoint ouvert par défaut, brute force amplifié (jusqu'à 1 000 essais par requête), pas de rate limiting natif.</td>
+            <td>Compromission admin, takeover de site.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Apache Superset (self-hosted)</strong></td>
+            <td>Compte « guest » par défaut, SQL injection via bypass parser <code class="mono">ts_stat()</code> + <code class="mono">chr()</code>, JWT mal segmentés.</td>
+            <td>Extraction de bases de données complètes — plusieurs dizaines de milliers de comptes observés sur une cible.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>n8n (self-hosted)</strong></td>
+            <td>Trois CVE CVSS ≥ 9,9 dont une RCE non authentifiée via webhook content-type confusion.</td>
+            <td>Exécution de code à distance sur le serveur d'automatisation.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>Zoom (Personal Meeting ID)</strong></td>
+            <td>URLs avec mot de passe en clair laissées dans des entrées DNS publiques pour faciliter l'accès.</td>
+            <td>Zoom-bombing, écoute clandestine d'entretiens RH ou de réunions sensibles.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>cPanel exposé</strong></td>
+            <td>Interface d'administration serveur accessible sur Internet sans VPN ni MFA.</td>
+            <td>Compromission complète de l'hébergement par brute force ou phishing.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>Vaultwarden / Bitwarden self-hosted</strong></td>
+            <td>Gestionnaire de mots de passe d'organisation exposé sur Internet.</td>
+            <td>En cas de compromission : tous les secrets de l'organisation, en une fois.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>IBM Lotus Domino 9</strong></td>
+            <td>Webmail professionnel en fin de vie, plus de patches de sécurité depuis plusieurs années.</td>
+            <td>Compromission email + pivot vers AD interne.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Google Forms</strong></td>
+            <td>Données sensibles (candidats bénévoles, bénéficiaires) collectées sur infrastructure US, sans contrat ni DPA.</td>
+            <td>Non-conformité RGPD, perte de contrôle des données.</td>
+            <td class="num"><span class="sev med">M</span></td>
+          </tr>
+          <tr>
+            <td><strong>ownCloud 8.x abandonné</strong></td>
+            <td>Instance zombie, base de données déconnectée mais filesystem intact, dix ans de CVE non patchées si la DB est restaurée.</td>
+            <td>Bombe à retardement — exploitable instantanément à la moindre restauration.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Django admin sans rate limiting</strong></td>
+            <td>Panel d'administration métier sans <code class="mono">django-axes</code>, sans CAPTCHA, sans MFA, alimenté par les emails fuités via l'API publique.</td>
+            <td>Compromission du back-office (RH, comptabilité, bénéficiaires).</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>DRF root listing</strong></td>
+            <td>L'URL <code class="mono">/api/v1/</code> liste toutes les routes disponibles — cartographie offerte de la surface API.</td>
+            <td>Énumération exhaustive, accélération du fuzzing, exposition des endpoints internes.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Supabase (defaults)</strong></td>
+            <td><code class="mono">/auth/v1/signup</code> distingue comptes existants et nouveaux ; fonctions RPC appelables sans authentification ; PostgREST leake les noms de fonctions via les hints.</td>
+            <td>Énumération d'utilisateurs, pollution de DB, cartographie de l'API interne.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pritunl VPN — UI publique</strong></td>
+            <td>Interface web d'admin VPN accessible sur Internet, oracle d'énumération <code class="mono">auth_invalid_username</code>, pas de rate limiting visible.</td>
+            <td>Brute force d'identifiants, accès VPN, pivot vers le réseau interne.</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>FreeSWITCH / BBB SIP</strong></td>
+            <td>Port 5060 exposé, INVITE accepté sans authentification — bypasse le mot de passe de la salle de visio et la salle d'attente.</td>
+            <td>Écoute clandestine de visioconférences (cours, réunions médicales, entretiens RH).</td>
+            <td class="num"><span class="sev high">H</span></td>
+          </tr>
+          <tr>
+            <td><strong>Meteor DDP (méthodes RPC)</strong></td>
+            <td>Méthodes serveur appelables via WebSocket DDP <em>sans aucune authentification</em> par défaut. <code class="mono">getPersonById</code>, <code class="mono">downloadfile</code> exploitables tant que le développeur n'a pas écrit son propre <code class="mono">checkAuth</code>.</td>
+            <td>Fuite massive de PII (plusieurs milliers de sociétaires, IBAN, BIC, mineurs) sur une coopérative à sociétaires.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>WebDev / WinDev (PC SOFT)</strong></td>
+            <td>Logique de validation de mot de passe écrite côté navigateur, mot de passe en clair dans le bundle JavaScript. Pattern récurrent de la stack : la séparation client/serveur n'est pas naturelle au framework.</td>
+            <td>Pipeline de mise à jour APK contournable en 30 secondes, supply chain mobile sur app médico-sociale.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>Joomla 3.x + composants tiers (K2, JCE, Fabrik)</strong></td>
+            <td>Joomla 3.x EOL depuis août 2023, composants <em>tiers</em> souvent encore plus anciens (Fabrik archivé fin 2024). Version disclosure massive (header K2, README.txt, manifests XML), CVE 2023–2024 non patchées.</td>
+            <td>SQL injection (CVE-2024-30471), XSS, surface admin ouverte. Cible : association d'aide aux réfugiés.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+          <tr>
+            <td><strong>Laravel + endpoints API ad hoc</strong></td>
+            <td>Les frameworks ne forcent pas l'autorisation par objet. Quand un développeur écrit <code class="mono">User::where('email', $request->email)->first()</code> dans un contrôleur partagé, n'importe quel utilisateur authentifié récupère n'importe quel autre utilisateur. Aggravé par stockage du mot de passe en clair (<code class="mono">pass_text</code>).</td>
+            <td>IDOR critique chez deux cibles, dont plusieurs dizaines de milliers de comptes interprètes/hôpitaux exposés.</td>
+            <td class="num"><span class="sev crit">C</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>La règle qui résume tout</strong>
+        Aucun de ces services n'est mauvais. Tous deviennent dangereux à partir du moment où ils sont accessibles sur Internet sans <em>authentification forte</em> (MFA), <em>rate limiting</em>, et <em>mises à jour</em> dans la durée. La seule décision qui change tout n'est pas le choix de l'outil, mais le choix de son périmètre d'exposition.
+      </div>
+    </section>
+
+    <!-- ============ CAS EMBLÉMATIQUES ============ -->
+    <section id="emblematiques">
+      <div class="section-header">
+        <div class="num">§ 09 — CAS EMBLÉMATIQUES</div>
+        <h2>Trois récits de chaînes d'attaque réalistes</h2>
+        <div class="deck">Anonymisés, mais reconstruits à partir d'audits réels de l'échantillon. Chaque récit illustre comment une chaîne de petites négligences, prises isolément non critiques, devient une faille systémique.</div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas A — La startup tech solidaire</span>
+          <span class="meta">Score : 3 / 10 · Critiques : 2</span>
+        </div>
+        <p>
+          Une association porte une plateforme de référencement de structures sociales, opérée pour le compte de plusieurs collectivités. Stack moderne — Node.js, PostgreSQL, Apache Superset pour le pilotage interne, n8n pour l'automatisation. Bonne idée, bonnes intentions, exécution technique soignée. Mais.
+        </p>
+        <h4>Surface exposée</h4>
+        <p>
+          Outre le site principal, deux outils internes sont accessibles sur Internet : une instance Superset destinée aux équipes (avec un compte « guest » oublié activé par défaut) et un n8n hébergé sur un sous-domaine standard. Tous deux dans des versions dépassées de plusieurs trimestres.
+        </p>
+        <h4>Chaîne d'attaque</h4>
+        <div class="kchain">
+          [1] Découverte sous-domaine <code>superset.*</code> via Certificate Transparency<br>
+          <span class="arrow">→</span> [2] Authentification en compte <code>guest</code> par défaut<br>
+          <span class="arrow">→</span> [3] Bypass du parser SQL via <code>ts_stat(chr(83)||...)</code> + <code>jsonb_object_keys()</code><br>
+          <span class="arrow">→</span> [4] Extraction du schéma complet : plus de vingt clés top-level, dont <code>password</code>, <code>passwordToken</code>, <code>devToken</code><br>
+          <span class="arrow">→</span> [5] Filtrage par <code>status='admin'</code> : plusieurs centaines de comptes administrateurs identifiés<br>
+          <span class="arrow">→</span> [6] Récupération des <code>devToken</code> = JWT signés HS256 valides pour l'API métier<br>
+          <span class="arrow">→</span> <strong>Compromission complète : plusieurs dizaines de milliers de comptes utilisateurs accessibles, dont des données nominatives de bénéficiaires en situation de précarité.</strong>
+        </div>
+        <h4>Leçon</h4>
+        <p>
+          Les trois ingrédients de cette chaîne — un sous-domaine indexé, un compte par défaut activé, une version Superset trop ancienne — sont chacun corrigeables en quelques minutes. Aucun n'a été corrigé pendant trois ans. La compromission n'a pas demandé une attaque sophistiquée mais une lecture attentive de la documentation publique du logiciel.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas B — L'organisme de formation au numérique</span>
+          <span class="meta">Score : 4 / 10 · Critiques : 1</span>
+        </div>
+        <p>
+          Une coopérative de plusieurs centaines de salariés forme à la programmation des dizaines de milliers d'apprenants, opère des centaines de dépôts publics sur GitHub, un site vitrine impeccable sous Webflow et Cloudflare. La façade est exemplaire. Derrière, sept ans d'accumulation technique.
+        </p>
+        <h4>Le contraste</h4>
+        <ul>
+          <li><strong>Vitrine</strong> : Webflow + Cloudflare = score 8/10.</li>
+          <li><strong>GitLab interne</strong> : à jour, propre, configuré.</li>
+          <li><strong>Toolbox métier</strong> : Laravel + Backpack v3 + elFinder 2.1.53 (2020) avec trois CVE dont une RCE 9.8.</li>
+          <li><strong>Plateforme de jeu vidéo abandonnée</strong> : WordPress 5.x sur PHP 5.6, EOL depuis sept ans.</li>
+          <li><strong>BBB de visioconférence</strong> : composant SIP (port 5060) qui accepte les INVITE sans authentification.</li>
+        </ul>
+        <h4>Chaîne d'attaque la plus directe</h4>
+        <div class="kchain">
+          [1] Toolbox publiquement accessible <code>toolbox.*.org/admin</code><br>
+          <span class="arrow">→</span> [2] Pas de rate limiting · dizaines de milliers de tentatives possibles sans blocage<br>
+          <span class="arrow">→</span> [3] Compromission via brute force (rockyou) ou via un GitHub leak (dump SQL avec hash admin craqué en 1s)<br>
+          <span class="arrow">→</span> [4] Accès elFinder 2.1.53 (post-auth) — exploitation CVE-2020-7980 RCE<br>
+          <span class="arrow">→</span> [5] Lecture <code>.env</code> + <code>.git/</code> (les deux sont sur le serveur, 403 = ils existent)<br>
+          <span class="arrow">→</span> [6] Credentials base de données apprenants<br>
+          <span class="arrow">→</span> <strong>Exfiltration de données nominatives, certificats de formation, conventions OPCO.</strong>
+        </div>
+        <h4>Leçon</h4>
+        <p>
+          Le pattern « façade moderne, arrière-boutique en dette technique » est le plus fréquent de l'échantillon. Il s'installe quand l'organisation grandit plus vite que sa capacité à entretenir l'existant. Le site vitrine attire les médias et les financeurs ; les outils métier, eux, vieillissent dans l'ombre — jusqu'au jour où ils sortent au grand jour, par incident.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas C — La PME mobilité</span>
+          <span class="meta">Score : 6 / 10 · Critiques : 0</span>
+        </div>
+        <p>
+          Une centaine de salariés, plateforme SaaS multi-villes. Infrastructure AWS EKS, Terraform, ArgoCD, Sentry self-hosted, Trivy scan dans la CI. L'équipe DevOps est compétente, le périmètre réseau est rigoureux : plusieurs dizaines de sous-domaines en Certificate Transparency, une vingtaine d'outils DevOps accessibles uniquement aux salariés, IPs AWS scannées et toutes en 403.
+        </p>
+        <h4>Pourquoi pas de critique ?</h4>
+        <p>
+          Parce que les fondamentaux sont là. WAF, segmentation, IAM rigoureux, mises à jour régulières. Cinq sessions d'audit n'ont pas trouvé de chemin direct vers une compromission. Cela ne veut pas dire qu'il n'y a rien — cela veut dire que la barre est nettement plus haute que dans la moyenne ESS.
+        </p>
+        <h4>Ce qui reste à corriger</h4>
+        <div class="kchain">
+          <span class="arrow">·</span> VPN Pritunl avec UI web publique par défaut (config Terraform standard non restreinte par IP)<br>
+          <span class="arrow">·</span> CAPTCHA API custom : Swagger UI public, OAuth2 déclaré mais non enforced<br>
+          <span class="arrow">·</span> DNS bavard — chaque outil DevOps a son propre sous-domaine en clair plutôt qu'une zone interne<br>
+          <span class="arrow">·</span> Posture email faiblement durcie : DMARC <code>p=none</code> sur deux domaines, DKIM absent sur un<br>
+          <span class="arrow">·</span> Domaine legacy historique encore actif et réutilisable pour du typo-squatting
+        </div>
+        <h4>Leçon</h4>
+        <p>
+          Quand l'infrastructure est gérée par une équipe DevOps compétente, les vulnérabilités se déplacent : elles ne sont plus dans le serveur principal mais dans les services périphériques (VPN, CAPTCHA, monitoring) et dans la posture email. C'est la dernière marche : un score 6 bien construit demande maintenant un travail de finition pour atteindre 8. Pas un changement d'architecture.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas D — La PME de services médico-sociaux</span>
+          <span class="meta">Score : 3 / 10 · Critiques : 1 — supply chain mobile</span>
+        </div>
+        <p>
+          Une cinquantaine de salariés, plateforme d'interprétariat à destination des hôpitaux et des services sociaux. Site vitrine WordPress propre derrière un WAF mutualisé, REST API protégée, pas d'<code class="mono">xmlrpc</code> exposé, plugins à jour. La façade tient. À côté, l'application mobile pour les interprètes est servie par une infrastructure WebDev/WinDev, dont l'organisation a probablement sous-traité le développement.
+        </p>
+        <h4>Le pipeline de mise à jour de l'APK</h4>
+        <p>
+          Une page « Update mobile » accessible publiquement présente un panneau d'administration : upload Android APK, upload iOS IPA, modification des notes de version, fréquence de polling. L'accès est protégé par un mot de passe — saisi dans une boîte modale en JavaScript.
+        </p>
+        <h4>Chaîne d'attaque</h4>
+        <div class="kchain">
+          [1] <code>view-source:</code> sur la page d'admin · Ctrl+F sur la variable JavaScript du mot de passe<br>
+          <span class="arrow">→</span> [2] Lecture en clair de la variable WebDev contenant le mot de passe<br>
+          <span class="arrow">→</span> [3] Saisie du mot de passe → accès au panneau d'upload<br>
+          <span class="arrow">→</span> [4] La fonction de vérification client ne renvoie pas <code>false</code> en cas d'échec — l'AJAX part de toute façon<br>
+          <span class="arrow">→</span> [5] Upload d'un APK signé (clé attaquant) remplaçant la version officielle<br>
+          <span class="arrow">→</span> <strong>L'APK malveillant est distribué automatiquement à tous les interprètes lors du polling de mise à jour.</strong>
+        </div>
+        <h4>Pourquoi c'est emblématique</h4>
+        <p>
+          Le risque ne porte pas sur le site web — il porte sur l'<em>infrastructure mobile invisible</em>. Une supply chain attack mobile ne se voit pas dans un audit web classique : il faut chercher la console d'admin du dispositif de mise à jour. Les utilisateurs (interprètes médicaux) deviennent les victimes finales d'une faille que l'organisation ne soupçonne pas. La leçon : auditer non seulement le site mais aussi le canal de distribution des applications.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas E — La coopérative à sociétaires</span>
+          <span class="meta">Score : 3 / 10 · Critiques : 1 — fuite massive de PII</span>
+        </div>
+        <p>
+          Coopérative de plusieurs milliers de sociétaires, modèle SCIC, multi-régions. La plateforme métier — partagée avec d'autres coopératives sœurs — est bâtie sur Meteor, un framework Node.js qui expose, par défaut, des « méthodes RPC » accessibles via WebSocket DDP depuis le navigateur des sociétaires connectés.
+        </p>
+        <h4>Le défaut Meteor mal compris</h4>
+        <p>
+          Meteor invite à écrire du code rapide : on définit une <code class="mono">Meteor.method('getPersonById', function(id) { return Persons.findOne(id); })</code> et le navigateur peut l'appeler. Le framework ne <em>force</em> pas le développeur à vérifier qui appelle. Si le check d'authentification est oublié — et il l'est très souvent quand le développeur compte sur la session client — la méthode est appelable par n'importe qui, y compris depuis l'extérieur de l'application.
+        </p>
+        <h4>Chaîne d'attaque</h4>
+        <div class="kchain">
+          [1] Identification du sous-domaine de la plateforme métier via Certificate Transparency<br>
+          <span class="arrow">→</span> [2] Connexion WebSocket DDP <code>wss://métier.cible.fr/sockjs/...</code> sans authentification<br>
+          <span class="arrow">→</span> [3] Appel <code>getAllPersonsByEmail("")</code> · 1 profil retourné (oracle email)<br>
+          <span class="arrow">→</span> [4] Appel <code>getPersonForUniqueNationalNumberSelf("", coopId)</code> · 1 personId par coopérative<br>
+          <span class="arrow">→</span> [5] Appel <code>getPersonById(personId)</code> · profil complet : nom, naissance, adresse, mobile, email, <strong>IBAN, BIC</strong>, idCardNumber, coopératives, parts<br>
+          <span class="arrow">→</span> [6] Chaînage par <code>cooperativeId</code> dans le retour · plusieurs milliers de profils énumérables<br>
+          <span class="arrow">→</span> [7] Méthode <code>downloadfile(coopId, docId)</code> · téléchargement d'un PDF sans authentification<br>
+          <span class="arrow">→</span> <strong>PoC validée sur trois profils réels — dont un mineur (date de naissance, adresse, tuteur légal).</strong>
+        </div>
+        <h4>Pourquoi c'est emblématique</h4>
+        <p>
+          Aucune CVE Meteor n'a été exploitée. Le framework n'est pas en cause : il est utilisé conformément à sa documentation. La faille est dans la convention de codage — un code qui « marche » fonctionnellement mais n'a jamais été audité du point de vue sécurité. Les données fuites incluent des données bancaires (IBAN/BIC), donc dans le périmètre RGPD article 9 (données financières) et un mineur (article 8). Le coût d'une notification CNIL pour un incident de cette ampleur dépasse de très loin le coût qu'aurait représenté l'ajout d'un <code class="mono">if (!Meteor.userId()) throw new Meteor.Error('unauthorized')</code> dans chaque méthode.
+        </p>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <span class="title">Cas F — La plateforme associative médico-juridique</span>
+          <span class="meta">Score : 2 / 10 · Critiques : 1 — IDOR + mots de passe en clair</span>
+        </div>
+        <p>
+          Plateforme associative à vocation médico-juridique, plusieurs dizaines de milliers d'utilisateurs (professionnels de santé, services sociaux, juristes). Stack Laravel + React, hébergement mutualisé français. Inscription ouverte, sans validation email, sans CAPTCHA — un attaquant peut se créer un compte en trente secondes.
+        </p>
+        <h4>L'endpoint qui ne devrait pas exister</h4>
+        <p>
+          L'API expose <code class="mono">POST /api/client-all-acounts</code>. La logique métier suppose que ce sont les administrateurs qui l'appellent, depuis leur back-office. Le contrôleur reçoit un email, fait <code class="mono">User::where('email', $email)->first()</code> et renvoie l'objet utilisateur complet. Aucune vérification d'autorisation par rôle. Et l'objet utilisateur retourné contient un champ <code class="mono">pass_text</code> — le mot de passe en clair.
+        </p>
+        <h4>Chaîne d'attaque</h4>
+        <div class="kchain">
+          [1] Inscription via <code>/api/signup</code> · compte client actif immédiatement<br>
+          <span class="arrow">→</span> [2] Récupération du JWT (durée de validité : 365 jours)<br>
+          <span class="arrow">→</span> [3] Énumération via <code>/api/send-pass</code> · 200 = email existe, 500 = n'existe pas<br>
+          <span class="arrow">→</span> [4] Appel <code>POST /api/client-all-acounts {"email":"cible@..."}</code><br>
+          <span class="arrow">→</span> [5] Réponse JSON avec <code>pass_text</code> = mot de passe en clair<br>
+          <span class="arrow">→</span> <strong>Account takeover de tout utilisateur — interprète, hôpital, administrateur.</strong> Confirmé sur le compte de la direction (mot de passe trivial : <code class="mono">123456</code>) et sur le compte de contact.
+        </div>
+        <h4>Pourquoi c'est emblématique</h4>
+        <p>
+          Deux fautes professionnelles cumulées : l'absence de contrôle d'accès objet (IDOR) et le stockage des mots de passe en clair (toute base professionnelle stocke des hashes salés). À elles deux, elles transforment une plateforme métier en répertoire de credentials directement utilisables — pour du credential stuffing massif, des interprètes hospitaliers étant susceptibles de réutiliser leur mot de passe sur leurs comptes hospitaliers. Le risque dépasse largement le périmètre de l'organisation.
+        </p>
+      </div>
+
+      <hr class="fancy">
+
+      <h3>Ce que ces six cas ont en commun</h3>
+      <p>
+        Six profils différents — startup associative, organisme de formation, PME mobilité, PME de services médico-sociaux, coopérative à sociétaires, plateforme associative médico-juridique — six scores différents — 3, 4, 6, 3, 3, 2 — et pourtant des patterns identiques :
+      </p>
+      <ul>
+        <li><strong>Une façade défendable</strong>, qui rassure l'organisation et ses parties prenantes (site vitrine, certifications visibles, communication).</li>
+        <li><strong>Une infrastructure métier moins surveillée</strong>, où s'accumulent les configurations par défaut, les versions vieillissantes, les endpoints internes pensés comme « pas accessibles » mais accessibles.</li>
+        <li><strong>Une dépendance à un framework</strong> dont la sécurité dépend d'une discipline du développeur : Meteor exige un check d'auth manuel sur chaque méthode, Laravel n'oblige pas la vérification d'autorisation par objet, WebDev/WinDev ne sépare pas naturellement client et serveur.</li>
+        <li><strong>Aucune compromission n'a été menée</strong>, mais les chaînes d'attaque démontrées tiennent en cinq étapes, accessibles avec un navigateur et la lecture attentive du JavaScript public. La barrière n'est pas technique — elle est juridique (le pentester s'arrête à la PoC).</li>
+        <li><strong>Les données touchées ne sont pas anodines</strong> : sociétaires d'une coopérative, mineurs, demandeurs d'asile, interprètes médicaux, bénéficiaires d'aide sociale. Ce sont précisément les populations dont le droit à la protection de la vie privée est le plus fragile et dont l'exploitation aurait l'impact humain le plus élevé.</li>
+      </ul>
+    </section>
+
+    <!-- ============ GUIDE PRATIQUE ============ -->
+    <section id="guide">
+      <div class="section-header">
+        <div class="num">§ 10 — GUIDE POUR LES ORGANISATIONS</div>
+        <h2>Que faire, dans quel ordre, à quel coût</h2>
+        <div class="deck">La leçon transversale de ces audits est rassurante : la grande majorité des findings hauts et critiques se corrigent en moins d'une journée, à coût marginal. Voici l'ordre de priorité empirique, calibré sur ce qu'on a observé.</div>
+      </div>
+
+      <h3>Les dix quick wins universels</h3>
+      <p>Si vous ne devez en retenir que dix, retenez ceux-là. Ils s'appliquent à 80 % des cibles auditées et représentent la première journée de travail d'un référent technique sérieux.</p>
+
+      <div class="qw">
+        <div class="rank">1</div>
+        <div>
+          <div class="title">Activer la MFA partout où c'est possible</div>
+          <div class="desc">Compte d'admin Microsoft 365 / Google Workspace, panels de CMS, gestionnaire de mots de passe, hébergeur, registrar DNS. Coupe à elle seule 95 % des password spray.</div>
+        </div>
+        <div class="effort"><strong>2 h</strong>tous comptes</div>
+        <div class="cost"><strong>0 €</strong>natif</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">2</div>
+        <div>
+          <div class="title">Restreindre par IP les panels d'administration</div>
+          <div class="desc">cPanel, phpMyAdmin, /wp-admin, /admin Django, RabbitMQ management, Vaultwarden, n8n, Superset. Tout ce qui n'a pas vocation à être public derrière une whitelist d'IP ou un VPN.</div>
+        </div>
+        <div class="effort"><strong>1 h</strong>par service</div>
+        <div class="cost"><strong>0 €</strong>config</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">3</div>
+        <div>
+          <div class="title">Configurer DMARC en p=reject</div>
+          <div class="desc">Un enregistrement DNS TXT. Bloque l'usurpation de votre domaine email — vecteur n°1 de la fraude au président et du phishing ciblé. Précédé par SPF et DKIM corrects. <a href="/blog/dmarc-spf-dkim-association.html">Guide pas à pas pour une association →</a></div>
+        </div>
+        <div class="effort"><strong>30 min</strong>+ test</div>
+        <div class="cost"><strong>0 €</strong>DNS</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">4</div>
+        <div>
+          <div class="title">Déployer un gestionnaire de mots de passe organisationnel</div>
+          <div class="desc">Bitwarden Family / Teams, 1Password Business, Dashlane Pro. Élimine le partage par email/Slack. Bitwarden est gratuit pour les associations via leur programme nonprofit.</div>
+        </div>
+        <div class="effort"><strong>1 j</strong>déploiement</div>
+        <div class="cost"><strong>0 – 5 €</strong>par user / mois</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">5</div>
+        <div>
+          <div class="title">Mettre à jour ou éteindre les services EOL</div>
+          <div class="desc">Recenser tous les services en production. Pour chacun, vérifier la version et la date de fin de support. Tout ce qui est EOL : éteindre (pas seulement « débrancher ») ou migrer.</div>
+        </div>
+        <div class="effort"><strong>1–5 j</strong>selon parc</div>
+        <div class="cost"><strong>variable</strong></div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">6</div>
+        <div>
+          <div class="title">Désactiver xmlrpc.php sur tous les WordPress</div>
+          <div class="desc">Plugin <em>Disable XML-RPC</em>, ou règle Apache/nginx, ou Cloudflare WAF rule. Ferme la porte au brute force amplifié et à un grand nombre de plugins offensifs.</div>
+        </div>
+        <div class="effort"><strong>15 min</strong>par site</div>
+        <div class="cost"><strong>0 €</strong>plugin</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">7</div>
+        <div>
+          <div class="title">Mettre Cloudflare (free) en frontal</div>
+          <div class="desc">WAF de base, protection DDoS, certificat SSL automatique, masquage de l'IP origin. <strong>Vérifier l'origin</strong> : si l'IP est encore joignable directement, le WAF est contournable.</div>
+        </div>
+        <div class="effort"><strong>1 h</strong>setup + DNS</div>
+        <div class="cost"><strong>0 €</strong>plan free</div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">8</div>
+        <div>
+          <div class="title">Auditer les sous-domaines actifs</div>
+          <div class="desc">Lister via crt.sh, supprimer les CNAME orphelins, vérifier qu'aucun sous-domaine ne pointe vers un service externe désactivé (subdomain takeover).</div>
+        </div>
+        <div class="effort"><strong>2 h</strong>recensement</div>
+        <div class="cost"><strong>0 €</strong></div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">9</div>
+        <div>
+          <div class="title">Procédure d'offboarding des comptes</div>
+          <div class="desc">Quand un salarié, prestataire, ou bénévole part : checklist de révocation des accès. Microsoft 365, Google, GitLab, GitHub, Slack, Notion, gestionnaire de mots de passe.</div>
+        </div>
+        <div class="effort"><strong>0,5 j</strong>écrire la check-list</div>
+        <div class="cost"><strong>0 €</strong></div>
+      </div>
+
+      <div class="qw">
+        <div class="rank">10</div>
+        <div>
+          <div class="title">Sauvegardes 3-2-1 testées</div>
+          <div class="desc">Trois copies, deux supports, une hors site. <strong>Et surtout : tester la restauration tous les six mois.</strong> Une sauvegarde non testée n'est pas une sauvegarde, c'est un fichier optimiste.</div>
+        </div>
+        <div class="effort"><strong>1 j</strong>setup + test</div>
+        <div class="cost"><strong>10–50 €</strong>/ mois</div>
+      </div>
+
+      <h3>Roadmap par profil d'organisation</h3>
+      <p>Au-delà des quick wins, voici une trajectoire de maturation typique selon la taille et la maturité.</p>
+
+      <table>
+        <thead>
+          <tr><th>Profil</th><th>0–3 mois</th><th>3–12 mois</th><th>12–36 mois</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Asso &lt; 10 sal.</strong><br>aucun référent technique</td>
+            <td>10 quick wins. Migration vers managed hosting (WordPress.com, Webflow). MFA M365.</td>
+            <td>Audit annuel léger. Convention RGPD avec prestataires. Formation phishing du staff.</td>
+            <td>DPO mutualisé. Plan de continuité d'activité (PCA) écrit. Test de restauration de sauvegarde annuel.</td>
+          </tr>
+          <tr>
+            <td><strong>Asso 10–50 sal.</strong><br>un référent à temps partiel</td>
+            <td>Quick wins. Cloudflare frontal. Inventaire des services tiers. Désactivation xmlrpc.</td>
+            <td>Politique de mots de passe. Gestionnaire central. Migration des services EOL.</td>
+            <td>Pentest annuel externe. Politique de gestion des accès (RBAC). Charte numérique signée par tous.</td>
+          </tr>
+          <tr>
+            <td><strong>PME ESS 50–200 sal.</strong><br>équipe IT (interne ou externalisée)</td>
+            <td>Audit complet de surface. Recensement des comptes admin. MFA sur tous les services critiques.</td>
+            <td>SIEM léger ou SOC managé. Pentest annuel. Plan de réponse à incident. Tests phishing trimestriels.</td>
+            <td>RSSI dédié ou mutualisé. ISO 27001 si appel d'offres l'exige. Bug bounty privé pour les apps métier.</td>
+          </tr>
+          <tr>
+            <td><strong>Coopérative / EPA &gt; 200 sal.</strong><br>DSI structurée</td>
+            <td>Inventaire exhaustif (CMDB). Cartographie des données sensibles (RGPD).</td>
+            <td>SOC 24/7 (interne ou managé). EDR sur les postes. Authentification SSO + MFA obligatoire.</td>
+            <td>Plan de continuité testé. Cyber-assurance dimensionnée. Audit ANSSI ou équivalent.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Le risque oublié : email et facteur humain</h3>
+      <p>
+        L'audit web est un exercice nécessaire mais insuffisant. Les chiffres nationaux le rappellent : <strong>~80 % des compromissions PME en France passent par le phishing</strong>, donc par l'email. Or, sur les trente-cinq cibles auditées, seules sept avaient une posture email correcte (DMARC en <code class="mono">p=reject</code>, DKIM signé, SPF strict). Et sur les douze structures testées sur leur tenant Microsoft 365, dix exposaient encore Basic Auth Exchange Online ou n'avaient pas forcé la MFA en première ligne.
+      </p>
+      <p>
+        Pour les organisations dont le profil de risque est dominé par l'email plutôt que par le web (Microsoft 365, équipe distribuée, échanges réguliers avec partenaires/financeurs/bénéficiaires), les priorités diffèrent :
+      </p>
+
+      <ol>
+        <li><strong>MFA Microsoft 365 ou Google Workspace</strong> sur tous les comptes — annule 95 % des password spray, qui sont eux-mêmes alimentés par l'énumération via <code class="mono">GetCredentialType</code>.</li>
+        <li><strong>DMARC <code>p=reject</code></strong> pour bloquer l'usurpation du domaine.</li>
+        <li><strong>Politique de mots de passe + gestionnaire central</strong> pour éviter le partage informel.</li>
+        <li><strong>Test de phishing trimestriel</strong> avec restitution pédagogique au staff.</li>
+        <li><strong>Procédure d'offboarding</strong> écrite pour les comptes orphelins après départs.</li>
+      </ol>
+
+      <div class="callout good">
+        <strong>L'investissement de loin le plus rentable</strong>
+        Activer la MFA sur Microsoft 365 ou Google Workspace est, mesuré sur les trente-cinq cibles, l'action qui modifie le plus profondément le profil de risque pour le coût le plus faible. C'est gratuit, c'est natif, c'est immédiat. Si une seule action devait être retenue de tout ce panorama, c'est celle-ci.
+      </div>
+    </section>
+
+    <!-- ============ AUTO-ÉVALUATION ============ -->
+    <section id="auto-eval">
+      <div class="section-header">
+        <div class="num">§ 11 — GRILLE D'AUTO-ÉVALUATION</div>
+        <h2>Vingt questions pour situer votre organisation</h2>
+        <div class="deck">À lire en équipe — direction, référent technique, prestataire — pour éviter le biais d'auto-déclaration. Une réponse honnête vaut mieux qu'une réponse rassurante.</div>
+      </div>
+
+      <h3>Identité et exposition</h3>
+      <table class="compact">
+        <thead><tr><th style="width:40px">#</th><th>Question</th><th style="width:120px">Réponse idéale</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td>Avez-vous un référent technique <em>nommément identifié</em> et <em>joignable</em> en cas d'incident, 7 jours sur 7 ?</td><td>Oui</td></tr>
+          <tr><td>02</td><td>Connaissez-vous la liste exhaustive de vos sous-domaines actifs ? (vérifiable en 5 min via crt.sh)</td><td>Oui</td></tr>
+          <tr><td>03</td><td>Savez-vous combien de services tiers traitent des données de vos bénéficiaires/donateurs/salariés ?</td><td>Oui, &lt; 30</td></tr>
+          <tr><td>04</td><td>Avez-vous un registre RGPD à jour (article 30) avec une date de dernière mise à jour &lt; 12 mois ?</td><td>Oui</td></tr>
+          <tr><td>05</td><td>Avez-vous identifié les 3 catégories de données les plus sensibles de votre SI ?</td><td>Oui</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Authentification et accès</h3>
+      <table class="compact">
+        <thead><tr><th style="width:40px">#</th><th>Question</th><th style="width:120px">Réponse idéale</th></tr></thead>
+        <tbody>
+          <tr><td>06</td><td>L'authentification multifacteur (MFA) est-elle obligatoire pour <em>tous</em> les comptes administrateurs M365 / Google ?</td><td>Oui</td></tr>
+          <tr><td>07</td><td>Utilisez-vous un gestionnaire de mots de passe organisationnel (Bitwarden, 1Password) ?</td><td>Oui</td></tr>
+          <tr><td>08</td><td>Existe-t-il une procédure d'offboarding écrite pour révoquer les accès quand quelqu'un part ?</td><td>Oui</td></tr>
+          <tr><td>09</td><td>Vos panels d'administration (CMS, hébergeur, base de données) sont-ils restreints par IP ou via VPN ?</td><td>Oui</td></tr>
+          <tr><td>10</td><td>Avez-vous des comptes administrateurs partagés entre plusieurs personnes ?</td><td>Non</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Email et fraude</h3>
+      <table class="compact">
+        <thead><tr><th style="width:40px">#</th><th>Question</th><th style="width:120px">Réponse idéale</th></tr></thead>
+        <tbody>
+          <tr><td>11</td><td>Votre domaine email a-t-il un enregistrement DMARC en <code class="mono">p=reject</code> ?</td><td>Oui</td></tr>
+          <tr><td>12</td><td>Vos emails sortants sont-ils signés DKIM ?</td><td>Oui</td></tr>
+          <tr><td>13</td><td>Savez-vous repérer un email de fraude au président (CEO fraud) et avez-vous une procédure de double validation pour les virements &gt; X € ?</td><td>Oui</td></tr>
+          <tr><td>14</td><td>Avez-vous mené un test de phishing interne dans les 12 derniers mois ?</td><td>Oui</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Maintenance et sauvegardes</h3>
+      <table class="compact">
+        <thead><tr><th style="width:40px">#</th><th>Question</th><th style="width:120px">Réponse idéale</th></tr></thead>
+        <tbody>
+          <tr><td>15</td><td>Tous vos CMS, frameworks et serveurs sont-ils dans une version actuellement supportée ?</td><td>Oui</td></tr>
+          <tr><td>16</td><td>Avez-vous un mécanisme de sauvegarde 3-2-1 (3 copies, 2 supports, 1 hors site) ?</td><td>Oui</td></tr>
+          <tr><td>17</td><td>Avez-vous testé la restauration d'une sauvegarde dans les 6 derniers mois ?</td><td>Oui</td></tr>
+          <tr><td>18</td><td>Avez-vous un plan de réponse à incident écrit, même court (1 page) ?</td><td>Oui</td></tr>
+          <tr><td>19</td><td>Disposez-vous d'une cyber-assurance ?</td><td>Oui (selon taille)</td></tr>
+          <tr><td>20</td><td>Avez-vous mené un audit ou pentest externe dans les 24 derniers mois ?</td><td>Oui</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Lecture du score</h3>
+      <div class="matrix">
+        <div class="head">Tranche</div>
+        <div class="head">Réponses « idéales »</div>
+        <div class="head">Diagnostic</div>
+        <div class="head">Action prioritaire</div>
+
+        <div><strong>Sereine</strong></div>
+        <div>17 – 20 / 20</div>
+        <div>Posture professionnelle. Vous êtes dans le top quart ESS.</div>
+        <div>Maintenir, mesurer, partager les bonnes pratiques.</div>
+
+        <div><strong>Active</strong></div>
+        <div>12 – 16 / 20</div>
+        <div>Bases solides, défauts résiduels. Score équivalent à 6/10 dans ce panorama.</div>
+        <div>Quick wins 1 à 5, puis audit léger annuel.</div>
+
+        <div><strong>Préoccupante</strong></div>
+        <div>7 – 11 / 20</div>
+        <div>Plusieurs vecteurs d'entrée non protégés. Niveau du ventre mou de l'échantillon.</div>
+        <div>Les 10 quick wins en priorité absolue, dans les 90 jours.</div>
+
+        <div><strong>Critique</strong></div>
+        <div>0 – 6 / 20</div>
+        <div>Compromission probable à court terme. Score équivalent à 3 ou 4 dans ce panorama.</div>
+        <div>Audit externe immédiat, plan d'urgence, MFA en 48 h.</div>
+      </div>
+
+      <div class="callout">
+        <strong>Lecture honnête</strong>
+        Sur l'échantillon des trente-cinq audits, le score moyen serait probablement de 9–11 réponses idéales sur 20. Si votre organisation est à 14, elle est déjà au-dessus de la médiane ESS. Si elle est à 7, elle est dans la moyenne — ce qui n'est pas rassurant, mais n'est pas non plus une situation isolée.
+      </div>
+    </section>
+
+    <!-- ============ GLOSSAIRE ============ -->
+    <section id="glossaire">
+      <div class="section-header">
+        <div class="num">§ 12 — GLOSSAIRE</div>
+        <h2>Pour décoder le vocabulaire de la cybersécurité</h2>
+        <div class="deck">Termes techniques utilisés dans ce panorama, traduits en français accessible. À conserver à portée de main pour les conseils d'administration et les comités de pilotage.</div>
+      </div>
+
+      <dl class="glossary">
+        <dt>API REST</dt>
+        <dd>Interface permettant à des programmes (sites, applis mobiles, partenaires) de dialoguer avec un service. C'est la « porte arrière » qui sert souvent à transférer des données entre un site et une application mobile, par exemple. Mal protégée, elle peut révéler des données nominatives à toute personne qui sait l'interroger.</dd>
+
+        <dt>Brute force</dt>
+        <dd>Tentative automatisée de découvrir un mot de passe en essayant des millions de combinaisons. Une attaque est dite « amplifiée » quand elle peut faire plusieurs tentatives par requête (xmlrpc en WordPress permet 1 000 essais en une seule requête).</dd>
+
+        <dt>CMS (Content Management System)</dt>
+        <dd>Logiciel permettant de gérer un site web sans coder : WordPress, Drupal, Joomla, Wagtail. Les CMS sont à la fois la solution la plus simple pour avoir un site et la principale source de vulnérabilités quand ils ne sont pas maintenus à jour.</dd>
+
+        <dt>CDN / WAF</dt>
+        <dd><em>Content Delivery Network</em> : réseau qui sert le contenu de votre site depuis le serveur le plus proche du visiteur. <em>Web Application Firewall</em> : pare-feu applicatif qui filtre les requêtes malveillantes. Cloudflare est le plus connu et offre les deux gratuitement.</dd>
+
+        <dt>Certificate Transparency (CT logs)</dt>
+        <dd>Registre public obligatoire de tous les certificats SSL émis sur Internet. Outil légitime pour la transparence, il permet aussi à n'importe qui de découvrir la liste de vos sous-domaines en 5 secondes — y compris ceux que vous croyiez « cachés » (staging, preprod, dev). À consulter via crt.sh.</dd>
+
+        <dt>CVE / CVSS</dt>
+        <dd><em>Common Vulnerabilities and Exposures</em> : identifiant unique d'une faille de sécurité connue (exemple : CVE-2024-6387). <em>Common Vulnerability Scoring System</em> : score de gravité de 0 à 10. Au-delà de 9, on parle de critique.</dd>
+
+        <dt>DMARC / SPF / DKIM</dt>
+        <dd>Triplet d'enregistrements DNS qui authentifient vos emails et empêchent les usurpateurs d'envoyer des messages en se faisant passer pour votre domaine. <code class="mono">p=reject</code> est le réglage le plus protecteur. <code class="mono">p=none</code> ne bloque rien — il observe seulement.</dd>
+
+        <dt>EOL (End of Life)</dt>
+        <dd>Logiciel qui n'est plus supporté par son éditeur : pas de mises à jour de sécurité, même quand des failles sont publiées. PHP 5.6 est EOL depuis 2018. Drupal 9 est EOL depuis 2023. Maintenir un EOL en production équivaut à laisser une porte ouverte étiquetée « entrez ».</dd>
+
+        <dt>HSTS / CSP / X-Frame-Options</dt>
+        <dd>Famille des « security headers » : instructions envoyées par votre serveur au navigateur pour qu'il refuse certaines attaques (force HTTPS, bloque les scripts injectés, refuse l'inclusion en iframe). Ils sont gratuits, ajoutés en quelques minutes. Leur absence est un signal d'amateurisme.</dd>
+
+        <dt>Kill chain</dt>
+        <dd>Chaîne d'attaque : enchaînement de petites vulnérabilités, isolément non critiques, qui combinées permettent une compromission. Les pentesters cherchent les chemins les plus courts dans ce graphe d'opportunités.</dd>
+
+        <dt>MFA / 2FA</dt>
+        <dd><em>Multi-factor authentication</em> : authentification à plusieurs facteurs. En plus du mot de passe, un code à usage unique (SMS, application Google Authenticator, clé physique YubiKey). Annule à elle seule 95 % des attaques par mot de passe volé.</dd>
+
+        <dt>OSINT (Open Source Intelligence)</dt>
+        <dd>Renseignement à partir de sources ouvertes, accessibles à tous : LinkedIn, Wayback Machine, registres DNS publics, Have I Been Pwned, Google. Les phases 0 et 1 d'un audit s'appuient exclusivement sur l'OSINT.</dd>
+
+        <dt>PII (Personally Identifiable Information)</dt>
+        <dd>Données à caractère personnel : nom, prénom, email, téléphone, adresse, photo, géolocalisation. Sous RGPD, leur traitement est encadré et leur fuite déclarable à la CNIL sous 72 h.</dd>
+
+        <dt>RCE (Remote Code Execution)</dt>
+        <dd>Exécution de code à distance : la pire des vulnérabilités, qui permet à un attaquant de faire tourner ses propres programmes sur votre serveur. Conduit généralement à une compromission complète et à du ransomware.</dd>
+
+        <dt>Rate limiting</dt>
+        <dd>Limitation du nombre de requêtes autorisées par minute, par utilisateur ou par IP. Empêche le brute force d'aboutir en multipliant le temps nécessaire par 1 000 ou 10 000. Sans rate limiting, un panel admin tombe en quelques heures de scan automatisé.</dd>
+
+        <dt>Sécurité par défaut / Privacy by design</dt>
+        <dd>Principe selon lequel un logiciel doit être sécurisé et respectueux de la vie privée à l'installation, sans configuration manuelle. À l'opposé, beaucoup de services exigent que l'utilisateur durcisse activement la configuration — sinon, il prend les défauts permissifs.</dd>
+
+        <dt>Self-hosted</dt>
+        <dd>Logiciel installé et exploité sur ses propres serveurs (par opposition à un service cloud managé). Donne le contrôle, mais exige une compétence d'administration système maintenue dans la durée.</dd>
+
+        <dt>Shadow IT</dt>
+        <dd>Outils, comptes ou services utilisés par le personnel sans validation officielle de l'organisation. Un Trello personnel pour gérer des bénéficiaires, un Drive partagé entre bénévoles, un compte Zoom pro de l'université d'à côté. Échappe à la cartographie et donc à la protection.</dd>
+
+        <dt>Subdomain takeover</dt>
+        <dd>Reprise de contrôle d'un sous-domaine orphelin pointant vers un service externe désactivé. Si <code class="mono">campagne2019.assoc.fr</code> pointe vers un Heroku abandonné, n'importe qui peut recréer ce Heroku et hériter du sous-domaine.</dd>
+
+        <dt>VPN</dt>
+        <dd><em>Virtual Private Network</em> : tunnel chiffré entre l'utilisateur et le réseau de l'organisation. Dans un contexte de sécurité, sert à restreindre l'accès aux services internes — seules les personnes connectées au VPN peuvent atteindre <code class="mono">/admin</code>, par exemple.</dd>
+
+        <dt>xmlrpc.php</dt>
+        <dd>Endpoint hérité de WordPress, conçu pour permettre aux applications externes de poster des articles. Activé par défaut, il est devenu le vecteur de prédilection du brute force amplifié et de plusieurs familles d'attaques DDoS. À désactiver dans la quasi-totalité des cas modernes.</dd>
+      </dl>
+    </section>
+
+    <!-- ============ CONCLUSION ============ -->
+    <section id="conclusion">
+      <div class="section-header">
+        <div class="num">§ 13 — CONCLUSION</div>
+        <h2>Trois enseignements transversaux</h2>
+      </div>
+
+      <h3>1. Le secteur ESS n'est pas en crise — il est en retard.</h3>
+      <p>
+        Aucune des organisations auditées n'est en perdition totale. Aucune n'a non plus la posture professionnelle qu'on attendrait d'une PME qui traite des données de mineurs ou de bénéficiaires précaires. La distance qui sépare le score médian observé (5/10) du score souhaitable (7/10) ne se mesure pas en années de chantier, mais en jours d'attention. Les cibles qui ont franchi le pas l'ont fait avec des budgets nuls ou symboliques.
+      </p>
+
+      <h3>2. Le risque n°1 n'est pas le pirate solitaire — c'est l'attaque de masse opportuniste.</h3>
+      <p>
+        L'imaginaire collectif associe la cybersécurité à des attaquants ciblés et sophistiqués. La réalité observée est plus prosaïque : des scanners automatisés ratissent Internet, repèrent les services obsolètes, tentent les mots de passe par défaut, monétisent ce qu'ils trouvent. Une organisation ESS n'est pas trop petite pour être attaquée — elle est trop visible pour ne pas l'être. La question n'est pas « si » mais « quand le scanner passera ».
+      </p>
+
+      <h3>3. Le facteur déterminant n'est pas la technologie — c'est la gouvernance.</h3>
+      <p>
+        Deux organisations avec la même stack peuvent avoir des scores radicalement différents selon qu'elles ont, ou pas, un référent technique nommément responsable, joignable, formé. Le contrat de prestation, la procédure d'offboarding, la décision d'arbitrage budgétaire, la clarté des rôles : ce sont des sujets de direction, pas de technique. La cybersécurité commence en conseil d'administration.
+      </p>
+
+      <hr class="fancy">
+
+      <blockquote class="pull">
+        « Remédiation #1 : 0 €, 30 minutes, restriction d'IP sur les panels d'administration — élimine les findings hauts les plus courants. »
+        <cite>Observation cross-audits, panorama 2026</cite>
+      </blockquote>
+
+      <h3>Pour aller plus loin</h3>
+      <ul>
+        <li><a href="https://cyber.gouv.fr/publications/guide-dhygiene-informatique" target="_blank" rel="noopener"><strong>ANSSI — Guide d'hygiène informatique</strong></a> (42 mesures, accessible aux non-spécialistes).</li>
+        <li><a href="https://www.cnil.fr/fr/principes-cles/guide-de-la-securite-des-donnees-personnelles" target="_blank" rel="noopener"><strong>CNIL — Guide de la sécurité des données personnelles</strong></a> (édition à jour, librement téléchargeable).</li>
+        <li><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener"><strong>Cybermalveillance.gouv.fr</strong></a> — plateforme d'assistance gratuite aux victimes, et dispositif <a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/diagnostic-cyber-asso" target="_blank" rel="noopener">Diag Cyber Asso</a> pour les structures à but non lucratif.</li>
+        <li>Le programme <a href="https://www.anozrway.com/" target="_blank" rel="noopener">Anozr Way</a> et les initiatives <a href="https://www.francenum.gouv.fr/" target="_blank" rel="noopener">France Num</a> pour les TPE/PME.</li>
+        <li>Programmes gratuits dédiés au secteur associatif : <a href="https://bitwarden.com/fr-FR/nonprofit-and-charity/" target="_blank" rel="noopener"><strong>Bitwarden Free for Nonprofits</strong></a>, <a href="https://www.cloudflare.com/galileo/" target="_blank" rel="noopener"><strong>Cloudflare Project Galileo</strong></a>, <a href="https://www.google.com/nonprofits/" target="_blank" rel="noopener"><strong>Google for Nonprofits</strong></a>.</li>
+        <li>Réseaux ressources ESS : <a href="https://www.avise.org/" target="_blank" rel="noopener">Avise</a>, <a href="https://www.udes.fr/" target="_blank" rel="noopener">UDES</a>, <a href="https://www.uniopss.asso.fr/" target="_blank" rel="noopener">UNIOPSS</a>.</li>
+      </ul>
+      <p style="margin-top:24px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--accent);">
+        <strong>Vous voulez situer votre propre organisation ?</strong> Notre <a href="/diagnostic-cyber-ess">auto-diagnostic cybersécurité ESS</a> reprend les 16 dimensions clés du baromètre en 3 minutes, gratuit et anonyme. Voir aussi la page <a href="/qui-suis-je.html">qui suis-je</a> et les <a href="/formations">formations cybersécurité &amp; numérique responsable</a>.
+      </p>
+
+      <p>
+        Ce panorama est un état des lieux. La suite dépend des organisations elles-mêmes, de leurs prestataires, de leurs financeurs — et de la décision, partagée ou non, de prendre la sécurité au sérieux <em>avant</em> qu'un incident ne l'impose.
+      </p>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="report-footer">
+      <div class="biggie">Panorama de la cybersécurité dans l'économie sociale et solidaire</div>
+      <div>Baromètre 2026 — version 1.1 — 11 mai 2026 — par <strong>Emmanuel Pinglier</strong></div>
+      <div style="margin-top:6px"><a href="https://code-ess.unjouruneapp.com" style="color:inherit">code-ess.unjouruneapp.com</a></div>
+
+      <div class="colophon" style="margin-top:32px">
+        <div>
+          <h4>Auteur</h4>
+          <p><strong>Emmanuel Pinglier</strong> — auditeur et rédacteur de ce baromètre. Travaux et publications associés disponibles sur <a href="https://code-ess.unjouruneapp.com">code-ess.unjouruneapp.com</a>.</p>
+        </div>
+        <div>
+          <h4>Méthode</h4>
+          <p>Compilation et analyse de 35 audits pédagogiques conduits entre mars et mai 2026. Reconnaissance passive (OSINT) et tests actifs sous autorisation. Données anonymisées pour cette publication ; chaque organisation auditée a reçu ou recevra un rapport individuel détaillé.</p>
+        </div>
+        <div>
+          <h4>Reproduction & contact</h4>
+          <p>Contenu librement reproductible à des fins pédagogiques et non commerciales. Citer la source : « Panorama de la cybersécurité dans l'ESS, baromètre 2026 — Emmanuel Pinglier — code-ess.unjouruneapp.com ».</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Highlight current section in side nav
+  (function() {
+    var sections = document.querySelectorAll('main section[id]');
+    var navLinks = document.querySelectorAll('.sidenav nav a');
+    var byId = {};
+    navLinks.forEach(function(a){ byId[a.getAttribute('href').slice(1)] = a; });
+
+    function onScroll() {
+      var pos = window.scrollY + 120;
+      var current = null;
+      sections.forEach(function(s) {
+        if (s.offsetTop <= pos) current = s.id;
+      });
+      navLinks.forEach(function(a){ a.classList.remove('active'); });
+      if (current && byId[current]) byId[current].classList.add('active');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
